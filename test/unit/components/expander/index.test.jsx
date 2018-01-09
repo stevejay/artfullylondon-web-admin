@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Expander from '_admin/components/expander'
+import Expander from '_src/components/expander'
 
 it('should render correctly when closed', () => {
   const wrapper = shallow(

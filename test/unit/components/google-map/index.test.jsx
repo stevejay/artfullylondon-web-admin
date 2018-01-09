@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { GoogleMap } from '_admin/components/google-map'
+import { GoogleMap } from '_src/components/google-map'
 
 it('should render correctly', () => {
   const wrapper = shallow(

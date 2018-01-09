@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityImage from '_admin/components/entity/image'
+import EntityImage from '_src/components/entity/image'
 
 it('should render correctly when showing the carousel', () => {
   const wrapper = shallow(

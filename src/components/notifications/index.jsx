@@ -4,12 +4,11 @@ import { connect } from 'react-redux'
 
 import NotificationContainer from '_src/components/notifications/container'
 import * as notificationsConstants from '_src/constants/notifications'
-import * as types from '_src/constants/notifications'
 
 export class Notifications extends React.Component {
   handleClose = payload => {
     this.props.dispatch({
-      type: types.REMOVE_NOTIFICATION,
+      type: notificationsConstants.REMOVE_NOTIFICATION,
       payload
     })
   }

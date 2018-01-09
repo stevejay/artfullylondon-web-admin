@@ -2,13 +2,14 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-text-index-m__container"
 >
   <TextIcon />
   <input
     autoCapitalize="none"
     autoComplete="off"
     autoCorrect="off"
+    className="components-text-index-m__input"
     disabled={false}
     id="some-id"
     maxLength={50}
@@ -19,7 +20,6 @@ exports[`should render correctly 1`] = `
     placeholder="The Placeholder"
     readOnly={false}
     spellCheck={false}
-    styleName="input"
     type="text"
     value="term"
   />
@@ -28,13 +28,14 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  styleName="container"
+  className="components-text-index-m__container"
 >
   <TextIcon />
   <input
     autoCapitalize="none"
     autoComplete="off"
     autoCorrect="off"
+    className="components-text-index-m__input-error components-text-index-m__input components-text-index-m__error"
     disabled={false}
     id="some-id"
     maxLength={50}
@@ -45,7 +46,6 @@ exports[`should render correctly with an error 1`] = `
     placeholder="The Placeholder"
     readOnly={false}
     spellCheck={false}
-    styleName="input-error"
     type="text"
     value="term"
   />

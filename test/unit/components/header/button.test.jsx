@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import HeaderButton from '_admin/components/header/button'
+import HeaderButton from '_src/components/header/button'
 
 it('should render correctly', () => {
   const wrapper = shallow(

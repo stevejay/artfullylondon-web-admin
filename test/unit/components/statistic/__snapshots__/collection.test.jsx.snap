@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <section
-  styleName="container"
+  className="components-statistic-collection-m__container"
 >
   <Statistic
     count={400}

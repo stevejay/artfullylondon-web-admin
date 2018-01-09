@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ALL_ENTITY_TYPES } from '_src/constants/entity'
-import * as entity from '_src/lib/entity'
-import * as constants from '_src/constants/entity'
+import Bank from 'react-icons/lib/fa/bank'
+import User from 'react-icons/lib/fa/user'
+import Star from 'react-icons/lib/fa/star-o'
+import Tags from 'react-icons/lib/fa/tags'
+import Cogs from 'react-icons/lib/fa/cogs'
+
+import * as entityConstants from '_src/constants/entity'
 import './index.m.scss'
 
 class ImagePlaceholder extends React.Component {
@@ -11,17 +15,17 @@ class ImagePlaceholder extends React.Component {
   }
   getIcon (type) {
     switch (type) {
-      case constants.ENTITY_TYPE_EVENT:
+      case entityConstants.ENTITY_TYPE_EVENT:
         return <Star styleName='icon' />
-      case constants.ENTITY_TYPE_EVENT_SERIES:
+      case entityConstants.ENTITY_TYPE_EVENT_SERIES:
         return <Star styleName='icon' />
-      case constants.ENTITY_TYPE_TALENT:
+      case entityConstants.ENTITY_TYPE_TALENT:
         return <User styleName='icon' />
-      case constants.ENTITY_TYPE_VENUE:
+      case entityConstants.ENTITY_TYPE_VENUE:
         return <Bank styleName='icon' />
-      case constants.ENTITY_TYPE_TAG:
+      case entityConstants.ENTITY_TYPE_TAG:
         return <Tags styleName='icon' />
-      case constants.ENTITY_TYPE_USER:
+      case entityConstants.ENTITY_TYPE_USER:
         return <Cogs styleName='icon' />
       default:
         throw new Error(`unknown type option of ${type}`)
@@ -39,7 +43,7 @@ class ImagePlaceholder extends React.Component {
 }
 
 ImagePlaceholder.propTypes = {
-  type: PropTypes.oneOf(ALL_ENTITY_TYPES).isRequired,
+  type: PropTypes.oneOf(entityConstants.ALL_ENTITY_TYPES).isRequired,
   size: PropTypes.oneOf([
     'tiny',
     'very-small',

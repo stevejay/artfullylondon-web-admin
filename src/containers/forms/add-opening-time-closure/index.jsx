@@ -8,10 +8,9 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import DropdownField from '_src/components/dropdown/field'
-import { DATE_FORMAT } from '_src/constants/time'
+import { DATE_FORMAT, TIME_OF_DAY_DROPDOWN_OPTIONS } from '_src/constants/time'
 import { showModal } from '_src/actions/modal'
 import { ADD_OPENING_TIME_CLOSURE_FORM_NAME } from '_src/constants/form'
-import { TIME_OF_DAY_DROPDOWN_OPTIONS } from '_src/constants/time'
 
 export const AddOpeningTimeClosureForm = ({
   pristine,

@@ -2,12 +2,12 @@
 
 exports[`should render a small header logo correctly 1`] = `
 <Link
+  className="components-header-menu-link-m__link-selected components-header-menu-link-m__link"
   onClick={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   replace={false}
   role="menuitem"
-  styleName="link-selected"
   tabIndex="-1"
   to="/to/path"
 >

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import EntityCardImage from '_admin/components/entity-card/image'
+import EntityCardImage from '_src/components/entity-card/image'
 
 it('should render correctly', () => {
   const wrapper = shallow(

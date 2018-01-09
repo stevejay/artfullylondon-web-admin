@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Text from '_admin/components/text'
+import Text from '_src/components/text'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -1,12 +1,18 @@
 import RichTextEditor from 'react-rte'
 import { createEntityEditPreviewImageUrl } from '_src/lib/image'
-import { getDateForDatabase } from '_src/lib/time'
 import {
-  eventIsPaid, eventIsPerformance, eventIsOneTime
+  getDateForDatabase,
+  periodIsLongerThanWeek,
+  createTimeKey
+} from '_src/lib/time'
+import {
+  eventIsPaid,
+  eventIsPerformance,
+  eventIsOneTime,
+  occurrenceTypeHasDateRange,
+  bookingRequired
 } from '_src/lib/event'
-import { periodIsLongerThanWeek, createTimeKey } from '_src/lib/time'
 import { IMAGE_STATUS_PROCESSING } from '_src/constants/image'
-import { occurrenceTypeHasDateRange, bookingRequired } from '_src/lib/event'
 import { getValidStatuses, descriptionStringIsEmpty } from '_src/lib/entity'
 import { isIndividualTalent } from '_src/lib/talent'
 
@@ -14,8 +20,8 @@ export function normaliseEventValues (values) {
   const isPerformance = eventIsPerformance(values.eventType)
   const isExhibition = !isPerformance
 
-  const isOneTimePerformance = isPerformance &&
-    eventIsOneTime(values.occurrenceType)
+  const isOneTimePerformance =
+    isPerformance && eventIsOneTime(values.occurrenceType)
 
   const hasRange = occurrenceTypeHasDateRange(values.occurrenceType)
 
@@ -42,14 +48,14 @@ export function normaliseEventValues (values) {
     values.performancesClosures = (values.performancesClosures || [])
       .filter(x => _filterTimeEntries(x, values.dateFrom, values.dateTo))
   } else {
-    values.dateTo = (values.dateFrom = null)
+    values.dateTo = values.dateFrom = null
   }
 
-  const isSingleDay = isOneTimePerformance ||
-    (hasRange && values.dateFrom === values.dateTo)
+  const isSingleDay =
+    isOneTimePerformance || (hasRange && values.dateFrom === values.dateTo)
 
-  const isLongerThanWeek = hasRange &&
-    periodIsLongerThanWeek(values.dateFrom, values.dateTo)
+  const isLongerThanWeek =
+    hasRange && periodIsLongerThanWeek(values.dateFrom, values.dateTo)
 
   values.useVenueOpeningTimes = isExhibition && values.useVenueOpeningTimes
 
@@ -63,7 +69,12 @@ export function normaliseEventValues (values) {
       values.openingTimes = []
     }
 
-    if (isSingleDay || !isLongerThanWeek || values.useVenueOpeningTimes || !hasRange) {
+    if (
+      isSingleDay ||
+      !isLongerThanWeek ||
+      values.useVenueOpeningTimes ||
+      !hasRange
+    ) {
       values.timesRanges = []
     }
 

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-modal-special-message-m__container"
 >
   <LogoMinimal />
   <p>

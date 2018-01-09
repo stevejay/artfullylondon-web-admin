@@ -12,7 +12,7 @@ import FormError from '_src/components/form/error'
 import TextField from '_src/components/text/field'
 import DropdownField from '_src/components/dropdown/field'
 import DatepickerField from '_src/components/datepicker/field'
-import { DATE_FORMAT } from '_src/constants/time'
+import { DATE_FORMAT, DURATION_DROPDOWN_OPTIONS } from '_src/constants/time'
 import HtmlTextField from '_src/components/html-text/field'
 import LinksField from '_src/components/links/field'
 import { formatAddressForDisplay } from '_src/lib/venue'
@@ -20,8 +20,12 @@ import {
   ENTITY_TYPE_VENUE,
   ENTITY_TYPE_EVENT_SERIES
 } from '_src/constants/entity'
-import { eventIsPaid, eventIsPerformance } from '_src/lib/event'
-import { bookingRequired, occurrenceTypeHasDateRange } from '_src/lib/event'
+import {
+  eventIsPaid,
+  eventIsPerformance,
+  bookingRequired,
+  occurrenceTypeHasDateRange
+} from '_src/lib/event'
 import {
   EVENT_TYPE_DROPDOWN_OPTIONS,
   COST_TYPE_DROPDOWN_OPTIONS,
@@ -32,14 +36,11 @@ import {
   OCCURRENCE_TYPE_ONETIME,
   COST_TYPE_FREE,
   COST_TYPE_UNKNOWN,
-  BOOKING_TYPE_NOT_REQUIRED
-} from '_src/constants/event'
-import {
+  BOOKING_TYPE_NOT_REQUIRED,
   RATING_DROPDOWN_OPTIONS,
   MIN_AGE_DROPDOWN_OPTIONS
 } from '_src/constants/event'
 import { EDIT_EVENT_BASICS_FORM_NAME } from '_src/constants/form'
-import { DURATION_DROPDOWN_OPTIONS } from '_src/constants/time'
 import { getSubEntity } from '_src/actions/entity'
 import { showModal } from '_src/actions/modal'
 import * as linkActions from '_src/actions/link'

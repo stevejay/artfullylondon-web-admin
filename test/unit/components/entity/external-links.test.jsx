@@ -1,12 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityExternalLinks from '_admin/components/entity/external-links'
+import EntityExternalLinks from '_src/components/entity/external-links'
 import {
   LINK_TYPE_FACEBOOK,
   LINK_TYPE_TWITTER,
   LINK_TYPE_INSTAGRAM
-} from '_admin/constants/link'
+} from '_src/constants/link'
 
 it('should render correctly when there are no links', () => {
   const mockLinks = { getLinkByType: jest.fn() }

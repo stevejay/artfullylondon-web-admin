@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FieldError from '_admin/components/field/error'
+import FieldError from '_src/components/field/error'
 
 it('should render correctly when there is an error', () => {
   const wrapper = shallow(<FieldError error='The Error' />)

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import HeaderMenuLink from '_admin/components/header/menu-link'
+import HeaderMenuLink from '_src/components/header/menu-link'
 
 it('should render a small header logo correctly', () => {
   const wrapper = shallow(

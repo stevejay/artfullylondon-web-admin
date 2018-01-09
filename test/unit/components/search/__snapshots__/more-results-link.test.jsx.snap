@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <p
-  styleName="container"
+  className="components-search-more-results-link-m__container"
 >
   <a
     onClick={[Function]}

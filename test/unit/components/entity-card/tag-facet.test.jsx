@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityCardTagFacet from '_admin/components/entity-card/tag-facet'
+import EntityCardTagFacet from '_src/components/entity-card/tag-facet'
 
 it('should render a default tag facet correctly', () => {
   const wrapper = shallow(

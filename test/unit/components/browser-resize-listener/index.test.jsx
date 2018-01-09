@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import _ from 'lodash'
 
-import * as browser from '_admin/lib/browser'
-import BrowserResizeListener from '_admin/components/browser-resize-listener'
+import * as browser from '_src/lib/browser'
+import BrowserResizeListener from '_src/components/browser-resize-listener'
 
 beforeEach(() => {
   browser.addWindowEventListener = jest.fn()

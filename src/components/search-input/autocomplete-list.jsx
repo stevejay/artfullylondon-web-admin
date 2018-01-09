@@ -28,14 +28,14 @@ const AutocompleteList = ({
             ? <AutocompleteHeaderItem
               key={item.label}
               entityName={item.label}
-              />
+            />
             : <AutocompleteItem
               key={item.id}
               index={index}
               currentIndex={currentIndex}
               item={item}
               onSelect={onSelectItem}
-              />)
+            />)
       )}
     </ul>
   )

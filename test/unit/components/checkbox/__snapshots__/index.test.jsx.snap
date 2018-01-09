@@ -2,68 +2,68 @@
 
 exports[`should render correctly when checked 1`] = `
 <div
-  styleName="container"
+  className="components-checkbox-index-m__container"
 >
   <input
     checked={true}
+    className="components-checkbox-index-m__checkbox"
     id="checkbox_1"
     onChange={[Function]}
-    styleName="checkbox"
     type="checkbox"
   />
   <label
+    className="components-checkbox-index-m__label"
     htmlFor="checkbox_1"
-    styleName="label"
   >
     <div
       id="child"
     />
   </label>
   <FaCheck
-    styleName="checkmark"
+    className="components-checkbox-index-m__checkmark"
   />
 </div>
 `;
 
 exports[`should render correctly when has an error 1`] = `
 <div
-  styleName="container-error"
+  className="components-checkbox-index-m__container-error components-checkbox-index-m__container"
 >
   <input
     checked={true}
+    className="components-checkbox-index-m__checkbox"
     id="checkbox_3"
     onChange={[Function]}
-    styleName="checkbox"
     type="checkbox"
   />
   <label
+    className="components-checkbox-index-m__label"
     htmlFor="checkbox_3"
-    styleName="label"
   >
     <div
       id="child"
     />
   </label>
   <FaCheck
-    styleName="checkmark"
+    className="components-checkbox-index-m__checkmark"
   />
 </div>
 `;
 
 exports[`should render correctly when not checked 1`] = `
 <div
-  styleName="container"
+  className="components-checkbox-index-m__container"
 >
   <input
     checked={false}
+    className="components-checkbox-index-m__checkbox"
     id="checkbox_2"
     onChange={[Function]}
-    styleName="checkbox"
     type="checkbox"
   />
   <label
+    className="components-checkbox-index-m__label"
     htmlFor="checkbox_2"
-    styleName="label"
   >
     <div
       id="child"

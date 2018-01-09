@@ -2,15 +2,15 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="border"
+  className="components-form-border-m__border"
 >
   <h1
-    styleName="header"
+    className="components-form-border-m__header"
   >
     The Title
   </h1>
   <div
-    styleName="content"
+    className="components-form-border-m__content"
   >
     <div
       id="child"

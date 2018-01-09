@@ -2,27 +2,27 @@
 
 exports[`should render correctly when closed 1`] = `
 <div
+  className="components-expander-index-m__container"
   id="some-id"
-  styleName="container"
 >
   <div
     aria-expanded={false}
+    className="components-expander-index-m__header-container"
     onClick={[Function]}
     onKeyDown={[Function]}
-    styleName="header-container"
     tabIndex="0"
   >
     <h6
-      styleName="header"
+      className="components-expander-index-m__header"
     >
       The Header Text
     </h6>
     <FaCircle
-      styleName="indicator-closed"
+      className="components-expander-index-m__indicator-closed components-expander-index-m__indicator"
     />
     <Pusher />
     <FaAngleDown
-      styleName="arrow-down"
+      className="components-expander-index-m__arrow-down components-expander-index-m__arrow"
     />
   </div>
   <TransitionGroup
@@ -34,9 +34,9 @@ exports[`should render correctly when closed 1`] = `
       timeout={250}
     >
       <div
+        className="components-expander-index-m__children"
         in={false}
         key="children"
-        styleName="children"
       >
         <div
           id="child"

@@ -12,7 +12,7 @@ import {
   DATE_PRESET_TYPE_DATE,
   DATE_PRESET_TYPE_THIS_WEEKEND,
   DATE_PRESET_TYPE_DROPDOWN_OPTIONS
-} from '_public/constants/search'
+} from '_src/constants/search'
 import './search-field.m.scss'
 
 class DatepickerSearchField extends React.Component {

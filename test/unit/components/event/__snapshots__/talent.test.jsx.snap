@@ -2,22 +2,22 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-event-talent-m__container"
 >
   <img
+    className="components-event-talent-m__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
-    styleName="img"
   />
   <div
-    styleName="details"
+    className="components-event-talent-m__details"
   >
     <p
-      styleName="roles"
+      className="components-event-talent-m__roles"
     >
       Roles string
     </p>
     <p
-      styleName="characters"
+      className="components-event-talent-m__characters"
     >
       Characters string
     </p>
@@ -33,17 +33,17 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when there are no characters 1`] = `
 <div
-  styleName="container"
+  className="components-event-talent-m__container"
 >
   <img
+    className="components-event-talent-m__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
-    styleName="img"
   />
   <div
-    styleName="details"
+    className="components-event-talent-m__details"
   >
     <p
-      styleName="roles"
+      className="components-event-talent-m__roles"
     >
       Roles string
     </p>
@@ -59,23 +59,23 @@ exports[`should render correctly when there are no characters 1`] = `
 
 exports[`should render correctly when there is no image 1`] = `
 <div
-  styleName="container"
+  className="components-event-talent-m__container"
 >
   <ImagePlaceholder
+    className="components-event-talent-m__placeholder"
     size="very-small"
-    styleName="placeholder"
     type="talent"
   />
   <div
-    styleName="details"
+    className="components-event-talent-m__details"
   >
     <p
-      styleName="roles"
+      className="components-event-talent-m__roles"
     >
       Roles string
     </p>
     <p
-      styleName="characters"
+      className="components-event-talent-m__characters"
     >
       Characters string
     </p>

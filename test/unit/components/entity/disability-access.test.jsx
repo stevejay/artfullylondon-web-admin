@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import * as accessConstants from '_admin/constants/access'
-import EntityDisabilityAccess from '_admin/components/entity/disability-access'
-import * as accessLib from '_admin/lib/access'
+import * as accessConstants from '_src/constants/access'
+import EntityDisabilityAccess from '_src/components/entity/disability-access'
+import * as accessLib from '_src/lib/access'
 
 it('should render correctly', () => {
   const mockLinks = {

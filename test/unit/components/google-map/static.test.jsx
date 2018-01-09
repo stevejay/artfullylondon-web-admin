@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { StaticGoogleMap } from '_admin/components/google-map/static'
+import { StaticGoogleMap } from '_src/components/google-map/static'
 
 it('should render correctly', () => {
   const wrapper = shallow(

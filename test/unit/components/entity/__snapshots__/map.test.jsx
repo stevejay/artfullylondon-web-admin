@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityMap from '_admin/components/entity/map'
+import EntityMap from '_src/components/entity/map'
 
 it('should render correctly', () => {
   const wrapper = shallow(

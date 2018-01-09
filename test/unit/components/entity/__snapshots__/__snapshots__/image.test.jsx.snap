@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not showing the carousel 1`] = `
+<div>
+  <div
+    className="components-entity-image-m__container"
+  >
+    <img
+      className="components-entity-image-m__img"
+      src="https://images.test.com/so/me/some-id/500x500.jpg"
+    />
+  </div>
+  <ImageCredit />
+</div>
+`;
+
+exports[`should render correctly when showing the carousel 1`] = `
+<ImageCarousel
+  images={
+    Array [
+      Object {
+        "id": "some-id",
+        "ratio": 2,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`should render correctly when there are no images 1`] = `
+<div
+  className="components-entity-image-m__container"
+>
+  <ImagePlaceholder
+    className="components-entity-image-m__placeholder"
+    size="medium"
+    type="venue"
+  />
+</div>
+`;

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import FieldResetButton from '_admin/components/field/reset-button'
+import FieldResetButton from '_src/components/field/reset-button'
 
 it('should render correctly', () => {
   const wrapper = shallow(

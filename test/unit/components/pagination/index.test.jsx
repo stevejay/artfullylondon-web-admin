@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Pagination from '_admin/components/pagination'
+import Pagination from '_src/components/pagination'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<h3
+  className="components-entity-card-heading-m__heading"
+  id="some-id"
+>
+  <div
+    id="child"
+  />
+</h3>
+`;

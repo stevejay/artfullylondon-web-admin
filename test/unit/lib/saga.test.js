@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import { SubmissionError, stopSubmit } from 'redux-form'
 import { put } from 'redux-saga/effects'
-import * as saga from '_admin/lib/saga'
+import * as saga from '_src/lib/saga'
 
 const SOME_FORM_NAME = 'some-form-name'
 

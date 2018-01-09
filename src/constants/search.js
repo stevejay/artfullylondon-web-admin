@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 
 import {
+  EDITABLE_ENTITY_TYPES,
   ENTITY_TYPE_VENUE,
   ENTITY_TYPE_TALENT,
   ENTITY_TYPE_EVENT,
@@ -50,10 +50,36 @@ export const STARTING_BASIC_SEARCH = 'search/STARTING_BASIC_SEARCH'
 export const BASIC_SEARCH_SUCCEEDED = 'search/BASIC_SEARCH_SUCCEEDED'
 export const BASIC_SEARCH_FAILED = 'search/BASIC_SEARCH_FAILED'
 
-export const AUTOCOMPLETE_SEARCH_SUCCEEDED = 'search/AUTOCOMPLETE_SEARCH_SUCCEEDED'
+export const AUTOCOMPLETE_SEARCH_SUCCEEDED =
+  'search/AUTOCOMPLETE_SEARCH_SUCCEEDED'
 export const CLEAR_AUTOCOMPLETE = 'search/CLEAR_AUTOCOMPLETE'
 
 export const NAVIGATE_TO_ENTITY = 'search/NAVIGATE_TO_ENTITY'
+
+// ------------------------
+
+// TODO These might not all be used?
+
+export const DATE_PRESET_TYPE_TODAY = 'Today'
+export const DATE_PRESET_TYPE_THIS_WEEKEND = 'ThisWeekend'
+export const DATE_PRESET_TYPE_THIS_SATURDAY = 'ThisSaturday'
+export const DATE_PRESET_TYPE_THIS_SUNDAY = 'ThisSunday'
+export const DATE_PRESET_TYPE_DATE = 'Date'
+
+export const ALLOWED_DATE_PRESET_TYPES = [
+  DATE_PRESET_TYPE_TODAY,
+  DATE_PRESET_TYPE_THIS_WEEKEND,
+  DATE_PRESET_TYPE_THIS_SATURDAY,
+  DATE_PRESET_TYPE_THIS_SUNDAY
+]
+
+export const DATE_PRESET_TYPE_DROPDOWN_OPTIONS = [
+  { value: DATE_PRESET_TYPE_TODAY, label: 'Today' },
+  { value: DATE_PRESET_TYPE_THIS_WEEKEND, label: 'This weekend' },
+  { value: DATE_PRESET_TYPE_THIS_SATURDAY, label: 'This Saturday' },
+  { value: DATE_PRESET_TYPE_THIS_SUNDAY, label: 'This Sunday' },
+  { value: DATE_PRESET_TYPE_DATE, label: 'On a particular date...' }
+]
 
 // ------------------------
 

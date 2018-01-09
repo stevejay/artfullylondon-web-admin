@@ -1,4 +1,4 @@
-import { Tag } from '_admin/entities/tag'
+import { Tag } from '_src/entities/tag'
 
 it('should have correct entityType', () => {
   const subject = new Tag({})

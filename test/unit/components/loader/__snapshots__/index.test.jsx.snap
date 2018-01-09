@@ -3,47 +3,47 @@
 exports[`should render a large inverse loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__large-inverse"
   role="alert"
-  styleName="large-inverse"
 />
 `;
 
 exports[`should render a massive loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__massive-default"
   role="alert"
-  styleName="massive-default"
 />
 `;
 
 exports[`should render a medium loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__medium-default"
   role="alert"
-  styleName="medium-default"
 />
 `;
 
 exports[`should render a modal loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__modal-default"
   role="alert"
-  styleName="modal-default"
 />
 `;
 
 exports[`should render a small inverse loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__small-inverse"
   role="alert"
-  styleName="small-inverse"
 />
 `;
 
 exports[`should render a tiny loader correctly 1`] = `
 <div
   aria-busy={true}
+  className="components-loader-index-m__tiny-default"
   role="alert"
-  styleName="tiny-default"
 />
 `;

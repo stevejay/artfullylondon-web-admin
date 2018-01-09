@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ImagePlaceholder from '_admin/components/image-placeholder'
+import ImagePlaceholder from '_src/components/image-placeholder'
 
 it('should render a venue placeholder image correctly', () => {
   const wrapper = shallow(<ImagePlaceholder type='venue' size='medium' />)

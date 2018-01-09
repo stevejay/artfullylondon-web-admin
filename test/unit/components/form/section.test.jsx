@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FormSection from '_admin/components/form/section'
+import FormSection from '_src/components/form/section'
 
 it('should render a narrow section correctly', () => {
   const wrapper = shallow(

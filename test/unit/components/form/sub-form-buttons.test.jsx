@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import SubFormButtons from '_admin/components/form/sub-form-buttons'
+import SubFormButtons from '_src/components/form/sub-form-buttons'
 
 it('should render correctly when not submitting', () => {
   const wrapper = shallow(

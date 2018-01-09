@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import * as notificationsConstants from '_src/constants/notifications'
-import * as types from '_src/constants/notifications'
 import { Notifications } from '_src/components/notifications'
 
 it('should render correctly', () => {
@@ -43,7 +42,7 @@ it('should raise a remove notification action when a notification is closed', ()
 
   expect(dispatchHandler.mock.calls[0]).toEqual([
     {
-      type: types.REMOVE_NOTIFICATION,
+      type: notificationsConstants.REMOVE_NOTIFICATION,
       payload: { id: 'some-id' }
     }
   ])

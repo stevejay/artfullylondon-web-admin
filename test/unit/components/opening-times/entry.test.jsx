@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import OpeningTimesEntry from '_admin/components/opening-times/entry'
-import * as timeLib from '_admin/lib/time'
+import OpeningTimesEntry from '_src/components/opening-times/entry'
+import * as timeLib from '_src/lib/time'
 
 beforeEach(() => {
   timeLib.formatOpeningTimesOrPerformanceTimeForDisplay = jest

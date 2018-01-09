@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="components-section-heading-m__container-no-logo components-section-heading-m__container"
+>
+  <h2
+    className="components-section-heading-m__title"
+  >
+    <div
+      id="child"
+    />
+  </h2>
+</div>
+`;

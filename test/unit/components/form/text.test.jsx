@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FormText from '_admin/components/form/text'
+import FormText from '_src/components/form/text'
 
 it('should render correctly', () => {
   const wrapper = shallow(

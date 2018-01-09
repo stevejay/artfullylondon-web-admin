@@ -3,13 +3,13 @@
 exports[`should render correctly 1`] = `
 <button
   aria-haspopup={true}
+  className="components-header-button-m__button"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}
   role="menuitem"
-  styleName="button"
   type="button"
 >
   The Label

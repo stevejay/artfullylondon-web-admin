@@ -2,9 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-dropdown-search-field-m__container"
 >
   <Dropdown
+    className="components-dropdown-search-field-m__dropdown"
     disabled={false}
     error={false}
     htmlId="some-id"
@@ -22,7 +23,6 @@ exports[`should render correctly 1`] = `
     }
     searchable={false}
     simpleValue={false}
-    styleName="dropdown"
     value="term"
     valueKey="value"
   />
@@ -35,9 +35,10 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <div
-  styleName="container"
+  className="components-dropdown-search-field-m__container"
 >
   <Dropdown
+    className="components-dropdown-search-field-m__dropdown"
     disabled={true}
     error={false}
     htmlId="some-id"
@@ -55,7 +56,6 @@ exports[`should render correctly when disabled 1`] = `
     }
     searchable={false}
     simpleValue={false}
-    styleName="dropdown"
     value="term"
     valueKey="value"
   />
@@ -64,9 +64,10 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  styleName="container"
+  className="components-dropdown-search-field-m__container"
 >
   <Dropdown
+    className="components-dropdown-search-field-m__dropdown"
     disabled={false}
     error={true}
     htmlId="some-id"
@@ -84,7 +85,6 @@ exports[`should render correctly with an error 1`] = `
     }
     searchable={false}
     simpleValue={false}
-    styleName="dropdown"
     value="term"
     valueKey="value"
   />

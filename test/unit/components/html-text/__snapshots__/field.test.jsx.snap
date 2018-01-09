@@ -8,6 +8,7 @@ exports[`should render correctly 1`] = `
   touched={false}
 >
   <RichTextEditor
+    className="components-html-text-field-m__rte"
     customStyleMap={
       Object {
         "BOLD": Object {
@@ -21,7 +22,6 @@ exports[`should render correctly 1`] = `
     maxLength={300}
     name="The Label"
     onChange={[Function]}
-    styleName="rte"
     value="The Value"
   />
 </Container>

@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import OpeningTimesCurrentTimes
-  from '_admin/components/opening-times/current-times'
-import { FullVenue } from '_admin/entities/venue'
+  from '_src/components/opening-times/current-times'
+import { FullVenue } from '_src/entities/venue'
 
 it('should render correctly', () => {
   const mockEntity = new FullVenue({})

@@ -55,7 +55,7 @@ class Label extends React.Component {
           ref={ref => (this.label = ref)}
           {...rest}
           htmlFor={htmlFor}
-          styleName={!!tooltip && 'has-tooltip'}
+          styleName={tooltip ? 'has-tooltip' : ''}
           onClick={this.handleClick}
         >
           {children}

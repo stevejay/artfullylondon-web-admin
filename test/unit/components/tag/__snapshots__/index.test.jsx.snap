@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <span
-  styleName="container"
+  className="components-tag-index-m__container"
 >
   The Label
 </span>

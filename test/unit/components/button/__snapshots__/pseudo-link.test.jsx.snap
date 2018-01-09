@@ -2,9 +2,9 @@
 
 exports[`should render correctly 1`] = `
 <button
+  className="components-button-pseudo-link-m__link"
   onClick={[Function]}
   onKeyPress={[Function]}
-  styleName="link"
   type="button"
 >
   <div

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<EntityCard
+<EntityCardShell
   entity={
     SummaryVenue {
       "entity": Object {
@@ -23,20 +23,20 @@ exports[`should render correctly 1`] = `
     }
   />
   <div
-    styleName="actions-row"
+    className="components-entity-card-index-m__actions-row"
   >
     <Pusher />
     <Link
+      className="components-entity-card-index-m__goto-entity"
       data-url="/venue/some-venue-id"
       onClick={[Function]}
       replace={false}
-      styleName="goto-entity"
       to="/venue/some-venue-id"
     >
       <FaArrowCircleRight
-        styleName="goto-entity-icon"
+        className="components-entity-card-index-m__goto-entity-icon"
       />
     </Link>
   </div>
-</EntityCard>
+</EntityCardShell>
 `;

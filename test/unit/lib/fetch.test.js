@@ -1,5 +1,5 @@
-import * as fetchImpl from '_admin/lib/fetch-impl'
-import * as fetch from '_admin/lib/fetch'
+import * as fetchImpl from '_src/lib/fetch-impl'
+import * as fetch from '_src/lib/fetch'
 
 const SOME_URL = 'http://test.com'
 

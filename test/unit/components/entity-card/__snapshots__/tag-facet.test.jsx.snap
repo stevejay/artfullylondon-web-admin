@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default tag facet correctly 1`] = `
+<span
+  className="components-entity-card-tag-facet-m__tag-default components-entity-card-tag-facet-m__tag"
+>
+  <div
+    id="child"
+  />
+</span>
+`;
+
+exports[`should render an error tag facet correctly 1`] = `
+<span
+  className="components-entity-card-tag-facet-m__tag-error components-entity-card-tag-facet-m__tag"
+>
+  <div
+    id="child"
+  />
+</span>
+`;

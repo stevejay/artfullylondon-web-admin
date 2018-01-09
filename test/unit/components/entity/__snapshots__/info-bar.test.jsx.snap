@@ -2,41 +2,41 @@
 
 exports[`should render an info bar for a venue correctly 1`] = `
 <ul
-  styleName="container"
+  className="components-entity-info-bar-m__container"
 >
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaTags
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <span>
       Tags Label
     </span>
   </li>
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaGlobe
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <a
+      className="components-entity-info-bar-m__link"
       rel="noopener"
-      styleName="link"
       target="_blank"
     >
       Website
     </a>
   </li>
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaPencil
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <Link
+      className="components-entity-info-bar-m__link"
       replace={false}
-      styleName="link"
       to="/venue/edit/some-venue-id"
     >
       Edit
@@ -47,56 +47,56 @@ exports[`should render an info bar for a venue correctly 1`] = `
 
 exports[`should render an info bar for an event correctly 1`] = `
 <ul
-  styleName="container"
+  className="components-entity-info-bar-m__container"
 >
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaTags
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <span>
       Tags Label
     </span>
   </li>
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaGlobe
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <a
+      className="components-entity-info-bar-m__link"
       rel="noopener"
-      styleName="link"
       target="_blank"
     >
       Website
     </a>
   </li>
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaPencil
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <Link
+      className="components-entity-info-bar-m__link"
       replace={false}
-      styleName="link"
       to="/event/edit/some-event-id"
     >
       Edit
     </Link>
   </li>
   <li
-    styleName="item"
+    className="components-entity-info-bar-m__item"
   >
     <FaCopy
-      styleName="icon"
+      className="components-entity-info-bar-m__icon"
     />
     <Link
+      className="components-entity-info-bar-m__link"
       onClick={[Function]}
       replace={false}
-      styleName="link"
       to="/event"
     >
       Copy

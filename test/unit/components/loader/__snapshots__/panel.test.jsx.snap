@@ -2,7 +2,7 @@
 
 exports[`should render a medium inverse loader panel correctly 1`] = `
 <div
-  styleName="container"
+  className="components-loader-panel-m__container"
 >
   <Loader
     size="medium"
@@ -13,7 +13,7 @@ exports[`should render a medium inverse loader panel correctly 1`] = `
 
 exports[`should render a tiny default loader panel correctly 1`] = `
 <div
-  styleName="container"
+  className="components-loader-panel-m__container"
 >
   <Loader
     size="tiny"

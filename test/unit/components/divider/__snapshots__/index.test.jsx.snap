@@ -2,21 +2,21 @@
 
 exports[`should render a default divider correctly 1`] = `
 <div
+  className="components-divider-index-m__basic components-divider-index-m__divider"
   role="presentation"
-  styleName="basic"
 />
 `;
 
 exports[`should render a hidden divider correctly 1`] = `
 <div
+  className="components-divider-index-m__hidden components-divider-index-m__divider"
   role="presentation"
-  styleName="hidden"
 />
 `;
 
 exports[`should render a threedee divider correctly 1`] = `
 <div
+  className="components-divider-index-m__threedee components-divider-index-m__divider"
   role="presentation"
-  styleName="threedee"
 />
 `;

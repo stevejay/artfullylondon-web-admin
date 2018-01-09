@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Link
+  className="components-entity-card-image-m__lazy-load-container"
+  replace={false}
+  to="http://some/url"
+>
+  <LazyLoad
+    height={175}
+    offset={0}
+    once={true}
+    overflow={false}
+    resize={false}
+    scroll={true}
+    unmountIfInvisible={false}
+  >
+    <TransitionGroup
+      childFactory={[Function]}
+      component="div"
+      key="1"
+    >
+      <CSSTransition
+        classNames="entitycard"
+        timeout={250}
+      >
+        <img
+          aria-labelledby="some-id"
+          onLoad={[Function]}
+          src="https://images.test.com/12/34/12345678/500x350.jpg"
+        />
+      </CSSTransition>
+    </TransitionGroup>
+  </LazyLoad>
+</Link>
+`;
+
+exports[`should render correctly when card image is loaded 1`] = `
+<Link
+  className="components-entity-card-image-m__lazy-load-container"
+  replace={false}
+  to="http://some/url"
+>
+  <img
+    aria-labelledby="some-id"
+    src="https://images.test.com/12/34/12345678/500x350.jpg"
+  />
+</Link>
+`;
+
+exports[`should render correctly when there is no image 1`] = `
+<Link
+  className="components-entity-card-image-m__lazy-load-container"
+  replace={false}
+  to="http://some/url"
+>
+  <ImagePlaceholder
+    size="smallmedium"
+    type="venue"
+  />
+</Link>
+`;

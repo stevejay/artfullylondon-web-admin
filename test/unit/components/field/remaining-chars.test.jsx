@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FieldRemainingChars from '_admin/components/field/remaining-chars'
+import FieldRemainingChars from '_src/components/field/remaining-chars'
 
 it('should render correctly with two remaining chars', () => {
   const wrapper = shallow(

@@ -67,7 +67,7 @@ exports[`should render correctly when in progress 1`] = `
 >
   <FieldBorder>
     <div
-      styleName="loader-container"
+      className="components-entity-selector-field-m__loader-container"
     >
       <Loader
         size="medium"

@@ -2,15 +2,15 @@
 
 exports[`should render correctly when showing current step 1`] = `
 <div
-  styleName="step-active"
+  className="components-step-index-m__step-active components-step-index-m__step"
 >
   <div
-    styleName="number"
+    className="components-step-index-m__number"
   >
     2
   </div>
   <div
-    styleName="title"
+    className="components-step-index-m__title"
   >
     The Title
   </div>
@@ -19,16 +19,16 @@ exports[`should render correctly when showing current step 1`] = `
 
 exports[`should render correctly when showing step after current step 1`] = `
 <a
+  className="components-step-index-m__step-next components-step-index-m__step"
   onClick={[Function]}
-  styleName="step-next"
 >
   <div
-    styleName="number"
+    className="components-step-index-m__number"
   >
     3
   </div>
   <div
-    styleName="title"
+    className="components-step-index-m__title"
   >
     The Title
   </div>
@@ -37,16 +37,16 @@ exports[`should render correctly when showing step after current step 1`] = `
 
 exports[`should render correctly when showing step before current step 1`] = `
 <a
+  className="components-step-index-m__step-completed components-step-index-m__step"
   onClick={[Function]}
-  styleName="step-completed"
 >
   <div
-    styleName="number"
+    className="components-step-index-m__number"
   >
     1
   </div>
   <div
-    styleName="title"
+    className="components-step-index-m__title"
   >
     The Title
   </div>
@@ -55,15 +55,15 @@ exports[`should render correctly when showing step before current step 1`] = `
 
 exports[`should render correctly when showing step way after current step 1`] = `
 <div
-  styleName="step-disabled"
+  className="components-step-index-m__step-disabled components-step-index-m__step"
 >
   <div
-    styleName="number"
+    className="components-step-index-m__number"
   >
     6
   </div>
   <div
-    styleName="title"
+    className="components-step-index-m__title"
   >
     The Title
   </div>
@@ -72,16 +72,16 @@ exports[`should render correctly when showing step way after current step 1`] = 
 
 exports[`should render correctly when showing step way before current step 1`] = `
 <a
+  className="components-step-index-m__step-completed components-step-index-m__step"
   onClick={[Function]}
-  styleName="step-completed"
 >
   <div
-    styleName="number"
+    className="components-step-index-m__number"
   >
     1
   </div>
   <div
-    styleName="title"
+    className="components-step-index-m__title"
   >
     The Title
   </div>

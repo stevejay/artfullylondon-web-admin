@@ -2,7 +2,7 @@
 
 exports[`should render correctly when has a copyright 1`] = `
 <div
-  styleName="card"
+  className="components-image-grid-card-m__card"
 >
   <Image
     imageId="some-id"
@@ -11,7 +11,7 @@ exports[`should render correctly when has a copyright 1`] = `
     type="venue"
   />
   <div
-    styleName="details-container"
+    className="components-image-grid-card-m__details-container"
   >
     <p>
       <strong>
@@ -21,30 +21,30 @@ exports[`should render correctly when has a copyright 1`] = `
       The Copyright
     </p>
     <div
-      styleName="toolbar"
+      className="components-image-grid-card-m__toolbar"
     >
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaHeart
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaTrashO
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaPencil
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
     </div>
@@ -54,7 +54,7 @@ exports[`should render correctly when has a copyright 1`] = `
 
 exports[`should render correctly when is main 1`] = `
 <div
-  styleName="card"
+  className="components-image-grid-card-m__card"
 >
   <Image
     imageId="some-id"
@@ -63,33 +63,33 @@ exports[`should render correctly when is main 1`] = `
     type="venue"
   />
   <div
-    styleName="details-container"
+    className="components-image-grid-card-m__details-container"
   >
     <p
-      styleName="no-copyright"
+      className="components-image-grid-card-m__no-copyright"
     >
       No Copyright String
     </p>
     <div
-      styleName="toolbar"
+      className="components-image-grid-card-m__toolbar"
     >
       <FaHeart
-        styleName="icon-main"
+        className="components-image-grid-card-m__icon-main components-image-grid-card-m__icon"
       />
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaTrashO
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaPencil
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
     </div>
@@ -99,7 +99,7 @@ exports[`should render correctly when is main 1`] = `
 
 exports[`should render correctly when is not main 1`] = `
 <div
-  styleName="card"
+  className="components-image-grid-card-m__card"
 >
   <Image
     imageId="some-id"
@@ -108,38 +108,38 @@ exports[`should render correctly when is not main 1`] = `
     type="venue"
   />
   <div
-    styleName="details-container"
+    className="components-image-grid-card-m__details-container"
   >
     <p
-      styleName="no-copyright"
+      className="components-image-grid-card-m__no-copyright"
     >
       No Copyright String
     </p>
     <div
-      styleName="toolbar"
+      className="components-image-grid-card-m__toolbar"
     >
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaHeart
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaTrashO
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
       <a
+        className="components-image-grid-card-m__link"
         onClick={[Function]}
-        styleName="link"
       >
         <FaPencil
-          styleName="icon"
+          className="components-image-grid-card-m__icon"
         />
       </a>
     </div>

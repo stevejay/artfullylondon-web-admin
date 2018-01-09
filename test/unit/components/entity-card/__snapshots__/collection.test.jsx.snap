@@ -2,7 +2,7 @@
 
 exports[`should render correctly when get is in progress 1`] = `
 <AltBackgroundSection
-  styleName="background"
+  className="components-entity-card-collection-m__background"
 >
   <Loader
     size="massive"
@@ -13,10 +13,10 @@ exports[`should render correctly when get is in progress 1`] = `
 
 exports[`should render correctly when there are entities 1`] = `
 <AltBackgroundSection
-  styleName="background"
+  className="components-entity-card-collection-m__background"
 >
   <div
-    styleName="cards-container"
+    className="components-entity-card-collection-m__cards-container"
   >
     <EntityCard
       cardContentFactory={[Function]}
@@ -37,7 +37,7 @@ exports[`should render correctly when there are entities 1`] = `
 
 exports[`should render correctly when there are no entities 1`] = `
 <AltBackgroundSection
-  styleName="background"
+  className="components-entity-card-collection-m__background"
 >
   <NoContent />
 </AltBackgroundSection>

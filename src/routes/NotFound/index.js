@@ -1,5 +1,5 @@
 import React from 'react'
-import Error from '_admin/pages/error'
+import Error from '_src/pages/error'
 
 const NotFound = () => <Error statusCode={404} />
 

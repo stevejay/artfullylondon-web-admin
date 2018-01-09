@@ -2,9 +2,9 @@
 
 exports[`should render correctly 1`] = `
 <Link
+  className="components-header-Link-m__link"
   replace={false}
   role="menuitem"
-  styleName="link"
   to="/to/here"
 >
   The Label

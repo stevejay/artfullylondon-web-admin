@@ -1,4 +1,4 @@
-import { SummaryVenue, FullVenue } from '_admin/entities/venue'
+import { SummaryVenue, FullVenue } from '_src/entities/venue'
 
 describe('SummaryVenue', () => {
   it('should have correct entityType', () => {

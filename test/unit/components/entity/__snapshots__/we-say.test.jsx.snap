@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<p
+  className="components-entity-we-say-m__container"
+>
+  <span
+    className="components-entity-we-say-m__label"
+  >
+    We say:
+  </span>
+  <br />
+  <span
+    className="components-entity-we-say-m__text"
+  >
+    “
+    <div
+      id="child"
+    />
+    ”
+  </span>
+</p>
+`;
+
+exports[`should render correctly when there is no content 1`] = `""`;

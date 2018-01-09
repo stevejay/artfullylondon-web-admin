@@ -2,21 +2,21 @@
 
 exports[`should render a success message correctly 1`] = `
 <Link
+  className="components-message-index-m__success components-message-index-m__message"
   replace={false}
   role="alert"
-  styleName="success"
   to="/link/to"
 >
   <div
-    styleName="text"
+    className="components-message-index-m__text"
   >
     <h4
-      styleName="title"
+      className="components-message-index-m__title"
     >
       The Title
     </h4>
     <div
-      styleName="detail"
+      className="components-message-index-m__detail"
     >
       <div
         id="child"
@@ -28,21 +28,21 @@ exports[`should render a success message correctly 1`] = `
 
 exports[`should render an error message correctly 1`] = `
 <Link
+  className="components-message-index-m__error components-message-index-m__message"
   replace={false}
   role="alert"
-  styleName="error"
   to="/link/to"
 >
   <div
-    styleName="text"
+    className="components-message-index-m__text"
   >
     <h4
-      styleName="title"
+      className="components-message-index-m__title"
     >
       The Title
     </h4>
     <div
-      styleName="detail"
+      className="components-message-index-m__detail"
     >
       <div
         id="child"
@@ -54,21 +54,21 @@ exports[`should render an error message correctly 1`] = `
 
 exports[`should render an info message correctly 1`] = `
 <Link
+  className="components-message-index-m__info components-message-index-m__message"
   replace={false}
   role="alert"
-  styleName="info"
   to="/link/to"
 >
   <div
-    styleName="text"
+    className="components-message-index-m__text"
   >
     <h4
-      styleName="title"
+      className="components-message-index-m__title"
     >
       The Title
     </h4>
     <div
-      styleName="detail"
+      className="components-message-index-m__detail"
     >
       <div
         id="child"

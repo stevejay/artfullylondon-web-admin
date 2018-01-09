@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-step-collection-m__container"
 >
   <Step
     currentPage={2}

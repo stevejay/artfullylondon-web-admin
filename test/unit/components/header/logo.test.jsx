@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import HeaderLogo from '_admin/components/header/logo'
+import HeaderLogo from '_src/components/header/logo'
 
 it('should render a small header logo correctly', () => {
   const wrapper = shallow(<HeaderLogo size='small' />)

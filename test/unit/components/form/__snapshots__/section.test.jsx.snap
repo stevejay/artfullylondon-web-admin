@@ -2,7 +2,7 @@
 
 exports[`should render a full section correctly 1`] = `
 <section
-  styleName="container-full"
+  className="components-form-section-m__container-full components-form-section-m__container"
 >
   <div
     id="child"
@@ -12,7 +12,7 @@ exports[`should render a full section correctly 1`] = `
 
 exports[`should render a narrow section correctly 1`] = `
 <section
-  styleName="container-narrow"
+  className="components-form-section-m__container-narrow components-form-section-m__container"
 >
   <div
     id="child"
@@ -22,7 +22,7 @@ exports[`should render a narrow section correctly 1`] = `
 
 exports[`should render a very wide section correctly 1`] = `
 <section
-  styleName="container-verywide"
+  className="components-form-section-m__container-verywide components-form-section-m__container"
 >
   <div
     id="child"
@@ -32,7 +32,7 @@ exports[`should render a very wide section correctly 1`] = `
 
 exports[`should render a wide section correctly 1`] = `
 <section
-  styleName="container-wide"
+  className="components-form-section-m__container-wide components-form-section-m__container"
 >
   <div
     id="child"

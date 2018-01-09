@@ -1,12 +1,12 @@
 import 'babel-polyfill'
 import 'moment-timezone'
-import { ENTITY_TYPE_VENUE, ENTITY_TYPE_EVENT } from '_admin/constants/entity'
+import { ENTITY_TYPE_VENUE, ENTITY_TYPE_EVENT } from '_src/constants/entity'
 import {
   OCCURRENCE_TYPE_BOUNDED,
   OCCURRENCE_TYPE_CONTINUOUS,
   EVENT_TYPE_PERFORMANCE,
   EVENT_TYPE_EXHIBITION
-} from '_admin/constants/event'
+} from '_src/constants/event'
 import * as time from '_src/lib/time'
 
 const yesterday = '2016/01/01' // 1st Jan 2016

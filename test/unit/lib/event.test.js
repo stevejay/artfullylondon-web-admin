@@ -1,7 +1,7 @@
 import * as event from '_src/lib/event'
 import * as eventConstants from '_src/constants/event'
 import { shallow } from 'enzyme'
-import { LinkCollection } from '_admin/entities/link-collection'
+import { LinkCollection } from '_src/entities/link-collection'
 import {
   EVENT_TYPE_PERFORMANCE,
   EVENT_TYPE_EXHIBITION,
@@ -12,8 +12,8 @@ import {
   OCCURRENCE_TYPE_CONTINUOUS,
   OCCURRENCE_TYPE_ONETIME,
   BOOKING_TYPE_REQUIRED
-} from '_admin/constants/event'
-import { LINK_TYPE_BOOKING } from '_admin/constants/link'
+} from '_src/constants/event'
+import { LINK_TYPE_BOOKING } from '_src/constants/link'
 
 describe('groupTimesByDate', () => {
   it('should correctly group a mix of dates and times', () => {

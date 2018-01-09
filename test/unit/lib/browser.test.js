@@ -1,5 +1,5 @@
-import * as browserLib from '_admin/lib/browser'
-import * as browserConstants from '_admin/constants/browser'
+import * as browserLib from '_src/lib/browser'
+import * as browserConstants from '_src/constants/browser'
 
 describe('calculateBrowserWidthType', () => {
   const tests = [

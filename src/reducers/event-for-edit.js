@@ -1,11 +1,5 @@
 import { handleActions } from 'redux-actions'
 import RichTextEditor from 'react-rte'
-import {
-  ENTITY_TYPE_EVENT,
-  ENTITY_TYPE_EVENT_SERIES,
-  ENTITY_TYPE_VENUE,
-  ENTITY_TYPE_TALENT
-} from '_src/constants/entity'
 import * as mappings from '_src/lib/mappings'
 import * as entityConstants from '_src/constants/entity'
 
@@ -67,7 +61,7 @@ const initialState = {
 export default handleActions(
   {
     [entityConstants.RESET_ENTITY_FOR_EDIT]: (state, action) => {
-      if (action.payload.entityType !== ENTITY_TYPE_EVENT) {
+      if (action.payload.entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
@@ -79,7 +73,7 @@ export default handleActions(
       return initialState
     },
     [entityConstants.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => {
-      if (action.payload.entityType !== ENTITY_TYPE_EVENT) {
+      if (action.payload.entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
@@ -92,7 +86,7 @@ export default handleActions(
       }
     },
     [entityConstants.GET_ENTITY_FOR_EDIT_SUCCEEDED]: (state, action) => {
-      if (action.payload.entityType !== ENTITY_TYPE_EVENT) {
+      if (action.payload.entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
@@ -115,7 +109,7 @@ export default handleActions(
       }
     },
     [entityConstants.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => {
-      if (action.payload.entityType !== ENTITY_TYPE_EVENT) {
+      if (action.payload.entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
@@ -174,7 +168,7 @@ export default handleActions(
       }
     },
     [entityConstants.UPDATE_ENTITY_FOR_EDIT]: (state, action) => {
-      if (action.payload.entityType !== ENTITY_TYPE_EVENT) {
+      if (action.payload.entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
@@ -189,14 +183,14 @@ export default handleActions(
     [entityConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED]: (state, action) => {
       const { entityType } = action.payload.params
 
-      if (entityType === ENTITY_TYPE_VENUE) {
+      if (entityType === entityConstants.ENTITY_TYPE_VENUE) {
         return {
           ...state,
           venueAutocompleteItems: action.payload.items,
           eventSeriesAutocompleteItems: [],
           talentAutocompleteItems: []
         }
-      } else if (entityType === ENTITY_TYPE_TALENT) {
+      } else if (entityType === entityConstants.ENTITY_TYPE_TALENT) {
         return {
           ...state,
           venueAutocompleteItems: [],
@@ -223,22 +217,22 @@ export default handleActions(
     [entityConstants.GET_SUB_ENTITY_STARTED]: (state, action) => {
       const { entityType, subEntityType } = action.payload
 
-      if (entityType !== ENTITY_TYPE_EVENT) {
+      if (entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
       switch (subEntityType) {
-        case ENTITY_TYPE_EVENT_SERIES:
+        case entityConstants.ENTITY_TYPE_EVENT_SERIES:
           return {
             ...state,
             getEventSeriesSubEntityInProgress: true
           }
-        case ENTITY_TYPE_VENUE:
+        case entityConstants.ENTITY_TYPE_VENUE:
           return {
             ...state,
             getVenueSubEntityInProgress: true
           }
-        // case ENTITY_TYPE_TALENT:
+        // case entityConstants.ENTITY_TYPE_TALENT:
         //     return {
         //         ...state,
         //         getTalentSubEntityInProgress: true
@@ -250,22 +244,22 @@ export default handleActions(
     [entityConstants.GET_SUB_ENTITY_FINISHED]: (state, action) => {
       const { entityType, subEntityType } = action.payload
 
-      if (entityType !== ENTITY_TYPE_EVENT) {
+      if (entityType !== entityConstants.ENTITY_TYPE_EVENT) {
         return state
       }
 
       switch (subEntityType) {
-        case ENTITY_TYPE_EVENT_SERIES:
+        case entityConstants.ENTITY_TYPE_EVENT_SERIES:
           return {
             ...state,
             getEventSeriesSubEntityInProgress: false
           }
-        case ENTITY_TYPE_VENUE:
+        case entityConstants.ENTITY_TYPE_VENUE:
           return {
             ...state,
             getVenueSubEntityInProgress: false
           }
-        // case ENTITY_TYPE_TALENT:
+        // case entityConstants.ENTITY_TYPE_TALENT:
         //     return {
         //         ...state,
         //         getTalentSubEntityInProgress: false

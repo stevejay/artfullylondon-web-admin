@@ -1,4 +1,4 @@
-import { LinkCollection } from '_admin/entities/link-collection'
+import { LinkCollection } from '_src/entities/link-collection'
 
 it('should have correct getLinkByType when has link of type', () => {
   const links = [{ type: 'Twitter' }, { type: 'Facebook' }]

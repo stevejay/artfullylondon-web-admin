@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import SidenavButton from '_admin/components/sidenav/button'
+import SidenavButton from '_src/components/sidenav/button'
 
 it('should render correctly', () => {
   const wrapper = shallow(

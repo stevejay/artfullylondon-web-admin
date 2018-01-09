@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-search-field-field-m__container"
 >
   <Connect(SearchField)
     disabled={false}

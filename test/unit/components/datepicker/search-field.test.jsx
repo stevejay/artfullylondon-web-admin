@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import DatepickerSearchField from '_admin/components/datepicker/search-field'
+import DatepickerSearchField from '_src/components/datepicker/search-field'
 
 it('should render correctly', () => {
   const wrapper = shallow(

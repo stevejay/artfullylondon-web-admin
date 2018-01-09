@@ -50,6 +50,7 @@ exports[`should render correctly 1`] = `
         }
       />
     }
+    className="components-datepicker-modal-m__daypicker"
     classNames={
       Object {
         "body": "DayPicker-Body",
@@ -156,7 +157,6 @@ exports[`should render correctly 1`] = `
     showOutsideDays={false}
     showWeekDays={true}
     showWeekNumbers={false}
-    styleName="daypicker"
     tabIndex={0}
     weekdayElement={<Weekday />}
   />

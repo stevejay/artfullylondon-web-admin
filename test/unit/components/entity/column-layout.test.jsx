@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityColumnLayout from '_admin/components/entity/column-layout'
+import EntityColumnLayout from '_src/components/entity/column-layout'
 
 it('should render correctly', () => {
   const wrapper = shallow(

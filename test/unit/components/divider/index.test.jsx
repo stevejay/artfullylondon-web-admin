@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Divider from '_admin/components/divider'
+import Divider from '_src/components/divider'
 
 it('should render a default divider correctly', () => {
   const wrapper = shallow(<Divider />)

@@ -6,6 +6,7 @@ exports[`should render correctly when not showing 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
+  className="components-sidenav-modal-m__modal"
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -24,14 +25,12 @@ exports[`should render correctly when not showing 1`] = `
   renderBackdrop={[Function]}
   restoreFocus={true}
   show={false}
-  styleName="modal"
   timeout={250}
   transition={[Function]}
 >
   <div
-    className="nocontent"
+    className="nocontent components-sidenav-modal-m__content"
     role="navigation"
-    styleName="content"
   >
     <div
       id="child"
@@ -46,6 +45,7 @@ exports[`should render correctly when showing 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
+  className="components-sidenav-modal-m__modal"
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -64,14 +64,12 @@ exports[`should render correctly when showing 1`] = `
   renderBackdrop={[Function]}
   restoreFocus={true}
   show={true}
-  styleName="modal"
   timeout={250}
   transition={[Function]}
 >
   <div
-    className="nocontent"
+    className="nocontent components-sidenav-modal-m__content"
     role="navigation"
-    styleName="content"
   >
     <div
       id="child"

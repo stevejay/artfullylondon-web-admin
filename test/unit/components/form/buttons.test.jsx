@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FormButtons from '_admin/components/form/buttons'
+import FormButtons from '_src/components/form/buttons'
 
 it('should render correctly when not submitting', () => {
   const wrapper = shallow(

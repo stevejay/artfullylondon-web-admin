@@ -1,6 +1,6 @@
-import About from '_admin/pages/About'
-import Terms from '_admin/pages/Terms'
-import Privacy from '_admin/pages/Privacy'
+import About from '_src/pages/About'
+import Terms from '_src/pages/Terms'
+import Privacy from '_src/pages/Privacy'
 
 module.exports = {
   childRoutes: [

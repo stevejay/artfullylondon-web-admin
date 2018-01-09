@@ -2,8 +2,8 @@
 
 exports[`should render correctly 1`] = `
 <Form
+  className="containers-forms-talent-matches-found-index-m__container"
   onSubmit={[Function]}
-  styleName="container"
 >
   <ul>
     <li

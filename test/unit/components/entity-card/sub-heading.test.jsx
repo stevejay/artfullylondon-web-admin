@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityCardSubHeading from '_admin/components/entity-card/sub-heading'
+import EntityCardSubHeading from '_src/components/entity-card/sub-heading'
 
 it('should render correctly', () => {
   const wrapper = shallow(

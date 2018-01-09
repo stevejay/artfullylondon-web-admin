@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import RadioButton from '_admin/components/radio-button'
+import RadioButton from '_src/components/radio-button'
 
 it('should render correctly when checked', () => {
   const wrapper = shallow(

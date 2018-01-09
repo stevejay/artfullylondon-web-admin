@@ -2,13 +2,14 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-datepicker-search-field-m__container"
 >
   <div
-    styleName="text-wrapper"
+    className="components-datepicker-search-field-m__text-wrapper"
   >
     <Text
       autos={true}
+      className="components-datepicker-search-field-m__text"
       disabled={false}
       error={false}
       forceSingleLine={true}
@@ -18,7 +19,6 @@ exports[`should render correctly 1`] = `
       password={false}
       placeholder=""
       readOnly={true}
-      styleName="text"
       value="2017/01/01"
     />
   </div>
@@ -31,13 +31,14 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when it has an error 1`] = `
 <div
-  styleName="container"
+  className="components-datepicker-search-field-m__container"
 >
   <div
-    styleName="text-wrapper"
+    className="components-datepicker-search-field-m__text-wrapper"
   >
     <Text
       autos={true}
+      className="components-datepicker-search-field-m__text"
       disabled={false}
       error={true}
       forceSingleLine={true}
@@ -47,7 +48,6 @@ exports[`should render correctly when it has an error 1`] = `
       password={false}
       placeholder=""
       readOnly={true}
-      styleName="text"
       value="2017/01/01"
     />
   </div>
@@ -60,13 +60,14 @@ exports[`should render correctly when it has an error 1`] = `
 
 exports[`should render correctly when it has no value 1`] = `
 <div
-  styleName="container"
+  className="components-datepicker-search-field-m__container"
 >
   <div
-    styleName="text-wrapper"
+    className="components-datepicker-search-field-m__text-wrapper"
   >
     <Text
       autos={true}
+      className="components-datepicker-search-field-m__text"
       disabled={false}
       error={false}
       forceSingleLine={true}
@@ -76,7 +77,6 @@ exports[`should render correctly when it has no value 1`] = `
       password={false}
       placeholder=""
       readOnly={true}
-      styleName="text"
       value="Select a date..."
     />
   </div>

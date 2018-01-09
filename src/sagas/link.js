@@ -7,10 +7,9 @@ import {
   reset
 } from 'redux-form'
 import { submitErrorHandler } from '_src/lib/saga'
-import { validate } from '_src/lib/validation'
+import { validate, validateLink } from '_src/lib/validation'
 import normalise from '_src/lib/normalise'
 import * as types from '_src/constants/link'
-import { validateLink } from '_src/lib/validation'
 import linkConstraint from '_src/constants/link-constraint'
 import linkNormaliser from '_src/constants/link-normaliser'
 import { LINK_EDITOR_FORM_NAME } from '_src/constants/form'

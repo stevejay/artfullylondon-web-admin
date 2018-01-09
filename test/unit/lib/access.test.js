@@ -1,5 +1,5 @@
-import * as access from '_admin/lib/access'
-import * as constants from '_admin/constants/access'
+import * as access from '_src/lib/access'
+import * as constants from '_src/constants/access'
 
 describe('getAccessText', () => {
   it('should return correct text when has all types known and no access link', () => {

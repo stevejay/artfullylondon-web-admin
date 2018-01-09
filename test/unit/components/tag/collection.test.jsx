@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import TagCollection from '_admin/components/tag/collection'
+import TagCollection from '_src/components/tag/collection'
 
 it('should render correctly when there are tags', () => {
   const wrapper = shallow(

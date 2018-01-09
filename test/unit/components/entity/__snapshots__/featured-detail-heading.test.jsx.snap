@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<h2
+  className="components-entity-featured-detail-heading-m__container"
+>
+  <div
+    id="child"
+  />
+</h2>
+`;

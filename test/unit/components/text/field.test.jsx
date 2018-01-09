@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import TextField from '_admin/components/text/field'
+import TextField from '_src/components/text/field'
 
 it('should render correctly', () => {
   const wrapper = shallow(

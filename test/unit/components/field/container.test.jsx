@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FieldContainer from '_admin/components/field/container'
+import FieldContainer from '_src/components/field/container'
 
 it('should render correctly', () => {
   const wrapper = shallow(

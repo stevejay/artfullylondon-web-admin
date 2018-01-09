@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Dropdown from '_admin/components/dropdown'
+import Dropdown from '_src/components/dropdown'
 
 it('should render correctly', () => {
   const wrapper = shallow(

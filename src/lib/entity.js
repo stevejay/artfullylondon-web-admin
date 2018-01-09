@@ -1,19 +1,7 @@
-import React from 'react'
 import _ from 'lodash'
-import Bank from 'react-icons/lib/fa/bank'
-import User from 'react-icons/lib/fa/user'
-import Star from 'react-icons/lib/fa/star-o'
-import Tags from 'react-icons/lib/fa/tags'
-import Cogs from 'react-icons/lib/fa/cogs'
 
-import * as constants from '_src/constants/entity'
+import * as entityConstants from '_src/constants/entity'
 import { createEntityCardImageUrl } from '_src/lib/image'
-import {
-  PENDING_STATUS,
-  ACTIVE_STATUS,
-  DELETED_STATUS,
-  MERGED_STATUS
-} from '_src/constants/entity'
 
 export function createEntityUrl (entityType, id) {
   return `/${entityType}/${id}`
@@ -25,13 +13,13 @@ export function createEntityEditUrl (entityType, id) {
 
 export function getLabelForEntityType (entityType) {
   switch (entityType) {
-    case constants.ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return 'Event'
-    case constants.ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return 'Event Series'
-    case constants.ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return 'Talent'
-    case constants.ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return 'Venue'
     default:
       throw new Error(`entityType is out of range: ${entityType}`)
@@ -40,13 +28,13 @@ export function getLabelForEntityType (entityType) {
 
 export function getColorForEntityType (data) {
   switch (data.entityType) {
-    case constants.ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return '#75CA18'
-    case constants.ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return '#4990E2'
-    case constants.ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return '#FF632A'
-    case constants.ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return '#DB3b9C'
     default:
       throw new Error(`entityType is out of range: ${data.entityType}`)
@@ -55,12 +43,12 @@ export function getColorForEntityType (data) {
 
 export function getEntityCardImageDataForEntityType (entityType, image) {
   switch (entityType) {
-    case constants.ENTITY_TYPE_EVENT:
-    case constants.ENTITY_TYPE_EVENT_SERIES:
-    case constants.ENTITY_TYPE_TALENT:
-    case constants.ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return {
-        height: constants.DEFAULT_ENTITY_CARD_HEIGHT,
+        height: entityConstants.DEFAULT_ENTITY_CARD_HEIGHT,
         url: createEntityCardImageUrl(image)
       }
     default:
@@ -85,24 +73,50 @@ export function processDescription (description, credit) {
 
 export const getValidStatuses = function (currentState) {
   switch (currentState) {
-    case PENDING_STATUS:
+    case entityConstants.PENDING_STATUS:
       return [
-        { value: PENDING_STATUS, label: PENDING_STATUS },
-        { value: ACTIVE_STATUS, label: ACTIVE_STATUS },
-        { value: DELETED_STATUS, label: DELETED_STATUS }
+        {
+          value: entityConstants.PENDING_STATUS,
+          label: entityConstants.PENDING_STATUS
+        },
+        {
+          value: entityConstants.ACTIVE_STATUS,
+          label: entityConstants.ACTIVE_STATUS
+        },
+        {
+          value: entityConstants.DELETED_STATUS,
+          label: entityConstants.DELETED_STATUS
+        }
       ]
-    case ACTIVE_STATUS:
+    case entityConstants.ACTIVE_STATUS:
       return [
-        { value: ACTIVE_STATUS, label: ACTIVE_STATUS },
-        { value: DELETED_STATUS, label: DELETED_STATUS }
+        {
+          value: entityConstants.ACTIVE_STATUS,
+          label: entityConstants.ACTIVE_STATUS
+        },
+        {
+          value: entityConstants.DELETED_STATUS,
+          label: entityConstants.DELETED_STATUS
+        }
       ]
-    case DELETED_STATUS:
+    case entityConstants.DELETED_STATUS:
       return [
-        { value: ACTIVE_STATUS, label: ACTIVE_STATUS },
-        { value: DELETED_STATUS, label: DELETED_STATUS }
+        {
+          value: entityConstants.ACTIVE_STATUS,
+          label: entityConstants.ACTIVE_STATUS
+        },
+        {
+          value: entityConstants.DELETED_STATUS,
+          label: entityConstants.DELETED_STATUS
+        }
       ]
-    case MERGED_STATUS:
-      return [{ value: MERGED_STATUS, label: MERGED_STATUS }]
+    case entityConstants.MERGED_STATUS:
+      return [
+        {
+          value: entityConstants.MERGED_STATUS,
+          label: entityConstants.MERGED_STATUS
+        }
+      ]
   }
 }
 

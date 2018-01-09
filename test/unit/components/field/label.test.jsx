@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FieldLabel from '_admin/components/field/label'
+import FieldLabel from '_src/components/field/label'
 
 it('should render correctly with a tooltip', () => {
   const wrapper = shallow(

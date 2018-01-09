@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h2
-  styleName="h2"
+  className="components-form-section-header-m__h2"
 >
   <div
     id="child"

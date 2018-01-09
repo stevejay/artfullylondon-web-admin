@@ -10,19 +10,93 @@ exports[`should render correctly when logged in 1`] = `
     size="small"
   />
   <Menu
-    id="Menu Label"
+    id="Entities"
     idOfOpenMenu={null}
     items={
       Array [
         Object {
-          "label": "Item A",
-          "match": /foo/,
-          "path": "/path/a",
+          "label": "Add Event",
+          "match": /\\^\\\\/event\\$/i,
+          "path": "/event",
+        },
+        Object {
+          "label": "Add Event Series",
+          "match": /\\^\\\\/event-series\\$/i,
+          "path": "/event-series",
+        },
+        Object {
+          "label": "Add Talent",
+          "match": /\\^\\\\/talent\\$/i,
+          "path": "/talent",
+        },
+        Object {
+          "label": "Add Venue",
+          "match": /\\^\\\\/venue\\$/i,
+          "path": "/venue",
         },
       ]
     }
-    key="Menu Label"
-    label="Menu Label"
+    key="Entities"
+    label="Entities"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <Menu
+    id="Tags"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "Medium Tags",
+          "match": /\\^\\\\/tags\\\\/medium\\$/i,
+          "path": "/tags/medium",
+        },
+        Object {
+          "label": "Style Tags",
+          "match": /\\^\\\\/tags\\\\/style\\$/i,
+          "path": "/tags/style",
+        },
+        Object {
+          "label": "Audience Tags",
+          "match": /\\^\\\\/tags\\\\/audience\\$/i,
+          "path": "/tags/audience",
+        },
+        Object {
+          "label": "Geo Tags",
+          "match": /\\^\\\\/tags\\\\/geo\\$/i,
+          "path": "/tags/geo",
+        },
+      ]
+    }
+    key="Tags"
+    label="Tags"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <Menu
+    id="Site Info"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "About",
+          "match": /\\^\\\\/about\\$/i,
+          "path": "/about",
+        },
+        Object {
+          "label": "Privacy & Cookies",
+          "match": /\\^\\\\/privacy\\$/i,
+          "path": "/privacy",
+        },
+        Object {
+          "label": "Terms Of Service",
+          "match": /\\^\\\\/terms\\$/i,
+          "path": "/terms",
+        },
+      ]
+    }
+    key="Site Info"
+    label="Site Info"
     onExpanderChange={[Function]}
     onLinkClick={[Function]}
   />
@@ -43,19 +117,29 @@ exports[`should render correctly when logged out 1`] = `
     size="small"
   />
   <Menu
-    id="Menu Label"
+    id="Site Info"
     idOfOpenMenu={null}
     items={
       Array [
         Object {
-          "label": "Item A",
-          "match": /foo/,
-          "path": "/path/a",
+          "label": "About",
+          "match": /\\^\\\\/about\\$/i,
+          "path": "/about",
+        },
+        Object {
+          "label": "Privacy & Cookies",
+          "match": /\\^\\\\/privacy\\$/i,
+          "path": "/privacy",
+        },
+        Object {
+          "label": "Terms Of Service",
+          "match": /\\^\\\\/terms\\$/i,
+          "path": "/terms",
         },
       ]
     }
-    key="Menu Label"
-    label="Menu Label"
+    key="Site Info"
+    label="Site Info"
     onExpanderChange={[Function]}
     onLinkClick={[Function]}
   />
@@ -76,19 +160,93 @@ exports[`should render correctly when not showing 1`] = `
     size="small"
   />
   <Menu
-    id="Menu Label"
+    id="Entities"
     idOfOpenMenu={null}
     items={
       Array [
         Object {
-          "label": "Item A",
-          "match": /foo/,
-          "path": "/path/a",
+          "label": "Add Event",
+          "match": /\\^\\\\/event\\$/i,
+          "path": "/event",
+        },
+        Object {
+          "label": "Add Event Series",
+          "match": /\\^\\\\/event-series\\$/i,
+          "path": "/event-series",
+        },
+        Object {
+          "label": "Add Talent",
+          "match": /\\^\\\\/talent\\$/i,
+          "path": "/talent",
+        },
+        Object {
+          "label": "Add Venue",
+          "match": /\\^\\\\/venue\\$/i,
+          "path": "/venue",
         },
       ]
     }
-    key="Menu Label"
-    label="Menu Label"
+    key="Entities"
+    label="Entities"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <Menu
+    id="Tags"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "Medium Tags",
+          "match": /\\^\\\\/tags\\\\/medium\\$/i,
+          "path": "/tags/medium",
+        },
+        Object {
+          "label": "Style Tags",
+          "match": /\\^\\\\/tags\\\\/style\\$/i,
+          "path": "/tags/style",
+        },
+        Object {
+          "label": "Audience Tags",
+          "match": /\\^\\\\/tags\\\\/audience\\$/i,
+          "path": "/tags/audience",
+        },
+        Object {
+          "label": "Geo Tags",
+          "match": /\\^\\\\/tags\\\\/geo\\$/i,
+          "path": "/tags/geo",
+        },
+      ]
+    }
+    key="Tags"
+    label="Tags"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <Menu
+    id="Site Info"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "About",
+          "match": /\\^\\\\/about\\$/i,
+          "path": "/about",
+        },
+        Object {
+          "label": "Privacy & Cookies",
+          "match": /\\^\\\\/privacy\\$/i,
+          "path": "/privacy",
+        },
+        Object {
+          "label": "Terms Of Service",
+          "match": /\\^\\\\/terms\\$/i,
+          "path": "/terms",
+        },
+      ]
+    }
+    key="Site Info"
+    label="Site Info"
     onExpanderChange={[Function]}
     onLinkClick={[Function]}
   />

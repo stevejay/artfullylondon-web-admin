@@ -6,10 +6,6 @@ import {
   ENTITY_TYPE_VENUE,
   ENTITY_TYPE_TALENT
 } from '_src/constants/entity'
-import {
-  AUTOCOMPLETE_ITEM_TYPE_ENTITY,
-  AUTOCOMPLETE_ITEM_TYPE_LABEL
-} from '_src/constants/search'
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
@@ -84,7 +80,9 @@ export default handleActions(
       const { items } = action.payload
 
       items.forEach(
-        item => (item.autocompleteItemType = AUTOCOMPLETE_ITEM_TYPE_ENTITY)
+        item =>
+          (item.autocompleteItemType =
+            searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
       )
 
       const events = items.filter(
@@ -124,7 +122,7 @@ function _addLabelToAutocompleteItems (autocompleteItems, items, label) {
   }
 
   autocompleteItems.push({
-    autocompleteItemType: AUTOCOMPLETE_ITEM_TYPE_LABEL,
+    autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_LABEL,
     label: label
   })
 

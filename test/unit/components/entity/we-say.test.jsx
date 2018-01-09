@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityWeSay from '_admin/components/entity/we-say'
+import EntityWeSay from '_src/components/entity/we-say'
 
 it('should render correctly', () => {
   const wrapper = shallow(

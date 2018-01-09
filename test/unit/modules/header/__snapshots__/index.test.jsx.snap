@@ -11,13 +11,82 @@ exports[`should render correctly when logged in 1`] = `
       items={
         Array [
           Object {
-            "label": "Item A",
-            "path": "/path/a",
+            "label": "Add Event",
+            "match": /\\^\\\\/event\\$/i,
+            "path": "/event",
+          },
+          Object {
+            "label": "Add Event Series",
+            "match": /\\^\\\\/event-series\\$/i,
+            "path": "/event-series",
+          },
+          Object {
+            "label": "Add Talent",
+            "match": /\\^\\\\/talent\\$/i,
+            "path": "/talent",
+          },
+          Object {
+            "label": "Add Venue",
+            "match": /\\^\\\\/venue\\$/i,
+            "path": "/venue",
           },
         ]
       }
-      key="Menu Label"
-      label="Menu Label"
+      key="Entities"
+      label="Entities"
+    />
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "Medium Tags",
+            "match": /\\^\\\\/tags\\\\/medium\\$/i,
+            "path": "/tags/medium",
+          },
+          Object {
+            "label": "Style Tags",
+            "match": /\\^\\\\/tags\\\\/style\\$/i,
+            "path": "/tags/style",
+          },
+          Object {
+            "label": "Audience Tags",
+            "match": /\\^\\\\/tags\\\\/audience\\$/i,
+            "path": "/tags/audience",
+          },
+          Object {
+            "label": "Geo Tags",
+            "match": /\\^\\\\/tags\\\\/geo\\$/i,
+            "path": "/tags/geo",
+          },
+        ]
+      }
+      key="Tags"
+      label="Tags"
+    />
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "About",
+            "match": /\\^\\\\/about\\$/i,
+            "path": "/about",
+          },
+          Object {
+            "label": "Privacy & Cookies",
+            "match": /\\^\\\\/privacy\\$/i,
+            "path": "/privacy",
+          },
+          Object {
+            "label": "Terms Of Service",
+            "match": /\\^\\\\/terms\\$/i,
+            "path": "/terms",
+          },
+        ]
+      }
+      key="Site Info"
+      label="Site Info"
     />
     <HeaderLink
       label="Log Out"
@@ -72,13 +141,24 @@ exports[`should render correctly when not logged in 1`] = `
       items={
         Array [
           Object {
-            "label": "Item A",
-            "path": "/path/a",
+            "label": "About",
+            "match": /\\^\\\\/about\\$/i,
+            "path": "/about",
+          },
+          Object {
+            "label": "Privacy & Cookies",
+            "match": /\\^\\\\/privacy\\$/i,
+            "path": "/privacy",
+          },
+          Object {
+            "label": "Terms Of Service",
+            "match": /\\^\\\\/terms\\$/i,
+            "path": "/terms",
           },
         ]
       }
-      key="Menu Label"
-      label="Menu Label"
+      key="Site Info"
+      label="Site Info"
     />
     <HeaderLink
       label="Log In"
@@ -99,13 +179,82 @@ exports[`should render correctly when showing the sidenav 1`] = `
       items={
         Array [
           Object {
-            "label": "Item A",
-            "path": "/path/a",
+            "label": "Add Event",
+            "match": /\\^\\\\/event\\$/i,
+            "path": "/event",
+          },
+          Object {
+            "label": "Add Event Series",
+            "match": /\\^\\\\/event-series\\$/i,
+            "path": "/event-series",
+          },
+          Object {
+            "label": "Add Talent",
+            "match": /\\^\\\\/talent\\$/i,
+            "path": "/talent",
+          },
+          Object {
+            "label": "Add Venue",
+            "match": /\\^\\\\/venue\\$/i,
+            "path": "/venue",
           },
         ]
       }
-      key="Menu Label"
-      label="Menu Label"
+      key="Entities"
+      label="Entities"
+    />
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "Medium Tags",
+            "match": /\\^\\\\/tags\\\\/medium\\$/i,
+            "path": "/tags/medium",
+          },
+          Object {
+            "label": "Style Tags",
+            "match": /\\^\\\\/tags\\\\/style\\$/i,
+            "path": "/tags/style",
+          },
+          Object {
+            "label": "Audience Tags",
+            "match": /\\^\\\\/tags\\\\/audience\\$/i,
+            "path": "/tags/audience",
+          },
+          Object {
+            "label": "Geo Tags",
+            "match": /\\^\\\\/tags\\\\/geo\\$/i,
+            "path": "/tags/geo",
+          },
+        ]
+      }
+      key="Tags"
+      label="Tags"
+    />
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "About",
+            "match": /\\^\\\\/about\\$/i,
+            "path": "/about",
+          },
+          Object {
+            "label": "Privacy & Cookies",
+            "match": /\\^\\\\/privacy\\$/i,
+            "path": "/privacy",
+          },
+          Object {
+            "label": "Terms Of Service",
+            "match": /\\^\\\\/terms\\$/i,
+            "path": "/terms",
+          },
+        ]
+      }
+      key="Site Info"
+      label="Site Info"
     />
     <HeaderLink
       label="Log Out"

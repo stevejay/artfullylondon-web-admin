@@ -1,4 +1,4 @@
-import * as pagination from '_admin/lib/pagination'
+import * as pagination from '_src/lib/pagination'
 
 describe('showGoToFirstPageLink', () => {
   const tests = [

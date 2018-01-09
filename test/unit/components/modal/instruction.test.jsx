@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ModalInstruction from '_admin/components/modal/instruction'
+import ModalInstruction from '_src/components/modal/instruction'
 
 it('should render a narrow container correctly', () => {
   const wrapper = shallow(

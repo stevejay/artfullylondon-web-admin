@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { FullVenue } from '_admin/entities/venue'
-import EntityDescription from '_admin/components/entity/description'
+import { FullVenue } from '_src/entities/venue'
+import EntityDescription from '_src/components/entity/description'
 
 it('should render correctly', () => {
   const mockEntity = new FullVenue({})

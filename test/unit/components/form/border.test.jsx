@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FormBorder from '_admin/components/form/border'
+import FormBorder from '_src/components/form/border'
 
 it('should render correctly', () => {
   const wrapper = shallow(

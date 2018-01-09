@@ -1,10 +1,10 @@
-import * as image from '_admin/lib/image'
+import * as image from '_src/lib/image'
 import {
   VENUE_TYPE_THEATRE,
   VENUE_TYPE_ART_GALLERY,
   VENUE_TYPE_MUSEUM,
   VENUE_TYPE_OTHER
-} from '_admin/constants/venue'
+} from '_src/constants/venue'
 
 describe('createPngIconUrl', () => {
   it('should create a url for a selected icon', () => {

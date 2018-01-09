@@ -2,12 +2,12 @@
 
 exports[`should render correctly when required 1`] = `
 <div
-  styleName="required"
+  className="components-field-label-m__required components-field-label-m__basic"
 >
   <label
+    className=""
     htmlFor="some-id"
     onClick={[Function]}
-    styleName={false}
   >
     <div
       id="child"
@@ -18,12 +18,12 @@ exports[`should render correctly when required 1`] = `
 
 exports[`should render correctly with a tooltip 1`] = `
 <div
-  styleName="basic"
+  className="components-field-label-m__basic"
 >
   <label
+    className="components-field-label-m__has-tooltip"
     htmlFor="some-id"
     onClick={[Function]}
-    styleName="has-tooltip"
   >
     <div
       id="child"
@@ -69,12 +69,12 @@ exports[`should render correctly with a tooltip 1`] = `
             "_instance": [Circular],
             "_newState": null,
             "_rendered": <div
-              styleName="basic"
+              className="components-field-label-m__basic"
             >
               <label
+                className="components-field-label-m__has-tooltip"
                 htmlFor="some-id"
                 onClick={[Function]}
-                styleName="has-tooltip"
               >
                 <div
                   id="child"
@@ -90,7 +90,7 @@ exports[`should render correctly with a tooltip 1`] = `
                 transition={[Function]}
               >
                 <div
-                  styleName="tooltip"
+                  className="components-field-label-m__tooltip"
                 >
                   The Tooltip
                 </div>
@@ -110,7 +110,7 @@ exports[`should render correctly with a tooltip 1`] = `
     transition={[Function]}
   >
     <div
-      styleName="tooltip"
+      className="components-field-label-m__tooltip"
     >
       The Tooltip
     </div>
@@ -120,12 +120,12 @@ exports[`should render correctly with a tooltip 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  styleName="basic-error"
+  className="components-field-label-m__basic-error components-field-label-m__basic components-field-label-m__error"
 >
   <label
+    className=""
     htmlFor="some-id"
     onClick={[Function]}
-    styleName={false}
   >
     <div
       id="child"
@@ -136,12 +136,12 @@ exports[`should render correctly with an error 1`] = `
 
 exports[`should render correctly with no tooltip 1`] = `
 <div
-  styleName="basic"
+  className="components-field-label-m__basic"
 >
   <label
+    className=""
     htmlFor="some-id"
     onClick={[Function]}
-    styleName={false}
   >
     <div
       id="child"

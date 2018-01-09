@@ -2,7 +2,7 @@
 
 exports[`should render correctly when not submitting 1`] = `
 <div
-  styleName="container"
+  className="components-form-buttons-m__container"
 >
   <Button
     aria-label="Submit the form"
@@ -16,7 +16,7 @@ exports[`should render correctly when not submitting 1`] = `
 
 exports[`should render correctly when submitting 1`] = `
 <div
-  styleName="container"
+  className="components-form-buttons-m__container"
 >
   <Button
     aria-label="Submit the form"

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Loader from '_admin/components/loader'
+import Loader from '_src/components/loader'
 
 it('should render a tiny loader correctly', () => {
   const wrapper = shallow(<Loader size='tiny' />)

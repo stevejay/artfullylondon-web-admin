@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import EventTalentCarousel from '_admin/components/event/talent-carousel'
-import { SummaryTalent } from '_admin/entities/talent'
+import EventTalentCarousel from '_src/components/event/talent-carousel'
+import { SummaryTalent } from '_src/entities/talent'
 
 it('should render correctly', () => {
   const wrapper = shallow(

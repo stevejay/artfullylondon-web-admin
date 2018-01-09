@@ -2,21 +2,18 @@
 
 ## NPM Package Issues
 
-### moment and moment-timezone
+### moment
 
-Issue with error ```Moment(...).tz is not a function```:
-https://github.com/moment/moment-timezone/issues/449
-https://github.com/moment/moment/issues/4216
+I have pinned the moment library to version 2.18.1 because of an error
+with message ```Moment(...).tz is not a function```. The following issues
+detail the error:
+
+- https://github.com/moment/moment-timezone/issues/449
+- https://github.com/moment/moment/issues/4216
 
 ### standard
 
-I have installed a beta version of standard v11.
-
-## To Implement
-
-### App Loading Indicator
-
-https://stackoverflow.com/questions/40987309/react-display-loading-screen-while-dom-is-rendering
+I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## License
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import HeaderMenu from '_admin/components/header/menu'
+import HeaderMenu from '_src/components/header/menu'
 
 it('should render correctly', () => {
   const wrapper = shallow(

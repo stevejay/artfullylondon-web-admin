@@ -1,7 +1,7 @@
 import {
   SummaryEventSeries,
   FullEventSeries
-} from '_admin/entities/event-series'
+} from '_src/entities/event-series'
 
 describe('SummaryEventSeries', () => {
   it('should have correct entityType', () => {

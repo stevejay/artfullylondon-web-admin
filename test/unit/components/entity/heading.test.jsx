@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EntityHeading from '_admin/components/entity/heading'
+import EntityHeading from '_src/components/entity/heading'
 
 it('should render correctly', () => {
   const wrapper = shallow(

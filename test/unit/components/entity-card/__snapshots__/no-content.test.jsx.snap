@@ -2,11 +2,11 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-entity-card-no-content-m__container"
 >
   <FaThumbsODown
     aria-label="None found"
-    styleName="graphic"
+    className="components-entity-card-no-content-m__graphic"
   />
 </div>
 `;

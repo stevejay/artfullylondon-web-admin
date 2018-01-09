@@ -8,7 +8,6 @@ export const VENUE_TYPE_CHURCH = 'Church'
 export const VENUE_TYPE_CINEMA = 'Cinema'
 export const VENUE_TYPE_OTHER = 'Other'
 
-
 export const ALLOWED_VENUE_TYPES = [
   VENUE_TYPE_THEATRE,
   VENUE_TYPE_ART_GALLERY,

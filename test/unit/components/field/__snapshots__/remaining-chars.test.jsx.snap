@@ -4,7 +4,7 @@ exports[`should render correctly when not active 1`] = `""`;
 
 exports[`should render correctly with no remaining chars 1`] = `
 <div
-  styleName="container"
+  className="components-field-remaining-chars-m__container"
 >
   0
    
@@ -14,7 +14,7 @@ exports[`should render correctly with no remaining chars 1`] = `
 
 exports[`should render correctly with one remaining char 1`] = `
 <div
-  styleName="container"
+  className="components-field-remaining-chars-m__container"
 >
   1
    
@@ -24,7 +24,7 @@ exports[`should render correctly with one remaining char 1`] = `
 
 exports[`should render correctly with two remaining chars 1`] = `
 <div
-  styleName="container"
+  className="components-field-remaining-chars-m__container"
 >
   2
    

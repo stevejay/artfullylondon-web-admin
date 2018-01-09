@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import EventTalent from '_admin/components/event/talent'
-import { SummaryTalent } from '_admin/entities/talent'
+import EventTalent from '_src/components/event/talent'
+import { SummaryTalent } from '_src/entities/talent'
 
 it('should render correctly', () => {
   const mockTalent = new SummaryTalent({

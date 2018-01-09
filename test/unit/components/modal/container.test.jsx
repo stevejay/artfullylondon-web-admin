@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import ModalContainer from '_admin/components/modal/container'
+import ModalContainer from '_src/components/modal/container'
 
 it('should render a narrow container correctly', () => {
   const wrapper = shallow(

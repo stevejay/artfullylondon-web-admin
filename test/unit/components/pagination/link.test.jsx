@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import PaginationLink from '_admin/components/pagination/link'
+import PaginationLink from '_src/components/pagination/link'
 
 it('should render correctly when is not current page', () => {
   const wrapper = shallow(

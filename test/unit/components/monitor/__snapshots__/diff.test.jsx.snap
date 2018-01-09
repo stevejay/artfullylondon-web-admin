@@ -2,11 +2,11 @@
 
 exports[`should render correctly 1`] = `
 <div
+  className="components-monitor-diff-m__container"
   dangerouslySetInnerHTML={
     Object {
       "__html": "The Diff",
     }
   }
-  styleName="container"
 />
 `;

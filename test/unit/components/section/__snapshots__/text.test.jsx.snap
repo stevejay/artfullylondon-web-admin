@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default text section correctly 1`] = `
+<section
+  className="components-section-text-m__section-default components-section-text-m__section"
+>
+  <div
+    id="child"
+  />
+</section>
+`;
+
+exports[`should render a smallprint text section correctly 1`] = `
+<section
+  className="components-section-text-m__section-smallprint components-section-text-m__section"
+>
+  <div
+    id="child"
+  />
+</section>
+`;

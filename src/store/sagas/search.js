@@ -6,12 +6,8 @@ import { startSubmit, stopSubmit, initialize } from 'redux-form'
 import normalise from '_src/lib/normalise'
 import { get } from '_src/lib/fetch'
 import { submitErrorHandler } from '_src/lib/saga'
-import {
-  SEARCH_TYPE_AUTOCOMPLETE,
-  SEARCH_TYPE_BASIC
-} from '_src/constants/search'
 import { validate } from '_src/lib/validation'
-import * as types from '_src/constants/search'
+import * as searchConstants from '_src/constants/search'
 import { BASIC_SEARCH_FORM_NAME } from '_src/constants/form'
 import { HIDE_QUICKSEARCH } from '_src/constants/modal'
 import {
@@ -23,8 +19,16 @@ import {
 function * pushBasicSearchToUrl ({ payload }) {
   try {
     const { skip, take } = payload
-    const query = normalise(payload.query, types.BASIC_SEARCH_QUERY_NORMALISER)
-    yield call(validate, query, types.BASIC_SEARCH_QUERY_CONSTRAINT, null)
+    const query = normalise(
+      payload.query,
+      searchConstants.BASIC_SEARCH_QUERY_NORMALISER
+    )
+    yield call(
+      validate,
+      query,
+      searchConstants.BASIC_SEARCH_QUERY_CONSTRAINT,
+      null
+    )
     const requestUrl = createSearchPageUrl('/search', query, skip, take)
     yield call(history.push, requestUrl)
   } catch (err) {
@@ -34,11 +38,14 @@ function * pushBasicSearchToUrl ({ payload }) {
 
 function * autocompleteSearch ({ payload }) {
   yield call(delay, 300) // debounce
-  const query = normalise(payload.query, types.AUTO_SEARCH_QUERY_NORMALISER)
+  const query = normalise(
+    payload.query,
+    searchConstants.AUTO_SEARCH_QUERY_NORMALISER
+  )
   const errors = yield call(
     validate,
     query,
-    types.AUTO_SEARCH_QUERY_CONSTRAINT,
+    searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
     null,
     true
   )
@@ -52,18 +59,21 @@ function * autocompleteSearch ({ payload }) {
   const json = yield call(get, requestUrl)
 
   yield put.resolve({
-    type: types.AUTOCOMPLETE_SEARCH_SUCCEEDED,
+    type: searchConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED,
     payload: json
   })
 }
 
 function * basicSearch ({ payload }) {
   try {
-    const query = normalise(payload.query, types.BASIC_SEARCH_QUERY_NORMALISER)
+    const query = normalise(
+      payload.query,
+      searchConstants.BASIC_SEARCH_QUERY_NORMALISER
+    )
     const errors = yield call(
       validate,
       query,
-      types.BASIC_SEARCH_QUERY_CONSTRAINT,
+      searchConstants.BASIC_SEARCH_QUERY_CONSTRAINT,
       null,
       true
     )
@@ -86,16 +96,22 @@ function * basicSearch ({ payload }) {
     }
 
     const requestUrl = createAdminBasicSearchRequestUrl(query)
-    yield put.resolve({ type: types.CLEAR_AUTOCOMPLETE })
-    yield put.resolve({ type: types.STARTING_BASIC_SEARCH })
-    yield put.resolve({ type: types.SET_BASIC_SEARCH_PARAMS, payload: query })
+    yield put.resolve({ type: searchConstants.CLEAR_AUTOCOMPLETE })
+    yield put.resolve({ type: searchConstants.STARTING_BASIC_SEARCH })
+    yield put.resolve({
+      type: searchConstants.SET_BASIC_SEARCH_PARAMS,
+      payload: query
+    })
     yield put.resolve(initialize(BASIC_SEARCH_FORM_NAME, query))
     const json = yield call(get, requestUrl)
-    yield put.resolve({ type: types.BASIC_SEARCH_SUCCEEDED, payload: json })
+    yield put.resolve({
+      type: searchConstants.BASIC_SEARCH_SUCCEEDED,
+      payload: json
+    })
     yield put.resolve(stopSubmit(BASIC_SEARCH_FORM_NAME))
   } catch (err) {
     yield call(submitErrorHandler, err, BASIC_SEARCH_FORM_NAME)
-    yield put.resolve({ type: types.BASIC_SEARCH_FAILED })
+    yield put.resolve({ type: searchConstants.BASIC_SEARCH_FAILED })
   }
 }
 
@@ -104,10 +120,10 @@ function * search (action) {
     const searchType = action.payload.searchType
 
     switch (searchType) {
-      case SEARCH_TYPE_AUTOCOMPLETE:
+      case searchConstants.SEARCH_TYPE_AUTOCOMPLETE:
         yield call(autocompleteSearch, action)
         break
-      case SEARCH_TYPE_BASIC:
+      case searchConstants.SEARCH_TYPE_BASIC:
         yield call(basicSearch, action)
         break
       default:
@@ -126,7 +142,7 @@ function * navigateToEntity (action) {
 }
 
 export default [
-  takeLatest(types.SEARCH, search),
-  takeLatest(types.PUSH_BASIC_SEARCH_TO_URL, pushBasicSearchToUrl),
-  takeLatest(types.NAVIGATE_TO_ENTITY, navigateToEntity)
+  takeLatest(searchConstants.SEARCH, search),
+  takeLatest(searchConstants.PUSH_BASIC_SEARCH_TO_URL, pushBasicSearchToUrl),
+  takeLatest(searchConstants.NAVIGATE_TO_ENTITY, navigateToEntity)
 ]

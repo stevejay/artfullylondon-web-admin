@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Logo from '_admin/components/logo'
+import Logo from '_src/components/logo'
 
 it('should render a small normal logo correctly', () => {
   const wrapper = shallow(<Logo size='small' />)

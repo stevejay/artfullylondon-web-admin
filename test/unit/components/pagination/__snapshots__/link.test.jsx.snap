@@ -2,7 +2,7 @@
 
 exports[`should render correctly when is current page 1`] = `
 <div
-  styleName="current-page"
+  className="components-pagination-link-m__current-page components-pagination-link-m__base-page"
 >
   2
 </div>
@@ -10,8 +10,8 @@ exports[`should render correctly when is current page 1`] = `
 
 exports[`should render correctly when is not current page 1`] = `
 <button
+  className="components-pagination-link-m__link-page components-pagination-link-m__base-page"
   onClick={[Function]}
-  styleName="link-page"
   type="button"
 >
   2

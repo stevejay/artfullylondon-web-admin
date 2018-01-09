@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
+  className="components-field-divider-m__divider"
   role="presentation"
-  styleName="divider"
 />
 `;

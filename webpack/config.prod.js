@@ -17,7 +17,7 @@ module.exports = merge(configBase, {
       'amazon-cognito-identity-js',
       'aws-sdk',
       'backo',
-      // 'fetch-ponyfill',
+      'fetch-ponyfill',
       'global',
       'jsbn',
       'lodash',

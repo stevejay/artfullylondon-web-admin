@@ -6,7 +6,7 @@ exports[`should render correctly 1`] = `
   onSubmit={[Function]}
 >
   <div
-    styleName="top-inputs-container"
+    className="containers-forms-basic-search-index-m__top-inputs-container"
   >
     <FormHeading>
       <span>
@@ -15,7 +15,7 @@ exports[`should render correctly 1`] = `
        Search
     </FormHeading>
     <FormRow
-      styleName="row"
+      className="containers-forms-basic-search-index-m__row"
     >
       <Field
         autoFocus={false}
@@ -30,13 +30,13 @@ exports[`should render correctly 1`] = `
     </FormRow>
   </div>
   <div
-    styleName="bottom-inputs-container"
+    className="containers-forms-basic-search-index-m__bottom-inputs-container"
   >
     <FormRow
-      styleName="row"
+      className="containers-forms-basic-search-index-m__row"
     >
       <label
-        styleName="label"
+        className="containers-forms-basic-search-index-m__label"
       >
         Search within
       </label>
@@ -82,7 +82,7 @@ exports[`should render correctly when has an error 1`] = `
   onSubmit={[Function]}
 >
   <div
-    styleName="top-inputs-container"
+    className="containers-forms-basic-search-index-m__top-inputs-container"
   >
     <FormHeading>
       <span>
@@ -91,7 +91,7 @@ exports[`should render correctly when has an error 1`] = `
        Search
     </FormHeading>
     <FormRow
-      styleName="row"
+      className="containers-forms-basic-search-index-m__row"
     >
       <Field
         autoFocus={false}
@@ -106,7 +106,7 @@ exports[`should render correctly when has an error 1`] = `
     </FormRow>
   </div>
   <div
-    styleName="bottom-inputs-container"
+    className="containers-forms-basic-search-index-m__bottom-inputs-container"
   >
     <Message
       showIcon={false}
@@ -115,10 +115,10 @@ exports[`should render correctly when has an error 1`] = `
       The Error
     </Message>
     <FormRow
-      styleName="row"
+      className="containers-forms-basic-search-index-m__row"
     >
       <label
-        styleName="label"
+        className="containers-forms-basic-search-index-m__label"
       >
         Search within
       </label>

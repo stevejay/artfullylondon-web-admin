@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import FieldBorder from '_admin/components/field/border'
+import FieldBorder from '_src/components/field/border'
 
 it('should render correctly', () => {
   const wrapper = shallow(<FieldBorder><div id='child' /></FieldBorder>)

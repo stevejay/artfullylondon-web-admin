@@ -1,4 +1,4 @@
-import * as venue from '_admin/lib/venue'
+import * as venue from '_src/lib/venue'
 
 describe('formatAddressForDisplay', () => {
   const tests = [

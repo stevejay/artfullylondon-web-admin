@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import SidenavModal from '_admin/components/sidenav/modal'
+import SidenavModal from '_src/components/sidenav/modal'
 
 it('should render correctly when showing', () => {
   const wrapper = shallow(

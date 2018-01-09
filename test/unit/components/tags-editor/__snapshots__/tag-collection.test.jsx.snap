@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName="container"
+  className="components-tags-editor-tag-collection-m__container"
 >
   <Tag
     isBeingDeleted={false}

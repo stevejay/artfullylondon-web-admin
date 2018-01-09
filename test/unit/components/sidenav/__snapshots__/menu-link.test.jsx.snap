@@ -2,9 +2,9 @@
 
 exports[`should render correctly 1`] = `
 <Link
+  className="components-sidenav-menu-link-m__link"
   onClick={[Function]}
   replace={false}
-  styleName="link"
   to="/the/path"
 >
   The Label

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<TransitionGroup
+  childFactory={[Function]}
+  className="components-notifications-container-m__container"
+  component="ul"
+  role="presentation"
+>
+  <CSSTransition
+    classNames="notification"
+    key="some-id"
+    timeout={250}
+  >
+    <Notification
+      notification={
+        Object {
+          "id": "some-id",
+          "message": "The Message",
+          "title": "The Title",
+          "type": "Success",
+        }
+      }
+      onClose={[Function]}
+    />
+  </CSSTransition>
+</TransitionGroup>
+`;

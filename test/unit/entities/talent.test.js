@@ -1,4 +1,4 @@
-import { SummaryTalent, FullTalent } from '_admin/entities/talent'
+import { SummaryTalent, FullTalent } from '_src/entities/talent'
 
 describe('SummaryTalent', () => {
   it('should have correct entityType', () => {

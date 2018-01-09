@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import LoaderPanel from '_admin/components/loader/panel'
+import LoaderPanel from '_src/components/loader/panel'
 
 it('should render a tiny default loader panel correctly', () => {
   const wrapper = shallow(<LoaderPanel size='tiny' />)

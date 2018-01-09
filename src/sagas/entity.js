@@ -6,13 +6,7 @@ import { get, put as httpPut, post } from '_src/lib/fetch'
 import { submitErrorHandler } from '_src/lib/saga'
 import { validate } from '_src/lib/validation'
 import normalise from '_src/lib/normalise'
-import {
-  ENTITY_TYPE_TALENT,
-  ENTITY_TYPE_VENUE,
-  ENTITY_TYPE_EVENT,
-  ENTITY_TYPE_EVENT_SERIES
-} from '_src/constants/entity'
-import * as types from '_src/constants/entity'
+import * as entityConstants from '_src/constants/entity'
 import {
   EDIT_TALENT_FORM_NAME,
   EDIT_VENUE_FORM_NAME,
@@ -29,8 +23,7 @@ import {
   createAdminAutocompleteSearchRequestUrl,
   createAdminBasicSearchRequestUrl
 } from '_src/lib/search'
-import TalentMatchesFoundModal
-  from '_src/containers/Modals/TalentMatchesFound'
+import TalentMatchesFoundModal from '_src/containers/Modals/TalentMatchesFound'
 import { addNotification } from '_src/actions/notifications'
 import talentConstraint from '_src/constants/talent-constraint'
 import talentNormaliser from '_src/constants/talent-normaliser'
@@ -54,7 +47,7 @@ function * getEntity (action) {
 
   try {
     yield put.resolve({
-      type: types.GET_ENTITY_STARTED,
+      type: entityConstants.GET_ENTITY_STARTED,
       payload: { entityType, id }
     })
 
@@ -63,14 +56,14 @@ function * getEntity (action) {
     const json = yield call(get, url, token)
 
     yield put.resolve({
-      type: types.GET_ENTITY_SUCCEEDED,
+      type: entityConstants.GET_ENTITY_SUCCEEDED,
       payload: { entityType, entity: json.entity }
     })
   } catch (err) {
     console.error('getEntity error', err.message)
 
     yield put.resolve({
-      type: types.GET_ENTITY_FAILED,
+      type: entityConstants.GET_ENTITY_FAILED,
       payload: { entityType, statusCode: err.statusCode || 500 }
     })
   }
@@ -126,13 +119,13 @@ function * saveEntity (action) {
 
 function _getConstraintForEntityType (entityType) {
   switch (entityType) {
-    case ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return talentConstraint
-    case ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return venueConstraint
-    case ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return eventConstraints.BASIC_CONSTRAINT
-    case ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return eventSeriesConstraint
     default:
       throw new Error(`entityType out of range: ${entityType}`)
@@ -141,13 +134,13 @@ function _getConstraintForEntityType (entityType) {
 
 function _getNormaliserForEntityType (entityType) {
   switch (entityType) {
-    case ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return talentNormaliser
-    case ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return venueNormaliser
-    case ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return eventNormalisers.basicNormaliser
-    case ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return eventSeriesNormaliser
     default:
       throw new Error(`entityType out of range: ${entityType}`)
@@ -156,13 +149,13 @@ function _getNormaliserForEntityType (entityType) {
 
 function _getMapperForEntityType (entityType) {
   switch (entityType) {
-    case ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return mapTalentToServer
-    case ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return mapVenueToServer
-    case ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return mapEventToServer
-    case ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return mapEventSeriesToServer
     default:
       throw new Error(`entityType out of range: ${entityType}`)
@@ -171,13 +164,13 @@ function _getMapperForEntityType (entityType) {
 
 function _getFormNameForEntityType (entityType) {
   switch (entityType) {
-    case ENTITY_TYPE_TALENT:
+    case entityConstants.ENTITY_TYPE_TALENT:
       return EDIT_TALENT_FORM_NAME
-    case ENTITY_TYPE_VENUE:
+    case entityConstants.ENTITY_TYPE_VENUE:
       return EDIT_VENUE_FORM_NAME
-    case ENTITY_TYPE_EVENT:
+    case entityConstants.ENTITY_TYPE_EVENT:
       return EDIT_EVENT_IMAGES_FORM_NAME
-    case ENTITY_TYPE_EVENT_SERIES:
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
       return EDIT_EVENT_SERIES_FORM_NAME
     default:
       throw new Error(`entityType out of range: ${entityType}`)
@@ -189,7 +182,7 @@ function * getEntityForEdit (action) {
 
   try {
     yield put.resolve({
-      type: types.GET_ENTITY_FOR_EDIT_STARTED,
+      type: entityConstants.GET_ENTITY_FOR_EDIT_STARTED,
       payload: { entityType, id }
     })
 
@@ -200,14 +193,14 @@ function * getEntityForEdit (action) {
     const json = yield call(get, url, token)
 
     yield put.resolve({
-      type: types.GET_ENTITY_FOR_EDIT_SUCCEEDED,
+      type: entityConstants.GET_ENTITY_FOR_EDIT_SUCCEEDED,
       payload: { entityType, entity: json.entity }
     })
   } catch (err) {
     console.error('getEntityForEdit error', err.message)
 
     yield put.resolve({
-      type: types.GET_ENTITY_FOR_EDIT_FAILED,
+      type: entityConstants.GET_ENTITY_FOR_EDIT_FAILED,
       payload: { entityType, statusCode: err.statusCode || 500 }
     })
   }
@@ -217,21 +210,21 @@ function * getEventAsCopy (action) {
   const { id } = action.payload
 
   try {
-    yield put.resolve({ type: types.GET_EVENT_AS_COPY_STARTED })
+    yield put.resolve({ type: entityConstants.GET_EVENT_AS_COPY_STARTED })
 
     const token = yield getAuthTokenForCurrentUser()
     const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/edit/event/${id}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
-      type: types.GET_EVENT_AS_COPY_SUCCEEDED,
+      type: entityConstants.GET_EVENT_AS_COPY_SUCCEEDED,
       payload: { entity: json.entity }
     })
   } catch (err) {
     console.error('getEventAsCopy error', err.message)
 
     yield put.resolve({
-      type: types.GET_EVENT_AS_COPY_FAILED,
+      type: entityConstants.GET_EVENT_AS_COPY_FAILED,
       payload: { statusCode: err.statusCode || 500 }
     })
   }
@@ -242,7 +235,7 @@ function * getSubEntity (action) {
 
   try {
     yield put.resolve({
-      type: types.GET_SUB_ENTITY_STARTED,
+      type: entityConstants.GET_SUB_ENTITY_STARTED,
       payload: { entityType, subEntityType }
     })
 
@@ -265,7 +258,7 @@ function * getSubEntity (action) {
     )
   } finally {
     yield put.resolve({
-      type: types.GET_SUB_ENTITY_FINISHED,
+      type: entityConstants.GET_SUB_ENTITY_FINISHED,
       payload: { entityType, subEntityType }
     })
   }
@@ -292,7 +285,7 @@ function * autocompleteSearch (action) {
     const json = yield call(get, requestUrl)
 
     yield put.resolve({
-      type: types.AUTOCOMPLETE_SEARCH_SUCCEEDED,
+      type: entityConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED,
       payload: json
     })
   } catch (err) {
@@ -368,11 +361,11 @@ function * createTalentForEvent (action) {
 }
 
 export default [
-  takeLatest(types.GET_ENTITY, getEntity),
-  takeLatest(types.SAVE_ENTITY, saveEntity),
-  takeLatest(types.GET_ENTITY_FOR_EDIT, getEntityForEdit),
-  takeLatest(types.GET_SUB_ENTITY, getSubEntity),
-  takeLatest(types.AUTOCOMPLETE_SEARCH, autocompleteSearch),
-  takeLatest(types.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
-  takeLatest(types.GET_EVENT_AS_COPY, getEventAsCopy)
+  takeLatest(entityConstants.GET_ENTITY, getEntity),
+  takeLatest(entityConstants.SAVE_ENTITY, saveEntity),
+  takeLatest(entityConstants.GET_ENTITY_FOR_EDIT, getEntityForEdit),
+  takeLatest(entityConstants.GET_SUB_ENTITY, getSubEntity),
+  takeLatest(entityConstants.AUTOCOMPLETE_SEARCH, autocompleteSearch),
+  takeLatest(entityConstants.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
+  takeLatest(entityConstants.GET_EVENT_AS_COPY, getEventAsCopy)
 ]

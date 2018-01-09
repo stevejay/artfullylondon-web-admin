@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Checkbox from '_admin/components/checkbox'
+import Checkbox from '_src/components/checkbox'
 
 it('should render correctly when checked', () => {
   const wrapper = shallow(

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Message from '_admin/components/message'
+import Message from '_src/components/message'
 
 it('should render an info message correctly', () => {
   const wrapper = shallow(

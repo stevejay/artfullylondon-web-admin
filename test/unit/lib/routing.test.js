@@ -1,4 +1,4 @@
-import * as routing from '_admin/lib/routing'
+import * as routing from '_src/lib/routing'
 
 describe('hasQuery', () => {
   const tests = [

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <ul
-  styleName="container"
+  className="components-pagination-index-m__container"
 >
   <PaginationLink
     currentPageNumber={3}

@@ -4,15 +4,15 @@ exports[`should render a 404 error correctly 1`] = `
 <SectionsContainer>
   <BasicSection>
     <div
-      styleName="container"
+      className="components-error-index-m__container"
     >
       <div
-        styleName="code"
+        className="components-error-index-m__code"
       >
         404
       </div>
       <h1
-        styleName="h1"
+        className="components-error-index-m__h1"
       >
         Page Not Found
       </h1>
@@ -26,15 +26,15 @@ exports[`should render a 500 error correctly 1`] = `
 <SectionsContainer>
   <BasicSection>
     <div
-      styleName="container"
+      className="components-error-index-m__container"
     >
       <div
-        styleName="code"
+        className="components-error-index-m__code"
       >
         500
       </div>
       <h1
-        styleName="h1"
+        className="components-error-index-m__h1"
       >
         Server Error
       </h1>

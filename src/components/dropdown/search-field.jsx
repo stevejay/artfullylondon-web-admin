@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Dropdown from './index'
 import FieldResetButton from '_src/components/field/reset-button'
-// TODO WTF???
-import { NO_FILTER_VALUE } from '_public/constants/search'
+import { NO_FILTER_VALUE } from '_src/constants/search'
 import './search-field.m.scss'
 
 class DropdownSearchField extends React.Component {

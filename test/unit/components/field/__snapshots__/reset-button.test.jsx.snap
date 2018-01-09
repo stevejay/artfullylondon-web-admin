@@ -2,16 +2,16 @@
 
 exports[`should render correctly 1`] = `
 <button
+  className="components-field-reset-button-m__button"
   disabled={false}
   onClick={[Function]}
-  styleName="button"
   type="button"
 >
   <span
-    styleName="content-wrapper"
+    className="components-field-reset-button-m__content-wrapper"
   >
     <FaClose
-      styleName="icon"
+      className="components-field-reset-button-m__icon"
     />
   </span>
 </button>
@@ -19,16 +19,16 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <button
+  className="components-field-reset-button-m__button"
   disabled={true}
   onClick={[Function]}
-  styleName="button"
   type="button"
 >
   <span
-    styleName="content-wrapper"
+    className="components-field-reset-button-m__content-wrapper"
   >
     <FaClose
-      styleName="icon"
+      className="components-field-reset-button-m__icon"
     />
   </span>
 </button>

@@ -2,9 +2,9 @@ import moment from 'moment'
 import 'moment-timezone'
 import _ from 'lodash'
 
-import { DATE_FORMAT } from '_src/constants/time'
-import { eventIsPerformance, eventIsOneTime } from '_src/lib/event'
 import {
+  eventIsPerformance,
+  eventIsOneTime,
   occurrenceTypeHasDateRange,
   occurrenceTypeIsContinuous
 } from '_src/lib/event'
@@ -70,8 +70,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, DATE_FORMAT).format('Do')
     : yearInCommon
-        ? moment(dateFrom, DATE_FORMAT).format('Do MMM')
-        : formatStringDateForDisplay(dateFrom)
+      ? moment(dateFrom, DATE_FORMAT).format('Do MMM')
+      : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 
@@ -214,8 +214,8 @@ export function formatTimesStringForGivenDate (
   return times.closed
     ? isPerformance ? 'No performances' : 'Closed'
     : times.isNowClosed
-        ? isPerformance ? 'No performances' : 'Now closed'
-        : _formatTimesForDayDisplay(times.times)
+      ? isPerformance ? 'No performances' : 'Now closed'
+      : _formatTimesForDayDisplay(times.times)
 }
 
 function _getTimesOnGivenDateForVenue (
@@ -842,27 +842,23 @@ export function getEventTimesFormDisplayFlags (
   const hasRange = occurrenceTypeHasDateRange(occurrenceType)
   const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
 
-  const isLongerThanWeek = (hasRange &&
-    periodIsLongerThanWeek(dateFrom, dateTo)) ||
+  const isLongerThanWeek =
+    (hasRange && periodIsLongerThanWeek(dateFrom, dateTo)) ||
     occurrenceTypeIsContinuous(occurrenceType)
 
-  const venueHasOpeningTimes = isExhibition &&
+  const venueHasOpeningTimes =
+    isExhibition &&
     ((!!venue.openingTimes && venue.openingTimes.length > 0) ||
-      (!!venue.openingTimesOverrides &&
-        venue.openingTimesOverrides.length > 0))
+      (!!venue.openingTimesOverrides && venue.openingTimesOverrides.length > 0))
 
-  const showSingleDayOpeningTimes = isExhibition &&
-    isSingleDay &&
-    !useVenueOpeningTimes
+  const showSingleDayOpeningTimes =
+    isExhibition && isSingleDay && !useVenueOpeningTimes
 
-  const showOpeningTimesByDate = isExhibition &&
-    !isSingleDay &&
-    !isLongerThanWeek &&
-    !useVenueOpeningTimes
+  const showOpeningTimesByDate =
+    isExhibition && !isSingleDay && !isLongerThanWeek && !useVenueOpeningTimes
 
-  const showPerformancesByDate = isPerformance &&
-    !isSingleDay &&
-    !isLongerThanWeek
+  const showPerformancesByDate =
+    isPerformance && !isSingleDay && !isLongerThanWeek
 
   const showSingleDayPerformances = isPerformance && isSingleDay
 

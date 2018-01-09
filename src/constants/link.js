@@ -17,13 +17,13 @@ export const ALLOWED_LINK_TYPES = [
 ]
 
 export const LINK_TYPE_DROPDOWN_OPTIONS = [
-    { value: LINK_TYPE_HOMEPAGE, label: LINK_TYPE_HOMEPAGE },
-    { value: LINK_TYPE_FACEBOOK, label: LINK_TYPE_FACEBOOK },
-    { value: LINK_TYPE_TWITTER, label: LINK_TYPE_TWITTER },
-    { value: LINK_TYPE_INSTAGRAM, label: LINK_TYPE_INSTAGRAM },
-    { value: LINK_TYPE_WIKIPEDIA, label: LINK_TYPE_WIKIPEDIA },
-    { value: LINK_TYPE_ACCESS, label: LINK_TYPE_ACCESS },
-    { value: LINK_TYPE_BOOKING, label: LINK_TYPE_BOOKING }
+  { value: LINK_TYPE_HOMEPAGE, label: LINK_TYPE_HOMEPAGE },
+  { value: LINK_TYPE_FACEBOOK, label: LINK_TYPE_FACEBOOK },
+  { value: LINK_TYPE_TWITTER, label: LINK_TYPE_TWITTER },
+  { value: LINK_TYPE_INSTAGRAM, label: LINK_TYPE_INSTAGRAM },
+  { value: LINK_TYPE_WIKIPEDIA, label: LINK_TYPE_WIKIPEDIA },
+  { value: LINK_TYPE_ACCESS, label: LINK_TYPE_ACCESS },
+  { value: LINK_TYPE_BOOKING, label: LINK_TYPE_BOOKING }
 ]
 
 export const ADD_LINK = 'link/ADD_LINK'

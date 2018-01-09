@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  styleName=""
+  className=""
 >
   <Select
     arrowRenderer={[Function]}
@@ -68,7 +68,7 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <div
-  styleName=""
+  className=""
 >
   <Select
     arrowRenderer={[Function]}
@@ -134,7 +134,7 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  styleName="error"
+  className="components-dropdown-index-m__error"
 >
   <Select
     arrowRenderer={[Function]}

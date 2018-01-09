@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="components-entity-description-m__container"
+>
+  <div
+    className="components-entity-description-m__html"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Some description.",
+      }
+    }
+  />
+  <a
+    className="components-entity-description-m__link"
+    rel="noopener"
+    target="_blank"
+  >
+    Read more on Wikipedia
+  </a>
+</div>
+`;
+
+exports[`should render correctly when there is no wikipedia link 1`] = `
+<div
+  className="components-entity-description-m__container"
+>
+  <div
+    className="components-entity-description-m__html"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Some description.",
+      }
+    }
+  />
+</div>
+`;

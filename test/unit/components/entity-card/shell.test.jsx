@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import EntityCardShell from '_admin/components/entity-card/shell'
+import EntityCardShell from '_src/components/entity-card/shell'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -1,4 +1,4 @@
-import { SummaryEvent, FullEvent } from '_admin/entities/event'
+import { SummaryEvent, FullEvent } from '_src/entities/event'
 
 describe('SummaryEvent', () => {
   it('should have correct entityType', () => {

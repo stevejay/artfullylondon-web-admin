@@ -2,9 +2,8 @@
 
 exports[`should render correctly 1`] = `
 <header
-  className="nocontent"
+  className="nocontent components-header-container-m__container"
   role="banner"
-  styleName="container"
 >
   <div
     id="child"

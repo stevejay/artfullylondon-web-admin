@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import CloseIcon from 'react-icons/lib/fa/close'
 
-import IconButton from '_admin/components/button/icon'
+import IconButton from '_src/components/button/icon'
 
 it('should render a default icon button correctly', () => {
   const wrapper = shallow(<IconButton icon={CloseIcon} onClick={_.noop} />)
