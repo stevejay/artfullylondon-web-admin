@@ -1,18 +1,8 @@
 import * as event from '_src/lib/event'
-import * as eventConstants from '_src/constants/event'
 import { shallow } from 'enzyme'
+
+import * as eventConstants from '_src/constants/event'
 import { LinkCollection } from '_src/entities/link-collection'
-import {
-  EVENT_TYPE_PERFORMANCE,
-  EVENT_TYPE_EXHIBITION,
-  COST_TYPE_PAID,
-  COST_TYPE_FREE,
-  COST_TYPE_UNKNOWN,
-  OCCURRENCE_TYPE_BOUNDED,
-  OCCURRENCE_TYPE_CONTINUOUS,
-  OCCURRENCE_TYPE_ONETIME,
-  BOOKING_TYPE_REQUIRED
-} from '_src/constants/event'
 import { LINK_TYPE_BOOKING } from '_src/constants/link'
 
 describe('groupTimesByDate', () => {
@@ -45,7 +35,7 @@ describe('formatBookingInfoForDisplay', () => {
     // Required; no booking link
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/22',
         links: null,
         today: '2017/01/20'
@@ -54,7 +44,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/21',
         links: null,
         today: '2017/01/20'
@@ -63,7 +53,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/20',
         links: null,
         today: '2017/01/20'
@@ -72,7 +62,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/19',
         links: [],
         today: '2017/01/20'
@@ -82,7 +72,7 @@ describe('formatBookingInfoForDisplay', () => {
     // Required; booking link
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/22',
         links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
         today: '2017/01/20'
@@ -91,7 +81,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/21',
         links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
         today: '2017/01/20'
@@ -100,7 +90,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/20',
         links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
         today: '2017/01/20'
@@ -109,7 +99,7 @@ describe('formatBookingInfoForDisplay', () => {
     },
     {
       args: {
-        bookingType: BOOKING_TYPE_REQUIRED,
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/19',
         links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
         today: '2017/01/20'
@@ -137,8 +127,8 @@ describe('formatEventOccurrenceForDisplay', () => {
   const tests = [
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_BOUNDED,
-        eventType: EVENT_TYPE_PERFORMANCE,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+        eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
         dateFrom: '2017/01/25',
         dateTo: '2017/01/26',
         performancesOverrides: null,
@@ -148,8 +138,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_BOUNDED,
-        eventType: EVENT_TYPE_EXHIBITION,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
         dateFrom: '2017/01/25',
         dateTo: '2017/01/26',
         performancesOverrides: null,
@@ -159,8 +149,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_BOUNDED,
-        eventType: EVENT_TYPE_PERFORMANCE,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+        eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
         dateFrom: '2017/01/25',
         dateTo: '2017/02/26',
         performancesOverrides: null,
@@ -170,8 +160,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_BOUNDED,
-        eventType: EVENT_TYPE_PERFORMANCE,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+        eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
         dateFrom: '2017/01/25',
         dateTo: '2018/01/26',
         performancesOverrides: null,
@@ -181,8 +171,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_CONTINUOUS,
-        eventType: EVENT_TYPE_PERFORMANCE,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+        eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
         performancesOverrides: null,
         today: '2017/01/20'
       },
@@ -190,8 +180,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_CONTINUOUS,
-        eventType: EVENT_TYPE_EXHIBITION,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
         performancesOverrides: null,
         today: '2017/01/20'
       },
@@ -199,8 +189,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_ONETIME,
-        eventType: EVENT_TYPE_EXHIBITION,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
         performancesOverrides: [
           {
             date: '2017/01/20',
@@ -213,8 +203,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_ONETIME,
-        eventType: EVENT_TYPE_EXHIBITION,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
         performancesOverrides: [
           {
             date: '2017/01/21',
@@ -227,8 +217,8 @@ describe('formatEventOccurrenceForDisplay', () => {
     },
     {
       args: {
-        occurrenceType: OCCURRENCE_TYPE_ONETIME,
-        eventType: EVENT_TYPE_EXHIBITION,
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
         performancesOverrides: [
           {
             date: '2017/01/25',
@@ -261,7 +251,7 @@ describe('formatCostForDisplay', () => {
   const tests = [
     {
       args: {
-        costType: COST_TYPE_FREE,
+        costType: eventConstants.COST_TYPE_FREE,
         costFrom: null,
         costTo: null
       },
@@ -269,7 +259,7 @@ describe('formatCostForDisplay', () => {
     },
     {
       args: {
-        costType: COST_TYPE_PAID,
+        costType: eventConstants.COST_TYPE_PAID,
         costFrom: 1.2,
         costTo: 1.2
       },
@@ -277,7 +267,7 @@ describe('formatCostForDisplay', () => {
     },
     {
       args: {
-        costType: COST_TYPE_PAID,
+        costType: eventConstants.COST_TYPE_PAID,
         costFrom: 1,
         costTo: 999.99
       },
@@ -285,7 +275,7 @@ describe('formatCostForDisplay', () => {
     },
     {
       args: {
-        costType: COST_TYPE_PAID,
+        costType: eventConstants.COST_TYPE_PAID,
         costFrom: null,
         costTo: 999.99
       },
@@ -293,7 +283,7 @@ describe('formatCostForDisplay', () => {
     },
     {
       args: {
-        costType: COST_TYPE_UNKNOWN
+        costType: eventConstants.COST_TYPE_UNKNOWN
       },
       expected: 'To Be Announced'
     }
@@ -315,11 +305,11 @@ describe('formatCostForDisplay', () => {
 describe('eventIsPerformance', () => {
   const tests = [
     {
-      arg: EVENT_TYPE_PERFORMANCE,
+      arg: eventConstants.EVENT_TYPE_PERFORMANCE,
       expected: true
     },
     {
-      arg: EVENT_TYPE_EXHIBITION,
+      arg: eventConstants.EVENT_TYPE_EXHIBITION,
       expected: false
     }
   ]
@@ -335,15 +325,15 @@ describe('eventIsPerformance', () => {
 describe('eventIsOneTime', () => {
   const tests = [
     {
-      arg: OCCURRENCE_TYPE_ONETIME,
+      arg: eventConstants.OCCURRENCE_TYPE_ONETIME,
       expected: true
     },
     {
-      arg: OCCURRENCE_TYPE_CONTINUOUS,
+      arg: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
       expected: false
     },
     {
-      arg: OCCURRENCE_TYPE_BOUNDED,
+      arg: eventConstants.OCCURRENCE_TYPE_BOUNDED,
       expected: false
     }
   ]
@@ -359,11 +349,11 @@ describe('eventIsOneTime', () => {
 describe('eventIsPaid', () => {
   const tests = [
     {
-      arg: COST_TYPE_PAID,
+      arg: eventConstants.COST_TYPE_PAID,
       expected: true
     },
     {
-      arg: COST_TYPE_FREE,
+      arg: eventConstants.COST_TYPE_FREE,
       expected: false
     }
   ]
