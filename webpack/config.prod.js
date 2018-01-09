@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const configBase = require('./config.base')
+const configBase = require('./webpack.config.base')
 const path = require('path')
 
 module.exports = merge(configBase, {
@@ -83,7 +83,7 @@ module.exports = merge(configBase, {
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, '../../shared')]
+                includePaths: [path.resolve(__dirname, '../src')]
               }
             }
           ]
@@ -107,7 +107,7 @@ module.exports = merge(configBase, {
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, '../../shared')]
+                includePaths: [path.resolve(__dirname, '../src')]
               }
             }
           ]
@@ -135,7 +135,7 @@ module.exports = merge(configBase, {
     }),
     new HtmlWebpackPlugin({
       title: 'Artfully London Admin',
-      template: '../../shared/template.html',
+      template: '../src/template.html',
       inject: false,
       minify: {
         collapseWhitespace: true,

@@ -1,0 +1,189 @@
+@import 'theme.scss';
+
+@mixin below-medium-mobile {
+     @media (max-width: #{$medium-mobile-width - 1px}) {
+        @content;
+    }
+}
+@mixin from-medium-mobile {
+    @media (min-width: #{$medium-mobile-width}) {
+        @content;
+    }
+}
+@mixin below-wide-mobile {
+     @media (max-width: #{$wide-mobile-width - 1px}) {
+        @content;
+    }
+}
+@mixin from-wide-mobile {
+     @media (min-width: #{$wide-mobile-width}) {
+        @content;
+    }
+}
+@mixin tablet {
+     @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+@mixin below-tablet {
+     @media (max-width: #{$tablet-width - 1px}) {
+        @content;
+    }
+}
+@mixin from-tablet {
+     @media (min-width: #{$tablet-width}){
+        @content;
+    }
+}
+@mixin below-desktop {
+     @media (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+@mixin desktop {
+     @media (min-width: #{$desktop-width}) and (max-width: #{$wide-desktop-width - 1px}) {
+        @content;
+    }
+}
+@mixin from-desktop {
+     @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+@mixin below-wide-desktop {
+     @media (max-width: #{$wide-desktop-width - 1px}) {
+        @content;
+    }
+}
+@mixin wide-desktop {
+     @media (min-width: #{$wide-desktop-width}) {
+        @content;
+    }
+}
+
+@mixin noWebKitHighlight() {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin regularFont() {
+    font-family: "Libre Franklin", Sans-Serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.4;
+}
+
+@mixin boldFont() {
+    font-family: "Libre Franklin", Sans-Serif;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.4;
+}
+
+@mixin extraBoldFont() {
+    font-family: "Libre Franklin", Sans-Serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.4;
+    color: $half-black;
+}
+
+@mixin cursiveBoldFont() {
+    font-family: "Shrikhand", cursive;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+@mixin boxShadowHelper($level: 1) {
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level == 4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level == 5 {
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+}
+
+@mixin unstyledButton() {
+    border: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    text-shadow: none;
+    outline: 0;
+}
+
+@mixin loader($size, $circleColor: rgba(0,0,0,.1), $quarterColor: $half-black) {
+    position: absolute;
+    top: calc(50% - #{$size / 2});
+    left: calc(50% - #{$size / 2});
+    z-index: 1000;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0;
+
+    &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 50%;
+        border-radius: 500rem;
+        border: #{$size / 15} solid $circleColor;
+        width: $size;
+        height: $size;
+    }
+
+    &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 50%;
+        animation: loader .6s linear;
+        animation-iteration-count: infinite;
+        border-radius: 500rem;
+        border-color: $quarterColor transparent transparent;
+        border-style: solid;
+        border-width: #{$size / 15};
+        box-shadow: 0 0 0 1px transparent;
+        width: $size;
+        height: $size;
+    }
+}
+
+@mixin loader-inverse($size) {
+    @include loader($size, rgba(255, 255, 255, 0.2), $white);
+}
+
+@mixin expandingUnderline() {
+    &:after {
+        position: absolute;
+        width: 100%;
+        left: 0; right: 0; bottom: 0;
+        display: block;
+        content: '';
+        border-bottom: solid 3px $dark-highlight-color;
+        transform: scaleX(0);  
+        transition: transform 200ms ease-in-out;
+    }
+
+    &:hover:after {
+        transform: scaleX(1);
+    }
+}
+
+@mixin noDefaultAnchorStyling() {
+    border-bottom: none;
+    text-decoration: none;
+
+    &:hover {
+        border-bottom: none;
+        text-decoration: none;
+    }
+}

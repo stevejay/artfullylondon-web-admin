@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "https://github.com/stevejay/artfullylondon-web-admin",
   "scripts": {
-    "build": "rimraf ./build && NODE_ENV=production webpack --config webpack/config.prod.js --bail",
+    "build": "rimraf ./build && NODE_ENV=production webpack --config webpack.config.prod.js --bail",
     "deploy": "firebase deploy",
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
     "build-deploy": "yarn run build && yarn run deploy",

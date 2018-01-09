@@ -1,7 +1,7 @@
-import '../../shared/reset.scss'
-import '../../shared/mixins.scss'
-import '../../shared/theme.scss'
-import '../../shared/typography.scss'
+import './reset.scss'
+import './mixins.scss'
+import './theme.scss'
+import './typography.scss'
 import 'react-day-picker/lib/style.css'
 
 import React from 'react'

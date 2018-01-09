@@ -7,7 +7,7 @@ const webpackDev = require('webpack-dev-middleware')
 const webpackHot = require('webpack-hot-middleware')
 // const httpProxy = require('http-proxy');
 
-const config = require('./webpack/config.dev')
+const config = require('./webpack.config.dev')
 const compiler = webpack(config)
 
 // const proxy = httpProxy.createProxyServer({

@@ -3,7 +3,9 @@
 const path = require('path')
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 
-const context = path.join(__dirname, '../src')
+const context = path.normalize(path.join(__dirname, './src'))
+
+console.log('context', context)
 
 module.exports = {
   context,
@@ -45,7 +47,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      _src: path.join(__dirname, '../src'),
+      _src: path.join(__dirname, './src'),
       'aws-sdk$': AWS_SDK_BUNDLE
     }
   }

@@ -25,7 +25,6 @@
             "syntax": "postcss-scss"
           }
         },
-        "context": "./src",
         "webpackHotModuleReloading": true
       }
     ]

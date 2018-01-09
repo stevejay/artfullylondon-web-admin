@@ -4,7 +4,7 @@ const merge = require('lodash.merge')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const configBase = require('./config.base')
+const configBase = require('./webpack.config.base')
 const path = require('path')
 
 module.exports = merge(configBase, {
@@ -48,7 +48,7 @@ module.exports = merge(configBase, {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              includePaths: [path.resolve(__dirname, '../../shared')]
+              includePaths: [path.resolve(__dirname, './src')]
             }
           }
         ]
@@ -79,7 +79,7 @@ module.exports = merge(configBase, {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              includePaths: [path.resolve(__dirname, '../../shared')]
+              includePaths: [path.resolve(__dirname, './src')]
             }
           }
         ]
@@ -97,7 +97,7 @@ module.exports = merge(configBase, {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Artfully London Admin',
-      template: '../../shared/template.html',
+      template: './template.html',
       hash: true,
       inject: false
     }),
