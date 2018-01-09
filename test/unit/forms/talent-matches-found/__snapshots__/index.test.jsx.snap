@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+  styleName="container"
+>
+  <ul>
+    <li
+      key="some-id"
+    >
+      <span>
+        First Last
+      </span>
+      —
+      Some role
+    </li>
+  </ul>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={[Function]}
+    submitLabel="Add Talent"
+    submitting={false}
+  />
+</Form>
+`;

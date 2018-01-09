@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div>
+  <AltBackgroundSection>
+    <EntityCardCollection
+      cardContentFactory={[Function]}
+      dateStr="2017/01/18"
+      entities={
+        Array [
+          SummaryVenue {
+            "entity": Object {},
+            "postcodeDistrict": undefined,
+          },
+        ]
+      }
+      getInProgress={false}
+    />
+  </AltBackgroundSection>
+  <Pagination
+    onPageClick={[Function]}
+    skip={10}
+    take={20}
+    total={200}
+  />
+</div>
+`;

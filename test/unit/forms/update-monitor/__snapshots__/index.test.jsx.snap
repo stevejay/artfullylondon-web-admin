@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+  styleName="container"
+>
+  <FormRow>
+    <Diff
+      changeDiff="some diff"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      checkboxLabel="Should be ignored"
+      component={[Function]}
+      label="Visibility"
+      name="isIgnored"
+    />
+    <Field
+      checkboxLabel="Mark as has changed"
+      component={[Function]}
+      label="Has Changed"
+      name="hasChanged"
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

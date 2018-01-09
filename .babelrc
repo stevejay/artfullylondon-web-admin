@@ -1,0 +1,73 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    [
+      "react-css-modules",
+      {
+        "generateScopedName": "[path][name]__[local]",
+        "filetypes": {
+          ".scss": {
+            "syntax": "postcss-scss"
+          }
+        },
+        "context": "./src",
+        "webpackHotModuleReloading": true
+      }
+    ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                "imports": [
+                  "react"
+                ],
+                "locals": [
+                  "module"
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "test": {
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "alias": {
+              "_src": "./src"
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "lodash",
+        "transform-react-constant-elements"
+      ]
+    }
+  }
+}

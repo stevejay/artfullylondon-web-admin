@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Body>
+  <BrowserResizeListener
+    onWindowResize={[Function]}
+  />
+  <Connect(Notifications) />
+  <withRouter(Connect(Sidenav))
+    pathname="/some/path"
+  />
+  <Connect(Quicksearch) />
+  <Connect(GenericModal) />
+  <withRouter(Connect(Header)) />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</Body>
+`;

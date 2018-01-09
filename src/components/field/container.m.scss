@@ -1,0 +1,42 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
+
+    @include from-wide-mobile {
+        flex-basis: 0;
+        margin-right: 1.5rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+.disabled {
+    opacity: $input-disabled-opacity;
+    pointer-events: none;
+}
+
+.container-no-label {
+    composes: container;
+
+    @include from-wide-mobile {
+        padding-top: 2.5rem;
+    }
+}
+
+.container-disabled {
+    composes: container;
+    composes: disabled;
+}
+
+.container-no-label-disabled {
+    composes: container-no-label;
+    composes: disabled;
+}

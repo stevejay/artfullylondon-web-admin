@@ -1,0 +1,60 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    padding-bottom: 1rem;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid $eighth-black;
+
+    &:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-left: .5rem;
+    cursor: pointer;
+    color: $quarter-black;
+    transition: color .2s ease-in;
+
+    &:hover {
+        color: $three-quarter-black;
+    }
+}
+
+.first-row {
+    margin-bottom: .5rem;
+}
+
+.title {
+    @include boldFont;
+    font-size: 1.4rem;
+    padding: 0;
+    margin: 0 0 .5rem 0;
+}
+
+.tag {
+    font-size: 1.2rem;
+    display: inline-block;;
+    border-radius: 500rem;
+    color: $white;
+    background-color: $quarter-black;
+    padding: .1rem .9rem;
+    margin: 0 .5rem 0 0;
+}
+
+.tag-changed {
+    composes: tag;
+    background-color: darkorange;
+}

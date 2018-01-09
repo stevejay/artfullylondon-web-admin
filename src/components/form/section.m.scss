@@ -1,0 +1,28 @@
+.container {
+    width: 100%;
+    padding: 0 1.5rem 2rem;
+    align-self: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-narrow {
+    composes: container;
+    max-width: 500px;
+}
+
+.container-wide {
+    composes: container;
+    max-width: 650px;
+}
+
+.container-verywide {
+    composes: container;
+    max-width: 800px;
+}
+
+.container-full {
+    composes: container;
+}

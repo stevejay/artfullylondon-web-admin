@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "minWidth": "12rem",
+        }
+      }
+      dateFormat="YYYY/MM/DD"
+      htmlId="dateFrom"
+      label="Date From"
+      maxDate="2017/09/18"
+      minDate="2017/01/18"
+      name="dateFrom"
+      required={true}
+      showModal={[Function]}
+    />
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "minWidth": "12rem",
+        }
+      }
+      dateFormat="YYYY/MM/DD"
+      htmlId="dateTo"
+      label="Date To"
+      maxDate="2017/09/18"
+      minDate="2017/01/18"
+      name="dateTo"
+      required={true}
+      showModal={[Function]}
+    />
+    <Field
+      autos={false}
+      component={[Function]}
+      forceSingleLine={true}
+      htmlId="label"
+      label="Label"
+      maxLength={20}
+      name="label"
+      required={false}
+    />
+  </FormRow>
+  <FormError
+    error={null}
+    hideGenericErrorMessages={true}
+  />
+  <SubFormButtons
+    onReset={[Function]}
+    onSubmit={[Function]}
+    pristine={true}
+    submitting={false}
+  />
+</div>
+`;

@@ -1,0 +1,11 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    @include boldFont;
+    text-align: center;
+    font-size: 1.4rem;
+    color: $eighth-black;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}

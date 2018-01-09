@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<button
+  onClick={[Function]}
+  styleName="default"
+  type="button"
+>
+  <span
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </span>
+</button>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<button
+  disabled={true}
+  onClick={[Function]}
+  styleName="disabled"
+  type="button"
+>
+  <span
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </span>
+</button>
+`;
+
+exports[`should render correctly when submitting 1`] = `
+<button
+  onClick={[Function]}
+  styleName="submitting"
+  type="button"
+>
+  <span
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </span>
+  <Loader
+    size="medium"
+    type="inverse"
+  />
+</button>
+`;

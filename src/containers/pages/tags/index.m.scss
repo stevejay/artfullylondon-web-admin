@@ -1,0 +1,15 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.h2 {
+    @include regularFont;
+    color: $three-quarter-black;
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 0 1.5rem 1.5rem;
+    line-height: 1.2;
+
+    @include below-wide-mobile {
+        font-size: 2.2rem;
+    }
+}

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <TextIcon />
+  <input
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect="off"
+    disabled={false}
+    id="some-id"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    placeholder="The Placeholder"
+    readOnly={false}
+    spellCheck={false}
+    styleName="input"
+    type="text"
+    value="term"
+  />
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  styleName="container"
+>
+  <TextIcon />
+  <input
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect="off"
+    disabled={false}
+    id="some-id"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    placeholder="The Placeholder"
+    readOnly={false}
+    spellCheck={false}
+    styleName="input-error"
+    type="text"
+    value="term"
+  />
+</div>
+`;

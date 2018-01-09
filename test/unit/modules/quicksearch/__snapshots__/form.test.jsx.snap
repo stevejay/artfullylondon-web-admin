@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onKeyPress={[Function]}
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      autoFocus={false}
+      component={[Function]}
+      disabled={false}
+      handleSubmit={[Function]}
+      maxLength={100}
+      name="term"
+      placeholder="Enter a search term"
+      searchInProgress={false}
+    />
+  </FormRow>
+</Form>
+`;

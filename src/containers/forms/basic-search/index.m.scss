@@ -1,0 +1,74 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.top-inputs-container,
+.bottom-inputs-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-self: center;
+    align-items: center;
+}
+
+.top-inputs-container {
+    background-color: $alt-page-color;
+    padding-bottom: .5rem;
+
+    @include wide-desktop {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
+
+.bottom-inputs-container {
+    margin: 2rem auto 0;
+
+    @include below-wide-mobile {
+        margin-top: 1rem;
+    }
+}
+
+.row {
+    align-items: center;
+    padding: 0 3rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    @include below-wide-mobile {
+        padding: 0 1.5rem;
+    }
+}
+
+.label {
+    min-width: 11rem;
+    text-align: right;
+    margin-right: 1.5rem;
+    color: $black;
+
+    @include below-wide-mobile {
+        text-align: left;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: .2rem;
+    }
+}
+
+.link {
+    display: inline-block;
+    align-self: flex-end;
+    margin: 1.5rem 3rem 2rem;
+    color: $three-quarter-black;
+    font-size: 1.6rem;
+
+    &:hover {
+        color: $black;
+    }
+
+    @include below-wide-mobile {
+        margin-right: 1.5rem;
+    }
+}

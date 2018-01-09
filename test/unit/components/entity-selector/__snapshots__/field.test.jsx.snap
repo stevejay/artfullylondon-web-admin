@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has an entity 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  required={true}
+  touched={false}
+>
+  <FieldBorder>
+    <Message
+      showIcon={false}
+      title={
+        <a
+          href="some-venue-id"
+          rel="noopener"
+          target="_blank"
+        >
+          The Venue Name
+        </a>
+      }
+      type="field"
+    />
+    <Component />
+    <Connect(EntitySelectorSearch)
+      entitySearchLabel="Search Label"
+      entityType="venue"
+      onSelectEntity={[Function]}
+    />
+  </FieldBorder>
+</Container>
+`;
+
+exports[`should render correctly when has no entity 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  required={true}
+  touched={false}
+>
+  <FieldBorder>
+    <Message
+      message="Search for one below."
+      showIcon={false}
+      title="None Selected"
+      type="field"
+    />
+    <Component />
+    <Connect(EntitySelectorSearch)
+      entitySearchLabel="Search Label"
+      entityType="venue"
+      onSelectEntity={[Function]}
+    />
+  </FieldBorder>
+</Container>
+`;
+
+exports[`should render correctly when in progress 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  required={true}
+  touched={false}
+>
+  <FieldBorder>
+    <div
+      styleName="loader-container"
+    >
+      <Loader
+        size="medium"
+        type="default"
+      />
+    </div>
+    <Component />
+    <Connect(EntitySelectorSearch)
+      entitySearchLabel="Search Label"
+      entityType="venue"
+      onSelectEntity={[Function]}
+    />
+  </FieldBorder>
+</Container>
+`;

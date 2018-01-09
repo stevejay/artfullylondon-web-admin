@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a full section correctly 1`] = `
+<section
+  styleName="container-full"
+>
+  <div
+    id="child"
+  />
+</section>
+`;
+
+exports[`should render a narrow section correctly 1`] = `
+<section
+  styleName="container-narrow"
+>
+  <div
+    id="child"
+  />
+</section>
+`;
+
+exports[`should render a very wide section correctly 1`] = `
+<section
+  styleName="container-verywide"
+>
+  <div
+    id="child"
+  />
+</section>
+`;
+
+exports[`should render a wide section correctly 1`] = `
+<section
+  styleName="container-wide"
+>
+  <div
+    id="child"
+  />
+</section>
+`;

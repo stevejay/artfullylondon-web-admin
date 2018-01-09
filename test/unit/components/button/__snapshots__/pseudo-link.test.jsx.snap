@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<button
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  styleName="link"
+  type="button"
+>
+  <div
+    id="child"
+  />
+   
+</button>
+`;

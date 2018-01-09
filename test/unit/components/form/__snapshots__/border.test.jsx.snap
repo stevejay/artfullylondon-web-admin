@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="border"
+>
+  <h1
+    styleName="header"
+  >
+    The Title
+  </h1>
+  <div
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</div>
+`;

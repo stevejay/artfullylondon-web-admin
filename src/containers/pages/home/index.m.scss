@@ -1,0 +1,14 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.sub-heading {
+    @include cursiveBoldFont;
+    font-size: 5.5rem;
+    color: $white;
+    text-transform: lowercase;
+    text-shadow: 2px 2px 5px #000;
+
+    @include below-wide-mobile {
+        font-size: 4rem;
+    }
+}

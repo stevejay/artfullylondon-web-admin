@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when get is in progress 1`] = `
+<AltBackgroundSection
+  styleName="background"
+>
+  <Loader
+    size="massive"
+    type="default"
+  />
+</AltBackgroundSection>
+`;
+
+exports[`should render correctly when there are entities 1`] = `
+<AltBackgroundSection
+  styleName="background"
+>
+  <div
+    styleName="cards-container"
+  >
+    <EntityCard
+      cardContentFactory={[Function]}
+      dateStr="2017/01/18"
+      entity={
+        SummaryVenue {
+          "entity": Object {
+            "id": "some-venue-id",
+          },
+          "postcodeDistrict": undefined,
+        }
+      }
+      key="some-venue-id"
+    />
+  </div>
+</AltBackgroundSection>
+`;
+
+exports[`should render correctly when there are no entities 1`] = `
+<AltBackgroundSection
+  styleName="background"
+>
+  <NoContent />
+</AltBackgroundSection>
+`;

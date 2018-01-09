@@ -1,0 +1,23 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.code {
+    font-size: 8rem;
+    line-height: 8rem;
+    color: $highlight-color;
+}
+
+.h1 {
+    @include boldFont;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: $three-quarter-black;
+}

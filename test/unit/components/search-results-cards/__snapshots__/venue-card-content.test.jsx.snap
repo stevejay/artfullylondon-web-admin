@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<ContentContainer>
+  <Heading
+    id="some-id"
+  >
+    Some Name
+  </Heading>
+  <SubHeading>
+    Theatre
+  </SubHeading>
+  <Summary
+    style={
+      Object {
+        "marginRight": "3rem",
+      }
+    }
+  >
+    The Full Address
+  </Summary>
+</ContentContainer>
+`;

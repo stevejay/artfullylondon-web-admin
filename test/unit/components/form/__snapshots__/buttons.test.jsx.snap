@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not submitting 1`] = `
+<div
+  styleName="container"
+>
+  <Button
+    aria-label="Submit the form"
+    submitting={false}
+    type="submit"
+  >
+    Submitting
+  </Button>
+</div>
+`;
+
+exports[`should render correctly when submitting 1`] = `
+<div
+  styleName="container"
+>
+  <Button
+    aria-label="Submit the form"
+    submitting={true}
+    type="submit"
+  >
+    Submitting
+  </Button>
+</div>
+`;

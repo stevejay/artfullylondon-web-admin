@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <Divider
+    type="basic"
+  />
+  <FormRow>
+    <Field
+      autofocus={true}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Name"
+      maxLength={10}
+      name="name"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Event Series Type"
+      name="eventSeriesType"
+      options={
+        Array [
+          Object {
+            "label": "Season",
+            "value": "Season",
+          },
+          Object {
+            "label": "Occasional",
+            "value": "Occasional",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Occurrence"
+      maxLength={20}
+      name="occurrence"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Summary"
+      maxLength={30}
+      name="summary"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Full Description"
+      maxLength={5000}
+      name="description"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      forceSingleLine={true}
+      label="Full Description Credit"
+      maxLength={40}
+      name="descriptionCredit"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="We Say"
+      maxLength={50}
+      name="weSay"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Links"
+      linkActions={Object {}}
+      name="links"
+      parentFormName="EditEventSeries"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="event-series"
+      imageActions={Object {}}
+      label="Images"
+      name="images"
+      parentFormName="EditEventSeries"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={null}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

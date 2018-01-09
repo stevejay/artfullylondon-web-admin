@@ -1,0 +1,23 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    width: 100%;
+    background-color: #E3DCCF;
+
+    @include wide-desktop {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
+
+.img {
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+.placeholder {
+    margin: 0 auto;
+    border-radius: 0;
+}

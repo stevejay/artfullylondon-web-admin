@@ -1,0 +1,14 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    @include boldFont;
+    position: absolute;
+    top: 0.6rem;
+    right: 0;
+    margin-bottom: 0.7rem;
+    color: $quarter-black;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}

@@ -1,0 +1,9 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+
+import EntityImageCredit from '_admin/components/entity/image-credit'
+
+it('should render correctly', () => {
+  const wrapper = shallow(<EntityImageCredit credit='The Credit' />)
+  expect(wrapper).toMatchSnapshot()
+})

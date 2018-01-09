@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Modal
+  aria-label="Quicksearch"
+  autoFocus={true}
+  backdrop={true}
+  backdropClassName="backdrop"
+  enforceFocus={true}
+  keyboard={true}
+  manager={
+    ModalManager {
+      "add": [Function],
+      "containers": Array [],
+      "data": Array [],
+      "handleContainerOverflow": true,
+      "hideSiblingNodes": true,
+      "isTopModal": [Function],
+      "modals": Array [],
+      "remove": [Function],
+    }
+  }
+  onHide={[Function]}
+  renderBackdrop={[Function]}
+  restoreFocus={true}
+  show={true}
+  styleName="modal"
+  timeout={250}
+  transition={[Function]}
+>
+  <div
+    styleName="quicksearch"
+  >
+    <div
+      styleName="header"
+    >
+      <Logo
+        size="small"
+        type="normal"
+      />
+      <IconButton
+        aria-label="Close quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </div>
+    <div
+      styleName="form"
+    >
+      <ReduxForm
+        onSubmit={[Function]}
+      />
+    </div>
+  </div>
+</Modal>
+`;

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  touched={false}
+>
+  <FieldBorder>
+    <ReduxForm
+      constraint={
+        Object {
+          "copyright": Object {
+            "length": Object {
+              "maximum": 300,
+            },
+          },
+          "imageUrl": Object {
+            "length": Object {
+              "maximum": 400,
+            },
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+            "url": true,
+          },
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <Component />
+    <ImageGrid>
+      <ImageGridCard
+        entityType="venue"
+        key="some-id"
+        onDelete={[Function]}
+        onSetMain={[Function]}
+        onUpdateCopyright={[Function]}
+        value={
+          Object {
+            "id": "some-id",
+            "isMain": true,
+            "key": "some-key",
+          }
+        }
+      />
+    </ImageGrid>
+  </FieldBorder>
+</Container>
+`;

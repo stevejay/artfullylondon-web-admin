@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with a time 1`] = `
+<GridRow
+  id="some-key"
+  onDelete={[Function]}
+>
+  <span
+    styleName="date"
+  >
+    Monday
+  </span>
+  <span
+    styleName="time"
+  >
+    23:00
+  </span>
+</GridRow>
+`;
+
+exports[`should render correctly with a times range 1`] = `
+<GridRow
+  id="some-key"
+  onDelete={[Function]}
+>
+  <span
+    styleName="date"
+  >
+    Monday
+  </span>
+  <span
+    styleName="times-range"
+  >
+    From 
+    22:00
+  </span>
+</GridRow>
+`;
+
+exports[`should render correctly with audience tags 1`] = `
+<GridRow
+  id="some-key"
+  onDelete={[Function]}
+>
+  <span
+    styleName="date"
+  >
+    Monday
+  </span>
+  <span
+    styleName="time"
+  >
+    23:00
+  </span>
+  <div
+    styleName="tags"
+  >
+    <span
+      key="tag-id"
+      styleName="tag"
+    >
+      Tag Label
+    </span>
+  </div>
+</GridRow>
+`;

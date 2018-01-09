@@ -1,0 +1,9 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}

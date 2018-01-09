@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when logged in 1`] = `
+<HeaderContainer>
+  <HeaderLogo
+    size="medium"
+  />
+  <MenuBar>
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "Item A",
+            "path": "/path/a",
+          },
+        ]
+      }
+      key="Menu Label"
+      label="Menu Label"
+    />
+    <HeaderLink
+      label="Log Out"
+      to="/log-out"
+    />
+    <HeaderButton
+      aria-label="Show quicksearch dialog"
+      label="Quicksearch"
+      onClick={[Function]}
+    />
+  </MenuBar>
+</HeaderContainer>
+`;
+
+exports[`should render correctly when narrow 1`] = `
+<HeaderContainer>
+  <HeaderLogo
+    size="small"
+  />
+  <MenuBar>
+    <IconButton
+      ariaLabel="Show quicksearch dialog"
+      icon={[Function]}
+      onClick={[Function]}
+      style={
+        Object {
+          "marginRight": "1.5rem",
+        }
+      }
+      type="default"
+    />
+    <IconButton
+      aria-controls="sidenav"
+      aria-label="Show navigation menu"
+      ariaExpanded={false}
+      icon={[Function]}
+      onClick={[Function]}
+      type="default"
+    />
+  </MenuBar>
+</HeaderContainer>
+`;
+
+exports[`should render correctly when not logged in 1`] = `
+<HeaderContainer>
+  <HeaderLogo
+    size="medium"
+  />
+  <MenuBar>
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "Item A",
+            "path": "/path/a",
+          },
+        ]
+      }
+      key="Menu Label"
+      label="Menu Label"
+    />
+    <HeaderLink
+      label="Log In"
+      to="/log-in"
+    />
+  </MenuBar>
+</HeaderContainer>
+`;
+
+exports[`should render correctly when showing the sidenav 1`] = `
+<HeaderContainer>
+  <HeaderLogo
+    size="medium"
+  />
+  <MenuBar>
+    <Menu
+      history={Object {}}
+      items={
+        Array [
+          Object {
+            "label": "Item A",
+            "path": "/path/a",
+          },
+        ]
+      }
+      key="Menu Label"
+      label="Menu Label"
+    />
+    <HeaderLink
+      label="Log Out"
+      to="/log-out"
+    />
+    <HeaderButton
+      aria-label="Show quicksearch dialog"
+      label="Quicksearch"
+      onClick={[Function]}
+    />
+  </MenuBar>
+</HeaderContainer>
+`;

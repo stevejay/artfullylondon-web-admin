@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when is open 1`] = `
+<Expander
+  headerText="The Label"
+  id="some-id"
+  onExpanderChange={[Function]}
+  open={true}
+>
+  <ul
+    role="group"
+    styleName="menu"
+  >
+    <li
+      key="a"
+      role="treeitem"
+      styleName="link"
+    >
+      <MenuLink
+        label="a"
+        onClick={[Function]}
+        path="/a"
+      />
+    </li>
+  </ul>
+</Expander>
+`;
+
+exports[`should render correctly when not open 1`] = `
+<Expander
+  headerText="The Label"
+  id="some-id"
+  onExpanderChange={[Function]}
+  open={false}
+>
+  <ul
+    role="group"
+    styleName="menu"
+  >
+    <li
+      key="a"
+      role="treeitem"
+      styleName="link"
+    >
+      <MenuLink
+        label="a"
+        onClick={[Function]}
+        path="/a"
+      />
+    </li>
+  </ul>
+</Expander>
+`;

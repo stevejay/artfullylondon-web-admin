@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when required 1`] = `
+<div
+  styleName="required"
+>
+  <label
+    htmlFor="some-id"
+    onClick={[Function]}
+    styleName={false}
+  >
+    <div
+      id="child"
+    />
+  </label>
+</div>
+`;
+
+exports[`should render correctly with a tooltip 1`] = `
+<div
+  styleName="basic"
+>
+  <label
+    htmlFor="some-id"
+    onClick={[Function]}
+    styleName="has-tooltip"
+  >
+    <div
+      id="child"
+    />
+  </label>
+  <Overlay
+    container={
+      Label {
+        "context": Object {},
+        "handleClick": [Function],
+        "handleHide": [Function],
+        "props": Object {
+          "children": <div
+            id="child"
+          />,
+          "disabled": false,
+          "error": null,
+          "htmlFor": "some-id",
+          "required": false,
+          "tooltip": "The Tooltip",
+        },
+        "refs": Object {},
+        "state": Object {
+          "ignoreHide": false,
+          "showHelp": false,
+        },
+        "updater": Updater {
+          "_callbacks": Array [],
+          "_renderer": ReactShallowRenderer {
+            "_context": Object {},
+            "_element": <Label
+              disabled={false}
+              error={null}
+              htmlFor="some-id"
+              required={false}
+              tooltip="The Tooltip"
+            >
+              <div
+                id="child"
+              />
+            </Label>,
+            "_forcedUpdate": false,
+            "_instance": [Circular],
+            "_newState": null,
+            "_rendered": <div
+              styleName="basic"
+            >
+              <label
+                htmlFor="some-id"
+                onClick={[Function]}
+                styleName="has-tooltip"
+              >
+                <div
+                  id="child"
+                />
+              </label>
+              <Overlay
+                container={[Circular]}
+                onHide={[Function]}
+                placement="bottom"
+                rootClose={true}
+                show={false}
+                target={[Function]}
+                transition={[Function]}
+              >
+                <div
+                  styleName="tooltip"
+                >
+                  The Tooltip
+                </div>
+              </Overlay>
+            </div>,
+            "_rendering": false,
+            "_updater": [Circular],
+          },
+        },
+      }
+    }
+    onHide={[Function]}
+    placement="bottom"
+    rootClose={true}
+    show={false}
+    target={[Function]}
+    transition={[Function]}
+  >
+    <div
+      styleName="tooltip"
+    >
+      The Tooltip
+    </div>
+  </Overlay>
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  styleName="basic-error"
+>
+  <label
+    htmlFor="some-id"
+    onClick={[Function]}
+    styleName={false}
+  >
+    <div
+      id="child"
+    />
+  </label>
+</div>
+`;
+
+exports[`should render correctly with no tooltip 1`] = `
+<div
+  styleName="basic"
+>
+  <label
+    htmlFor="some-id"
+    onClick={[Function]}
+    styleName={false}
+  >
+    <div
+      id="child"
+    />
+  </label>
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<ModalContainer
+  dismissable={true}
+  onHide={[Function]}
+  title="Edit Venue Monitor"
+  type="wide"
+>
+  <Connect(ReduxForm)
+    initialValues={Object {}}
+    onSubmit={[Function]}
+  />
+</ModalContainer>
+`;

@@ -1,0 +1,12 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.heading {
+    @include extraBoldFont;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: $three-quarter-black;
+    padding: 0;
+    margin: 0 0 .5rem;
+    line-height: 1.3;
+}

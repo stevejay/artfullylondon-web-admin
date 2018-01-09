@@ -1,0 +1,33 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    margin-bottom: 1.5rem;
+}
+
+.html p {
+    text-align: left;
+    font-size: 1.6rem;
+
+    strong {
+        @include extraBoldFont;
+        color: $three-quarter-black;
+    }
+
+    &::last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.link,
+.credit {
+    @include regularFont;
+    display: inline-block;
+    margin-top: 1rem;
+    font-style: italic;
+    color: $half-black;
+}
+
+.link {
+    cursor: pointer;
+}

@@ -1,0 +1,22 @@
+:global(.SingleDatePickerInput) {
+    border-radius: 4px;
+    min-height: 3.6rem;
+    display: flex;
+    align-items: center;
+}
+
+:global(.DateInput) {
+    font-size: 1.6rem;
+    padding: 0 .5rem;
+    border-radius: 4px;
+    flex-grow: 1;
+
+    input {
+        cursor: pointer;
+    }
+}
+
+:global(.SingleDatePickerInput__clear-date) {
+    padding: .3rem .7rem .6rem;
+    margin: 0 .5rem;
+}

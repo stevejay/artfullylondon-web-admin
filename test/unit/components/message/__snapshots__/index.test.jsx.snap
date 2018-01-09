@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a success message correctly 1`] = `
+<Link
+  replace={false}
+  role="alert"
+  styleName="success"
+  to="/link/to"
+>
+  <div
+    styleName="text"
+  >
+    <h4
+      styleName="title"
+    >
+      The Title
+    </h4>
+    <div
+      styleName="detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`should render an error message correctly 1`] = `
+<Link
+  replace={false}
+  role="alert"
+  styleName="error"
+  to="/link/to"
+>
+  <div
+    styleName="text"
+  >
+    <h4
+      styleName="title"
+    >
+      The Title
+    </h4>
+    <div
+      styleName="detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`should render an info message correctly 1`] = `
+<Link
+  replace={false}
+  role="alert"
+  styleName="info"
+  to="/link/to"
+>
+  <div
+    styleName="text"
+  >
+    <h4
+      styleName="title"
+    >
+      The Title
+    </h4>
+    <div
+      styleName="detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</Link>
+`;

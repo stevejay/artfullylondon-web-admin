@@ -1,0 +1,132 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.step {
+    @include extraBoldFont;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    color: $three-quarter-black;
+    border-right: 1px solid $eighth-black;
+    transition: background-color .2s ease,color .2s ease;
+    width: 100%;
+    padding: 1.5rem 0;
+    border-bottom: none;
+
+    &:hover {
+        border-bottom: none;
+    }
+
+    &:first-child {
+        border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+        border-right: none;
+        border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    &:after {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        content: '';
+        top: 50%;
+        right: 0;
+        border: solid;
+        background-color: $white;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-color: $eighth-black;
+        border-width: 0 1px 1px 0;
+        transition: background-color .1s ease,opacity .1s ease,color .1s ease,box-shadow .1s ease;
+        transform: translateY(-50%) translateX(50%) rotate(-45deg);
+    }
+
+    &:last-child:after {
+        display: none;
+    }
+
+    @include below-wide-mobile {
+        border-right: none;
+        border-bottom: 1px solid $eighth-black;
+        padding: 1rem 0;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        .number {
+            margin-right: 1rem;
+            width: 45%;
+            text-align: right;
+        }
+
+        &:first-child {
+            border-radius: $border-radius $border-radius 0 0;
+        }
+
+        &:last-child {
+            border-bottom: none;
+            border-radius: 0 0 $border-radius $border-radius;
+        }
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+.step-completed,
+.step-next {
+    composes: step;
+    pointer-events: all;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color, .2s, ease-in;
+
+    .number, .title {
+        color: $link-color;
+    }
+
+    &:hover {
+        background-color: $sixteenth-black;
+        text-decoration: none;
+
+        &:after {
+            background-color: $sixteenth-black;
+        }
+    }
+}
+
+.step-active {
+    composes: step;
+    background-color: $sixteenth-black;
+
+    &:after {
+        background-color: $sixteenth-black;
+    }
+}
+
+.step-disabled {
+    composes: step;
+
+    .number, .title {
+        color: $quarter-black;
+    }
+}
+
+.number,
+.title {
+    color: $highlight-color;
+}
+
+.number {
+    font-size: 2.5rem;
+}
+
+.title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}

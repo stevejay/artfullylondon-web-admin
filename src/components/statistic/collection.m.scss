@@ -1,0 +1,8 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

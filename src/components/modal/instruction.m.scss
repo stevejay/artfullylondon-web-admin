@@ -1,0 +1,18 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    background-color: #E3DCCF;
+    font-size: 1.6rem;
+    padding: 1.5rem 2rem;
+    font-style: italic;
+
+    strong {
+        @include extraBoldFont;
+        font-style: italic;
+    }
+
+    @include below-wide-mobile {
+        padding: 1.5rem;
+    }
+}

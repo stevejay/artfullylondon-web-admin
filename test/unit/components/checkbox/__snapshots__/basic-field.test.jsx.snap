@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  style={
+    Object {
+      "marginBottom": "1.5rem",
+    }
+  }
+>
+  <Checkbox
+    checked={true}
+    error={null}
+    onChange={[Function]}
+    touched={false}
+  >
+    The Label
+  </Checkbox>
+  <Error
+    error={null}
+  />
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  style={
+    Object {
+      "marginBottom": "1.5rem",
+    }
+  }
+>
+  <Checkbox
+    checked={true}
+    error="The Error"
+    onChange={[Function]}
+    touched={true}
+  >
+    The Label
+  </Checkbox>
+  <Error
+    error="The Error"
+  />
+</div>
+`;

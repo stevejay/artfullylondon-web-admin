@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="monitors-container"
+  >
+    <Grid>
+      <gridRowComponent
+        key="some-key"
+        monitor={
+          Object {
+            "key": "some-key",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl={null}
+      />
+    </Grid>
+  </div>
+</div>
+`;

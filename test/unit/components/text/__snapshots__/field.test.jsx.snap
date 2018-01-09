@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Container
+  disabled={false}
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  required={false}
+  tooltip="The Tooltip"
+  touched={false}
+>
+  <Text
+    autoFocus={false}
+    autos={false}
+    disabled={false}
+    error={null}
+    forceSingleLine={false}
+    id="The Label"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    password={false}
+    placeholder="The Placeholder"
+    readOnly={false}
+    touched={false}
+    value="term"
+  />
+</Container>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<Container
+  disabled={false}
+  error="The Error"
+  htmlFor="The Label"
+  label="The Label"
+  required={false}
+  tooltip="The Tooltip"
+  touched={true}
+>
+  <Text
+    autoFocus={false}
+    autos={false}
+    disabled={false}
+    error="The Error"
+    forceSingleLine={false}
+    id="The Label"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    password={false}
+    placeholder="The Placeholder"
+    readOnly={false}
+    touched={true}
+    value="term"
+  />
+</Container>
+`;

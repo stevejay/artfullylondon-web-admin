@@ -1,0 +1,68 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #E3DCCF;
+    margin-bottom: 3rem;
+}
+
+.container-no-logo {
+    composes: container;
+    height: 90px;
+
+    @include from-wide-mobile {
+        height: 100px;
+    }
+};
+
+.container-logo {
+    composes: container;
+    min-height: 190px;
+
+    @include from-wide-mobile {
+        min-height: 230px;
+    }
+}
+
+.icon {
+    width: 10rem;
+    height: 10rem;
+    color: #afa89b;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+    @include below-wide-mobile {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+.title {
+    @include boldFont;
+    font-size: 3.8rem;
+    color: $half-black;
+    text-transform: lowercase;
+    text-align: center;
+    padding: 0 3rem;
+    line-height: 1;
+    margin: 0;
+
+    span {
+        @include cursiveBoldFont;
+        font-size: 4rem;
+        color: $dark-highlight-color;
+    }
+
+    @include below-wide-mobile {
+        font-size: 3rem;
+        padding: 0 2rem 0;
+
+        span {
+            font-size: 3.1rem;
+        }
+    }
+}

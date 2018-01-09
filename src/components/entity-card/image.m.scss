@@ -1,0 +1,30 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+.lazy-load-container {
+    display: block;
+    background-color: $eighth-black;
+    border-radius: 4px;
+    overflow: hidden;
+    will-change: opacity;
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+    &:hover {
+        border-bottom: none;
+    }
+    img {
+        display: block;
+        width: 250px;
+        height: 175px;
+        margin: 0 auto;
+    }
+}
+
+:global(.entitycard-enter) {
+    opacity: 0.01;
+}
+
+:global(.entitycard-enter.entitycard-enter-active) {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

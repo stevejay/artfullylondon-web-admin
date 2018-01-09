@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <img
+    src="https://images.test.com/12/34/12345678/120x120.jpg"
+    styleName="img"
+  />
+  <div
+    styleName="details"
+  >
+    <p
+      styleName="roles"
+    >
+      Roles string
+    </p>
+    <p
+      styleName="characters"
+    >
+      Characters string
+    </p>
+    <h4>
+      <Link
+        replace={false}
+        to="/talent/talent-2"
+      />
+    </h4>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when there are no characters 1`] = `
+<div
+  styleName="container"
+>
+  <img
+    src="https://images.test.com/12/34/12345678/120x120.jpg"
+    styleName="img"
+  />
+  <div
+    styleName="details"
+  >
+    <p
+      styleName="roles"
+    >
+      Roles string
+    </p>
+    <h4>
+      <Link
+        replace={false}
+        to="/talent/talent-2"
+      />
+    </h4>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when there is no image 1`] = `
+<div
+  styleName="container"
+>
+  <ImagePlaceholder
+    size="very-small"
+    styleName="placeholder"
+    type="talent"
+  />
+  <div
+    styleName="details"
+  >
+    <p
+      styleName="roles"
+    >
+      Roles string
+    </p>
+    <p
+      styleName="characters"
+    >
+      Characters string
+    </p>
+    <h4>
+      <Link
+        replace={false}
+        to="/talent/talent-2"
+      />
+    </h4>
+  </div>
+</div>
+`;

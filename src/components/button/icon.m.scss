@@ -1,0 +1,50 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.link {
+  @include unstyledButton;
+  @include noWebKitHighlight;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: 1rem;
+  border-bottom: none;
+}
+
+:global .icon-button-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  transition: color .2s ease-in;
+}
+
+.link-default {
+  composes: link;
+
+  .icon {
+    color: $three-quarter-black;
+  }
+
+  &:hover {
+    border-bottom: none;
+
+    .icon {
+      color: $black;
+    }
+  }
+}
+
+.link-inverse {
+  composes: link;
+
+  .icon {
+    color: $white;
+  }
+
+  &:hover {
+    border-bottom: none;
+
+    .icon {
+      color: $eighth-black;
+    }
+  }
+}

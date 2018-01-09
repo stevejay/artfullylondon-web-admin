@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+  styleName="container"
+>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      forceSingleLine={true}
+      label="Tag Name"
+      maxLength={50}
+      name="label"
+      required={true}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    submitLabel="Add"
+    submitting={false}
+  />
+</Form>
+`;

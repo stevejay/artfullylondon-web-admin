@@ -1,0 +1,47 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+:global(.backdrop) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: auto;
+    background-color: black;
+    opacity: 0.5;
+    will-change: transform, opacity;
+}
+
+$speed: 200ms;
+
+:global(.modal-transition.in) {
+    transition: transform $speed ease-out, opacity $speed ease-out;
+}
+
+:global(.modal-transition.out) {
+    transition: transform $speed ease-in, opacity $speed ease-in;
+}
+
+:global(.modal-transition.in.backdrop) {
+    opacity: .5;
+}
+:global(.modal-transition.out.backdrop) {
+    opacity: 0.01;
+}
+
+:global(.modal-transition.in).content {
+    opacity: 1;
+}
+:global(.modal-transition.out).content {
+    opacity: 0.01;
+}

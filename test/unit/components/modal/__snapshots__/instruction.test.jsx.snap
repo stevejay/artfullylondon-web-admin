@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a narrow container correctly 1`] = `
+<p
+  styleName="container"
+>
+  <div
+    id="child"
+  />
+</p>
+`;

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when showing current step 1`] = `
+<div
+  styleName="step-active"
+>
+  <div
+    styleName="number"
+  >
+    2
+  </div>
+  <div
+    styleName="title"
+  >
+    The Title
+  </div>
+</div>
+`;
+
+exports[`should render correctly when showing step after current step 1`] = `
+<a
+  onClick={[Function]}
+  styleName="step-next"
+>
+  <div
+    styleName="number"
+  >
+    3
+  </div>
+  <div
+    styleName="title"
+  >
+    The Title
+  </div>
+</a>
+`;
+
+exports[`should render correctly when showing step before current step 1`] = `
+<a
+  onClick={[Function]}
+  styleName="step-completed"
+>
+  <div
+    styleName="number"
+  >
+    1
+  </div>
+  <div
+    styleName="title"
+  >
+    The Title
+  </div>
+</a>
+`;
+
+exports[`should render correctly when showing step way after current step 1`] = `
+<div
+  styleName="step-disabled"
+>
+  <div
+    styleName="number"
+  >
+    6
+  </div>
+  <div
+    styleName="title"
+  >
+    The Title
+  </div>
+</div>
+`;
+
+exports[`should render correctly when showing step way before current step 1`] = `
+<a
+  onClick={[Function]}
+  styleName="step-completed"
+>
+  <div
+    styleName="number"
+  >
+    1
+  </div>
+  <div
+    styleName="title"
+  >
+    The Title
+  </div>
+</a>
+`;

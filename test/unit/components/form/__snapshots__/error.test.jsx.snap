@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when there is a generic error and they are not to be hidden 1`] = `
+<Message
+  showIcon={false}
+  type="error"
+>
+  This form has errors. Please correct them and try again.
+</Message>
+`;
+
+exports[`should render correctly when there is a generic error and they are to be hidden 1`] = `""`;
+
+exports[`should render correctly when there is an error 1`] = `
+<Message
+  showIcon={false}
+  type="error"
+>
+  The error
+</Message>
+`;
+
+exports[`should render correctly when there is no error 1`] = `""`;

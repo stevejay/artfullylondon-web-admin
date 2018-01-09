@@ -1,0 +1,55 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 50%;
+    padding: 2rem;
+
+    @include below-tablet {
+        width: 100%;
+    }
+
+    h2 {
+        @include extraBoldFont;
+        margin: 0;
+        padding: 0;
+        padding-bottom: .7rem;
+        border-bottom: 1px solid $quarter-black;
+        color: $half-black;
+        text-transform: uppercase;
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    p {
+        @include extraBoldFont;
+        margin: 0;
+        padding: 0;
+        align-self: flex-end;
+        font-size: 10rem;
+        line-height: 1;
+    }
+}
+
+.container-event {
+    composes: container;
+    p { color: $event-color; }
+}
+
+.container-event-series {
+    composes: container;
+    p { color: $event-series-color; }
+}
+
+.container-talent {
+    composes: container;
+    p { color: $talent-color; }
+}
+
+.container-venue {
+    composes: container;
+    p { color: $venue-color; }
+}

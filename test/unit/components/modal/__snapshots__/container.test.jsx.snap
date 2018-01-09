@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a narrow container correctly 1`] = `
+<div
+  styleName="container-narrow"
+>
+  <h1
+    styleName="header"
+  >
+    The Title
+  </h1>
+  <IconButton
+    aria-label="Close modal dialog"
+    icon={[Function]}
+    onClick={[Function]}
+    styleName="close"
+    type="inverse"
+  />
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render a non-dismissable container correctly 1`] = `
+<div
+  styleName="container-narrow"
+>
+  <h1
+    styleName="header"
+  >
+    The Title
+  </h1>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render a wide container correctly 1`] = `
+<div
+  styleName="container-wide"
+>
+  <h1
+    styleName="header"
+  >
+    The Title
+  </h1>
+  <IconButton
+    aria-label="Close modal dialog"
+    icon={[Function]}
+    onClick={[Function]}
+    styleName="close"
+    type="inverse"
+  />
+  <div
+    id="child"
+  />
+</div>
+`;

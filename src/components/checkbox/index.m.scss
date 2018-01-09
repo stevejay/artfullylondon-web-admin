@@ -1,0 +1,70 @@
+@import 'theme.scss';
+
+$checkbox-size: 17px;
+
+.container {
+    position: relative;
+    display: inline-block;
+    backface-visibility: hidden;
+    outline: 0;
+    vertical-align: baseline;
+    font-style: normal;
+    min-height: $checkbox-size;
+    line-height: $checkbox-size;
+    min-width: $checkbox-size;
+    color: $three-quarter-black;
+}
+
+.container-error {
+    composes: container;
+    color: $input-error-color;
+}
+
+.checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0!important;
+    outline: 0;
+    z-index: 2;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    box-sizing: border-box;
+    padding: 0;
+
+    &:focus + :global(label):before {
+        border-color: $input-border-focus-color;
+    }
+}
+
+.label {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    padding-left: 2.4rem;
+    outline: 0;
+
+    &:before {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: $checkbox-size;
+        height: $checkbox-size;
+        content: '';
+        background: $white;
+        border-radius: .21428571rem;
+        transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
+        border: 1px solid $input-border-color;
+    }
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 1px;
+    text-align: center;
+    color: $three-quarter-black;
+    width: $checkbox-size - 2px;
+    height: $checkbox-size - 2px;
+}

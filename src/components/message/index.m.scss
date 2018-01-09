@@ -1,0 +1,137 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    min-height: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: .5rem;
+    font-size: 1.4rem;
+    transition: background-color, .2s, ease-in;
+}
+
+:global(a).message {
+    text-decoration: none;
+
+    &:hover {
+        background-color: darken($almost-white, 2);
+    }
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.8rem;
+}
+
+.text {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column
+}
+
+.title, .detail {
+    line-height: 1.4;
+    margin: 0;
+}
+
+.title {
+    @include boldFont;
+}
+
+.detail {
+    opacity: .85;
+    font-size: 1em;
+}
+
+.title+.detail {
+    margin-top: .2em;
+}
+
+.basic {
+    composes: message;
+    background-color: #fff7c9;
+    color: #211c00;
+
+    .heading {
+        color: #211c00;
+    }
+
+    a {
+        border-bottom-color: lighten(desaturate(#5f5000, 30), 30);
+
+        &:hover {
+            border-bottom-color: #5f5000;
+        }
+    }
+}
+
+.field {
+    composes: message;
+    background-color: $sixteenth-black;
+    color: $three-quarter-black;
+
+    .heading {
+        color: $black;
+    }
+}
+
+.info {
+    composes: message;
+    background-color: #daf4fd;
+    color: #097093;
+
+    .heading {
+        color: darken($info-color, 3);
+    }
+}
+
+.warning {
+    composes: message;
+    background-color: lighten($warning-color, 76);
+    color: $warning-color;
+
+    .heading {
+        color: darken($warning-color, 5);
+    }
+}
+
+.positive, .success {
+    composes: message;
+    background-color: #e5f8d1;
+    color: #3f6910;
+}
+
+.negative, .error {
+    composes: message;
+    background-color: #ffe5e5;
+    color: #960000 ;
+
+    .heading {
+        color: darken($error-color, 3);
+    }
+
+    a {
+        border-bottom-color: #d48e8e;
+
+        &:hover {
+            border-bottom-color: #960000;
+        }
+    }
+}
+
+.validation {
+    composes: message;
+    background-color: lighten($validation-color, 30);
+    color: darken($validation-color, 15);
+
+    .heading {
+        color: darken($validation-color, 18);
+    }
+}

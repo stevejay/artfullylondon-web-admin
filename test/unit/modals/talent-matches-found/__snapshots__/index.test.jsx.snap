@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<ModalContainer
+  dismissable={true}
+  onHide={[Function]}
+  title="Existing Talents Found"
+  type="narrow"
+>
+  <Connect(ReduxForm)
+    onCancel={[Function]}
+    onSubmit={[Function]}
+    talents={
+      Array [
+        Object {
+          "commonRole": "Some role",
+          "firstNames": "First",
+          "lastName": "Last",
+        },
+      ]
+    }
+  />
+</ModalContainer>
+`;

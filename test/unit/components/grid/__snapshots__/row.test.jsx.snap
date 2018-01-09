@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when can delete 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+  <FaClose
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;
+
+exports[`should render correctly when cannot delete 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,17 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    margin: 2rem 2rem 1rem;
+
+    @include below-wide-mobile {
+        margin: 1.5rem 1.5rem .5rem;
+    }
+
+    li {
+        font-size: 1.4rem;
+        margin-bottom: .5rem;
+        &:last-of-type { margin-bottom: 1.5rem; }
+        span { @include boldFont; }
+    }
+}

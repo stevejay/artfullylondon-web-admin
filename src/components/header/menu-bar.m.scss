@@ -1,0 +1,7 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.container {
+    display: flex;
+    align-items: stretch;
+}

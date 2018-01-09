@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render correctly with a style 1`] = `
+<div
+  style={
+    Object {
+      "marginLeft": 5,
+    }
+  }
+  styleName="container"
+>
+  <div
+    id="child"
+  />
+</div>
+`;

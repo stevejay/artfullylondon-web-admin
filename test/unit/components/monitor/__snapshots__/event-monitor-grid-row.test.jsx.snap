@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has a url 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <h2
+      styleName="title"
+    >
+      <a
+        href="http://some/url"
+        rel="noopener"
+        target="_blank"
+      >
+        Some Title
+      </a>
+    </h2>
+    <div />
+  </div>
+  <FaPencil
+    onClick={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;
+
+exports[`should render correctly when has changed 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <h2
+      styleName="title"
+    >
+      <a
+        href="http://some/url"
+        rel="noopener"
+        target="_blank"
+      >
+        Some Title
+      </a>
+    </h2>
+    <div>
+      <span
+        styleName="tag-changed"
+      >
+        changed
+      </span>
+    </div>
+  </div>
+  <FaPencil
+    onClick={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;
+
+exports[`should render correctly when has no url 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <h2
+      styleName="title"
+    >
+      <span>
+        Some Title
+      </span>
+    </h2>
+    <div />
+  </div>
+  <FaPencil
+    onClick={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;
+
+exports[`should render correctly when is ignored 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <h2
+      styleName="title"
+    >
+      <a
+        href="http://some/url"
+        rel="noopener"
+        target="_blank"
+      >
+        Some Title
+      </a>
+    </h2>
+    <div>
+      <span
+        styleName="tag"
+      >
+        ignored
+      </span>
+    </div>
+  </div>
+  <FaPencil
+    onClick={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;
+
+exports[`should render correctly when not in artfully 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="content"
+  >
+    <h2
+      styleName="title"
+    >
+      <a
+        href="http://some/url"
+        rel="noopener"
+        target="_blank"
+      >
+        Some Title
+      </a>
+    </h2>
+    <div>
+      <span
+        styleName="tag-missing"
+      >
+        not in artfully
+      </span>
+    </div>
+  </div>
+  <FaPencil
+    onClick={[Function]}
+    styleName="icon"
+    tabIndex="0"
+  />
+</div>
+`;

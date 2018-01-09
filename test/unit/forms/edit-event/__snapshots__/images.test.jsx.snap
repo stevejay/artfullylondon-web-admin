@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="event"
+      imageActions={Object {}}
+      label="Images"
+      name="images"
+      parentFormName="EditEventImages"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormError
+    error={null}
+  />
+  <FormButtons
+    onCancel={null}
+    onPrevious={[Function]}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

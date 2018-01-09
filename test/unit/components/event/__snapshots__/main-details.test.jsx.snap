@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <FeaturedDetail
+    heading="When"
+  >
+    Event occurrence description
+  </FeaturedDetail>
+  <FeaturedDetail
+    heading="Where"
+  >
+    <Link
+      replace={false}
+      to="/venue/undefined"
+    >
+      Venue Name
+    </Link>
+  </FeaturedDetail>
+  <FeaturedDetail
+    heading="Cost"
+  >
+    Cost description
+  </FeaturedDetail>
+  <FeaturedDetail
+    heading="Booking"
+  >
+    Booking description
+  </FeaturedDetail>
+  <FeaturedDetail
+    heading="Age"
+  >
+    Age description
+  </FeaturedDetail>
+</div>
+`;

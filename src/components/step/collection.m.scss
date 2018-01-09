@@ -1,0 +1,15 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    margin-bottom: 1.5rem;
+    box-shadow: none;
+    border-radius: $border-radius;
+    border: 1px solid $eighth-black;
+    width: 100%;
+
+    @include below-wide-mobile() {
+        flex-direction: column;
+    }
+}

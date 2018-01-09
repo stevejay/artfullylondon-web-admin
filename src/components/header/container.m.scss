@@ -1,0 +1,18 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: $white;
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,.33);
+    z-index: 10;
+    padding: 0 1rem 0 1.5rem;
+    height: 52px;
+
+    @include from-desktop {
+        padding: 0 2rem 0 1rem;
+        height: 80px;
+    }
+}

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a talent placeholder image correctly 1`] = `
+<div
+  role="presentation"
+  styleName="medium"
+>
+  <FaUser
+    styleName="icon"
+  />
+</div>
+`;
+
+exports[`should render a venue placeholder image correctly 1`] = `
+<div
+  role="presentation"
+  styleName="medium"
+>
+  <FaBank
+    styleName="icon"
+  />
+</div>
+`;
+
+exports[`should render an event placeholder image correctly 1`] = `
+<div
+  role="presentation"
+  styleName="medium"
+>
+  <FaStarO
+    styleName="icon"
+  />
+</div>
+`;
+
+exports[`should render an event series placeholder image correctly 1`] = `
+<div
+  role="presentation"
+  styleName="medium"
+>
+  <FaStarO
+    styleName="icon"
+  />
+</div>
+`;

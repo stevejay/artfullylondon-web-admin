@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<ModalContainer
+  dismissable={true}
+  onHide={[Function]}
+  title="Edit Copyright"
+  type="narrow"
+>
+  <Connect(ReduxForm)
+    formData={
+      Object {
+        "copyright": "The Copyright",
+      }
+    }
+    onSubmit={[Function]}
+  />
+</ModalContainer>
+`;

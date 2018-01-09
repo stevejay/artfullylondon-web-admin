@@ -1,0 +1,16 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.label {
+    margin-bottom: .5rem;
+}
+
+.text {
+    margin-left: 2rem;
+    font-style: italic;
+}

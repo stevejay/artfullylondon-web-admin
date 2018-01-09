@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when is current page 1`] = `
+<div
+  styleName="current-page"
+>
+  2
+</div>
+`;
+
+exports[`should render correctly when is not current page 1`] = `
+<button
+  onClick={[Function]}
+  styleName="link-page"
+  type="button"
+>
+  2
+</button>
+`;

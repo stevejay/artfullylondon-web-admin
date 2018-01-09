@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render an info bar for a venue correctly 1`] = `
+<div
+  styleName="container-small"
+>
+  <input
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect="off"
+    maxLength={100}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Enter a search term..."
+    spellCheck={false}
+    styleName="input"
+    type="text"
+    value=""
+  />
+  <ul
+    styleName="results-container"
+  >
+    <li
+      key="some-id"
+    >
+      <a
+        onClick={[Function]}
+        styleName="result-item"
+      >
+        Some Name
+      </a>
+    </li>
+  </ul>
+</div>
+`;

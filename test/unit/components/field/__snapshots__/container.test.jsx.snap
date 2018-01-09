@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <Label
+    disabled={false}
+    error={null}
+    htmlFor="some-id"
+    required={false}
+    tooltip="The Tooltip"
+  >
+    The Label
+  </Label>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<div
+  styleName="container-disabled"
+>
+  <Label
+    disabled={true}
+    error={null}
+    htmlFor="some-id"
+    required={false}
+    tooltip="The Tooltip"
+  >
+    The Label
+  </Label>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render correctly when not touched and with an error 1`] = `
+<div
+  styleName="container"
+>
+  <Label
+    disabled={false}
+    error={null}
+    htmlFor="some-id"
+    required={false}
+    tooltip="The Tooltip"
+  >
+    The Label
+  </Label>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render correctly when touched and with an error 1`] = `
+<div
+  styleName="container"
+>
+  <Label
+    disabled={false}
+    error="Some Error"
+    htmlFor="some-id"
+    required={false}
+    tooltip="The Tooltip"
+  >
+    The Label
+  </Label>
+  <div
+    id="child"
+  />
+  <Error
+    error="Some Error"
+  />
+</div>
+`;
+
+exports[`should render correctly with no label 1`] = `
+<div
+  styleName="container-no-label"
+>
+  <div
+    id="child"
+  />
+</div>
+`;

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <EventTalentComponent
+    talent={
+      SummaryTalent {
+        "entity": Object {
+          "id": "talent-1",
+        },
+      }
+    }
+  />
+  <Pusher />
+  <div
+    styleName="buttons-container"
+  >
+    <IconButton
+      aria-label="Next talent"
+      icon={[Function]}
+      onClick={[Function]}
+      type="default"
+    />
+    <IconButton
+      aria-label="Previous talent"
+      icon={[Function]}
+      onClick={[Function]}
+      type="default"
+    />
+  </div>
+</div>
+`;
+
+exports[`should render correctly when there are no talents 1`] = `""`;
+
+exports[`should render correctly when there is only one talent 1`] = `
+<EventTalentComponent
+  talent={
+    SummaryTalent {
+      "entity": Object {
+        "id": "talent-1",
+      },
+    }
+  }
+/>
+`;

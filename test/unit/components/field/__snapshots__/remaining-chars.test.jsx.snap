@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not active 1`] = `""`;
+
+exports[`should render correctly with no remaining chars 1`] = `
+<div
+  styleName="container"
+>
+  0
+   
+  chars
+</div>
+`;
+
+exports[`should render correctly with one remaining char 1`] = `
+<div
+  styleName="container"
+>
+  1
+   
+  char
+</div>
+`;
+
+exports[`should render correctly with two remaining chars 1`] = `
+<div
+  styleName="container"
+>
+  2
+   
+  chars
+</div>
+`;

@@ -1,0 +1,46 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+  position: relative;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, .5);
+  margin-bottom: 1.5rem;
+  width: 500px;
+  max-width: 100%;
+  pointer-events: auto;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.container-success {
+  composes: container;
+  background-color: #68bd0a;
+}
+
+.container-error {
+  composes: container;
+  background-color: #d0011b;
+}
+
+.title {
+  @include extraBoldFont;
+  margin: 0 0 .5rem 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.message {
+  margin: 0;
+  padding: 0;
+}
+
+.title,
+.message {
+  font-size: 1.6rem;
+  color: white;
+  line-height: 1.4;
+}

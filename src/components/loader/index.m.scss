@@ -1,0 +1,69 @@
+@import 'mixins.scss';
+
+@-webkit-keyframes loader {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.tiny-default {
+  @include loader(1rem);
+}
+
+.small-default {
+  @include loader(1.5rem);
+}
+
+.medium-default {
+  @include loader(2rem);
+}
+
+.large-default {
+  @include loader(4rem);
+}
+
+.massive-default {
+  @include loader(6rem);
+}
+
+.modal-default {
+  @include loader(14rem);
+}
+
+.tiny-inverse {
+  @include loader-inverse(1rem);
+}
+
+.small-inverse {
+  @include loader-inverse(1.5rem);
+}
+
+.medium-inverse {
+  @include loader-inverse(2rem);
+}
+
+.large-inverse {
+  @include loader-inverse(4rem);
+}
+
+.massive-inverse {
+  @include loader-inverse(6rem);
+}

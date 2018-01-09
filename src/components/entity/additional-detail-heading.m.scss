@@ -1,0 +1,11 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    @include extraBoldFont;
+    color: $three-quarter-black;
+    margin: 0 0 .5rem 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}

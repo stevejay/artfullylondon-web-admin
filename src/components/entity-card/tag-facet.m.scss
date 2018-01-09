@@ -1,0 +1,25 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.tag {
+    @include boldFont;
+    display: inline-block;
+    margin-right: .75rem;
+    padding: .2rem .7rem;
+    background: #DDD;
+    font-style: normal;
+    border-radius: 3px;
+    color: $white;
+}
+
+.tag-default {
+    composes: tag;
+    background-color: $sixteenth-black;
+    color: $three-quarter-black;
+    // background-color: #545050;
+}
+
+.tag-error {
+    composes: tag;
+    background-color: #D0011B;
+}

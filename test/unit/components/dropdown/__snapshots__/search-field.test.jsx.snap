@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <Dropdown
+    disabled={false}
+    error={false}
+    htmlId="some-id"
+    labelKey="label"
+    multi={false}
+    name="The Label"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    searchable={false}
+    simpleValue={false}
+    styleName="dropdown"
+    value="term"
+    valueKey="value"
+  />
+  <ResetButton
+    disabled={false}
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<div
+  styleName="container"
+>
+  <Dropdown
+    disabled={true}
+    error={false}
+    htmlId="some-id"
+    labelKey="label"
+    multi={false}
+    name="The Label"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    searchable={false}
+    simpleValue={false}
+    styleName="dropdown"
+    value="term"
+    valueKey="value"
+  />
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  styleName="container"
+>
+  <Dropdown
+    disabled={false}
+    error={true}
+    htmlId="some-id"
+    labelKey="label"
+    multi={false}
+    name="The Label"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    searchable={false}
+    simpleValue={false}
+    styleName="dropdown"
+    value="term"
+    valueKey="value"
+  />
+  <ResetButton
+    disabled={false}
+    onClick={[Function]}
+  />
+</div>
+`;

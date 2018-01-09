@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render an info bar for a venue correctly 1`] = `
+<div>
+  <FormRow>
+    <Container
+      htmlFor="The Search Label"
+      label="The Search Label"
+    >
+      <SearchInput
+        autocompleteItems={Array []}
+        autocompleteMinSearchTermLength={2}
+        maxLength={100}
+        onAutocompleteClear={[Function]}
+        onAutocompleteResultSelect={[Function]}
+        onAutocompleteSearch={[Function]}
+        placeholder="Enter a search term..."
+        searchInProgress={false}
+        size="small"
+      />
+    </Container>
+  </FormRow>
+  <FormError
+    error={null}
+  />
+</div>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has children 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render correctly when has no children 1`] = `<NoEntries />`;

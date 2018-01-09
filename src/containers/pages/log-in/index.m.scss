@@ -1,0 +1,11 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    justify-content: center;
+}
+
+.message-content {
+    font-size: 1.6rem;
+    color: $black;
+}

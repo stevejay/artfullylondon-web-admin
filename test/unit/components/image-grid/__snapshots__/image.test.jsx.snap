@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has an image id 1`] = `
+<img
+  src="https://images.test.com/im/ag/image-id/120x120.jpg"
+  styleName="small"
+/>
+`;
+
+exports[`should render correctly when has no image id 1`] = `
+<ImagePlaceholder
+  size="small"
+  type="venue"
+/>
+`;

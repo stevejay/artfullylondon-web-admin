@@ -1,0 +1,143 @@
+{
+  "name": "artfullylondon-web-admin",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/stevejay/artfullylondon-web-admin",
+  "scripts": {
+    "build": "rimraf ./build && NODE_ENV=production webpack --config webpack/config.prod.js --bail",
+    "deploy": "firebase deploy",
+    "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
+    "build-deploy": "yarn run build && yarn run deploy",
+    "lint": "standard",
+    "test": "jest --no-cache"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/jest-raf-shim.js",
+      "./test/jest-setup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    }
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "./node_modules",
+      "./build"
+    ],
+    "env": {
+      "jest": true
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.2",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.1.2",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-webpack-alias": "^2.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "browser-sync": "^2.18.13",
+    "cheerio": "^1.0.0-rc.2",
+    "connect-history-api-fallback": "^1.5.0",
+    "copy-webpack-plugin": "^4.2.3",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.4",
+    "css-modules-require-hook": "^4.0.6",
+    "deep-freeze": "0.0.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
+    "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "favicons-webpack-plugin": "0.0.7",
+    "file-loader": "^1.1.5",
+    "get-port-cli": "^1.1.0",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy": "^1.16.2",
+    "identity-obj-proxy": "^3.0.0",
+    "inline-manifest-webpack-plugin": "^3.0.1",
+    "jest": "^21.2.1",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
+    "json-loader": "^0.5.7",
+    "lodash-webpack-plugin": "^0.11.4",
+    "lodash.merge": "^4.6.0",
+    "mocha": "^4.0.1",
+    "node-sass": "^4.7.2",
+    "null-loader": "^0.1.1",
+    "postcss-loader": "^2.0.9",
+    "postcss-scss": "^1.0.2",
+    "react-test-renderer": "^16.2.0",
+    "react-transform-hmr": "^1.0.4",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-log-monitor": "^1.4.0",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
+    "scss-mixins-spinners": "^1.0.3",
+    "source-map-loader": "^0.2.3",
+    "standard": "^11.0.0-beta.0",
+    "stripcomment-loader": "^0.1.0",
+    "style-loader": "^0.19.0",
+    "svg-inline-loader": "^0.8.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-hot-middleware": "^2.21.0"
+  },
+  "devEngines": {
+    "node": "8.x"
+  },
+  "dependencies": {
+    "amazon-cognito-identity-js": "^1.28.0",
+    "aws-sdk": "^2.167.0",
+    "babel-plugin-react-css-modules": "^3.3.2",
+    "babel-polyfill": "^6.23.0",
+    "backo": "^1.1.0",
+    "ensure-request": "^4.0.0",
+    "global": "^4.3.2",
+    "jsbn": "^1.1.0",
+    "lodash": "^4.17.4",
+    "lodash-uuid": "0.0.3",
+    "moment": "~2.18.1",
+    "moment-timezone": "~0.5.13",
+    "normalise-request": "^1.4.4",
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0",
+    "react-day-picker": "^7.0.5",
+    "react-dom": "^16.2.0",
+    "react-google-maps": "^9.4.2",
+    "react-icons": "^2.2.7",
+    "react-image-gallery": "^0.8.6",
+    "react-lazyload": "^2.3.0",
+    "react-overlays": "^0.8.3",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "react-rte": "^0.15.0",
+    "react-select": "^1.1.0",
+    "react-transition-group": "^2.2.1",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-form": "^7.2.0",
+    "redux-saga": "^0.16.0",
+    "sjcl": "^1.0.7",
+    "smart-outline": "0.0.5"
+  },
+  "resolutions": {
+    "moment-timezone/moment": "2.18.1",
+    "react-date-picker/moment": "2.18.1"
+  }
+}

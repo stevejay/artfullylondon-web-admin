@@ -1,0 +1,11 @@
+.logo {
+    text-decoration: none;
+    border-bottom: none;
+    display: inline-flex;
+    align-items: center;
+    flex-grow: 0;
+
+    &:hover {
+        border-bottom: none;
+    }
+}

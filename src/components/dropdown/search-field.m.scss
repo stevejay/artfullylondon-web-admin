@@ -1,0 +1,17 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+
+    button {
+        margin-left: 1rem;
+    }
+ }
+
+.dropdown {
+    flex-grow: 1;
+}

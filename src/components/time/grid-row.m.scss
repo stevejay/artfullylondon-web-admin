@@ -1,0 +1,30 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.date,
+.time,
+.times-range {
+    display: inline-block;
+    min-width: 8em;
+}
+
+.tags {
+    margin-left: 1rem;
+    display: inline-block;
+    visibility: visible;
+
+    @include below-wide-mobile {
+        display: block;
+        margin-left: 0;
+    }
+}
+
+.tag {
+    font-size: 1.2rem;
+    display: inline-block;;
+    border-radius: 500rem;
+    color: $white;
+    background-color: $quarter-black;
+    padding: .1rem .9rem;
+    margin: 0 .5rem 0 0;
+}

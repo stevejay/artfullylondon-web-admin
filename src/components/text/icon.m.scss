@@ -1,0 +1,14 @@
+@import 'theme.scss';
+
+.icon {
+    position: absolute;
+    top: .9rem;
+    left: .7rem;
+    width: 2rem;
+    height: 2rem;
+    color: $third-black;
+}
+
+.icon + :global(input) {
+    padding-left: 3.3rem;
+}

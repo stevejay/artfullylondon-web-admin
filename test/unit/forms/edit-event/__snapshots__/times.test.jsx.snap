@@ -1,0 +1,489 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly for a performance 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "dateFrom": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "dateTo": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "Date To is not greate than Date From",
+            },
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "label": Object {
+            "length": Object {
+              "maximum": 20,
+              "minimum": 1,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Times Ranges"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="timesRanges"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "at": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Performances"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="additionalPerformances"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "at": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "day": Object {
+            "format": /\\^\\[0123456\\]\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Performance Times"
+      name="performances"
+      parentFormName="EditEventTimes"
+      timesRangesOptions={
+        Object {
+          "some": "options",
+        }
+      }
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "at": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Additional Performances"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="additionalPerformances"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      audienceTags={
+        Array [
+          Object {
+            "id": "audience/a",
+            "label": "A",
+          },
+        ]
+      }
+      component={[Function]}
+      constraint={
+        Object {
+          "at": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "audienceTags": Object {
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Special Performances"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="specialPerformances"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "at": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Closures"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="performancesClosures"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormError
+    error={null}
+  />
+  <FormButtons
+    onCancel={null}
+    onPrevious={[Function]}
+    submitLabel="Next"
+    submitting={false}
+  />
+</Form>
+`;
+
+exports[`should render correctly for an exhibition 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      checkboxLabel="Use the venue's opening times"
+      component={[Function]}
+      label="Venue Opening Times"
+      name="useVenueOpeningTimes"
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "dateFrom": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "dateTo": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "Date To is not greate than Date From",
+            },
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "label": Object {
+            "length": Object {
+              "maximum": 20,
+              "minimum": 1,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Times Ranges"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="timesRanges"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Opening Times"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="additionalOpeningTimes"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "day": Object {
+            "format": /\\^\\[0123456\\]\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Opening Times"
+      name="openingTimes"
+      parentFormName="EditEventTimes"
+      timesRangesOptions={
+        Object {
+          "some": "options",
+        }
+      }
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Additional Opening Times"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="additionalOpeningTimes"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      audienceTags={
+        Array [
+          Object {
+            "id": "audience/a",
+            "label": "A",
+          },
+        ]
+      }
+      component={[Function]}
+      constraint={
+        Object {
+          "audienceTags": Object {
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Special Openings"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="specialOpeningTimes"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Closures"
+      maxDate="2017/08/28"
+      minDate="2017/01/18"
+      name="openingTimesClosures"
+      parentFormName="EditEventTimes"
+      showModal={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormError
+    error={null}
+  />
+  <FormButtons
+    onCancel={null}
+    onPrevious={[Function]}
+    submitLabel="Next"
+    submitting={false}
+  />
+</Form>
+`;

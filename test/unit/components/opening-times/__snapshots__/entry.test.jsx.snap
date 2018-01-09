@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render additional times correctly 1`] = `
+<div>
+  <div
+    key="The Label0"
+  >
+    <span
+      styleName="label-additional"
+    >
+      The Label
+    </span>
+    <span
+      styleName="time"
+    >
+      Time 1
+    </span>
+  </div>
+  <div
+    key="The Label1"
+  >
+    <span
+      styleName="label-additional"
+    />
+    <span
+      styleName="time"
+    >
+      Time 2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`should render basic times correctly 1`] = `
+<div>
+  <div
+    key="The Label0"
+  >
+    <span
+      styleName="label-basic"
+    >
+      The Label
+    </span>
+    <span
+      styleName="time"
+    >
+      Time 1
+    </span>
+  </div>
+  <div
+    key="The Label1"
+  >
+    <span
+      styleName="label-basic"
+    />
+    <span
+      styleName="time"
+    >
+      Time 2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`should render closure times correctly 1`] = `
+<div>
+  <div
+    key="The Label0"
+  >
+    <span
+      styleName="label-closure"
+    >
+      The Label
+    </span>
+    <span
+      styleName="time"
+    >
+      Time 1
+    </span>
+  </div>
+  <div
+    key="The Label1"
+  >
+    <span
+      styleName="label-closure"
+    />
+    <span
+      styleName="time"
+    >
+      Time 2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`should render no times correctly 1`] = `
+<div>
+  <span
+    styleName="label-basic"
+  >
+    The Label
+  </span>
+  <span
+    styleName="time"
+  >
+    Closed
+  </span>
+</div>
+`;
+
+exports[`should render special times correctly 1`] = `
+<div>
+  <div
+    key="The Label0"
+  >
+    <span
+      styleName="label-special"
+    >
+      The Label
+    </span>
+    <span
+      styleName="time"
+    >
+      Time 1
+    </span>
+  </div>
+  <div
+    key="The Label1"
+  >
+    <span
+      styleName="label-special"
+    />
+    <span
+      styleName="time"
+    >
+      Time 2
+    </span>
+  </div>
+</div>
+`;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <FaThumbsODown
+    styleName="icon"
+  />
+  <p
+    styleName="message"
+  >
+    Nothing found
+  </p>
+  <p
+    styleName="action"
+  >
+    Try searching all by 
+    <a
+      onClick={[Function]}
+    >
+      clicking here
+    </a>
+  </p>
+</div>
+`;

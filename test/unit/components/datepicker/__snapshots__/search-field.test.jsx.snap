@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="text-wrapper"
+  >
+    <Text
+      autos={true}
+      disabled={false}
+      error={false}
+      forceSingleLine={true}
+      id="some-id"
+      maxLength={100}
+      onClick={[Function]}
+      password={false}
+      placeholder=""
+      readOnly={true}
+      styleName="text"
+      value="2017/01/01"
+    />
+  </div>
+  <ResetButton
+    disabled={false}
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`should render correctly when it has an error 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="text-wrapper"
+  >
+    <Text
+      autos={true}
+      disabled={false}
+      error={true}
+      forceSingleLine={true}
+      id="some-id"
+      maxLength={100}
+      onClick={[Function]}
+      password={false}
+      placeholder=""
+      readOnly={true}
+      styleName="text"
+      value="2017/01/01"
+    />
+  </div>
+  <ResetButton
+    disabled={false}
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`should render correctly when it has no value 1`] = `
+<div
+  styleName="container"
+>
+  <div
+    styleName="text-wrapper"
+  >
+    <Text
+      autos={true}
+      disabled={false}
+      error={false}
+      forceSingleLine={true}
+      id="some-id"
+      maxLength={100}
+      onClick={[Function]}
+      password={false}
+      placeholder=""
+      readOnly={true}
+      styleName="text"
+      value="Select a date..."
+    />
+  </div>
+  <ResetButton
+    disabled={false}
+    onClick={[Function]}
+  />
+</div>
+`;

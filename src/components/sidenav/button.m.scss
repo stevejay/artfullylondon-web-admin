@@ -1,0 +1,21 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.button {
+    @include regularFont;
+    @include noDefaultAnchorStyling;
+    @include unstyledButton;
+    display: block;
+    width: 100%;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 1em;
+    padding: .8em 0 .6em;
+    line-height: 1;
+    color: $three-quarter-black;
+    transition: color .1s ease-in-out;
+
+    &:hover {
+        color: $black;
+    }
+}

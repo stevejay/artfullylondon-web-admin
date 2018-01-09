@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName=""
+>
+  <Select
+    arrowRenderer={[Function]}
+    autoBlur={true}
+    autosize={true}
+    backspaceRemoves={true}
+    backspaceToRemoveMessage=""
+    clearAllText="Clear all"
+    clearRenderer={[Function]}
+    clearValueText="Clear value"
+    clearable={false}
+    closeOnSelect={true}
+    deleteRemoves={true}
+    delimiter=","
+    disabled={false}
+    escapeClearsValue={true}
+    filterOptions={[Function]}
+    id="some-id"
+    ignoreAccents={true}
+    ignoreCase={true}
+    inputProps={Object {}}
+    isLoading={false}
+    joinValues={false}
+    labelKey="label"
+    matchPos="any"
+    matchProp="any"
+    menuBuffer={0}
+    menuRenderer={[Function]}
+    multi={false}
+    name="The Name"
+    noResultsText="No results found"
+    onBlurResetsInput={true}
+    onChange={[Function]}
+    onCloseResetsInput={true}
+    onSelectResetsInput={true}
+    openOnClick={true}
+    optionComponent={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    pageSize={5}
+    placeholder="Select..."
+    removeSelected={true}
+    required={false}
+    rtl={false}
+    scrollMenuIntoView={true}
+    searchable={false}
+    simpleValue={false}
+    tabIndex="0"
+    tabSelectsValue={true}
+    trimFilter={true}
+    value="term"
+    valueComponent={[Function]}
+    valueKey="value"
+  />
+</div>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<div
+  styleName=""
+>
+  <Select
+    arrowRenderer={[Function]}
+    autoBlur={true}
+    autosize={true}
+    backspaceRemoves={true}
+    backspaceToRemoveMessage=""
+    clearAllText="Clear all"
+    clearRenderer={[Function]}
+    clearValueText="Clear value"
+    clearable={false}
+    closeOnSelect={true}
+    deleteRemoves={true}
+    delimiter=","
+    disabled={true}
+    escapeClearsValue={true}
+    filterOptions={[Function]}
+    id="some-id"
+    ignoreAccents={true}
+    ignoreCase={true}
+    inputProps={Object {}}
+    isLoading={false}
+    joinValues={false}
+    labelKey="label"
+    matchPos="any"
+    matchProp="any"
+    menuBuffer={0}
+    menuRenderer={[Function]}
+    multi={false}
+    name="The Name"
+    noResultsText="No results found"
+    onBlurResetsInput={true}
+    onChange={[Function]}
+    onCloseResetsInput={true}
+    onSelectResetsInput={true}
+    openOnClick={true}
+    optionComponent={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    pageSize={5}
+    placeholder="Select..."
+    removeSelected={true}
+    required={false}
+    rtl={false}
+    scrollMenuIntoView={true}
+    searchable={false}
+    simpleValue={false}
+    tabIndex="-1"
+    tabSelectsValue={true}
+    trimFilter={true}
+    value="term"
+    valueComponent={[Function]}
+    valueKey="value"
+  />
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  styleName="error"
+>
+  <Select
+    arrowRenderer={[Function]}
+    autoBlur={true}
+    autosize={true}
+    backspaceRemoves={true}
+    backspaceToRemoveMessage=""
+    clearAllText="Clear all"
+    clearRenderer={[Function]}
+    clearValueText="Clear value"
+    clearable={false}
+    closeOnSelect={true}
+    deleteRemoves={true}
+    delimiter=","
+    disabled={false}
+    escapeClearsValue={true}
+    filterOptions={[Function]}
+    id="some-id"
+    ignoreAccents={true}
+    ignoreCase={true}
+    inputProps={Object {}}
+    isLoading={false}
+    joinValues={false}
+    labelKey="label"
+    matchPos="any"
+    matchProp="any"
+    menuBuffer={0}
+    menuRenderer={[Function]}
+    multi={false}
+    name="The Name"
+    noResultsText="No results found"
+    onBlurResetsInput={true}
+    onChange={[Function]}
+    onCloseResetsInput={true}
+    onSelectResetsInput={true}
+    openOnClick={true}
+    optionComponent={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "A",
+          "value": "a",
+        },
+      ]
+    }
+    pageSize={5}
+    placeholder="Select..."
+    removeSelected={true}
+    required={false}
+    rtl={false}
+    scrollMenuIntoView={true}
+    searchable={false}
+    simpleValue={false}
+    tabIndex="0"
+    tabSelectsValue={true}
+    trimFilter={true}
+    value="term"
+    valueComponent={[Function]}
+    valueKey="value"
+  />
+</div>
+`;

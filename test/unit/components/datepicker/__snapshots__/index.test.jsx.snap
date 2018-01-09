@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Text
+  autos={true}
+  disabled={false}
+  error={null}
+  forceSingleLine={true}
+  icon={[Function]}
+  id="some-id"
+  maxLength={20}
+  onClick={[Function]}
+  password={false}
+  placeholder="The Placeholder"
+  readOnly={true}
+  touched={false}
+  value="2017-01-01"
+/>
+`;

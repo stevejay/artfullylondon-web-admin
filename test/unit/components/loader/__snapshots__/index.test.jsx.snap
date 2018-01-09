@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a large inverse loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="large-inverse"
+/>
+`;
+
+exports[`should render a massive loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="massive-default"
+/>
+`;
+
+exports[`should render a medium loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="medium-default"
+/>
+`;
+
+exports[`should render a modal loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="modal-default"
+/>
+`;
+
+exports[`should render a small inverse loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="small-inverse"
+/>
+`;
+
+exports[`should render a tiny loader correctly 1`] = `
+<div
+  aria-busy={true}
+  role="alert"
+  styleName="tiny-default"
+/>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<EntityCard
+  entity={
+    SummaryVenue {
+      "entity": Object {
+        "id": "some-venue-id",
+      },
+      "postcodeDistrict": undefined,
+    }
+  }
+>
+  <div
+    dateStr="2017/01/18"
+    entity={
+      SummaryVenue {
+        "entity": Object {
+          "id": "some-venue-id",
+        },
+        "postcodeDistrict": undefined,
+      }
+    }
+  />
+  <div
+    styleName="actions-row"
+  >
+    <Pusher />
+    <Link
+      data-url="/venue/some-venue-id"
+      onClick={[Function]}
+      replace={false}
+      styleName="goto-entity"
+      to="/venue/some-venue-id"
+    >
+      <FaArrowCircleRight
+        styleName="goto-entity-icon"
+      />
+    </Link>
+  </div>
+</EntityCard>
+`;

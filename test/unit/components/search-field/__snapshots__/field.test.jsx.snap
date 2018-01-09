@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="container"
+>
+  <Connect(SearchField)
+    disabled={false}
+    maxLength={50}
+    onChange={[Function]}
+    onFullSearch={[Function]}
+    searchInProgress={false}
+    value="term"
+  />
+</div>
+`;

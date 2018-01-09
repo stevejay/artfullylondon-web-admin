@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onKeyPress={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    styleName="top-inputs-container"
+  >
+    <FormHeading>
+      <span>
+        Quick
+      </span>
+       Search
+    </FormHeading>
+    <FormRow
+      styleName="row"
+    >
+      <Field
+        autoFocus={false}
+        component={[Function]}
+        disabled={false}
+        handleSubmit={[Function]}
+        maxLength={100}
+        name="term"
+        placeholder="Enter a venue name…"
+        searchInProgress={false}
+      />
+    </FormRow>
+  </div>
+  <div
+    styleName="bottom-inputs-container"
+  >
+    <FormRow
+      styleName="row"
+    >
+      <label
+        styleName="label"
+      >
+        Search within
+      </label>
+      <Field
+        component={[Function]}
+        containerStyle={
+          Object {
+            "margin": 0,
+            "paddingTop": 0,
+            "width": "100%",
+          }
+        }
+        name="entityType"
+        options={
+          Array [
+            Object {
+              "id": "event",
+              "label": "Events",
+            },
+            Object {
+              "id": "venue",
+              "label": "Venues",
+            },
+            Object {
+              "id": "talent",
+              "label": "Talents",
+            },
+            Object {
+              "id": "all",
+              "label": "All",
+            },
+          ]
+        }
+      />
+    </FormRow>
+  </div>
+</Form>
+`;
+
+exports[`should render correctly when has an error 1`] = `
+<Form
+  onKeyPress={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    styleName="top-inputs-container"
+  >
+    <FormHeading>
+      <span>
+        Quick
+      </span>
+       Search
+    </FormHeading>
+    <FormRow
+      styleName="row"
+    >
+      <Field
+        autoFocus={false}
+        component={[Function]}
+        disabled={false}
+        handleSubmit={[Function]}
+        maxLength={100}
+        name="term"
+        placeholder="Enter a venue name…"
+        searchInProgress={false}
+      />
+    </FormRow>
+  </div>
+  <div
+    styleName="bottom-inputs-container"
+  >
+    <Message
+      showIcon={false}
+      type="error"
+    >
+      The Error
+    </Message>
+    <FormRow
+      styleName="row"
+    >
+      <label
+        styleName="label"
+      >
+        Search within
+      </label>
+      <Field
+        component={[Function]}
+        containerStyle={
+          Object {
+            "margin": 0,
+            "paddingTop": 0,
+            "width": "100%",
+          }
+        }
+        name="entityType"
+        options={
+          Array [
+            Object {
+              "id": "event",
+              "label": "Events",
+            },
+            Object {
+              "id": "venue",
+              "label": "Venues",
+            },
+            Object {
+              "id": "talent",
+              "label": "Talents",
+            },
+            Object {
+              "id": "all",
+              "label": "All",
+            },
+          ]
+        }
+      />
+    </FormRow>
+  </div>
+</Form>
+`;

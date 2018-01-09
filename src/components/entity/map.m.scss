@@ -1,0 +1,21 @@
+@import 'theme.scss';
+
+.container {
+    display: block;
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 1.5rem;
+    border: 1px solid $eighth-black;
+    border-radius: $border-radius;
+}
+
+:global(.entity-map) {
+    display: block;
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 1.5rem;
+    border: 1px solid $eighth-black;
+    border-radius: $border-radius;
+}

@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when logged in 1`] = `
+<SidenavModal
+  onHide={[Function]}
+  show={true}
+>
+  <HeaderLogo
+    onClick={[Function]}
+    size="small"
+  />
+  <Menu
+    id="Menu Label"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "Item A",
+          "match": /foo/,
+          "path": "/path/a",
+        },
+      ]
+    }
+    key="Menu Label"
+    label="Menu Label"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <SidenavButton
+    label="Log Out"
+    onClick={[Function]}
+  />
+</SidenavModal>
+`;
+
+exports[`should render correctly when logged out 1`] = `
+<SidenavModal
+  onHide={[Function]}
+  show={true}
+>
+  <HeaderLogo
+    onClick={[Function]}
+    size="small"
+  />
+  <Menu
+    id="Menu Label"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "Item A",
+          "match": /foo/,
+          "path": "/path/a",
+        },
+      ]
+    }
+    key="Menu Label"
+    label="Menu Label"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <SidenavButton
+    label="Log In / Register"
+    onClick={[Function]}
+  />
+</SidenavModal>
+`;
+
+exports[`should render correctly when not showing 1`] = `
+<SidenavModal
+  onHide={[Function]}
+  show={false}
+>
+  <HeaderLogo
+    onClick={[Function]}
+    size="small"
+  />
+  <Menu
+    id="Menu Label"
+    idOfOpenMenu={null}
+    items={
+      Array [
+        Object {
+          "label": "Item A",
+          "match": /foo/,
+          "path": "/path/a",
+        },
+      ]
+    }
+    key="Menu Label"
+    label="Menu Label"
+    onExpanderChange={[Function]}
+    onLinkClick={[Function]}
+  />
+  <SidenavButton
+    label="Log Out"
+    onClick={[Function]}
+  />
+</SidenavModal>
+`;

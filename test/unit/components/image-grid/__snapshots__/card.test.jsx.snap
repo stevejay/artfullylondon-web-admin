@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has a copyright 1`] = `
+<div
+  styleName="card"
+>
+  <Image
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    styleName="details-container"
+  >
+    <p>
+      <strong>
+        ©
+      </strong>
+       
+      The Copyright
+    </p>
+    <div
+      styleName="toolbar"
+    >
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaHeart
+          styleName="icon"
+        />
+      </a>
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaTrashO
+          styleName="icon"
+        />
+      </a>
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaPencil
+          styleName="icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when is main 1`] = `
+<div
+  styleName="card"
+>
+  <Image
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    styleName="details-container"
+  >
+    <p
+      styleName="no-copyright"
+    >
+      No Copyright String
+    </p>
+    <div
+      styleName="toolbar"
+    >
+      <FaHeart
+        styleName="icon-main"
+      />
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaTrashO
+          styleName="icon"
+        />
+      </a>
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaPencil
+          styleName="icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when is not main 1`] = `
+<div
+  styleName="card"
+>
+  <Image
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    styleName="details-container"
+  >
+    <p
+      styleName="no-copyright"
+    >
+      No Copyright String
+    </p>
+    <div
+      styleName="toolbar"
+    >
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaHeart
+          styleName="icon"
+        />
+      </a>
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaTrashO
+          styleName="icon"
+        />
+      </a>
+      <a
+        onClick={[Function]}
+        styleName="link"
+      >
+        <FaPencil
+          styleName="icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,15 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.container {
+  z-index: 100;
+  position: absolute;
+  left: 1.8rem;
+  right: 1.8rem;
+  top: 5rem;
+  background-color: $white;
+  padding: .5rem 0;
+  font-size: 1.6rem;
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
+}

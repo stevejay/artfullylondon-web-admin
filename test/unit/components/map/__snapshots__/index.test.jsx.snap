@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<withScriptjs(withGoogleMap(Component))
+  containerElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+  defaultCenter={
+    Object {
+      "lat": 33,
+      "lng": 44,
+    }
+  }
+  defaultZoom={14}
+  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=undefined"
+  loadingElement={
+    <div
+      className="map"
+    />
+  }
+  mapElement={
+    <div
+      className="map"
+    />
+  }
+  onClick={[Function]}
+  value={
+    Object {
+      "lat": 11,
+      "lng": 22,
+    }
+  }
+/>
+`;

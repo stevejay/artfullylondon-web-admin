@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with an icon 1`] = `
+<FaClose
+  styleName="icon"
+/>
+`;
+
+exports[`should render correctly with no icon 1`] = `""`;

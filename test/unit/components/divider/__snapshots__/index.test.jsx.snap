@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default divider correctly 1`] = `
+<div
+  role="presentation"
+  styleName="basic"
+/>
+`;
+
+exports[`should render a hidden divider correctly 1`] = `
+<div
+  role="presentation"
+  styleName="hidden"
+/>
+`;
+
+exports[`should render a threedee divider correctly 1`] = `
+<div
+  role="presentation"
+  styleName="threedee"
+/>
+`;

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not showing 1`] = `
+<Modal
+  aria-label="Navigation menu"
+  autoFocus={true}
+  backdrop={true}
+  backdropClassName="backdrop"
+  enforceFocus={true}
+  keyboard={true}
+  manager={
+    ModalManager {
+      "add": [Function],
+      "containers": Array [],
+      "data": Array [],
+      "handleContainerOverflow": true,
+      "hideSiblingNodes": true,
+      "isTopModal": [Function],
+      "modals": Array [],
+      "remove": [Function],
+    }
+  }
+  onHide={[Function]}
+  renderBackdrop={[Function]}
+  restoreFocus={true}
+  show={false}
+  styleName="modal"
+  timeout={250}
+  transition={[Function]}
+>
+  <div
+    className="nocontent"
+    role="navigation"
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</Modal>
+`;
+
+exports[`should render correctly when showing 1`] = `
+<Modal
+  aria-label="Navigation menu"
+  autoFocus={true}
+  backdrop={true}
+  backdropClassName="backdrop"
+  enforceFocus={true}
+  keyboard={true}
+  manager={
+    ModalManager {
+      "add": [Function],
+      "containers": Array [],
+      "data": Array [],
+      "handleContainerOverflow": true,
+      "hideSiblingNodes": true,
+      "isTopModal": [Function],
+      "modals": Array [],
+      "remove": [Function],
+    }
+  }
+  onHide={[Function]}
+  renderBackdrop={[Function]}
+  restoreFocus={true}
+  show={true}
+  styleName="modal"
+  timeout={250}
+  transition={[Function]}
+>
+  <div
+    className="nocontent"
+    role="navigation"
+    styleName="content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</Modal>
+`;

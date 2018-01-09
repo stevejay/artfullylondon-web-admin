@@ -1,0 +1,14 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.background {
+    margin-bottom: 1.5rem;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    min-height: 200px;
+}

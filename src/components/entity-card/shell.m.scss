@@ -1,0 +1,34 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: calc(250px + 3rem + 2px);
+    max-width: calc(250px + 3rem + 2px);
+    margin: .75rem .5rem;
+    flex-grow: 1;
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid $quarter-black;
+    background-color: $white;
+    align-self: stretch;
+}
+
+.detail {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+:global(.entitycard-appear) {
+    opacity: 0.01;
+}
+
+:global(.entitycard-appear.entitycard-appear-active) {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+}

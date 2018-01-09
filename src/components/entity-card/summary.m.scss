@@ -1,0 +1,9 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.summary {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+    color: $three-quarter-black;
+}

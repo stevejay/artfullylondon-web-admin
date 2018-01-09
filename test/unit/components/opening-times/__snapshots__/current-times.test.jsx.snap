@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  styleName="summary-container"
+>
+  <FeaturedDetail
+    heading="Today"
+  >
+    Today Description
+  </FeaturedDetail>
+  <FeaturedDetail
+    heading="Tomorrow"
+  >
+    Tomorrow Description
+  </FeaturedDetail>
+</div>
+`;
+
+exports[`should render correctly when no descriptions 1`] = `""`;

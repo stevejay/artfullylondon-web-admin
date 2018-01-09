@@ -1,0 +1,36 @@
+@import 'mixins.scss';
+@import 'theme.scss';
+
+.label {
+    @include extraBoldFont;
+    position: absolute;
+    z-index: 1;
+    top: 1.5rem; left: 1.5rem;
+    font-size: 1.6rem;
+    color: $white;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: .7rem 1rem;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.event {
+    composes: label;
+    background-color: $event-color;
+}
+
+.event-series {
+    composes: label;
+    background-color: $event-series-color;
+}
+
+.talent {
+    composes: label;
+    background-color: $talent-color;
+}
+
+.venue {
+    composes: label;
+    background-color: $venue-color;
+}

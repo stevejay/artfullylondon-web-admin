@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      label="Medium Tags"
+      multi={true}
+      name="mediumTags"
+      options={
+        Array [
+          Object {
+            "id": "medium/a",
+            "label": "A",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+      valueKey="id"
+    />
+    <ButtonField
+      label="New…"
+      onClick={[Function]}
+      submitting={false}
+      type="button"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      label="Style Tags"
+      multi={true}
+      name="styleTags"
+      options={
+        Array [
+          Object {
+            "id": "style/a",
+            "label": "A",
+          },
+        ]
+      }
+      required={false}
+      searchable={false}
+      valueKey="id"
+    />
+    <ButtonField
+      label="New…"
+      onClick={[Function]}
+      submitting={false}
+      type="button"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      label="Audience Tags"
+      multi={true}
+      name="audienceTags"
+      options={
+        Array [
+          Object {
+            "id": "audience/a",
+            "label": "A",
+          },
+        ]
+      }
+      required={false}
+      searchable={false}
+      valueKey="id"
+    />
+    <ButtonField
+      label="New…"
+      onClick={[Function]}
+      submitting={false}
+      type="button"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      label="Geo Tags"
+      multi={true}
+      name="geoTags"
+      options={
+        Array [
+          Object {
+            "id": "geo/a",
+            "label": "A",
+          },
+        ]
+      }
+      required={false}
+      searchable={false}
+      valueKey="id"
+    />
+    <ButtonField
+      label="New…"
+      onClick={[Function]}
+      submitting={false}
+      type="button"
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormError
+    error={null}
+  />
+  <FormButtons
+    onCancel={null}
+    onPrevious={[Function]}
+    submitLabel="Next"
+    submitting={false}
+  />
+</Form>
+`;

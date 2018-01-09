@@ -1,0 +1,20 @@
+@import 'theme.scss';
+@import 'mixins.scss';
+
+.link {
+    @include regularFont;
+    @include noDefaultAnchorStyling;
+    display: block;
+    padding: 0 2.2rem;
+    font-size: 1.6rem;
+    line-height: 2;
+    color: $black;
+    background-color: transparent;
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
+}
+
+.link-selected {
+    composes: link;
+    color: $white !important;
+    background-color: $dark-highlight-color;
+}

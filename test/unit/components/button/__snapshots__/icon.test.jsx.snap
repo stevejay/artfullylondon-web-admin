@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default icon button correctly 1`] = `
+<button
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  styleName="link-default"
+  tabIndex={0}
+  type="button"
+>
+  <FaClose
+    className="icon-button-icon"
+  />
+</button>
+`;
+
+exports[`should render an inverse icon button correctly 1`] = `
+<button
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  styleName="link-inverse"
+  tabIndex={0}
+  type="button"
+>
+  <FaClose
+    className="icon-button-icon"
+  />
+</button>
+`;
+
+exports[`should render icon button that is aria-expanded correctly 1`] = `
+<button
+  aria-expanded={true}
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  styleName="link-default"
+  tabIndex={0}
+  type="button"
+>
+  <FaClose
+    className="icon-button-icon"
+  />
+</button>
+`;

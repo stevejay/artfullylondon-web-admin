@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default close button correctly 1`] = `
+<IconButton
+  aria-label="Some label"
+  icon={[Function]}
+  onClick={[Function]}
+  styleName="close-button-default"
+  type="default"
+/>
+`;
+
+exports[`should render a success close button correctly 1`] = `
+<IconButton
+  aria-label="Some label"
+  icon={[Function]}
+  onClick={[Function]}
+  styleName="close-button-success"
+  type="inverse"
+/>
+`;
+
+exports[`should render an error close button correctly 1`] = `
+<IconButton
+  aria-label="Some label"
+  icon={[Function]}
+  onClick={[Function]}
+  styleName="close-button-error"
+  type="inverse"
+/>
+`;
