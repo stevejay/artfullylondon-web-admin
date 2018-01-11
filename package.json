@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "https://github.com/stevejay/artfullylondon-web-admin",
   "scripts": {
-    "build": "rimraf ./build && NODE_ENV=production webpack --config webpack.config.prod.js --bail",
+    "build": "rimraf ./build && NODE_ENV=production webpack --config webpack.config.js --bail",
     "deploy": "firebase deploy",
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
     "build-deploy": "yarn run build && yarn run deploy",
@@ -92,6 +92,7 @@
     "stripcomment-loader": "^0.1.0",
     "style-loader": "^0.19.0",
     "svg-inline-loader": "^0.8.0",
+    "unused-webpack-plugin": "^1.0.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^1.12.2",
@@ -134,6 +135,7 @@
     "redux-actions": "^2.2.1",
     "redux-form": "^7.2.0",
     "redux-saga": "^0.16.0",
+    "sanitize.css": "^5.0.0",
     "sjcl": "^1.0.7",
     "smart-outline": "0.0.5"
   },

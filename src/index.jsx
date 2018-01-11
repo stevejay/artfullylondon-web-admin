@@ -1,3 +1,4 @@
+import 'sanitize.css/sanitize.css'
 import './reset.scss'
 import './mixins.scss'
 import './theme.scss'
