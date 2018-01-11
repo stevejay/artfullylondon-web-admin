@@ -11,7 +11,7 @@ import {
   ENTITY_TYPE_EVENT_SERIES
 } from '_src/constants/entity'
 import EntitySelectorSearch from '_src/components/entity-selector/search'
-import './field.m.scss'
+import './field.scss'
 
 class EntitySelectorField extends React.Component {
   handleSelectEntity = result => {

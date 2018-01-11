@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Link
-  className="components-sidenav-menu-link-m__link"
+  className="src-components-sidenav-menu-link__link"
   onClick={[Function]}
   replace={false}
   to="/the/path"

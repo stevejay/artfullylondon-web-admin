@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './menu-bar.m.scss'
+import './menu-bar.scss'
 
 const MenuBar = props => (
   <div styleName='container' role='menubar'>

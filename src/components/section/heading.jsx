@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './heading.m.scss'
+import './heading.scss'
 
 const HeadingSection = ({ children, logo, ...rest }) => {
   const hasLogo = !!logo

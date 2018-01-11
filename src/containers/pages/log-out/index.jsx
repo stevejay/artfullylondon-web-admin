@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ThumbsUp from 'react-icons/lib/fa/thumbs-o-up'
 import { Link } from 'react-router-dom'
 import Message from '_src/components/message'
-import './index.m.scss'
+import './index.scss'
 
 class LogOut extends React.Component {
   render () {

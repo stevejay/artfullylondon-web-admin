@@ -5,7 +5,7 @@ import DownIcon from 'react-icons/lib/fa/angle-down'
 import CircleIcon from 'react-icons/lib/fa/circle'
 import Pusher from '_src/components/pusher'
 import { ARROW_UP_KEYCODE, ARROW_DOWN_KEYCODE } from '_src/constants/browser'
-import './index.m.scss'
+import './index.scss'
 
 class Expander extends React.Component {
   handleExpanderChange = event => {

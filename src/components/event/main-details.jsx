@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import FeaturedDetail from '_src/components/entity/featured-detail'
 import { FullEvent } from '_src/entities/event'
-import './main-details.m.scss'
+import './main-details.scss'
 
 class EventMainDetails extends React.Component {
   shouldComponentUpdate () {

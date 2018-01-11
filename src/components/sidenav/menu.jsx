@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Expander from '_src/components/expander'
 import MenuLink from './menu-link'
-import './menu.m.scss'
+import './menu.scss'
 
 class Menu extends React.Component {
   shouldComponentUpdate (nextProps) {

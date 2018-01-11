@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './diff.m.scss'
+import './diff.scss'
 
 class Diff extends React.Component {
   shouldComponentUpdate () {

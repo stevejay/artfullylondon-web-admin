@@ -2,7 +2,7 @@
 
 exports[`should render a default tag facet correctly 1`] = `
 <span
-  className="components-entity-card-tag-facet-m__tag-default components-entity-card-tag-facet-m__tag"
+  className="src-components-entity-card-tag-facet__tag-default src-components-entity-card-tag-facet__tag"
 >
   <div
     id="child"
@@ -12,7 +12,7 @@ exports[`should render a default tag facet correctly 1`] = `
 
 exports[`should render an error tag facet correctly 1`] = `
 <span
-  className="components-entity-card-tag-facet-m__tag-error components-entity-card-tag-facet-m__tag"
+  className="src-components-entity-card-tag-facet__tag-error src-components-entity-card-tag-facet__tag"
 >
   <div
     id="child"

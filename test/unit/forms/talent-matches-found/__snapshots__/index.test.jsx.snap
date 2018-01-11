@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Form
-  className="containers-forms-talent-matches-found-index-m__container"
+  className="src-containers-forms-talent-matches-found-index__container"
   onSubmit={[Function]}
 >
   <ul>

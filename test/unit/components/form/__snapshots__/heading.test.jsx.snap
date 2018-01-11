@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h2
-  className="components-form-heading-m__heading"
+  className="src-components-form-heading__heading"
 >
    
   <div

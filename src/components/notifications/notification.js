@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import * as notificationsConstants from '_src/constants/notifications'
 import CloseButton from '_src/components/button/close'
-import './notification.m.scss'
+import './notification.scss'
 
 class Notification extends React.Component {
   shouldComponentUpdate () {

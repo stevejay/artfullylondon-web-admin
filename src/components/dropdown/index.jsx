@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import './index.m.scss'
+import './index.scss'
 
 class Dropdown extends React.Component {
   shouldComponentUpdate (nextProps) {

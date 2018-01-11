@@ -2,7 +2,7 @@
 
 exports[`should render a default container correctly 1`] = `
 <div
-  className="components-entity-details-container-m__container-default components-entity-details-container-m__container"
+  className="src-components-entity-details-container__container-default src-components-entity-details-container__container"
 >
   <div
     id="child"
@@ -12,7 +12,7 @@ exports[`should render a default container correctly 1`] = `
 
 exports[`should render a narrow container correctly 1`] = `
 <div
-  className="components-entity-details-container-m__container-narrow components-entity-details-container-m__container"
+  className="src-components-entity-details-container__container-narrow src-components-entity-details-container__container"
 >
   <div
     id="child"

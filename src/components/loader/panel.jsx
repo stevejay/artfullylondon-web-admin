@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Loader from '_src/components/loader'
-import './panel.m.scss'
+import './panel.scss'
 
 const Panel = props => {
   return (

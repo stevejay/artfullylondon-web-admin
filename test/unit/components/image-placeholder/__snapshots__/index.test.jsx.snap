@@ -2,44 +2,44 @@
 
 exports[`should render a talent placeholder image correctly 1`] = `
 <div
-  className="components-image-placeholder-index-m__medium components-image-placeholder-index-m__base"
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
   role="presentation"
 >
   <FaUser
-    className="components-image-placeholder-index-m__icon"
+    className="src-components-image-placeholder-index__icon"
   />
 </div>
 `;
 
 exports[`should render a venue placeholder image correctly 1`] = `
 <div
-  className="components-image-placeholder-index-m__medium components-image-placeholder-index-m__base"
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
   role="presentation"
 >
   <FaBank
-    className="components-image-placeholder-index-m__icon"
+    className="src-components-image-placeholder-index__icon"
   />
 </div>
 `;
 
 exports[`should render an event placeholder image correctly 1`] = `
 <div
-  className="components-image-placeholder-index-m__medium components-image-placeholder-index-m__base"
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
   role="presentation"
 >
   <FaStarO
-    className="components-image-placeholder-index-m__icon"
+    className="src-components-image-placeholder-index__icon"
   />
 </div>
 `;
 
 exports[`should render an event series placeholder image correctly 1`] = `
 <div
-  className="components-image-placeholder-index-m__medium components-image-placeholder-index-m__base"
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
   role="presentation"
 >
   <FaStarO
-    className="components-image-placeholder-index-m__icon"
+    className="src-components-image-placeholder-index__icon"
   />
 </div>
 `;

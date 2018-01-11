@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-card-entity-type-label-m__venue components-entity-card-entity-type-label-m__label"
+  className="src-components-entity-card-entity-type-label__venue src-components-entity-card-entity-type-label__label"
 >
   The Label
 </div>

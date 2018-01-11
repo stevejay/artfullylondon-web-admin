@@ -2,7 +2,7 @@
 
 exports[`should render a narrow container correctly 1`] = `
 <p
-  className="components-modal-instruction-m__container"
+  className="src-components-modal-instruction__container"
 >
   <div
     id="child"

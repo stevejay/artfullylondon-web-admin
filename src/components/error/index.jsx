@@ -4,7 +4,7 @@ import BasicSection from '_src/components/section/basic'
 import SectionsContainerSection
   from '_src/components/section/sections-container'
 import CopyrightFooter from '_src/components/copyright-footer'
-import './index.m.scss'
+import './index.scss'
 
 const Error = ({ statusCode }) => {
   const text = statusCode === 404 ? 'Page Not Found' : 'Server Error'

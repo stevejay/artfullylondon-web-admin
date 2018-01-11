@@ -6,7 +6,7 @@ import AutocompleteHeaderItem
   from '_src/components/search-input/autocomplete-header-item'
 import AutocompleteItem from '_src/components/search-input/autocomplete-item'
 import * as searchConstants from '_src/constants/search'
-import './autocomplete-list.m.scss'
+import './autocomplete-list.scss'
 
 const AutocompleteList = ({
   items,

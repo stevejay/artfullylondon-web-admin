@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './body.m.scss'
+import './body.scss'
 
 const Body = props => <div styleName='container' {...props} />
 

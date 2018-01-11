@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './remaining-chars.m.scss'
+import './remaining-chars.scss'
 
 class RemainingChars extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import './menu-link.m.scss'
+import './menu-link.scss'
 
 class MenuLink extends React.Component {
   shouldComponentUpdate () {

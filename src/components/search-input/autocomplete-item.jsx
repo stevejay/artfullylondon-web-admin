@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as searchConstants from '_src/constants/search'
-import './autocomplete-item.m.scss'
+import './autocomplete-item.scss'
 
 class AutocompleteItem extends React.Component {
   handleClick = event => {

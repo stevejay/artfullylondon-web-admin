@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './icon.m.scss'
+import './icon.scss'
 
 const BUTTON_TYPE_INVERSE = 'inverse'
 const BUTTON_TYPE_DEFAULT = 'default'

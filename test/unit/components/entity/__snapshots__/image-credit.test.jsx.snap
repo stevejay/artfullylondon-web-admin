@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-image-credit-m__credit"
+  className="src-components-entity-image-credit__credit"
 >
   IMAGE CREDIT: 
   The Credit

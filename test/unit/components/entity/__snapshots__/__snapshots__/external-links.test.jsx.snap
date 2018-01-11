@@ -4,10 +4,10 @@ exports[`should render correctly when there are no links 1`] = `""`;
 
 exports[`should render correctly when there is a facebook link 1`] = `
 <div
-  className="components-entity-external-links-m__links-container"
+  className="src-components-entity-external-links__links-container"
 >
   <a
-    className="components-entity-external-links-m__link"
+    className="src-components-entity-external-links__link"
     href="http://facebook/link"
     rel="noopener"
     target="_blank"
@@ -21,10 +21,10 @@ exports[`should render correctly when there is a facebook link 1`] = `
 
 exports[`should render correctly when there is a twitter link 1`] = `
 <div
-  className="components-entity-external-links-m__links-container"
+  className="src-components-entity-external-links__links-container"
 >
   <a
-    className="components-entity-external-links-m__link"
+    className="src-components-entity-external-links__link"
     href="http://twitter/link"
     rel="noopener"
     target="_blank"
@@ -38,10 +38,10 @@ exports[`should render correctly when there is a twitter link 1`] = `
 
 exports[`should render correctly when there is an email 1`] = `
 <div
-  className="components-entity-external-links-m__links-container"
+  className="src-components-entity-external-links__links-container"
 >
   <a
-    className="components-entity-external-links-m__link"
+    className="src-components-entity-external-links__link"
     href="mailto:steve@test.com"
     rel="noopener"
     target="_blank"
@@ -55,10 +55,10 @@ exports[`should render correctly when there is an email 1`] = `
 
 exports[`should render correctly when there is an instagram link 1`] = `
 <div
-  className="components-entity-external-links-m__links-container"
+  className="src-components-entity-external-links__links-container"
 >
   <a
-    className="components-entity-external-links-m__link"
+    className="src-components-entity-external-links__link"
     href="http://instagram/link"
     rel="noopener"
     target="_blank"

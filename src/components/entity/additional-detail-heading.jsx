@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './additional-detail-heading.m.scss'
+import './additional-detail-heading.scss'
 
 class AdditionalDetailHeading extends React.Component {
   shouldComponentUpdate () {

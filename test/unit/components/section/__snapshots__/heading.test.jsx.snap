@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-section-heading-m__container-no-logo components-section-heading-m__container"
+  className="src-components-section-heading__container-no-logo src-components-section-heading__container"
 >
   <h2
-    className="components-section-heading-m__title"
+    className="src-components-section-heading__title"
   >
     <div
       id="child"

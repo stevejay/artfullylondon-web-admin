@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
-import './reset-button.m.scss'
+import './reset-button.scss'
 
 class ResetButton extends React.Component {
   shouldComponentUpdate (nextProps) {

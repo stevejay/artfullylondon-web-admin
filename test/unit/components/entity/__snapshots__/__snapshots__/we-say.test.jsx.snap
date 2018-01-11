@@ -2,16 +2,16 @@
 
 exports[`should render correctly 1`] = `
 <p
-  className="components-entity-we-say-m__container"
+  className="src-components-entity-we-say__container"
 >
   <span
-    className="components-entity-we-say-m__label"
+    className="src-components-entity-we-say__label"
   >
     We say:
   </span>
   <br />
   <span
-    className="components-entity-we-say-m__text"
+    className="src-components-entity-we-say__text"
   >
     “
     <div

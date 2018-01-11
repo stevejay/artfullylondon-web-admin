@@ -2,7 +2,7 @@
 
 exports[`should render a default text section correctly 1`] = `
 <section
-  className="components-section-text-m__section-default components-section-text-m__section"
+  className="src-components-section-text__section-default src-components-section-text__section"
 >
   <div
     id="child"
@@ -12,7 +12,7 @@ exports[`should render a default text section correctly 1`] = `
 
 exports[`should render a smallprint text section correctly 1`] = `
 <section
-  className="components-section-text-m__section-smallprint components-section-text-m__section"
+  className="src-components-section-text__section-smallprint src-components-section-text__section"
 >
   <div
     id="child"

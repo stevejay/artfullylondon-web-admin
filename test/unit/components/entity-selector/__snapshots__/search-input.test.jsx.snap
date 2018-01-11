@@ -2,13 +2,13 @@
 
 exports[`should render an info bar for a venue correctly 1`] = `
 <div
-  className="components-entity-selector-search-input-m__container-small components-entity-selector-search-input-m__container"
+  className="src-components-entity-selector-search-input__container-small src-components-entity-selector-search-input__container"
 >
   <input
     autoCapitalize="none"
     autoComplete="off"
     autoCorrect="off"
-    className="components-entity-selector-search-input-m__input"
+    className="src-components-entity-selector-search-input__input"
     maxLength={100}
     onChange={[Function]}
     onKeyDown={[Function]}
@@ -19,13 +19,13 @@ exports[`should render an info bar for a venue correctly 1`] = `
     value=""
   />
   <ul
-    className="components-entity-selector-search-input-m__results-container"
+    className="src-components-entity-selector-search-input__results-container"
   >
     <li
       key="some-id"
     >
       <a
-        className="components-entity-selector-search-input-m__result-item"
+        className="src-components-entity-selector-search-input__result-item"
         onClick={[Function]}
       >
         Some Name

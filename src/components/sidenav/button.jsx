@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './button.m.scss'
+import './button.scss'
 
 const SidenavButton = ({
   label,

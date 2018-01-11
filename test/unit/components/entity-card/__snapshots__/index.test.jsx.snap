@@ -23,18 +23,18 @@ exports[`should render correctly 1`] = `
     }
   />
   <div
-    className="components-entity-card-index-m__actions-row"
+    className="src-components-entity-card-index__actions-row"
   >
     <Pusher />
     <Link
-      className="components-entity-card-index-m__goto-entity"
+      className="src-components-entity-card-index__goto-entity"
       data-url="/venue/some-venue-id"
       onClick={[Function]}
       replace={false}
       to="/venue/some-venue-id"
     >
       <FaArrowCircleRight
-        className="components-entity-card-index-m__goto-entity-icon"
+        className="src-components-entity-card-index__goto-entity-icon"
       />
     </Link>
   </div>

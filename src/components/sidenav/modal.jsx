@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal } from 'react-overlays'
 import Transition from './transition'
-import './modal.m.scss'
+import './modal.scss'
 
 const SidenavModal = ({ show, onHide, children }) => (
   <Modal

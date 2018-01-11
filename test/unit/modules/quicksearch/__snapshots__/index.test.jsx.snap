@@ -6,7 +6,7 @@ exports[`should render correctly 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
-  className="modules-quicksearch-index-m__modal"
+  className="src-modules-quicksearch-index__modal"
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -29,10 +29,10 @@ exports[`should render correctly 1`] = `
   transition={[Function]}
 >
   <div
-    className="modules-quicksearch-index-m__quicksearch"
+    className="src-modules-quicksearch-index__quicksearch"
   >
     <div
-      className="modules-quicksearch-index-m__header"
+      className="src-modules-quicksearch-index__header"
     >
       <Logo
         size="small"
@@ -46,7 +46,7 @@ exports[`should render correctly 1`] = `
       />
     </div>
     <div
-      className="modules-quicksearch-index-m__form"
+      className="src-modules-quicksearch-index__form"
     >
       <ReduxForm
         onSubmit={[Function]}

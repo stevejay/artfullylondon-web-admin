@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Logo from '_src/components/logo'
-import './logo.m.scss'
+import './logo.scss'
 
 class HeaderLogo extends React.Component {
   shouldComponentUpdate (nextProps) {

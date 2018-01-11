@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './pseudo-link.m.scss'
+import './pseudo-link.scss'
 
 class PseudoLink extends React.Component {
   shouldComponentUpdate () {

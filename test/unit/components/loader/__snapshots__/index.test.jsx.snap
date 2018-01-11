@@ -3,7 +3,7 @@
 exports[`should render a large inverse loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__large-inverse"
+  className="src-components-loader-index__large-inverse"
   role="alert"
 />
 `;
@@ -11,7 +11,7 @@ exports[`should render a large inverse loader correctly 1`] = `
 exports[`should render a massive loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__massive-default"
+  className="src-components-loader-index__massive-default"
   role="alert"
 />
 `;
@@ -19,7 +19,7 @@ exports[`should render a massive loader correctly 1`] = `
 exports[`should render a medium loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__medium-default"
+  className="src-components-loader-index__medium-default"
   role="alert"
 />
 `;
@@ -27,7 +27,7 @@ exports[`should render a medium loader correctly 1`] = `
 exports[`should render a modal loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__modal-default"
+  className="src-components-loader-index__modal-default"
   role="alert"
 />
 `;
@@ -35,7 +35,7 @@ exports[`should render a modal loader correctly 1`] = `
 exports[`should render a small inverse loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__small-inverse"
+  className="src-components-loader-index__small-inverse"
   role="alert"
 />
 `;
@@ -43,7 +43,7 @@ exports[`should render a small inverse loader correctly 1`] = `
 exports[`should render a tiny loader correctly 1`] = `
 <div
   aria-busy={true}
-  className="components-loader-index-m__tiny-default"
+  className="src-components-loader-index__tiny-default"
   role="alert"
 />
 `;

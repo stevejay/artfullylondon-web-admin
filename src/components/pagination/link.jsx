@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AngleDoubleLeft from 'react-icons/lib/fa/angle-double-left'
 import AngleDoubleRight from 'react-icons/lib/fa/angle-double-right'
 import * as pagination from '_src/lib/pagination'
-import './link.m.scss'
+import './link.scss'
 
 class PaginationLink extends React.Component {
   shouldComponentUpdate (nextProps) {

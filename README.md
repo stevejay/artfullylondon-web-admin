@@ -1,5 +1,13 @@
 # Artfully London Admin App
 
+## Prerequisites
+
+Install firebase cli tools globally:
+
+```bash
+npm install -g firebase-tools
+```
+
 ## NPM Package Issues
 
 ### moment

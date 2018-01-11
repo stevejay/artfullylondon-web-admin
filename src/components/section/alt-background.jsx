@@ -1,5 +1,5 @@
 import React from 'react'
-import './alt-background.m.scss'
+import './alt-background.scss'
 
 const AltBackgroundSection = props => <div {...props} styleName='container' />
 

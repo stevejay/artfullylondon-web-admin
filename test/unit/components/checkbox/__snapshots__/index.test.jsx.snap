@@ -2,17 +2,17 @@
 
 exports[`should render correctly when checked 1`] = `
 <div
-  className="components-checkbox-index-m__container"
+  className="src-components-checkbox-index__container"
 >
   <input
     checked={true}
-    className="components-checkbox-index-m__checkbox"
+    className="src-components-checkbox-index__checkbox"
     id="checkbox_1"
     onChange={[Function]}
     type="checkbox"
   />
   <label
-    className="components-checkbox-index-m__label"
+    className="src-components-checkbox-index__label"
     htmlFor="checkbox_1"
   >
     <div
@@ -20,24 +20,24 @@ exports[`should render correctly when checked 1`] = `
     />
   </label>
   <FaCheck
-    className="components-checkbox-index-m__checkmark"
+    className="src-components-checkbox-index__checkmark"
   />
 </div>
 `;
 
 exports[`should render correctly when has an error 1`] = `
 <div
-  className="components-checkbox-index-m__container-error components-checkbox-index-m__container"
+  className="src-components-checkbox-index__container-error src-components-checkbox-index__container"
 >
   <input
     checked={true}
-    className="components-checkbox-index-m__checkbox"
+    className="src-components-checkbox-index__checkbox"
     id="checkbox_3"
     onChange={[Function]}
     type="checkbox"
   />
   <label
-    className="components-checkbox-index-m__label"
+    className="src-components-checkbox-index__label"
     htmlFor="checkbox_3"
   >
     <div
@@ -45,24 +45,24 @@ exports[`should render correctly when has an error 1`] = `
     />
   </label>
   <FaCheck
-    className="components-checkbox-index-m__checkmark"
+    className="src-components-checkbox-index__checkmark"
   />
 </div>
 `;
 
 exports[`should render correctly when not checked 1`] = `
 <div
-  className="components-checkbox-index-m__container"
+  className="src-components-checkbox-index__container"
 >
   <input
     checked={false}
-    className="components-checkbox-index-m__checkbox"
+    className="src-components-checkbox-index__checkbox"
     id="checkbox_2"
     onChange={[Function]}
     type="checkbox"
   />
   <label
-    className="components-checkbox-index-m__label"
+    className="src-components-checkbox-index__label"
     htmlFor="checkbox_2"
   >
     <div

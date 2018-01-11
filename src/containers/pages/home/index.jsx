@@ -10,7 +10,7 @@ import CopyrightFooter from '_src/components/copyright-footer'
 import StatisticCollection from '_src/components/statistic/collection'
 import { clearAutocomplete, pushBasicSearchToUrl } from '_src/actions/search'
 import { getEntityCounts } from '_src/actions/status'
-import './index.m.scss'
+import './index.scss'
 
 const sampleData = [
   { id: '5fbmzmtc', x: 7, y: 41, z: 6 },

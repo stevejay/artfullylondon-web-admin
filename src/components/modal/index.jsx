@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal as ReactOverlaysModal } from 'react-overlays'
 import Transition from './transition'
-import './index.m.scss'
+import './index.scss'
 
 class Modal extends React.Component {
   shouldComponentUpdate (nextProps) {

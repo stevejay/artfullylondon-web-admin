@@ -7,10 +7,11 @@ const webpackHot = require('webpack-hot-middleware')
 const config = require('./webpack.config')
 
 const compiler = webpack(config)
+const DEFAULT_PORT = 3000
 
 browserSync({
-  port: process.env.PORT || 3000,
-  ui: { port: process.env.UI_PORT || 3001 },
+  port: process.env.PORT || DEFAULT_PORT,
+  ui: { port: process.env.UI_PORT || DEFAULT_PORT + 1 },
   https: true,
   server: {
     baseDir: '.',

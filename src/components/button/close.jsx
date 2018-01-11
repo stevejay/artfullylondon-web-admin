@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
 
 import IconButton from './icon'
-import './close.m.scss'
+import './close.scss'
 
 const BUTTON_TYPE_ERROR = 'error'
 const BUTTON_TYPE_DEFAULT = 'default'

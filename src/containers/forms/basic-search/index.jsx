@@ -14,7 +14,7 @@ import {
   ALLOWED_BASIC_SEARCH_ENTITY_TYPES
 } from '_src/constants/search'
 import { basicSearchConstraint } from '_src/constants/search-constraints'
-import './index.m.scss'
+import './index.scss'
 
 export class BasicSearchForm extends React.Component {
   componentWillReceiveProps (nextProps) {

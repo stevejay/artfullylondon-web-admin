@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Form
-  className="containers-forms-add-tag-index-m__container"
+  className="src-containers-forms-add-tag-index__container"
   onSubmit={[Function]}
 >
   <FormRow>

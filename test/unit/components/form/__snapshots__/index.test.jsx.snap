@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <form
-  className="components-form-index-m__form"
+  className="src-components-form-index__form"
   onSubmit={[Function]}
 >
   <div

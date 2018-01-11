@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './autocomplete-header-item.m.scss'
+import './autocomplete-header-item.scss'
 
 const AutocompleteHeaderItem = ({ entityName }) =>
   <li styleName='header'>

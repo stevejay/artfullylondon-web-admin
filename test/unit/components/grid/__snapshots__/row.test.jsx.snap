@@ -2,17 +2,17 @@
 
 exports[`should render correctly when can delete 1`] = `
 <div
-  className="components-grid-row-m__container"
+  className="src-components-grid-row__container"
 >
   <div
-    className="components-grid-row-m__content"
+    className="src-components-grid-row__content"
   >
     <div
       id="child"
     />
   </div>
   <FaClose
-    className="components-grid-row-m__icon"
+    className="src-components-grid-row__icon"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex="0"
@@ -22,10 +22,10 @@ exports[`should render correctly when can delete 1`] = `
 
 exports[`should render correctly when cannot delete 1`] = `
 <div
-  className="components-grid-row-m__container"
+  className="src-components-grid-row__container"
 >
   <div
-    className="components-grid-row-m__content"
+    className="src-components-grid-row__content"
   >
     <div
       id="child"

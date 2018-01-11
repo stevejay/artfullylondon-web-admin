@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './index.m.scss'
+import './index.scss'
 
 class NoEntries extends React.Component {
   shouldComponentUpdate () {

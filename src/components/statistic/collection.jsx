@@ -9,7 +9,7 @@ import {
   EDITABLE_ENTITY_TYPES
 } from '_src/constants/entity'
 import Statistic from '_src/components/statistic'
-import './collection.m.scss'
+import './collection.scss'
 
 class StatisticCollection extends React.Component {
   shouldComponentUpdate () {

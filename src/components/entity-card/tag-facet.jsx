@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './tag-facet.m.scss'
+import './tag-facet.scss'
 
 class TagFacet extends React.Component {
   shouldComponentUpdate () {

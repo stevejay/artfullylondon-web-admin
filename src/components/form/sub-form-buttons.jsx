@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '_src/components/button'
-import './sub-form-buttons.m.scss'
+import './sub-form-buttons.scss'
 
 class SubFormButtons extends React.Component {
   shouldComponentUpdate (nextProps) {

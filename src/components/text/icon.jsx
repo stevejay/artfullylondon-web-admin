@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './icon.m.scss'
+import './icon.scss'
 
 class TextIcon extends React.Component {
   shouldComponentUpdate () {

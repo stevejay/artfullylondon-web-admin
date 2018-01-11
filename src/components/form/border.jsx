@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './border.m.scss'
+import './border.scss'
 
 const FormBorder = ({ title, children, ...rest }) => (
   <div {...rest} styleName='border'>

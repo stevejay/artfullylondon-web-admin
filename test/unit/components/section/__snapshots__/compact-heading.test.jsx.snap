@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h1
-  className="components-section-compact-heading-m__heading"
+  className="src-components-section-compact-heading__heading"
 >
   <div
     id="child"

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-form-row-m__container"
+  className="src-components-form-row__container"
 >
   <div
     id="child"

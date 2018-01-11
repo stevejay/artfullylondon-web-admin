@@ -2,7 +2,7 @@
 
 exports[`should render correctly when has children 1`] = `
 <div
-  className="components-grid-index-m__container"
+  className="src-components-grid-index__container"
 >
   <div
     id="child"

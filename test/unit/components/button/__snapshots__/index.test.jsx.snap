@@ -2,12 +2,12 @@
 
 exports[`should render correctly 1`] = `
 <button
-  className="components-button-index-m__default components-button-index-m__button"
+  className="src-components-button-index__default src-components-button-index__button"
   onClick={[Function]}
   type="button"
 >
   <span
-    className="components-button-index-m__content"
+    className="src-components-button-index__content"
   >
     <div
       id="child"
@@ -18,13 +18,13 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <button
-  className="components-button-index-m__disabled components-button-index-m__button"
+  className="src-components-button-index__disabled src-components-button-index__button"
   disabled={true}
   onClick={[Function]}
   type="button"
 >
   <span
-    className="components-button-index-m__content"
+    className="src-components-button-index__content"
   >
     <div
       id="child"
@@ -35,12 +35,12 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly when submitting 1`] = `
 <button
-  className="components-button-index-m__submitting components-button-index-m__button"
+  className="src-components-button-index__submitting src-components-button-index__button"
   onClick={[Function]}
   type="button"
 >
   <span
-    className="components-button-index-m__content"
+    className="src-components-button-index__content"
   >
     <div
       id="child"

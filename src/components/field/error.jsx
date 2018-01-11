@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './error.m.scss'
+import './error.scss'
 
 class Error extends React.Component {
   shouldComponentUpdate (nextProps) {

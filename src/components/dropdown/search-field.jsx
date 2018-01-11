@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Dropdown from './index'
 import FieldResetButton from '_src/components/field/reset-button'
 import { NO_FILTER_VALUE } from '_src/constants/search'
-import './search-field.m.scss'
+import './search-field.scss'
 
 class DropdownSearchField extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -2,7 +2,7 @@
 
 exports[`should render correctly when there is an error 1`] = `
 <div
-  className="components-field-error-m__container"
+  className="src-components-field-error__container"
 >
   The Error.
 </div>

@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import Notification from '_src/components/notifications/notification'
 import * as notificationsConstants from '_src/constants/notifications'
-import './container.m.scss'
+import './container.scss'
 
 class NotificationContainer extends React.Component {
   shouldComponentUpdate (nextProps) {

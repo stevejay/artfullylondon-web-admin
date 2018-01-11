@@ -2,18 +2,18 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-search-no-results-m__container"
+  className="src-components-search-no-results__container"
 >
   <FaThumbsODown
-    className="components-search-no-results-m__icon"
+    className="src-components-search-no-results__icon"
   />
   <p
-    className="components-search-no-results-m__message"
+    className="src-components-search-no-results__message"
   >
     Nothing found
   </p>
   <p
-    className="components-search-no-results-m__action"
+    className="src-components-search-no-results__action"
   >
     Try searching all by 
     <a

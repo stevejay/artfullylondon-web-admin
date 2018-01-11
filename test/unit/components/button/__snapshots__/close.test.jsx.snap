@@ -3,7 +3,7 @@
 exports[`should render a default close button correctly 1`] = `
 <IconButton
   aria-label="Some label"
-  className="components-button-close-m__close-button-default components-button-close-m__close-button"
+  className="src-components-button-close__close-button-default src-components-button-close__close-button"
   icon={[Function]}
   onClick={[Function]}
   type="default"
@@ -13,7 +13,7 @@ exports[`should render a default close button correctly 1`] = `
 exports[`should render a success close button correctly 1`] = `
 <IconButton
   aria-label="Some label"
-  className="components-button-close-m__close-button-success components-button-close-m__close-button"
+  className="src-components-button-close__close-button-success src-components-button-close__close-button"
   icon={[Function]}
   onClick={[Function]}
   type="inverse"
@@ -23,7 +23,7 @@ exports[`should render a success close button correctly 1`] = `
 exports[`should render an error close button correctly 1`] = `
 <IconButton
   aria-label="Some label"
-  className="components-button-close-m__close-button-error components-button-close-m__close-button"
+  className="src-components-button-close__close-button-error src-components-button-close__close-button"
   icon={[Function]}
   onClick={[Function]}
   type="inverse"

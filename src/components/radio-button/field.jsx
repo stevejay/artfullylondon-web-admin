@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RadioButton from './index'
 import FieldContainer from '_src/components/field/container'
-import './field.m.scss'
+import './field.scss'
 
 const Field = ({
   label,

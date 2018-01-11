@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Text from '_src/components/text'
 import { formatTalentName } from '_src/lib/talent'
 import GridRow from '_src/components/grid/row'
-import './grid-row.m.scss'
+import './grid-row.scss'
 
 class TalentsGridRow extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './section.m.scss'
+import './section.scss'
 
 const FormSection = ({ type, children, ...rest }) => (
   <section {...rest} styleName={`container-${type}`}>{children}</section>

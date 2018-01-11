@@ -6,7 +6,7 @@ exports[`should render correctly when not showing 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
-  className="components-sidenav-modal-m__modal"
+  className="src-components-sidenav-modal__modal"
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -29,7 +29,7 @@ exports[`should render correctly when not showing 1`] = `
   transition={[Function]}
 >
   <div
-    className="nocontent components-sidenav-modal-m__content"
+    className="nocontent src-components-sidenav-modal__content"
     role="navigation"
   >
     <div
@@ -45,7 +45,7 @@ exports[`should render correctly when showing 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
-  className="components-sidenav-modal-m__modal"
+  className="src-components-sidenav-modal__modal"
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -68,7 +68,7 @@ exports[`should render correctly when showing 1`] = `
   transition={[Function]}
 >
   <div
-    className="nocontent components-sidenav-modal-m__content"
+    className="nocontent src-components-sidenav-modal__content"
     role="navigation"
   >
     <div

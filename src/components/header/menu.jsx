@@ -6,7 +6,7 @@ import { ARROW_UP_KEYCODE, ARROW_DOWN_KEYCODE } from '_src/constants/browser'
 import MenuLink from './menu-link'
 import Transition from './transition'
 import HeaderButton from './button'
-import './menu.m.scss'
+import './menu.scss'
 
 class Menu extends React.Component {
   constructor (props) {

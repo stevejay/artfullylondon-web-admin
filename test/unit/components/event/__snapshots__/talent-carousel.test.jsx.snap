@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-event-talent-carousel-m__container"
+  className="src-components-event-talent-carousel__container"
 >
   <EventTalentComponent
     talent={
@@ -15,7 +15,7 @@ exports[`should render correctly 1`] = `
   />
   <Pusher />
   <div
-    className="components-event-talent-carousel-m__buttons-container"
+    className="src-components-event-talent-carousel__buttons-container"
   >
     <IconButton
       aria-label="Next talent"

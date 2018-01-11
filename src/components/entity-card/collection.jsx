@@ -10,7 +10,7 @@ import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import EntityCard from './index'
 import NoContent from './no-content'
-import './collection.m.scss'
+import './collection.scss'
 
 class EntityCardCollection extends React.Component {
   shouldComponentUpdate (nextProps) {

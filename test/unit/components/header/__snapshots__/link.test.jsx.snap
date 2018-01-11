@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Link
-  className="components-header-Link-m__link"
+  className="src-components-header-Link__link"
   replace={false}
   role="menuitem"
   to="/to/here"

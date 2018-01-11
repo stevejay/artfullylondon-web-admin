@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './summary.m.scss'
+import './summary.scss'
 
 class Summary extends React.Component {
   shouldComponentUpate () {

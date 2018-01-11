@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './additional-detail-content.m.scss'
+import './additional-detail-content.scss'
 
 class AdditionalDetailContent extends React.Component {
   shouldComponentUpdate () {

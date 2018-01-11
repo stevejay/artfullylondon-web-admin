@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <button
   aria-haspopup={false}
-  className="components-sidenav-button-m__button"
+  className="src-components-sidenav-button__button"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}

@@ -5,7 +5,7 @@ import {
   ENTITY_TYPE_TALENT,
   ENTITY_TYPE_EVENT
 } from '_src/constants/entity'
-import './more-results-link.m.scss'
+import './more-results-link.scss'
 
 class MoreResultsLink extends React.Component {
   shouldComponentUpdate () {

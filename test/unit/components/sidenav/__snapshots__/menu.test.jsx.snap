@@ -8,11 +8,11 @@ exports[`should render correctly when is open 1`] = `
   open={true}
 >
   <ul
-    className="components-sidenav-menu-m__menu"
+    className="src-components-sidenav-menu__menu"
     role="group"
   >
     <li
-      className="components-sidenav-menu-m__link"
+      className="src-components-sidenav-menu__link"
       key="a"
       role="treeitem"
     >
@@ -34,11 +34,11 @@ exports[`should render correctly when not open 1`] = `
   open={false}
 >
   <ul
-    className="components-sidenav-menu-m__menu"
+    className="src-components-sidenav-menu__menu"
     role="group"
   >
     <li
-      className="components-sidenav-menu-m__link"
+      className="src-components-sidenav-menu__link"
       key="a"
       role="treeitem"
     >

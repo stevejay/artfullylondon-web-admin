@@ -2,7 +2,7 @@
 
 exports[`should render a default icon button correctly 1`] = `
 <button
-  className="components-button-icon-m__link-default components-button-icon-m__link"
+  className="src-components-button-icon__link-default src-components-button-icon__link"
   onClick={[Function]}
   onKeyPress={[Function]}
   tabIndex={0}
@@ -16,7 +16,7 @@ exports[`should render a default icon button correctly 1`] = `
 
 exports[`should render an inverse icon button correctly 1`] = `
 <button
-  className="components-button-icon-m__link-inverse components-button-icon-m__link"
+  className="src-components-button-icon__link-inverse src-components-button-icon__link"
   onClick={[Function]}
   onKeyPress={[Function]}
   tabIndex={0}
@@ -31,7 +31,7 @@ exports[`should render an inverse icon button correctly 1`] = `
 exports[`should render icon button that is aria-expanded correctly 1`] = `
 <button
   aria-expanded={true}
-  className="components-button-icon-m__link-default components-button-icon-m__link"
+  className="src-components-button-icon__link-default src-components-button-icon__link"
   onClick={[Function]}
   onKeyPress={[Function]}
   tabIndex={0}

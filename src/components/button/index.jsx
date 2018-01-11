@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Loader from '_src/components/loader'
-import './index.m.scss'
+import './index.scss'
 
 class Button extends React.Component {
   shouldComponentUpate (nextProps) {

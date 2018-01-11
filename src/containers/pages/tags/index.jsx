@@ -16,7 +16,7 @@ import Loader from '_src/components/loader'
 import TagsEditor from '_src/components/tags-editor'
 import TagEditorForm from '_src/containers/forms/tag-editor'
 import constraint from '_src/constants/tag-constraint'
-import './index.m.scss'
+import './index.scss'
 
 class Tags extends React.Component {
   handleDeleteTag = id => {

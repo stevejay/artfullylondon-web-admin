@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Label from './label'
 import Error from './error'
-import './container.m.scss'
+import './container.scss'
 
 const Container = ({
   label,

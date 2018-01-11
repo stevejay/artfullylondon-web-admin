@@ -20,7 +20,7 @@ import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
-import './index.m.scss'
+import './index.scss'
 
 class BasicSearch extends React.Component {
   handlePageClick = pageNumber => {

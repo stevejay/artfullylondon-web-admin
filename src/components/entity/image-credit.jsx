@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './image-credit.m.scss'
+import './image-credit.scss'
 
 class ImageCredit extends React.Component {
   shouldComponentUpdate (nextProps) {

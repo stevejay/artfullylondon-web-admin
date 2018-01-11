@@ -11,7 +11,7 @@ import Divider from '_src/components/divider'
 import { ALLOWED_TAG_TYPES } from '_src/constants/tag'
 import tagConstraint from '_src/constants/tag-constraint'
 import { TAG_EDITOR_FORM_NAME } from '_src/constants/form'
-import './index.m.scss'
+import './index.scss'
 
 export const AddTagForm = ({ submitting, handleSubmit }) => (
   <Form styleName='container' onSubmit={handleSubmit}>

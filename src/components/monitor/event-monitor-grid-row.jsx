@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 
-import './event-monitor-grid-row.m.scss'
+import './event-monitor-grid-row.scss'
 
 class EventMonitorGridRow extends React.Component {
   handleEdit = () => {

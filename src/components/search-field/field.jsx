@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Search from '_src/components/search-field'
-import './field.m.scss'
+import './field.scss'
 
 class SearchField extends React.Component {
   shouldComponentUpdate (nextProps) {

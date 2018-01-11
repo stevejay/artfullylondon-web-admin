@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-monitor-collection-m__container"
+  className="src-components-monitor-collection__container"
 >
   <div
-    className="components-monitor-collection-m__monitors-container"
+    className="src-components-monitor-collection__monitors-container"
   >
     <Grid>
       <gridRowComponent

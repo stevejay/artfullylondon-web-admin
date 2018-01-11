@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './index.m.scss'
+import './index.scss'
 
 class Tag extends React.Component {
   shouldComponentUpate (nextProps) {

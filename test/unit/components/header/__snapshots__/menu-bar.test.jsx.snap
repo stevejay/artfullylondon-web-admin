@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-header-menu-bar-m__container"
+  className="src-components-header-menu-bar__container"
   role="menubar"
 >
   <div

@@ -6,7 +6,7 @@ exports[`should render correctly 1`] = `
   onDelete={[Function]}
 >
   <div
-    className="components-talents-grid-row-m__first-row"
+    className="src-components-talents-grid-row__first-row"
   >
     <a
       href="/talent/some-id"

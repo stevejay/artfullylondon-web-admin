@@ -2,7 +2,7 @@
 
 exports[`should render a success notification with no message correctly 1`] = `
 <li
-  className="components-notifications-notification-m__container-success components-notifications-notification-m__container"
+  className="src-components-notifications-notification__container-success src-components-notifications-notification__container"
   role="alert"
 >
   <CloseButton
@@ -11,7 +11,7 @@ exports[`should render a success notification with no message correctly 1`] = `
     type="success"
   />
   <h4
-    className="components-notifications-notification-m__title"
+    className="src-components-notifications-notification__title"
   >
     The Title
   </h4>
@@ -20,7 +20,7 @@ exports[`should render a success notification with no message correctly 1`] = `
 
 exports[`should render an error notification with no title correctly 1`] = `
 <li
-  className="components-notifications-notification-m__container-error components-notifications-notification-m__container"
+  className="src-components-notifications-notification__container-error src-components-notifications-notification__container"
   role="alert"
 >
   <CloseButton
@@ -29,7 +29,7 @@ exports[`should render an error notification with no title correctly 1`] = `
     type="error"
   />
   <p
-    className="components-notifications-notification-m__message"
+    className="src-components-notifications-notification__message"
   >
     The Message
   </p>

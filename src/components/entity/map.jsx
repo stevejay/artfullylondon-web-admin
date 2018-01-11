@@ -5,7 +5,7 @@ import { SCRIPT_URL } from '_src/constants/google-map'
 import StaticGoogleMap from '_src/components/google-map/static'
 import { POINT_SHAPE } from '_src/constants/location'
 import Loader from '_src/components/loader'
-import './map.m.scss'
+import './map.scss'
 
 const CONTAINER_ELEMENT_STYLE = { height: '100%' }
 

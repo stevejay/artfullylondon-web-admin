@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './button.m.scss'
+import './button.scss'
 
 // Note: must be class as ref taken of it.
 class HeaderButton extends React.Component {

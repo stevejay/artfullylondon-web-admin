@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { AUTOCOMPLETE_ITEMS_PROPTYPES } from '_src/constants/search'
-import './search-input.m.scss'
+import './search-input.scss'
 
 class SearchInput extends React.Component {
   constructor (props) {

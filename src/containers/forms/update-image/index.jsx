@@ -10,7 +10,7 @@ import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import { UPDATE_IMAGE_FORM_NAME } from '_src/constants/form'
 import { updateImageConstraint } from '_src/constants/image-constraints'
-import './index.m.scss'
+import './index.scss'
 
 export const UpdateImageForm = ({ submitting, handleSubmit }) => (
   <Form styleName='container' onSubmit={handleSubmit}>

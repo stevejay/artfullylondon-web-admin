@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PaginationLink from './link'
 import * as pagination from '_src/lib/pagination'
-import './index.m.scss'
+import './index.scss'
 
 class Pagination extends React.Component {
   shouldComponentUpdate (nextProps) {

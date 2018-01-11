@@ -2,14 +2,14 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-text-index-m__container"
+  className="src-components-text-index__container"
 >
   <TextIcon />
   <input
     autoCapitalize="none"
     autoComplete="off"
     autoCorrect="off"
-    className="components-text-index-m__input"
+    className="src-components-text-index__input"
     disabled={false}
     id="some-id"
     maxLength={50}
@@ -28,14 +28,14 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  className="components-text-index-m__container"
+  className="src-components-text-index__container"
 >
   <TextIcon />
   <input
     autoCapitalize="none"
     autoComplete="off"
     autoCorrect="off"
-    className="components-text-index-m__input-error components-text-index-m__input components-text-index-m__error"
+    className="src-components-text-index__input-error src-components-text-index__input src-components-text-index__error"
     disabled={false}
     id="some-id"
     maxLength={50}

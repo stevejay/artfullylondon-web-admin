@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import * as entity from '_src/lib/entity'
-import './index.m.scss'
+import './index.scss'
 
 class Statistic extends React.Component {
   shouldComponentUpdate () {

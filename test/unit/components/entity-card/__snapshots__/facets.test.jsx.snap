@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-card-facets-m__facets"
+  className="src-components-entity-card-facets__facets"
 >
   <div
     id="child"

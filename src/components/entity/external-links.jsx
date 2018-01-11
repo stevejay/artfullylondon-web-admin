@@ -9,7 +9,7 @@ import {
   LINK_TYPE_TWITTER,
   LINK_TYPE_INSTAGRAM
 } from '_src/constants/link'
-import './external-links.m.scss'
+import './external-links.scss'
 
 class ExternalLinks extends React.Component {
   shouldComponentUpdate () {

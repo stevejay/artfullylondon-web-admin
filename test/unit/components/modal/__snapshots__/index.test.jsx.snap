@@ -7,7 +7,7 @@ exports[`should render correctly 1`] = `
   backdrop={true}
   backdropClassName="backdrop"
   backdropTransitionTimeout={250}
-  className="components-modal-index-m__modal"
+  className="src-components-modal-index__modal"
   dialogTransitionTimeout={250}
   enforceFocus={true}
   keyboard={true}
@@ -31,7 +31,7 @@ exports[`should render correctly 1`] = `
   transition={[Function]}
 >
   <div
-    className="components-modal-index-m__content"
+    className="src-components-modal-index__content"
   >
     <div
       foo="bar"
@@ -48,7 +48,7 @@ exports[`should render correctly where there is no component 1`] = `
   backdrop={true}
   backdropClassName="backdrop"
   backdropTransitionTimeout={250}
-  className="components-modal-index-m__modal"
+  className="src-components-modal-index__modal"
   dialogTransitionTimeout={250}
   enforceFocus={true}
   keyboard={true}
@@ -72,7 +72,7 @@ exports[`should render correctly where there is no component 1`] = `
   transition={[Function]}
 >
   <div
-    className="components-modal-index-m__content"
+    className="src-components-modal-index__content"
   />
 </Modal>
 `;

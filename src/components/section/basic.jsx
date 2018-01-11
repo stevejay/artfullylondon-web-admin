@@ -1,5 +1,5 @@
 import React from 'react'
-import './basic.m.scss'
+import './basic.scss'
 
 const BasicSection = props => <section {...props} styleName='section' />
 

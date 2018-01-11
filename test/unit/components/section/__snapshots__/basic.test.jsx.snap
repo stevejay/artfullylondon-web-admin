@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <section
-  className="components-section-basic-m__section"
+  className="src-components-section-basic__section"
 >
   <div
     id="child"

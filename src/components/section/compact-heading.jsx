@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './compact-heading.m.scss'
+import './compact-heading.scss'
 
 const CompactHeadingSection = props => <h1 {...props} styleName='heading' />
 

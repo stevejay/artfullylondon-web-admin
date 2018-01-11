@@ -7,7 +7,7 @@ import Tags from 'react-icons/lib/fa/tags'
 import Cogs from 'react-icons/lib/fa/cogs'
 
 import * as entityConstants from '_src/constants/entity'
-import './index.m.scss'
+import './index.scss'
 
 class ImagePlaceholder extends React.Component {
   shouldComponentUpdate () {

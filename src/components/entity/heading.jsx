@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Heading.m.scss'
+import './Heading.scss'
 
 const EntityHeading = ({ children }) => <h1 styleName='heading'>{children}</h1>
 

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-section-alt-background-m__container"
+  className="src-components-section-alt-background__container"
 >
   <div
     id="child"

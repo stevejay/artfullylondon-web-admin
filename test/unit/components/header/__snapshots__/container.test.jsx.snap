@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <header
-  className="nocontent components-header-container-m__container"
+  className="nocontent src-components-header-container__container"
   role="banner"
 >
   <div

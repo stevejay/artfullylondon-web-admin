@@ -16,7 +16,7 @@ const SRC_DIR = path.join(__dirname, './src')
 const ENTRY = PRODUCTION
   ? {
     vendor: [
-        // NOTE: Don't put react-icons in here
+      // NOTE: Don't put react-icons in here
       'amazon-cognito-identity-js',
       'aws-sdk',
       'backo',
@@ -185,9 +185,7 @@ function sassLoader (useModules) {
             importLoaders: 1,
             minimize: PRODUCTION,
             modules: useModules,
-            localIdentName: PRODUCTION
-              ? '[name]_[local]_[hash:base64:5]'
-              : '[path][name]__[local]'
+            localIdentName: '[path][name]__[local]'
           }
         },
         {

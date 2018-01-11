@@ -9,7 +9,7 @@ import {
   ENTITY_TYPE_VENUE
 } from '_src/constants/entity'
 import ImagePlaceholder from '_src/components/image-placeholder'
-import './image.m.scss'
+import './image.scss'
 
 class Image extends React.Component {
   shouldComponentUpdate () {

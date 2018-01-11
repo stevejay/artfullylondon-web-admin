@@ -3,7 +3,7 @@
 exports[`should render a medium header logo correctly 1`] = `
 <Link
   aria-label="Go to home page"
-  className="components-header-logo-m__logo"
+  className="src-components-header-logo__logo"
   replace={false}
   to="/"
 >
@@ -17,7 +17,7 @@ exports[`should render a medium header logo correctly 1`] = `
 exports[`should render a small header logo correctly 1`] = `
 <Link
   aria-label="Go to home page"
-  className="components-header-logo-m__logo"
+  className="src-components-header-logo__logo"
   replace={false}
   to="/"
 >

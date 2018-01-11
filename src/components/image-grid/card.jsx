@@ -10,7 +10,7 @@ import {
   ENTITY_TYPE_VENUE
 } from '_src/constants/entity'
 import Image from '_src/components/image-grid/image'
-import './card.m.scss'
+import './card.scss'
 
 class ImageGridCard extends React.Component {
   shouldComponentUpdate (nextProps) {

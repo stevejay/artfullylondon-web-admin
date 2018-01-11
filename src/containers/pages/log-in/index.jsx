@@ -14,7 +14,7 @@ import {
 import { submitLogIn } from '_src/actions/auth'
 import LogInForm from '_src/containers/forms/log-in'
 import { logInConstraint } from '_src/constants/auth-constraints'
-import './index.m.scss'
+import './index.scss'
 
 const LogIn = ({ authState }) => {
   const loggedIn = authState === AUTH_STATE_LOGGED_IN

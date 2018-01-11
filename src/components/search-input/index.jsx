@@ -6,7 +6,7 @@ import SearchIcon from 'react-icons/lib/fa/search'
 import Loader from '_src/components/loader'
 import AutocompleteList from '_src/components/search-input/autocomplete-list'
 import * as searchConstants from '_src/constants/search'
-import './index.m.scss'
+import './index.scss'
 
 class SearchInput extends React.Component {
   constructor (props) {

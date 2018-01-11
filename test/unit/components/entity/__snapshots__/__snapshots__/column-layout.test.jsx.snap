@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-column-layout-m__container"
+  className="src-components-entity-column-layout__container"
 >
   <div
     id="child"

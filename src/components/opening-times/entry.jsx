@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as timeLib from '_src/lib/time'
-import './entry.m.scss'
+import './entry.scss'
 
 class OpeningTimesEntry extends React.Component {
   shouldComponentUpdate () {

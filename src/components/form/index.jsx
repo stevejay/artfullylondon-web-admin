@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './index.m.scss'
+import './index.scss'
 
 const Form = ({ children, onSubmit, ...rest }) =>
   <form {...rest} onSubmit={onSubmit} styleName='form'>

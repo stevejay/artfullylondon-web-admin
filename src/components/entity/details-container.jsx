@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './details-container.m.scss'
+import './details-container.scss'
 
 const DetailsContainer = ({ type, ...rest }) => (
   <div {...rest} styleName={`container-${type}`} />

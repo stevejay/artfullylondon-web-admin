@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FeaturedDetailHeading from './featured-detail-heading'
 import FeaturedDetailContent from './featured-detail-content'
-import './featured-detail.m.scss'
+import './featured-detail.scss'
 
 const FeaturedDetail = ({ heading, children }) => (
   <div styleName='container'>

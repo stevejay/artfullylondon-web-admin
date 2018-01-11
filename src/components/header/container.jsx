@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './container.m.scss'
+import './container.scss'
 
 const HeaderContainer = props => (
   <header className='nocontent' styleName='container' role='banner'>

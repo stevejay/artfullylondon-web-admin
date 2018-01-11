@@ -13,7 +13,7 @@ import {
   DATE_PRESET_TYPE_THIS_WEEKEND,
   DATE_PRESET_TYPE_DROPDOWN_OPTIONS
 } from '_src/constants/search'
-import './search-field.m.scss'
+import './search-field.scss'
 
 class DatepickerSearchField extends React.Component {
   shouldComponentUpdate (nextProps) {

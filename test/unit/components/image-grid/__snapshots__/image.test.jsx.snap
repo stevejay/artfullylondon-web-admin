@@ -2,7 +2,7 @@
 
 exports[`should render correctly when has an image id 1`] = `
 <img
-  className="components-image-grid-image-m__small components-image-grid-image-m__image"
+  className="src-components-image-grid-image__small src-components-image-grid-image__image"
   src="https://images.test.com/im/ag/image-id/120x120.jpg"
 />
 `;

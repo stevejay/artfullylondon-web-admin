@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './featured-detail-heading.m.scss'
+import './featured-detail-heading.scss'
 
 class FeaturedDetailHeading extends React.Component {
   shouldComponentUpdate () {

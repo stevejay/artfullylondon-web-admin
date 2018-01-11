@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import GridRow from '_src/components/grid/row'
-import './grid-row.m.scss'
+import './grid-row.scss'
 
 class TimeGridRow extends React.Component {
   shouldComponentUpdate () {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ImageGallery from 'react-image-gallery'
 import { createPathsForImageCarousel } from '_src/lib/image'
 import ImageCredit from '_src/components/entity/image-credit'
-import './image-carousel.m.scss'
+import './image-carousel.scss'
 import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
 
 class ImageCarousel extends React.Component {

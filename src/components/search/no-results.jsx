@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ThumbsDown from 'react-icons/lib/fa/thumbs-o-down'
 import { ENTITY_TYPE_ALL } from '_src/constants/entity'
 import { ALLOWED_BASIC_SEARCH_ENTITY_TYPES } from '_src/constants/search'
-import './no-results.m.scss'
+import './no-results.scss'
 
 class SearchNoResults extends React.Component {
   shouldComponentUpdate () {

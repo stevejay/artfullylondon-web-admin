@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from './icon'
-import './index.m.scss'
+import './index.scss'
 
 class Text extends React.Component {
   shouldComponentUpdate (nextProps) {

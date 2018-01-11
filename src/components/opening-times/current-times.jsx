@@ -4,7 +4,7 @@ import FeaturedDetail from '_src/components/entity/featured-detail'
 import { addDaysToStringDate } from '_src/lib/time'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
-import './current-times.m.scss'
+import './current-times.scss'
 
 class CurrentTimes extends React.Component {
   shouldComponentUpdate (nextProps) {

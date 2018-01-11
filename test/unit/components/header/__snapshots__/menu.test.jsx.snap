@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-header-menu-m__container"
+  className="src-components-header-menu__container"
 >
   <HeaderButton
     ariaHaspopup={true}
@@ -62,7 +62,7 @@ exports[`should render correctly 1`] = `
             "_instance": [Circular],
             "_newState": null,
             "_rendered": <div
-              className="components-header-menu-m__container"
+              className="src-components-header-menu__container"
             >
               <HeaderButton
                 ariaHaspopup={true}
@@ -84,7 +84,7 @@ exports[`should render correctly 1`] = `
                 transition={[Function]}
               >
                 <ul
-                  className="components-header-menu-m__menu"
+                  className="src-components-header-menu__menu"
                   role="menu"
                 >
                   <li>
@@ -116,7 +116,7 @@ exports[`should render correctly 1`] = `
     transition={[Function]}
   >
     <ul
-      className="components-header-menu-m__menu"
+      className="src-components-header-menu__menu"
       role="menu"
     >
       <li

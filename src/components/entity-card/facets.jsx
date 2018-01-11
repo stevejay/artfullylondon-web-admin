@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './facets.m.scss'
+import './facets.scss'
 
 class Facets extends React.Component {
   shouldComponentUpdate () {

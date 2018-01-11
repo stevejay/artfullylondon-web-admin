@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Form
-  className="containers-forms-update-image-index-m__container"
+  className="src-containers-forms-update-image-index__container"
   onSubmit={[Function]}
 >
   <FormRow>

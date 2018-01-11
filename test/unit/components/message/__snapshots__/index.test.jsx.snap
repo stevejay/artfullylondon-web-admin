@@ -2,21 +2,21 @@
 
 exports[`should render a success message correctly 1`] = `
 <Link
-  className="components-message-index-m__success components-message-index-m__message"
+  className="src-components-message-index__success src-components-message-index__message"
   replace={false}
   role="alert"
   to="/link/to"
 >
   <div
-    className="components-message-index-m__text"
+    className="src-components-message-index__text"
   >
     <h4
-      className="components-message-index-m__title"
+      className="src-components-message-index__title"
     >
       The Title
     </h4>
     <div
-      className="components-message-index-m__detail"
+      className="src-components-message-index__detail"
     >
       <div
         id="child"
@@ -28,21 +28,21 @@ exports[`should render a success message correctly 1`] = `
 
 exports[`should render an error message correctly 1`] = `
 <Link
-  className="components-message-index-m__error components-message-index-m__message"
+  className="src-components-message-index__error src-components-message-index__message"
   replace={false}
   role="alert"
   to="/link/to"
 >
   <div
-    className="components-message-index-m__text"
+    className="src-components-message-index__text"
   >
     <h4
-      className="components-message-index-m__title"
+      className="src-components-message-index__title"
     >
       The Title
     </h4>
     <div
-      className="components-message-index-m__detail"
+      className="src-components-message-index__detail"
     >
       <div
         id="child"
@@ -54,21 +54,21 @@ exports[`should render an error message correctly 1`] = `
 
 exports[`should render an info message correctly 1`] = `
 <Link
-  className="components-message-index-m__info components-message-index-m__message"
+  className="src-components-message-index__info src-components-message-index__message"
   replace={false}
   role="alert"
   to="/link/to"
 >
   <div
-    className="components-message-index-m__text"
+    className="src-components-message-index__text"
   >
     <h4
-      className="components-message-index-m__title"
+      className="src-components-message-index__title"
     >
       The Title
     </h4>
     <div
-      className="components-message-index-m__detail"
+      className="src-components-message-index__detail"
     >
       <div
         id="child"

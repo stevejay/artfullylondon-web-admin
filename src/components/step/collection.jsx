@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Step from '_src/components/step'
-import './collection.m.scss'
+import './collection.scss'
 
 class Collection extends React.Component {
   shouldComponentUpdate (nextProps) {

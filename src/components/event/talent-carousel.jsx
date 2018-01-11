@@ -8,7 +8,7 @@ import Pusher from '_src/components/pusher'
 import IconButton from '_src/components/button/icon'
 import { SummaryTalent } from '_src/entities/talent'
 import EventTalentComponent from './talent'
-import './talent-carousel.m.scss'
+import './talent-carousel.scss'
 
 class EventTalentCarousel extends React.Component {
   shouldComponentUpdate (nextProps) {

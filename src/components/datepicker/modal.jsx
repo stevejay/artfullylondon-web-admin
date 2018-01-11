@@ -7,7 +7,7 @@ import {
   mapJsDateToStringDate
 } from '_src/lib/time'
 import ModalContainer from '_src/components/modal/container'
-import './modal.m.scss'
+import './modal.scss'
 
 const MIN_JS_DATE = getMinJSDate()
 const MAX_JS_DATE = getMaxJSDate()

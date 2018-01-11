@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './content-container.m.scss'
+import './content-container.scss'
 
 class ContentContainer extends React.Component {
   shouldComponentUpdate () {

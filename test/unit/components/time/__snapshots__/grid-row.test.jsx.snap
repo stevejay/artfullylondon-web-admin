@@ -6,12 +6,12 @@ exports[`should render correctly with a time 1`] = `
   onDelete={[Function]}
 >
   <span
-    className="components-time-grid-row-m__date"
+    className="src-components-time-grid-row__date"
   >
     Monday
   </span>
   <span
-    className="components-time-grid-row-m__time"
+    className="src-components-time-grid-row__time"
   >
     23:00
   </span>
@@ -24,12 +24,12 @@ exports[`should render correctly with a times range 1`] = `
   onDelete={[Function]}
 >
   <span
-    className="components-time-grid-row-m__date"
+    className="src-components-time-grid-row__date"
   >
     Monday
   </span>
   <span
-    className="components-time-grid-row-m__times-range"
+    className="src-components-time-grid-row__times-range"
   >
     From 
     22:00
@@ -43,20 +43,20 @@ exports[`should render correctly with audience tags 1`] = `
   onDelete={[Function]}
 >
   <span
-    className="components-time-grid-row-m__date"
+    className="src-components-time-grid-row__date"
   >
     Monday
   </span>
   <span
-    className="components-time-grid-row-m__time"
+    className="src-components-time-grid-row__time"
   >
     23:00
   </span>
   <div
-    className="components-time-grid-row-m__tags"
+    className="src-components-time-grid-row__tags"
   >
     <span
-      className="components-time-grid-row-m__tag"
+      className="src-components-time-grid-row__tag"
       key="tag-id"
     >
       Tag Label

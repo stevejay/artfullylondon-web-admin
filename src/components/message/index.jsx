@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Alert from 'react-icons/lib/fa/exclamation-triangle'
 import Checkmark from 'react-icons/lib/fa/check'
 import Speakerphone from 'react-icons/lib/fa/info-circle'
-import './index.m.scss'
+import './index.scss'
 
 const ALLOWED_MESSAGE_TYPES = [
   'basic',

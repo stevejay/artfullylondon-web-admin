@@ -5,7 +5,7 @@ import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 import { FullEventSeries } from '_src/entities/event-series'
-import './description.m.scss'
+import './description.scss'
 
 class EntityDescription extends React.Component {
   shouldComponentUpdate () {

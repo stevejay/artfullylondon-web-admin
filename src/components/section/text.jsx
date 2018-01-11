@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './text.m.scss'
+import './text.scss'
 
 const TextSection = ({ type, children, ...rest }) => {
   return <section {...rest} styleName={'section-' + type}>{children}</section>

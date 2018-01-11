@@ -3,10 +3,10 @@
 exports[`should render correctly when not showing the carousel 1`] = `
 <div>
   <div
-    className="components-entity-image-m__container"
+    className="src-components-entity-image__container"
   >
     <img
-      className="components-entity-image-m__img"
+      className="src-components-entity-image__img"
       src="https://images.test.com/so/me/some-id/500x500.jpg"
     />
   </div>
@@ -29,10 +29,10 @@ exports[`should render correctly when showing the carousel 1`] = `
 
 exports[`should render correctly when there are no images 1`] = `
 <div
-  className="components-entity-image-m__container"
+  className="src-components-entity-image__container"
 >
   <ImagePlaceholder
-    className="components-entity-image-m__placeholder"
+    className="src-components-entity-image__placeholder"
     size="medium"
     type="venue"
   />

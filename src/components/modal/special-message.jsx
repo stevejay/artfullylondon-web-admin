@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import LogoMinimal from '_src/components/logo/minimal'
-import './special-message.m.scss'
+import './special-message.scss'
 
 const ModalSpecialMessage = ({ message }) => (
   <div styleName='container'>

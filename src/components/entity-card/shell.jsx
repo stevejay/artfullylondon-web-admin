@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import EntityTypeLabel from './entity-type-label'
 import Image from './image'
-import './shell.m.scss'
+import './shell.scss'
 
 class EntityCardShell extends React.Component {
   shouldComponentUpdate (nextProps) {

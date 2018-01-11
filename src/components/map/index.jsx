@@ -7,7 +7,7 @@ import {
   withScriptjs
 } from 'react-google-maps'
 import * as googleMapConstants from '_src/constants/google-map'
-import './index.m.scss'
+import './index.scss'
 
 function isEmpty (pin) {
   return !pin || pin.lat === null || pin.lng === null

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './sub-heading.m.scss'
+import './sub-heading.scss'
 
 class SubHeading extends React.Component {
   shouldComponentUpdate () {

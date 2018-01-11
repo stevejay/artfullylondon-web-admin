@@ -5,7 +5,7 @@ import Loader from '_src/components/loader'
 import Button from '_src/components/button'
 import { FullVenue } from '_src/entities/venue'
 import Grid from '_src/components/grid'
-import './collection.m.scss'
+import './collection.scss'
 
 class MonitorCollection extends React.Component {
   constructor (props) {

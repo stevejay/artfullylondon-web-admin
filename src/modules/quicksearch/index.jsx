@@ -12,7 +12,7 @@ import * as searchConstants from '_src/constants/search'
 import { hideQuicksearch } from '_src/actions/modal'
 import { clearAutocomplete, pushBasicSearchToUrl } from '_src/actions/search'
 import Transition from './transition'
-import './index.m.scss'
+import './index.scss'
 
 export class Quicksearch extends React.Component {
   shouldComponentUpdate (nextProps) {

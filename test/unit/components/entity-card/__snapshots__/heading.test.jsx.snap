@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h3
-  className="components-entity-card-heading-m__heading"
+  className="src-components-entity-card-heading__heading"
   id="some-id"
 >
   <div

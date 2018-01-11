@@ -1,5 +1,5 @@
 import React from 'react'
-import './instruction.m.scss'
+import './instruction.scss'
 
 const ModalInstruction = props => <p {...props} styleName='container' />
 

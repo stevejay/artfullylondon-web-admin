@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-no-entries-index-m__container"
+  className="src-components-no-entries-index__container"
 >
   No Entries
 </div>

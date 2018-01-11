@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-field-container-m__container"
+  className="src-components-field-container__container"
 >
   <Label
     disabled={false}
@@ -21,7 +21,7 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <div
-  className="components-field-container-m__container-disabled components-field-container-m__container components-field-container-m__disabled"
+  className="src-components-field-container__container-disabled src-components-field-container__container src-components-field-container__disabled"
 >
   <Label
     disabled={true}
@@ -40,7 +40,7 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly when not touched and with an error 1`] = `
 <div
-  className="components-field-container-m__container"
+  className="src-components-field-container__container"
 >
   <Label
     disabled={false}
@@ -59,7 +59,7 @@ exports[`should render correctly when not touched and with an error 1`] = `
 
 exports[`should render correctly when touched and with an error 1`] = `
 <div
-  className="components-field-container-m__container"
+  className="src-components-field-container__container"
 >
   <Label
     disabled={false}
@@ -81,7 +81,7 @@ exports[`should render correctly when touched and with an error 1`] = `
 
 exports[`should render correctly with no label 1`] = `
 <div
-  className="components-field-container-m__container-no-label components-field-container-m__container"
+  className="src-components-field-container__container-no-label src-components-field-container__container"
 >
   <div
     id="child"

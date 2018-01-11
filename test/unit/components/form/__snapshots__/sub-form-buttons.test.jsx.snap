@@ -2,7 +2,7 @@
 
 exports[`should render correctly when includes the reset option 1`] = `
 <div
-  className="components-form-sub-form-buttons-m__container"
+  className="src-components-form-sub-form-buttons__container"
 >
   <Button
     aria-label="Reset the sub form"
@@ -26,7 +26,7 @@ exports[`should render correctly when includes the reset option 1`] = `
 
 exports[`should render correctly when includes the reset option and not pristine 1`] = `
 <div
-  className="components-form-sub-form-buttons-m__container"
+  className="src-components-form-sub-form-buttons__container"
 >
   <Button
     aria-label="Reset the sub form"
@@ -50,7 +50,7 @@ exports[`should render correctly when includes the reset option and not pristine
 
 exports[`should render correctly when not submitting 1`] = `
 <div
-  className="components-form-sub-form-buttons-m__container"
+  className="src-components-form-sub-form-buttons__container"
 >
   <Button
     aria-label="Submit the sub form"
@@ -66,7 +66,7 @@ exports[`should render correctly when not submitting 1`] = `
 
 exports[`should render correctly when submitting 1`] = `
 <div
-  className="components-form-sub-form-buttons-m__container"
+  className="src-components-form-sub-form-buttons__container"
 >
   <Button
     aria-label="Submit the sub form"

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h2
-  className="components-entity-featured-detail-heading-m__container"
+  className="src-components-entity-featured-detail-heading__container"
 >
   <div
     id="child"

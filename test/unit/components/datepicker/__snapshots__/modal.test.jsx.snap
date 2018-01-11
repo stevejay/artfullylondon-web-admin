@@ -50,7 +50,7 @@ exports[`should render correctly 1`] = `
         }
       />
     }
-    className="components-datepicker-modal-m__daypicker"
+    className="src-components-datepicker-modal__daypicker"
     classNames={
       Object {
         "body": "DayPicker-Body",

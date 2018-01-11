@@ -1,4 +1,4 @@
-// Make Enzyme functions available in all test files without importing
+// Make Enzyme functions available in all test files without importing:
 import Enzyme, { shallow, render, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -8,7 +8,7 @@ global.mount = mount
 
 Enzyme.configure({ adapter: new Adapter() })
 
-// Fail tests on any warning
+// Fail tests on any warning:
 console.error = message => {
   throw new Error(message)
 }

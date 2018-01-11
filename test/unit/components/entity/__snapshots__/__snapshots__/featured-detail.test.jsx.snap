@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-featured-detail-m__container"
+  className="src-components-entity-featured-detail__container"
 >
   <FeaturedDetailHeading>
     The Heading

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '_src/components/button'
 import Pusher from '_src/components/pusher'
-import './buttons.m.scss'
+import './buttons.scss'
 
 class FormButtons extends React.Component {
   shouldComponentUpdate (nextProps) {

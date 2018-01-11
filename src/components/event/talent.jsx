@@ -5,7 +5,7 @@ import { ENTITY_TYPE_TALENT } from '_src/constants/entity'
 import ImagePlaceholder from '_src/components/image-placeholder'
 import * as image from '_src/lib/image'
 import { SummaryTalent } from '_src/entities/talent'
-import './talent.m.scss'
+import './talent.scss'
 
 class EventTalentComponent extends React.Component {
   shouldComponentUpdate (nextProps) {

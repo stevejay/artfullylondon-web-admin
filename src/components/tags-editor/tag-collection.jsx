@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import NoEntries from '_src/components/no-entries'
 import Tag from './tag'
-import './tag-collection.m.scss'
+import './tag-collection.scss'
 
 class TagCollection extends React.Component {
   constructor (props) {

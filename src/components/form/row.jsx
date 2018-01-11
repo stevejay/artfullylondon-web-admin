@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './row.m.scss'
+import './row.scss'
 
 const FormRow = ({ children, ...rest }) =>
   <div {...rest} styleName='container'>

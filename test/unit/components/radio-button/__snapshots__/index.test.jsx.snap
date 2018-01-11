@@ -2,11 +2,11 @@
 
 exports[`should render correctly when checked 1`] = `
 <div
-  className="components-radio-button-index-m__container-checked components-radio-button-index-m__container"
+  className="src-components-radio-button-index__container-checked src-components-radio-button-index__container"
 >
   <input
     checked={true}
-    className="components-radio-button-index-m__input"
+    className="src-components-radio-button-index__input"
     id="the-value"
     name="the-name"
     onChange={[Function]}
@@ -14,7 +14,7 @@ exports[`should render correctly when checked 1`] = `
     type="radio"
   />
   <label
-    className="components-radio-button-index-m__label"
+    className="src-components-radio-button-index__label"
     htmlFor="the-value"
   >
     <span>
@@ -26,11 +26,11 @@ exports[`should render correctly when checked 1`] = `
 
 exports[`should render correctly when not checked 1`] = `
 <div
-  className="components-radio-button-index-m__container"
+  className="src-components-radio-button-index__container"
 >
   <input
     checked={false}
-    className="components-radio-button-index-m__input"
+    className="src-components-radio-button-index__input"
     id="the-value"
     name="the-name"
     onChange={[Function]}
@@ -38,7 +38,7 @@ exports[`should render correctly when not checked 1`] = `
     type="radio"
   />
   <label
-    className="components-radio-button-index-m__label"
+    className="src-components-radio-button-index__label"
     htmlFor="the-value"
   >
     <span>

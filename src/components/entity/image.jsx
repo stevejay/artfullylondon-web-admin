@@ -5,7 +5,7 @@ import ImagePlaceholder from '_src/components/image-placeholder'
 import ImageCarousel from '_src/components/entity/image-carousel'
 import ImageCredit from '_src/components/entity/image-credit'
 import { createEntityPageImageUrl } from '_src/lib/image'
-import './image.m.scss'
+import './image.scss'
 
 class EntityImage extends React.Component {
   shouldComponentUpdate (nextProps) {

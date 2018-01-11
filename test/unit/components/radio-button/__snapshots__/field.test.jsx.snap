@@ -8,7 +8,7 @@ exports[`should render correctly 1`] = `
   required={false}
 >
   <div
-    className="components-radio-button-field-m__options-container"
+    className="src-components-radio-button-field__options-container"
   >
     <RadioButton
       checked={true}

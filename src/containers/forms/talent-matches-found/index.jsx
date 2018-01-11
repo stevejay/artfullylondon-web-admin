@@ -7,7 +7,7 @@ import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import { TALENT_MATCHES_FOUND_FORM_NAME } from '_src/constants/form'
 import { formatTalentName } from '_src/lib/talent'
-import './index.m.scss'
+import './index.scss'
 
 export const TalentMatchesFoundForm = ({ handleSubmit, onCancel, talents }) => (
   <Form styleName='container' onSubmit={handleSubmit}>

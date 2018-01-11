@@ -7,7 +7,7 @@ import Tag from '_src/components/tag'
 import AdditionalDetailHeading
   from '_src/components/entity/additional-detail-heading'
 import OpeningTimeEntry from '_src/components/opening-times/entry'
-import './index.m.scss'
+import './index.scss'
 
 class OpeningTimes extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-entity-description-m__container"
+  className="src-components-entity-description__container"
 >
   <div
-    className="components-entity-description-m__html"
+    className="src-components-entity-description__html"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Some description.",
@@ -13,7 +13,7 @@ exports[`should render correctly 1`] = `
     }
   />
   <a
-    className="components-entity-description-m__link"
+    className="src-components-entity-description__link"
     rel="noopener"
     target="_blank"
   >
@@ -24,10 +24,10 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when there is no wikipedia link 1`] = `
 <div
-  className="components-entity-description-m__container"
+  className="src-components-entity-description__container"
 >
   <div
-    className="components-entity-description-m__html"
+    className="src-components-entity-description__html"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Some description.",

@@ -2,7 +2,7 @@
 
 exports[`should render correctly when there are tags 1`] = `
 <div
-  className="components-tag-collection-m__container"
+  className="src-components-tag-collection__container"
 >
   <Tag
     key="tag-1"

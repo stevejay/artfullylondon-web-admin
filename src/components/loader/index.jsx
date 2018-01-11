@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './index.m.scss'
+import './index.scss'
 
 const TYPE_DEFAULT = 'default'
 const TYPE_INVERSE = 'inverse'

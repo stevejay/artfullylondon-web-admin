@@ -8,7 +8,7 @@ exports[`should render correctly 1`] = `
   touched={false}
 >
   <RichTextEditor
-    className="components-html-text-field-m__rte"
+    className="src-components-html-text-field__rte"
     customStyleMap={
       Object {
         "BOLD": Object {

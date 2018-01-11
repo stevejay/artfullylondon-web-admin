@@ -10,7 +10,7 @@ import CopyrightFooter from '_src/components/copyright-footer'
 import StatisticCollection from '_src/components/statistic/collection'
 import { clearAutocomplete, pushBasicSearchToUrl } from '_src/actions/search'
 import { getEntityCounts } from '_src/actions/status'
-import './dashboard.m.scss'
+import './dashboard.scss'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {

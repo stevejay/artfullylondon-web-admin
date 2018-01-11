@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Tag from './index'
-import './collection.m.scss'
+import './collection.scss'
 
 class TagCollection extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import * as timeLib from '_src/lib/time'
-import './index.m.scss'
+import './index.scss'
 
 class CopyrightFooter extends React.Component {
   shouldComponentUpdate () {

@@ -2,26 +2,26 @@
 
 exports[`should render an info bar for a venue correctly 1`] = `
 <ul
-  className="components-entity-info-bar-m__container"
+  className="src-components-entity-info-bar__container"
 >
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaTags
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <span>
       Tags Label
     </span>
   </li>
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaGlobe
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <a
-      className="components-entity-info-bar-m__link"
+      className="src-components-entity-info-bar__link"
       rel="noopener"
       target="_blank"
     >
@@ -29,13 +29,13 @@ exports[`should render an info bar for a venue correctly 1`] = `
     </a>
   </li>
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaPencil
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <Link
-      className="components-entity-info-bar-m__link"
+      className="src-components-entity-info-bar__link"
       replace={false}
       to="/venue/edit/some-venue-id"
     >
@@ -47,26 +47,26 @@ exports[`should render an info bar for a venue correctly 1`] = `
 
 exports[`should render an info bar for an event correctly 1`] = `
 <ul
-  className="components-entity-info-bar-m__container"
+  className="src-components-entity-info-bar__container"
 >
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaTags
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <span>
       Tags Label
     </span>
   </li>
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaGlobe
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <a
-      className="components-entity-info-bar-m__link"
+      className="src-components-entity-info-bar__link"
       rel="noopener"
       target="_blank"
     >
@@ -74,13 +74,13 @@ exports[`should render an info bar for an event correctly 1`] = `
     </a>
   </li>
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaPencil
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <Link
-      className="components-entity-info-bar-m__link"
+      className="src-components-entity-info-bar__link"
       replace={false}
       to="/event/edit/some-event-id"
     >
@@ -88,13 +88,13 @@ exports[`should render an info bar for an event correctly 1`] = `
     </Link>
   </li>
   <li
-    className="components-entity-info-bar-m__item"
+    className="src-components-entity-info-bar__item"
   >
     <FaCopy
-      className="components-entity-info-bar-m__icon"
+      className="src-components-entity-info-bar__icon"
     />
     <Link
-      className="components-entity-info-bar-m__link"
+      className="src-components-entity-info-bar__link"
       onClick={[Function]}
       replace={false}
       to="/event"

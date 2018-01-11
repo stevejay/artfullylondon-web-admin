@@ -2,16 +2,16 @@
 
 exports[`should render a narrow container correctly 1`] = `
 <div
-  className="components-modal-Container-m__container-narrow components-modal-Container-m__container"
+  className="src-components-modal-Container__container-narrow src-components-modal-Container__container"
 >
   <h1
-    className="components-modal-Container-m__header"
+    className="src-components-modal-Container__header"
   >
     The Title
   </h1>
   <IconButton
     aria-label="Close modal dialog"
-    className="components-modal-Container-m__close"
+    className="src-components-modal-Container__close"
     icon={[Function]}
     onClick={[Function]}
     type="inverse"
@@ -24,10 +24,10 @@ exports[`should render a narrow container correctly 1`] = `
 
 exports[`should render a non-dismissable container correctly 1`] = `
 <div
-  className="components-modal-Container-m__container-narrow components-modal-Container-m__container"
+  className="src-components-modal-Container__container-narrow src-components-modal-Container__container"
 >
   <h1
-    className="components-modal-Container-m__header"
+    className="src-components-modal-Container__header"
   >
     The Title
   </h1>
@@ -39,16 +39,16 @@ exports[`should render a non-dismissable container correctly 1`] = `
 
 exports[`should render a wide container correctly 1`] = `
 <div
-  className="components-modal-Container-m__container-wide components-modal-Container-m__container"
+  className="src-components-modal-Container__container-wide src-components-modal-Container__container"
 >
   <h1
-    className="components-modal-Container-m__header"
+    className="src-components-modal-Container__header"
   >
     The Title
   </h1>
   <IconButton
     aria-label="Close modal dialog"
-    className="components-modal-Container-m__close"
+    className="src-components-modal-Container__close"
     icon={[Function]}
     onClick={[Function]}
     type="inverse"

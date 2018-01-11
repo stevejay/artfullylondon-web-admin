@@ -2,22 +2,22 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-event-talent-m__container"
+  className="src-components-event-talent__container"
 >
   <img
-    className="components-event-talent-m__img"
+    className="src-components-event-talent__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
   />
   <div
-    className="components-event-talent-m__details"
+    className="src-components-event-talent__details"
   >
     <p
-      className="components-event-talent-m__roles"
+      className="src-components-event-talent__roles"
     >
       Roles string
     </p>
     <p
-      className="components-event-talent-m__characters"
+      className="src-components-event-talent__characters"
     >
       Characters string
     </p>
@@ -33,17 +33,17 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when there are no characters 1`] = `
 <div
-  className="components-event-talent-m__container"
+  className="src-components-event-talent__container"
 >
   <img
-    className="components-event-talent-m__img"
+    className="src-components-event-talent__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
   />
   <div
-    className="components-event-talent-m__details"
+    className="src-components-event-talent__details"
   >
     <p
-      className="components-event-talent-m__roles"
+      className="src-components-event-talent__roles"
     >
       Roles string
     </p>
@@ -59,23 +59,23 @@ exports[`should render correctly when there are no characters 1`] = `
 
 exports[`should render correctly when there is no image 1`] = `
 <div
-  className="components-event-talent-m__container"
+  className="src-components-event-talent__container"
 >
   <ImagePlaceholder
-    className="components-event-talent-m__placeholder"
+    className="src-components-event-talent__placeholder"
     size="very-small"
     type="talent"
   />
   <div
-    className="components-event-talent-m__details"
+    className="src-components-event-talent__details"
   >
     <p
-      className="components-event-talent-m__roles"
+      className="src-components-event-talent__roles"
     >
       Roles string
     </p>
     <p
-      className="components-event-talent-m__characters"
+      className="src-components-event-talent__characters"
     >
       Characters string
     </p>

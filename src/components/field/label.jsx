@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { Overlay } from 'react-overlays'
 import TooltipTransition from './tooltip-transition'
-import './label.m.scss'
+import './label.scss'
 
 class Label extends React.Component {
   constructor (props) {

@@ -6,7 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { getEntityCardImageDataForEntityType } from '_src/lib/entity'
 import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import ImagePlaceholder from '_src/components/image-placeholder'
-import './image.m.scss'
+import './image.scss'
 
 class Image extends React.Component {
   shouldComponentUpdate () {

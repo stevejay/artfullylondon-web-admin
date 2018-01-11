@@ -2,7 +2,7 @@
 
 exports[`should render correctly when has a copyright 1`] = `
 <div
-  className="components-image-grid-card-m__card"
+  className="src-components-image-grid-card__card"
 >
   <Image
     imageId="some-id"
@@ -11,7 +11,7 @@ exports[`should render correctly when has a copyright 1`] = `
     type="venue"
   />
   <div
-    className="components-image-grid-card-m__details-container"
+    className="src-components-image-grid-card__details-container"
   >
     <p>
       <strong>
@@ -21,30 +21,30 @@ exports[`should render correctly when has a copyright 1`] = `
       The Copyright
     </p>
     <div
-      className="components-image-grid-card-m__toolbar"
+      className="src-components-image-grid-card__toolbar"
     >
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaHeart
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaTrashO
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaPencil
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
     </div>
@@ -54,7 +54,7 @@ exports[`should render correctly when has a copyright 1`] = `
 
 exports[`should render correctly when is main 1`] = `
 <div
-  className="components-image-grid-card-m__card"
+  className="src-components-image-grid-card__card"
 >
   <Image
     imageId="some-id"
@@ -63,33 +63,33 @@ exports[`should render correctly when is main 1`] = `
     type="venue"
   />
   <div
-    className="components-image-grid-card-m__details-container"
+    className="src-components-image-grid-card__details-container"
   >
     <p
-      className="components-image-grid-card-m__no-copyright"
+      className="src-components-image-grid-card__no-copyright"
     >
       No Copyright String
     </p>
     <div
-      className="components-image-grid-card-m__toolbar"
+      className="src-components-image-grid-card__toolbar"
     >
       <FaHeart
-        className="components-image-grid-card-m__icon-main components-image-grid-card-m__icon"
+        className="src-components-image-grid-card__icon-main src-components-image-grid-card__icon"
       />
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaTrashO
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaPencil
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
     </div>
@@ -99,7 +99,7 @@ exports[`should render correctly when is main 1`] = `
 
 exports[`should render correctly when is not main 1`] = `
 <div
-  className="components-image-grid-card-m__card"
+  className="src-components-image-grid-card__card"
 >
   <Image
     imageId="some-id"
@@ -108,38 +108,38 @@ exports[`should render correctly when is not main 1`] = `
     type="venue"
   />
   <div
-    className="components-image-grid-card-m__details-container"
+    className="src-components-image-grid-card__details-container"
   >
     <p
-      className="components-image-grid-card-m__no-copyright"
+      className="src-components-image-grid-card__no-copyright"
     >
       No Copyright String
     </p>
     <div
-      className="components-image-grid-card-m__toolbar"
+      className="src-components-image-grid-card__toolbar"
     >
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaHeart
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaTrashO
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
       <a
-        className="components-image-grid-card-m__link"
+        className="src-components-image-grid-card__link"
         onClick={[Function]}
       >
         <FaPencil
-          className="components-image-grid-card-m__icon"
+          className="src-components-image-grid-card__icon"
         />
       </a>
     </div>

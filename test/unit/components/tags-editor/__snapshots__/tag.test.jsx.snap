@@ -2,13 +2,13 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-tags-editor-tag-m__tag"
+  className="src-components-tags-editor-tag__tag"
 >
   <span>
     Some Label
   </span>
   <FaClose
-    className="components-tags-editor-tag-m__icon"
+    className="src-components-tags-editor-tag__icon"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex="0"
@@ -18,13 +18,13 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when is being deleted 1`] = `
 <div
-  className="components-tags-editor-tag-m__tag"
+  className="src-components-tags-editor-tag__tag"
 >
   <span>
     Some Label
   </span>
   <div
-    className="components-tags-editor-tag-m__loader"
+    className="src-components-tags-editor-tag__loader"
   >
     <Loader
       size="small"

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="components-opening-times-current-times-m__summary-container"
+  className="src-components-opening-times-current-times__summary-container"
 >
   <FeaturedDetail
     heading="Today"

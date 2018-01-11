@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
 import Loader from '_src/components/loader'
-import './tag.m.scss'
+import './tag.scss'
 
 class Tag extends React.Component {
   shouldComponentUpdate (nextProps) {

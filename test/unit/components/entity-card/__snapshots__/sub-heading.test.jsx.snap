@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <h4
-  className="components-entity-card-sub-heading-m__sub-heading"
+  className="src-components-entity-card-sub-heading__sub-heading"
 >
   <div
     id="child"
