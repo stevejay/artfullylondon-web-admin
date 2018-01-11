@@ -7,7 +7,7 @@ export function * fetchServerConstants () {
   yield take(types.FETCH_SERVER_CONSTANTS)
 
   const url =
-    process.env.ARTFULLY_LONDON_API_URL + '/data-service/admin-site-data'
+    process.env.WEBSITE_API_HOST_URL + '/data-service/admin-site-data'
 
   const json = yield call(callWithInfiniteRetry, get, url)
 

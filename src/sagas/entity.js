@@ -52,7 +52,7 @@ function * getEntity (action) {
     })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/${entityType}/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -87,10 +87,10 @@ function * saveEntity (action) {
     let json = null
 
     if (isEdit) {
-      const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/${entityType}/${values.id}`
+      const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${values.id}`
       json = yield call(httpPut, url, mapper(values), token)
     } else {
-      const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/${entityType}`
+      const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}`
       json = yield call(post, url, mapper(values), token)
     }
 
@@ -189,7 +189,7 @@ function * getEntityForEdit (action) {
     const token = yield getAuthTokenForCurrentUser()
     console.log('token', token)
 
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/edit/${entityType}/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -213,7 +213,7 @@ function * getEventAsCopy (action) {
     yield put.resolve({ type: entityConstants.GET_EVENT_AS_COPY_STARTED })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/edit/event/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -240,7 +240,7 @@ function * getSubEntity (action) {
     })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/edit/${subEntityType}/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put.resolve(
@@ -329,7 +329,7 @@ function * createTalentForEvent (action) {
     }
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/event-service/admin/talent`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
     const mappedValues = mapTalentToServer(values)
     const json = yield call(post, url, mappedValues, token)
 

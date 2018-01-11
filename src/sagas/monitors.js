@@ -15,7 +15,7 @@ function * getVenueEventMonitors (action) {
     yield put.resolve({ type: types.GET_VENUE_EVENT_MONITORS_STARTED })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/monitor-service/monitor/venue/${venueId}/event/`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}/event/`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -34,7 +34,7 @@ function * getVenueEventMonitor (action) {
     yield put.resolve({ type: types.GET_VENUE_EVENT_MONITOR_STARTED })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/monitor-service/monitor/venue/${venueId}/event/${encodeURIComponent(externalEventId)}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}/event/${encodeURIComponent(externalEventId)}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -53,7 +53,7 @@ function * getVenueMonitor (action) {
     yield put.resolve({ type: types.GET_VENUE_MONITOR_STARTED })
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/monitor-service/monitor/venue/${venueId}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}`
     const json = yield call(get, url, token)
 
     yield put.resolve({
@@ -76,7 +76,7 @@ function * updateVenueEventMonitor (action) {
     yield call(validate, values, monitorsConstraint)
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/monitor-service/monitor/venue/${values.venueId}/event/${encodeURIComponent(values.externalEventId)}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${values.venueId}/event/${encodeURIComponent(values.externalEventId)}`
 
     const payload = {
       hasChanged: values.hasChanged,
@@ -105,7 +105,7 @@ function * updateVenueMonitor (action) {
     yield call(validate, values, monitorsConstraint)
 
     const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/monitor-service/monitor/venue/${values.venueId}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${values.venueId}`
 
     const payload = {
       hasChanged: values.hasChanged,

@@ -7,6 +7,11 @@ const UnusedWebpackPlugin = require('unused-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const buildConstants = require('./build-constants')
+
+Object.keys(buildConstants).forEach(key => {
+  buildConstants[key] = JSON.stringify(buildConstants[key])
+})
 
 const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
@@ -16,7 +21,7 @@ const SRC_DIR = path.join(__dirname, './src')
 const ENTRY = PRODUCTION
   ? {
     vendor: [
-      // NOTE: Don't put react-icons in here
+        // NOTE: Don't put react-icons in here
       'amazon-cognito-identity-js',
       'aws-sdk',
       'backo',
@@ -77,25 +82,7 @@ let PLUGINS = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
-      ARTFULLY_LONDON_API_URL: JSON.stringify('https://api.artfully.london'),
-      ARTFULLY_LONDON_GOOGLEMAPS_API_KEY: JSON.stringify(
-        'AIzaSyCJ5v8gMZogBs0s05DUZH7uXappMIOnHGI'
-      ),
-      ARTFULLY_LONDON_GOOGLEMAPS_STATIC_API_KEY: JSON.stringify(
-        'AIzaSyCJ5v8gMZogBs0s05DUZH7uXappMIOnHGI'
-      ),
-      ARTFULLY_LONDON_ENTITY_IMAGES_ROOT_URL: JSON.stringify(
-        'https://images.artfully.london'
-      ),
-      ARTFULLY_LONDON_SITE_IMAGES_ROOT_URL: JSON.stringify(
-        'https://siteimages.artfully.london'
-      ),
-      ARTFULLY_LONDON_COGNITO_USER_POOL_ID: JSON.stringify(
-        'eu-west-1_5r1v2mFTN'
-      ),
-      ARTFULLY_LONDON_COGNITO_USER_POOL_APP_CLIENT_ID: JSON.stringify(
-        '2gup926p48904so9of47h1iscf'
-      )
+      ...buildConstants
     }
   }),
   new webpack.LoaderOptionsPlugin({

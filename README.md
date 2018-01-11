@@ -8,6 +8,9 @@ Install firebase cli tools globally:
 npm install -g firebase-tools
 ```
 
+Copy the `build-constants.template.json` file to `build-constants.json`
+(in the same directory) and populate the values in that file.
+
 ## NPM Package Issues
 
 ### moment

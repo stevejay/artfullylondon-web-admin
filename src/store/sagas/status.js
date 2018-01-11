@@ -6,7 +6,7 @@ export function * getEntityCounts () {
   try {
     yield put.resolve({ type: types.GET_ENTITY_COUNTS_STARTED })
 
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/search-service/admin/search/preset/entity-counts`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/preset/entity-counts`
     const json = yield call(get, url)
 
     yield put.resolve({

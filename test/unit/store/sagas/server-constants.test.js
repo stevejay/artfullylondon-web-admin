@@ -17,7 +17,7 @@ describe('fetchServerConstants', () => {
       call(
         callWithInfiniteRetry,
         get,
-        process.env.ARTFULLY_LONDON_API_URL + '/data-service/admin-site-data'
+        process.env.WEBSITE_API_HOST_URL + '/data-service/admin-site-data'
       )
     )
   })

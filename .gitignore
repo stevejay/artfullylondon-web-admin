@@ -23,6 +23,7 @@ dist
 # Sensitive info
 env.yml
 .coveralls.yml
+build-constants.json
 
 # image test results
 *.result.jpg

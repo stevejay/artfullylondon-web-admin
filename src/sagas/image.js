@@ -127,7 +127,7 @@ function * addImage (action) {
   }
 
   try {
-    const putUrl = `${process.env.ARTFULLY_LONDON_API_URL}/image-service/image/${id}`
+    const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
     const token = yield getAuthTokenForCurrentUser()
 
     const { json, timeout } = yield race({

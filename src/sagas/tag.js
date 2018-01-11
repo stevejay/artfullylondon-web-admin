@@ -24,7 +24,7 @@ function * getAllTags () {
   try {
     yield put.resolve({ type: tagConstants.GET_TAGS_STARTING })
     const token = yield getAuthTokenForCurrentUser()
-    const url = process.env.ARTFULLY_LONDON_API_URL + '/tag-service/tags'
+    const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
     const json = yield call(get, url, token)
     yield put.resolve({ type: tagConstants.GET_TAGS_SUCCEEDED, payload: json })
   } catch (err) {
@@ -39,7 +39,7 @@ function * getTags (action) {
     const token = yield getAuthTokenForCurrentUser()
     const tagType = action.payload.tagType
     const url =
-      process.env.ARTFULLY_LONDON_API_URL + '/tag-service/tags/' + tagType
+      process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
     const json = yield call(get, url, token)
     yield put.resolve({ type: tagConstants.GET_TAGS_SUCCEEDED, payload: json })
   } catch (err) {
@@ -58,7 +58,7 @@ function * addTag (action) {
 
     const token = yield getAuthTokenForCurrentUser()
     const { tagType, label } = action.payload
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/tag-service/tag/${tagType}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${tagType}`
     const json = yield call(post, url, { label }, token)
     const newTag = { tagType, tag: json.tag }
     yield put.resolve({ type: tagConstants.ADD_TAG_SUCCEEDED, payload: newTag })
@@ -98,7 +98,7 @@ function * deleteTag (action) {
     yield put.resolve({ type: tagConstants.DELETE_TAG_STARTING })
     const token = yield getAuthTokenForCurrentUser()
     const { id } = action.payload
-    const url = `${process.env.ARTFULLY_LONDON_API_URL}/tag-service/tag/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
     yield call(httpDelete, url, token)
 
     yield put.resolve({

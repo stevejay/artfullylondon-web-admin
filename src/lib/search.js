@@ -31,7 +31,7 @@ export function createAdminAutocompleteSearchRequestUrl (query) {
 
   const queryString = _createQueryString(params)
 
-  return `${process.env.ARTFULLY_LONDON_API_URL}/search-service/admin/search/auto?${queryString}`
+  return `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/auto?${queryString}`
 }
 
 export function createAdminBasicSearchRequestUrl (query, skip, take) {
@@ -49,7 +49,7 @@ export function createAdminBasicSearchRequestUrl (query, skip, take) {
   _addTakeToParams(params, query.take, take)
   const queryString = _createQueryString(params)
 
-  return `${process.env.ARTFULLY_LONDON_API_URL}/search-service/admin/search/basic?${queryString}`
+  return `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/basic?${queryString}`
 }
 
 function _createQueryString (params) {

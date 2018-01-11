@@ -1,4 +1,5 @@
-export const USER_LOCATION_IMAGE_URL = process.env.ARTFULLY_LONDON_SITE_IMAGES_ROOT_URL + '/female.png'
+export const USER_LOCATION_IMAGE_URL =
+  process.env.WEBSITE_SITE_IMAGES_ROOT_URL + '/female.png'
 
 export const ADD_IMAGE = 'image/ADD_IMAGE'
 export const SET_MAIN_IMAGE = 'image/SET_MAIN_IMAGE'

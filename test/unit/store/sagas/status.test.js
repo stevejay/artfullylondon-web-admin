@@ -16,7 +16,7 @@ describe('getEntityCounts', () => {
     expect(generator.next(null).value).toEqual(
       call(
         get,
-        process.env.ARTFULLY_LONDON_API_URL +
+        process.env.WEBSITE_API_HOST_URL +
           '/search-service/admin/search/preset/entity-counts'
       )
     )

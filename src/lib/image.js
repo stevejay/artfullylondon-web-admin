@@ -2,7 +2,7 @@ import * as venueConstants from '_src/constants/venue'
 
 export function createPngIconUrl (name, isSelected) {
   return (
-    process.env.ARTFULLY_LONDON_SITE_IMAGES_ROOT_URL +
+    process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
     `/${name}${isSelected ? '-selected' : ''}.png`
   )
 }
@@ -27,7 +27,7 @@ export function createVenueTypePngIconUrl (venueType, isSelected) {
 
 export function createHeroImageUrl (name, forMobile) {
   return (
-    process.env.ARTFULLY_LONDON_SITE_IMAGES_ROOT_URL +
+    process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
     `/hero-image/${name}${forMobile ? '.mobile' : ''}.jpg`
   )
 }
@@ -61,6 +61,6 @@ export function createPathsForImageCarousel ({ id, ratio, copyright }) {
 }
 
 function _createImageUrl (imageId, resizedSize) {
-  const root = process.env.ARTFULLY_LONDON_ENTITY_IMAGES_ROOT_URL
+  const root = process.env.WEBSITE_ENTITY_IMAGES_ROOT_URL
   return `${root}/${imageId.substring(0, 2)}/${imageId.substring(2, 4)}/${imageId}/${resizedSize}.jpg`
 }

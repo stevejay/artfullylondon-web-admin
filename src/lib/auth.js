@@ -9,8 +9,8 @@ import { AUTH_STATE_LOGGED_IN } from '_src/constants/auth'
 import { logOut, logInSucceeded, resetLogIn } from '_src/actions/auth'
 
 const userPoolData = {
-  UserPoolId: process.env.ARTFULLY_LONDON_COGNITO_USER_POOL_ID,
-  ClientId: process.env.ARTFULLY_LONDON_COGNITO_USER_POOL_APP_CLIENT_ID,
+  UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,
+  ClientId: process.env.WEBSITE_COGNITO_USER_POOL_APP_CLIENT_ID,
   Paranoia: 7
 }
 
