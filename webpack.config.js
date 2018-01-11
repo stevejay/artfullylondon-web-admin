@@ -54,15 +54,10 @@ const ENTRY = PRODUCTION
       'smart-outline',
       'ensure-request'
     ],
-    app: ['babel-polyfill', './index.jsx']
+    app: ['./index.jsx']
   }
   : {
-    app: [
-      'babel-polyfill',
-      './index.jsx',
-      './foo.scss',
-      'webpack-hot-middleware/client'
-    ]
+    app: ['./index.jsx', './foo.scss', 'webpack-hot-middleware/client']
   }
 
 const OUTPUT = PRODUCTION
@@ -124,7 +119,7 @@ if (PRODUCTION) {
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
-      comments: false,
+      output: { comments: false },
       sourceMap: false
     }),
     new CopyWebpackPlugin([
@@ -217,6 +212,11 @@ module.exports = {
         use: [{ loader: 'babel-loader' }]
       },
       {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'babel-loader' }, { loader: 'ts-loader' }]
+      },
+      {
         test: require.resolve(AWS_SDK_BUNDLE),
         use: [{ loader: 'exports-loader?AWSCognito' }]
       },
@@ -256,7 +256,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       _src: SRC_DIR,
       'aws-sdk$': AWS_SDK_BUNDLE

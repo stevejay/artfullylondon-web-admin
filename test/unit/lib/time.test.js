@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import 'moment-timezone'
 import { ENTITY_TYPE_VENUE, ENTITY_TYPE_EVENT } from '_src/constants/entity'
 import {

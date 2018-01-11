@@ -3,6 +3,8 @@
     [
       "env",
       {
+        "loose": true,
+        "modules": false,
         "targets": {
           "browsers": [
             "last 2 versions",
@@ -14,6 +16,7 @@
     "react"
   ],
   "plugins": [
+    "transform-runtime",
     "transform-class-properties",
     "transform-object-rest-spread",
     [
