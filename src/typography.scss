@@ -1,17 +1,22 @@
 @import 'theme.scss';
 @import 'mixins.scss';
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
-@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600');
-
+// @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600');
 html {
-    @include regularFont;
+  @include regularFont;
 }
 
 p {
-    color: $three-quarter-black;
+  color: $three-quarter-black;
 }
 
-h1, h2, h3, h4, h5, h6, strong {
-    font-weight: normal;
-    @include boldFont;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: normal;
+  @include boldFont;
 }

@@ -35,15 +35,8 @@
 </head>
 
 <body id="body">
-    <div id="preload_area"></div>
-    <style type="text/css">
-        #preload_area {
-            background: url(https://siteimages.artfully.london/artgallery.png), url(https://siteimages.artfully.london/artgallery-selected.png), url(https://siteimages.artfully.london/museum.png), url(https://siteimages.artfully.london/museum-selected.png), url(https://siteimages.artfully.london/townhouse.png), url(https://siteimages.artfully.london/townhouse-selected.png), url(https://siteimages.artfully.london/theater.png), url(https://siteimages.artfully.london/theater-selected.png);
-            display: inline;
-        }
-    </style>
     <div id="react-root"></div>
-    <div id='startup-spinner-container'>
+    <div id='startup-dialog'>
         <div id="startup-spinner">
             <span></span>
             <span></span>
@@ -55,6 +48,10 @@
             <span></span>
             <span></span>
         </div>
+        <h1>
+            Artfully
+            <span>London</span>
+        </h1>
     </div>
     <%= htmlWebpackPlugin.files.webpackManifest %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
@@ -62,9 +59,11 @@
                 <link rel="stylesheet" href="/<%= htmlWebpackPlugin.files.css[css] %>">
                 <% } %>
                     <% } %>
-                        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-                            <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-                            <% } %>
+                        <% if (false) { %>
+                            <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+                                <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+                                <% } %>
+                                    <% } %>
 </body>
 
 </html>

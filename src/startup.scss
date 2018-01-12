@@ -1,13 +1,39 @@
 @import '~scss-mixins-spinners/scss/boxes-spinner.scss';
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,600');
 
-#react-root+#startup-spinner-container {
+body {
+  min-height: 100vh;
+  background-color: #0C1E23;
+  font-family: "Libre Franklin", Sans-Serif;
+}
+
+#react-root+#startup-dialog {
   display: none;
 }
 
-#react-root:empty+#startup-spinner-container {
-  display: block;
+#react-root:empty+#startup-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #startup-spinner {
-  @include boxes-spinner($color: gray);
+  @include boxes-spinner($color: #4E646A);
+  position: relative;
+  transform: none;
+}
+
+#startup-dialog h1 {
+  color: #FFF5EB;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-top: 5px;
+
+  span {
+    font-weight: 600;
+  }
 }
