@@ -26,6 +26,10 @@ detail the error:
 
 I have installed a beta version of standard v11 to deal with an eslint error.
 
+## TODO
+
+- Look into using babili (for better tree-shaking?).
+
 ## License
 
 [MIT](LICENSE)

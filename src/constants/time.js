@@ -183,3 +183,6 @@ export const TIME_OF_DAY_DROPDOWN_OPTIONS = [
   { value: '23:30', label: '11:30 pm' },
   { value: '23:45', label: '11:45 pm' }
 ]
+
+// TODO what should this be????
+export const NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS = []
