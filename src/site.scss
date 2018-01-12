@@ -1,5 +1,11 @@
+// Site-wide CSS Rules
+@import 'variables.scss';
+@import 'mixins.scss';
+@import url('https://fonts.googleapis.com/css?family=Shrikhand');
+
 html {
   -webkit-font-smoothing: antialiased;
+  @include regularFont;
 }
 
 * {
@@ -40,10 +46,17 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.4;
+  color: $three-quarter-black;
 }
 
-$input-placeholder-color: rgba(0, 0, 0, .3);
-$input-placeholder-focus-color: rgba(0, 0, 0, .55);
+$input-placeholder-color: rgba(0,
+0,
+0,
+.3);
+$input-placeholder-focus-color: rgba(0,
+0,
+0,
+.55);
 
 ::-webkit-input-placeholder {
   color: $input-placeholder-color;
@@ -60,4 +73,15 @@ $input-placeholder-focus-color: rgba(0, 0, 0, .55);
 
 :-ms-input-placeholder {
   color: $input-placeholder-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: normal;
+  @include boldFont;
 }

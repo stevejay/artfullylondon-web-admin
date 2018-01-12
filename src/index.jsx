@@ -1,8 +1,7 @@
 import 'sanitize.css/sanitize.css'
-import './reset.scss'
+import './variables.scss'
 import './mixins.scss'
-import './theme.scss'
-import './typography.scss'
+import './site.scss'
 import './startup.scss'
 import 'react-day-picker/lib/style.css'
 
