@@ -7,6 +7,7 @@ const UnusedWebpackPlugin = require('unused-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const buildConstants = require('./build-constants')
 
 Object.keys(buildConstants).forEach(key => {
@@ -97,13 +98,6 @@ let PLUGINS = [
     minimize: PRODUCTION,
     options: { context: __dirname }
   }),
-  extractAppCSS,
-  extractStartupCSS,
-  // new ExtractTextPlugin({
-  //   disable: !PRODUCTION,
-  //   filename: 'static/[name].[contenthash].css',
-  //   allChunks: true
-  // }),
   new HtmlWebpackPlugin({
     title: 'Artfully London Admin',
     template: './template.html',
@@ -116,11 +110,20 @@ let PLUGINS = [
       }
       : false,
     chunksSortMode: 'dependency'
-  })
+  }),
+  extractAppCSS,
+  extractStartupCSS
 ]
 
 if (PRODUCTION) {
   PLUGINS = PLUGINS.concat([
+    // Must come after HtmlWebpackPlugin and the extract CSS plugins:
+    new StyleExtHtmlWebpackPlugin({
+      enabled: true,
+      cssRegExp: /startup/,
+      position: 'head-bottom',
+      minify: true
+    }),
     new LodashModuleReplacementPlugin(),
     new webpack.NormalModuleReplacementPlugin(
       /_src\/debug\/dev-tools/,
@@ -135,7 +138,10 @@ if (PRODUCTION) {
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       output: { comments: false },
-      sourceMap: false
+      sourceMap: false,
+      // To deal with aws-sdk error
+      // https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter/issues/5:
+      mangle: { except: ['exports'] }
     }),
     new CopyWebpackPlugin([
       { from: '../static/robots.txt' },
@@ -267,7 +273,10 @@ module.exports = {
         include: path.resolve(SRC_DIR, 'startup.scss')
       }),
       sassLoader(extractAppCSS, false, {
-        exclude: [CSS_MODULE_FILES_REGEX, path.resolve(SRC_DIR, 'startup.scss')]
+        exclude: [
+          CSS_MODULE_FILES_REGEX,
+          path.resolve(SRC_DIR, 'startup.scss')
+        ]
       })
     ]
   },
