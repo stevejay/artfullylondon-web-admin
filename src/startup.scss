@@ -7,10 +7,6 @@ body {
   font-family: "Libre Franklin", Sans-Serif;
 }
 
-#react-root+#startup-dialog {
-  display: none;
-}
-
 #react-root:empty+#startup-dialog {
   display: flex;
   flex-direction: column;

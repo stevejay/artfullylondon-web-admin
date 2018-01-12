@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
+const WebpackVersionFilePlugin = require('webpack-version-file')
 const buildConstants = require('./build-constants')
 
 Object.keys(buildConstants).forEach(key => {
@@ -18,6 +19,7 @@ const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
+const BUILD_DIR = path.join(__dirname, './build')
 const CSS_MODULE_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
 
 const extractAppCSS = new ExtractTextPlugin({
@@ -76,7 +78,7 @@ const ENTRY = PRODUCTION
 
 const OUTPUT = PRODUCTION
   ? {
-    path: path.join(__dirname, './build'),
+    path: BUILD_DIR,
     filename: './static/[name].[chunkhash].js',
     chunkFilename: './static/[name].[chunkhash].js',
     sourcePrefix: '  '
@@ -112,7 +114,12 @@ let PLUGINS = [
     chunksSortMode: 'dependency'
   }),
   extractAppCSS,
-  extractStartupCSS
+  extractStartupCSS,
+  new WebpackVersionFilePlugin({
+    output: path.join(BUILD_DIR, 'version.json'),
+    package: './package.json',
+    templateString: '{ "version": "<%= version %>" }'
+  })
 ]
 
 if (PRODUCTION) {

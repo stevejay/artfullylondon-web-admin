@@ -54,7 +54,25 @@
       ]
     },
     "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "loose": true,
+            "modules": "commonjs",
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "safari >= 7"
+              ]
+            }
+          }
+        ],
+        "react"
+      ],
       "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
         [
           "module-resolver",
           {

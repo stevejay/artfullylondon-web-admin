@@ -365,6 +365,7 @@ exports[`should render correctly 1`] = `
       label="Named Closures"
       multi={true}
       name="namedClosures"
+      options={Array []}
       searchable={true}
       simpleValue={true}
     />
