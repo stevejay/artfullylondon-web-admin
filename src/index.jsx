@@ -3,6 +3,7 @@ import './reset.scss'
 import './mixins.scss'
 import './theme.scss'
 import './typography.scss'
+import './startup.scss'
 import 'react-day-picker/lib/style.css'
 
 import React from 'react'

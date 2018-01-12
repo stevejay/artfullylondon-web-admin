@@ -1,0 +1,13 @@
+@import '~scss-mixins-spinners/scss/boxes-spinner.scss';
+
+#react-root+#startup-spinner-container {
+  display: none;
+}
+
+#react-root:empty+#startup-spinner-container {
+  display: block;
+}
+
+#startup-spinner {
+  @include boxes-spinner($color: gray);
+}

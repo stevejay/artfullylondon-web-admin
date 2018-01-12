@@ -17,6 +17,19 @@ const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
+const CSS_MODULE_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
+
+const extractAppCSS = new ExtractTextPlugin({
+  filename: 'static/app.[contenthash].css',
+  disable: !PRODUCTION,
+  allChunks: true
+})
+
+const extractStartupCSS = new ExtractTextPlugin({
+  filename: 'static/startup.[contenthash].css',
+  disable: !PRODUCTION,
+  allChunks: true
+})
 
 const ENTRY = PRODUCTION
   ? {
@@ -57,7 +70,7 @@ const ENTRY = PRODUCTION
     app: ['./index.jsx']
   }
   : {
-    app: ['./index.jsx', './foo.scss', 'webpack-hot-middleware/client']
+    app: ['./index.jsx', 'webpack-hot-middleware/client']
   }
 
 const OUTPUT = PRODUCTION
@@ -84,11 +97,13 @@ let PLUGINS = [
     minimize: PRODUCTION,
     options: { context: __dirname }
   }),
-  new ExtractTextPlugin({
-    disable: !PRODUCTION,
-    filename: 'static/[contenthash].css',
-    allChunks: true
-  }),
+  extractAppCSS,
+  extractStartupCSS,
+  // new ExtractTextPlugin({
+  //   disable: !PRODUCTION,
+  //   filename: 'static/[name].[contenthash].css',
+  //   allChunks: true
+  // }),
   new HtmlWebpackPlugin({
     title: 'Artfully London Admin',
     template: './template.html',
@@ -144,17 +159,11 @@ if (PRODUCTION) {
   ])
 }
 
-function sassLoader (useModules) {
-  const CSS_MODULE_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
-
-  const opts = useModules
-    ? { include: CSS_MODULE_FILES_REGEX }
-    : { exclude: CSS_MODULE_FILES_REGEX }
-
+function sassLoader (extractTextPluginInstance, useModules, opts) {
   return {
     test: /\.s?css$/,
     ...opts,
-    use: ExtractTextPlugin.extract({
+    use: extractTextPluginInstance.extract({
       fallback: {
         loader: 'style-loader',
         options: { sourceMap: !PRODUCTION }
@@ -251,8 +260,15 @@ module.exports = {
           }
         ]
       },
-      sassLoader(true),
-      sassLoader(false)
+      sassLoader(extractAppCSS, true, {
+        include: CSS_MODULE_FILES_REGEX
+      }),
+      sassLoader(extractStartupCSS, false, {
+        include: path.resolve(SRC_DIR, 'startup.scss')
+      }),
+      sassLoader(extractAppCSS, false, {
+        exclude: [CSS_MODULE_FILES_REGEX, path.resolve(SRC_DIR, 'startup.scss')]
+      })
     ]
   },
   resolve: {
