@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<footer
+  className="src-components-page-footer__page-footer"
+>
+  <div
+    id="child"
+  />
+</footer>
+`;

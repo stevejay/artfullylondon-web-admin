@@ -11,7 +11,7 @@ import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import * as searchConstants from '_src/constants/search'
-import * as authTypes from '_src/constants/auth'
+import * as authActionsTypes from '_src/constants/actions/auth'
 
 const initialState = {
   searchInProgress: false,
@@ -30,7 +30,7 @@ const initialState = {
 
 export default handleActions(
   {
-    [authTypes.LOGGED_OUT]: () => initialState,
+    [authActionsTypes.LOGGED_OUT]: () => initialState,
     [searchConstants.BASIC_SEARCH_PAGE_ENTERED]: state => ({
       ...state,
       searchInProgress: false,

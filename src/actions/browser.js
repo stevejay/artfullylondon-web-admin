@@ -1,4 +1,6 @@
 import { createAction } from 'redux-actions'
-import * as types from '_src/constants/browser'
+import * as browserActionTypes from '_src/constants/actions/browser'
 
-export const browserWidthChanged = createAction(types.BROWSER_WIDTH_CHANGED)
+export const browserWidthChanged = createAction(
+  browserActionTypes.BROWSER_WIDTH_CHANGED
+)

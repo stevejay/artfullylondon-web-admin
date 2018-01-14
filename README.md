@@ -57,6 +57,7 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 - template.html scripting example: https://github.com/martiensk/VueScssSSR/blob/master/views/index.html
 - for little PNG images: https://www.npmjs.com/package/url-loader
 - clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
+- serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
 
 ## License
 

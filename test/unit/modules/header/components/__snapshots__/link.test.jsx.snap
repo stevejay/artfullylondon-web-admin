@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Link
+  className="src-modules-header-components-Link__link"
+  replace={false}
+  role="menuitem"
+  to="/to/here"
+>
+  The Label
+</Link>
+`;

@@ -1,270 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly when logged in 1`] = `
-<HeaderContainer>
+Array [
   <HeaderLogo
+    className="src-modules-header-index__logo"
+    key="logo"
     size="medium"
-  />
-  <MenuBar>
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "Add Event",
-            "match": /\\^\\\\/event\\$/i,
-            "path": "/event",
-          },
-          Object {
-            "label": "Add Event Series",
-            "match": /\\^\\\\/event-series\\$/i,
-            "path": "/event-series",
-          },
-          Object {
-            "label": "Add Talent",
-            "match": /\\^\\\\/talent\\$/i,
-            "path": "/talent",
-          },
-          Object {
-            "label": "Add Venue",
-            "match": /\\^\\\\/venue\\$/i,
-            "path": "/venue",
-          },
-        ]
-      }
-      key="Entities"
-      label="Entities"
-    />
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "Medium Tags",
-            "match": /\\^\\\\/tags\\\\/medium\\$/i,
-            "path": "/tags/medium",
-          },
-          Object {
-            "label": "Style Tags",
-            "match": /\\^\\\\/tags\\\\/style\\$/i,
-            "path": "/tags/style",
-          },
-          Object {
-            "label": "Audience Tags",
-            "match": /\\^\\\\/tags\\\\/audience\\$/i,
-            "path": "/tags/audience",
-          },
-          Object {
-            "label": "Geo Tags",
-            "match": /\\^\\\\/tags\\\\/geo\\$/i,
-            "path": "/tags/geo",
-          },
-        ]
-      }
-      key="Tags"
-      label="Tags"
-    />
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "About",
-            "match": /\\^\\\\/about\\$/i,
-            "path": "/about",
-          },
-          Object {
-            "label": "Privacy & Cookies",
-            "match": /\\^\\\\/privacy\\$/i,
-            "path": "/privacy",
-          },
-          Object {
-            "label": "Terms Of Service",
-            "match": /\\^\\\\/terms\\$/i,
-            "path": "/terms",
-          },
-        ]
-      }
-      key="Site Info"
-      label="Site Info"
-    />
-    <HeaderLink
-      label="Log Out"
-      to="/log-out"
-    />
-    <HeaderButton
-      aria-label="Show quicksearch dialog"
-      label="Quicksearch"
-      onClick={[Function]}
-    />
-  </MenuBar>
-</HeaderContainer>
+  />,
+  <MenuBar
+    key="menu"
+  />,
+]
 `;
 
 exports[`should render correctly when narrow 1`] = `
-<HeaderContainer>
+Array [
   <HeaderLogo
+    className="src-modules-header-index__logo"
+    key="logo"
     size="small"
-  />
-  <MenuBar>
-    <IconButton
-      ariaLabel="Show quicksearch dialog"
-      icon={[Function]}
-      onClick={[Function]}
-      style={
-        Object {
-          "marginRight": "1.5rem",
-        }
-      }
-      type="default"
-    />
-    <IconButton
-      aria-controls="sidenav"
-      aria-label="Show navigation menu"
-      ariaExpanded={false}
-      icon={[Function]}
-      onClick={[Function]}
-      type="default"
-    />
-  </MenuBar>
-</HeaderContainer>
+  />,
+  <MenuBar
+    key="menu"
+  />,
+]
 `;
 
 exports[`should render correctly when not logged in 1`] = `
-<HeaderContainer>
+Array [
   <HeaderLogo
+    className="src-modules-header-index__logo"
+    key="logo"
     size="medium"
-  />
-  <MenuBar>
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "About",
-            "match": /\\^\\\\/about\\$/i,
-            "path": "/about",
-          },
-          Object {
-            "label": "Privacy & Cookies",
-            "match": /\\^\\\\/privacy\\$/i,
-            "path": "/privacy",
-          },
-          Object {
-            "label": "Terms Of Service",
-            "match": /\\^\\\\/terms\\$/i,
-            "path": "/terms",
-          },
-        ]
-      }
-      key="Site Info"
-      label="Site Info"
-    />
-    <HeaderLink
-      label="Log In"
-      to="/log-in"
-    />
-  </MenuBar>
-</HeaderContainer>
+  />,
+  <MenuBar
+    key="menu"
+  />,
+]
 `;
 
 exports[`should render correctly when showing the sidenav 1`] = `
-<HeaderContainer>
+Array [
   <HeaderLogo
+    className="src-modules-header-index__logo"
+    key="logo"
     size="medium"
-  />
-  <MenuBar>
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "Add Event",
-            "match": /\\^\\\\/event\\$/i,
-            "path": "/event",
-          },
-          Object {
-            "label": "Add Event Series",
-            "match": /\\^\\\\/event-series\\$/i,
-            "path": "/event-series",
-          },
-          Object {
-            "label": "Add Talent",
-            "match": /\\^\\\\/talent\\$/i,
-            "path": "/talent",
-          },
-          Object {
-            "label": "Add Venue",
-            "match": /\\^\\\\/venue\\$/i,
-            "path": "/venue",
-          },
-        ]
-      }
-      key="Entities"
-      label="Entities"
-    />
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "Medium Tags",
-            "match": /\\^\\\\/tags\\\\/medium\\$/i,
-            "path": "/tags/medium",
-          },
-          Object {
-            "label": "Style Tags",
-            "match": /\\^\\\\/tags\\\\/style\\$/i,
-            "path": "/tags/style",
-          },
-          Object {
-            "label": "Audience Tags",
-            "match": /\\^\\\\/tags\\\\/audience\\$/i,
-            "path": "/tags/audience",
-          },
-          Object {
-            "label": "Geo Tags",
-            "match": /\\^\\\\/tags\\\\/geo\\$/i,
-            "path": "/tags/geo",
-          },
-        ]
-      }
-      key="Tags"
-      label="Tags"
-    />
-    <Menu
-      history={Object {}}
-      items={
-        Array [
-          Object {
-            "label": "About",
-            "match": /\\^\\\\/about\\$/i,
-            "path": "/about",
-          },
-          Object {
-            "label": "Privacy & Cookies",
-            "match": /\\^\\\\/privacy\\$/i,
-            "path": "/privacy",
-          },
-          Object {
-            "label": "Terms Of Service",
-            "match": /\\^\\\\/terms\\$/i,
-            "path": "/terms",
-          },
-        ]
-      }
-      key="Site Info"
-      label="Site Info"
-    />
-    <HeaderLink
-      label="Log Out"
-      to="/log-out"
-    />
-    <HeaderButton
-      aria-label="Show quicksearch dialog"
-      label="Quicksearch"
-      onClick={[Function]}
-    />
-  </MenuBar>
-</HeaderContainer>
+  />,
+  <MenuBar
+    key="menu"
+  />,
+]
 `;

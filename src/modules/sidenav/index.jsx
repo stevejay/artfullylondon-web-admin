@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
-import HeaderLogo from '_src/components/header/logo'
+import HeaderLogo from '_src/components/logo/header'
 import SidenavModal from '_src/components/sidenav/modal'
 import SidebarButton from '_src/components/sidenav/button'
 import Menu from '_src/components/sidenav/menu'
-import menus from '_src/constants/menus'
+import * as menuConstants from '_src/constants/menu'
 import { AUTH_STATE_LOGGED_IN } from '_src/constants/auth'
 import { hideSidenav } from '_src/actions/modal'
 
@@ -43,15 +43,14 @@ export class Sidenav extends React.Component {
   render () {
     const { show, loggedIn, onHide } = this.props
 
-    // TODO better solution:
-    const filteredMenus = menus.filter(
-      menu => (loggedIn ? menu.showWhenLoggedIn : menu.showWhenLoggedOut)
-    )
+    const menus = loggedIn
+      ? menuConstants.LOGGED_IN_MENUS
+      : menuConstants.LOGGED_OUT_MENUS
 
     return (
       <SidenavModal show={show} onHide={onHide}>
         <HeaderLogo size='small' onClick={this.handleLinkClick} />
-        {filteredMenus.map(menu => (
+        {menus.map(menu => (
           <Menu
             key={menu.label}
             id={menu.label}

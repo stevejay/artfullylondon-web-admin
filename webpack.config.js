@@ -9,11 +9,26 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const WebpackVersionFilePlugin = require('webpack-version-file')
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const buildConstants = require('./build-constants')
+const packageJson = require('./package.json')
 
-Object.keys(buildConstants).forEach(key => {
-  buildConstants[key] = JSON.stringify(buildConstants[key])
-})
+// const stringifiedBuildConstants = {}
+// Object.keys(buildConstants).forEach(key => {
+//   stringifiedBuildConstants[key] = JSON.stringify(buildConstants[key])
+// })
+
+buildConstants.WEBSITE_VERSION = packageJson.version
+
+function stringifyObjectValues (buildConstants) {
+  const result = {}
+
+  Object.keys(buildConstants).forEach(key => {
+    result[key] = JSON.stringify(buildConstants[key])
+  })
+
+  return result
+}
 
 const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
@@ -34,10 +49,10 @@ const extractStartupCSS = new ExtractTextPlugin({
   allChunks: true
 })
 
+// NOTE: Don't put react-icons in here
 const ENTRY = PRODUCTION
   ? {
     vendor: [
-        // NOTE: Don't put react-icons in here
       'amazon-cognito-identity-js',
       'aws-sdk',
       'backo',
@@ -93,7 +108,7 @@ let PLUGINS = [
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
-      ...buildConstants
+      ...stringifyObjectValues(buildConstants)
     }
   }),
   new webpack.LoaderOptionsPlugin({
@@ -154,6 +169,9 @@ if (PRODUCTION) {
       { from: '../static/robots.txt' },
       { from: '../static/favicon', to: 'favicon' }
     ])
+    // new SWPrecacheWebpackPlugin({
+    //   importScripts: [{ chunkName: 'vendor' }, { chunkName: 'app' }]
+    // })
   ])
 } else {
   PLUGINS = PLUGINS.concat([

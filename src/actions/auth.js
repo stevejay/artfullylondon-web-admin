@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
-import * as types from '_src/constants/auth'
+import * as authActionsTypes from '_src/constants/actions/auth'
 
-export const resetLogIn = createAction(types.LOGGED_OUT)
-export const submitLogIn = createAction(types.SUBMIT_LOGIN)
-export const logOut = createAction(types.LOG_OUT)
-export const logInSucceeded = createAction(types.LOG_IN_SUCCEEDED)
+export const resetLogIn = createAction(authActionsTypes.LOGGED_OUT)
+export const submitLogIn = createAction(authActionsTypes.SUBMIT_LOGIN)
+export const logOut = createAction(authActionsTypes.LOG_OUT)
+export const logInSucceeded = createAction(authActionsTypes.LOG_IN_SUCCEEDED)

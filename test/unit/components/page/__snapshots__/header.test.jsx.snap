@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<header
+  className="src-components-page-header__page-header"
+  role="banner"
+>
+  <div
+    id="child"
+  />
+</header>
+`;

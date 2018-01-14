@@ -11,7 +11,7 @@ it('should render correctly when logged in', () => {
       menus={[
         { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
       ]}
-      browserWidthType='wide'
+      isWideBrowser
       showingSidenav={false}
       history={{}}
       showSidenav={_.noop}
@@ -29,7 +29,7 @@ it('should render correctly when showing the sidenav', () => {
       menus={[
         { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
       ]}
-      browserWidthType='wide'
+      isWideBrowser
       showingSidenav
       history={{}}
       showSidenav={_.noop}
@@ -47,7 +47,7 @@ it('should render correctly when narrow', () => {
       menus={[
         { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
       ]}
-      browserWidthType='narrow'
+      isWideBrowser={false}
       showingSidenav={false}
       history={{}}
       showSidenav={_.noop}
@@ -65,7 +65,7 @@ it('should render correctly when not logged in', () => {
       menus={[
         { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
       ]}
-      browserWidthType='wide'
+      isWideBrowser
       showingSidenav={false}
       history={{}}
       showSidenav={_.noop}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a medium header logo correctly 1`] = `
+<Link
+  aria-label="Go to home page"
+  className="src-components-logo-header__logo"
+  replace={false}
+  to="/"
+>
+  <Logo
+    size="medium"
+    type="normal"
+  />
+</Link>
+`;
+
+exports[`should render a small header logo correctly 1`] = `
+<Link
+  aria-label="Go to home page"
+  className="src-components-logo-header__logo"
+  replace={false}
+  to="/"
+>
+  <Logo
+    size="small"
+    type="normal"
+  />
+</Link>
+`;

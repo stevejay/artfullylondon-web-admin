@@ -1,0 +1,15 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+.page-header {
+  display: flex;
+  box-shadow: 0px 3px 7px 0px $box-shadow-dark-background;
+  z-index: 10;
+  padding: 0 1rem 0 1.5rem;
+  height: 52px;
+
+  @include from-desktop {
+    padding: 0 2rem 0 1rem;
+    height: 80px;
+  }
+}

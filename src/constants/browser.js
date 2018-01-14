@@ -1,4 +1,5 @@
 export const BROWSER_WIDTH_THRESHOLD = 992
+
 export const BROWSER_WIDTH_TYPE_NARROW = 'narrow'
 export const BROWSER_WIDTH_TYPE_WIDE = 'wide'
 
@@ -9,6 +10,3 @@ export const ALLOWED_BROWSER_WIDTH_TYPES = [
 
 export const ARROW_UP_KEYCODE = 38
 export const ARROW_DOWN_KEYCODE = 40
-
-export const BROWSER_WIDTH_CHANGED = 'browser/BROWSER_WIDTH_CHANGED'
-export const UPDATE_BROWSER_WIDTH_TYPE = 'browser/UPDATE_BROWSER_WIDTH_TYPE'
