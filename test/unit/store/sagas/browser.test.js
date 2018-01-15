@@ -2,7 +2,7 @@ import { delay } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
 
 import * as browserConstants from '_src/constants/browser'
-import * as browserActionTypes from '_src/constants/actions/browser'
+import * as browserActionTypes from '_src/constants/action/browser'
 import * as browserSagas from '_src/store/sagas/browser'
 
 describe('browserWidthChanged', () => {

@@ -8,8 +8,8 @@ import SidenavModal from '_src/components/sidenav/modal'
 import SidebarButton from '_src/components/sidenav/button'
 import Menu from '_src/components/sidenav/menu'
 import * as menuConstants from '_src/constants/menu'
-import { AUTH_STATE_LOGGED_IN } from '_src/constants/auth'
-import { hideSidenav } from '_src/actions/modal'
+import * as authConstants from '_src/constants/auth'
+import * as modalActions from '_src/actions/modal'
 
 export class Sidenav extends React.Component {
   constructor (props) {
@@ -43,14 +43,10 @@ export class Sidenav extends React.Component {
   render () {
     const { show, loggedIn, onHide } = this.props
 
-    const menus = loggedIn
-      ? menuConstants.LOGGED_IN_MENUS
-      : menuConstants.LOGGED_OUT_MENUS
-
     return (
       <SidenavModal show={show} onHide={onHide}>
         <HeaderLogo size='small' onClick={this.handleLinkClick} />
-        {menus.map(menu => (
+        {menuConstants.MENUS.map(menu => (
           <Menu
             key={menu.label}
             id={menu.label}
@@ -85,10 +81,10 @@ export default withRouter(
   connect(
     state => ({
       show: state.modal.showSidenav,
-      loggedIn: state.auth.state === AUTH_STATE_LOGGED_IN
+      loggedIn: state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
     }),
     dispatch => ({
-      onHide: bindActionCreators(hideSidenav, dispatch)
+      onHide: bindActionCreators(modalActions.hideSidenav, dispatch)
     })
   )(Sidenav)
 )

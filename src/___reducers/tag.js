@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 import _ from 'lodash'
-import * as tagActionsTypes from '_src/constants/actions/tag'
+import * as tagActionTypes from '_src/constants/action/tag'
 import { getTagTypeFromTagId } from '_src/lib/tag'
 
 const initialState = {
@@ -16,14 +16,14 @@ const initialState = {
 
 export default handleActions(
   {
-    [tagActionsTypes.GET_TAGS_STARTING]: state => ({
+    [tagActionTypes.GET_TAGS_STARTING]: state => ({
       ...state,
       getInProgress: true,
       getFailed: false,
       addInProgress: false,
       deleteInProgress: false
     }),
-    [tagActionsTypes.GET_TAGS_SUCCEEDED]: (state, action) => {
+    [tagActionTypes.GET_TAGS_SUCCEEDED]: (state, action) => {
       let { medium, style, geo, audience } = action.payload.tags
 
       medium = medium !== undefined
@@ -45,16 +45,16 @@ export default handleActions(
         audience: audience
       }
     },
-    [tagActionsTypes.GET_TAGS_FAILED]: state => ({
+    [tagActionTypes.GET_TAGS_FAILED]: state => ({
       ...state,
       getInProgress: false,
       getFailed: true
     }),
-    [tagActionsTypes.ADD_TAG_STARTING]: state => ({
+    [tagActionTypes.ADD_TAG_STARTING]: state => ({
       ...state,
       addInProgress: true
     }),
-    [tagActionsTypes.ADD_TAG_SUCCEEDED]: (state, action) => {
+    [tagActionTypes.ADD_TAG_SUCCEEDED]: (state, action) => {
       const { payload: { tagType, tag } } = action
 
       let spliceIndex = _.findIndex(state[tagType], value => value.id > tag.id)
@@ -73,15 +73,15 @@ export default handleActions(
       result[tagType] = newTags
       return result
     },
-    [tagActionsTypes.ADD_TAG_FAILED]: state => ({
+    [tagActionTypes.ADD_TAG_FAILED]: state => ({
       ...state,
       addInProgress: false
     }),
-    [tagActionsTypes.DELETE_TAG_STARTING]: state => ({
+    [tagActionTypes.DELETE_TAG_STARTING]: state => ({
       ...state,
       deleteInProgress: true
     }),
-    [tagActionsTypes.DELETE_TAG_SUCCEEDED]: (state, action) => {
+    [tagActionTypes.DELETE_TAG_SUCCEEDED]: (state, action) => {
       const id = action.payload.id
       const tagType = getTagTypeFromTagId(id)
       const deleteIndex = _.findIndex(state[tagType], value => value.id === id)
@@ -97,7 +97,7 @@ export default handleActions(
       result[tagType] = newTags
       return result
     },
-    [tagActionsTypes.DELETE_TAG_FAILED]: state => ({
+    [tagActionTypes.DELETE_TAG_FAILED]: state => ({
       ...state,
       deleteInProgress: false
     })

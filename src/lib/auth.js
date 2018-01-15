@@ -4,11 +4,12 @@ import {
   CognitoUser
 } from 'amazon-cognito-identity-js'
 import _ from 'lodash'
-import store from '_src/store'
-import { AUTH_STATE_LOGGED_IN } from '_src/constants/auth'
-import { logOut, logInSucceeded, resetLogIn } from '_src/actions/auth'
 
-const userPoolData = {
+import store from '_src/store'
+import * as authConstants from '_src/constants/auth'
+import * as authActions from '_src/actions/auth'
+
+const USER_POOL_DATA = {
   UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,
   ClientId: process.env.WEBSITE_COGNITO_USER_POOL_APP_CLIENT_ID,
   Paranoia: 7
@@ -24,13 +25,13 @@ const redirectToLogIn = (nextState, replace) => {
 }
 
 const createCognitoUser = username => {
-  const userPool = new CognitoUserPool(userPoolData)
+  const userPool = new CognitoUserPool(USER_POOL_DATA)
   const userData = { Username: username, Pool: userPool }
   return new CognitoUser(userData)
 }
 
 const getCognitoUserFromLocalStorage = () => {
-  const userPool = new CognitoUserPool(userPoolData)
+  const userPool = new CognitoUserPool(USER_POOL_DATA)
   return userPool.getCurrentUser()
 }
 
@@ -68,7 +69,7 @@ export const getAuthTokenForCurrentUser = () => {
   return new Promise((resolve, reject) => {
     const { auth } = store.getState()
 
-    if (auth.state === AUTH_STATE_LOGGED_IN) {
+    if (auth.state === authConstants.AUTH_STATE_LOGGED_IN) {
       // console.log('getAuthTokenForCurrentUser', 'found authenticated user in store');
 
       auth.cognitoUser.getSession((err, session) => {
@@ -76,7 +77,7 @@ export const getAuthTokenForCurrentUser = () => {
           // the authenticated user is no longer valid.
           // console.log('getAuthTokenForCurrentUser', 'the authenticated user in store is no longer valid');
 
-          store.dispatch(resetLogIn()) // clear the user from store.
+          store.dispatch(authActions.resetLogIn()) // clear the user from store.
 
           // TODO display modal to capture login details.
         } else {
@@ -90,13 +91,27 @@ export const getAuthTokenForCurrentUser = () => {
   })
 }
 
+export function attemptAutoLogIn () {
+  return new Promise(resolve => {
+    const cognitoUser = getCognitoUserFromLocalStorage()
+
+    if (cognitoUser) {
+      cognitoUser.getSession((err, session) => {
+        resolve(!err && session.isValid() ? cognitoUser : null)
+      })
+    } else {
+      resolve()
+    }
+  })
+}
+
 export const handleEnterRestrictedRoute = (nextState, replace) => {
   return new Promise(resolve => {
     // console.log('auth', store);
 
     const { auth } = store.getState()
 
-    if (auth.state === AUTH_STATE_LOGGED_IN) {
+    if (auth.state === authConstants.AUTH_STATE_LOGGED_IN) {
       // we have an authenticated user in store.
       console.log(
         'handleEnterRestrictedRoute',
@@ -111,7 +126,7 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
             'the authenticated user in store is no longer valid'
           )
 
-          store.dispatch(logOut()) // clear the user from store.
+          store.dispatch(authActions.logOut()) // clear the user from store.
           redirectToLogIn(nextState, replace) // allow the user to log in.
         } else {
           console.log(
@@ -144,7 +159,7 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
           } else {
             // the authenticated user is still valid, so use it.
             // console.log('handleEnterRestrictedRoute', 'user in local storage is still valid so setting it in store');
-            store.dispatch(logInSucceeded({ cognitoUser }))
+            store.dispatch(authActions.logInSucceeded({ cognitoUser }))
           }
 
           resolve()

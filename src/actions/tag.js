@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions'
-import * as tagActionsTypes from '_src/constants/actions/tag'
+import * as tagActionTypes from '_src/constants/action/tag'
 
-export const getAllTags = createAction(tagActionsTypes.GET_ALL_TAGS)
-export const getTags = createAction(tagActionsTypes.GET_TAGS)
-export const addTag = createAction(tagActionsTypes.ADD_TAG)
-export const deleteTag = createAction(tagActionsTypes.DELETE_TAG)
+export const getAllTags = createAction(tagActionTypes.GET_ALL_TAGS)
+export const getTags = createAction(tagActionTypes.GET_TAGS)
+export const addTag = createAction(tagActionTypes.ADD_TAG)
+export const deleteTag = createAction(tagActionTypes.DELETE_TAG)

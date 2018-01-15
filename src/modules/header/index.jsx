@@ -36,10 +36,6 @@ export class Header extends React.Component {
       history
     } = this.props
 
-    const menus = loggedIn
-      ? menuConstants.LOGGED_IN_MENUS
-      : menuConstants.LOGGED_OUT_MENUS
-
     return [
       <HeaderLogo
         key='logo'
@@ -64,7 +60,7 @@ export class Header extends React.Component {
             ariaExpanded={showingSidenav}
           />}
         {isWideBrowser &&
-          menus.map(menu => (
+          menuConstants.MENUS.map(menu => (
             <HeaderMenu
               key={menu.label}
               label={menu.label}

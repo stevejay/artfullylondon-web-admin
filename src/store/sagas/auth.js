@@ -1,20 +1,35 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 
-import * as authActionsTypes from '_src/constants/actions/auth'
-import { logOutCurrentUser, authenticateUser } from '_src/lib/auth'
+import * as authActionTypes from '_src/constants/action/auth'
+// import { logOutCurrentUser, authenticateUser } from '_src/lib/auth'
+import * as authLib from '_src/lib/auth'
 import { validate } from '_src/lib/validation'
 import { logInConstraint } from '_src/constants/auth-constraints'
 import { submitErrorHandler } from '_src/lib/saga'
 import * as formConstants from '_src/constants/form'
-import * as tagActionsTypes from '_src/constants/actions/tag'
+import * as tagActionTypes from '_src/constants/action/tag'
 import history from '_src/history'
 
-function * tryAutoLogIn () {
+function * attemptAutoLogIn () {
   try {
+    const cognitoUser = yield call(authLib.attemptAutoLogIn)
+
+    if (cognitoUser) {
+      console.log('auto logged in')
+
+      yield put({
+        type: authActionTypes.LOG_IN_SUCCEEDED,
+        payload: { cognitoUser }
+      })
+    }
   } catch (err) {
     console.log('auto login attempt failed', err)
   }
+
+  yield put({
+    type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
+  })
 }
 
 function * logIn (action) {
@@ -23,7 +38,7 @@ function * logIn (action) {
     yield call(validate, action.payload, logInConstraint)
 
     const cognitoUser = yield call(
-      authenticateUser,
+      authLib.authenticateUser,
       action.payload.username,
       action.payload.password
     )
@@ -31,25 +46,25 @@ function * logIn (action) {
     yield put(stopSubmit(formConstants.LOGIN_FORM_NAME))
 
     yield put({
-      type: authActionsTypes.LOG_IN_SUCCEEDED,
+      type: authActionTypes.LOG_IN_SUCCEEDED,
       payload: { cognitoUser }
     })
 
     yield call(history.push, '/')
   } catch (err) {
-    yield put({ type: authActionsTypes.LOG_IN_FAILED })
+    yield put({ type: authActionTypes.LOG_IN_FAILED })
     yield call(submitErrorHandler, err, formConstants.LOGIN_FORM_NAME)
   }
 }
 
 function * logOut () {
   try {
-    yield call(logOutCurrentUser)
+    yield call(authLib.logOutCurrentUser)
   } catch (err) {
     console.error('logOut error', err.message)
   } finally {
     yield put({
-      type: authActionsTypes.LOGGED_OUT,
+      type: authActionTypes.LOGGED_OUT,
       payload: { resetUsername: true }
     })
   }
@@ -58,14 +73,15 @@ function * logOut () {
 // TODO why is this here?
 function * getAllTags () {
   try {
-    yield put.resolve({ type: tagActionsTypes.GET_ALL_TAGS })
+    yield put.resolve({ type: tagActionTypes.GET_ALL_TAGS })
   } catch (err) {
     console.error('getAllTags error', err)
   }
 }
 
 export default [
-  takeLatest(authActionsTypes.LOG_IN, logIn),
-  takeLatest(authActionsTypes.LOG_OUT, logOut),
-  takeLatest(authActionsTypes.LOG_IN_SUCCEEDED, getAllTags)
+  takeLatest(authActionTypes.LOG_IN, logIn),
+  takeLatest(authActionTypes.LOG_OUT, logOut),
+  takeLatest(authActionTypes.LOG_IN_SUCCEEDED, getAllTags),
+  takeLatest(authActionTypes.ATTEMPT_AUTO_LOG_IN, attemptAutoLogIn)
 ]

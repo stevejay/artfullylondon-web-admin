@@ -6,7 +6,7 @@
 body {
   min-height: 100vh;
   background-color: $white;
-  font-family: "Libre Franklin", Sans-Serif;
+  font-family: $primary-font-family;
 }
 
 #react-root+#startup-dialog {
@@ -24,13 +24,13 @@ body {
 }
 
 #startup-spinner {
-  @include boxes-spinner($color: $highlight-color);
+  @include boxes-spinner($color: $dark-highlight-color);
   position: relative;
   transform: none;
 }
 
 #startup-dialog h1 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 300;
   margin-top: 5px;
 

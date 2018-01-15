@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import * as browserConstants from '_src/constants/browser'
-import * as browserActionTypes from '_src/constants/actions/browser'
+import * as browserActionTypes from '_src/constants/action/browser'
 import browserReducer from '_src/store/reducers/browser'
 
 it('should have the correct initial state', () => {

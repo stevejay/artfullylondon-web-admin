@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 import * as browserLib from '_src/lib/browser'
-import * as browserActionTypes from '_src/constants/actions/browser'
+import * as browserActionTypes from '_src/constants/action/browser'
 
 const initialState = {
   widthType: browserLib.calculateBrowserWidthType(

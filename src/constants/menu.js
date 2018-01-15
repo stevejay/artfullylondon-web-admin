@@ -50,26 +50,4 @@ const TAGS_MENU = {
   ]
 }
 
-const SITE_INFO_MENU = {
-  label: 'Site Info',
-  items: [
-    {
-      label: 'About',
-      path: '/about',
-      match: /^\/about$/i
-    },
-    {
-      label: 'Privacy & Cookies',
-      path: '/privacy',
-      match: /^\/privacy$/i
-    },
-    {
-      label: 'Terms Of Service',
-      path: '/terms',
-      match: /^\/terms$/i
-    }
-  ]
-}
-
-export const LOGGED_OUT_MENUS = [SITE_INFO_MENU]
-export const LOGGED_IN_MENUS = [ENTITIES_MENU, TAGS_MENU, SITE_INFO_MENU]
+export const MENUS = [ENTITIES_MENU, TAGS_MENU]

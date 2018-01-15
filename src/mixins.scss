@@ -77,21 +77,21 @@
 }
 
 @mixin regularFont() {
-  font-family: "Libre Franklin", Sans-Serif;
+  font-family: $primary-font-family;
   font-weight: 300;
   font-style: normal;
   line-height: 1.4;
 }
 
 @mixin boldFont() {
-  font-family: "Libre Franklin", Sans-Serif;
+  font-family: $primary-font-family;
   font-weight: 500;
   font-style: normal;
   line-height: 1.4;
 }
 
 @mixin extraBoldFont() {
-  font-family: "Libre Franklin", Sans-Serif;
+  font-family: $primary-font-family;
   font-weight: 700;
   font-style: normal;
   line-height: 1.4;
@@ -185,7 +185,7 @@
     bottom: 0;
     display: block;
     content: '';
-    border-bottom: solid 3px #AB947C;
+    border-bottom: solid 3px $highlight-color;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
   }
@@ -206,8 +206,9 @@
 }
 
 @mixin headerLinkText () {
-  color: #FFF5EB;
-  font-size: 1.2rem;
+  @include extraBoldFont;
+  color: $half-black;
+  font-size: 1.8rem;
   line-height: 1;
   text-transform: uppercase;
 }

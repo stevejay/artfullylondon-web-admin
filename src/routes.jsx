@@ -17,10 +17,17 @@ import Notifications from '_src/components/notifications'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
+import * as authActions from '_src/actions/auth'
 import * as authSelectors from '_src/store/selectors/auth'
-import * as browserActionTypes from '_src/constants/actions/browser'
+import * as authActionTypes from '_src/constants/action/auth'
+import * as browserActionTypes from '_src/constants/action/browser'
 
 export class Routes extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { autoLoginTried: false }
+    props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
+  }
   handleWindowResize = width => {
     this.props.dispatch({
       type: browserActionTypes.BROWSER_WIDTH_CHANGED,
@@ -28,9 +35,11 @@ export class Routes extends React.Component {
     })
   }
   render () {
-    const { loggedIn } = this.props
+    const { loggedIn, autoLogInAttempted } = this.props
 
-    console.log('loggedIn', loggedIn)
+    if (!autoLogInAttempted) {
+      return null
+    }
 
     return (
       <Page>
@@ -45,16 +54,17 @@ export class Routes extends React.Component {
               <Redirect to='/login' />
             </Switch>
           </PageMain>}
-        {loggedIn &&
-          <PageMain>
-            <PageHeader><Header /></PageHeader>
+        {loggedIn && [
+          <PageHeader key='header'><Header /></PageHeader>,
+          <PageMain key='main'>
             {false &&
               <Switch>
                 <Route exact path='/' component={Dashboard} />
                 <Route component={NotFound} />
               </Switch>}
-            <PageFooter><Footer /></PageFooter>
-          </PageMain>}
+          </PageMain>,
+          <PageFooter key='footer'><Footer /></PageFooter>
+        ]}
       </Page>
     )
   }
@@ -68,6 +78,7 @@ Routes.propTypes = {
 
 export default withRouter(
   connect(state => ({
+    autoLogInAttempted: state.auth.autoLogInAttempted,
     loggedIn: authSelectors.isLoggedIn(state)
   }))(Routes)
 )
