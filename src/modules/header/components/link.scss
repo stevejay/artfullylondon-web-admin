@@ -2,18 +2,15 @@
 @import 'variables.scss';
 
 .link {
-    @include expandingUnderline;
-    @include extraBoldFont;
-    @include noDefaultAnchorStyling;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    font-size: 1.4rem;
-    line-height: 1;
-    text-decoration: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-left: 2.2rem;
-    position: relative;
-    color: $three-quarter-black;
+  @include expandingUnderline;
+  @include regularFont;
+  @include noDefaultAnchorStyling;
+  @include headerLinkText;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 2.2rem;
+  position: relative;
 }

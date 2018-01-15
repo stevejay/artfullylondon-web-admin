@@ -36,12 +36,6 @@ export function validate (
   })
 }
 
-export function validateAcceptedTerms (values, errors) {
-  if (!values.acceptedTerms) {
-    errors.acceptedTerms = 'You must accept the Terms of Service'
-  }
-}
-
 function _throwValidationErrorIfInvalid (errors) {
   if (_hasErrors(errors)) {
     errors._error = errors._error || GENERIC_ERROR_MESSAGE

@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects'
-// import authSagas from './auth';
+import authSagas from './auth'
 import browserSagas from './browser'
 import serverConstantsSagas from './server-constants'
 // import entitySagas from './entity';
@@ -14,13 +14,14 @@ import notificationsSagas from './notifications'
 
 export default function * () {
   yield all([
+    ...authSagas,
     ...serverConstantsSagas,
     ...browserSagas,
     ...notificationsSagas,
     ...statusSagas,
     ...searchSagas
   ])
-  // ...authSagas,
+  //
   // ...entitySagas,
   // ...imageSagas,
   // ...linkSagas,

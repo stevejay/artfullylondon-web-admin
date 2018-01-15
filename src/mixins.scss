@@ -78,7 +78,7 @@
 
 @mixin regularFont() {
   font-family: "Libre Franklin", Sans-Serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   line-height: 1.4;
 }
@@ -185,7 +185,7 @@
     bottom: 0;
     display: block;
     content: '';
-    border-bottom: solid 3px $dark-highlight-color;
+    border-bottom: solid 3px #AB947C;
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
   }
@@ -203,4 +203,11 @@
     border-bottom: none;
     text-decoration: none;
   }
+}
+
+@mixin headerLinkText () {
+  color: #FFF5EB;
+  font-size: 1.2rem;
+  line-height: 1;
+  text-transform: uppercase;
 }

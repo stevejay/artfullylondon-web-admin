@@ -3,27 +3,6 @@ import { ensure } from 'ensure-request'
 
 import * as validation from '_src/lib/validation'
 
-describe('validateAcceptedTerms', () => {
-  const tests = [
-    {
-      arg: { acceptedTerms: true },
-      expected: {}
-    },
-    {
-      arg: { acceptedTerms: false },
-      expected: { acceptedTerms: 'You must accept the Terms of Service' }
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = {}
-      validation.validateAcceptedTerms(test.arg, actual)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
 describe('email validation', () => {
   const tests = [
     {

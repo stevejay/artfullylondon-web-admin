@@ -1,11 +1,11 @@
 // Styling of the site before the SPA code has initialized.
+@import 'variables.scss';
 @import '~scss-mixins-spinners/scss/boxes-spinner.scss';
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,600');
 
 body {
   min-height: 100vh;
-  color: #FFF5EB;
-  background-color: #0C1E23;
+  background-color: $white;
   font-family: "Libre Franklin", Sans-Serif;
 }
 
@@ -24,13 +24,12 @@ body {
 }
 
 #startup-spinner {
-  @include boxes-spinner($color: #4E646A);
+  @include boxes-spinner($color: $highlight-color);
   position: relative;
   transform: none;
 }
 
 #startup-dialog h1 {
-  // color: #FFF5EB;
   font-size: 1.4rem;
   font-weight: 300;
   margin-top: 5px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Page from '_src/components/page'
@@ -16,6 +16,8 @@ import NotFound from '_src/modules/error/pages/not-found'
 import Notifications from '_src/components/notifications'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
+import LoginPage from '_src/modules/auth/pages/login'
+import * as authSelectors from '_src/store/selectors/auth'
 import * as browserActionTypes from '_src/constants/actions/browser'
 
 export class Routes extends React.Component {
@@ -26,33 +28,46 @@ export class Routes extends React.Component {
     })
   }
   render () {
+    const { loggedIn } = this.props
+
+    console.log('loggedIn', loggedIn)
+
     return (
       <Page>
         <BrowserResizeListener onWindowResize={this.handleWindowResize} />
         <Notifications />
         <Sidenav pathname={this.props.location.pathname} />
         <Quicksearch />
-        <PageHeader>
-          <Header />
-        </PageHeader>
-        <PageMain>
-          {false &&
+        {!loggedIn &&
+          <PageMain>
             <Switch>
-              <Route exact path='/' component={Dashboard} />
-              <Route component={NotFound} />
-            </Switch>}
-        </PageMain>
-        <PageFooter>
-          <Footer />
-        </PageFooter>
+              <Route exact path='/login' component={LoginPage} />
+              <Redirect to='/login' />
+            </Switch>
+          </PageMain>}
+        {loggedIn &&
+          <PageMain>
+            <PageHeader><Header /></PageHeader>
+            {false &&
+              <Switch>
+                <Route exact path='/' component={Dashboard} />
+                <Route component={NotFound} />
+              </Switch>}
+            <PageFooter><Footer /></PageFooter>
+          </PageMain>}
       </Page>
     )
   }
 }
 
 Routes.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired
 }
 
-export default withRouter(connect()(Routes))
+export default withRouter(
+  connect(state => ({
+    loggedIn: authSelectors.isLoggedIn(state)
+  }))(Routes)
+)

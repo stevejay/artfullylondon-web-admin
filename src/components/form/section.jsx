@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './section.scss'
 
-const FormSection = ({ type, children, ...rest }) => (
-  <section {...rest} styleName={`container-${type}`}>{children}</section>
+const FormSection = ({ type, className, children, ...rest }) => (
+  <section className={className} styleName={`container-${type}`}>
+    {children}
+  </section>
 )
 
 FormSection.propTypes = {
   type: PropTypes.oneOf(['narrow', 'wide', 'verywide', 'full']).isRequired,
+  className: PropTypes.string,
   children: PropTypes.any.isRequired
 }
 

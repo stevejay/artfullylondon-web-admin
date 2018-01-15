@@ -2,15 +2,12 @@
 @import 'variables.scss';
 
 .button {
-    @include expandingUnderline;
-    @include extraBoldFont;
-    @include unstyledButton;
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    line-height: 1;
-    text-transform: uppercase;
-    margin-left: 2.2rem;
-    position: relative;
-    color: $three-quarter-black;
+  @include expandingUnderline;
+  @include regularFont;
+  @include unstyledButton;
+  @include headerLinkText;
+  display: flex;
+  align-items: center;
+  margin-left: 2.2rem;
+  position: relative;
 }

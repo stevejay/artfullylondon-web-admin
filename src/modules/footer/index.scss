@@ -1,14 +1,16 @@
+@import 'variables.scss';
+
 .item-container {
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 5px 15px;
+  padding: 5px $narrow-gutter;
 }
 
 .item {
   text-transform: uppercase;
-  font-size: .7rem;
-  color: #4E646A;
+  font-size: 1.2rem;
+  color: $white;
 
   &:first-of-type {
     margin-right: auto;

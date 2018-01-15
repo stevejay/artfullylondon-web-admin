@@ -2,17 +2,17 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 import * as types from '_src/constants/auth'
 import { logOutCurrentUser, authenticateUser } from '_src/lib/auth'
-import { validate, validateAcceptedTerms } from '_src/lib/validation'
+import { validate } from '_src/lib/validation'
 import { logInConstraint } from '_src/constants/auth-constraints'
 import { submitErrorHandler } from '_src/lib/saga'
 import { LOGIN_FORM_NAME } from '_src/constants/form'
 import { GET_ALL_TAGS } from '_src/constants/tag'
 import history from '_src/history'
 
-function * submitLogIn (action) {
+function * logIn (action) {
   try {
     yield put(startSubmit(LOGIN_FORM_NAME))
-    yield call(validate, action.payload, logInConstraint, validateAcceptedTerms)
+    yield call(validate, action.payload, logInConstraint)
     yield call(
       authenticateUser,
       action.payload.username,
@@ -45,7 +45,7 @@ function * getAllTags () {
 }
 
 export default [
-  takeLatest(types.SUBMIT_LOGIN, submitLogIn),
+  takeLatest(types.LOG_IN, logIn),
   takeLatest(types.LOG_OUT, logOut),
   takeLatest(types.LOG_IN_SUCCEEDED, getAllTags)
 ]

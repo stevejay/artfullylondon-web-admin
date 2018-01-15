@@ -9,33 +9,17 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const WebpackVersionFilePlugin = require('webpack-version-file')
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const buildConstants = require('./build-constants')
 const packageJson = require('./package.json')
 
-// const stringifiedBuildConstants = {}
-// Object.keys(buildConstants).forEach(key => {
-//   stringifiedBuildConstants[key] = JSON.stringify(buildConstants[key])
-// })
-
 buildConstants.WEBSITE_VERSION = packageJson.version
-
-function stringifyObjectValues (buildConstants) {
-  const result = {}
-
-  Object.keys(buildConstants).forEach(key => {
-    result[key] = JSON.stringify(buildConstants[key])
-  })
-
-  return result
-}
-
 const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
 const BUILD_DIR = path.join(__dirname, './build')
 const CSS_MODULE_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
+const VERSION_FILE_NAME = 'version.json'
 
 const extractAppCSS = new ExtractTextPlugin({
   filename: 'static/app.[contenthash].css',
@@ -131,7 +115,9 @@ let PLUGINS = [
   extractAppCSS,
   extractStartupCSS,
   new WebpackVersionFilePlugin({
-    output: path.join(BUILD_DIR, 'version.json'),
+    output: PRODUCTION
+      ? path.join(BUILD_DIR, VERSION_FILE_NAME)
+      : VERSION_FILE_NAME,
     package: './package.json',
     templateString: '{ "version": "<%= version %>" }'
   })
@@ -314,4 +300,14 @@ module.exports = {
   },
   devtool: PRODUCTION ? false : '#cheap-module-eval-source-map',
   plugins: PLUGINS
+}
+
+function stringifyObjectValues (buildConstants) {
+  const result = {}
+
+  Object.keys(buildConstants).forEach(key => {
+    result[key] = JSON.stringify(buildConstants[key])
+  })
+
+  return result
 }

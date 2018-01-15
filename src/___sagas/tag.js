@@ -11,6 +11,7 @@ import { get, post, httpDelete } from '_src/lib/fetch'
 import { validate } from '_src/lib/validation'
 import normalise from '_src/lib/normalise'
 import * as tagConstants from '_src/constants/tag'
+import * as tagActionsTypes from '_src/constants/actions/tag'
 import * as modalTypes from '_src/constants/modal'
 import {
   TAG_EDITOR_FORM_NAME,
@@ -22,36 +23,42 @@ import tagNormaliser from '_src/constants/tag-normaliser'
 
 function * getAllTags () {
   try {
-    yield put.resolve({ type: tagConstants.GET_TAGS_STARTING })
+    yield put.resolve({ type: tagActionsTypes.GET_TAGS_STARTING })
     const token = yield getAuthTokenForCurrentUser()
     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
     const json = yield call(get, url, token)
-    yield put.resolve({ type: tagConstants.GET_TAGS_SUCCEEDED, payload: json })
+    yield put.resolve({
+      type: tagActionsTypes.GET_TAGS_SUCCEEDED,
+      payload: json
+    })
   } catch (err) {
     console.error('error in getAllTags: ' + err.message)
-    yield put.resolve({ type: tagConstants.GET_TAGS_FAILED })
+    yield put.resolve({ type: tagActionsTypes.GET_TAGS_FAILED })
   }
 }
 
 function * getTags (action) {
   try {
-    yield put.resolve({ type: tagConstants.GET_TAGS_STARTING })
+    yield put.resolve({ type: tagActionsTypes.GET_TAGS_STARTING })
     const token = yield getAuthTokenForCurrentUser()
     const tagType = action.payload.tagType
     const url =
       process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
     const json = yield call(get, url, token)
-    yield put.resolve({ type: tagConstants.GET_TAGS_SUCCEEDED, payload: json })
+    yield put.resolve({
+      type: tagActionsTypes.GET_TAGS_SUCCEEDED,
+      payload: json
+    })
   } catch (err) {
     console.error('error in getTags: ' + err.message)
-    yield put.resolve({ type: tagConstants.GET_TAGS_FAILED })
+    yield put.resolve({ type: tagActionsTypes.GET_TAGS_FAILED })
   }
 }
 
 function * addTag (action) {
   try {
     yield put.resolve(startSubmit(TAG_EDITOR_FORM_NAME))
-    yield put.resolve({ type: tagConstants.ADD_TAG_STARTING })
+    yield put.resolve({ type: tagActionsTypes.ADD_TAG_STARTING })
 
     const values = yield call(normalise, action.payload, tagNormaliser)
     yield call(validate, values, tagConstraint)
@@ -61,7 +68,10 @@ function * addTag (action) {
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${tagType}`
     const json = yield call(post, url, { label }, token)
     const newTag = { tagType, tag: json.tag }
-    yield put.resolve({ type: tagConstants.ADD_TAG_SUCCEEDED, payload: newTag })
+    yield put.resolve({
+      type: tagActionsTypes.ADD_TAG_SUCCEEDED,
+      payload: newTag
+    })
 
     if (action.payload.addTagForEvent) {
       const propertyName = getEventTagsPropertyName(tagType)
@@ -82,7 +92,7 @@ function * addTag (action) {
     yield put.resolve({ type: modalTypes.HIDE_MODAL })
   } catch (err) {
     console.error('error in addTag: ' + err.message)
-    yield put.resolve({ type: tagConstants.ADD_TAG_FAILED })
+    yield put.resolve({ type: tagActionsTypes.ADD_TAG_FAILED })
 
     if (err.message === '[400] Stale Data') {
       const errors = { label: 'A tag with this label already exists' }
@@ -95,21 +105,21 @@ function * addTag (action) {
 
 function * deleteTag (action) {
   try {
-    yield put.resolve({ type: tagConstants.DELETE_TAG_STARTING })
+    yield put.resolve({ type: tagActionsTypes.DELETE_TAG_STARTING })
     const token = yield getAuthTokenForCurrentUser()
     const { id } = action.payload
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
     yield call(httpDelete, url, token)
 
     yield put.resolve({
-      type: tagConstants.DELETE_TAG_SUCCEEDED,
+      type: tagActionsTypes.DELETE_TAG_SUCCEEDED,
       payload: { id }
     })
 
-    yield put.resolve({ type: tagConstants.TAG_DELETED })
+    yield put.resolve({ type: tagActionsTypes.TAG_DELETED })
   } catch (err) {
     console.error('error in deleteTag: ' + err.message)
-    yield put.resolve({ type: tagConstants.DELETE_TAG_FAILED })
+    yield put.resolve({ type: tagActionsTypes.DELETE_TAG_FAILED })
   }
 }
 
@@ -129,8 +139,8 @@ function getEventTagsPropertyName (tagType) {
 }
 
 export default [
-  takeLatest(tagConstants.GET_ALL_TAGS, getAllTags),
-  takeLatest(tagConstants.GET_TAGS, getTags),
-  takeLatest(tagConstants.ADD_TAG, addTag),
-  takeLatest(tagConstants.DELETE_TAG, deleteTag)
+  takeLatest(tagActionsTypes.GET_ALL_TAGS, getAllTags),
+  takeLatest(tagActionsTypes.GET_TAGS, getTags),
+  takeLatest(tagActionsTypes.ADD_TAG, addTag),
+  takeLatest(tagActionsTypes.DELETE_TAG, deleteTag)
 ]

@@ -16,12 +16,6 @@ browserSync({
   server: {
     baseDir: '.',
     middleware: [
-      webpackDev(compiler, {
-        noInfo: true,
-        publicPath: config.output.publicPath,
-        stats: { colors: true }
-      }),
-      webpackHot(compiler),
       history({
         rewrites: [
           {
@@ -31,7 +25,25 @@ browserSync({
             }
           }
         ]
-      })
+      }),
+      webpackDev(compiler, {
+        noInfo: true,
+        publicPath: config.output.publicPath,
+        stats: { colors: true }
+      }),
+      webpackHot(compiler)
+
+      // (req, res, next) => {
+      //   const requestURL = url.parse(req.url)
+      //   const pathname = requestURL.pathname
+      //   const exists = fs.existsSync(path.resolve(BUILD, pathname))
+
+      //   if (!exists) {
+      //     req.url = '/index.html'
+      //   }
+
+      //   return next()
+      // }
     ]
   },
   files: ['src/*.html']

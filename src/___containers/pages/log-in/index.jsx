@@ -7,11 +7,8 @@ import ThumbsUp from 'react-icons/lib/fa/thumbs-o-up'
 import Message from '_src/components/message'
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
-import {
-  AUTH_STATE_LOGGED_IN,
-  ALLOWED_AUTH_STATES
-} from '_src/constants/auth'
-import { submitLogIn } from '_src/actions/auth'
+import { AUTH_STATE_LOGGED_IN, ALLOWED_AUTH_STATES } from '_src/constants/auth'
+import { logIn } from '_src/actions/auth'
 import LogInForm from '_src/containers/forms/log-in'
 import { logInConstraint } from '_src/constants/auth-constraints'
 import './index.scss'
@@ -34,7 +31,7 @@ const LogIn = ({ authState }) => {
     <FormSection type='narrow' styleName='container'>
       <FormBorder title='Log In'>
         <LogInForm
-          onSubmit={this.props.submitLogIn}
+          onSubmit={this.props.logIn}
           initialUsername={this.props.initialUsername}
           constraint={logInConstraint}
         />
@@ -47,7 +44,7 @@ LogIn.propTypes = {
   authState: PropTypes.oneOf(ALLOWED_AUTH_STATES).isRequired,
   initialUsername: PropTypes.string,
   location: PropTypes.object.isRequired,
-  submitLogIn: PropTypes.func.isRequired
+  logIn: PropTypes.func.isRequired
 }
 
 export default connect(
@@ -56,6 +53,6 @@ export default connect(
     initialUsername: state.auth.username
   }),
   dispatch => ({
-    submitLogIn: bindActionCreators(submitLogIn, dispatch)
+    logIn: bindActionCreators(logIn, dispatch)
   })
 )(LogIn)
