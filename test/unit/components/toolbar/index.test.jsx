@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import HeaderLink from '_src/modules/header/components/link'
+import Toolbar from '_src/components/toolbar'
 
 it('should render correctly', () => {
-  const wrapper = shallow(<HeaderLink label='The Label' to='/to/here' />)
+  const wrapper = shallow(<Toolbar><div id='child' /></Toolbar>)
   expect(wrapper).toMatchSnapshot()
 })

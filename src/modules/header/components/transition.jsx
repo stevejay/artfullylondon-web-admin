@@ -1,19 +1,14 @@
 import React from 'react'
-import * as ReactOverlays from 'react-overlays'
+import RTGTransition from 'react-transition-group/Transition'
 
 const Transition = props => (
-  <ReactOverlays.Transition
-    in={false}
-    timeout={250}
-    unmountOnExit={false}
-    transitionAppear={false}
-    {...props}
-    className='header-menu-transition'
-    enteredClassName='in'
-    enteringClassName='in'
-    exitedClassName='out'
-    exitingClassName='out'
-  />
+  <RTGTransition {...props} appear unmountOnExit={false} timeout={200}>
+    {state => (
+      <div className={`header-menu-transition-${state}`}>
+        {props.children}
+      </div>
+    )}
+  </RTGTransition>
 )
 
 export default Transition

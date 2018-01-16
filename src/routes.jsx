@@ -21,12 +21,14 @@ import * as authActions from '_src/actions/auth'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as authActionTypes from '_src/constants/action/auth'
 import * as browserActionTypes from '_src/constants/action/browser'
+import * as serverConstantsTypes from '_src/constants/action/server-constants'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { autoLoginTried: false }
     props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
+    props.dispatch({ type: serverConstantsTypes.FETCH_SERVER_CONSTANTS })
   }
   handleWindowResize = width => {
     this.props.dispatch({

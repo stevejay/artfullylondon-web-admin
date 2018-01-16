@@ -2,77 +2,77 @@
 @import 'mixins.scss';
 
 .button {
-    @include unstyledButton;
-    @include boldFont;
-    position: relative;
-    display: inline-block;
-    font-size: 1.6rem;
-    height: 3.8rem;
-    min-height: 1em;
-    vertical-align: baseline;
-    background-color: $eighth-black;
-    color: $three-quarter-black;
-    padding: 0 2.5rem;
-    text-transform: none;
-    line-height: 1.4;
-    font-style: normal;
-    text-align: center;
-    border-radius: $input-border-radius;
-    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34,36,38,.15) inset;
-    transition: background-color .2s ease, color .2s ease;
-    will-change: background-color, color;
-    white-space: nowrap;
+  @include unstyledButton;
+  @include boldFont;
+  position: relative;
+  display: inline-block;
+  font-size: 1.6rem;
+  height: 3.8rem;
+  min-height: 1em;
+  vertical-align: baseline;
+  background-color: $eighth-black;
+  color: $three-quarter-black;
+  padding: 0 2.5rem;
+  text-transform: none;
+  line-height: 1.4;
+  font-style: normal;
+  text-align: center;
+  border-radius: $input-border-radius;
+  box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, .15) inset;
+  transition: background-color .2s ease, color .2s ease;
+  will-change: background-color, color;
+  white-space: nowrap;
 
-    @include below-wide-mobile {
-        padding: 0 1.5rem;
-    }
+  @include below-wide-mobile {
+    padding: 0 1.5rem;
+  }
+
+  &:hover {
+    background-color: $quarter-black;
+    background-image: none;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, .15) inset;
+    color: $black;
+  }
+
+  &[type="submit"] {
+    background-color: $dark-highlight-color;
+    color: $white;
 
     &:hover {
-        background-color: $quarter-black;
-        background-image: none;
-        box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(34,36,38,.15) inset;
-        color: $black;
+      background-color: darken($dark-highlight-color, 10);
     }
+  }
 
-    &[type="submit"] {
-        background-color: $dark-highlight-color;
-        color: $white;
-
-        &:hover {
-            background-color: darken($dark-highlight-color, 10);
-        }
-    }
-
-    &:focus {
-        outline: 3px solid $input-border-focus-color;
-    }
+  &:focus {
+    outline: 3px solid $input-border-focus-color;
+  }
 }
 
 .default {
-    composes: button;
+  composes: button;
 }
 
 .disabled {
-    composes: button;
-    cursor: default;
-    opacity: .45 !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    pointer-events: none !important;
+  composes: button;
+  cursor: default;
+  opacity: .45 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
 }
 
 .submitting {
-    composes: button;
-    cursor: default;
-    pointer-events: none !important;
+  composes: button;
+  cursor: default;
+  pointer-events: none !important;
 
-    .content {
-        visibility: hidden;
-    }
+  .content {
+    visibility: hidden;
+  }
 }
 
 .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,14 +2,16 @@ import { take, call, put } from 'redux-saga/effects'
 
 import { callWithInfiniteRetry } from '_src/lib/saga'
 import { get } from '_src/lib/fetch'
-import * as types from '_src/constants/server-constants'
+import * as serverConstantsTypes from '_src/constants/action/server-constants'
 import * as serverConstantsSagas from '_src/store/sagas/server-constants'
 
 describe('fetchServerConstants', () => {
   const generator = serverConstantsSagas.fetchServerConstants()
 
   it('waits for the start action', () => {
-    expect(generator.next().value).toEqual(take(types.FETCH_SERVER_CONSTANTS))
+    expect(generator.next().value).toEqual(
+      take(serverConstantsTypes.FETCH_SERVER_CONSTANTS)
+    )
   })
 
   it('fetches the data', () => {
@@ -25,7 +27,7 @@ describe('fetchServerConstants', () => {
   it('sends the data to the store', () => {
     expect(generator.next('some json').value).toEqual(
       put.resolve({
-        type: types.FETCH_SERVER_CONSTANTS_SUCCEEDED,
+        type: serverConstantsTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED,
         payload: 'some json'
       })
     )

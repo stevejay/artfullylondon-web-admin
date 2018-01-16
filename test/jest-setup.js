@@ -18,3 +18,4 @@ process.env.WEBSITE_SITE_IMAGES_ROOT_URL = 'https://siteimages.test.com'
 process.env.WEBSITE_API_HOST_URL = 'https://api.test.com'
 process.env.ENTITY_CACHE_TTL_SECONDS = JSON.stringify(10)
 process.env.RELATED_EVENTS_CACHE_TTL_SECONDS = JSON.stringify(15)
+process.env.WEBSITE_VERSION = '0.0.1'

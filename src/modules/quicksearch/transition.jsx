@@ -1,8 +1,8 @@
 import React from 'react'
-import * as ReactOverlays from 'react-overlays'
+import ReactTransition from 'react-transition-group/Transition'
 
 const Transition = props => (
-  <ReactOverlays.Transition
+  <ReactTransition
     {...props}
     in={false}
     timeout={250}

@@ -10,16 +10,15 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router-dom'
 import smartOutline from 'smart-outline'
+import document from 'global/document'
 
 import history from '_src/history'
 import store from '_src/store'
 import Routes from '_src/routes'
-import { fetchServerConstants } from '_src/actions/server-constants'
 
 smartOutline.init()
-store.dispatch(fetchServerConstants())
 
-const root = (
+export const root = (
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={Routes} />
@@ -27,4 +26,5 @@ const root = (
   </Provider>
 )
 
-render(root, document.getElementById('react-root'))
+const reactRoot = document.getElementById('react-root')
+reactRoot && render(root, reactRoot)

@@ -2,11 +2,12 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import HeaderButton from '_src/modules/header/components/button'
+import HeaderDropdownButton
+  from '_src/modules/header/components/dropdown-button'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <HeaderButton
+    <HeaderDropdownButton
       label='The Label'
       ariaHaspopup
       onClick={_.noop}

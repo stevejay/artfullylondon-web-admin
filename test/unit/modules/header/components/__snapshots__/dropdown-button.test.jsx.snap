@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <button
   aria-haspopup={true}
-  className="src-modules-header-components-button__button"
+  className="src-modules-header-components-dropdown-button__button"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -13,5 +13,8 @@ exports[`should render correctly 1`] = `
   type="button"
 >
   The Label
+  <FaAngleDown
+    className="src-modules-header-components-dropdown-button__arrow"
+  />
 </button>
 `;

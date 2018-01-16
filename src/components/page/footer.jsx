@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 
 import './footer.scss'
 
-const Footer = props => <footer styleName='page-footer' {...props} />
+const PageFooter = ({ className, children }) =>
+  (children
+    ? <footer className={className} styleName='page-footer'>{children}</footer>
+    : null)
 
-Footer.propTypes = {
+PageFooter.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.any
 }
 
-export default Footer
+export default PageFooter

@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+.toolbar-item {
+  margin-right: $wide-gutter;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}

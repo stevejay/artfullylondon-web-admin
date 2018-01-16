@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import serverConstantsReducer from '_src/store/reducers/server-constants'
-import * as types from '_src/constants/server-constants'
+import * as serverConstantsTypes from '_src/constants/action/server-constants'
 import * as serverConstantsLib from '_src/lib/server-constants'
 
 it('should have the correct initial state', () => {
@@ -29,7 +29,7 @@ it('should handle a fetch server constants succeeded action', () => {
   })
 
   const actual = serverConstantsReducer(state, {
-    type: types.FETCH_SERVER_CONSTANTS_SUCCEEDED,
+    type: serverConstantsTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED,
     payload: {
       heroImage: { name: 'new name' }
     }

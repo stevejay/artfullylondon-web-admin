@@ -1,49 +1,48 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.container {
-    display: flex;
-    position: relative;
-}
+$animationSpeed: 200ms;
 
 .menu {
-    cursor: auto;
-    display: block;
-    position: absolute;
-    z-index: 11;
-    outline: 0;
-    min-width: max-content;
-    background: $white;
-    font-size: 1rem;
-    text-shadow: none;
-    text-align: left;
-    border-radius: $border-radius;
-    list-style: none;
-    white-space: nowrap;
-    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.5);
-    pointer-events: all;
-    margin: .5rem 0 0;
-    padding: 1.5rem 0;
-    width: 18rem;
+  cursor: auto;
+  display: block;
+  position: absolute;
+  z-index: 11;
+  outline: 0;
+  min-width: max-content;
+  background: $white;
+  font-size: 1rem;
+  text-shadow: none;
+  text-align: left;
+  border-radius: $border-radius;
+  list-style: none;
+  white-space: nowrap;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.5);
+  pointer-events: all;
+  margin: .5rem 0 0;
+  padding: 1.5rem 0;
+  width: 18rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  will-change: auto;
 }
 
-$speedIn: 200ms;
-$speedOut: 200ms;
-
-:global(.header-menu-transition.in).menu {
-    transition: opacity $speedIn ease-out, transform $speedIn;
+:global(.header-menu-transition-entering) .menu {
+  transition: opacity $animationSpeed ease-out, transform $animationSpeed ease-out;
 }
 
-:global(.header-menu-transition.out).menu {
-    transition: opacity $speedOut ease-in, transform $speedOut;
+:global(.header-menu-transition-exiting) .menu {
+  transition: opacity $animationSpeed ease-in, transform $animationSpeed ease-in;
 }
 
-:global(.header-menu-transition.in).menu {
-    opacity: 1;
-    transform: translateY(0rem);
+:global(.header-menu-transition-entering) .menu,
+:global(.header-menu-transition-entered) .menu {
+  opacity: 1;
+  transform: translateY(0rem);
 }
 
-:global(.header-menu-transition.out).menu {
-    opacity: 0.01;
-    transform: translateY(3rem);
+:global(.header-menu-transition-exiting) .menu,
+:global(.header-menu-transition-exited) .menu {
+  opacity: 0;
+  transform: translateY(2rem);
 }

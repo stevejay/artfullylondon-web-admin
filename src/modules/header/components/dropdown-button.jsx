@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './button.scss'
+import './dropdown-button.scss'
 
 // Note: Must be a class as ref is taken of this component.
-class HeaderButton extends React.Component {
+class HeaderDropdownButton extends React.Component {
   render () {
     const {
       label,
@@ -36,7 +36,7 @@ class HeaderButton extends React.Component {
   }
 }
 
-HeaderButton.propTypes = {
+HeaderDropdownButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   ariaHaspopup: PropTypes.bool,
@@ -46,4 +46,4 @@ HeaderButton.propTypes = {
   onBlur: PropTypes.func
 }
 
-export default HeaderButton
+export default HeaderDropdownButton

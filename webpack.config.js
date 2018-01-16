@@ -45,6 +45,7 @@ const ENTRY = PRODUCTION
       'jsbn',
       'lodash',
       'lodash-uuid',
+      'loglevel',
       'moment',
       'moment-timezone',
       'normalise-request',
