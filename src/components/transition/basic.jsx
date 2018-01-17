@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RTGTransition, * as rtgTransition
-  from 'react-transition-group/Transition'
+import Transition, * as rtgTransition from 'react-transition-group/Transition'
 
 const TRANSITION_STYLES = {
   [rtgTransition.ENTERING]: 'in',
@@ -10,27 +9,27 @@ const TRANSITION_STYLES = {
   [rtgTransition.EXITED]: 'out'
 }
 
-const Transition = props => {
+const BasicTransition = props => {
   const { className, children, ...rest } = props
   const childClassName = children.props ? children.props.className : ''
 
   return (
-    <RTGTransition {...rest}>
+    <Transition {...rest}>
       {(status, innerProps) =>
         React.cloneElement(children, {
           ...innerProps,
-          className: `quicksearch-transition ${className} ${childClassName || ''} ${TRANSITION_STYLES[status]}`
+          className: `${className} ${childClassName || ''} ${TRANSITION_STYLES[status]}`
         })}
-    </RTGTransition>
+    </Transition>
   )
 }
 
-Transition.propTypes = {
+BasicTransition.propTypes = {
   in: PropTypes.bool,
+  timeout: PropTypes.number,
   mountOnEnter: PropTypes.bool,
   unmountOnExit: PropTypes.bool,
   appear: PropTypes.bool,
-  timeout: PropTypes.number,
   className: PropTypes.string,
   onEnter: PropTypes.func,
   onEntering: PropTypes.func,
@@ -40,7 +39,7 @@ Transition.propTypes = {
   onExited: PropTypes.func
 }
 
-Transition.defaultProps = {
+BasicTransition.defaultProps = {
   in: false,
   timeout: 200,
   mountOnEnter: false,
@@ -49,4 +48,4 @@ Transition.defaultProps = {
   className: ''
 }
 
-export default Transition
+export default BasicTransition

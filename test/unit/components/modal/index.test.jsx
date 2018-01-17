@@ -4,35 +4,36 @@ import _ from 'lodash'
 
 import Modal from '_src/components/modal'
 
+const TestTransition = props => <div id='transition' />
+
 it('should render correctly', () => {
   const wrapper = shallow(
-    <Modal
-      show={false}
-      modalProps={{
-        notDismissable: false,
-        name: 'The Name'
-      }}
-      component='div'
-      componentProps={{ foo: 'bar' }}
-      onHide={_.noop}
-    />
+    <Modal show transition={TestTransition} onHide={_.noop}>
+      <div id='child' />
+    </Modal>
   )
 
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly where there is no component', () => {
+it('should ignore update when props have not changed', () => {
   const wrapper = shallow(
-    <Modal
-      show
-      modalProps={{
-        notDismissable: false,
-        name: 'The Name'
-      }}
-      componentProps={{ foo: 'bar' }}
-      onHide={_.noop}
-    />
+    <Modal show transition={TestTransition} onHide={_.noop}>
+      <div id='child' />
+    </Modal>
   )
 
-  expect(wrapper).toMatchSnapshot()
+  const result = wrapper.instance().shouldComponentUpdate({ show: true })
+  expect(result).toEqual(false)
+})
+
+it('should trigger update when props have changed', () => {
+  const wrapper = shallow(
+    <Modal show transition={TestTransition} onHide={_.noop}>
+      <div id='child' />
+    </Modal>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate({ show: false })
+  expect(result).toEqual(true)
 })

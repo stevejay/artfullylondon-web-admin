@@ -1,0 +1,14 @@
+@import 'variables.scss';
+
+.backdrop-transition {
+  will-change: opacity;
+  transition: opacity 200ms ease-in-out;
+}
+
+.backdrop-transition:global(.in) {
+  opacity: 0.5;
+}
+
+.backdrop-transition:global(.out) {
+  opacity: 0;
+}

@@ -185,6 +185,7 @@ class Logo extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 Logo.propTypes = {
   size: PropTypes.oneOf([
     LOGO_SIZE_SMALL,
@@ -195,6 +196,7 @@ Logo.propTypes = {
   type: PropTypes.oneOf([LOGO_TYPE_NORMAL, LOGO_TYPE_INVERSE]).isRequired
 }
 
+/* istanbul ignore next */
 Logo.defaultProps = {
   type: LOGO_TYPE_NORMAL
 }

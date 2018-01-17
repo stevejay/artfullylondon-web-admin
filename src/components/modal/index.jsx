@@ -1,63 +1,53 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Modal as ReactOverlaysModal } from 'react-overlays'
-import Transition from './transition'
+import { Modal as OverlaysModal } from 'react-overlays'
+
+import BackdropTransition from '_src/components/transition/backdrop'
 import './index.scss'
 
-class Modal extends React.Component {
+export class Modal extends React.Component {
   shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.show !== this.props.show ||
-      nextProps.modalProps !== this.props.modalProps ||
-      nextProps.component !== this.props.component ||
-      nextProps.componentProps !== this.props.componentProps
-    )
-  }
-  handleHide = () => {
-    const { onHide, modalProps } = this.props
-
-    if (modalProps && modalProps.notDismissable) {
-      return
-    }
-
-    onHide({ name: modalProps ? modalProps.name : null })
+    return nextProps.show !== this.props.show
   }
   render () {
-    const { show, component, componentProps } = this.props
+    const {
+      show,
+      transition,
+      backdropTransition,
+      children,
+      onHide,
+      ...rest
+    } = this.props
 
     return (
-      <ReactOverlaysModal
-        aria-label='Modal dialog'
-        styleName='modal'
-        backdropClassName='backdrop'
+      <OverlaysModal
+        {...rest}
         show={show}
-        onHide={this.handleHide}
-        transition={Transition}
-        backdropTransitionTimeout={250}
-        dialogTransitionTimeout={250}
-        timeout={300}
+        backdrop
+        backdropClassName='backdrop'
+        transition={transition}
+        backdropTransition={backdropTransition}
+        aria-label='Quicksearch'
+        onHide={onHide}
       >
-        <div styleName='content'>
-          {!!component &&
-            React.createElement(component, {
-              ...componentProps,
-              onHide: this.handleHide
-            })}
-        </div>
-      </ReactOverlaysModal>
+        {children}
+      </OverlaysModal>
     )
   }
 }
 
+/* istanbul ignore next */
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
-  modalProps: PropTypes.shape({
-    notDismissable: PropTypes.bool,
-    name: PropTypes.string
-  }),
-  component: PropTypes.any,
-  componentProps: PropTypes.object,
-  onHide: PropTypes.func
+  transition: PropTypes.func.isRequired,
+  backdropTransition: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  onHide: PropTypes.func.isRequired
+}
+
+/* istanbul ignore next */
+Modal.defaultProps = {
+  backdropTransition: BackdropTransition
 }
 
 export default Modal

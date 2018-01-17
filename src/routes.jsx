@@ -26,7 +26,6 @@ import * as serverConstantsTypes from '_src/constants/action/server-constants'
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { autoLoginTried: false }
     props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
     props.dispatch({ type: serverConstantsTypes.FETCH_SERVER_CONSTANTS })
   }

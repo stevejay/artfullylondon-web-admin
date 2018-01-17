@@ -8,7 +8,7 @@ import SearchField from '_src/components/search-field/field'
 import * as entityConstants from '_src/constants/entity'
 import * as formConstants from '_src/constants/form'
 import * as browserConstants from '_src/constants/browser'
-import constraint from './quicksearch-constraint'
+import * as constraints from './constraints'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {
@@ -30,7 +30,7 @@ export class QuicksearchForm extends React.Component {
             autoFocus={false}
             disabled={disabled}
             placeholder={placeholder}
-            maxLength={constraint.term.length.maximum}
+            maxLength={constraints.QUICKSEARCH.term.length.maximum}
             handleSubmit={handleSubmit}
           />
         </FormRow>

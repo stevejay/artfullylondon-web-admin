@@ -2,54 +2,11 @@
 
 exports[`should render correctly 1`] = `
 <Modal
-  aria-label="Modal dialog"
+  aria-label="Quicksearch"
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"
-  backdropTransitionTimeout={250}
-  className="src-components-modal-index__modal"
-  dialogTransitionTimeout={250}
-  enforceFocus={true}
-  keyboard={true}
-  manager={
-    ModalManager {
-      "add": [Function],
-      "containers": Array [],
-      "data": Array [],
-      "handleContainerOverflow": true,
-      "hideSiblingNodes": true,
-      "isTopModal": [Function],
-      "modals": Array [],
-      "remove": [Function],
-    }
-  }
-  onHide={[Function]}
-  renderBackdrop={[Function]}
-  restoreFocus={true}
-  show={false}
-  timeout={300}
-  transition={[Function]}
->
-  <div
-    className="src-components-modal-index__content"
-  >
-    <div
-      foo="bar"
-      onHide={[Function]}
-    />
-  </div>
-</Modal>
-`;
-
-exports[`should render correctly where there is no component 1`] = `
-<Modal
-  aria-label="Modal dialog"
-  autoFocus={true}
-  backdrop={true}
-  backdropClassName="backdrop"
-  backdropTransitionTimeout={250}
-  className="src-components-modal-index__modal"
-  dialogTransitionTimeout={250}
+  backdropTransition={[Function]}
   enforceFocus={true}
   keyboard={true}
   manager={
@@ -68,11 +25,10 @@ exports[`should render correctly where there is no component 1`] = `
   renderBackdrop={[Function]}
   restoreFocus={true}
   show={true}
-  timeout={300}
   transition={[Function]}
 >
   <div
-    className="src-components-modal-index__content"
+    id="child"
   />
 </Modal>
 `;

@@ -1,73 +1,36 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.dialog-transition {}
-
-.backdrop-transition {}
+$animation-speed: 200ms;
 
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-}
-
-.quicksearch {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: white;
   display: flex;
   flex-direction: column;
+  padding: 10px $wide-gutter;
+  background-color: $white;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, .5);
-  will-change: transform, opacity;
 }
 
-:global(.backdrop) {
-  will-change: opacity;
-}
-
-.header {
-  display: flex;
+.toolbar {
   justify-content: space-between;
-  align-items: center;
-  height: 5.5rem;
-  padding: 0 .5rem 0 1.5rem;
+  margin-bottom: 5px;
 }
 
-.form {
-  padding: 1.5rem;
+.modal-transition {
+  will-change: transform, opacity;
+  transition: transform $animation-speed ease-in-out, opacity $animation-speed ease-in-out;
 }
 
-$animation-speed: 200ms;
-
-:global(.quicksearch-transition.in).quicksearch,
-:global(.quicksearch-transition.backdrop.in) {
-  transition: transform $animation-speed ease-out, opacity $animation-speed ease-out;
-}
-
-:global(.quicksearch-transition.out).quicksearch,
-:global(.quicksearch-transition.backdrop.out) {
-  transition: transform $animation-speed ease-in, opacity $animation-speed ease-in;
-}
-
-:global(.quicksearch-transition.in.backdrop) {
-  opacity: .5;
-}
-
-:global(.quicksearch-transition.out.backdrop) {
-  opacity: 0;
-}
-
-:global(.quicksearch-transition.in).quicksearch {
+.modal-transition:global(.in) {
   opacity: 1;
   transform: translateY(0%);
 }
 
-:global(.quicksearch-transition.out).quicksearch {
+.modal-transition:global(.out) {
   opacity: 0;
   transform: translateY(-30%);
 }

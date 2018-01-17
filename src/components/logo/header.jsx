@@ -26,6 +26,7 @@ class HeaderLogo extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 HeaderLogo.propTypes = {
   size: PropTypes.oneOf(['small', 'medium']),
   className: PropTypes.string,
