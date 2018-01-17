@@ -1,0 +1,14 @@
+.dropdown-transition {
+  will-change: transform, opacity;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.dropdown-transition:global(.in) {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.dropdown-transition:global(.out) {
+  opacity: 0;
+  transform: translateY(2rem);
+}

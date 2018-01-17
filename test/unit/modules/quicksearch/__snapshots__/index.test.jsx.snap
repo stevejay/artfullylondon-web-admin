@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Modal
+  aria-label="Quicksearch"
+  backdropTransition={[Function]}
+  onHide={[Function]}
+  show={true}
+  transition={[Function]}
+>
+  <div
+    className="src-modules-quicksearch-index__modal"
+  >
+    <Toolbar
+      className="src-modules-quicksearch-index__toolbar"
+    >
+      <ToolbarItem>
+        <Logo
+          size="small"
+          type="normal"
+        />
+      </ToolbarItem>
+      <ToolbarItem>
+        <IconButton
+          aria-label="Close quicksearch dialog"
+          icon={[Function]}
+          onClick={[Function]}
+          type="default"
+        />
+      </ToolbarItem>
+    </Toolbar>
+    <ReduxForm
+      onSubmit={[Function]}
+    />
+  </div>
+</Modal>
+`;

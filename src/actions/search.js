@@ -1,15 +1,20 @@
 import { createAction } from 'redux-actions'
-import * as types from '_src/constants/search'
+import * as searchActionTypes from '_src/constants/action/search'
 
-export const search = createAction(types.SEARCH)
-export const clearAutocomplete = createAction(types.CLEAR_AUTOCOMPLETE)
+export const search = createAction(searchActionTypes.SEARCH)
 
-export const pushBasicSearchToUrl = createAction(
-  types.PUSH_BASIC_SEARCH_TO_URL
+export const clearAutocomplete = createAction(
+  searchActionTypes.CLEAR_AUTOCOMPLETE
 )
 
-export const navigateToEntity = createAction(types.NAVIGATE_TO_ENTITY)
+export const pushBasicSearchToUrl = createAction(
+  searchActionTypes.PUSH_BASIC_SEARCH_TO_URL
+)
+
+export const navigateToEntity = createAction(
+  searchActionTypes.NAVIGATE_TO_ENTITY
+)
 
 export const basicSearchPageEntered = createAction(
-  types.BASIC_SEARCH_PAGE_ENTERED
+  searchActionTypes.BASIC_SEARCH_PAGE_ENTERED
 )

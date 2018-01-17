@@ -10,8 +10,8 @@ import { get } from '_src/lib/fetch'
 import { submitErrorHandler } from '_src/lib/saga'
 import { validate } from '_src/lib/validation'
 import * as searchConstants from '_src/constants/search'
+import * as searchActionTypes from '_src/constants/action/search'
 import { BASIC_SEARCH_FORM_NAME } from '_src/constants/form'
-import { HIDE_QUICKSEARCH } from '_src/constants/modal'
 import {
   createAdminAutocompleteSearchRequestUrl,
   createAdminBasicSearchRequestUrl,
@@ -61,7 +61,7 @@ function * autocompleteSearch ({ payload }) {
   const json = yield call(get, requestUrl)
 
   yield put.resolve({
-    type: searchConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED,
+    type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
     payload: json
   })
 }
@@ -98,22 +98,22 @@ function * basicSearch ({ payload }) {
     }
 
     const requestUrl = createAdminBasicSearchRequestUrl(query)
-    yield put.resolve({ type: searchConstants.CLEAR_AUTOCOMPLETE })
-    yield put.resolve({ type: searchConstants.STARTING_BASIC_SEARCH })
+    yield put.resolve({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
+    yield put.resolve({ type: searchActionTypes.STARTING_BASIC_SEARCH })
     yield put.resolve({
-      type: searchConstants.SET_BASIC_SEARCH_PARAMS,
+      type: searchActionTypes.SET_BASIC_SEARCH_PARAMS,
       payload: query
     })
     yield put.resolve(initialize(BASIC_SEARCH_FORM_NAME, query))
     const json = yield call(get, requestUrl)
     yield put.resolve({
-      type: searchConstants.BASIC_SEARCH_SUCCEEDED,
+      type: searchActionTypes.BASIC_SEARCH_SUCCEEDED,
       payload: json
     })
     yield put.resolve(stopSubmit(BASIC_SEARCH_FORM_NAME))
   } catch (err) {
     yield call(submitErrorHandler, err, BASIC_SEARCH_FORM_NAME)
-    yield put.resolve({ type: searchConstants.BASIC_SEARCH_FAILED })
+    yield put.resolve({ type: searchActionTypes.BASIC_SEARCH_FAILED })
   }
 }
 
@@ -139,12 +139,11 @@ function * search (action) {
 function * navigateToEntity (action) {
   const entity = action.payload
   const entityUrl = `/${entity.entityType}/${entity.id}`
-  yield put.resolve({ type: HIDE_QUICKSEARCH })
   yield call(history.push, entityUrl)
 }
 
 export default [
-  takeLatest(searchConstants.SEARCH, search),
-  takeLatest(searchConstants.PUSH_BASIC_SEARCH_TO_URL, pushBasicSearchToUrl),
-  takeLatest(searchConstants.NAVIGATE_TO_ENTITY, navigateToEntity)
+  takeLatest(searchActionTypes.SEARCH, search),
+  takeLatest(searchActionTypes.PUSH_BASIC_SEARCH_TO_URL, pushBasicSearchToUrl),
+  takeLatest(searchActionTypes.NAVIGATE_TO_ENTITY, navigateToEntity)
 ]

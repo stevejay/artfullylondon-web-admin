@@ -26,6 +26,7 @@ import * as serverConstantsTypes from '_src/constants/action/server-constants'
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
+    this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
     props.dispatch({ type: serverConstantsTypes.FETCH_SERVER_CONSTANTS })
   }
@@ -35,8 +36,21 @@ export class Routes extends React.Component {
       payload: { width }
     })
   }
+  handleHideQuicksearch = () => {
+    this.setState({ showQuicksearch: false })
+  }
+  handleShowQuicksearch = () => {
+    this.setState({ showQuicksearch: true })
+  }
+  handleHideSidenav = () => {
+    this.setState({ showSidenav: false })
+  }
+  handleShowSidenav = () => {
+    this.setState({ showSidenav: true })
+  }
   render () {
     const { loggedIn, autoLogInAttempted } = this.props
+    const { showQuicksearch, showSidenav } = this.state
 
     if (!autoLogInAttempted) {
       return null
@@ -46,8 +60,15 @@ export class Routes extends React.Component {
       <Page>
         <BrowserResizeListener onWindowResize={this.handleWindowResize} />
         <Notifications />
-        <Sidenav pathname={this.props.location.pathname} />
-        <Quicksearch />
+        <Sidenav
+          show={showSidenav}
+          onHide={this.handleHideSidenav}
+          pathname={this.props.location.pathname}
+        />
+        <Quicksearch
+          show={showQuicksearch}
+          onHide={this.handleHideQuicksearch}
+        />
         {!loggedIn &&
           <PageMain>
             <Switch>
@@ -56,7 +77,13 @@ export class Routes extends React.Component {
             </Switch>
           </PageMain>}
         {loggedIn && [
-          <PageHeader key='header'><Header /></PageHeader>,
+          <PageHeader key='header'>
+            <Header
+              showingSidenav={showSidenav}
+              onShowQuicksearch={this.handleShowQuicksearch}
+              onShowSidenav={this.handleShowSidenav}
+            />
+          </PageHeader>,
           <PageMain key='main'>
             Foo
             {false &&
@@ -72,15 +99,20 @@ export class Routes extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 Routes.propTypes = {
+  autoLogInAttempted: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired
 }
 
 export default withRouter(
-  connect(state => ({
-    autoLogInAttempted: state.auth.autoLogInAttempted,
-    loggedIn: authSelectors.isLoggedIn(state)
-  }))(Routes)
+  connect(
+    /* istanbul ignore next */
+    state => ({
+      autoLogInAttempted: state.auth.autoLogInAttempted,
+      loggedIn: authSelectors.isLoggedIn(state)
+    })
+  )(Routes)
 )

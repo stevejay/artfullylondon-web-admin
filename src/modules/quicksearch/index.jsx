@@ -10,15 +10,11 @@ import Modal from '_src/components/modal'
 import Logo from '_src/components/logo'
 import IconButton from '_src/components/button/icon'
 import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'
-import BasicTransition from '_src/components/transition/basic'
+import ModalTransition
+  from '_src/modules/quicksearch/components/modal-transition'
 import * as searchConstants from '_src/constants/search'
-import * as modalActions from '_src/actions/modal'
 import * as searchActions from '_src/actions/search'
 import './index.scss'
-
-const ModalTransition = props => (
-  <BasicTransition {...props} styleName='modal-transition' />
-)
 
 export class Quicksearch extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -26,11 +22,10 @@ export class Quicksearch extends React.Component {
   }
   handleHideQuicksearch = () => {
     this.props.clearAutocomplete()
-    this.props.hideQuicksearch()
+    this.props.onHide()
   }
   handleSubmit = ({ term, entityType }) => {
-    this.props.clearAutocomplete()
-    this.props.hideQuicksearch()
+    this.handleHideQuicksearch()
 
     this.props.pushBasicSearchToUrl({
       searchType: searchConstants.SEARCH_TYPE_BASIC,
@@ -38,7 +33,7 @@ export class Quicksearch extends React.Component {
     })
   }
   render () {
-    const { show, hideQuicksearch } = this.props
+    const { show, onHide } = this.props
 
     return (
       <Modal
@@ -55,7 +50,7 @@ export class Quicksearch extends React.Component {
             <ToolbarItem>
               <IconButton
                 icon={Close}
-                onClick={hideQuicksearch}
+                onClick={onHide}
                 aria-label='Close quicksearch dialog'
               />
             </ToolbarItem>
@@ -67,17 +62,17 @@ export class Quicksearch extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 Quicksearch.propTypes = {
   show: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
   pushBasicSearchToUrl: PropTypes.func.isRequired,
-  hideQuicksearch: PropTypes.func.isRequired,
   clearAutocomplete: PropTypes.func.isRequired
 }
 
 export default connect(
-  state => ({
-    show: state.modal.showQuicksearch
-  }),
+  null,
+  /* istanbul ignore next */
   dispatch => ({
     pushBasicSearchToUrl: bindActionCreators(
       searchActions.pushBasicSearchToUrl,
@@ -86,7 +81,6 @@ export default connect(
     clearAutocomplete: bindActionCreators(
       searchActions.clearAutocomplete,
       dispatch
-    ),
-    hideQuicksearch: bindActionCreators(modalActions.hideQuicksearch, dispatch)
+    )
   })
 )(Quicksearch)

@@ -1,21 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when auto login not yet attempted 1`] = `""`;
+
+exports[`should render correctly when logged in 1`] = `
 <Page>
   <BrowserResizeListener
     onWindowResize={[Function]}
   />
   <Connect(Notifications) />
   <withRouter(Connect(Sidenav))
+    onHide={[Function]}
     pathname="/some/path"
+    show={false}
   />
-  <Connect(Quicksearch) />
-  <PageHeader>
-    <withRouter(Connect(Header)) />
+  <Connect(Quicksearch)
+    onHide={[Function]}
+    show={false}
+  />
+  <PageHeader
+    key="header"
+  >
+    <withRouter(Connect(Header))
+      onShowQuicksearch={[Function]}
+      onShowSidenav={[Function]}
+      showingSidenav={false}
+    />
   </PageHeader>
-  <PageMain />
-  <Footer>
+  <PageMain
+    key="main"
+  >
+    Foo
+  </PageMain>
+  <PageFooter
+    key="footer"
+  >
     <Footer />
-  </Footer>
+  </PageFooter>
+</Page>
+`;
+
+exports[`should render correctly when not logged in 1`] = `
+<Page>
+  <BrowserResizeListener
+    onWindowResize={[Function]}
+  />
+  <Connect(Notifications) />
+  <withRouter(Connect(Sidenav))
+    onHide={[Function]}
+    pathname="/some/path"
+    show={false}
+  />
+  <Connect(Quicksearch)
+    onHide={[Function]}
+    show={false}
+  />
+  <PageMain>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/login"
+      />
+      <Redirect
+        push={false}
+        to="/login"
+      />
+    </Switch>
+  </PageMain>
 </Page>
 `;

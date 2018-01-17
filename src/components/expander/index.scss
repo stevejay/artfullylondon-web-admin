@@ -5,19 +5,21 @@
   position: relative;
 }
 
-.header-container {
+.header-button {
+  @include unstyledButton;
   display: flex;
   align-content: center;
-  cursor: pointer;
+  width: 100%;
 }
 
-.header {
+.header-text {
   color: $three-quarter-black;
   display: block;
   text-transform: uppercase;
   font-size: 1em;
   padding: .7em 0 .6em;
   line-height: 1;
+  margin: 0 auto 0 0;
 
   &:hover {
     color: $black;
@@ -52,6 +54,7 @@
   align-self: center;
   color: $half-black;
   transition: transform 250ms;
+  will-change: transform;
 }
 
 .arrow-down {
@@ -67,15 +70,18 @@
   max-height: 0;
   opacity: 0.01;
 }
+
 :global(.expander-enter.expander-enter-active).children {
   max-height: 700px;
   opacity: 1;
   transition: max-height 250ms ease-in, opacity 250ms ease-in;
 }
+
 :global(.expander-exit).children {
   max-height: 700px;
   opacity: 1;
 }
+
 :global(.expander-exit.expander-exit-active).children {
   max-height: 0;
   opacity: 0.01;

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import DownIcon from 'react-icons/lib/fa/angle-down'
 import CircleIcon from 'react-icons/lib/fa/circle'
+
 import Pusher from '_src/components/pusher'
-import { ARROW_UP_KEYCODE, ARROW_DOWN_KEYCODE } from '_src/constants/browser'
+
+import * as browserConstants from '_src/constants/browser'
 import './index.scss'
 
 class Expander extends React.Component {
@@ -13,17 +15,17 @@ class Expander extends React.Component {
     this.props.onExpanderChange(this.props.id)
   }
   handleKeyDown = event => {
-    const { open } = this.props
     const { keyCode } = event
+    const { open } = this.props
 
-    if (!(keyCode === ARROW_UP_KEYCODE || keyCode === ARROW_DOWN_KEYCODE)) {
+    const isArrowUp = keyCode === browserConstants.ARROW_UP_KEYCODE
+    const isArrowDown = keyCode === browserConstants.ARROW_DOWN_KEYCODE
+
+    if (!(isArrowUp || isArrowDown)) {
       return
     }
 
-    if (
-      (keyCode === ARROW_UP_KEYCODE && open) ||
-      (keyCode === ARROW_DOWN_KEYCODE && !open)
-    ) {
+    if ((isArrowUp && open) || (isArrowDown && !open)) {
       this.handleExpanderChange(event)
     }
   }
@@ -39,29 +41,31 @@ class Expander extends React.Component {
 
     return (
       <div {...rest} styleName='container'>
-        <div
-          styleName='header-container'
+        <button
+          styleName='header-button'
           onClick={this.handleExpanderChange}
           onKeyDown={this.handleKeyDown}
           tabIndex='0'
           aria-expanded={open}
         >
-          <h6 styleName='header'>{headerText}</h6>
-          {!!interestingContent &&
+          <h6 styleName='header-text'>{headerText}</h6>
+          {interestingContent &&
             <CircleIcon styleName={`indicator-${open ? 'open' : 'closed'}`} />}
           <Pusher />
           <DownIcon styleName={`arrow-${open ? 'up' : 'down'}`} />
-        </div>
+        </button>
         <TransitionGroup>
-          <CSSTransition classNames='expander' timeout={250}>
-            <div key='children' in={open} styleName='children'>{children}</div>
-          </CSSTransition>
+          {open &&
+            <CSSTransition key='children' classNames='expander' timeout={250}>
+              <div key='children' styleName='children'>{children}</div>
+            </CSSTransition>}
         </TransitionGroup>
       </div>
     )
   }
 }
 
+/* istanbul ignore next */
 Expander.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   headerText: PropTypes.string.isRequired,
@@ -69,6 +73,11 @@ Expander.propTypes = {
   open: PropTypes.bool.isRequired,
   onExpanderChange: PropTypes.func.isRequired,
   interestingContent: PropTypes.bool
+}
+
+/* istanbul ignore next */
+Expander.defaultProps = {
+  interestingContent: false
 }
 
 export default Expander

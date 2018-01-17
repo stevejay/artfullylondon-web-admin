@@ -1,7 +1,4 @@
 @import 'variables.scss';
-@import 'mixins.scss';
-
-$animation-speed: 200ms;
 
 .modal {
   position: fixed;
@@ -18,19 +15,4 @@ $animation-speed: 200ms;
 .toolbar {
   justify-content: space-between;
   margin-bottom: 5px;
-}
-
-.modal-transition {
-  will-change: transform, opacity;
-  transition: transform $animation-speed ease-in-out, opacity $animation-speed ease-in-out;
-}
-
-.modal-transition:global(.in) {
-  opacity: 1;
-  transform: translateY(0%);
-}
-
-.modal-transition:global(.out) {
-  opacity: 0;
-  transform: translateY(-30%);
 }

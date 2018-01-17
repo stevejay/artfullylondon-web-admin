@@ -1,7 +1,12 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
 .toolbar-item {
-  margin-right: $wide-gutter;
+  margin-right: $narrow-gutter;
+
+  @include from-desktop {
+    margin-right: $wide-gutter;
+  }
 
   &:last-of-type {
     margin-right: 0;

@@ -5,7 +5,6 @@ import serverConstants from './server-constants'
 // import entity from "./entity";
 // import eventForEdit from "./event-for-edit";
 // import eventSeriesForEdit from "./eventseries-for-edit";
-import modal from './modal'
 import search from './search'
 // import tag from "./tag";
 // import talentForEdit from "./talent-for-edit";
@@ -30,7 +29,6 @@ import status from './status'
 export default combineReducers({
   form: formReducer,
   auth,
-  modal,
   serverConstants,
   search,
   // tag,

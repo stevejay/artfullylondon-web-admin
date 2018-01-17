@@ -9,14 +9,11 @@ it('should render correctly when logged in', () => {
   const wrapper = shallow(
     <Header
       loggedIn
-      menus={[
-        { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
-      ]}
       isWideBrowser
       showingSidenav={false}
       history={{}}
-      showSidenav={_.noop}
-      showQuicksearch={_.noop}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
     />
   )
 
@@ -25,17 +22,15 @@ it('should render correctly when logged in', () => {
 
 it('should render correctly when has an error', () => {
   log.error = jest.fn()
+
   const wrapper = shallow(
     <Header
       loggedIn
-      menus={[
-        { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
-      ]}
       isWideBrowser
       showingSidenav={false}
       history={{}}
-      showSidenav={_.noop}
-      showQuicksearch={_.noop}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
     />
   )
 
@@ -50,14 +45,11 @@ it('should render correctly when showing the sidenav', () => {
   const wrapper = shallow(
     <Header
       loggedIn
-      menus={[
-        { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
-      ]}
       isWideBrowser
       showingSidenav
       history={{}}
-      showSidenav={_.noop}
-      showQuicksearch={_.noop}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
     />
   )
 
@@ -68,14 +60,11 @@ it('should render correctly when narrow', () => {
   const wrapper = shallow(
     <Header
       loggedIn
-      menus={[
-        { label: 'Menu Label', items: [{ label: 'Item A', path: '/path/a' }] }
-      ]}
       isWideBrowser={false}
       showingSidenav={false}
       history={{}}
-      showSidenav={_.noop}
-      showQuicksearch={_.noop}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
     />
   )
 

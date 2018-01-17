@@ -12,11 +12,10 @@ import IconButton from '_src/components/button/icon'
 import LogoHeader from '_src/components/logo/header'
 import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
-import HeaderDropdown from '_src/modules/header/components/dropdown'
+import Dropdown from '_src/modules/header/components/dropdown'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as browserSelectors from '_src/store/selectors/browser'
 import * as menuConstants from '_src/constants/menu'
-import * as modalActions from '_src/actions/modal'
 import * as authActions from '_src/actions/auth'
 import './index.scss'
 
@@ -39,8 +38,8 @@ export class Header extends React.Component {
   }
   render () {
     const {
-      showSidenav,
-      showQuicksearch,
+      onShowSidenav,
+      onShowQuicksearch,
       loggedIn,
       isWideBrowser,
       showingSidenav,
@@ -63,16 +62,15 @@ export class Header extends React.Component {
           <ToolbarItem>
             <IconButton
               icon={Search}
-              onClick={showQuicksearch}
+              onClick={onShowQuicksearch}
               aria-label='Show quicksearch dialog'
-              style={{ marginRight: '1.5rem' }}
             />
           </ToolbarItem>}
         {!isWideBrowser &&
           <ToolbarItem>
             <IconButton
               icon={Bars}
-              onClick={showSidenav}
+              onClick={onShowSidenav}
               aria-label='Show navigation menu'
               aria-controls='sidenav'
               ariaExpanded={showingSidenav}
@@ -81,7 +79,7 @@ export class Header extends React.Component {
         {isWideBrowser &&
           menuConstants.MENUS.map(menu => (
             <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
-              <HeaderDropdown
+              <Dropdown
                 label={menu.label}
                 items={menu.items}
                 history={history}
@@ -97,7 +95,7 @@ export class Header extends React.Component {
         {isWideBrowser &&
           <ToolbarItem>
             <Button
-              onClick={showQuicksearch}
+              onClick={onShowQuicksearch}
               ariaLabel='Show quicksearch dialog'
             >
               Quicksearch
@@ -114,8 +112,8 @@ Header.propTypes = {
   isWideBrowser: PropTypes.bool.isRequired,
   showingSidenav: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  showSidenav: PropTypes.func.isRequired,
-  showQuicksearch: PropTypes.func.isRequired
+  onShowSidenav: PropTypes.func.isRequired,
+  onShowQuicksearch: PropTypes.func.isRequired
 }
 
 export default withRouter(
@@ -123,16 +121,10 @@ export default withRouter(
     /* istanbul ignore next */
     state => ({
       loggedIn: authSelectors.isLoggedIn(state),
-      isWideBrowser: browserSelectors.isWideBrowser(state),
-      showingSidenav: state.modal.showSidenav
+      isWideBrowser: browserSelectors.isWideBrowser(state)
     }),
     /* istanbul ignore next */
     dispatch => ({
-      showSidenav: bindActionCreators(modalActions.showSidenav, dispatch),
-      showQuicksearch: bindActionCreators(
-        modalActions.showQuicksearch,
-        dispatch
-      ),
       logOut: bindActionCreators(authActions.logOut, dispatch)
     })
   )(Header)

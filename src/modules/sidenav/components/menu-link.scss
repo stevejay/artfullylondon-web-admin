@@ -1,0 +1,19 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.link {
+  @include regularFont;
+  @include noDefaultAnchorStyling;
+  display: block;
+  text-transform: uppercase;
+  font-size: 1em;
+  padding: .8em 0 .6em;
+  line-height: 1;
+  cursor: pointer;
+  color: $three-quarter-black;
+  transition: color .1s ease-in-out;
+
+  &:hover {
+    color: $black;
+  }
+}

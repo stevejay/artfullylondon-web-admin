@@ -1,0 +1,14 @@
+.modal-transition {
+  will-change: transform, opacity;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+}
+
+.modal-transition:global(.in) {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.modal-transition:global(.out) {
+  opacity: 0;
+  transform: translateY(-30%);
+}

@@ -11,6 +11,7 @@ import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import * as searchConstants from '_src/constants/search'
+import * as searchActionTypes from '_src/constants/action/search'
 import * as authActionTypes from '_src/constants/action/auth'
 
 const initialState = {
@@ -31,20 +32,20 @@ const initialState = {
 export default handleActions(
   {
     [authActionTypes.LOGGED_OUT]: () => initialState,
-    [searchConstants.BASIC_SEARCH_PAGE_ENTERED]: state => ({
+    [searchActionTypes.BASIC_SEARCH_PAGE_ENTERED]: state => ({
       ...state,
       searchInProgress: false,
       canShowNoResultsMessage: false
     }),
-    [searchConstants.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
+    [searchActionTypes.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
       ...state,
       basicSearchParams: action.payload
     }),
-    [searchConstants.STARTING_BASIC_SEARCH]: state => ({
+    [searchActionTypes.STARTING_BASIC_SEARCH]: state => ({
       ...state,
       searchInProgress: true
     }),
-    [searchConstants.BASIC_SEARCH_SUCCEEDED]: (state, action) => {
+    [searchActionTypes.BASIC_SEARCH_SUCCEEDED]: (state, action) => {
       const { total, items, params } = action.payload
 
       const events = items
@@ -72,11 +73,11 @@ export default handleActions(
         items: [...events, ...eventSeries, ...venues, ...talents]
       }
     },
-    [searchConstants.BASIC_SEARCH_FAILED]: state => ({
+    [searchActionTypes.BASIC_SEARCH_FAILED]: state => ({
       ...state,
       searchInProgress: false
     }),
-    [searchConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED]: (state, action) => {
+    [searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED]: (state, action) => {
       const { items } = action.payload
 
       items.forEach(
@@ -108,7 +109,7 @@ export default handleActions(
         autocompleteItems
       }
     },
-    [searchConstants.CLEAR_AUTOCOMPLETE]: state => ({
+    [searchActionTypes.CLEAR_AUTOCOMPLETE]: state => ({
       ...state,
       autocompleteItems: []
     })

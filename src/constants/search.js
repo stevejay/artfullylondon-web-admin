@@ -39,23 +39,6 @@ export const AUTOCOMPLETE_ITEMS_PROPTYPES = PropTypes.arrayOf(
   AUTOCOMPLETE_ITEM_PROPTYPES.isRequired
 )
 
-export const PUSH_BASIC_SEARCH_TO_URL = 'search/PUSH_BASIC_SEARCH_TO_URL'
-
-export const SEARCH = 'search/SEARCH'
-
-export const BASIC_SEARCH_PAGE_ENTERED = 'search/BASIC_SEARCH_PAGE_ENTERED'
-export const SET_BASIC_SEARCH_PARAMS = 'search/SET_BASIC_SEARCH_PARAMS'
-
-export const STARTING_BASIC_SEARCH = 'search/STARTING_BASIC_SEARCH'
-export const BASIC_SEARCH_SUCCEEDED = 'search/BASIC_SEARCH_SUCCEEDED'
-export const BASIC_SEARCH_FAILED = 'search/BASIC_SEARCH_FAILED'
-
-export const AUTOCOMPLETE_SEARCH_SUCCEEDED =
-  'search/AUTOCOMPLETE_SEARCH_SUCCEEDED'
-export const CLEAR_AUTOCOMPLETE = 'search/CLEAR_AUTOCOMPLETE'
-
-export const NAVIGATE_TO_ENTITY = 'search/NAVIGATE_TO_ENTITY'
-
 // ------------------------
 
 // TODO These might not all be used?

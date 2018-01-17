@@ -15,25 +15,3 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
-
-it('should ignore update when props have not changed', () => {
-  const wrapper = shallow(
-    <Modal show transition={TestTransition} onHide={_.noop}>
-      <div id='child' />
-    </Modal>
-  )
-
-  const result = wrapper.instance().shouldComponentUpdate({ show: true })
-  expect(result).toEqual(false)
-})
-
-it('should trigger update when props have changed', () => {
-  const wrapper = shallow(
-    <Modal show transition={TestTransition} onHide={_.noop}>
-      <div id='child' />
-    </Modal>
-  )
-
-  const result = wrapper.instance().shouldComponentUpdate({ show: false })
-  expect(result).toEqual(true)
-})
