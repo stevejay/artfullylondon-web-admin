@@ -2,50 +2,56 @@
 @import 'mixins.scss';
 
 .container {
-    position: relative;
+  position: relative;
 }
 
-.input, .textarea {
-    @include noWebKitHighlight;
-    width: 100%;
-    margin: 0;
-    outline: 0;
-    -webkit-appearance: none;
-    line-height: $input-line-height;
-    padding: .7rem 1.1rem;
-    font-size: $input-font-size;
-    background-color: $input-background-color;
-    border: 1px solid $input-border-color;
-    border-radius: $input-border-radius;
-    box-shadow: 0 0 0 0 transparent inset;
-    transition: color .1s ease, border-color .1s ease;
-
-    &:focus {
-        border-color: $input-border-focus-color;
-    }
-}
-:global(textarea).textarea {
-    resize: vertical;
-}
+.input,
 .textarea {
-    width: 100%;
-}
-.error {
-    background-color: $input-error-background-color;
-    border-color: $input-error-border-color;
-    color: $input-error-color;
-    border-radius: '';
-    box-shadow: none;
+  @include noWebKitHighlight;
+  width: 100%;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  line-height: $input-line-height;
+  padding: .7rem 1.1rem;
+  font-size: $input-font-size;
+  background-color: $input-background-color;
+  border: 1px solid $input-border-color;
+  border-radius: $input-border-radius;
+  box-shadow: 0 0 0 0 transparent inset;
+  transition: color .1s ease, border-color .1s ease;
 
-    &:focus {
-        border-color: $input-error-border-color;
-    }
+  &:focus {
+    border-color: $input-border-focus-color;
+  }
 }
+
+:global(textarea).textarea {
+  resize: vertical;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.error {
+  background-color: $input-error-background-color;
+  border-color: $input-error-border-color;
+  color: $input-error-color;
+  border-radius: '';
+  box-shadow: none;
+
+  &:focus {
+    border-color: $input-error-border-color;
+  }
+}
+
 .input-error {
-    composes: input;
-    composes: error;
+  composes: input;
+  composes: error;
 }
+
 .textarea-error {
-    composes: textarea;
-    composes: error;
+  composes: textarea;
+  composes: error;
 }

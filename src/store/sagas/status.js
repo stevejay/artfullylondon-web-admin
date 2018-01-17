@@ -1,4 +1,6 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
+import log from 'loglevel'
+
 import * as types from '_src/constants/status'
 import { get } from '_src/lib/fetch'
 
@@ -14,7 +16,7 @@ export function * getEntityCounts () {
       payload: json
     })
   } catch (err) {
-    console.error('getEntityCounts error', err)
+    log.error('getEntityCounts error', err)
     yield put.resolve({ type: types.GET_ENTITY_COUNTS_FAILED })
   }
 }

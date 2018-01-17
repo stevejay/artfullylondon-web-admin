@@ -80,9 +80,8 @@ export class Header extends React.Component {
           </ToolbarItem>}
         {isWideBrowser &&
           menuConstants.MENUS.map(menu => (
-            <ToolbarItem styleName='dropdown-toolbar-item'>
+            <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
               <HeaderDropdown
-                key={menu.label}
                 label={menu.label}
                 items={menu.items}
                 history={history}
@@ -109,6 +108,7 @@ export class Header extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   isWideBrowser: PropTypes.bool.isRequired,
@@ -120,11 +120,13 @@ Header.propTypes = {
 
 export default withRouter(
   connect(
+    /* istanbul ignore next */
     state => ({
       loggedIn: authSelectors.isLoggedIn(state),
       isWideBrowser: browserSelectors.isWideBrowser(state),
       showingSidenav: state.modal.showSidenav
     }),
+    /* istanbul ignore next */
     dispatch => ({
       showSidenav: bindActionCreators(modalActions.showSidenav, dispatch),
       showQuicksearch: bindActionCreators(

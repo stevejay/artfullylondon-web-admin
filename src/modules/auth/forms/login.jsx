@@ -43,18 +43,23 @@ export const LoginForm = ({ submitting, handleSubmit, constraint, error }) => (
   </Form>
 )
 
+/* istanbul ignore next */
 LoginForm.propTypes = {
-  initialValues: PropTypes.object.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   constraint: PropTypes.object.isRequired,
-  error: PropTypes.string
+  error: PropTypes.string,
+  initialUsername: PropTypes.string,
+  initialValues: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
-export default connect((_, ownProps) => ({
-  initialValues: {
-    username: ownProps.initialUsername || '',
-    password: ''
-  }
-}))(reduxForm({ form: formConstants.LOGIN_FORM_NAME })(LoginForm))
+export default connect(
+  /* istanbul ignore next */
+  (_, ownProps) => ({
+    initialValues: {
+      username: ownProps.initialUsername || '',
+      password: ''
+    }
+  })
+)(reduxForm({ form: formConstants.LOGIN_FORM_NAME })(LoginForm))

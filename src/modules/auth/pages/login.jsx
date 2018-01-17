@@ -10,7 +10,7 @@ import * as authActions from '_src/actions/auth'
 import * as authConstraints from '_src/constants/auth-constraints'
 import './login.scss'
 
-const LoginPage = ({ logIn, initialUsername }) => (
+export const LoginPage = ({ logIn, initialUsername }) => (
   <FormSection type='narrow' styleName='form-section'>
     <FormBorder title='Log In'>
       <LoginForm
@@ -22,15 +22,18 @@ const LoginPage = ({ logIn, initialUsername }) => (
   </FormSection>
 )
 
+/* istanbul ignore next */
 LoginPage.propTypes = {
   initialUsername: PropTypes.string,
   logIn: PropTypes.func.isRequired
 }
 
 export default connect(
+  /* istanbul ignore next */
   state => ({
     initialUsername: state.auth.username
   }),
+  /* istanbul ignore next */
   dispatch => ({
     logIn: bindActionCreators(authActions.logIn, dispatch)
   })

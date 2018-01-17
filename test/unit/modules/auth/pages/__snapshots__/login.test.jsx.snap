@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<FormSection
+  className="src-modules-auth-pages-login__form-section"
+  type="narrow"
+>
+  <FormBorder
+    title="Log In"
+  >
+    <Connect(ReduxForm)
+      constraint={
+        Object {
+          "password": Object {
+            "length": Object {
+              "maximum": 30,
+            },
+            "presence": true,
+          },
+          "username": Object {
+            "length": Object {
+              "maximum": 100,
+            },
+            "presence": true,
+          },
+        }
+      }
+      initialUsername="steve"
+      onSubmit={[Function]}
+    />
+  </FormBorder>
+</FormSection>
+`;

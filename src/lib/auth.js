@@ -4,6 +4,7 @@ import {
   CognitoUser
 } from 'amazon-cognito-identity-js'
 import _ from 'lodash'
+import log from 'loglevel'
 
 import store from '_src/store'
 import * as authConstants from '_src/constants/auth'
@@ -70,12 +71,12 @@ export const getAuthTokenForCurrentUser = () => {
     const { auth } = store.getState()
 
     if (auth.state === authConstants.AUTH_STATE_LOGGED_IN) {
-      // console.log('getAuthTokenForCurrentUser', 'found authenticated user in store');
+      // log.info('getAuthTokenForCurrentUser', 'found authenticated user in store');
 
       auth.cognitoUser.getSession((err, session) => {
         if (err || !session.isValid()) {
           // the authenticated user is no longer valid.
-          // console.log('getAuthTokenForCurrentUser', 'the authenticated user in store is no longer valid');
+          // log.info('getAuthTokenForCurrentUser', 'the authenticated user in store is no longer valid');
 
           store.dispatch(authActions.resetLogIn()) // clear the user from store.
 
@@ -107,13 +108,13 @@ export function attemptAutoLogIn () {
 
 export const handleEnterRestrictedRoute = (nextState, replace) => {
   return new Promise(resolve => {
-    // console.log('auth', store);
+    // log.info('auth', store);
 
     const { auth } = store.getState()
 
     if (auth.state === authConstants.AUTH_STATE_LOGGED_IN) {
       // we have an authenticated user in store.
-      console.log(
+      log.info(
         'handleEnterRestrictedRoute',
         'found authenticated user in store'
       )
@@ -121,7 +122,7 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
       auth.cognitoUser.getSession((err, session) => {
         if (err || !session.isValid()) {
           // the authenticated user is no longer valid.
-          console.log(
+          log.info(
             'handleEnterRestrictedRoute',
             'the authenticated user in store is no longer valid'
           )
@@ -129,7 +130,7 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
           store.dispatch(authActions.logOut()) // clear the user from store.
           redirectToLogIn(nextState, replace) // allow the user to log in.
         } else {
-          console.log(
+          log.info(
             'handleEnterRestrictedRoute',
             'the authenticated user in store is still valid'
           )
@@ -143,7 +144,7 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
 
       if (!cognitoUser) {
         // user has not authenticated ever?
-        console.log(
+        log.info(
           'handleEnterRestrictedRoute',
           'user seems to have never authenticated or did it ages ago or signed out'
         )
@@ -154,11 +155,11 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
         cognitoUser.getSession((err, session) => {
           if (err || !session.isValid()) {
             // the authenticated user is no longer valid.
-            // console.log('handleEnterRestrictedRoute', 'user in local storage is no longer valid');
+            // log.info('handleEnterRestrictedRoute', 'user in local storage is no longer valid');
             redirectToLogIn(nextState, replace) // allow the user to log in.
           } else {
             // the authenticated user is still valid, so use it.
-            // console.log('handleEnterRestrictedRoute', 'user in local storage is still valid so setting it in store');
+            // log.info('handleEnterRestrictedRoute', 'user in local storage is still valid so setting it in store');
             store.dispatch(authActions.logInSucceeded({ cognitoUser }))
           }
 

@@ -59,6 +59,7 @@ export class Routes extends React.Component {
         {loggedIn && [
           <PageHeader key='header'><Header /></PageHeader>,
           <PageMain key='main'>
+            Foo
             {false &&
               <Switch>
                 <Route exact path='/' component={Dashboard} />

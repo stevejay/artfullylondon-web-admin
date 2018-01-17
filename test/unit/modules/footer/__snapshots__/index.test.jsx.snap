@@ -20,3 +20,5 @@ exports[`should render correctly 1`] = `
   </li>
 </ul>
 `;
+
+exports[`should render correctly when has an error 1`] = `""`;

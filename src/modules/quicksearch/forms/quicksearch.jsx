@@ -7,11 +7,12 @@ import FormRow from '_src/components/form/row'
 import SearchField from '_src/components/search-field/field'
 import * as entityConstants from '_src/constants/entity'
 import * as formConstants from '_src/constants/form'
-import constraint from './constraint'
+import * as browserConstants from '_src/constants/browser'
+import constraint from './quicksearch-constraint'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {
-    if (event.key === 'Enter') {
+    if (event.charCode === browserConstants.ENTER_CHARCODE) {
       event.preventDefault()
       this.props.handleSubmit()
     }
@@ -38,6 +39,7 @@ export class QuicksearchForm extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 QuicksearchForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -47,11 +49,13 @@ QuicksearchForm.propTypes = {
   placeholder: PropTypes.string
 }
 
+/* istanbul ignore next */
 QuicksearchForm.defaultProps = {
   placeholder: 'Enter a search term',
   disabled: false
 }
 
+/* istanbul ignore next */
 export default reduxForm({
   form: formConstants.HEADER_SEARCH_FORM_NAME,
   initialValues: {

@@ -3,6 +3,7 @@ import { stopSubmit } from 'redux-form'
 import { delay } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import Backoff from 'backo'
+import log from 'loglevel'
 
 export function * submitErrorHandler (err, formName) {
   if (!_.isNil(err.errors)) {
@@ -19,7 +20,7 @@ export function * callWithInfiniteRetry (func, ...args) {
     try {
       return yield call(func, ...args)
     } catch (err) {
-      console.error('callWithInfiniteRetry error:' + err.message)
+      log.error('callWithInfiniteRetry error:' + err.message)
       yield delay(backoff.duration())
     }
   }

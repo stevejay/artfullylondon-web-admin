@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-header-components-dropdown__container"
+>
+  <HeaderDropdownButton
+    ariaHaspopup={true}
+    label="The Label"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+  />
+  <Overlay
+    container={
+      DropdownMenu {
+        "_getOverlayTarget": [Function],
+        "context": Object {},
+        "handleBlur": [Function],
+        "handleButtonClick": [Function],
+        "handleContainerMounted": [Function],
+        "handleFocus": [Function],
+        "handleHeaderButtonMounted": [Function],
+        "handleItemClick": [Function],
+        "handleItemMouseDown": [Function],
+        "handleItemMouseEnter": [Function],
+        "handleKeyDown": [Function],
+        "handleKeyPress": [Function],
+        "props": Object {
+          "history": Object {},
+          "items": Array [
+            Object {
+              "label": "Label A",
+              "path": "/path-a",
+            },
+          ],
+          "label": "The Label",
+        },
+        "refs": Object {},
+        "state": Object {
+          "isOpen": false,
+          "selectedIndex": null,
+        },
+        "updater": Updater {
+          "_callbacks": Array [],
+          "_renderer": ReactShallowRenderer {
+            "_context": Object {},
+            "_element": <DropdownMenu
+              history={Object {}}
+              items={
+                Array [
+                  Object {
+                    "label": "Label A",
+                    "path": "/path-a",
+                  },
+                ]
+              }
+              label="The Label"
+            />,
+            "_forcedUpdate": false,
+            "_instance": [Circular],
+            "_newState": null,
+            "_rendered": <div
+              className="src-modules-header-components-dropdown__container"
+            >
+              <HeaderDropdownButton
+                ariaHaspopup={true}
+                label="The Label"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+              />
+              <Overlay
+                container={[Circular]}
+                onHide={[Function]}
+                placement="bottom"
+                rootClose={true}
+                shouldUpdatePosition={true}
+                show={false}
+                target={[Function]}
+                transition={[Function]}
+              >
+                <Menu
+                  items={
+                    Array [
+                      Object {
+                        "label": "Label A",
+                        "path": "/path-a",
+                      },
+                    ]
+                  }
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  selectedIndex={null}
+                />
+              </Overlay>
+            </div>,
+            "_rendering": false,
+            "_updater": [Circular],
+          },
+        },
+      }
+    }
+    onHide={[Function]}
+    placement="bottom"
+    rootClose={true}
+    shouldUpdatePosition={true}
+    show={false}
+    target={[Function]}
+    transition={[Function]}
+  >
+    <Menu
+      items={
+        Array [
+          Object {
+            "label": "Label A",
+            "path": "/path-a",
+          },
+        ]
+      }
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      selectedIndex={null}
+    />
+  </Overlay>
+</div>
+`;

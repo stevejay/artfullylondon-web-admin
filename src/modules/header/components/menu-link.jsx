@@ -30,6 +30,7 @@ class MenuLink extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 MenuLink.propTypes = {
   label: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,

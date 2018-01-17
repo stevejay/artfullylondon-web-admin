@@ -29,6 +29,7 @@ const Menu = ({
   </ul>
 )
 
+/* istanbul ignore next */
 Menu.propTypes = {
   style: PropTypes.object,
   items: PropTypes.array.isRequired,

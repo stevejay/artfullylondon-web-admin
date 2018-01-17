@@ -7,12 +7,20 @@ import Close from 'react-icons/lib/fa/close'
 
 import Logo from '_src/components/logo'
 import IconButton from '_src/components/button/icon'
-import QuicksearchForm from '_src/modules/quicksearch/form'
+import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'
+import Transition from '_src/modules/quicksearch/components/transition'
 import * as searchConstants from '_src/constants/search'
-import { hideQuicksearch } from '_src/actions/modal'
-import { clearAutocomplete, pushBasicSearchToUrl } from '_src/actions/search'
-import Transition from './transition'
+import * as modalActions from '_src/actions/modal'
+import * as searchActions from '_src/actions/search'
 import './index.scss'
+
+function DialogTransition (props) {
+  return <Transition {...props} styleName='dialog-transition' timeout={200} />
+}
+
+function BackdropTransition (props) {
+  return <Transition {...props} styleName='backdrop-transition' timeout={200} />
+}
 
 export class Quicksearch extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -36,14 +44,14 @@ export class Quicksearch extends React.Component {
 
     return (
       <Modal
+        show={show}
+        transition={DialogTransition}
+        backdrop
+        backdropTransition={BackdropTransition}
+        backdropClassName='backdrop'
         aria-label='Quicksearch'
         styleName='modal'
-        backdrop
-        backdropClassName='backdrop'
-        show={show}
         onHide={this.handleHideQuicksearch}
-        transition={Transition}
-        timeout={250}
       >
         <div styleName='quicksearch'>
           <div styleName='header'>
@@ -75,8 +83,14 @@ export default connect(
     show: state.modal.showQuicksearch
   }),
   dispatch => ({
-    pushBasicSearchToUrl: bindActionCreators(pushBasicSearchToUrl, dispatch),
-    hideQuicksearch: bindActionCreators(hideQuicksearch, dispatch),
-    clearAutocomplete: bindActionCreators(clearAutocomplete, dispatch)
+    pushBasicSearchToUrl: bindActionCreators(
+      searchActions.pushBasicSearchToUrl,
+      dispatch
+    ),
+    clearAutocomplete: bindActionCreators(
+      searchActions.clearAutocomplete,
+      dispatch
+    ),
+    hideQuicksearch: bindActionCreators(modalActions.hideQuicksearch, dispatch)
   })
 )(Quicksearch)

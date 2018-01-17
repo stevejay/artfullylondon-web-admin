@@ -13,8 +13,5 @@ exports[`should render correctly 1`] = `
   type="button"
 >
   The Label
-  <FaAngleDown
-    className="src-modules-header-components-dropdown-button__arrow"
-  />
 </button>
 `;

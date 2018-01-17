@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormError />
+  <FormRow>
+    <Field
+      autoFocus={true}
+      autos={false}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Username"
+      maxLength={100}
+      name="username"
+      remainingChars={false}
+    />
+  </FormRow>
+  <FormRow
+    style={
+      Object {
+        "marginBottom": 0,
+      }
+    }
+  >
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Password"
+      maxLength={50}
+      name="password"
+      password={true}
+      remainingChars={false}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

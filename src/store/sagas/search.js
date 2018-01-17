@@ -1,6 +1,8 @@
 import { delay } from 'redux-saga'
 import { call, put, select, takeLatest } from 'redux-saga/effects'
 import _ from 'lodash'
+import log from 'loglevel'
+
 import history from '_src/history'
 import { startSubmit, stopSubmit, initialize } from 'redux-form'
 import normalise from '_src/lib/normalise'
@@ -32,7 +34,7 @@ function * pushBasicSearchToUrl ({ payload }) {
     const requestUrl = createSearchPageUrl('/search', query, skip, take)
     yield call(history.push, requestUrl)
   } catch (err) {
-    console.error(err)
+    log.error(err)
   }
 }
 
@@ -51,7 +53,7 @@ function * autocompleteSearch ({ payload }) {
   )
 
   if (errors !== null) {
-    console.error('autocompleteSearch validation errors', errors)
+    log.error('autocompleteSearch validation errors', errors)
     return
   }
 
@@ -79,7 +81,7 @@ function * basicSearch ({ payload }) {
     )
 
     if (errors !== null) {
-      console.error('basicSearch validation errors', errors)
+      log.error('basicSearch validation errors', errors)
       return
     }
 
@@ -130,7 +132,7 @@ function * search (action) {
         throw new Error(`searchType is out of range: ${searchType}`)
     }
   } catch (err) {
-    console.error('search error', err)
+    log.error('search error', err)
   }
 }
 

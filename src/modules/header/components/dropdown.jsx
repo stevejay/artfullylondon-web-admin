@@ -154,6 +154,7 @@ class DropdownMenu extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 DropdownMenu.propTypes = {
   label: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(

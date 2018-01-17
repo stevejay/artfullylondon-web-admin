@@ -73,7 +73,7 @@
 }
 
 @mixin noWebKitHighlight() {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 @mixin regularFont() {
@@ -133,7 +133,6 @@
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   text-shadow: none;
-  outline: 0;
 }
 
 @mixin loader($size, $circleColor: rgba(0, 0, 0, .1), $quarterColor: $half-black) {

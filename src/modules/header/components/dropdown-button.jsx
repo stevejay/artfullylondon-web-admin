@@ -36,6 +36,7 @@ class HeaderDropdownButton extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 HeaderDropdownButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
