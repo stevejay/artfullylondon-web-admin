@@ -17,7 +17,6 @@ const SectionHeading = ({ className, children, logo }) => {
   )
 }
 
-/* istanbul ignore next */
 SectionHeading.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any.isRequired,

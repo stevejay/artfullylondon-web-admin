@@ -62,7 +62,6 @@ class Expander extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Expander.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   headerText: PropTypes.string.isRequired,
@@ -72,7 +71,6 @@ Expander.propTypes = {
   interestingContent: PropTypes.bool
 }
 
-/* istanbul ignore next */
 Expander.defaultProps = {
   interestingContent: false
 }

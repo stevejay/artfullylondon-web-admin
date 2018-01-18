@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
   background-color: #E3DCCF;
-  margin-bottom: 3rem;
 }
 
 .container-no-logo {
@@ -18,8 +17,6 @@
     height: 100px;
   }
 }
-
-;
 
 .container-logo {
   composes: container;

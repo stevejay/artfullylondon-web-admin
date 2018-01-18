@@ -76,7 +76,6 @@ export class Sidenav extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Sidenav.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   show: PropTypes.bool.isRequired,

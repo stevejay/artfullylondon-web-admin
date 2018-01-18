@@ -153,7 +153,6 @@ class Dropdown extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Dropdown.propTypes = {
   label: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(

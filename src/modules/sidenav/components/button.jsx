@@ -29,7 +29,6 @@ const SidenavButton = ({
   </button>
 )
 
-/* istanbul ignore next */
 SidenavButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -40,7 +39,6 @@ SidenavButton.propTypes = {
   onBlur: PropTypes.func
 }
 
-/* istanbul ignore next */
 SidenavButton.defaultProps = {
   ariaHaspopup: false
 }

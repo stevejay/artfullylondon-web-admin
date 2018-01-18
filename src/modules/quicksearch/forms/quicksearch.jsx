@@ -39,7 +39,6 @@ export class QuicksearchForm extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 QuicksearchForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -49,7 +48,6 @@ QuicksearchForm.propTypes = {
   placeholder: PropTypes.string
 }
 
-/* istanbul ignore next */
 QuicksearchForm.defaultProps = {
   placeholder: 'Enter a search term',
   disabled: false

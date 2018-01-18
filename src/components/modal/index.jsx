@@ -27,7 +27,6 @@ export const Modal = ({
   </ReactOverlaysModal>
 )
 
-/* istanbul ignore next */
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   transition: PropTypes.func.isRequired,
@@ -36,7 +35,6 @@ Modal.propTypes = {
   onHide: PropTypes.func.isRequired
 }
 
-/* istanbul ignore next */
 Modal.defaultProps = {
   backdropTransition: BackdropTransition
 }

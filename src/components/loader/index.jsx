@@ -11,11 +11,11 @@ class Loader extends React.Component {
     return false
   }
   render () {
-    const { size, type, ...rest } = this.props
+    const { size, type, className } = this.props
 
     return (
       <div
-        {...rest}
+        className={className}
         role='alert'
         aria-busy
         styleName={`${size}-${type}`}
@@ -25,14 +25,9 @@ class Loader extends React.Component {
 }
 
 Loader.propTypes = {
-  size: PropTypes.oneOf([
-    'tiny',
-    'small',
-    'medium',
-    'large',
-    'massive',
-    'modal'
-  ]).isRequired,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'modal'])
+    .isRequired,
   type: PropTypes.oneOf([TYPE_DEFAULT, TYPE_INVERSE])
 }
 

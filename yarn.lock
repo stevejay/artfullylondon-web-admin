@@ -7812,9 +7812,9 @@ scriptjs@^2.5.8:
   version "2.5.8"
   resolved "https://registry.yarnpkg.com/scriptjs/-/scriptjs-2.5.8.tgz#d0c43955c2e6bad33b6e4edf7b53b8965aa7ca5f"
 
-scss-mixins-spinners@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/scss-mixins-spinners/-/scss-mixins-spinners-1.0.3.tgz#026dde95f4b952ef0cee12148c8866f75e0515f0"
+scss-mixins-spinners@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/scss-mixins-spinners/-/scss-mixins-spinners-2.1.0.tgz#e0395385cf0a4e214eb252953b5bc8c5440be8c7"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

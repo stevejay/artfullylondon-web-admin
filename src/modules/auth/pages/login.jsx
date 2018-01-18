@@ -22,7 +22,6 @@ export const LoginPage = ({ logIn, initialUsername }) => (
   </FormSection>
 )
 
-/* istanbul ignore next */
 LoginPage.propTypes = {
   initialUsername: PropTypes.string,
   logIn: PropTypes.func.isRequired

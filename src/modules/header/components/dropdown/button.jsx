@@ -36,7 +36,6 @@ class DropdownButton extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 DropdownButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,

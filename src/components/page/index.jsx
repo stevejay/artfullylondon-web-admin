@@ -8,7 +8,6 @@ const Page = ({ className, children }) =>
     ? <div className={className} styleName='page'>{children}</div>
     : null)
 
-/* istanbul ignore next */
 Page.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any

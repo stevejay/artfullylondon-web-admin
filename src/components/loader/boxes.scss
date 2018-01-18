@@ -1,0 +1,17 @@
+@import 'variables.scss';
+@import '~scss-mixins-spinners/scss/boxes-spinner.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.large-default {
+  @include boxes-spinner($color: $dark-highlight-color, $animation-name: 'boxes-spinner-animation');
+
+  & span {
+    animation-name: boxes-spinner-animation;
+  }
+}

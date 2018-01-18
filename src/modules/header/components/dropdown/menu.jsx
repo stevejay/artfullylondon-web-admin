@@ -30,7 +30,6 @@ const Menu = ({
   </ul>
 )
 
-/* istanbul ignore next */
 Menu.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,

@@ -1,17 +1,5 @@
 @import 'mixins.scss';
 
-@-webkit-keyframes loader {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes loader {
   from {
     -webkit-transform: rotate(0deg);
@@ -40,10 +28,6 @@
   @include loader(4rem);
 }
 
-.massive-default {
-  @include loader(6rem);
-}
-
 .modal-default {
   @include loader(14rem);
 }
@@ -62,8 +46,4 @@
 
 .large-inverse {
   @include loader-inverse(4rem);
-}
-
-.massive-inverse {
-  @include loader-inverse(6rem);
 }

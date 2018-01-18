@@ -25,8 +25,6 @@ body {
 
 #startup-spinner {
   @include boxes-spinner($color: $dark-highlight-color);
-  position: relative;
-  transform: none;
 }
 
 #startup-dialog h1 {

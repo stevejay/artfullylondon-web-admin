@@ -97,7 +97,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
-    "scss-mixins-spinners": "^1.0.3",
+    "scss-mixins-spinners": "^2.1.0",
     "source-map-loader": "^0.2.3",
     "standard": "^11.0.0-beta.0",
     "stripcomment-loader": "^0.1.0",

@@ -7,7 +7,6 @@ const BasicSection = ({ children, className }) => (
   <section className={className} styleName='section'>{children}</section>
 )
 
-/* istanbul ignore next */
 BasicSection.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any

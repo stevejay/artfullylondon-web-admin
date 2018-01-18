@@ -7,12 +7,10 @@ exports[`should render a 404 error correctly 1`] = `
   <h1
     className="src-components-error-index__heading"
   >
-    <span
-      className="src-components-error-index__code"
-    >
-      404
-    </span>
-    Page Not Found
+    <FaThumbsODown
+      className="src-components-error-index__icon"
+    />
+    Sorry—we couldn't find this
   </h1>
 </BasicSection>
 `;
@@ -24,12 +22,10 @@ exports[`should render a 500 error correctly 1`] = `
   <h1
     className="src-components-error-index__heading"
   >
-    <span
-      className="src-components-error-index__code"
-    >
-      500
-    </span>
-    Server Error
+    <FaThumbsODown
+      className="src-components-error-index__icon"
+    />
+    Oops—something went wrong
   </h1>
 </BasicSection>
 `;

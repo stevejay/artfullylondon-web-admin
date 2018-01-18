@@ -43,7 +43,6 @@ export const LoginForm = ({ submitting, handleSubmit, constraint, error }) => (
   </Form>
 )
 
-/* istanbul ignore next */
 LoginForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,

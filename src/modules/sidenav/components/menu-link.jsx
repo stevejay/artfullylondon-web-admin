@@ -13,7 +13,6 @@ class MenuLink extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 MenuLink.propTypes = {
   path: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

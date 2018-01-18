@@ -62,7 +62,6 @@ export class Quicksearch extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Quicksearch.propTypes = {
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,

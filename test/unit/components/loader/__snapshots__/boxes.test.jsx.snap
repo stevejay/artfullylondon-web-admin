@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default loader correctly 1`] = `
+<div
+  className="src-components-loader-boxes__container"
+>
+  <div
+    aria-busy={true}
+    className="src-components-loader-boxes__large-default"
+    role="alert"
+  >
+    <span />
+    <span />
+    <span />
+    <span />
+    <span />
+    <span />
+    <span />
+    <span />
+    <span />
+  </div>
+</div>
+`;

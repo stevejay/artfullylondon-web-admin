@@ -44,7 +44,6 @@ class Menu extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Menu.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

@@ -106,7 +106,6 @@ export class Header extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   isWideBrowser: PropTypes.bool.isRequired,

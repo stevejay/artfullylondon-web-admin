@@ -1,4 +1,4 @@
 import { createAction } from 'redux-actions'
-import * as types from '_src/constants/status'
+import * as statusActionTypes from '_src/constants/action/status'
 
-export const getEntityCounts = createAction(types.GET_ENTITY_COUNTS)
+export const getEntityCounts = createAction(statusActionTypes.GET_ENTITY_COUNTS)

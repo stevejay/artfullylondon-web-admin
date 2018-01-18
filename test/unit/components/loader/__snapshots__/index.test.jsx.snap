@@ -8,14 +8,6 @@ exports[`should render a large inverse loader correctly 1`] = `
 />
 `;
 
-exports[`should render a massive loader correctly 1`] = `
-<div
-  aria-busy={true}
-  className="src-components-loader-index__massive-default"
-  role="alert"
-/>
-`;
-
 exports[`should render a medium loader correctly 1`] = `
 <div
   aria-busy={true}

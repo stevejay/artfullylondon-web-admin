@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import { get } from '_src/lib/fetch'
-import * as types from '_src/constants/status'
+import * as statusActionTypes from '_src/constants/action/status'
 import * as statusSagas from '_src/store/sagas/status'
 
 describe('getEntityCounts', () => {
@@ -8,7 +8,7 @@ describe('getEntityCounts', () => {
 
   it('signals that it has started execution', () => {
     expect(generator.next(null).value).toEqual(
-      put.resolve({ type: types.GET_ENTITY_COUNTS_STARTED })
+      put.resolve({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
     )
   })
 
@@ -25,7 +25,7 @@ describe('getEntityCounts', () => {
   it('sends the data to the store', () => {
     expect(generator.next('some json').value).toEqual(
       put.resolve({
-        type: types.GET_ENTITY_COUNTS_SUCCEEDED,
+        type: statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED,
         payload: 'some json'
       })
     )

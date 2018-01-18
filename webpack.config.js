@@ -18,7 +18,7 @@ const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
 const BUILD_DIR = path.join(__dirname, './build')
-const CSS_MODULE_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
+const CSS_MODULES_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
 const VERSION_FILE_NAME = 'version.json'
 
 const extractAppCSS = new ExtractTextPlugin({
@@ -279,14 +279,14 @@ module.exports = {
         ]
       },
       sassLoader(extractAppCSS, true, {
-        include: CSS_MODULE_FILES_REGEX
+        include: CSS_MODULES_FILES_REGEX
       }),
       sassLoader(extractStartupCSS, false, {
         include: path.resolve(SRC_DIR, 'startup.scss')
       }),
       sassLoader(extractAppCSS, false, {
         exclude: [
-          CSS_MODULE_FILES_REGEX,
+          CSS_MODULES_FILES_REGEX,
           path.resolve(SRC_DIR, 'startup.scss')
         ]
       })

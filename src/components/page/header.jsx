@@ -10,7 +10,6 @@ const PageHeader = ({ className, children }) =>
     </header>
     : null)
 
-/* istanbul ignore next */
 PageHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any

@@ -23,12 +23,13 @@ it('should render a large inverse loader correctly', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render a massive loader correctly', () => {
-  const wrapper = shallow(<Loader size='massive' />)
-  expect(wrapper).toMatchSnapshot()
-})
-
 it('should render a modal loader correctly', () => {
   const wrapper = shallow(<Loader size='modal' />)
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should never update', () => {
+  const wrapper = shallow(<Loader size='medium' />)
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
 })

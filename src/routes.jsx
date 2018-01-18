@@ -97,7 +97,6 @@ export class Routes extends React.Component {
   }
 }
 
-/* istanbul ignore next */
 Routes.propTypes = {
   autoLogInAttempted: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,

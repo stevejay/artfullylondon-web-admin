@@ -17,12 +17,11 @@ class PageMain extends React.Component {
   render () {
     const { className, children } = this.props
     const { hasError } = this.state
-    const content = hasError ? <Error statusCode={500} /> : children || null
+    const content = hasError ? <Error /> : children || null
     return <main className={className} styleName='page-main'>{content}</main>
   }
 }
 
-/* istanbul ignore next */
 PageMain.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any

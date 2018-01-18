@@ -8,7 +8,6 @@ const PageFooter = ({ className, children }) =>
     ? <footer className={className} styleName='page-footer'>{children}</footer>
     : null)
 
-/* istanbul ignore next */
 PageFooter.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any

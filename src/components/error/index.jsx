@@ -1,29 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-o-down'
 
 import BasicSection from '_src/components/section/basic'
 import './index.scss'
 
-const Error = ({ statusCode }) => {
-  const text = statusCode === 404 ? 'Page Not Found' : 'Server Error'
+const Error = ({ type }) => {
+  const text = type === 'notfound'
+    ? 'Sorry\u2014we couldn\u0027t find this'
+    : 'Oops\u2014something went wrong'
 
   return (
     <BasicSection styleName='section'>
       <h1 styleName='heading'>
-        <span styleName='code'>{statusCode}</span>{text}
+        <ThumbsDownIcon styleName='icon' />{text}
       </h1>
     </BasicSection>
   )
 }
 
-/* istanbul ignore next */
 Error.propTypes = {
-  statusCode: PropTypes.number
+  type: PropTypes.oneOf(['default', 'notfound'])
 }
 
-/* istanbul ignore next */
 Error.defaultProps = {
-  statusCode: 500
+  type: 'default'
 }
 
 export default Error
