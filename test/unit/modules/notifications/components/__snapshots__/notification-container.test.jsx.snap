@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <TransitionGroup
   childFactory={[Function]}
-  className="src-components-notifications-container__container"
+  className="src-modules-notifications-components-notification-container__container"
   component="ul"
   role="presentation"
 >

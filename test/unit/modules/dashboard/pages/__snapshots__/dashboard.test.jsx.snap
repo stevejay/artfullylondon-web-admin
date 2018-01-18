@@ -1,51 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<SectionsContainer>
-  <BasicSection
-    style={
-      Object {
-        "flexGrow": 1,
-      }
+<BasicSection>
+  <SectionHeading>
+    Admin 
+    <span>
+      Dashboard
+    </span>
+  </SectionHeading>
+  <StatisticCollection
+    entityCounts={
+      Array [
+        Object {
+          "count": 100,
+          "entityType": "venue",
+        },
+        Object {
+          "count": 200,
+          "entityType": "talent",
+        },
+        Object {
+          "count": 300,
+          "entityType": "event-series",
+        },
+        Object {
+          "count": 400,
+          "entityType": "event",
+        },
+      ]
     }
-  >
-    <SectionHeading>
-      Admin 
-      <span>
-        Dashboard
-      </span>
-    </SectionHeading>
-    <StatisticCollection
-      entityCounts={
-        Array [
-          Object {
-            "count": 100,
-            "entityType": "venue",
-          },
-          Object {
-            "count": 200,
-            "entityType": "talent",
-          },
-          Object {
-            "count": 300,
-            "entityType": "event-series",
-          },
-          Object {
-            "count": 400,
-            "entityType": "event",
-          },
-        ]
-      }
-    />
-  </BasicSection>
-  <BasicSection
-    style={
-      Object {
-        "flexGrow": 0,
-      }
-    }
-  >
-    <CopyrightFooter />
-  </BasicSection>
-</SectionsContainer>
+  />
+</BasicSection>
 `;

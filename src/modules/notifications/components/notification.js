@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as notificationsConstants from '_src/constants/notifications'
 import CloseButton from '_src/components/button/close'
+import * as notificationsConstants from '_src/constants/notifications'
 import './notification.scss'
 
 class Notification extends React.Component {

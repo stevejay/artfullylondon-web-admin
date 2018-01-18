@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import NotificationContainer from '_src/components/notifications/container'
+import NotificationContainer
+  from '_src/modules/notifications/components/notification-container'
 import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationActionTypes from '_src/constants/action/notification'
 
 export class Notifications extends React.Component {
   handleClose = payload => {
     this.props.dispatch({
-      type: notificationsConstants.REMOVE_NOTIFICATION,
+      type: notificationActionTypes.REMOVE_NOTIFICATION,
       payload
     })
   }
@@ -33,6 +35,9 @@ Notifications.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  notifications: state.notifications.items
-}))(Notifications)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    notifications: state.notifications.items
+  })
+)(Notifications)

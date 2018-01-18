@@ -1,5 +1,9 @@
 import { createAction } from 'redux-actions'
-import * as types from '_src/constants/notifications'
+import * as notificationActionTypes from '_src/constants/action/notification'
 
-export const addNotification = createAction(types.ADD_NOTIFICATION)
-export const removeNotification = createAction(types.REMOVE_NOTIFICATION)
+export const addNotification = createAction(
+  notificationsActionTypes.ADD_NOTIFICATION
+)
+export const removeNotification = createAction(
+  notificationsActionTypes.REMOVE_NOTIFICATION
+)

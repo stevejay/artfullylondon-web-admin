@@ -3,21 +3,21 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { DashboardPage } from '_src/modules/dashboard/pages/dashboard'
+import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly', () => {
   const entityCounts = [
-    { entityType: 'venue', count: 100 },
-    { entityType: 'talent', count: 200 },
-    { entityType: 'event-series', count: 300 },
-    { entityType: 'event', count: 400 }
+    { entityType: entityConstants.ENTITY_TYPE_VENUE, count: 100 },
+    { entityType: entityConstants.ENTITY_TYPE_TALENT, count: 200 },
+    { entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES, count: 300 },
+    { entityType: entityConstants.ENTITY_TYPE_EVENT, count: 400 }
   ]
 
   const wrapper = shallow(
     <DashboardPage
       entityCounts={entityCounts}
-      getEntityCountsInProgress={false}
-      getEntityCountsFailed={false}
-      showQuicksearch={false}
+      getInProgress={false}
+      getFailed={false}
       pushBasicSearchToUrl={_.noop}
       clearAutocomplete={_.noop}
       getEntityCounts={_.noop}

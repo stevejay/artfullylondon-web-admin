@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Statistic from '_src/components/statistic'
+import Statistic from '_src/modules/dashboard/components/statistic'
 
 it('should render correctly', () => {
   const wrapper = shallow(<Statistic entityType='venue' count={300} />)

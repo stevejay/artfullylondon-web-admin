@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-statistic-index__container-venue src-components-statistic-index__container"
+  className="src-modules-dashboard-components-statistic-index__container-venue src-modules-dashboard-components-statistic-index__container"
 >
   <h2>
     Venue

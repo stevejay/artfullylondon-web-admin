@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import * as notificationsConstants from '_src/constants/notifications'
-import Notification from '_src/components/notifications/notification'
+import Notification from '_src/modules/notifications/components/notification'
 
 it('should render a success notification with no message correctly', () => {
   const wrapper = shallow(

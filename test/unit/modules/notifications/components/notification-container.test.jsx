@@ -3,11 +3,12 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import * as notificationsConstants from '_src/constants/notifications'
-import NotificationsContainer from '_src/components/notifications/container'
+import NotificationContainer
+  from '_src/modules/notifications/components/notification-container'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <NotificationsContainer
+    <NotificationContainer
       notifications={[
         {
           id: 'some-id',

@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze'
 
-import * as types from '_src/constants/notifications'
+import * as notificationActionTypes from '_src/constants/action/notification'
 import notificationsReducer from '_src/store/reducers/notifications'
 
 it('should have the correct initial state', () => {
@@ -27,7 +27,7 @@ it('should handle removing a notification that exists', () => {
   })
 
   const actual = notificationsReducer(state, {
-    type: types.REMOVE_NOTIFICATION,
+    type: notificationActionTypes.REMOVE_NOTIFICATION,
     payload: { id: 'a' }
   })
 
@@ -40,7 +40,7 @@ it('should handle removing a notification that does not exist', () => {
   })
 
   const actual = notificationsReducer(state, {
-    type: types.REMOVE_NOTIFICATION,
+    type: notificationActionTypes.REMOVE_NOTIFICATION,
     payload: { id: 'b' }
   })
 

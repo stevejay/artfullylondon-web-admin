@@ -19,9 +19,11 @@ class TextField extends React.Component {
     )
   }
   handleFocus = () => {
+    console.log('handleFocus')
     this.setState({ active: true })
   }
   handleBlur = () => {
+    console.log('handleBlur')
     this.setState({ active: false })
   }
   render () {
@@ -44,6 +46,8 @@ class TextField extends React.Component {
     } = this.props
 
     const { active } = this.state
+
+    console.log('active', active)
 
     return (
       <Container
