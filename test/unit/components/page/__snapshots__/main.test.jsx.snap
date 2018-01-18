@@ -9,3 +9,19 @@ exports[`should render correctly 1`] = `
   />
 </main>
 `;
+
+exports[`should render correctly when has an error 1`] = `
+<main
+  className="src-components-page-main__page-main"
+>
+  <Error
+    statusCode={500}
+  />
+</main>
+`;
+
+exports[`should render correctly when has no children 1`] = `
+<main
+  className="src-components-page-main__page-main"
+/>
+`;

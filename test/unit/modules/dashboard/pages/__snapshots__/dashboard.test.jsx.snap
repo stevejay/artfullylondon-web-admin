@@ -9,12 +9,12 @@ exports[`should render correctly 1`] = `
       }
     }
   >
-    <HeadingSection>
+    <SectionHeading>
       Admin 
       <span>
         Dashboard
       </span>
-    </HeadingSection>
+    </SectionHeading>
     <StatisticCollection
       entityCounts={
         Array [

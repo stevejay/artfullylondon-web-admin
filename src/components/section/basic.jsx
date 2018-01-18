@@ -1,6 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import './basic.scss'
 
-const BasicSection = props => <section {...props} styleName='section' />
+const BasicSection = ({ children, className }) => (
+  <section className={className} styleName='section'>{children}</section>
+)
+
+/* istanbul ignore next */
+BasicSection.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any
+}
 
 export default BasicSection

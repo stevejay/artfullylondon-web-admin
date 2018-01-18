@@ -1,45 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render a 404 error correctly 1`] = `
-<SectionsContainer>
-  <BasicSection>
-    <div
-      className="src-components-error-index__container"
+<BasicSection
+  className="src-components-error-index__section"
+>
+  <h1
+    className="src-components-error-index__heading"
+  >
+    <span
+      className="src-components-error-index__code"
     >
-      <div
-        className="src-components-error-index__code"
-      >
-        404
-      </div>
-      <h1
-        className="src-components-error-index__h1"
-      >
-        Page Not Found
-      </h1>
-    </div>
-  </BasicSection>
-  <CopyrightFooter />
-</SectionsContainer>
+      404
+    </span>
+    Page Not Found
+  </h1>
+</BasicSection>
 `;
 
 exports[`should render a 500 error correctly 1`] = `
-<SectionsContainer>
-  <BasicSection>
-    <div
-      className="src-components-error-index__container"
+<BasicSection
+  className="src-components-error-index__section"
+>
+  <h1
+    className="src-components-error-index__heading"
+  >
+    <span
+      className="src-components-error-index__code"
     >
-      <div
-        className="src-components-error-index__code"
-      >
-        500
-      </div>
-      <h1
-        className="src-components-error-index__h1"
-      >
-        Server Error
-      </h1>
-    </div>
-  </BasicSection>
-  <CopyrightFooter />
-</SectionsContainer>
+      500
+    </span>
+    Server Error
+  </h1>
+</BasicSection>
 `;

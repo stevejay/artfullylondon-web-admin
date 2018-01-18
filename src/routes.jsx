@@ -85,12 +85,10 @@ export class Routes extends React.Component {
             />
           </PageHeader>,
           <PageMain key='main'>
-            Foo
-            {false &&
-              <Switch>
-                <Route exact path='/' component={Dashboard} />
-                <Route component={NotFound} />
-              </Switch>}
+            <Switch>
+              <Route exact path='/' component={Dashboard} />
+              <Route component={NotFound} />
+            </Switch>
           </PageMain>,
           <PageFooter key='footer'><Footer /></PageFooter>
         ]}

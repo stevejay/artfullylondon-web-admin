@@ -1,12 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import SectionsContainerSection
-  from '_src/components/section/sections-container'
+import SectionsContainer from '_src/components/section/sections-container'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <SectionsContainerSection><div id='child' /></SectionsContainerSection>
+    <SectionsContainer><div id='child' /></SectionsContainer>
   )
 
   expect(wrapper).toMatchSnapshot()

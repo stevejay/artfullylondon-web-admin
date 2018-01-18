@@ -1,23 +1,25 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  @include boldFont;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: $three-quarter-black;
+  margin: 0;
+  text-align: center;
 }
 
 .code {
-    font-size: 8rem;
-    line-height: 8rem;
-    color: $highlight-color;
-}
-
-.h1 {
-    @include boldFont;
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    color: $three-quarter-black;
+  display: block;
+  font-size: 8rem;
+  line-height: 8rem;
+  color: $highlight-color;
 }

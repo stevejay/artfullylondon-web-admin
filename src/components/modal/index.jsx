@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Modal as OverlaysModal } from 'react-overlays'
+import { Modal as ReactOverlaysModal } from 'react-overlays'
 
 import BackdropTransition from '_src/components/transition/backdrop'
 import './index.scss'
@@ -13,7 +13,7 @@ export const Modal = ({
   onHide,
   ...rest
 }) => (
-  <OverlaysModal
+  <ReactOverlaysModal
     {...rest}
     show={show}
     backdrop
@@ -24,7 +24,7 @@ export const Modal = ({
     onHide={onHide}
   >
     {children}
-  </OverlaysModal>
+  </ReactOverlaysModal>
 )
 
 /* istanbul ignore next */

@@ -66,23 +66,23 @@
   transform: rotate(180deg);
 }
 
-:global(.expander-enter).children {
+:global(.expander-enter) {
   max-height: 0;
   opacity: 0.01;
 }
 
-:global(.expander-enter.expander-enter-active).children {
+:global(.expander-enter.expander-enter-active) {
   max-height: 700px;
   opacity: 1;
   transition: max-height 250ms ease-in, opacity 250ms ease-in;
 }
 
-:global(.expander-exit).children {
+:global(.expander-exit) {
   max-height: 700px;
   opacity: 1;
 }
 
-:global(.expander-exit.expander-exit-active).children {
+:global(.expander-exit.expander-exit-active) {
   max-height: 0;
   opacity: 0.01;
   transition: max-height 250ms ease-out, opacity 250ms ease-out;

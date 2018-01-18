@@ -4,8 +4,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import DownIcon from 'react-icons/lib/fa/angle-down'
 import CircleIcon from 'react-icons/lib/fa/circle'
 
-import Pusher from '_src/components/pusher'
-
 import * as browserConstants from '_src/constants/browser'
 import './index.scss'
 
@@ -51,13 +49,12 @@ class Expander extends React.Component {
           <h6 styleName='header-text'>{headerText}</h6>
           {interestingContent &&
             <CircleIcon styleName={`indicator-${open ? 'open' : 'closed'}`} />}
-          <Pusher />
           <DownIcon styleName={`arrow-${open ? 'up' : 'down'}`} />
         </button>
         <TransitionGroup>
           {open &&
             <CSSTransition key='children' classNames='expander' timeout={250}>
-              <div key='children' styleName='children'>{children}</div>
+              {children}
             </CSSTransition>}
         </TransitionGroup>
       </div>

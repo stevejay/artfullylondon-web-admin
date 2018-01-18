@@ -5,43 +5,134 @@ exports[`should render correctly when closed 1`] = `
   className="src-components-expander-index__container"
   id="some-id"
 >
-  <div
+  <button
     aria-expanded={false}
-    className="src-components-expander-index__header-container"
+    className="src-components-expander-index__header-button"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex="0"
   >
     <h6
-      className="src-components-expander-index__header"
+      className="src-components-expander-index__header-text"
+    >
+      The Header Text
+    </h6>
+    <FaAngleDown
+      className="src-components-expander-index__arrow-down src-components-expander-index__arrow"
+    />
+  </button>
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
+  />
+</div>
+`;
+
+exports[`should render correctly when closed and has interesting content 1`] = `
+<div
+  className="src-components-expander-index__container"
+  id="some-id"
+>
+  <button
+    aria-expanded={false}
+    className="src-components-expander-index__header-button"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex="0"
+  >
+    <h6
+      className="src-components-expander-index__header-text"
     >
       The Header Text
     </h6>
     <FaCircle
       className="src-components-expander-index__indicator-closed src-components-expander-index__indicator"
     />
-    <Pusher />
     <FaAngleDown
       className="src-components-expander-index__arrow-down src-components-expander-index__arrow"
     />
-  </div>
+  </button>
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
+  />
+</div>
+`;
+
+exports[`should render correctly when open 1`] = `
+<div
+  className="src-components-expander-index__container"
+  id="some-id"
+>
+  <button
+    aria-expanded={true}
+    className="src-components-expander-index__header-button"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex="0"
+  >
+    <h6
+      className="src-components-expander-index__header-text"
+    >
+      The Header Text
+    </h6>
+    <FaAngleDown
+      className="src-components-expander-index__arrow-up src-components-expander-index__arrow"
+    />
+  </button>
   <TransitionGroup
     childFactory={[Function]}
     component="div"
   >
     <CSSTransition
       classNames="expander"
+      key="children"
       timeout={250}
     >
       <div
-        className="src-components-expander-index__children"
-        in={false}
-        key="children"
-      >
-        <div
-          id="child"
-        />
-      </div>
+        id="child"
+      />
+    </CSSTransition>
+  </TransitionGroup>
+</div>
+`;
+
+exports[`should render correctly when open and has interesting content 1`] = `
+<div
+  className="src-components-expander-index__container"
+  id="some-id"
+>
+  <button
+    aria-expanded={true}
+    className="src-components-expander-index__header-button"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex="0"
+  >
+    <h6
+      className="src-components-expander-index__header-text"
+    >
+      The Header Text
+    </h6>
+    <FaCircle
+      className="src-components-expander-index__indicator-open src-components-expander-index__indicator"
+    />
+    <FaAngleDown
+      className="src-components-expander-index__arrow-up src-components-expander-index__arrow"
+    />
+  </button>
+  <TransitionGroup
+    childFactory={[Function]}
+    component="div"
+  >
+    <CSSTransition
+      classNames="expander"
+      key="children"
+      timeout={250}
+    >
+      <div
+        id="child"
+      />
     </CSSTransition>
   </TransitionGroup>
 </div>

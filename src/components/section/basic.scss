@@ -1,11 +1,8 @@
 @import 'variables.scss';
 
 .section {
-    width: 100%;
-    max-width: $wide-desktop-width;
-    margin: 0 auto;
-    position: relative;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 }

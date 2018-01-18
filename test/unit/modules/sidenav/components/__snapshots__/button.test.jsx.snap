@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<button
+  aria-haspopup={false}
+  className="src-modules-sidenav-components-button__button"
+  onClick={[Function]}
+  role="menuitem"
+  type="button"
+>
+  The Label
+</button>
+`;

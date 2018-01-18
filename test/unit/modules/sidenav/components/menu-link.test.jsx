@@ -1,0 +1,24 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+import _ from 'lodash'
+import log from 'loglevel'
+
+import MenuLink from '_src/modules/sidenav/components/menu-link'
+
+it('should render correctly', () => {
+  const wrapper = shallow(
+    <MenuLink path='/some/path' label='The Label' onClick={_.noop} />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should never update', () => {
+  const wrapper = shallow(
+    <MenuLink path='/some/path' label='The Label' onClick={_.noop} />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate({})
+
+  expect(result).toEqual(false)
+})

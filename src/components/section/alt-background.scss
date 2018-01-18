@@ -2,13 +2,13 @@
 @import 'mixins.scss';
 
 .container {
-    flex-grow: 1;
-    padding: .5rem;
-    background-color: $alt-page-color;
-    position: relative;
-    min-height: 200px;
+  flex-grow: 1;
+  padding: .5rem;
+  background-color: $alt-page-color;
+  position: relative;
+  min-height: 200px;
 
-    @include wide-desktop {
-        border-radius: $border-radius;
-    }
+  @include wide-desktop {
+    border-radius: $border-radius;
+  }
 }
