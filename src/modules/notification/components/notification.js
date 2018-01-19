@@ -15,10 +15,9 @@ class Notification extends React.Component {
   render () {
     const { notification } = this.props
     const type = notification.type.toLowerCase()
-    const containerStyleName = `container-${type}`
 
     return (
-      <li styleName={containerStyleName} role='alert'>
+      <li styleName={`notification-${type}`} role='alert'>
         <CloseButton
           type={type}
           ariaLabel='Close venue events viewer'

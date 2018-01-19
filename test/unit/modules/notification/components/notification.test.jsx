@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import * as notificationsConstants from '_src/constants/notifications'
-import Notification from '_src/modules/notifications/components/notification'
+import Notification from '_src/modules/notification/components/notification'
 
 it('should render a success notification with no message correctly', () => {
   const wrapper = shallow(
@@ -52,6 +52,23 @@ it('should invoke the onClose handler with the correct id when the notification 
 
   wrapper.find('CloseButton').simulate('click')
 
-  expect(onCloseHandler.mock.calls.length).toEqual(1)
+  expect(onCloseHandler).toHaveBeenCalled()
   expect(onCloseHandler.mock.calls[0]).toEqual([{ id: 'some-id' }])
+})
+
+it('should not update the notification', () => {
+  const wrapper = shallow(
+    <Notification
+      notification={{
+        id: 'some-id',
+        title: 'The Title',
+        message: 'The Message',
+        type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
+      }}
+      onClose={_.noop}
+    />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
 })

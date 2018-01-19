@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <TransitionGroup
   childFactory={[Function]}
-  className="src-modules-notifications-components-notification-container__container"
+  className="src-modules-notification-index__container"
   component="ul"
   role="presentation"
 >
@@ -16,8 +16,6 @@ exports[`should render correctly 1`] = `
       notification={
         Object {
           "id": "some-id",
-          "message": "The Message",
-          "title": "The Title",
           "type": "Success",
         }
       }

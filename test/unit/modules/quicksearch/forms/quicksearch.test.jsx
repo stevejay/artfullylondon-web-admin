@@ -35,7 +35,7 @@ it('should not submit on a key press that is not a return key press', () => {
     preventDefault: _.noop
   })
 
-  expect(handleSubmit.mock.calls.length).toEqual(0)
+  expect(handleSubmit).not.toHaveBeenCalled()
 })
 
 it('should submit on a return key press', () => {
@@ -55,5 +55,5 @@ it('should submit on a return key press', () => {
     preventDefault: _.noop
   })
 
-  expect(handleSubmit.mock.calls.length).toEqual(1)
+  expect(handleSubmit).toHaveBeenCalled()
 })

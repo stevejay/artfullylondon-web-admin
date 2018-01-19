@@ -1,37 +1,42 @@
 import { delay } from 'redux-saga'
 import { call, put, select, takeLatest } from 'redux-saga/effects'
-import _ from 'lodash'
+import { startSubmit, stopSubmit, initialize } from 'redux-form'
 import log from 'loglevel'
+import _ from 'lodash'
 
 import history from '_src/history'
-import { startSubmit, stopSubmit, initialize } from 'redux-form'
 import normalise from '_src/lib/normalise'
-import { get } from '_src/lib/fetch'
-import { submitErrorHandler } from '_src/lib/saga'
-import { validate } from '_src/lib/validation'
+import * as fetchLib from '_src/lib/fetch'
+import * as sagaLib from '_src/lib/saga'
+import * as searchLib from '_src/lib/search'
+import * as validationLib from '_src/lib/validation'
 import * as searchConstants from '_src/constants/search'
 import * as searchActionTypes from '_src/constants/action/search'
-import { BASIC_SEARCH_FORM_NAME } from '_src/constants/form'
-import {
-  createAdminAutocompleteSearchRequestUrl,
-  createAdminBasicSearchRequestUrl,
-  createSearchPageUrl
-} from '_src/lib/search'
+import * as formConstants from '_src/constants/form'
 
 function * pushBasicSearchToUrl ({ payload }) {
   try {
     const { skip, take } = payload
+
     const query = normalise(
       payload.query,
       searchConstants.BASIC_SEARCH_QUERY_NORMALISER
     )
+
     yield call(
-      validate,
+      validationLib.validate,
       query,
       searchConstants.BASIC_SEARCH_QUERY_CONSTRAINT,
       null
     )
-    const requestUrl = createSearchPageUrl('/search', query, skip, take)
+
+    const requestUrl = searchLib.createSearchPageUrl(
+      '/search',
+      query,
+      skip,
+      take
+    )
+
     yield call(history.push, requestUrl)
   } catch (err) {
     log.error(err)
@@ -40,12 +45,14 @@ function * pushBasicSearchToUrl ({ payload }) {
 
 function * autocompleteSearch ({ payload }) {
   yield call(delay, 300) // debounce
+
   const query = normalise(
     payload.query,
     searchConstants.AUTO_SEARCH_QUERY_NORMALISER
   )
+
   const errors = yield call(
-    validate,
+    validationLib.validate,
     query,
     searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
     null,
@@ -57,8 +64,8 @@ function * autocompleteSearch ({ payload }) {
     return
   }
 
-  const requestUrl = createAdminAutocompleteSearchRequestUrl(query)
-  const json = yield call(get, requestUrl)
+  const requestUrl = searchLib.createAdminAutocompleteSearchRequestUrl(query)
+  const json = yield call(fetchLib.get, requestUrl)
 
   yield put.resolve({
     type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
@@ -72,8 +79,9 @@ function * basicSearch ({ payload }) {
       payload.query,
       searchConstants.BASIC_SEARCH_QUERY_NORMALISER
     )
+
     const errors = yield call(
-      validate,
+      validationLib.validate,
       query,
       searchConstants.BASIC_SEARCH_QUERY_CONSTRAINT,
       null,
@@ -85,7 +93,7 @@ function * basicSearch ({ payload }) {
       return
     }
 
-    yield put.resolve(startSubmit(BASIC_SEARCH_FORM_NAME))
+    yield put.resolve(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
 
     const searchReducer = yield select(state => state.search)
     const currentQuery = searchReducer.basicSearchParams
@@ -93,26 +101,35 @@ function * basicSearch ({ payload }) {
 
     if (_.isEqual(query, currentQuery) && existingItemsLength) {
       yield call(delay, 300)
-      yield put.resolve(stopSubmit(BASIC_SEARCH_FORM_NAME))
+      yield put.resolve(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
       return
     }
 
-    const requestUrl = createAdminBasicSearchRequestUrl(query)
+    const requestUrl = searchLib.createAdminBasicSearchRequestUrl(query)
     yield put.resolve({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     yield put.resolve({ type: searchActionTypes.STARTING_BASIC_SEARCH })
+
     yield put.resolve({
       type: searchActionTypes.SET_BASIC_SEARCH_PARAMS,
       payload: query
     })
-    yield put.resolve(initialize(BASIC_SEARCH_FORM_NAME, query))
-    const json = yield call(get, requestUrl)
+
+    yield put.resolve(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
+    const json = yield call(fetchLib.get, requestUrl)
+
     yield put.resolve({
       type: searchActionTypes.BASIC_SEARCH_SUCCEEDED,
       payload: json
     })
-    yield put.resolve(stopSubmit(BASIC_SEARCH_FORM_NAME))
+
+    yield put.resolve(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
   } catch (err) {
-    yield call(submitErrorHandler, err, BASIC_SEARCH_FORM_NAME)
+    yield call(
+      sagaLib.submitErrorHandler,
+      err,
+      formConstants.BASIC_SEARCH_FORM_NAME
+    )
+
     yield put.resolve({ type: searchActionTypes.BASIC_SEARCH_FAILED })
   }
 }

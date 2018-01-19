@@ -8,7 +8,7 @@ describe('get', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.get(SOME_URL).then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -26,7 +26,7 @@ describe('get', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.get(SOME_URL, 'auth1').then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -133,7 +133,7 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.httpDelete(SOME_URL).then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -151,7 +151,7 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.httpDelete(SOME_URL, 'auth1').then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -170,7 +170,7 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.httpDelete(SOME_URL).then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -276,7 +276,7 @@ describe('put', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.put(SOME_URL, { key: 'value' }).then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -296,7 +296,7 @@ describe('put', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.put(SOME_URL, { key: 'value' }, 'auth1').then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -405,7 +405,7 @@ describe('post', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.post(SOME_URL, { key: 'value' }).then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
@@ -425,7 +425,7 @@ describe('post', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetch.post(SOME_URL, { key: 'value' }, 'auth1').then(() => {
-      expect(fetchImpl.fetch.mock.calls.length).toEqual(1)
+      expect(fetchImpl.fetch).toHaveBeenCalled()
 
       expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,

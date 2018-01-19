@@ -90,7 +90,7 @@ it('should select the first menu item on an arrow down press', () => {
     preventDefault
   })
 
-  expect(preventDefault.mock.calls.length).toEqual(1)
+  expect(preventDefault).toHaveBeenCalled()
   expect(wrapper.state()).toEqual({ isOpen: true, selectedIndex: 0 })
 })
 
@@ -168,9 +168,9 @@ it('should handle enter key press after selecting the first menu item', () => {
     preventDefault
   })
 
-  expect(preventDefault.mock.calls.length).toEqual(1)
+  expect(preventDefault).toHaveBeenCalled()
   expect(wrapper.state()).toEqual({ isOpen: false, selectedIndex: null })
-  expect(history.push.mock.calls.length).toEqual(1)
+  expect(history.push).toHaveBeenCalled()
   expect(history.push.mock.calls[0]).toEqual(['/path-a'])
 })
 
@@ -198,9 +198,9 @@ it('should ignore a non-enter key press after selecting the first menu item', ()
     preventDefault
   })
 
-  expect(preventDefault.mock.calls.length).toEqual(0)
+  expect(preventDefault).not.toHaveBeenCalled()
   expect(wrapper.state()).toEqual({ isOpen: true, selectedIndex: 0 })
-  expect(history.push.mock.calls.length).toEqual(0)
+  expect(history.push).not.toHaveBeenCalled()
 })
 
 it('should ignore an enter key press when no menu item is selected', () => {
@@ -222,9 +222,9 @@ it('should ignore an enter key press when no menu item is selected', () => {
     preventDefault
   })
 
-  expect(preventDefault.mock.calls.length).toEqual(0)
+  expect(preventDefault).not.toHaveBeenCalled()
   expect(wrapper.state()).toEqual({ isOpen: true, selectedIndex: null })
-  expect(history.push.mock.calls.length).toEqual(0)
+  expect(history.push).not.toHaveBeenCalled()
 })
 
 it('should select a menu item on mouse enter', () => {

@@ -1,27 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import Notification from '_src/modules/notifications/components/notification'
+import NotificationItem from '_src/modules/notification/components/notification'
 import * as notificationsConstants from '_src/constants/notifications'
-import './notification-container.scss'
+import * as notificationActionTypes from '_src/constants/action/notification'
+import './index.scss'
 
-class NotificationContainer extends React.Component {
+export class Notification extends React.Component {
   shouldComponentUpdate (nextProps) {
     return nextProps.notifications !== this.props.notifications
   }
+  handleClose = payload => {
+    this.props.dispatch({
+      type: notificationActionTypes.REMOVE_NOTIFICATION,
+      payload
+    })
+  }
   render () {
-    const { notifications, onClose } = this.props
-
     return (
       <TransitionGroup styleName='container' component='ul' role='presentation'>
-        {notifications.map(notification => (
+        {this.props.notifications.map(notification => (
           <CSSTransition
             key={notification.id}
             classNames='notification'
             timeout={250}
           >
-            <Notification notification={notification} onClose={onClose} />
+            <NotificationItem
+              notification={notification}
+              onClose={this.handleClose}
+            />
           </CSSTransition>
         ))}
       </TransitionGroup>
@@ -29,7 +38,7 @@ class NotificationContainer extends React.Component {
   }
 }
 
-NotificationContainer.propTypes = {
+Notification.propTypes = {
   notifications: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -37,7 +46,12 @@ NotificationContainer.propTypes = {
         .isRequired
     })
   ).isRequired,
-  onClose: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
-export default NotificationContainer
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    notifications: state.notifications.items
+  })
+)(Notification)

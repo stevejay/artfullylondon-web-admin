@@ -1,0 +1,41 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.container {
+  z-index: 999999;
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+
+   :global(.notification-appear) {
+    opacity: .01;
+  }
+
+   :global(.notification-appear.notification-appear-active) {
+    opacity: 1;
+    transition: opacity 250ms ease-out;
+  }
+
+   :global(.notification-enter) {
+    opacity: .01;
+  }
+
+   :global(.notification-enter.notification-enter-active) {
+    opacity: 1;
+    transition: opacity 250ms ease-out;
+  }
+
+   :global(.notification-exit) {
+    opacity: 1;
+  }
+
+   :global(.notification-exit.notification-exit-active) {
+    opacity: .01;
+    transition: opacity 250ms ease-in;
+  }
+}

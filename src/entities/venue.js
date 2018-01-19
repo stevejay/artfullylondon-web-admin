@@ -8,6 +8,7 @@ import * as image from '_src/lib/image'
 
 export class SummaryVenue {
   constructor (entity) {
+    /* istanbul ignore if */
     if (!entity) {
       throw new Error('null or undefined entity')
     }

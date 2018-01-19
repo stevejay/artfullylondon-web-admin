@@ -5,6 +5,7 @@ import { LinkCollection } from '_src/entities/link-collection'
 
 export class SummaryEventSeries {
   constructor (entity) {
+    /* istanbul ignore if */
     if (!entity) {
       throw new Error('null or undefined entity')
     }

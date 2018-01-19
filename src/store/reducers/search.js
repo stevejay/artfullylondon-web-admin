@@ -1,15 +1,10 @@
 import { handleActions } from 'redux-actions'
-import {
-  ENTITY_TYPE_ALL,
-  ENTITY_TYPE_EVENT,
-  ENTITY_TYPE_EVENT_SERIES,
-  ENTITY_TYPE_VENUE,
-  ENTITY_TYPE_TALENT
-} from '_src/constants/entity'
+
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
+import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
 import * as searchActionTypes from '_src/constants/action/search'
 import * as authActionTypes from '_src/constants/action/auth'
@@ -18,7 +13,7 @@ const initialState = {
   searchInProgress: false,
   canShowNoResultsMessage: false,
   basicSearchParams: {
-    entityType: ENTITY_TYPE_ALL,
+    entityType: entityConstants.ENTITY_TYPE_ALL,
     term: '',
     skip: 0,
     take: searchConstants.DEFAULT_TAKE
@@ -49,19 +44,21 @@ export default handleActions(
       const { total, items, params } = action.payload
 
       const events = items
-        .filter(item => item.entityType === ENTITY_TYPE_EVENT)
+        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_EVENT)
         .map(item => new SummaryEvent(item))
 
       const eventSeries = items
-        .filter(item => item.entityType === ENTITY_TYPE_EVENT_SERIES)
+        .filter(
+          item => item.entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES
+        )
         .map(item => new SummaryEventSeries(item))
 
       const venues = items
-        .filter(item => item.entityType === ENTITY_TYPE_VENUE)
+        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_VENUE)
         .map(item => new SummaryVenue(item))
 
       const talents = items
-        .filter(item => item.entityType === ENTITY_TYPE_TALENT)
+        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_TALENT)
         .map(item => new SummaryTalent(item))
 
       return {
@@ -88,14 +85,16 @@ export default handleActions(
 
       const events = items.filter(
         item =>
-          item.entityType === ENTITY_TYPE_EVENT ||
-          item.entityType === ENTITY_TYPE_EVENT_SERIES
+          item.entityType === entityConstants.ENTITY_TYPE_EVENT ||
+          item.entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES
       )
 
-      const venues = items.filter(item => item.entityType === ENTITY_TYPE_VENUE)
+      const venues = items.filter(
+        item => item.entityType === entityConstants.ENTITY_TYPE_VENUE
+      )
 
       const talents = items.filter(
-        item => item.entityType === ENTITY_TYPE_TALENT
+        item => item.entityType === entityConstants.ENTITY_TYPE_TALENT
       )
 
       const autocompleteItems = []

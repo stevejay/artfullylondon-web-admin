@@ -1,7 +1,5 @@
-import {
-  SummaryEventSeries,
-  FullEventSeries
-} from '_src/entities/event-series'
+import { SummaryEventSeries, FullEventSeries } from '_src/entities/event-series'
+import { LINK_TYPE_WIKIPEDIA } from '_src/constants/link'
 
 describe('SummaryEventSeries', () => {
   it('should have correct entityType', () => {
@@ -167,5 +165,26 @@ describe('FullEventSeries', () => {
   it('should have correct createInfoBarLabel for a season series', () => {
     const subject = new FullEventSeries({ eventSeriesType: 'Season' })
     expect(subject.createInfoBarLabel()).toBe('Season Series')
+  })
+
+  it('should create a formatted description', () => {
+    const subject = new FullEventSeries({
+      description: 'The Description',
+      descriptionCredit: 'The Credit'
+    })
+
+    expect(subject.createFormattedDescription()).toBe(
+      'The Description<p><em>(Description by The Credit.)</em></p>'
+    )
+  })
+
+  it('should get a link by type', () => {
+    const wikipediaLink = { type: LINK_TYPE_WIKIPEDIA }
+
+    const subject = new FullEventSeries({
+      links: [wikipediaLink]
+    })
+
+    expect(subject.getLinkByType(LINK_TYPE_WIKIPEDIA)).toBe(wikipediaLink)
   })
 })

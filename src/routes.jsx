@@ -13,7 +13,7 @@ import Footer from '_src/modules/footer'
 import BrowserResizeListener from '_src/components/browser-resize-listener'
 import Dashboard from '_src/modules/dashboard/pages/dashboard'
 import NotFound from '_src/modules/error/pages/not-found'
-import Notifications from '_src/modules/notifications'
+import Notification from '_src/modules/notification'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
@@ -59,7 +59,7 @@ export class Routes extends React.Component {
     return (
       <Page>
         <BrowserResizeListener onWindowResize={this.handleWindowResize} />
-        <Notifications />
+        <Notification />
         <Sidenav
           show={showSidenav}
           onHide={this.handleHideSidenav}

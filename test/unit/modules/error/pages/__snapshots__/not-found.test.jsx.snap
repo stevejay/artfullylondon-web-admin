@@ -2,6 +2,6 @@
 
 exports[`should render correctly 1`] = `
 <Error
-  statusCode={404}
+  type="notfound"
 />
 `;

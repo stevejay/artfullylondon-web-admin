@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+
 import * as notificationActionTypes from '_src/constants/action/notification'
 
 const initialState = {

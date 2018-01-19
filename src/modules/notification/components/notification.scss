@@ -1,7 +1,7 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.container {
+.notification {
   position: relative;
   padding: 2rem;
   border-radius: $border-radius;
@@ -10,19 +10,20 @@
   width: 500px;
   max-width: 100%;
   pointer-events: auto;
+  will-change: opacity;
 
   &:last-of-type {
     margin-bottom: 0;
   }
 }
 
-.container-success {
-  composes: container;
+.notification-success {
+  composes: notification;
   background-color: #68bd0a;
 }
 
-.container-error {
-  composes: container;
+.notification-error {
+  composes: notification;
   background-color: #d0011b;
 }
 
@@ -41,6 +42,6 @@
 .title,
 .message {
   font-size: 1.6rem;
-  color: white;
+  color: $white;
   line-height: 1.4;
 }

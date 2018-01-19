@@ -33,8 +33,8 @@ it('should handle hiding the quicksearch', () => {
 
   wrapper.find('Modal').prop('onHide')()
 
-  expect(handleHide.mock.calls.length).toEqual(1)
-  expect(clearAutocomplete.mock.calls.length).toEqual(1)
+  expect(handleHide).toHaveBeenCalled()
+  expect(clearAutocomplete).toHaveBeenCalled()
 })
 
 it('should handle submitting the quicksearch form', () => {
@@ -56,9 +56,9 @@ it('should handle submitting the quicksearch form', () => {
     entityType: 'venue'
   })
 
-  expect(handleHide.mock.calls.length).toEqual(1)
-  expect(clearAutocomplete.mock.calls.length).toEqual(1)
-  expect(pushBasicSearchToUrl.mock.calls.length).toEqual(1)
+  expect(handleHide).toHaveBeenCalled()
+  expect(clearAutocomplete).toHaveBeenCalled()
+  expect(pushBasicSearchToUrl).toHaveBeenCalled()
 
   expect(pushBasicSearchToUrl.mock.calls[0]).toEqual([
     {

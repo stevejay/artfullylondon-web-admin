@@ -2,6 +2,7 @@ import { ENTITY_TYPE_TAG } from '_src/constants/entity'
 
 export class Tag {
   constructor (entity) {
+    /* istanbul ignore if */
     if (!entity) {
       throw new Error('null or undefined entity')
     }
@@ -22,7 +23,7 @@ export class Tag {
   }
 
   get name () {
-    return this.entity.name // TODO wrong?
+    return this.entity.name // TODO is this wrong?
   }
 
   isBeingWatched (watches) {
@@ -33,6 +34,7 @@ export class Tag {
     return this.entity.label
   }
 
+  /* istanbul ignore next */
   createWatchChangeInstruction () {
     throw new Error('Not implemented')
   }

@@ -11,7 +11,7 @@ describe('browserWidthChanged', () => {
     payload: { width: 1200 }
   })
 
-  it('debounce the saga', () => {
+  it('should debounce the saga', () => {
     expect(generator.next().value).toEqual(call(delay, 250))
   })
 

@@ -83,7 +83,7 @@ it('should handle a header click', () => {
 
   wrapper.find('button').prop('onClick')({ preventDefault: _.noop })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(1)
+  expect(onExpanderChange).toHaveBeenCalled()
   expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
 })
 
@@ -105,7 +105,7 @@ it('should ignore a non-recognized key press', () => {
     keyCode: 1234
   })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(0)
+  expect(onExpanderChange).not.toHaveBeenCalled()
 })
 
 it('should handle an arrow down press on a closed expander', () => {
@@ -127,7 +127,7 @@ it('should handle an arrow down press on a closed expander', () => {
     preventDefault: _.noop
   })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(1)
+  expect(onExpanderChange).toHaveBeenCalled()
   expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
 })
 
@@ -149,7 +149,7 @@ it('should ignore an arrow down press on an open expander', () => {
     keyCode: browserConstants.ARROW_DOWN_KEYCODE
   })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(0)
+  expect(onExpanderChange).not.toHaveBeenCalled()
 })
 
 it('should handle an arrow up press on an open expander', () => {
@@ -171,7 +171,7 @@ it('should handle an arrow up press on an open expander', () => {
     preventDefault: _.noop
   })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(1)
+  expect(onExpanderChange).toHaveBeenCalled()
   expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
 })
 
@@ -193,5 +193,5 @@ it('should ignore an arrow up press on a closed expander', () => {
     keyCode: browserConstants.ARROW_UP_KEYCODE
   })
 
-  expect(onExpanderChange.mock.calls.length).toEqual(0)
+  expect(onExpanderChange).not.toHaveBeenCalled()
 })

@@ -145,8 +145,8 @@ it('should handle logging the user out', () => {
 
   wrapper.find('SidenavButton').prop('onClick')()
 
-  expect(onHide.mock.calls.length).toEqual(1)
-  expect(logOut.mock.calls.length).toEqual(1)
+  expect(onHide).toHaveBeenCalled()
+  expect(logOut).toHaveBeenCalled()
 })
 
 it('should handle a menu link click', () => {
@@ -165,7 +165,7 @@ it('should handle a menu link click', () => {
 
   wrapper.find('Menu').first().prop('onLinkClick')()
 
-  expect(onHide.mock.calls.length).toEqual(1)
+  expect(onHide).toHaveBeenCalled()
 })
 
 it('should handle a menu header click', () => {

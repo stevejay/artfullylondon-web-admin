@@ -58,6 +58,8 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 - for little PNG images: https://www.npmjs.com/package/url-loader
 - clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
 - serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
+- https://www.npmjs.com/package/redux-saga-thunk could use for 'then'-able sagas.
+  Also https://github.com/acdlite/flux-standard-action
 
 ## License
 

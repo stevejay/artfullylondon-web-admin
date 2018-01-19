@@ -18,6 +18,7 @@ import * as eventLib from '_src/lib/event'
 
 export class SummaryEvent {
   constructor (entity) {
+    /* istanbul ignore if */
     if (!entity) {
       throw new Error('null or undefined entity')
     }

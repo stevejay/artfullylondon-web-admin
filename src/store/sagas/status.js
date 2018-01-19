@@ -2,14 +2,14 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import log from 'loglevel'
 
 import * as statusActionTypes from '_src/constants/action/status'
-import { get } from '_src/lib/fetch'
+import * as fetchLib from '_src/lib/fetch'
 
 export function * getEntityCounts () {
   try {
     yield put.resolve({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
 
     const url = `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/preset/entity-counts`
-    const json = yield call(get, url)
+    const json = yield call(fetchLib.get, url)
 
     yield put.resolve({
       type: statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED,

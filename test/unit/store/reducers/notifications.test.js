@@ -14,7 +14,7 @@ it('should handle adding a notification', () => {
   })
 
   const actual = notificationsReducer(state, {
-    type: types.NOTIFICATION_ADDED,
+    type: notificationActionTypes.NOTIFICATION_ADDED,
     payload: { id: 'b' }
   })
 

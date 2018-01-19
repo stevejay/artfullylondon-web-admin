@@ -34,7 +34,7 @@ it('should handle a mouse enter event', () => {
   const wrapper = shallow(createComponent({ onMouseEnter: handleMouseEnter }))
   wrapper.find('Link').prop('onMouseEnter')()
 
-  expect(handleMouseEnter.mock.calls.length).toEqual(1)
+  expect(handleMouseEnter).toHaveBeenCalled()
   expect(handleMouseEnter.mock.calls[0]).toEqual([3])
 })
 

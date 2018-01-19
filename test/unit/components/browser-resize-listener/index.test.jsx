@@ -19,8 +19,8 @@ it('should render correctly', () => {
 it('should add the window resize event listener on mount', () => {
   mount(<BrowserResizeListener onWindowResize={_.noop} />)
 
-  expect(browser.addWindowEventListener.mock.calls.length).toEqual(1)
-  expect(browser.removeWindowEventListener.mock.calls.length).toEqual(0)
+  expect(browser.addWindowEventListener).toHaveBeenCalled()
+  expect(browser.removeWindowEventListener).not.toHaveBeenCalled()
 })
 
 it('should remove the window resize event listener on unmount', () => {
@@ -28,8 +28,8 @@ it('should remove the window resize event listener on unmount', () => {
 
   wrapper.unmount()
 
-  expect(browser.addWindowEventListener.mock.calls.length).toEqual(1)
-  expect(browser.removeWindowEventListener.mock.calls.length).toEqual(1)
+  expect(browser.addWindowEventListener).toHaveBeenCalled()
+  expect(browser.removeWindowEventListener).toHaveBeenCalled()
 })
 
 it('should handle a window resize event', () => {
@@ -43,6 +43,6 @@ it('should handle a window resize event', () => {
 
   wrapper.instance().handleWindowResize()
 
-  expect(onWindowResizeHandler.mock.calls.length).toEqual(1)
+  expect(onWindowResizeHandler).toHaveBeenCalled()
   expect(onWindowResizeHandler.mock.calls[0]).toEqual([123])
 })
