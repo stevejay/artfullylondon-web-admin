@@ -1,4 +1,9 @@
 import { SummaryVenue, FullVenue } from '_src/entities/venue'
+import * as linkConstants from '_src/constants/link'
+import * as entityConstants from '_src/constants/entity'
+import * as imageLib from '_src/lib/image'
+import * as timeLib from '_src/lib/time'
+import * as entityLib from '_src/lib/entity'
 
 describe('SummaryVenue', () => {
   it('should have correct entityType', () => {
@@ -211,5 +216,81 @@ describe('FullVenue', () => {
   it('should have correct hasPermanentCollection', () => {
     const subject = new FullVenue({ hasPermanentCollection: true })
     expect(subject.hasPermanentCollection).toBe(true)
+  })
+
+  it('should get the homepage URL', () => {
+    const subject = new FullVenue({
+      links: [{ type: linkConstants.LINK_TYPE_HOMEPAGE, url: '/some/url' }]
+    })
+
+    expect(subject.getHomepageUrl()).toEqual('/some/url')
+  })
+
+  it('should clone correctly', () => {
+    const source = new FullVenue({ name: 'source' })
+    const copy = source.shallowClone()
+
+    copy.entity.name = 'copy'
+
+    expect(source.name).toBe('source')
+    expect(copy.name).toBe('copy')
+  })
+
+  it('should have correct formatted description', () => {
+    entityLib.processDescription = jest.fn().mockReturnValue('The Result')
+
+    const subject = new FullVenue({
+      description: 'Some description',
+      descriptionCredit: 'The Credit'
+    })
+
+    expect(subject.createFormattedDescription()).toBe('The Result')
+
+    expect(entityLib.processDescription).toBeCalledWith(
+      'Some description',
+      'The Credit'
+    )
+  })
+
+  it('should create times details', () => {
+    timeLib.getTimesDetails = jest.fn().mockReturnValue('Times details')
+
+    const subject = new FullVenue({ name: 'The name' })
+
+    expect(subject.createTimesDetailsOn('2017/01/20')).toBe('Times details')
+
+    expect(timeLib.getTimesDetails).toBeCalledWith(
+      { name: 'The name' },
+      entityConstants.ENTITY_TYPE_VENUE,
+      '2017/01/20'
+    )
+  })
+
+  it('should create a times description', () => {
+    timeLib.formatTimesStringForGivenDate = jest
+      .fn()
+      .mockReturnValue('Times description')
+
+    const subject = new FullVenue({ name: 'The name' })
+
+    expect(
+      subject.createTimesDescriptionForDate('2017/01/01', '18:00', {})
+    ).toBe('Times description')
+
+    expect(timeLib.formatTimesStringForGivenDate).toBeCalledWith(
+      { name: 'The name' },
+      '2017/01/01',
+      '18:00',
+      {}
+    )
+  })
+
+  it('should create a venue map icon url', () => {
+    imageLib.createVenueTypePngIconUrl = jest.fn().mockReturnValue('/some/url')
+
+    const subject = new FullVenue({ venueType: 'Theatre' })
+
+    expect(subject.createVenuesMapIconUrl(true)).toBe('/some/url')
+    expect(imageLib.createVenueTypePngIconUrl).toBeCalledWith('Theatre', true)
   })
 })

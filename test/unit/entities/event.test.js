@@ -1,4 +1,10 @@
 import { SummaryEvent, FullEvent } from '_src/entities/event'
+import * as eventConstants from '_src/constants/event'
+import * as entityConstants from '_src/constants/entity'
+import * as linkConstants from '_src/constants/link'
+import * as eventLib from '_src/lib/event'
+import * as timeLib from '_src/lib/time'
+import * as entityLib from '_src/lib/entity'
 
 describe('SummaryEvent', () => {
   it('should have correct entityType', () => {
@@ -205,6 +211,7 @@ describe('SummaryEvent', () => {
       dateFrom: '2017/01/20',
       dateTo: '2017/01/25'
     })
+
     expect(subject.isCurrent('2017/01/22')).toBe(true)
   })
 
@@ -216,6 +223,15 @@ describe('SummaryEvent', () => {
 
     expect(source.name).toBe('source')
     expect(copy.name).toBe('copy')
+  })
+
+  it('should create the date range label', () => {
+    const subject = new SummaryEvent({
+      dateFrom: '2017/01/20',
+      dateTo: '2017/01/25'
+    })
+
+    expect(subject.createDateRangeLabel('2017/01/22')).toBe('Ends in 3 days')
   })
 })
 
@@ -230,9 +246,26 @@ describe('FullEvent', () => {
     expect(subject.isFullEntity).toBe(true)
   })
 
-  it('should have correct createFormattedDescription when only summary is available', () => {
+  it('should have correct formatted description when only summary is available', () => {
     const subject = new FullEvent({ summary: 'Some summary', venue: {} })
     expect(subject.createFormattedDescription()).toBe('Some summary')
+  })
+
+  it('should have correct formatted description when a full description is available', () => {
+    entityLib.processDescription = jest.fn().mockReturnValue('The Result')
+
+    const subject = new FullEvent({
+      description: 'Some description',
+      descriptionCredit: 'The Credit',
+      venue: {}
+    })
+
+    expect(subject.createFormattedDescription()).toBe('The Result')
+
+    expect(entityLib.processDescription).toBeCalledWith(
+      'Some description',
+      'The Credit'
+    )
   })
 
   it('should have correct createAgeDescription when has age restriction', () => {
@@ -365,5 +398,143 @@ describe('FullEvent', () => {
     })
 
     expect(subject.createEventMediumDescription()).toBe('unknown medium')
+  })
+
+  it('should create an info bar label', () => {
+    const subject = new FullEvent({
+      mediumTags: [
+        { id: 'medium/painting', label: 'painting' },
+        { id: 'medium/drawing', label: 'drawing' },
+        { id: 'medium/sculpture', label: 'sculpture' }
+      ],
+      venue: {}
+    })
+
+    expect(subject.createInfoBarLabel()).toBe('mixed media')
+  })
+
+  it('should create a full description', () => {
+    eventLib.formatEventOccurrenceForDisplay = jest
+      .fn()
+      .mockReturnValue('Full description')
+
+    const subject = new FullEvent({
+      occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+      eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
+      dateFrom: '2017/01/01',
+      dateTo: '2017/02/01',
+      additionalPerformances: [],
+      venue: {}
+    })
+
+    expect(subject.createEventOccurrenceDescriptionOn('2017/01/22')).toBe(
+      'Full description'
+    )
+
+    expect(eventLib.formatEventOccurrenceForDisplay).toBeCalledWith(
+      eventConstants.OCCURRENCE_TYPE_BOUNDED,
+      eventConstants.EVENT_TYPE_PERFORMANCE,
+      '2017/01/01',
+      '2017/02/01',
+      [],
+      '2017/01/22'
+    )
+  })
+
+  it('should create a cost description', () => {
+    eventLib.formatCostForDisplay = jest
+      .fn()
+      .mockReturnValue('Cost description')
+
+    const subject = new FullEvent({
+      costType: eventConstants.COST_TYPE_PAID,
+      costFrom: 1,
+      costTo: 2,
+      venue: {}
+    })
+
+    expect(subject.createCostDescription()).toBe('Cost description')
+
+    expect(eventLib.formatCostForDisplay).toBeCalledWith(
+      eventConstants.COST_TYPE_PAID,
+      1,
+      2
+    )
+  })
+
+  it('should create a booking description', () => {
+    eventLib.formatBookingInfoForDisplay = jest
+      .fn()
+      .mockReturnValue('Booking description')
+
+    const subject = new FullEvent({
+      bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
+      bookingOpens: '2017/01/20',
+      links: [],
+      venue: {}
+    })
+
+    expect(subject.createBookingDescriptionOn('2017/01/21')).toBe(
+      'Booking description'
+    )
+
+    expect(eventLib.formatBookingInfoForDisplay).toBeCalledWith(
+      eventConstants.BOOKING_TYPE_REQUIRED,
+      '2017/01/20',
+      { links: [] },
+      '2017/01/21'
+    )
+  })
+
+  it('should create a times description', () => {
+    timeLib.formatTimesStringForGivenDate = jest
+      .fn()
+      .mockReturnValue('Times description')
+
+    const subject = new FullEvent({ venue: {} })
+
+    expect(
+      subject.createTimesDescriptionForDate('2017/01/01', '18:00', {})
+    ).toBe('Times description')
+
+    expect(timeLib.formatTimesStringForGivenDate).toBeCalledWith(
+      { venue: {} },
+      '2017/01/01',
+      '18:00',
+      {}
+    )
+  })
+
+  it('should create times details', () => {
+    timeLib.getTimesDetails = jest.fn().mockReturnValue('Times details')
+
+    const subject = new FullEvent({ venue: {} })
+
+    expect(subject.createTimesDetailsOn('2017/01/20')).toBe('Times details')
+
+    expect(timeLib.getTimesDetails).toBeCalledWith(
+      { venue: {} },
+      entityConstants.ENTITY_TYPE_EVENT,
+      '2017/01/20'
+    )
+  })
+
+  it('should get the homepage URL', () => {
+    const subject = new FullEvent({
+      links: [{ type: linkConstants.LINK_TYPE_HOMEPAGE, url: '/some/url' }],
+      venue: {}
+    })
+
+    expect(subject.getHomepageUrl()).toEqual('/some/url')
+  })
+
+  it('should clone correctly', () => {
+    const source = new FullEvent({ name: 'source', venue: {} })
+    const copy = source.shallowClone()
+
+    copy.entity.name = 'copy'
+
+    expect(source.name).toBe('source')
+    expect(copy.name).toBe('copy')
   })
 })

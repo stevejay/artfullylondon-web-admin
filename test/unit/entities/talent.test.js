@@ -1,4 +1,6 @@
 import { SummaryTalent, FullTalent } from '_src/entities/talent'
+import * as entityLib from '_src/lib/entity'
+import * as linkConstants from '_src/constants/link'
 
 describe('SummaryTalent', () => {
   it('should have correct entityType', () => {
@@ -192,5 +194,29 @@ describe('FullTalent', () => {
   it('should have correct createInfoBarLabel', () => {
     const subject = new FullTalent({ commonRole: 'Actor' })
     expect(subject.createInfoBarLabel()).toBe('Actor')
+  })
+
+  it('should have correct formatted description', () => {
+    entityLib.processDescription = jest.fn().mockReturnValue('The Result')
+
+    const subject = new FullTalent({
+      description: 'Some description',
+      descriptionCredit: 'The Credit'
+    })
+
+    expect(subject.createFormattedDescription()).toBe('The Result')
+
+    expect(entityLib.processDescription).toBeCalledWith(
+      'Some description',
+      'The Credit'
+    )
+  })
+
+  it('should get a link type', () => {
+    const subject = new FullTalent({
+      links: []
+    })
+
+    expect(subject.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)).toBe(null)
   })
 })

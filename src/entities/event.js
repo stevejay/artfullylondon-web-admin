@@ -1,17 +1,12 @@
-import { ENTITY_TYPE_EVENT } from '_src/constants/entity'
 import { LinkCollection } from '_src/entities/link-collection'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { SummaryEventSeries } from '_src/entities/event-series'
-import * as sharedEntity from '_src/lib/entity'
-import { LINK_TYPE_HOMEPAGE } from '_src/constants/link'
-import { COST_TYPE_FREE } from '_src/constants/event'
-import {
-  TAG_TYPE_MEDIUM,
-  TAG_TYPE_STYLE,
-  TAG_TYPE_GEO,
-  TAG_TYPE_AUDIENCE
-} from '_src/constants/tag'
+import * as entityConstants from '_src/constants/entity'
+import * as linkConstants from '_src/constants/link'
+import * as eventConstants from '_src/constants/event'
+import * as tagConstants from '_src/constants/tag'
+import * as entityLib from '_src/lib/entity'
 import * as venueLib from '_src/lib/venue'
 import * as timeLib from '_src/lib/time'
 import * as eventLib from '_src/lib/event'
@@ -29,7 +24,7 @@ export class SummaryEvent {
   }
 
   get entityType () {
-    return ENTITY_TYPE_EVENT
+    return entityConstants.ENTITY_TYPE_EVENT
   }
 
   get entityTypeLabel () {
@@ -53,15 +48,15 @@ export class SummaryEvent {
   }
 
   get isFreeEvent () {
-    return this.entity.costType === COST_TYPE_FREE
+    return this.entity.costType === eventConstants.COST_TYPE_FREE
   }
 
   get url () {
-    return sharedEntity.createEntityUrl(this.entityType, this.id)
+    return entityLib.createEntityUrl(this.entityType, this.id)
   }
 
   get editUrl () {
-    return sharedEntity.createEntityEditUrl(this.entityType, this.id)
+    return entityLib.createEntityEditUrl(this.entityType, this.id)
   }
 
   get summary () {
@@ -177,10 +172,10 @@ export class FullEvent extends SummaryEvent {
       : null
 
     this.tags = [
-      ..._addTagType(entity.mediumTags, TAG_TYPE_MEDIUM),
-      ..._addTagType(entity.styleTags, TAG_TYPE_STYLE),
-      ..._addTagType(entity.geoTags, TAG_TYPE_GEO),
-      ..._addTagType(entity.audienceTags, TAG_TYPE_AUDIENCE)
+      ..._addTagType(entity.mediumTags, tagConstants.TAG_TYPE_MEDIUM),
+      ..._addTagType(entity.styleTags, tagConstants.TAG_TYPE_STYLE),
+      ..._addTagType(entity.geoTags, tagConstants.TAG_TYPE_GEO),
+      ..._addTagType(entity.audienceTags, tagConstants.TAG_TYPE_AUDIENCE)
     ]
   }
 
@@ -250,7 +245,7 @@ export class FullEvent extends SummaryEvent {
 
   createFormattedDescription () {
     if (this.entity.description) {
-      return sharedEntity.processDescription(
+      return entityLib.processDescription(
         this.entity.description,
         this.entity.descriptionCredit
       )
@@ -313,7 +308,7 @@ export class FullEvent extends SummaryEvent {
   }
 
   getHomepageUrl () {
-    const homepage = this.getLinkByType(LINK_TYPE_HOMEPAGE)
+    const homepage = this.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
     return homepage ? homepage.url : null
   }
 }

@@ -1,7 +1,7 @@
-import { ENTITY_TYPE_EVENT_SERIES } from '_src/constants/entity'
-import { EVENT_SERIES_TYPE_SEASON } from '_src/constants/event-series'
-import * as sharedEntity from '_src/lib/entity'
 import { LinkCollection } from '_src/entities/link-collection'
+import * as entityConstants from '_src/constants/entity'
+import * as eventSeriesConstants from '_src/constants/event-series'
+import * as entityLib from '_src/lib/entity'
 
 export class SummaryEventSeries {
   constructor (entity) {
@@ -14,7 +14,7 @@ export class SummaryEventSeries {
   }
 
   get entityType () {
-    return ENTITY_TYPE_EVENT_SERIES
+    return entityConstants.ENTITY_TYPE_EVENT_SERIES
   }
 
   get entityTypeLabel () {
@@ -42,7 +42,8 @@ export class SummaryEventSeries {
   }
 
   get eventSeriesTypeLabel () {
-    return this.eventSeriesType === EVENT_SERIES_TYPE_SEASON
+    return this.eventSeriesType ===
+      eventSeriesConstants.EVENT_SERIES_TYPE_SEASON
       ? 'season'
       : 'series'
   }
@@ -56,11 +57,11 @@ export class SummaryEventSeries {
   }
 
   get url () {
-    return sharedEntity.createEntityUrl(this.entityType, this.id)
+    return entityLib.createEntityUrl(this.entityType, this.id)
   }
 
   get editUrl () {
-    return sharedEntity.createEntityEditUrl(this.entityType, this.id)
+    return entityLib.createEntityEditUrl(this.entityType, this.id)
   }
 
   get image () {
@@ -125,7 +126,7 @@ export class FullEventSeries extends SummaryEventSeries {
   }
 
   createFormattedDescription () {
-    return sharedEntity.processDescription(
+    return entityLib.processDescription(
       this.entity.description,
       this.entity.descriptionCredit
     )

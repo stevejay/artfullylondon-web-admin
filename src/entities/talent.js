@@ -1,8 +1,9 @@
 import _ from 'lodash'
-import { ENTITY_TYPE_TALENT } from '_src/constants/entity'
-import * as sharedEntity from '_src/lib/entity'
-import * as sharedTalent from '_src/lib/talent'
+
 import { LinkCollection } from '_src/entities/link-collection'
+import * as entityConstants from '_src/constants/entity'
+import * as entityLib from '_src/lib/entity'
+import * as talentLib from '_src/lib/talent'
 
 export class SummaryTalent {
   constructor (entity) {
@@ -15,7 +16,7 @@ export class SummaryTalent {
   }
 
   get entityType () {
-    return ENTITY_TYPE_TALENT
+    return entityConstants.ENTITY_TYPE_TALENT
   }
 
   get entityTypeLabel () {
@@ -35,7 +36,7 @@ export class SummaryTalent {
   }
 
   get name () {
-    return sharedTalent.formatTalentName(this.entity)
+    return talentLib.formatTalentName(this.entity)
   }
 
   get talentType () {
@@ -63,11 +64,11 @@ export class SummaryTalent {
   }
 
   get url () {
-    return sharedEntity.createEntityUrl(this.entityType, this.id)
+    return entityLib.createEntityUrl(this.entityType, this.id)
   }
 
   get editUrl () {
-    return sharedEntity.createEntityEditUrl(this.entityType, this.id)
+    return entityLib.createEntityEditUrl(this.entityType, this.id)
   }
 
   get isFullEntity () {
@@ -131,7 +132,7 @@ export class FullTalent extends SummaryTalent {
   }
 
   createFormattedDescription () {
-    return sharedEntity.processDescription(
+    return entityLib.processDescription(
       this.entity.description,
       this.entity.descriptionCredit
     )

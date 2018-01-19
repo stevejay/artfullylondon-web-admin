@@ -1,10 +1,10 @@
-import { ENTITY_TYPE_VENUE } from '_src/constants/entity'
 import { LinkCollection } from '_src/entities/link-collection'
-import * as sharedVenue from '_src/lib/venue'
-import * as sharedEntity from '_src/lib/entity'
-import { LINK_TYPE_HOMEPAGE } from '_src/constants/link'
-import * as time from '_src/lib/time'
-import * as image from '_src/lib/image'
+import * as entityConstants from '_src/constants/entity'
+import * as linkConstants from '_src/constants/link'
+import * as venueLib from '_src/lib/venue'
+import * as entityLib from '_src/lib/entity'
+import * as timeLib from '_src/lib/time'
+import * as imageLib from '_src/lib/image'
 
 export class SummaryVenue {
   constructor (entity) {
@@ -14,11 +14,11 @@ export class SummaryVenue {
     }
 
     this.entity = entity
-    this.postcodeDistrict = sharedVenue.getPostcodeDistrict(entity.postcode)
+    this.postcodeDistrict = venueLib.getPostcodeDistrict(entity.postcode)
   }
 
   get entityType () {
-    return ENTITY_TYPE_VENUE
+    return entityConstants.ENTITY_TYPE_VENUE
   }
 
   get entityTypeLabel () {
@@ -50,11 +50,11 @@ export class SummaryVenue {
   }
 
   get url () {
-    return sharedEntity.createEntityUrl(this.entityType, this.id)
+    return entityLib.createEntityUrl(this.entityType, this.id)
   }
 
   get editUrl () {
-    return sharedEntity.createEntityEditUrl(this.entityType, this.id)
+    return entityLib.createEntityEditUrl(this.entityType, this.id)
   }
 
   get latitude () {
@@ -110,14 +110,14 @@ export class SummaryVenue {
   }
 
   createFullAddress () {
-    return sharedVenue.formatAddressForDisplay(
+    return venueLib.formatAddressForDisplay(
       this.entity.address,
       this.entity.postcode
     )
   }
 
   createVenuesMapIconUrl (isSelected) {
-    return image.createVenueTypePngIconUrl(this.venueType, isSelected)
+    return imageLib.createVenueTypePngIconUrl(this.venueType, isSelected)
   }
 
   shallowClone (newProps) {
@@ -133,7 +133,7 @@ export class FullVenue extends SummaryVenue {
   }
 
   createTimesDescriptionForDate (dateStr, timeStr, namedClosuresLookup) {
-    return time.formatTimesStringForGivenDate(
+    return timeLib.formatTimesStringForGivenDate(
       this.entity,
       dateStr,
       timeStr,
@@ -142,7 +142,7 @@ export class FullVenue extends SummaryVenue {
   }
 
   createTimesDetailsOn (dateStr) {
-    return time.getTimesDetails(this.entity, this.entityType, dateStr)
+    return timeLib.getTimesDetails(this.entity, this.entityType, dateStr)
   }
 
   createInfoBarLabel () {
@@ -150,7 +150,7 @@ export class FullVenue extends SummaryVenue {
   }
 
   createFormattedDescription () {
-    return sharedEntity.processDescription(
+    return entityLib.processDescription(
       this.entity.description,
       this.entity.descriptionCredit
     )
@@ -210,7 +210,7 @@ export class FullVenue extends SummaryVenue {
   }
 
   getHomepageUrl () {
-    const homepage = this.getLinkByType(LINK_TYPE_HOMEPAGE)
+    const homepage = this.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
     return homepage ? homepage.url : null
   }
 }
