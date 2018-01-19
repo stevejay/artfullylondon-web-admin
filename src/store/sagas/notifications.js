@@ -8,18 +8,14 @@ import * as notificationsConstants from '_src/constants/notifications'
 export function * addNotification (action) {
   const id = _.uniqueId('notification_')
 
-  yield put.resolve({
+  yield put({
     type: notificationActionTypes.NOTIFICATION_ADDED,
     payload: Object.assign({ id }, action.payload)
   })
 
-  const delayMs =
-    (action.payload.timeoutSecs ||
-      notificationsConstants.DEFAULT_NOTIFICATION_DISPLAY_TIME_SECS) * 1000
+  yield call(delay, notificationsConstants.DEFAULT_NOTIFICATION_DISPLAY_TIME_MS)
 
-  yield call(delay, delayMs)
-
-  yield put.resolve({
+  yield put({
     type: notificationActionTypes.REMOVE_NOTIFICATION,
     payload: { id }
   })

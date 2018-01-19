@@ -1,39 +1,42 @@
 import { take, call, put } from 'redux-saga/effects'
 
-import { callWithInfiniteRetry } from '_src/lib/saga'
-import { get } from '_src/lib/fetch'
-import * as serverConstantsTypes from '_src/constants/action/server-constants'
+import * as serverConstantsActionTypes
+  from '_src/constants/action/server-constants'
 import * as serverConstantsSagas from '_src/store/sagas/server-constants'
+import * as sagaLib from '_src/lib/saga'
+import * as fetchLib from '_src/lib/fetch'
 
 describe('fetchServerConstants', () => {
-  const generator = serverConstantsSagas.fetchServerConstants()
+  it('should fetch the server constants', () => {
+    const generator = serverConstantsSagas.fetchServerConstants()
 
-  it('waits for the start action', () => {
-    expect(generator.next().value).toEqual(
-      take(serverConstantsTypes.FETCH_SERVER_CONSTANTS)
+    let result = generator.next()
+
+    expect(result.value).toEqual(
+      take(serverConstantsActionTypes.FETCH_SERVER_CONSTANTS)
     )
-  })
 
-  it('fetches the data', () => {
-    expect(generator.next('foo').value).toEqual(
+    result = generator.next('foo')
+
+    expect(result.value).toEqual(
       call(
-        callWithInfiniteRetry,
-        get,
+        sagaLib.callWithInfiniteRetry,
+        fetchLib.get,
         process.env.WEBSITE_API_HOST_URL + '/data-service/admin-site-data'
       )
     )
-  })
 
-  it('sends the data to the store', () => {
-    expect(generator.next('some json').value).toEqual(
-      put.resolve({
-        type: serverConstantsTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED,
+    result = generator.next('some json')
+
+    expect(result.value).toEqual(
+      put({
+        type: serverConstantsActionTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED,
         payload: 'some json'
       })
     )
-  })
 
-  it('should be done', () => {
-    expect(generator.next().done).toEqual(true)
+    result = generator.next()
+
+    expect(result.done).toEqual(true)
   })
 })

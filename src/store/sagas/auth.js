@@ -16,24 +16,27 @@ export function * attemptAutoLogIn () {
     const cognitoUser = yield call(authLib.attemptAutoLogIn)
 
     if (cognitoUser) {
-      yield put.resolve({
+      yield put({
         type: authActionTypes.LOG_IN_SUCCEEDED,
         payload: { cognitoUser }
       })
     }
   } catch (err) {
-    log.error('auto login attempt failed', err)
+    yield call(log.error, err)
   } finally {
-    yield put({
-      type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
-    })
+    yield put({ type: authActionTypes.AUTO_LOG_IN_ATTEMPTED })
   }
 }
 
 export function * logIn ({ payload }) {
   try {
     yield put(startSubmit(formConstants.LOGIN_FORM_NAME))
-    yield call(validationLib.validate, payload, authConstraints.logInConstraint)
+
+    yield call(
+      validationLib.validateSync,
+      payload,
+      authConstraints.logInConstraint
+    )
 
     const cognitoUser = yield call(
       authLib.authenticateUser,
@@ -60,7 +63,7 @@ export function * logOut () {
   try {
     yield call(authLib.logOutCurrentUser)
   } catch (err) {
-    log.error('logOut error', err.message)
+    yield call(log.error, err)
   } finally {
     yield put({
       type: authActionTypes.LOGGED_OUT,

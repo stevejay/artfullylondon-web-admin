@@ -2,17 +2,18 @@ import { delay } from 'redux-saga'
 import { takeLatest, put, call } from 'redux-saga/effects'
 
 import * as browserActionTypes from '_src/constants/action/browser'
+import * as browserConstants from '_src/constants/browser'
 import * as browserLib from '_src/lib/browser'
 
-const BROWSER_WIDTH_CHANGED_DEBOUNCE_MS = 250
-
 export function * browserWidthChanged (action) {
-  yield call(delay, BROWSER_WIDTH_CHANGED_DEBOUNCE_MS)
+  yield call(delay, browserConstants.BROWSER_WIDTH_CHANGED_DEBOUNCE_MS)
 
-  const { width } = action.payload
-  const widthType = browserLib.calculateBrowserWidthType(width)
+  const widthType = yield call(
+    browserLib.calculateBrowserWidthType,
+    action.payload.width
+  )
 
-  yield put.resolve({
+  yield put({
     type: browserActionTypes.UPDATE_BROWSER_WIDTH_TYPE,
     payload: { widthType }
   })

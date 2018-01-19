@@ -55,15 +55,11 @@ export const authenticateUser = (username, password) => {
 }
 
 export const logOutCurrentUser = () => {
-  return new Promise(resolve => {
-    const cognitoUser = getCognitoUserFromLocalStorage()
+  const cognitoUser = getCognitoUserFromLocalStorage()
 
-    if (cognitoUser !== null) {
-      cognitoUser.signOut()
-    }
-
-    resolve()
-  })
+  if (cognitoUser !== null) {
+    cognitoUser.signOut()
+  }
 }
 
 export const getAuthTokenForCurrentUser = () => {

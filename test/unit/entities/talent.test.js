@@ -148,7 +148,7 @@ describe('SummaryTalent', () => {
   })
 
   it('should have correct createCharactersString when has no characters', () => {
-    const subject = new SummaryTalent({ characters: [] })
+    const subject = new SummaryTalent({ characters: null })
     expect(subject.hasCharacters()).toBe(false)
   })
 
@@ -158,7 +158,7 @@ describe('SummaryTalent', () => {
   })
 
   it('should have correct createCharactersString when has no characters', () => {
-    const subject = new SummaryTalent({ characters: [] })
+    const subject = new SummaryTalent({ characters: null })
     expect(subject.createCharactersString()).toBe('')
   })
 })

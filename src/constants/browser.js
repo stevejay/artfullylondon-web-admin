@@ -1,4 +1,5 @@
 export const BROWSER_WIDTH_THRESHOLD = 992
+export const BROWSER_WIDTH_CHANGED_DEBOUNCE_MS = 250
 
 export const BROWSER_WIDTH_TYPE_NARROW = 'narrow'
 export const BROWSER_WIDTH_TYPE_WIDE = 'wide'

@@ -14,6 +14,26 @@ import { GENERIC_ERROR_MESSAGE } from '_src/constants/validation'
 //   return value == null || moment.isMoment(value) ? null : 'is not a moment'
 // }
 
+export function validateSync (
+  values,
+  constraint,
+  additionalConstraints,
+  returnErrors
+) {
+  const errors = ensure(values, constraint) || {}
+
+  if (additionalConstraints) {
+    additionalConstraints(values, errors)
+  }
+
+  if (returnErrors) {
+    return _hasErrors(errors) ? errors : null
+  } else {
+    _throwValidationErrorIfInvalid(errors)
+    return values
+  }
+}
+
 export function validate (
   values,
   constraint,

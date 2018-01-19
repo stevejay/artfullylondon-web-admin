@@ -226,6 +226,11 @@ describe('FullVenue', () => {
     expect(subject.getHomepageUrl()).toEqual('/some/url')
   })
 
+  it('should get the homepage URL when there is none', () => {
+    const subject = new FullVenue({ links: [] })
+    expect(subject.getHomepageUrl()).toEqual(null)
+  })
+
   it('should clone correctly', () => {
     const source = new FullVenue({ name: 'source' })
     const copy = source.shallowClone()

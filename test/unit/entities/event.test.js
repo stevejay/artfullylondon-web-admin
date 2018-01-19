@@ -528,6 +528,11 @@ describe('FullEvent', () => {
     expect(subject.getHomepageUrl()).toEqual('/some/url')
   })
 
+  it('should get the homepage URL when there is none', () => {
+    const subject = new FullEvent({ links: [], venue: {} })
+    expect(subject.getHomepageUrl()).toEqual(null)
+  })
+
   it('should clone correctly', () => {
     const source = new FullEvent({ name: 'source', venue: {} })
     const copy = source.shallowClone()

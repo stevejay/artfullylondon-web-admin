@@ -22,37 +22,48 @@ describe('logIn', () => {
       payload
     })
 
-    expect(generator.next().value).toEqual(
+    let result = generator.next()
+
+    expect(result.value).toEqual(
       put(startSubmit(formConstants.LOGIN_FORM_NAME))
     )
 
-    expect(generator.next().value).toEqual(
-      call(validationLib.validate, payload, authConstraints.logInConstraint)
+    result = generator.next()
+
+    expect(result.value).toEqual(
+      call(validationLib.validateSync, payload, authConstraints.logInConstraint)
     )
 
-    expect(generator.next().value).toEqual(
+    result = generator.next()
+
+    expect(result.value).toEqual(
       call(authLib.authenticateUser, payload.username, payload.password)
     )
 
-    expect(generator.next(cognitoUser).value).toEqual(
-      put(stopSubmit(formConstants.LOGIN_FORM_NAME))
-    )
+    result = generator.next(cognitoUser)
 
-    expect(generator.next().value).toEqual(
+    expect(result.value).toEqual(put(stopSubmit(formConstants.LOGIN_FORM_NAME)))
+
+    result = generator.next()
+
+    expect(result.value).toEqual(
       put({
         type: authActionTypes.LOG_IN_SUCCEEDED,
         payload: { cognitoUser }
       })
     )
 
-    expect(generator.next().value).toEqual(call(history.push, '/'))
+    result = generator.next()
 
-    expect(generator.next().done).toEqual(true)
+    expect(result.value).toEqual(call(history.push, '/'))
+
+    result = generator.next()
+
+    expect(result.done).toEqual(true)
   })
 
-  it('should handle a form validation error on login', () => {
-    const payload = { username: 'steve', password: 'pwd' }
-    const cognitoUser = { username: 'steve' }
+  it('should handle a validation error', () => {
+    const payload = { username: 'steve', password: '' }
     const error = new Error('deliberately thrown')
 
     const generator = authSagas.logIn({
@@ -60,61 +71,81 @@ describe('logIn', () => {
       payload
     })
 
-    expect(generator.next().value).toEqual(
+    let result = generator.next()
+
+    expect(result.value).toEqual(
       put(startSubmit(formConstants.LOGIN_FORM_NAME))
     )
 
-    expect(generator.next().value).toEqual(
-      call(validationLib.validate, payload, authConstraints.logInConstraint)
+    result = generator.next()
+
+    expect(result.value).toEqual(
+      call(validationLib.validateSync, payload, authConstraints.logInConstraint)
     )
 
-    expect(generator.throw(error).value).toEqual(
-      put({ type: authActionTypes.LOG_IN_FAILED })
-    )
+    result = generator.throw(error)
 
-    expect(generator.next().value).toEqual(
+    expect(result.value).toEqual(put({ type: authActionTypes.LOG_IN_FAILED }))
+
+    result = generator.next()
+
+    expect(result.value).toEqual(
       call(sagaLib.submitErrorHandler, error, formConstants.LOGIN_FORM_NAME)
     )
 
-    expect(generator.next().done).toEqual(true)
+    result = generator.next()
+
+    expect(result.done).toEqual(true)
   })
 })
 
 describe('logOut', () => {
-  it('should successfully log the user out', () => {
-    const generator = authSagas.logOut({
-      type: authActionTypes.LOG_OUT
-    })
-
-    expect(generator.next().value).toEqual(call(authLib.logOutCurrentUser))
-
-    expect(generator.next().value).toEqual(
-      put({
-        type: authActionTypes.LOGGED_OUT,
-        payload: { resetUsername: true }
-      })
-    )
-
-    expect(generator.next().done).toEqual(true)
+  const generator = cloneableGenerator(authSagas.logOut)({
+    type: authActionTypes.LOG_OUT
   })
 
-  it('should handle a failed log out attempt', () => {
-    log.error = jest.fn()
+  it('should try to log the user out', () => {
+    const result = generator.next()
+    expect(result.value).toEqual(call(authLib.logOutCurrentUser))
+  })
 
-    const generator = authSagas.logOut({
-      type: authActionTypes.LOG_OUT
-    })
+  it('should handle a successful user logout', () => {
+    const generatorClone = generator.clone()
 
-    expect(generator.next().value).toEqual(call(authLib.logOutCurrentUser))
+    let result = generatorClone.next()
 
-    expect(generator.throw(new Error('deliberately thrown')).value).toEqual(
+    expect(result.value).toEqual(
       put({
         type: authActionTypes.LOGGED_OUT,
         payload: { resetUsername: true }
       })
     )
 
-    expect(generator.next().done).toEqual(true)
+    result = generatorClone.next()
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle a failed user logout', () => {
+    const generatorClone = generator.clone()
+    const error = new Error('deliberately thrown')
+
+    let result = generatorClone.throw(error)
+
+    expect(result.value).toEqual(call(log.error, error))
+
+    result = generatorClone.next()
+
+    expect(result.value).toEqual(
+      put({
+        type: authActionTypes.LOGGED_OUT,
+        payload: { resetUsername: true }
+      })
+    )
+
+    result = generatorClone.next()
+
+    expect(result.done).toEqual(true)
   })
 })
 
@@ -124,57 +155,63 @@ describe('attemptAutoLogIn', () => {
   })
 
   it('should attempt the auto login', () => {
-    expect(generator.next().value).toEqual(call(authLib.attemptAutoLogIn))
+    const result = generator.next()
+    expect(result.value).toEqual(call(authLib.attemptAutoLogIn))
   })
 
-  it('should handle a successful login', () => {
+  it('should handle a successful auto login attempt', () => {
     const generatorClone = generator.clone()
 
-    expect(
-      generatorClone.next({
-        username: 'steve'
-      }).value
-    ).toEqual(
-      put.resolve({
+    let result = generatorClone.next({ username: 'steve' })
+
+    expect(result.value).toEqual(
+      put({
         type: authActionTypes.LOG_IN_SUCCEEDED,
         payload: { cognitoUser: { username: 'steve' } }
       })
     )
 
-    expect(generatorClone.next().value).toEqual(
-      put({
-        type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
-      })
+    result = generatorClone.next()
+
+    expect(result.value).toEqual(
+      put({ type: authActionTypes.AUTO_LOG_IN_ATTEMPTED })
     )
 
-    expect(generatorClone.next().done).toEqual(true)
+    result = generatorClone.next()
+
+    expect(result.done).toEqual(true)
   })
 
-  it('should handle a failed login', () => {
+  it('should handle a failed auto login attempt', () => {
     const generatorClone = generator.clone()
 
-    expect(generatorClone.next().value).toEqual(
-      put({
-        type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
-      })
+    let result = generatorClone.next()
+
+    expect(result.value).toEqual(
+      put({ type: authActionTypes.AUTO_LOG_IN_ATTEMPTED })
     )
 
-    expect(generatorClone.next().done).toEqual(true)
+    result = generatorClone.next()
+
+    expect(result.done).toEqual(true)
   })
 
   it('should handle an error being thrown on the auto login attempt', () => {
     const generatorClone = generator.clone()
-    log.error = jest.fn()
+    const error = new Error('deliberately thrown')
 
-    expect(
-      generatorClone.throw(new Error('deliberately thrown')).value
-    ).toEqual(
-      put({
-        type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
-      })
+    let result = generatorClone.throw(error)
+
+    expect(result.value).toEqual(call(log.error, error))
+
+    result = generatorClone.next()
+
+    expect(result.value).toEqual(
+      put({ type: authActionTypes.AUTO_LOG_IN_ATTEMPTED })
     )
 
-    expect(generatorClone.next().done).toEqual(true)
-    expect(log.error).toHaveBeenCalled()
+    result = generatorClone.next()
+
+    expect(result.done).toEqual(true)
   })
 })

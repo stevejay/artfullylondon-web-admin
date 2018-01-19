@@ -6,18 +6,20 @@ import * as fetchLib from '_src/lib/fetch'
 
 export function * getEntityCounts () {
   try {
-    yield put.resolve({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
+    yield put({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
 
-    const url = `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/preset/entity-counts`
-    const json = yield call(fetchLib.get, url)
+    const json = yield call(
+      fetchLib.get,
+      `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/preset/entity-counts`
+    )
 
-    yield put.resolve({
+    yield put({
       type: statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED,
       payload: json
     })
   } catch (err) {
-    log.error('getEntityCounts error', err)
-    yield put.resolve({ type: statusActionTypes.GET_ENTITY_COUNTS_FAILED })
+    yield call(log.error, err)
+    yield put({ type: statusActionTypes.GET_ENTITY_COUNTS_FAILED })
   }
 }
 
