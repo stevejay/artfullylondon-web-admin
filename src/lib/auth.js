@@ -8,7 +8,6 @@ import log from 'loglevel'
 
 import store from '_src/store'
 import * as authConstants from '_src/constants/auth'
-import * as authActions from '_src/actions/auth'
 
 const USER_POOL_DATA = {
   UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,
@@ -74,7 +73,8 @@ export const getAuthTokenForCurrentUser = () => {
           // the authenticated user is no longer valid.
           // log.info('getAuthTokenForCurrentUser', 'the authenticated user in store is no longer valid');
 
-          store.dispatch(authActions.resetLogIn()) // clear the user from store.
+          // clear the user from store.
+          store.dispatch({ type: authActionTypes.LOGGED_OUT })
 
           // TODO display modal to capture login details.
         } else {
@@ -123,8 +123,11 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
             'the authenticated user in store is no longer valid'
           )
 
-          store.dispatch(authActions.logOut()) // clear the user from store.
-          redirectToLogIn(nextState, replace) // allow the user to log in.
+          // clear the user from store.
+          store.dispatch({ type: authActionTypes.LOG_OUT })
+
+          // allow the user to log in.
+          redirectToLogIn(nextState, replace)
         } else {
           log.info(
             'handleEnterRestrictedRoute',
@@ -156,7 +159,10 @@ export const handleEnterRestrictedRoute = (nextState, replace) => {
           } else {
             // the authenticated user is still valid, so use it.
             // log.info('handleEnterRestrictedRoute', 'user in local storage is still valid so setting it in store');
-            store.dispatch(authActions.logInSucceeded({ cognitoUser }))
+            store.dispatch({
+              type: authActionTypes.LOG_IN_SUCCEEDED,
+              payload: { cognitoUser }
+            })
           }
 
           resolve()

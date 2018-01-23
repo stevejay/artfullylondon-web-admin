@@ -1,2 +1,3 @@
 export const NOT_FOUND = 'NOT_FOUND'
-export const SERVER_ERROR = 'SERVER_ERROR'
+export const DEFAULT = 'DEFAULT'
+export const ALLOWED_ERROR_TYPES = [NOT_FOUND, DEFAULT]

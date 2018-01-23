@@ -6,34 +6,37 @@ import { bindActionCreators } from 'redux'
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
 import LoginForm from '_src/modules/auth/forms/login'
-import * as authActions from '_src/actions/auth'
+import * as authActionTypes from '_src/constants/action/auth'
 import * as authConstraints from '_src/constants/auth-constraints'
 import './login.scss'
 
-export const LoginPage = ({ logIn, initialUsername }) => (
-  <FormSection type='narrow' styleName='form-section'>
-    <FormBorder title='Log In'>
-      <LoginForm
-        onSubmit={logIn}
-        initialUsername={initialUsername}
-        constraint={authConstraints.logInConstraint}
-      />
-    </FormBorder>
-  </FormSection>
-)
+export class LoginPage extends React.Component {
+  handleSubmit = payload => {
+    this.props.dispatch({ type: authActionTypes.LOG_IN, payload })
+  }
+  render () {
+    const { dispatch, initialUsername } = this.props
+
+    return (
+      <FormSection type='narrow' styleName='form-section'>
+        <FormBorder title='Log In'>
+          <LoginForm
+            onSubmit={this.handleSubmit}
+            initialUsername={this.props.initialUsername}
+            constraint={authConstraints.logInConstraint}
+          />
+        </FormBorder>
+      </FormSection>
+    )
+  }
+}
 
 LoginPage.propTypes = {
   initialUsername: PropTypes.string,
-  logIn: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect(
   /* istanbul ignore next */
-  state => ({
-    initialUsername: state.auth.username
-  }),
-  /* istanbul ignore next */
-  dispatch => ({
-    logIn: bindActionCreators(authActions.logIn, dispatch)
-  })
+  state => ({ initialUsername: state.auth.username })
 )(LoginPage)

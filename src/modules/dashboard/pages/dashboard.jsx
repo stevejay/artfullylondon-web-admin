@@ -9,12 +9,12 @@ import SectionHeading from '_src/components/section/heading'
 import BasicSection from '_src/components/section/basic'
 import StatisticCollection
   from '_src/modules/dashboard/components/statistic/collection'
+import * as statusActionTypes from '_src/constants/action/status'
 import * as searchActions from '_src/actions/search'
-import * as statusActions from '_src/actions/status'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {
-    this.props.getEntityCounts()
+    this.props.dispatch({ type: statusActionTypes.GET_ENTITY_COUNTS })
   }
   render () {
     const { entityCounts, getInProgress, getFailed } = this.props
@@ -38,9 +38,7 @@ DashboardPage.propTypes = {
   entityCounts: PropTypes.array,
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
-  pushBasicSearchToUrl: PropTypes.func.isRequired,
-  clearAutocomplete: PropTypes.func.isRequired,
-  getEntityCounts: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect(
@@ -49,20 +47,5 @@ export default connect(
     entityCounts: state.status.entityCounts,
     getInProgress: state.status.getEntityCountsInProgress,
     getFailed: state.status.getEntityCountsFailed
-  }),
-  /* istanbul ignore next */
-  dispatch => ({
-    pushBasicSearchToUrl: bindActionCreators(
-      searchActions.pushBasicSearchToUrl,
-      dispatch
-    ),
-    clearAutocomplete: bindActionCreators(
-      searchActions.clearAutocomplete,
-      dispatch
-    ),
-    getEntityCounts: bindActionCreators(
-      statusActions.getEntityCounts,
-      dispatch
-    )
   })
 )(DashboardPage)

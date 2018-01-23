@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when fetching the entity counts failed 1`] = `
+<BasicSection>
+  <SectionHeading>
+    Admin 
+    <span>
+      Dashboard
+    </span>
+  </SectionHeading>
+  <Error
+    type="DEFAULT"
+  />
+</BasicSection>
+`;
+
+exports[`should render correctly when the entity counts have been fetched 1`] = `
 <BasicSection>
   <SectionHeading>
     Admin 
@@ -29,6 +43,21 @@ exports[`should render correctly 1`] = `
         },
       ]
     }
+  />
+</BasicSection>
+`;
+
+exports[`should render correctly while the entity counts are being fetched 1`] = `
+<BasicSection>
+  <SectionHeading>
+    Admin 
+    <span>
+      Dashboard
+    </span>
+  </SectionHeading>
+  <BoxesLoader
+    size="large"
+    type="default"
   />
 </BasicSection>
 `;

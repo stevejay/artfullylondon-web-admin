@@ -10,9 +10,9 @@ import HeaderLogo from '_src/components/logo/header'
 import SidenavButton from '_src/modules/sidenav/components/button'
 import ModalTransition from '_src/modules/sidenav/components/modal-transition'
 import Menu from '_src/modules/sidenav/components/menu'
+import * as authActionTypes from '_src/constants/action/auth'
 import * as menuConstants from '_src/constants/menu'
 import * as authConstants from '_src/constants/auth'
-import * as authActions from '_src/actions/auth'
 import './index.scss'
 
 export class Sidenav extends React.Component {
@@ -40,7 +40,7 @@ export class Sidenav extends React.Component {
   }
   handleLogOut = () => {
     this.props.onHide()
-    this.props.logOut()
+    this.props.dispatch({ type: authActionTypes.LOG_OUT })
   }
   componentDidCatch (error, info) {
     this.setState({ hasError: true })
@@ -81,8 +81,8 @@ Sidenav.propTypes = {
   show: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
   onHide: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default withRouter(
@@ -90,10 +90,6 @@ export default withRouter(
     /* istanbul ignore next */
     state => ({
       loggedIn: state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
-    }),
-    /* istanbul ignore next */
-    dispatch => ({
-      logOut: bindActionCreators(authActions.logOut, dispatch)
     })
   )(Sidenav)
 )

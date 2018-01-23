@@ -4,6 +4,8 @@ import _ from 'lodash'
 import log from 'loglevel'
 
 import { Header } from '_src/modules/header'
+import Button from '_src/components/button'
+import * as authActionTypes from '_src/constants/action/auth'
 
 it('should render correctly when logged in', () => {
   const wrapper = shallow(
@@ -14,6 +16,7 @@ it('should render correctly when logged in', () => {
       history={{}}
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
+      dispatch={_.noop}
     />
   )
 
@@ -31,6 +34,7 @@ it('should render correctly when has an error', () => {
       history={{}}
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
+      dispatch={_.noop}
     />
   )
 
@@ -50,6 +54,7 @@ it('should render correctly when showing the sidenav', () => {
       history={{}}
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
+      dispatch={_.noop}
     />
   )
 
@@ -65,8 +70,29 @@ it('should render correctly when narrow', () => {
       history={{}}
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
+      dispatch={_.noop}
     />
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should handle a logout button click when wide', () => {
+  const dispatch = jest.fn()
+
+  const wrapper = shallow(
+    <Header
+      loggedIn
+      isWideBrowser
+      showingSidenav={false}
+      history={{}}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
+      dispatch={dispatch}
+    />
+  )
+
+  wrapper.find(Button).at(0).simulate('click')
+
+  expect(dispatch).toHaveBeenCalledWith({ type: authActionTypes.LOG_OUT })
 })

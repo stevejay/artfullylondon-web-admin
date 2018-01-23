@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
+import * as authActionTypes from '_src/constants/action/auth'
 import * as menuConstants from '_src/constants/menu'
 import { Sidenav } from '_src/modules/sidenav'
 
@@ -15,7 +16,7 @@ it('should render correctly when logged in', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -30,7 +31,7 @@ it('should render correctly when not showing', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -45,7 +46,7 @@ it('should render correctly when logged out', () => {
       pathname='/some/path'
       loggedIn={false}
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -60,7 +61,7 @@ it('should update the component when props change', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -87,7 +88,7 @@ it('should not update the component when props do not change', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -116,7 +117,7 @@ it('should render correctly when has an error', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -130,7 +131,7 @@ it('should render correctly when has an error', () => {
 
 it('should handle logging the user out', () => {
   const onHide = jest.fn()
-  const logOut = jest.fn()
+  const dispatch = jest.fn()
 
   const wrapper = shallow(
     <Sidenav
@@ -138,7 +139,7 @@ it('should handle logging the user out', () => {
       pathname='/some/path'
       loggedIn
       onHide={onHide}
-      logOut={logOut}
+      dispatch={dispatch}
       history={{}}
     />
   )
@@ -146,7 +147,7 @@ it('should handle logging the user out', () => {
   wrapper.find('SidenavButton').prop('onClick')()
 
   expect(onHide).toHaveBeenCalled()
-  expect(logOut).toHaveBeenCalled()
+  expect(dispatch).toHaveBeenCalledWith({ type: authActionTypes.LOG_OUT })
 })
 
 it('should handle a menu link click', () => {
@@ -158,7 +159,7 @@ it('should handle a menu link click', () => {
       pathname='/some/path'
       loggedIn
       onHide={onHide}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -175,7 +176,7 @@ it('should handle a menu header click', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )
@@ -192,7 +193,7 @@ it('should handle two menu header clicks', () => {
       pathname='/some/path'
       loggedIn
       onHide={_.noop}
-      logOut={_.noop}
+      dispatch={_.noop}
       history={{}}
     />
   )

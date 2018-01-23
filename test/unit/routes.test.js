@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
+import * as appActionTypes from '_src/constants/action/app'
 import * as authActionTypes from '_src/constants/action/auth'
 import * as browserActionTypes from '_src/constants/action/browser'
 import * as serverConstantsTypes from '_src/constants/action/server-constants'
@@ -58,7 +59,7 @@ it('should trigger initial actions', () => {
     />
   )
 
-  expect(mockDispatch.mock.calls.length).toEqual(2)
+  expect(mockDispatch.mock.calls.length).toEqual(3)
 
   expect(mockDispatch.mock.calls[0]).toEqual([
     {
@@ -69,6 +70,12 @@ it('should trigger initial actions', () => {
   expect(mockDispatch.mock.calls[1]).toEqual([
     {
       type: serverConstantsTypes.FETCH_SERVER_CONSTANTS
+    }
+  ])
+
+  expect(mockDispatch.mock.calls[2]).toEqual([
+    {
+      type: appActionTypes.CHECK_IF_APP_WAS_UPDATED
     }
   ])
 })
@@ -87,9 +94,9 @@ it('should handle a window resize event', () => {
 
   wrapper.find('BrowserResizeListener').prop('onWindowResize')(200)
 
-  expect(mockDispatch.mock.calls.length).toEqual(3)
+  expect(mockDispatch.mock.calls.length).toEqual(4)
 
-  expect(mockDispatch.mock.calls[2]).toEqual([
+  expect(mockDispatch.mock.calls[3]).toEqual([
     {
       type: browserActionTypes.BROWSER_WIDTH_CHANGED,
       payload: { width: 200 }

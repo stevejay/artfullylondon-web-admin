@@ -9,14 +9,14 @@ import log from 'loglevel'
 
 import Button from '_src/components/button'
 import IconButton from '_src/components/button/icon'
-import LogoHeader from '_src/components/logo/header'
+import HeaderLogo from '_src/components/logo/header'
 import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 import Dropdown from '_src/modules/header/components/dropdown'
+import * as authActionTypes from '_src/constants/action/auth'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as browserSelectors from '_src/store/selectors/browser'
 import * as menuConstants from '_src/constants/menu'
-import * as authActions from '_src/actions/auth'
 import './index.scss'
 
 export class Header extends React.Component {
@@ -36,6 +36,9 @@ export class Header extends React.Component {
     this.setState({ hasError: true })
     log.error(error, info.componentStack)
   }
+  handleLogout = () => {
+    this.props.dispatch({ type: authActionTypes.LOG_OUT })
+  }
   render () {
     const {
       onShowSidenav,
@@ -43,66 +46,69 @@ export class Header extends React.Component {
       loggedIn,
       isWideBrowser,
       showingSidenav,
-      history,
-      logOut
+      history
     } = this.props
 
     if (!loggedIn || this.state.hasError) {
       return null
     }
 
-    return [
-      <LogoHeader
-        key='logo'
-        styleName='logo'
-        size={isWideBrowser ? 'medium' : 'small'}
-      />,
-      <Toolbar key='toolbar'>
-        {!isWideBrowser &&
-          <ToolbarItem>
-            <IconButton
-              icon={Search}
-              onClick={onShowQuicksearch}
-              aria-label='Show quicksearch dialog'
-            />
-          </ToolbarItem>}
-        {!isWideBrowser &&
-          <ToolbarItem>
-            <IconButton
-              icon={Bars}
-              onClick={onShowSidenav}
-              aria-label='Show navigation menu'
-              aria-controls='sidenav'
-              ariaExpanded={showingSidenav}
-            />
-          </ToolbarItem>}
-        {isWideBrowser &&
-          menuConstants.MENUS.map(menu => (
-            <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
-              <Dropdown
-                label={menu.label}
-                items={menu.items}
-                history={history}
+    return (
+      <React.Fragment>
+        <HeaderLogo
+          styleName='logo'
+          size={isWideBrowser ? 'medium' : 'small'}
+        />
+        <Toolbar>
+          {!isWideBrowser &&
+            <ToolbarItem>
+              <IconButton
+                icon={Search}
+                onClick={onShowQuicksearch}
+                aria-label='Show quicksearch dialog'
               />
-            </ToolbarItem>
-          ))}
-        {isWideBrowser &&
-          <ToolbarItem>
-            <Button onClick={logOut} ariaLabel='Log out of the app'>
-              Log Out
-            </Button>
-          </ToolbarItem>}
-        {isWideBrowser &&
-          <ToolbarItem>
-            <Button
-              onClick={onShowQuicksearch}
-              ariaLabel='Show quicksearch dialog'
-            >
-              Quicksearch
-            </Button>
-          </ToolbarItem>}
-      </Toolbar>
-    ]
+            </ToolbarItem>}
+          {!isWideBrowser &&
+            <ToolbarItem>
+              <IconButton
+                icon={Bars}
+                onClick={onShowSidenav}
+                aria-label='Show navigation menu'
+                aria-controls='sidenav'
+                ariaExpanded={showingSidenav}
+              />
+            </ToolbarItem>}
+          {isWideBrowser &&
+            menuConstants.MENUS.map(menu => (
+              <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
+                <Dropdown
+                  label={menu.label}
+                  items={menu.items}
+                  history={history}
+                />
+              </ToolbarItem>
+            ))}
+          {isWideBrowser &&
+            <ToolbarItem>
+              <Button
+                onClick={this.handleLogout}
+                ariaLabel='Log out of the app'
+              >
+                Log Out
+              </Button>
+            </ToolbarItem>}
+          {isWideBrowser &&
+            <ToolbarItem>
+              <Button
+                onClick={onShowQuicksearch}
+                ariaLabel='Show quicksearch dialog'
+              >
+                Quicksearch
+              </Button>
+            </ToolbarItem>}
+        </Toolbar>
+      </React.Fragment>
+    )
   }
 }
 
@@ -112,7 +118,8 @@ Header.propTypes = {
   showingSidenav: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
   onShowSidenav: PropTypes.func.isRequired,
-  onShowQuicksearch: PropTypes.func.isRequired
+  onShowQuicksearch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default withRouter(
@@ -121,10 +128,6 @@ export default withRouter(
     state => ({
       loggedIn: authSelectors.isLoggedIn(state),
       isWideBrowser: browserSelectors.isWideBrowser(state)
-    }),
-    /* istanbul ignore next */
-    dispatch => ({
-      logOut: bindActionCreators(authActions.logOut, dispatch)
     })
   )(Header)
 )

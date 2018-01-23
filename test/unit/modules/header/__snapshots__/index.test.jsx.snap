@@ -3,40 +3,220 @@
 exports[`should render correctly when has an error 1`] = `""`;
 
 exports[`should render correctly when logged in 1`] = `
-Array [
+<React.Fragment>
   <HeaderLogo
     className="src-modules-header-index__logo"
-    key="logo"
     size="medium"
-  />,
-  <Toolbar
-    key="toolbar"
-  />,
-]
+  />
+  <Toolbar>
+    <ToolbarItem
+      className="src-modules-header-index__dropdown-toolbar-item"
+      key="Entities"
+    >
+      <Dropdown
+        history={Object {}}
+        items={
+          Array [
+            Object {
+              "label": "Add Event",
+              "match": /\\^\\\\/event\\$/i,
+              "path": "/event",
+            },
+            Object {
+              "label": "Add Event Series",
+              "match": /\\^\\\\/event-series\\$/i,
+              "path": "/event-series",
+            },
+            Object {
+              "label": "Add Talent",
+              "match": /\\^\\\\/talent\\$/i,
+              "path": "/talent",
+            },
+            Object {
+              "label": "Add Venue",
+              "match": /\\^\\\\/venue\\$/i,
+              "path": "/venue",
+            },
+          ]
+        }
+        label="Entities"
+      />
+    </ToolbarItem>
+    <ToolbarItem
+      className="src-modules-header-index__dropdown-toolbar-item"
+      key="Tags"
+    >
+      <Dropdown
+        history={Object {}}
+        items={
+          Array [
+            Object {
+              "label": "Medium Tags",
+              "match": /\\^\\\\/tags\\\\/medium\\$/i,
+              "path": "/tags/medium",
+            },
+            Object {
+              "label": "Style Tags",
+              "match": /\\^\\\\/tags\\\\/style\\$/i,
+              "path": "/tags/style",
+            },
+            Object {
+              "label": "Audience Tags",
+              "match": /\\^\\\\/tags\\\\/audience\\$/i,
+              "path": "/tags/audience",
+            },
+            Object {
+              "label": "Geo Tags",
+              "match": /\\^\\\\/tags\\\\/geo\\$/i,
+              "path": "/tags/geo",
+            },
+          ]
+        }
+        label="Tags"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        ariaLabel="Log out of the app"
+        onClick={[Function]}
+        type="button"
+      >
+        Log Out
+      </Button>
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        ariaLabel="Show quicksearch dialog"
+        onClick={[Function]}
+        type="button"
+      >
+        Quicksearch
+      </Button>
+    </ToolbarItem>
+  </Toolbar>
+</React.Fragment>
 `;
 
 exports[`should render correctly when narrow 1`] = `
-Array [
+<React.Fragment>
   <HeaderLogo
     className="src-modules-header-index__logo"
-    key="logo"
     size="small"
-  />,
-  <Toolbar
-    key="toolbar"
-  />,
-]
+  />
+  <Toolbar>
+    <ToolbarItem>
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <IconButton
+        aria-controls="sidenav"
+        aria-label="Show navigation menu"
+        ariaExpanded={false}
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+  </Toolbar>
+</React.Fragment>
 `;
 
 exports[`should render correctly when showing the sidenav 1`] = `
-Array [
+<React.Fragment>
   <HeaderLogo
     className="src-modules-header-index__logo"
-    key="logo"
     size="medium"
-  />,
-  <Toolbar
-    key="toolbar"
-  />,
-]
+  />
+  <Toolbar>
+    <ToolbarItem
+      className="src-modules-header-index__dropdown-toolbar-item"
+      key="Entities"
+    >
+      <Dropdown
+        history={Object {}}
+        items={
+          Array [
+            Object {
+              "label": "Add Event",
+              "match": /\\^\\\\/event\\$/i,
+              "path": "/event",
+            },
+            Object {
+              "label": "Add Event Series",
+              "match": /\\^\\\\/event-series\\$/i,
+              "path": "/event-series",
+            },
+            Object {
+              "label": "Add Talent",
+              "match": /\\^\\\\/talent\\$/i,
+              "path": "/talent",
+            },
+            Object {
+              "label": "Add Venue",
+              "match": /\\^\\\\/venue\\$/i,
+              "path": "/venue",
+            },
+          ]
+        }
+        label="Entities"
+      />
+    </ToolbarItem>
+    <ToolbarItem
+      className="src-modules-header-index__dropdown-toolbar-item"
+      key="Tags"
+    >
+      <Dropdown
+        history={Object {}}
+        items={
+          Array [
+            Object {
+              "label": "Medium Tags",
+              "match": /\\^\\\\/tags\\\\/medium\\$/i,
+              "path": "/tags/medium",
+            },
+            Object {
+              "label": "Style Tags",
+              "match": /\\^\\\\/tags\\\\/style\\$/i,
+              "path": "/tags/style",
+            },
+            Object {
+              "label": "Audience Tags",
+              "match": /\\^\\\\/tags\\\\/audience\\$/i,
+              "path": "/tags/audience",
+            },
+            Object {
+              "label": "Geo Tags",
+              "match": /\\^\\\\/tags\\\\/geo\\$/i,
+              "path": "/tags/geo",
+            },
+          ]
+        }
+        label="Tags"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        ariaLabel="Log out of the app"
+        onClick={[Function]}
+        type="button"
+      >
+        Log Out
+      </Button>
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        ariaLabel="Show quicksearch dialog"
+        onClick={[Function]}
+        type="button"
+      >
+        Quicksearch
+      </Button>
+    </ToolbarItem>
+  </Toolbar>
+</React.Fragment>
 `;

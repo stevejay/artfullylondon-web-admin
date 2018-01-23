@@ -7,7 +7,7 @@ exports[`should render correctly 1`] = `
     className="src-modules-quicksearch-components-modal-transition__modal-transition"
     in={false}
     mountOnEnter={false}
-    timeout={200}
+    timeoutMs={200}
     unmountOnExit={false}
   >
     <Transition

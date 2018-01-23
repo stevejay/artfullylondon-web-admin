@@ -4,6 +4,7 @@ import _ from 'lodash'
 
 import { AppUpdater } from '_src/modules/app-updater'
 import * as appActionTypes from '_src/constants/action/app'
+import Button from '_src/components/button'
 
 it('should render correctly when should not update', () => {
   const wrapper = shallow(<AppUpdater shouldUpdate={false} dispatch={_.noop} />)
@@ -19,7 +20,7 @@ it('should invoke the update action when the update button is clicked', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(<AppUpdater shouldUpdate dispatch={dispatch} />)
-  wrapper.find('Button').simulate('click')
+  wrapper.find(Button).simulate('click')
 
   expect(dispatch).toHaveBeenCalledWith({ type: appActionTypes.UPDATE_APP })
 })
