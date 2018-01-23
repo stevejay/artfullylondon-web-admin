@@ -2,9 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal as ReactOverlaysModal } from 'react-overlays'
 
-// import BackdropTransition from '_src/components/transition/backdrop'
-
-import FadeTransition from '_src/components/transition/fade'
+import BackdropTransition from '_src/components/transition/backdrop'
 import './index.scss'
 
 export const Modal = ({
@@ -37,7 +35,7 @@ Modal.propTypes = {
 }
 
 Modal.defaultProps = {
-  backdropTransition: FadeTransition
+  backdropTransition: BackdropTransition
 }
 
 export default Modal

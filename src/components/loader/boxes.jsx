@@ -14,7 +14,7 @@ class BoxesLoader extends React.Component {
     const { size, type, className } = this.props
 
     return (
-      <div styleName='container'>
+      <div styleName='container' aria-busy role='alert'>
         <div
           className={className}
           role='alert'

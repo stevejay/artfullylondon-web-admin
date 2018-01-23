@@ -6,7 +6,7 @@ exports[`should render correctly 1`] = `
   className=""
   in={false}
   mountOnEnter={false}
-  timeout={200}
+  timeoutMs={200}
   unmountOnExit={false}
 >
   <Transition

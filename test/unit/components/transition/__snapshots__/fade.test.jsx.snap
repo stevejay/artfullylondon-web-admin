@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<BackdropTransition>
+<FadeTransition>
   <BasicTransition
     appear={false}
-    className="src-components-transition-backdrop__backdrop-transition"
+    className="src-components-transition-fade__fade-transition"
     in={false}
     mountOnEnter={true}
     onEnter={[Function]}
@@ -28,5 +28,5 @@ exports[`should render correctly 1`] = `
       unmountOnExit={true}
     />
   </BasicTransition>
-</BackdropTransition>
+</FadeTransition>
 `;

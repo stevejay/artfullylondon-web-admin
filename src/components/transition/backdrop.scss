@@ -1,7 +1,14 @@
+$animationDuration: 200;
+$animationDurationMs: $animationDuration+0ms;
+
+:export {
+  animationDuration: $animationDuration;
+}
+
 .backdrop-transition {
   opacity: 0;
   will-change: opacity;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity $animationDurationMs ease-in-out;
 }
 
 .backdrop-transition:global(.in) {

@@ -2,7 +2,6 @@
 
 exports[`should render correctly 1`] = `
 <Modal
-  aria-label="Quicksearch"
   autoFocus={true}
   backdrop={true}
   backdropClassName="backdrop"

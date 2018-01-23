@@ -2,7 +2,9 @@
 
 exports[`should render a default loader correctly 1`] = `
 <div
+  aria-busy={true}
   className="src-components-loader-boxes__container"
+  role="alert"
 >
   <div
     aria-busy={true}
