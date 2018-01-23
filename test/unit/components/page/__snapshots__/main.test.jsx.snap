@@ -15,7 +15,7 @@ exports[`should render correctly when has an error 1`] = `
   className="src-components-page-main__page-main"
 >
   <Error
-    statusCode={500}
+    type="default"
   />
 </main>
 `;

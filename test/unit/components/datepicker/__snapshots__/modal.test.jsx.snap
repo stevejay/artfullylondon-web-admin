@@ -1,164 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<ModalContainer
-  dismissable={true}
-  onHide={[Function]}
-  title="The Title"
-  type="narrow"
->
-  <DayPicker
-    canChangeMonth={true}
-    captionElement={
-      <Caption
-        classNames={
-          Object {
-            "body": "DayPicker-Body",
-            "caption": "DayPicker-Caption",
-            "container": "DayPicker",
-            "day": "DayPicker-Day",
-            "disabled": "disabled",
-            "footer": "DayPicker-Footer",
-            "interactionDisabled": "DayPicker--interactionDisabled",
-            "month": "DayPicker-Month",
-            "months": "DayPicker-Months",
-            "navBar": "DayPicker-NavBar",
-            "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
-            "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
-            "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
-            "outside": "outside",
-            "selected": "selected",
-            "today": "today",
-            "todayButton": "DayPicker-TodayButton",
-            "week": "DayPicker-Week",
-            "weekNumber": "DayPicker-WeekNumber",
-            "weekday": "DayPicker-Weekday",
-            "weekdays": "DayPicker-Weekdays",
-            "weekdaysRow": "DayPicker-WeekdaysRow",
-            "wrapper": "DayPicker-wrapper",
-          }
+<DayPicker
+  canChangeMonth={true}
+  captionElement={
+    <Caption
+      classNames={
+        Object {
+          "body": "DayPicker-Body",
+          "caption": "DayPicker-Caption",
+          "container": "DayPicker",
+          "day": "DayPicker-Day",
+          "disabled": "disabled",
+          "footer": "DayPicker-Footer",
+          "interactionDisabled": "DayPicker--interactionDisabled",
+          "month": "DayPicker-Month",
+          "months": "DayPicker-Months",
+          "navBar": "DayPicker-NavBar",
+          "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
+          "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
+          "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
+          "outside": "outside",
+          "selected": "selected",
+          "today": "today",
+          "todayButton": "DayPicker-TodayButton",
+          "week": "DayPicker-Week",
+          "weekNumber": "DayPicker-WeekNumber",
+          "weekday": "DayPicker-Weekday",
+          "weekdays": "DayPicker-Weekdays",
+          "weekdaysRow": "DayPicker-WeekdaysRow",
+          "wrapper": "DayPicker-wrapper",
         }
-        localeUtils={
-          Object {
-            "formatDay": [Function],
-            "formatMonthTitle": [Function],
-            "formatWeekdayLong": [Function],
-            "formatWeekdayShort": [Function],
-            "getFirstDayOfWeek": [Function],
-            "getMonths": [Function],
-          }
-        }
-      />
-    }
-    className="src-components-datepicker-modal__daypicker"
-    classNames={
-      Object {
-        "body": "DayPicker-Body",
-        "caption": "DayPicker-Caption",
-        "container": "DayPicker",
-        "day": "DayPicker-Day",
-        "disabled": "disabled",
-        "footer": "DayPicker-Footer",
-        "interactionDisabled": "DayPicker--interactionDisabled",
-        "month": "DayPicker-Month",
-        "months": "DayPicker-Months",
-        "navBar": "DayPicker-NavBar",
-        "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
-        "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
-        "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
-        "outside": "outside",
-        "selected": "selected",
-        "today": "today",
-        "todayButton": "DayPicker-TodayButton",
-        "week": "DayPicker-Week",
-        "weekNumber": "DayPicker-WeekNumber",
-        "weekday": "DayPicker-Weekday",
-        "weekdays": "DayPicker-Weekdays",
-        "weekdaysRow": "DayPicker-WeekdaysRow",
-        "wrapper": "DayPicker-wrapper",
       }
-    }
-    disabledDays={[Function]}
-    enableOutsideDays={false}
-    fixedWeeks={false}
-    initialMonth={2017-01-01T00:00:00.000Z}
-    labels={
-      Object {
-        "nextMonth": "Next Month",
-        "previousMonth": "Previous Month",
-      }
-    }
-    locale="en"
-    localeUtils={
-      Object {
-        "default": Object {
+      localeUtils={
+        Object {
           "formatDay": [Function],
           "formatMonthTitle": [Function],
           "formatWeekdayLong": [Function],
           "formatWeekdayShort": [Function],
           "getFirstDayOfWeek": [Function],
           "getMonths": [Function],
-        },
+        }
+      }
+    />
+  }
+  className="src-components-datepicker-modal__daypicker"
+  classNames={
+    Object {
+      "body": "DayPicker-Body",
+      "caption": "DayPicker-Caption",
+      "container": "DayPicker",
+      "day": "DayPicker-Day",
+      "disabled": "disabled",
+      "footer": "DayPicker-Footer",
+      "interactionDisabled": "DayPicker--interactionDisabled",
+      "month": "DayPicker-Month",
+      "months": "DayPicker-Months",
+      "navBar": "DayPicker-NavBar",
+      "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
+      "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
+      "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
+      "outside": "outside",
+      "selected": "selected",
+      "today": "today",
+      "todayButton": "DayPicker-TodayButton",
+      "week": "DayPicker-Week",
+      "weekNumber": "DayPicker-WeekNumber",
+      "weekday": "DayPicker-Weekday",
+      "weekdays": "DayPicker-Weekdays",
+      "weekdaysRow": "DayPicker-WeekdaysRow",
+      "wrapper": "DayPicker-wrapper",
+    }
+  }
+  disabledDays={[Function]}
+  enableOutsideDays={false}
+  fixedWeeks={false}
+  initialMonth={2017-01-01T00:00:00.000Z}
+  labels={
+    Object {
+      "nextMonth": "Next Month",
+      "previousMonth": "Previous Month",
+    }
+  }
+  locale="en"
+  localeUtils={
+    Object {
+      "default": Object {
         "formatDay": [Function],
         "formatMonthTitle": [Function],
         "formatWeekdayLong": [Function],
         "formatWeekdayShort": [Function],
         "getFirstDayOfWeek": [Function],
         "getMonths": [Function],
+      },
+      "formatDay": [Function],
+      "formatMonthTitle": [Function],
+      "formatWeekdayLong": [Function],
+      "formatWeekdayShort": [Function],
+      "getFirstDayOfWeek": [Function],
+      "getMonths": [Function],
+    }
+  }
+  navbarElement={
+    <Navbar
+      classNames={
+        Object {
+          "body": "DayPicker-Body",
+          "caption": "DayPicker-Caption",
+          "container": "DayPicker",
+          "day": "DayPicker-Day",
+          "disabled": "disabled",
+          "footer": "DayPicker-Footer",
+          "interactionDisabled": "DayPicker--interactionDisabled",
+          "month": "DayPicker-Month",
+          "months": "DayPicker-Months",
+          "navBar": "DayPicker-NavBar",
+          "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
+          "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
+          "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
+          "outside": "outside",
+          "selected": "selected",
+          "today": "today",
+          "todayButton": "DayPicker-TodayButton",
+          "week": "DayPicker-Week",
+          "weekNumber": "DayPicker-WeekNumber",
+          "weekday": "DayPicker-Weekday",
+          "weekdays": "DayPicker-Weekdays",
+          "weekdaysRow": "DayPicker-WeekdaysRow",
+          "wrapper": "DayPicker-wrapper",
+        }
       }
-    }
-    navbarElement={
-      <Navbar
-        classNames={
-          Object {
-            "body": "DayPicker-Body",
-            "caption": "DayPicker-Caption",
-            "container": "DayPicker",
-            "day": "DayPicker-Day",
-            "disabled": "disabled",
-            "footer": "DayPicker-Footer",
-            "interactionDisabled": "DayPicker--interactionDisabled",
-            "month": "DayPicker-Month",
-            "months": "DayPicker-Months",
-            "navBar": "DayPicker-NavBar",
-            "navButtonInteractionDisabled": "DayPicker-NavButton--interactionDisabled",
-            "navButtonNext": "DayPicker-NavButton DayPicker-NavButton--next",
-            "navButtonPrev": "DayPicker-NavButton DayPicker-NavButton--prev",
-            "outside": "outside",
-            "selected": "selected",
-            "today": "today",
-            "todayButton": "DayPicker-TodayButton",
-            "week": "DayPicker-Week",
-            "weekNumber": "DayPicker-WeekNumber",
-            "weekday": "DayPicker-Weekday",
-            "weekdays": "DayPicker-Weekdays",
-            "weekdaysRow": "DayPicker-WeekdaysRow",
-            "wrapper": "DayPicker-wrapper",
-          }
+      dir="ltr"
+      labels={
+        Object {
+          "nextMonth": "Next Month",
+          "previousMonth": "Previous Month",
         }
-        dir="ltr"
-        labels={
-          Object {
-            "nextMonth": "Next Month",
-            "previousMonth": "Previous Month",
-          }
-        }
-        showNextButton={true}
-        showPreviousButton={true}
-      />
-    }
-    numberOfMonths={1}
-    onDayClick={[Function]}
-    pagedNavigation={false}
-    renderDay={[Function]}
-    renderWeek={[Function]}
-    reverseMonths={false}
-    selectedDays={[Function]}
-    showOutsideDays={false}
-    showWeekDays={true}
-    showWeekNumbers={false}
-    tabIndex={0}
-    weekdayElement={<Weekday />}
-  />
-</ModalContainer>
+      }
+      showNextButton={true}
+      showPreviousButton={true}
+    />
+  }
+  numberOfMonths={1}
+  onDayClick={[Function]}
+  pagedNavigation={false}
+  renderDay={[Function]}
+  renderWeek={[Function]}
+  reverseMonths={false}
+  selectedDays={[Function]}
+  showOutsideDays={false}
+  showWeekDays={true}
+  showWeekNumbers={false}
+  tabIndex={0}
+  weekdayElement={<Weekday />}
+/>
 `;

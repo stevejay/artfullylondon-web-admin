@@ -8,27 +8,6 @@ exports[`should render correctly 1`] = `
   touched={false}
 >
   <FieldBorder>
-    <ReduxForm
-      constraint={
-        Object {
-          "copyright": Object {
-            "length": Object {
-              "maximum": 300,
-            },
-          },
-          "imageUrl": Object {
-            "length": Object {
-              "maximum": 400,
-            },
-            "presence": Object {
-              "disallowEmpty": true,
-            },
-            "url": true,
-          },
-        }
-      }
-      onSubmit={[Function]}
-    />
     <Component />
     <ImageGrid>
       <ImageGridCard

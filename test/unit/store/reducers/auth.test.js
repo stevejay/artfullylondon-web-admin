@@ -16,12 +16,12 @@ it('should have the correct initial state', () => {
 })
 
 it('should handle an auto login attempted message', () => {
-  const state = {
+  const state = deepFreeze({
     autoLogInAttempted: false,
     state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
     cognitoUser: null,
     username: ''
-  }
+  })
 
   const actual = authReducer(state, {
     type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
@@ -36,12 +36,12 @@ it('should handle an auto login attempted message', () => {
 })
 
 it('should handle a login succeeded message', () => {
-  const state = {
+  const state = deepFreeze({
     autoLogInAttempted: true,
     state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
     cognitoUser: null,
     username: ''
-  }
+  })
 
   const actual = authReducer(state, {
     type: authActionTypes.LOG_IN_SUCCEEDED,
@@ -61,12 +61,12 @@ it('should handle a login succeeded message', () => {
 })
 
 it('should handle a login failed message', () => {
-  const state = {
+  const state = deepFreeze({
     autoLogInAttempted: true,
     state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
     cognitoUser: null,
     username: ''
-  }
+  })
 
   const actual = authReducer(state, {
     type: authActionTypes.LOG_IN_FAILED
@@ -81,12 +81,12 @@ it('should handle a login failed message', () => {
 })
 
 it('should handle a logged out message that resets the username', () => {
-  const state = {
+  const state = deepFreeze({
     autoLogInAttempted: true,
     state: authConstants.AUTH_STATE_LOGGED_IN,
     cognitoUser: { username: 'steve' },
     username: 'steve'
-  }
+  })
 
   const actual = authReducer(state, {
     type: authActionTypes.LOGGED_OUT,
@@ -104,12 +104,12 @@ it('should handle a logged out message that resets the username', () => {
 })
 
 it('should handle a logged out message that does not reset the username', () => {
-  const state = {
+  const state = deepFreeze({
     autoLogInAttempted: true,
     state: authConstants.AUTH_STATE_LOGGED_IN,
     cognitoUser: { username: 'steve' },
     username: 'steve'
-  }
+  })
 
   const actual = authReducer(state, {
     type: authActionTypes.LOGGED_OUT

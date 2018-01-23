@@ -8,64 +8,6 @@ exports[`should render correctly 1`] = `
   touched={false}
 >
   <FieldBorder>
-    <ReduxForm
-      constraint={
-        Object {
-          "linkType": Object {
-            "inclusion": Array [
-              "Facebook",
-              "Homepage",
-              "Twitter",
-              "Wikipedia",
-              "Access",
-              "Instagram",
-              "Booking",
-            ],
-            "presence": Object {
-              "disallowEmpty": true,
-            },
-          },
-          "linkUrl": Object {
-            "length": Object {
-              "maximum": 200,
-            },
-            "presence": Object {
-              "disallowEmpty": true,
-            },
-            "url": true,
-          },
-        }
-      }
-      linkTypeOptions={
-        Array [
-          Object {
-            "label": "Homepage",
-            "value": "Homepage",
-          },
-          Object {
-            "label": "Twitter",
-            "value": "Twitter",
-          },
-          Object {
-            "label": "Instagram",
-            "value": "Instagram",
-          },
-          Object {
-            "label": "Wikipedia",
-            "value": "Wikipedia",
-          },
-          Object {
-            "label": "Access",
-            "value": "Access",
-          },
-          Object {
-            "label": "Booking",
-            "value": "Booking",
-          },
-        ]
-      }
-      onSubmit={[Function]}
-    />
     <Component />
     <Grid>
       <LinkGridRow

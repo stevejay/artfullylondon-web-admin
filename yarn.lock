@@ -7842,6 +7842,10 @@ semistandard@^12.0.0:
     eslint-plugin-standard "~3.0.1"
     standard-engine "~7.2.0"
 
+semver-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+
 semver-diff@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/semver-diff/-/semver-diff-2.1.0.tgz#4bbb8437c8d37e4b0cf1a68fd726ec6d645d6d36"
@@ -8193,6 +8197,10 @@ stdout-stream@^1.4.0:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+
+store2@^2.5.11:
+  version "2.5.11"
+  resolved "https://registry.yarnpkg.com/store2/-/store2-2.5.11.tgz#0450b066ea0f6e50b31267d441ec19690c037ddc"
 
 stream-browserify@^2.0.1:
   version "2.0.1"

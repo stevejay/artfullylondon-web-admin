@@ -5,7 +5,7 @@ exports[`should render correctly when get is in progress 1`] = `
   className="src-components-entity-card-collection__background"
 >
   <Loader
-    size="massive"
+    size="large"
     type="default"
   />
 </AltBackgroundSection>

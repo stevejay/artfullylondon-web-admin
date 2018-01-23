@@ -6,7 +6,7 @@ import {
   getMaxJSDate,
   mapJsDateToStringDate
 } from '_src/lib/time'
-import ModalContainer from '_src/components/modal/container'
+// import ModalContainer from '_src/components/modal/container'
 import './modal.scss'
 
 const MIN_JS_DATE = getMinJSDate()
@@ -59,7 +59,8 @@ class DatepickerModal extends React.Component {
     const { selectedDay, from } = this.state
 
     return (
-      <ModalContainer title={title} type='narrow' onHide={onHide}>
+      // <ModalContainer title={title} type='narrow' onHide={onHide}>
+      (
         <DayPicker
           styleName='daypicker'
           selectedDays={this.selectedDays}
@@ -68,7 +69,8 @@ class DatepickerModal extends React.Component {
           initialMonth={selectedDay || from || undefined}
           onDayClick={this.handleDayClick}
         />
-      </ModalContainer>
+      )
+      // </ModalContainer>
     )
   }
 }

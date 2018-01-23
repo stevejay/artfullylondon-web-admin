@@ -7,8 +7,8 @@ import FieldDivider from '_src/components/field/divider'
 import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import ImageGrid from '_src/components/image-grid'
 import ImageGridCard from '_src/components/image-grid/card'
-import ImageEditorForm from '_src/containers/forms/image-editor'
-import UpdateImageModal from '_src/containers/modals/update-image'
+// import ImageEditorForm from '_src/containers/forms/image-editor'
+// import UpdateImageModal from '_src/containers/modals/update-image'
 
 import { addImageConstraint } from '_src/constants/image-constraints'
 
@@ -39,18 +39,18 @@ class ImagesField extends React.Component {
   handleUpdateImage = ({ key, copyright }) => {
     const { showModal, imageActions, parentFormName } = this.props
 
-    showModal({
-      component: UpdateImageModal,
-      componentProps: {
-        formData: { copyright },
-        onSubmit: values =>
-          imageActions.updateImage({
-            id: key,
-            values,
-            parentFormName
-          })
-      }
-    })
+    // showModal({
+    //   component: UpdateImageModal,
+    //   componentProps: {
+    //     formData: { copyright },
+    //     onSubmit: values =>
+    //       imageActions.updateImage({
+    //         id: key,
+    //         values,
+    //         parentFormName
+    //       })
+    //   }
+    // })
   }
   render () {
     const {
@@ -60,6 +60,8 @@ class ImagesField extends React.Component {
       meta: { touched, error }
     } = this.props
 
+    // TODO add form and modal back in
+
     return (
       <FieldContainer
         label={label}
@@ -68,11 +70,11 @@ class ImagesField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          <ImageEditorForm
+          {/* <ImageEditorForm
             ref={ref => (this._form = ref)}
             onSubmit={this.handleSubmit}
             constraint={addImageConstraint}
-          />
+          /> */}
           <FieldDivider />
           <ImageGrid>
             {value.map(element => (

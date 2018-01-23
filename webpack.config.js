@@ -40,6 +40,7 @@ const ENTRY = PRODUCTION
       'amazon-cognito-identity-js',
       'aws-sdk',
       'backo',
+      'ensure-request',
       'fetch-ponyfill',
       'global',
       'jsbn',
@@ -66,9 +67,10 @@ const ENTRY = PRODUCTION
       'redux-actions',
       'redux-form',
       'redux-saga',
+      'semver-compare',
       'sjcl',
       'smart-outline',
-      'ensure-request'
+      'store2'
     ],
     app: ['./index.jsx']
   }

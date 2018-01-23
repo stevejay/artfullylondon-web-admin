@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects'
+import appSagas from './app'
 import authSagas from './auth'
 import browserSagas from './browser'
 import serverConstantsSagas from './server-constants'
@@ -14,6 +15,7 @@ import notificationsSagas from './notifications'
 
 export default function * () {
   yield all([
+    ...appSagas,
     ...authSagas,
     ...serverConstantsSagas,
     ...browserSagas,

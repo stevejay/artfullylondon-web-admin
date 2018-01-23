@@ -1,0 +1,3 @@
+export const APP_SHOULD_UPDATE = 'app/APP_SHOULD_UPDATE'
+export const UPDATE_APP = 'app/UPDATE_APP'
+export const CHECK_IF_APP_WAS_UPDATED = 'app/CHECK_IF_APP_WAS_UPDATED'

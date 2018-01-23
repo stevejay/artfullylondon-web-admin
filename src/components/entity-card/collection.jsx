@@ -28,7 +28,7 @@ class EntityCardCollection extends React.Component {
 
     return (
       <AltBackground styleName='background'>
-        {getInProgress && <Loader size='massive' />}
+        {getInProgress && <Loader size='large' />}
         {!getInProgress && _.isEmpty(entities) && <NoContent />}
         {!getInProgress &&
           !_.isEmpty(entities) &&

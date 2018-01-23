@@ -5,7 +5,7 @@ import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
 import LinkGridRow from '_src/components/links/grid-row'
-import LinkEditorForm from '_src/containers/forms/link-editor'
+// import LinkEditorForm from '_src/containers/forms/link-editor'
 import linkConstraint from '_src/constants/link-constraint'
 import { getAvailableLinkTypeDropdownOptions } from '_src/lib/link'
 
@@ -29,6 +29,8 @@ class LinksField extends React.Component {
     const { label, input: { value }, meta: { touched, error } } = this.props
     const linkTypeOptions = getAvailableLinkTypeDropdownOptions(value)
 
+    // TODO add form back in
+
     return (
       <FieldContainer
         label={label}
@@ -37,12 +39,12 @@ class LinksField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          <LinkEditorForm
+          {/* <LinkEditorForm
             ref={ref => (this._form = ref)}
             onSubmit={this.handleSubmit}
             constraint={linkConstraint}
             linkTypeOptions={linkTypeOptions}
-          />
+          /> */}
           <FieldDivider />
           <Grid>
             {value.map(element => (

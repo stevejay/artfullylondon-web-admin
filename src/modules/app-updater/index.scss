@@ -1,0 +1,22 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  box-shadow: 0px -3px 8px 0px rgba(0, 0, 0, .5);
+  background-color: $white;
+}
+
+.message {
+  flex-grow: 1;
+  padding: 0;
+  margin: 0 1rem 0 0;
+  font-size: 1.4rem;
+}

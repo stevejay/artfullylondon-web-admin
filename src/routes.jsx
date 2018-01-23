@@ -14,11 +14,13 @@ import BrowserResizeListener from '_src/components/browser-resize-listener'
 import Dashboard from '_src/modules/dashboard/pages/dashboard'
 import NotFound from '_src/modules/error/pages/not-found'
 import Notification from '_src/modules/notification'
+import AppUpdater from '_src/modules/app-updater'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
 import * as authActions from '_src/actions/auth'
 import * as authSelectors from '_src/store/selectors/auth'
+import * as appActionTypes from '_src/constants/action/app'
 import * as authActionTypes from '_src/constants/action/auth'
 import * as browserActionTypes from '_src/constants/action/browser'
 import * as serverConstantsTypes from '_src/constants/action/server-constants'
@@ -29,6 +31,7 @@ export class Routes extends React.Component {
     this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
     props.dispatch({ type: serverConstantsTypes.FETCH_SERVER_CONSTANTS })
+    props.dispatch({ type: appActionTypes.CHECK_IF_APP_WAS_UPDATED })
   }
   handleWindowResize = width => {
     this.props.dispatch({
@@ -59,7 +62,6 @@ export class Routes extends React.Component {
     return (
       <Page>
         <BrowserResizeListener onWindowResize={this.handleWindowResize} />
-        <Notification />
         <Sidenav
           show={showSidenav}
           onHide={this.handleHideSidenav}
@@ -92,6 +94,8 @@ export class Routes extends React.Component {
           </PageMain>,
           <PageFooter key='footer'><Footer /></PageFooter>
         ]}
+        <AppUpdater />
+        <Notification />
       </Page>
     )
   }

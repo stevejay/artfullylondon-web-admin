@@ -1,0 +1,20 @@
+$animationDuration: 200;
+$animationDurationMs: $animationDuration+0ms;
+
+:export {
+  animationDuration: $animationDuration;
+}
+
+.fade-transition {
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity $animationDurationMs ease-in-out;
+}
+
+.fade-transition:global(.in) {
+  opacity: 1;
+}
+
+.fade-transition:global(.out) {
+  opacity: 0;
+}

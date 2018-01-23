@@ -1,6 +1,5 @@
-@import 'variables.scss';
-
 .backdrop-transition {
+  opacity: 0;
   will-change: opacity;
   transition: opacity 200ms ease-in-out;
 }

@@ -9,39 +9,37 @@ const TRANSITION_STYLES = {
   [rtgTransition.EXITED]: 'out'
 }
 
-const BasicTransition = props => {
-  const { className, children, ...rest } = props
-  const childClassName = children.props ? children.props.className : ''
+class BasicTransition extends React.Component {
+  render () {
+    const { className, children, timeoutMs, ...rest } = this.props
+    const childClassName = children.props ? children.props.className : null
 
-  return (
-    <Transition {...rest}>
-      {(status, innerProps) =>
-        React.cloneElement(children, {
-          ...innerProps,
-          className: `${className} ${childClassName || ''} ${TRANSITION_STYLES[status]}`
-        })}
-    </Transition>
-  )
+    return (
+      <Transition {...rest} timeout={timeoutMs}>
+        {(status, innerProps) =>
+          React.cloneElement(children, {
+            ...innerProps,
+            className: `${className} ${childClassName || ''} ${TRANSITION_STYLES[status]}`
+          })}
+      </Transition>
+    )
+  }
 }
 
 BasicTransition.propTypes = {
   in: PropTypes.bool,
-  timeout: PropTypes.number,
+  timeoutMs: PropTypes.number,
   mountOnEnter: PropTypes.bool,
   unmountOnExit: PropTypes.bool,
   appear: PropTypes.bool,
   className: PropTypes.string,
   onEnter: PropTypes.func,
-  onEntering: PropTypes.func,
-  onEntered: PropTypes.func,
-  onExit: PropTypes.func,
-  onExiting: PropTypes.func,
-  onExited: PropTypes.func
+  onExit: PropTypes.func
 }
 
 BasicTransition.defaultProps = {
   in: false,
-  timeout: 200,
+  timeoutMs: 200,
   mountOnEnter: false,
   unmountOnExit: false,
   appear: false,

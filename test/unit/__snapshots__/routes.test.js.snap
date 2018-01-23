@@ -7,7 +7,7 @@ exports[`should render correctly when logged in 1`] = `
   <BrowserResizeListener
     onWindowResize={[Function]}
   />
-  <Connect(Notifications) />
+  <Connect(Notification) />
   <withRouter(Connect(Sidenav))
     onHide={[Function]}
     pathname="/some/path"
@@ -29,7 +29,16 @@ exports[`should render correctly when logged in 1`] = `
   <PageMain
     key="main"
   >
-    Foo
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
   </PageMain>
   <PageFooter
     key="footer"
@@ -44,7 +53,7 @@ exports[`should render correctly when not logged in 1`] = `
   <BrowserResizeListener
     onWindowResize={[Function]}
   />
-  <Connect(Notifications) />
+  <Connect(Notification) />
   <withRouter(Connect(Sidenav))
     onHide={[Function]}
     pathname="/some/path"
