@@ -20,29 +20,33 @@ import normalise from '_src/lib/normalise'
 import tagConstraint from '_src/constants/tag-constraint'
 import tagNormaliser from '_src/constants/tag-normaliser'
 
-function * getAllTags () {
-  try {
-    yield put({ type: tagActionTypes.GET_TAGS_STARTING })
+// function * getAllTags () {
+//   try {
+//     yield put({ type: tagActionTypes.GET_TAGS_STARTED })
 
-    const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
-    const token = yield authLib.getAuthTokenForCurrentUser()
-    const json = yield call(fetchLib.get, url, token)
+//     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
+//     const token = yield authLib.getAuthTokenForCurrentUser()
+//     const json = yield call(fetchLib.get, url, token)
 
-    yield put({
-      type: tagActionTypes.GET_TAGS_SUCCEEDED,
-      payload: json
-    })
-  } catch (err) {
-    yield call(log.error, err)
-    yield put({ type: tagActionTypes.GET_TAGS_FAILED })
-  }
-}
+//     yield put({
+//       type: tagActionTypes.GET_TAGS_SUCCEEDED,
+//       payload: json
+//     })
+//   } catch (err) {
+//     yield call(log.error, err)
+//     yield put({ type: tagActionTypes.GET_TAGS_FAILED })
+//   }
+// }
 
 function * getTags (action) {
   try {
-    yield put({ type: tagActionTypes.GET_TAGS_STARTING })
-
     const tagType = action.payload.tagType
+
+    yield put({
+      type: tagActionTypes.GET_TAGS_STARTED,
+      payload: { tagType }
+    })
+
     const url =
       process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
     const token = yield authLib.getAuthTokenForCurrentUser()
@@ -50,7 +54,7 @@ function * getTags (action) {
 
     yield put({
       type: tagActionTypes.GET_TAGS_SUCCEEDED,
-      payload: json
+      payload: { tags: json.tags[tagType] || [] }
     })
   } catch (err) {
     yield call(log.error, err)
@@ -61,7 +65,7 @@ function * getTags (action) {
 function * addTag (action) {
   try {
     yield put(startSubmit(formConstants.TAG_EDITOR_FORM_NAME))
-    yield put({ type: tagActionTypes.ADD_TAG_STARTING })
+    yield put({ type: tagActionTypes.ADD_TAG_STARTED })
 
     const values = yield call(normalise, action.payload, tagNormaliser)
     yield call(validationLib.validate, values, tagConstraint)
@@ -71,31 +75,31 @@ function * addTag (action) {
     const token = yield authLib.getAuthTokenForCurrentUser()
     const json = yield call(fetchLib.post, url, { label }, token)
 
-    const newTag = { tagType, tag: json.tag }
+    const newTag = { tag: json.tag }
 
     yield put({
       type: tagActionTypes.ADD_TAG_SUCCEEDED,
       payload: newTag
     })
 
-    if (action.payload.addTagForEvent) {
-      const propertyName = getEventTagsPropertyName(tagType)
+    // if (action.payload.addTagForEvent) {
+    //   const propertyName = getEventTagsPropertyName(tagType)
 
-      const formValues = yield select(
-        getFormValues(formConstants.EDIT_EVENT_TAGS_FORM_NAME)
-      )
+    //   const formValues = yield select(
+    //     getFormValues(formConstants.EDIT_EVENT_TAGS_FORM_NAME)
+    //   )
 
-      const tags = formValues[propertyName]
+    //   const tags = formValues[propertyName]
 
-      if (tags.indexOf(x => x.id === json.tag.id) === -1) {
-        const newTags = tags.slice()
-        newTags.push(json.tag)
+    //   if (tags.indexOf(x => x.id === json.tag.id) === -1) {
+    //     const newTags = tags.slice()
+    //     newTags.push(json.tag)
 
-        yield put(
-          change(formConstants.EDIT_EVENT_TAGS_FORM_NAME, propertyName, newTags)
-        )
-      }
-    }
+    //     yield put(
+    //       change(formConstants.EDIT_EVENT_TAGS_FORM_NAME, propertyName, newTags)
+    //     )
+    //   }
+    // }
 
     yield put(stopSubmit(formConstants.TAG_EDITOR_FORM_NAME))
     yield put(reset(formConstants.TAG_EDITOR_FORM_NAME))
@@ -117,8 +121,10 @@ function * addTag (action) {
 
 function * deleteTag (action) {
   try {
-    yield put({ type: tagActionTypes.DELETE_TAG_STARTING })
     const { id } = action.payload
+
+    yield put({ type: tagActionTypes.DELETE_TAG_STARTED })
+
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
     const token = yield authLib.getAuthTokenForCurrentUser()
     yield call(fetchLib.httpDelete, url, token)
@@ -151,7 +157,7 @@ function getEventTagsPropertyName (tagType) {
 }
 
 export default [
-  takeLatest(tagActionTypes.GET_ALL_TAGS, getAllTags),
+  // takeLatest(tagActionTypes.GET_ALL_TAGS, getAllTags),
   takeLatest(tagActionTypes.GET_TAGS, getTags),
   takeLatest(tagActionTypes.ADD_TAG, addTag),
   takeLatest(tagActionTypes.DELETE_TAG, deleteTag)

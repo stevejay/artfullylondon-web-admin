@@ -9,97 +9,74 @@ const initialState = {
   getFailed: false,
   addInProgress: false,
   deleteInProgress: false,
-  medium: [],
-  style: [],
-  geo: [],
-  audience: []
+  tagType: null,
+  tags: null
 }
 
 export default handleActions(
   {
-    [tagActionTypes.GET_TAGS_STARTING]: state => ({
+    [tagActionTypes.GET_TAGS_STARTED]: (state, action) => ({
       ...state,
       getInProgress: true,
       getFailed: false,
       addInProgress: false,
-      deleteInProgress: false
+      deleteInProgress: false,
+      tagType: action.payload.tagType,
+      tags: null
     }),
-    [tagActionTypes.GET_TAGS_SUCCEEDED]: (state, action) => {
-      let { medium, style, geo, audience } = action.payload.tags
-
-      medium = medium !== undefined
-        ? _processReceivedTags(medium)
-        : state.medium
-
-      style = style !== undefined ? _processReceivedTags(style) : state.style
-
-      geo = geo !== undefined ? _processReceivedTags(geo) : state.geo
-
-      audience = audience !== undefined
-        ? _processReceivedTags(audience)
-        : state.audience
-
-      return {
-        ...state,
-        getInProgress: false,
-        deleteInProgress: false,
-        medium: medium,
-        style: style,
-        geo: geo,
-        audience: audience
-      }
-    },
+    [tagActionTypes.GET_TAGS_SUCCEEDED]: (state, action) => ({
+      ...state,
+      getInProgress: false,
+      deleteInProgress: false,
+      tags: tagLib.processReceivedTags(action.payload.tags)
+    }),
     [tagActionTypes.GET_TAGS_FAILED]: state => ({
       ...state,
       getInProgress: false,
       getFailed: true
     }),
-    [tagActionTypes.ADD_TAG_STARTING]: state => ({
+    [tagActionTypes.ADD_TAG_STARTED]: state => ({
       ...state,
       addInProgress: true
     }),
     [tagActionTypes.ADD_TAG_SUCCEEDED]: (state, action) => {
-      const { payload: { tagType, tag } } = action
+      const { payload: { tag } } = action
 
-      let spliceIndex = _.findIndex(state[tagType], value => value.id > tag.id)
+      let spliceIndex = _.findIndex(state.tags, value => value.id > tag.id)
+
       if (spliceIndex === -1) {
-        spliceIndex = state[tagType].length
+        spliceIndex = state.tags.length
       }
 
-      const newTags = state[tagType].slice()
+      const newTags = state.tags.slice()
       newTags.splice(spliceIndex, 0, tag)
 
-      const result = {
+      return {
         ...state,
-        addInProgress: false
+        addInProgress: false,
+        tags: newTags
       }
-
-      result[tagType] = newTags
-      return result
     },
     [tagActionTypes.ADD_TAG_FAILED]: state => ({
       ...state,
       addInProgress: false
     }),
-    [tagActionTypes.DELETE_TAG_STARTING]: state => ({
+    [tagActionTypes.DELETE_TAG_STARTED]: state => ({
       ...state,
       deleteInProgress: true
     }),
     [tagActionTypes.DELETE_TAG_SUCCEEDED]: (state, action) => {
       const id = action.payload.id
-      const tagType = tagLib.getTagTypeFromTagId(id)
-      const deleteIndex = _.findIndex(state[tagType], value => value.id === id)
+      const deleteIndex = _.findIndex(state.tags, value => value.id === id)
 
-      const newTags = state[tagType].slice()
+      const newTags = state.tags.slice()
       newTags.splice(deleteIndex, 1)
 
-      const result = {
+      return {
         ...state,
-        deleteInProgress: false
+        deleteInProgress: false,
+        tags: newTags
       }
-
-      result[tagType] = newTags
-      return result
     },
     [tagActionTypes.DELETE_TAG_FAILED]: state => ({
       ...state,
@@ -108,7 +85,3 @@ export default handleActions(
   },
   initialState
 )
-
-function _processReceivedTags (tags) {
-  return _.sortBy(tags || [], x => x.id)
-}

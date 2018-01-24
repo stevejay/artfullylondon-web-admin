@@ -9,7 +9,7 @@ import TagEditorForm from '_src/modules/tags/forms/tag-editor'
 import './index.scss'
 
 const TagsEditor = ({
-  value,
+  tags,
   tagType,
   getInProgress,
   deleteInProgress,
@@ -27,7 +27,7 @@ const TagsEditor = ({
     <FieldDivider />
     <TagCollection
       tagType={tagType}
-      value={value}
+      tags={tags}
       onDelete={onDelete}
       getInProgress={getInProgress}
       deleteInProgress={deleteInProgress}
@@ -36,7 +36,7 @@ const TagsEditor = ({
 )
 
 TagsEditor.propTypes = {
-  value: PropTypes.array.isRequired,
+  tags: PropTypes.array,
   tagType: PropTypes.oneOf(ALLOWED_TAG_TYPES).isRequired,
   getInProgress: PropTypes.bool.isRequired,
   deleteInProgress: PropTypes.bool.isRequired,

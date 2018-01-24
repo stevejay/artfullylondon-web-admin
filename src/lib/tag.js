@@ -1,4 +1,5 @@
 import _ from 'lodash'
+
 import * as tagConstants from '_src/constants/tag'
 
 export function getTagTypeFromTagId (id) {
@@ -35,4 +36,8 @@ export function getTagTypeUrlParameter (match) {
   return match && match.params && match.params.type
     ? match.params.type.toLowerCase()
     : null
+}
+
+export function processReceivedTags (tags) {
+  return _.sortBy(tags || [], x => x.id)
 }

@@ -1,10 +1,12 @@
-import { createSelector } from 'reselect'
+import _ from 'lodash'
 
-const EMPTY_TAGS = []
+import { createSelector } from 'reselect'
 
 // parameters: (state, tagType)
 export const getTagsForType = createSelector(
-  state => state.tag,
+  state => state.tag.tags,
+  state => state.tag.tagType,
   (state, tagType) => tagType,
-  (tag, tagType) => tag[tagType] || EMPTY_TAGS
+  (tags, reducerTagType, requestedTagType) =>
+    (requestedTagType !== reducerTagType ? null : tags)
 )

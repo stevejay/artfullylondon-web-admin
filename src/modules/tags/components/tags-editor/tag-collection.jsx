@@ -16,7 +16,7 @@ class TagCollection extends React.Component {
   }
   shouldComponentUpdate (nextProps, nextState) {
     return (
-      nextProps.value !== this.props.value ||
+      nextProps.tags !== this.props.tags ||
       nextProps.getInProgress !== this.props.getInProgress ||
       nextProps.deleteInProgress !== this.props.deleteInProgress ||
       nextState.deletingTagId !== this.state.deletingTagId
@@ -27,26 +27,27 @@ class TagCollection extends React.Component {
     this.props.onDelete(key)
   }
   render () {
-    const { tagType, value, getInProgress, deleteInProgress } = this.props
+    const { tagType, tags, getInProgress, deleteInProgress } = this.props
     const { deletingTagId } = this.state
-    const hasTags = !_.isEmpty(value) && tagType !== 'medium'
+    const loading = getInProgress || _.isNil(tags)
+    const hasTags = !_.isEmpty(tags) && tagType !== 'medium'
 
     return (
       <div styleName='container'>
-        {getInProgress && <BoxesLoader />}
-        <FadeTransition in={!getInProgress}>
-          <span>
+        {loading && <BoxesLoader />}
+        <FadeTransition in={!loading}>
+          <div styleName='content-container'>
             {!hasTags && <NoEntries label='No Tags' />}
             {hasTags &&
-              value.map(x => (
+              tags.map(x => (
                 <Tag
                   key={x.id}
-                  value={x}
+                  tag={x}
                   onDelete={this.handleDelete}
                   isBeingDeleted={deleteInProgress && deletingTagId === x.id}
                 />
               ))}
-          </span>
+          </div>
         </FadeTransition>
       </div>
     )
@@ -55,12 +56,12 @@ class TagCollection extends React.Component {
 
 TagCollection.propTypes = {
   tagType: PropTypes.string.isRequired,
-  value: PropTypes.arrayOf(
+  tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     })
-  ).isRequired,
+  ),
   onDelete: PropTypes.func.isRequired,
   getInProgress: PropTypes.bool.isRequired,
   deleteInProgress: PropTypes.bool.isRequired

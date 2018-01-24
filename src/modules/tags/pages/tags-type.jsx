@@ -59,7 +59,7 @@ class TagsType extends React.Component {
         {!getFailed &&
           <TagsEditor
             tagType={tagType}
-            value={tags}
+            tags={tags}
             getInProgress={getInProgress}
             onDelete={this.handleDeleteTag}
             onAdd={this.handleAddTag}
@@ -72,7 +72,7 @@ class TagsType extends React.Component {
 
 TagsType.propTypes = {
   tagType: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
+  tags: PropTypes.array,
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
   deleteInProgress: PropTypes.bool.isRequired,
