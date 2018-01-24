@@ -19,6 +19,7 @@ import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
 import TagsTypePage from '_src/modules/tags/pages/tags-type'
+import SearchResultsPage from '_src/modules/search/pages/results'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as appActionTypes from '_src/constants/action/app'
 import * as authActionTypes from '_src/constants/action/auth'
@@ -91,6 +92,7 @@ export class Routes extends React.Component {
               <Switch>
                 <Route exact path='/' component={Dashboard} />
                 <Route path='/tags/:type' component={TagsTypePage} />
+                <Route path='/search' component={SearchResultsPage} />
                 <Redirect from='/login' to='/' />
                 <Route component={NotFound} />
               </Switch>

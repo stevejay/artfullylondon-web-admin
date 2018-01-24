@@ -41,6 +41,7 @@ class SearchResults extends React.Component {
             getInProgress={false}
           />
           {isAllSearch &&
+            false &&
             <MoreResults
               items={items}
               take={take}

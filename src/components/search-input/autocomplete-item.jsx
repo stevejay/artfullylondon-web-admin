@@ -17,7 +17,7 @@ class AutocompleteItem extends React.Component {
     return (
       <li>
         <a styleName={styleName} onClick={this.handleClick}>
-          {item.name}
+          {item.output}
         </a>
       </li>
     )

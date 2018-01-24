@@ -18,7 +18,8 @@ function * pushBasicSearchToUrl ({ payload }) {
   try {
     const { skip, take } = payload
 
-    const query = normalise(
+    const query = yield call(
+      normalise,
       payload.query,
       searchConstants.BASIC_SEARCH_QUERY_NORMALISER
     )
@@ -39,14 +40,15 @@ function * pushBasicSearchToUrl ({ payload }) {
 
     yield call(history.push, requestUrl)
   } catch (err) {
-    log.error(err)
+    yield call(log.error, err)
   }
 }
 
 function * autocompleteSearch ({ payload }) {
   yield call(delay, 300) // debounce
 
-  const query = normalise(
+  const query = yield call(
+    normalise,
     payload.query,
     searchConstants.AUTO_SEARCH_QUERY_NORMALISER
   )
@@ -60,14 +62,14 @@ function * autocompleteSearch ({ payload }) {
   )
 
   if (errors !== null) {
-    log.error('autocompleteSearch validation errors', errors)
+    yield call(log.error, 'autocompleteSearch validation errors', errors)
     return
   }
 
   const requestUrl = searchLib.createAdminAutocompleteSearchRequestUrl(query)
   const json = yield call(fetchLib.get, requestUrl)
 
-  yield put.resolve({
+  yield put({
     type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
     payload: json
   })
@@ -75,7 +77,8 @@ function * autocompleteSearch ({ payload }) {
 
 function * basicSearch ({ payload }) {
   try {
-    const query = normalise(
+    const query = yield call(
+      normalise,
       payload.query,
       searchConstants.BASIC_SEARCH_QUERY_NORMALISER
     )
@@ -89,11 +92,11 @@ function * basicSearch ({ payload }) {
     )
 
     if (errors !== null) {
-      log.error('basicSearch validation errors', errors)
+      yield call(log.error, 'basicSearch validation errors', errors)
       return
     }
 
-    yield put.resolve(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
+    yield put(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
 
     const searchReducer = yield select(state => state.search)
     const currentQuery = searchReducer.basicSearchParams
@@ -101,28 +104,28 @@ function * basicSearch ({ payload }) {
 
     if (_.isEqual(query, currentQuery) && existingItemsLength) {
       yield call(delay, 300)
-      yield put.resolve(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
+      yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
       return
     }
 
     const requestUrl = searchLib.createAdminBasicSearchRequestUrl(query)
-    yield put.resolve({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
-    yield put.resolve({ type: searchActionTypes.STARTING_BASIC_SEARCH })
+    yield put({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
+    yield put({ type: searchActionTypes.STARTING_BASIC_SEARCH })
 
-    yield put.resolve({
+    yield put({
       type: searchActionTypes.SET_BASIC_SEARCH_PARAMS,
       payload: query
     })
 
-    yield put.resolve(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
+    yield put(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
     const json = yield call(fetchLib.get, requestUrl)
 
-    yield put.resolve({
+    yield put({
       type: searchActionTypes.BASIC_SEARCH_SUCCEEDED,
       payload: json
     })
 
-    yield put.resolve(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
+    yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
   } catch (err) {
     yield call(
       sagaLib.submitErrorHandler,
@@ -130,7 +133,7 @@ function * basicSearch ({ payload }) {
       formConstants.BASIC_SEARCH_FORM_NAME
     )
 
-    yield put.resolve({ type: searchActionTypes.BASIC_SEARCH_FAILED })
+    yield put({ type: searchActionTypes.BASIC_SEARCH_FAILED })
   }
 }
 
@@ -149,7 +152,7 @@ function * search (action) {
         throw new Error(`searchType is out of range: ${searchType}`)
     }
   } catch (err) {
-    log.error('search error', err)
+    yield call(log.error, 'search error', err)
   }
 }
 

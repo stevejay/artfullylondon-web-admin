@@ -1,8 +1,5 @@
 import moment from 'moment'
-import {
-  mapJsDateToStringDate,
-  mapMomentDateToStringDate
-} from '_src/lib/time'
+import { mapJsDateToStringDate, mapMomentDateToStringDate } from '_src/lib/time'
 import { DEFAULT_TAKE } from '_src/constants/search'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
