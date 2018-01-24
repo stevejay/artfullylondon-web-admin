@@ -6,7 +6,7 @@ import _ from 'lodash'
 import FadeTransition from '_src/components/transition/fade'
 import BoxesLoader from '_src/components/loader/boxes'
 import NoEntries from '_src/components/no-entries'
-import Tag from '_src/modules/tags/components/tags-editor/tag'
+import Tag from '_src/modules/tags/components/tag'
 import './tag-collection.scss'
 
 class TagCollection extends React.Component {
@@ -30,14 +30,16 @@ class TagCollection extends React.Component {
     const { tagType, tags, getInProgress, deleteInProgress } = this.props
     const { deletingTagId } = this.state
     const loading = getInProgress || _.isNil(tags)
-    const hasTags = !_.isEmpty(tags) && tagType !== 'medium'
+    const hasTags = !_.isEmpty(tags)
 
     return (
       <div styleName='container'>
         {loading && <BoxesLoader />}
-        <FadeTransition in={!loading}>
-          <div styleName='content-container'>
-            {!hasTags && <NoEntries label='No Tags' />}
+        <FadeTransition in={!loading && !hasTags}>
+          <NoEntries label='No Tags' />
+        </FadeTransition>
+        <FadeTransition in={!loading && hasTags}>
+          <span>
             {hasTags &&
               tags.map(x => (
                 <Tag
@@ -47,7 +49,7 @@ class TagCollection extends React.Component {
                   isBeingDeleted={deleteInProgress && deletingTagId === x.id}
                 />
               ))}
-          </div>
+          </span>
         </FadeTransition>
       </div>
     )

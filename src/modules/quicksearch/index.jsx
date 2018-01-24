@@ -13,7 +13,7 @@ import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'
 import ModalTransition
   from '_src/modules/quicksearch/components/modal-transition'
 import * as searchConstants from '_src/constants/search'
-import * as searchActions from '_src/actions/search'
+import * as searchActionTypes from '_src/constants/action/search'
 import './index.scss'
 
 export class Quicksearch extends React.Component {
@@ -21,15 +21,18 @@ export class Quicksearch extends React.Component {
     return nextProps.show !== this.props.show
   }
   handleHideQuicksearch = () => {
-    this.props.clearAutocomplete()
+    this.props.dispatch({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     this.props.onHide()
   }
   handleSubmit = ({ term, entityType }) => {
     this.handleHideQuicksearch()
 
-    this.props.pushBasicSearchToUrl({
-      searchType: searchConstants.SEARCH_TYPE_BASIC,
-      query: { term, entityType }
+    this.props.dispatch({
+      type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
+      payload: {
+        searchType: searchConstants.SEARCH_TYPE_BASIC,
+        query: { term, entityType }
+      }
     })
   }
   render () {
@@ -65,21 +68,7 @@ export class Quicksearch extends React.Component {
 Quicksearch.propTypes = {
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
-  pushBasicSearchToUrl: PropTypes.func.isRequired,
-  clearAutocomplete: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
-export default connect(
-  null,
-  /* istanbul ignore next */
-  dispatch => ({
-    pushBasicSearchToUrl: bindActionCreators(
-      searchActions.pushBasicSearchToUrl,
-      dispatch
-    ),
-    clearAutocomplete: bindActionCreators(
-      searchActions.clearAutocomplete,
-      dispatch
-    )
-  })
-)(Quicksearch)
+export default connect()(Quicksearch)

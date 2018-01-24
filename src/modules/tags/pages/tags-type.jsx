@@ -2,15 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import FieldBorder from '_src/components/field/border'
+import FieldDivider from '_src/components/field/divider'
 import Error from '_src/components/error'
 import BasicSection from '_src/components/section/basic'
 import SectionHeading from '_src/components/section/heading'
 import DetailsContainer from '_src/components/entity/details-container'
-import TagsEditor from '_src/modules/tags/components/tags-editor'
+import TagCollection from '_src/modules/tags/components/tag-collection'
+import AddTagForm from '_src/modules/tags/forms/add-tag'
 import * as tagSelectors from '_src/store/selectors/tag'
 import * as tagActionTypes from '_src/constants/action/tag'
 import * as tagConstants from '_src/constants/tag'
 import * as tagLib from '_src/lib/tag'
+import './tags-type.scss'
 
 class TagsType extends React.Component {
   constructor (props) {
@@ -57,14 +61,22 @@ class TagsType extends React.Component {
         </SectionHeading>
         {getFailed && <Error />}
         {!getFailed &&
-          <TagsEditor
-            tagType={tagType}
-            tags={tags}
-            getInProgress={getInProgress}
-            onDelete={this.handleDeleteTag}
-            onAdd={this.handleAddTag}
-            deleteInProgress={deleteInProgress}
-          />}
+          <FieldBorder styleName='field-container'>
+            <AddTagForm
+              tagType={tagType}
+              canAddTag={!getInProgress}
+              initialValues={{ tagType, label: '' }}
+              onSubmit={this.handleAddTag}
+            />
+            <FieldDivider />
+            <TagCollection
+              tagType={tagType}
+              tags={tags}
+              onDelete={this.handleDeleteTag}
+              getInProgress={getInProgress}
+              deleteInProgress={deleteInProgress}
+            />
+          </FieldBorder>}
       </BasicSection>
     )
   }

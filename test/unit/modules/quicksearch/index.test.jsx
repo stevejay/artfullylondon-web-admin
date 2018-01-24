@@ -2,17 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
+import * as searchActionTypes from '_src/constants/action/search'
 import * as searchConstants from '_src/constants/search'
 import { Quicksearch } from '_src/modules/quicksearch'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <Quicksearch
-      show
-      onHide={_.noop}
-      pushBasicSearchToUrl={_.noop}
-      clearAutocomplete={_.noop}
-    />
+    <Quicksearch show onHide={_.noop} dispatch={_.noop} />
   )
 
   expect(wrapper).toMatchSnapshot()
@@ -20,35 +16,27 @@ it('should render correctly', () => {
 
 it('should handle hiding the quicksearch', () => {
   const handleHide = jest.fn()
-  const clearAutocomplete = jest.fn()
+  const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <Quicksearch
-      show
-      onHide={handleHide}
-      pushBasicSearchToUrl={_.noop}
-      clearAutocomplete={clearAutocomplete}
-    />
+    <Quicksearch show onHide={handleHide} dispatch={dispatch} />
   )
 
   wrapper.find('Modal').prop('onHide')()
 
   expect(handleHide).toHaveBeenCalled()
-  expect(clearAutocomplete).toHaveBeenCalled()
+
+  expect(dispatch).toHaveBeenCalledWith({
+    type: searchActionTypes.CLEAR_AUTOCOMPLETE
+  })
 })
 
 it('should handle submitting the quicksearch form', () => {
   const handleHide = jest.fn()
-  const clearAutocomplete = jest.fn()
-  const pushBasicSearchToUrl = jest.fn()
+  const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <Quicksearch
-      show
-      onHide={handleHide}
-      pushBasicSearchToUrl={pushBasicSearchToUrl}
-      clearAutocomplete={clearAutocomplete}
-    />
+    <Quicksearch show onHide={handleHide} dispatch={dispatch} />
   )
 
   wrapper.find('ReduxForm').prop('onSubmit')({
@@ -57,25 +45,23 @@ it('should handle submitting the quicksearch form', () => {
   })
 
   expect(handleHide).toHaveBeenCalled()
-  expect(clearAutocomplete).toHaveBeenCalled()
-  expect(pushBasicSearchToUrl).toHaveBeenCalled()
 
-  expect(pushBasicSearchToUrl.mock.calls[0]).toEqual([
-    {
+  expect(dispatch).toHaveBeenCalledWith({
+    type: searchActionTypes.CLEAR_AUTOCOMPLETE
+  })
+
+  expect(dispatch).toHaveBeenCalledWith({
+    type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
+    payload: {
       searchType: searchConstants.SEARCH_TYPE_BASIC,
       query: { term: 'foo', entityType: 'venue' }
     }
-  ])
+  })
 })
 
 it('should update the component when props change', () => {
   const wrapper = shallow(
-    <Quicksearch
-      show
-      onHide={_.noop}
-      pushBasicSearchToUrl={_.noop}
-      clearAutocomplete={_.noop}
-    />
+    <Quicksearch show onHide={_.noop} dispatch={_.noop} />
   )
 
   const result = wrapper.instance().shouldComponentUpdate({ show: false })
@@ -84,12 +70,7 @@ it('should update the component when props change', () => {
 
 it('should not update the component when props do not change', () => {
   const wrapper = shallow(
-    <Quicksearch
-      show
-      onHide={_.noop}
-      pushBasicSearchToUrl={_.noop}
-      clearAutocomplete={_.noop}
-    />
+    <Quicksearch show onHide={_.noop} dispatch={_.noop} />
   )
 
   const result = wrapper.instance().shouldComponentUpdate({ show: true })

@@ -38,7 +38,7 @@ import tagNormaliser from '_src/constants/tag-normaliser'
 //   }
 // }
 
-function * getTags (action) {
+export function * getTags (action) {
   try {
     const tagType = action.payload.tagType
 
@@ -49,7 +49,7 @@ function * getTags (action) {
 
     const url =
       process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.get, url, token)
 
     yield put({
@@ -62,7 +62,7 @@ function * getTags (action) {
   }
 }
 
-function * addTag (action) {
+export function * addTag (action) {
   try {
     yield put(startSubmit(formConstants.TAG_EDITOR_FORM_NAME))
     yield put({ type: tagActionTypes.ADD_TAG_STARTED })
@@ -70,16 +70,14 @@ function * addTag (action) {
     const values = yield call(normalise, action.payload, tagNormaliser)
     yield call(validationLib.validate, values, tagConstraint)
 
-    const { tagType, label } = action.payload
+    const { tagType, label } = values
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${tagType}`
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.post, url, { label }, token)
-
-    const newTag = { tag: json.tag }
 
     yield put({
       type: tagActionTypes.ADD_TAG_SUCCEEDED,
-      payload: newTag
+      payload: { tag: json.tag }
     })
 
     // if (action.payload.addTagForEvent) {
@@ -119,14 +117,14 @@ function * addTag (action) {
   }
 }
 
-function * deleteTag (action) {
+export function * deleteTag (action) {
   try {
     const { id } = action.payload
 
     yield put({ type: tagActionTypes.DELETE_TAG_STARTED })
 
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     yield call(fetchLib.httpDelete, url, token)
 
     yield put({
@@ -134,7 +132,7 @@ function * deleteTag (action) {
       payload: { id }
     })
 
-    yield put({ type: tagActionTypes.TAG_DELETED })
+    // yield put({ type: tagActionTypes.TAG_DELETED })
   } catch (err) {
     yield call(log.error, err)
     yield put({ type: tagActionTypes.DELETE_TAG_FAILED })

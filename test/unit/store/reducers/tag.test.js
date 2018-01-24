@@ -53,7 +53,7 @@ it('should handle a get tags succeeded message', () => {
 
   const actual = tagReducer(state, {
     type: tagActionTypes.GET_TAGS_SUCCEEDED,
-    payload: { tags: { medium: [{ id: 1 }] } }
+    payload: { tags: [{ id: 1 }] }
   })
 
   expect(actual).toEqual({

@@ -10,7 +10,6 @@ import BasicSection from '_src/components/section/basic'
 import StatisticCollection
   from '_src/modules/dashboard/components/statistic/collection'
 import * as statusActionTypes from '_src/constants/action/status'
-import * as searchActions from '_src/actions/search'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {
