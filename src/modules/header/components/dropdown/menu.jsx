@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import MenuLink from '_src/modules/header/components/dropdown/menu-link'
+import DropdownMenuLink from '_src/modules/header/components/dropdown/menu-link'
 import './menu.scss'
 
-const Menu = ({
+const DropdownMenu = ({
   className,
   style,
   items,
@@ -16,7 +16,7 @@ const Menu = ({
   <ul className={className} role='menu' styleName='menu' style={style}>
     {items.map((x, index) => (
       <li key={x.label}>
-        <MenuLink
+        <DropdownMenuLink
           label={x.label}
           index={index}
           to={x.path}
@@ -30,7 +30,7 @@ const Menu = ({
   </ul>
 )
 
-Menu.propTypes = {
+DropdownMenu.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   items: PropTypes.array.isRequired,
@@ -40,4 +40,4 @@ Menu.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default Menu
+export default DropdownMenu

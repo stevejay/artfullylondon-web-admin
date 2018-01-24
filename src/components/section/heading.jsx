@@ -11,7 +11,7 @@ const SectionHeading = ({ className, children, logo }) => {
       className={className}
       styleName={`container${hasLogo ? '-logo' : '-no-logo'}`}
     >
-      {!!logo && React.createElement(logo, { styleName: 'icon' })}
+      {!!logo && React.createElement(logo, { className: 'icon' })}
       <h2 styleName='title'>{children}</h2>
     </div>
   )

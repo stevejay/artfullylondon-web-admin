@@ -1,0 +1,9 @@
+@import 'mixins.scss';
+
+.container {
+  margin: 3rem;
+
+  @include below-tablet {
+    margin: 3rem 1.5rem;
+  }
+}

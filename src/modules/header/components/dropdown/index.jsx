@@ -108,7 +108,7 @@ class Dropdown extends React.Component {
   _getOverlayTarget = () => {
     return ReactDOM.findDOMNode(this._headerButton)
   }
-  _closeMenu () {
+  _closeMenu = () => {
     this.setState({ isOpen: false, selectedIndex: null })
   }
   _openMenu (selectedIndex = null) {
@@ -138,7 +138,7 @@ class Dropdown extends React.Component {
           container={this}
           target={this._getOverlayTarget}
           transition={DropdownTransition}
-          onHide={_.noop}
+          onHide={this._closeMenu}
         >
           <DropdownMenu
             items={items}

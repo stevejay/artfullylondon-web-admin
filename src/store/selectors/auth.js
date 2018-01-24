@@ -1,5 +1,9 @@
+import { createSelector } from 'reselect'
+
 import * as authConstants from '_src/constants/auth'
 
-export function isLoggedIn (state) {
-  return state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
-}
+// parameters: (state)
+export const isLoggedIn = createSelector(
+  state => state.auth.state,
+  authState => authState === authConstants.AUTH_STATE_LOGGED_IN
+)

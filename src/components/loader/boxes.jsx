@@ -1,17 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import window from 'global/window'
 
 import './boxes.scss'
 
 const TYPE_DEFAULT = 'default'
 const SIZE_LARGE = 'large'
+const DELAY_MS = 750
 
 class BoxesLoader extends React.Component {
-  shouldComponentUpdate () {
-    return false
+  constructor (props) {
+    super(props)
+    this.state = { visible: false }
+    this.mounted = true
+
+    this.timeout = window.setTimeout(
+      () => this.mounted && this.setState({ visible: true }),
+      DELAY_MS
+    )
+  }
+  componentWillUnmount () {
+    this.mounted = false
+    this.timeout && window.clearTimeout(this.timeout)
+  }
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextState.visible !== this.state.visible
   }
   render () {
     const { size, type, className } = this.props
+    const { visible } = this.state
+
+    if (!visible) {
+      return null
+    }
 
     return (
       <div styleName='container' aria-busy role='alert'>

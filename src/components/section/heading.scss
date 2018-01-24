@@ -7,6 +7,19 @@
   align-items: center;
   justify-content: center;
   background-color: #E3DCCF;
+
+   :global(.icon) {
+    width: 10rem;
+    height: 10rem;
+    color: #afa89b;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+    @include below-wide-mobile {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
 }
 
 .container-no-logo {
@@ -24,19 +37,6 @@
 
   @include from-wide-mobile {
     min-height: 230px;
-  }
-}
-
-.icon {
-  width: 10rem;
-  height: 10rem;
-  color: #afa89b;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-
-  @include below-wide-mobile {
-    width: 7rem;
-    height: 7rem;
   }
 }
 

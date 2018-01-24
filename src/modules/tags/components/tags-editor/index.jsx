@@ -3,21 +3,21 @@ import PropTypes from 'prop-types'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import { ALLOWED_TAG_TYPES } from '_src/constants/tag'
+
 import TagCollection from './tag-collection'
 // import TagEditorForm from '_src/containers/forms/tag-editor'
-
-const BORDER_STYLE = { marginBottom: '1.5rem' }
+import './index.scss'
 
 const TagsEditor = ({
   value,
-  formComponent,
   onDelete,
   deleteInProgress,
   constraint,
   tagType
 }) => (
-  <FieldBorder style={BORDER_STYLE}>
-    {React.createElement(formComponent, { tagType, constraint })}
+  <FieldBorder styleName='container'>
+    {/* <TagEditorForm tagType={tagType} constraint={constraint} /> */}
+    {/* {React.createElement(formComponent, { tagType, constraint })} */}
     <FieldDivider />
     <TagCollection
       value={value}
@@ -31,8 +31,6 @@ TagsEditor.propTypes = {
   value: PropTypes.array.isRequired,
   tagType: PropTypes.oneOf(ALLOWED_TAG_TYPES).isRequired,
   deleteInProgress: PropTypes.bool.isRequired,
-  constraint: PropTypes.object.isRequired,
-  formComponent: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 }
 

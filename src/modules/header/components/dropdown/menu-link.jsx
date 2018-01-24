@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './menu-link.scss'
 
-class MenuLink extends React.Component {
+class DropdownMenuLink extends React.Component {
   shouldComponentUpdate (nextProps) {
     return nextProps.selected !== this.props.selected
   }
@@ -31,7 +31,7 @@ class MenuLink extends React.Component {
   }
 }
 
-MenuLink.propTypes = {
+DropdownMenuLink.propTypes = {
   label: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   to: PropTypes.string.isRequired,
@@ -41,4 +41,4 @@ MenuLink.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default MenuLink
+export default DropdownMenuLink

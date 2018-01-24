@@ -18,6 +18,7 @@ import AppUpdater from '_src/modules/app-updater'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
+import TagsTypePage from '_src/modules/tags/pages/tags-type'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as appActionTypes from '_src/constants/action/app'
 import * as authActionTypes from '_src/constants/action/auth'
@@ -77,22 +78,25 @@ export class Routes extends React.Component {
               <Redirect to='/login' />
             </Switch>
           </PageMain>}
-        {loggedIn && [
-          <PageHeader key='header'>
-            <Header
-              showingSidenav={showSidenav}
-              onShowQuicksearch={this.handleShowQuicksearch}
-              onShowSidenav={this.handleShowSidenav}
-            />
-          </PageHeader>,
-          <PageMain key='main'>
-            <Switch>
-              <Route exact path='/' component={Dashboard} />
-              <Route component={NotFound} />
-            </Switch>
-          </PageMain>,
-          <PageFooter key='footer'><Footer /></PageFooter>
-        ]}
+        {loggedIn &&
+          <React.Fragment>
+            <PageHeader>
+              <Header
+                showingSidenav={showSidenav}
+                onShowQuicksearch={this.handleShowQuicksearch}
+                onShowSidenav={this.handleShowSidenav}
+              />
+            </PageHeader>
+            <PageMain>
+              <Switch>
+                <Route exact path='/' component={Dashboard} />
+                <Route path='/tags/:type' component={TagsTypePage} />
+                <Redirect from='/login' to='/' />
+                <Route component={NotFound} />
+              </Switch>
+            </PageMain>
+            <PageFooter><Footer /></PageFooter>
+          </React.Fragment>}
         <AppUpdater />
         <Notification />
       </Page>

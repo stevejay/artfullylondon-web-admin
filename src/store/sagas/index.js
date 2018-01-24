@@ -8,7 +8,7 @@ import serverConstantsSagas from './server-constants'
 // import linkSagas from './link';
 // import monitorsSagas from './monitors';
 import searchSagas from './search'
-// import tagSagas from './tag';
+import tagSagas from './tag'
 // import timeSagas from './time';
 import statusSagas from './status'
 import notificationsSagas from './notifications'
@@ -21,7 +21,8 @@ export default function * () {
     ...browserSagas,
     ...notificationsSagas,
     ...statusSagas,
-    ...searchSagas
+    ...searchSagas,
+    ...tagSagas
   ])
   //
   // ...entitySagas,

@@ -7,7 +7,7 @@ import serverConstants from './server-constants'
 // import eventForEdit from "./event-for-edit";
 // import eventSeriesForEdit from "./eventseries-for-edit";
 import search from './search'
-// import tag from "./tag";
+import tag from './tag'
 // import talentForEdit from "./talent-for-edit";
 // import venueForEdit from "./venue-for-edit";
 // import eventMonitors from "./event-monitors";
@@ -33,7 +33,7 @@ export default combineReducers({
   auth,
   serverConstants,
   search,
-  // tag,
+  tag,
   notifications,
   status,
   // eventMonitors,

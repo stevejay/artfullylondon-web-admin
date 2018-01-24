@@ -30,3 +30,9 @@ export function getTagTypeFromLocation (location) {
 
   throw new Error('Could not determine tag type')
 }
+
+export function getTagTypeUrlParameter (match) {
+  return match && match.params && match.params.type
+    ? match.params.type.toLowerCase()
+    : null
+}
