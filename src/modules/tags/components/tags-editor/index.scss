@@ -1,6 +1,7 @@
 @import 'mixins.scss';
 
 .container {
+  flex-grow: 1;
   margin: 3rem;
 
   @include below-tablet {

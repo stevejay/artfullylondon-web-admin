@@ -2,10 +2,10 @@
 @import 'mixins.scss';
 
 .container {
-    @include boldFont;
-    text-align: center;
-    font-size: 1.4rem;
-    color: $eighth-black;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+  @include boldFont;
+  align-self: center;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  color: $quarter-black;
+  text-transform: uppercase;
 }

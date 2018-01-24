@@ -10,3 +10,11 @@
   align-items: center;
   position: relative;
 }
+
+.button-open {
+  composes: button;
+
+  &:after {
+    transform: scaleX(1);
+  }
+}

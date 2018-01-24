@@ -2,105 +2,108 @@
 @import 'mixins.scss';
 
 .basic {
-    label {
-        @include boldFont();
-        position: relative;
-        margin-bottom: 0.7rem;
-        text-transform: uppercase;
-        color: $field-label-color;
-        font-size: 1.3rem;
-        line-height: 1.2;
-    }
+  height: 2.5rem;
+
+  label {
+    @include boldFont();
+    position: relative;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+    color: $field-label-color;
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
 }
 
 .required {
-    composes: basic;
+  composes: basic;
 
-    label:after {
-        margin: -.2rem 0 0 .2rem;
-        content: '*';
-        color: $field-label-color;
-        display: inline-block;
-        vertical-align: top;
-    }
+  label:after {
+    margin: -.2rem 0 0 .2rem;
+    content: '*';
+    color: $field-label-color;
+    display: inline-block;
+    vertical-align: top;
+  }
 }
 
 .error {
-    label {
-        color: $field-error-color;
-    }
+  label {
+    color: $field-error-color;
+  }
 
-    label:after {
-        color: $field-error-color;
-    }
+  label:after {
+    color: $field-error-color;
+  }
 }
 
 .basic-error {
-    composes: basic;
-    composes: error;
+  composes: basic;
+  composes: error;
 }
 
 .required-error {
-    composes: required;
-    composes: error;
+  composes: required;
+  composes: error;
 }
 
 .disabled {
-    composes: basic;
+  composes: basic;
 
-    label: {
-        color: lighten($field-label-color, 15);
-    }
+  label: {
+    color: lighten($field-label-color, 15);
+  }
 }
 
 .has-tooltip {
-    border-bottom: 1px dotted lighten($field-label-color, 10);
-    cursor: help;
+  border-bottom: 1px dotted lighten($field-label-color, 10);
+  cursor: help;
 }
 
 .tooltip {
-    @include regularFont;
-    @include noWebKitHighlight;
-    position: absolute;
-    z-index: 1;
-    text-transform: none;
-    line-height: 1.5;
-    width: 220px;
-    left: 5px;
-    top: 2.3rem;
-    font-size: 1.3rem;
-    padding: .7rem 1rem .8rem;
-    background-color: $three-quarter-black;
-    color: $white;
-    border-radius: $border-radius;
-    box-shadow: 0 1.5rem 4rem $quarter-black;
-    will-change: opacity;
+  @include regularFont;
+  @include noWebKitHighlight;
+  position: absolute;
+  z-index: 1;
+  text-transform: none;
+  line-height: 1.5;
+  width: 220px;
+  left: 5px;
+  top: 2.3rem;
+  font-size: 1.3rem;
+  padding: .7rem 1rem .8rem;
+  background-color: $three-quarter-black;
+  color: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 1.5rem 4rem $quarter-black;
+  will-change: opacity;
 }
 
 .tooltip::after {
-    content: " ";
-    position: absolute;
-    left: 10px;
-    top: -10px;
-    margin-left: 0;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent $three-quarter-black transparent;
+  content: " ";
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  margin-left: 0;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent $three-quarter-black transparent;
 }
 
 $speed: 200ms;
 
 :global(.tooltip-transition.in) {
-    transition: opacity $speed ease-out;
+  transition: opacity $speed ease-out;
 }
 
 :global(.tooltip-transition.out) {
-    transition: opacity $speed ease-in;
+  transition: opacity $speed ease-in;
 }
 
 :global(.tooltip-transition.in).tooltip {
-    opacity: 1;
+  opacity: 1;
 }
+
 :global(.tooltip-transition.out).tooltip {
-    opacity: 0.01;
+  opacity: 0.01;
 }

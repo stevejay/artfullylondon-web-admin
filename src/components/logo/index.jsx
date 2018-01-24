@@ -10,8 +10,8 @@ const LOGO_SIZE_XLARGE = 'xlarge'
 const LOGO_SIZE_PARAMS = {
   [LOGO_SIZE_SMALL]: { width: '80px', height: '32px', verticalAlign: 'bottom' },
   [LOGO_SIZE_MEDIUM]: {
-    width: '120px',
-    height: '47px',
+    width: '100px',
+    height: '40px',
     verticalAlign: 'bottom'
   },
   [LOGO_SIZE_LARGE]: {

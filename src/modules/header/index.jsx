@@ -60,24 +60,6 @@ export class Header extends React.Component {
           size={isWideBrowser ? 'medium' : 'small'}
         />
         <Toolbar>
-          {!isWideBrowser &&
-            <ToolbarItem>
-              <IconButton
-                icon={Search}
-                onClick={onShowQuicksearch}
-                aria-label='Show quicksearch dialog'
-              />
-            </ToolbarItem>}
-          {!isWideBrowser &&
-            <ToolbarItem>
-              <IconButton
-                icon={Bars}
-                onClick={onShowSidenav}
-                aria-label='Show navigation menu'
-                aria-controls='sidenav'
-                ariaExpanded={showingSidenav}
-              />
-            </ToolbarItem>}
           {isWideBrowser &&
             menuConstants.MENUS.map(menu => (
               <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
@@ -92,19 +74,27 @@ export class Header extends React.Component {
             <ToolbarItem>
               <Button
                 onClick={this.handleLogout}
-                ariaLabel='Log out of the app'
+                aria-label='Log out of the app'
               >
                 Log Out
               </Button>
             </ToolbarItem>}
-          {isWideBrowser &&
+          <ToolbarItem>
+            <IconButton
+              icon={Search}
+              onClick={onShowQuicksearch}
+              aria-label='Show quicksearch dialog'
+            />
+          </ToolbarItem>
+          {!isWideBrowser &&
             <ToolbarItem>
-              <Button
-                onClick={onShowQuicksearch}
-                ariaLabel='Show quicksearch dialog'
-              >
-                Quicksearch
-              </Button>
+              <IconButton
+                icon={Bars}
+                onClick={onShowSidenav}
+                aria-label='Show navigation menu'
+                aria-controls='sidenav'
+                ariaExpanded={showingSidenav}
+              />
             </ToolbarItem>}
         </Toolbar>
       </React.Fragment>

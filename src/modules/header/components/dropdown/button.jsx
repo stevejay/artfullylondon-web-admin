@@ -8,6 +8,7 @@ class DropdownButton extends React.Component {
   render () {
     const {
       label,
+      dropdownIsOpen,
       onClick,
       onKeyDown,
       onKeyPress,
@@ -21,7 +22,7 @@ class DropdownButton extends React.Component {
       <button
         {...rest}
         type='button'
-        styleName='button'
+        styleName={`button${dropdownIsOpen ? '-open' : ''}`}
         onClick={onClick}
         onKeyDown={onKeyDown}
         onKeyPress={onKeyPress}
@@ -38,6 +39,7 @@ class DropdownButton extends React.Component {
 
 DropdownButton.propTypes = {
   label: PropTypes.string.isRequired,
+  dropdownIsOpen: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
   ariaHaspopup: PropTypes.bool,
   onKeyDown: PropTypes.func,

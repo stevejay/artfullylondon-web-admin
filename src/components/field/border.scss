@@ -1,8 +1,10 @@
 @import 'variables.scss';
 
 .container {
-    border: 1px solid $field-border-color;
-    border-radius: .4rem;
-    box-shadow: 0 0 0 0 transparent inset;
-    padding: 1rem 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $field-border-color;
+  border-radius: .4rem;
+  box-shadow: 0 0 0 0 transparent inset;
+  padding: 1rem 1rem 0 1rem;
 }

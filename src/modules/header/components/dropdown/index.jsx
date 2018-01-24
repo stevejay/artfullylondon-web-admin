@@ -123,6 +123,7 @@ class Dropdown extends React.Component {
         <DropdownButton
           ref={this.handleHeaderButtonMounted}
           label={label}
+          dropdownIsOpen={isOpen}
           onKeyDown={this.handleKeyDown}
           onKeyPress={this.handleKeyPress}
           onFocus={this.handleFocus}

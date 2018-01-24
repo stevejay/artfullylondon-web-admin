@@ -205,8 +205,8 @@
 }
 
 @mixin headerLinkText () {
-  @include extraBoldFont;
-  color: $half-black;
+  @include boldFont;
+  color: $three-quarter-black;
   font-size: 1.8rem;
   line-height: 1;
   text-transform: uppercase;
