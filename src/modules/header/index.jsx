@@ -12,7 +12,8 @@ import IconButton from '_src/components/button/icon'
 import HeaderLogo from '_src/components/logo/header'
 import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
-import Dropdown from '_src/modules/header/components/dropdown'
+// import Dropdown from '_src/modules/header/components/dropdown'
+import Dropdown from '_src/components/dropdown'
 import * as authActionTypes from '_src/constants/action/auth'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as browserSelectors from '_src/store/selectors/browser'
@@ -35,6 +36,9 @@ export class Header extends React.Component {
   componentDidCatch (error, info) {
     this.setState({ hasError: true })
     log.error(error, info.componentStack)
+  }
+  handleMenuItemSelected = item => {
+    this.props.history.push(item.path)
   }
   handleLogout = () => {
     this.props.dispatch({ type: authActionTypes.LOG_OUT })
@@ -64,9 +68,10 @@ export class Header extends React.Component {
             menuConstants.MENUS.map(menu => (
               <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
                 <Dropdown
+                  styleName='dropdown'
                   label={menu.label}
                   items={menu.items}
-                  history={history}
+                  onSelected={this.handleMenuItemSelected}
                 />
               </ToolbarItem>
             ))}

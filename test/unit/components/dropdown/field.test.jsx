@@ -2,11 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import DropdownField from '_src/components/dropdown/field'
+import SelectField from '_src/components/select/field'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <DropdownField
+    <SelectField
       input={{
         value: 'term',
         onChange: _.noop

@@ -4,7 +4,7 @@ import _ from 'lodash'
 import moment from 'moment'
 import { DATE_FORMAT } from '_src/constants/time'
 import DatepickerModal from '_src/components/datepicker/modal'
-import Dropdown from '_src/components/dropdown'
+import Select from '_src/components/select'
 import Text from '_src/components/text'
 import FieldResetButton from '_src/components/field/reset-button'
 import {
@@ -81,7 +81,7 @@ class DatepickerSearchField extends React.Component {
 
     return (
       <div styleName='container'>
-        <Dropdown
+        <Select
           styleName='dropdown'
           value={value}
           onChange={this.handleChangeDropdown}

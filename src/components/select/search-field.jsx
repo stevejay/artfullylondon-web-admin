@@ -5,7 +5,7 @@ import FieldResetButton from '_src/components/field/reset-button'
 import { NO_FILTER_VALUE } from '_src/constants/search'
 import './search-field.scss'
 
-class DropdownSearchField extends React.Component {
+class SelectSearchField extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.input.value !== this.props.input.value ||
@@ -63,7 +63,7 @@ class DropdownSearchField extends React.Component {
   }
 }
 
-DropdownSearchField.propTypes = {
+SelectSearchField.propTypes = {
   label: PropTypes.string,
   input: PropTypes.shape({
     value: PropTypes.oneOfType([
@@ -87,4 +87,4 @@ DropdownSearchField.propTypes = {
   htmlId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
-export default DropdownSearchField
+export default SelectSearchField

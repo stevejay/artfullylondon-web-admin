@@ -1,0 +1,23 @@
+$animationDuration: 200;
+$animationDurationMs: $animationDuration+0ms;
+
+:export {
+  animationDuration: $animationDuration;
+}
+
+.dropdown-transition {
+  opacity: 0;
+  transform: translateY(2rem);
+  will-change: transform, opacity;
+  transition: transform $animationDurationMs ease-in-out, opacity $animationDurationMs ease-in-out;
+}
+
+.dropdown-transition:global(.in) {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+
+.dropdown-transition:global(.out) {
+  opacity: 0;
+  transform: translateY(2rem);
+}

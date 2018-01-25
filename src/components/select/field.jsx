@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FieldContainer from '_src/components/field/container'
 import Dropdown from './index'
 
-class DropdownField extends React.Component {
+class SelectField extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.input.value !== this.props.input.value ||
@@ -60,7 +60,7 @@ class DropdownField extends React.Component {
   }
 }
 
-DropdownField.propTypes = {
+SelectField.propTypes = {
   input: PropTypes.shape({
     value: PropTypes.oneOfType([
       PropTypes.string,
@@ -86,4 +86,4 @@ DropdownField.propTypes = {
   htmlId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 }
 
-export default DropdownField
+export default SelectField

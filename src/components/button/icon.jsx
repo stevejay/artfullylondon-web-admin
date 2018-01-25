@@ -40,7 +40,7 @@ class IconButton extends React.Component {
         onClick={this.handleClick}
         aria-expanded={ariaExpanded}
       >
-        {React.createElement(icon, { className: 'icon-button-icon' })}
+        {React.createElement(icon)}
       </button>
     )
   }

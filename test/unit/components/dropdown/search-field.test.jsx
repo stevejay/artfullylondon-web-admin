@@ -2,11 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import DropdownSearchField from '_src/components/dropdown/search-field'
+import SelectSearchField from '_src/components/select/search-field'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <DropdownSearchField
+    <SelectSearchField
       input={{
         value: 'term',
         onChange: _.noop
@@ -32,7 +32,7 @@ it('should render correctly', () => {
 
 it('should render correctly with an error', () => {
   const wrapper = shallow(
-    <DropdownSearchField
+    <SelectSearchField
       input={{
         value: 'term',
         onChange: _.noop
@@ -58,7 +58,7 @@ it('should render correctly with an error', () => {
 
 it('should render correctly when disabled', () => {
   const wrapper = shallow(
-    <DropdownSearchField
+    <SelectSearchField
       input={{
         value: 'term',
         onChange: _.noop

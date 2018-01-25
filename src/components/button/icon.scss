@@ -8,9 +8,10 @@
   position: relative;
   padding: 1rem;
   border-bottom: none;
+  cursor: pointer;
 }
 
-:global .icon-button-icon {
+.link svg {
   width: 2.4rem;
   height: 2.4rem;
   transition: color .2s ease-in;
@@ -19,14 +20,14 @@
 .link-default {
   composes: link;
 
-  .icon {
-    color: $three-quarter-black;
+  svg {
+    color: $two-third-black;
   }
 
   &:hover {
     border-bottom: none;
 
-    .icon {
+    svg {
       color: $black;
     }
   }
@@ -35,14 +36,14 @@
 .link-inverse {
   composes: link;
 
-  .icon {
+  svg {
     color: $white;
   }
 
   &:hover {
     border-bottom: none;
 
-    .icon {
+    svg {
       color: $eighth-black;
     }
   }

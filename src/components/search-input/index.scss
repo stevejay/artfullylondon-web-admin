@@ -50,7 +50,16 @@
   }
 }
 
-.search-button {}
+.search-button {
+  position: absolute;
+  right: -.4rem;
+  top: calc(50% - 2.6rem);
+
+  @include from-wide-mobile {
+    top: calc(50% - 3rem);
+    right: 0;
+  }
+}
 
 // .link {
 //   @include noWebKitHighlight;

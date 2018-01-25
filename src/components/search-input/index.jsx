@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import SearchIcon from 'react-icons/lib/fa/search'
+import Select from 'react-select'
 
 import IconButton from '_src/components/button/icon'
 import Loader from '_src/components/loader'
@@ -183,11 +184,6 @@ class SearchInput extends React.Component {
             aria-label='Search'
             styleName='search-button'
           />}
-        {/* <div styleName='link' tabIndex='0' onClick={this.handleSearchClick}>
-            {searchInProgress
-              ? <Loader size='medium' />
-              : <SearchIcon styleName='icon' />}
-          </div> */}
         <FadeTransition in={showDropdown} appear mountOnEnter unmountOnExit>
           <AutocompleteList
             items={autocompleteItems}

@@ -2,11 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Dropdown from '_src/components/dropdown'
+import Select from '_src/components/select'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <Dropdown
+    <Select
       name='The Name'
       value='term'
       options={[{ value: 'a', label: 'A' }]}
@@ -28,7 +28,7 @@ it('should render correctly', () => {
 
 it('should render correctly with an error', () => {
   const wrapper = shallow(
-    <Dropdown
+    <Select
       name='The Name'
       value='term'
       options={[{ value: 'a', label: 'A' }]}
@@ -50,7 +50,7 @@ it('should render correctly with an error', () => {
 
 it('should render correctly when disabled', () => {
   const wrapper = shallow(
-    <Dropdown
+    <Select
       name='The Name'
       value='term'
       options={[{ value: 'a', label: 'A' }]}
