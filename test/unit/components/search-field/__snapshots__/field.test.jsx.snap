@@ -8,7 +8,7 @@ exports[`should render correctly 1`] = `
     disabled={false}
     maxLength={50}
     onChange={[Function]}
-    onFullSearch={[Function]}
+    onSearch={[Function]}
     searchInProgress={false}
     value="term"
   />

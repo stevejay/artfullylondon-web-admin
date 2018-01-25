@@ -35,7 +35,7 @@ class SearchField extends React.Component {
           maxLength={maxLength}
           hideAutocompleteOnModal={hideAutocompleteOnModal}
           placeholder={placeholder}
-          onFullSearch={handleSubmit}
+          onSearch={handleSubmit}
         />
       </div>
     )

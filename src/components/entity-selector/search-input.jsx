@@ -197,7 +197,7 @@ SearchInput.propTypes = {
 }
 
 SearchInput.defaultProps = {
-  placeholder: 'Enter a search term...',
+  placeholder: 'Enter a search term\u2026',
   autocompleteMinSearchTermLength: 2,
   maxLength: 100,
   size: 'large'

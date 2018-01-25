@@ -34,7 +34,7 @@
   max-width: 100%;
   border: none;
   border-bottom: 2px solid $quarter-black;
-  padding: .7rem 4.2rem .1rem 1.75rem;
+  padding: .7rem 4.2rem .1rem 1.7rem;
   text-align: left;
   background: $white;
   transition: border-color .1s ease;
@@ -44,37 +44,40 @@
     border-color: $input-border-focus-color;
     color: rgba(0, 0, 0, .8);
   }
-}
-
-.link {
-  @include noWebKitHighlight;
-  position: absolute;
-  right: 1.5rem;
-  top: calc(50% - 2rem);
-  cursor: pointer;
-  color: $half-black;
-  height: 2.8rem;
-  width: 2.4rem;
-
-  &:hover {
-    .icon {
-      color: $half-black;
-    }
-  }
 
   @include below-wide-mobile {
-    top: calc(50% - 1.7rem);
+    padding: .7rem 3.2rem .1rem .5rem;
   }
 }
 
-.icon {
-  width: 2.4rem;
-  height: 2.4rem;
-  color: $quarter-black;
-  transition: color .2s ease;
+.search-button {}
 
-  @include below-wide-mobile {
-    width: 2.2rem;
-    height: 2.2rem;
-  }
-}
+// .link {
+//   @include noWebKitHighlight;
+//   position: absolute;
+//   right: 1.5rem;
+//   top: calc(50% - 2rem);
+//   cursor: pointer;
+//   color: $half-black;
+//   height: 2.8rem;
+//   width: 2.4rem;
+//   &:hover {
+//     .icon {
+//       color: $three-quarter-black;
+//     }
+//   }
+//   @include below-wide-mobile {
+//     top: calc(50% - 1.7rem);
+//     right: .3rem;
+//   }
+// }
+// .icon {
+//   width: 2.4rem;
+//   height: 2.4rem;
+//   color: $half-black;
+//   transition: color .2s ease;
+//   @include below-wide-mobile {
+//     width: 2.2rem;
+//     height: 2.2rem;
+//   }
+// }

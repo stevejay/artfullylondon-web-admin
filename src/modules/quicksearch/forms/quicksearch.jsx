@@ -49,7 +49,7 @@ QuicksearchForm.propTypes = {
 }
 
 QuicksearchForm.defaultProps = {
-  placeholder: 'Enter a search term',
+  placeholder: 'Enter a search term\u2026',
   disabled: false
 }
 

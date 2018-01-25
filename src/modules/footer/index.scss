@@ -1,9 +1,14 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
 .item-container {
   display: flex;
   width: 100%;
   align-items: center;
+
+  @include below-wide-mobile {
+    flex-direction: column;
+  }
 }
 
 .item {
@@ -11,7 +16,9 @@
   font-size: 1.2rem;
   color: $third-black;
 
-  &:first-of-type {
-    margin-right: auto;
+  @include from-wide-mobile {
+    &:first-of-type {
+      margin-right: auto;
+    }
   }
 }

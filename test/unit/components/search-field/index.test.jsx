@@ -26,7 +26,7 @@ it('should render correctly', () => {
       autocompleteItems={autocompleteItems}
       search={_.noop}
       clearAutocomplete={_.noop}
-      onFullSearch={_.noop}
+      onSearch={_.noop}
       navigateToEntity={_.noop}
     />
   )

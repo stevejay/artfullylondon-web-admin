@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import SearchIcon from 'react-icons/lib/fa/search'
 
+import IconButton from '_src/components/button/icon'
 import Loader from '_src/components/loader'
 import AutocompleteList from '_src/components/search-input/autocomplete-list'
+import FadeTransition from '_src/components/transition/fade'
 import * as searchConstants from '_src/constants/search'
+import * as browserConstants from '_src/constants/browser'
 import './index.scss'
 
 class SearchInput extends React.Component {
@@ -13,6 +16,10 @@ class SearchInput extends React.Component {
     super(props)
     this.state = { currentSelectIndex: -1 }
     document.addEventListener('click', this.handleDocumentClick, false)
+  }
+  handleInputMounted = ref => {
+    this._input = ref
+    this.props.autoFocus && ref && ref.focus()
   }
   componentWillUnmount () {
     document.removeEventListener('click', this.handleDocumentClick, false)
@@ -46,9 +53,8 @@ class SearchInput extends React.Component {
   }
   handleChange = event => {
     event.preventDefault()
-    const searchTerm = event.target.value
-
     this.props.onChange(event)
+    const searchTerm = event.target.value
 
     if (
       searchTerm.length < this.props.autocompleteMinSearchTermLength ||
@@ -61,7 +67,11 @@ class SearchInput extends React.Component {
   }
   handleSearchKeyDown = event => {
     const { keyCode } = event
-    if (!(keyCode === 38 || keyCode === 40)) {
+
+    if (
+      !(keyCode === browserConstants.ARROW_UP_KEYCODE ||
+        keyCode === browserConstants.ARROW_DOWN_KEYCODE)
+    ) {
       return
     }
 
@@ -70,7 +80,7 @@ class SearchInput extends React.Component {
     const { currentSelectIndex } = this.state
     let nextSelectIndex = currentSelectIndex
 
-    if (keyCode === 38) {
+    if (keyCode === browserConstants.ARROW_UP_KEYCODE) {
       if (currentSelectIndex > 0) {
         while (true) {
           --nextSelectIndex
@@ -84,7 +94,7 @@ class SearchInput extends React.Component {
           }
         }
       }
-    } else if (keyCode === 40) {
+    } else if (keyCode === browserConstants.ARROW_DOWN_KEYCODE) {
       if (currentSelectIndex < autocompleteItems.length - 1) {
         while (true) {
           ++nextSelectIndex
@@ -106,13 +116,15 @@ class SearchInput extends React.Component {
     }
   }
   handleSearchKeyPress = event => {
+    const { autocompleteItems, onAutocompleteResultSelect } = this.props
     const { currentSelectIndex } = this.state
 
-    if (event.charCode !== 13 || currentSelectIndex === -1) {
+    if (
+      event.charCode !== browserConstants.ENTER_CHARCODE ||
+      currentSelectIndex === -1
+    ) {
       return
     }
-
-    const { autocompleteItems, onAutocompleteResultSelect } = this.props
 
     event.preventDefault()
     event.stopPropagation()
@@ -121,19 +133,17 @@ class SearchInput extends React.Component {
   handleSearchClick = event => {
     event.preventDefault()
     event.stopPropagation()
-    this.props.onFullSearch()
+    this.props.onSearch()
   }
   _clearAutocomplete = () => {
-    if (this.props.autocompleteItems.length > 0) {
-      this.props.onAutocompleteClear()
-    }
+    this.props.autocompleteItems.length && this.props.onAutocompleteClear()
   }
   render () {
     const {
       autocompleteItems,
       placeholder,
       searchInProgress,
-      onFullSearch,
+      onSearch,
       size,
       ariaLabel,
       autoFocus,
@@ -145,15 +155,13 @@ class SearchInput extends React.Component {
 
     const containerStyleName = `container-${size}`
 
+    const showDropdown =
+      !_.isEmpty(autocompleteItems) && !searchInProgress && !disabled
+
     return (
       <div styleName={containerStyleName}>
         <input
-          ref={ref => {
-            this._input = ref
-            if (autoFocus && ref) {
-              ref.focus()
-            }
-          }}
+          ref={this.handleInputMounted}
           styleName='input'
           value={disabled ? '' : value}
           type='text'
@@ -168,19 +176,27 @@ class SearchInput extends React.Component {
           maxLength={maxLength}
           aria-label={ariaLabel}
         />
-        {!!onFullSearch &&
-          <div styleName='link' tabIndex='0' onClick={this.handleSearchClick}>
+        {!!onSearch &&
+          <IconButton
+            icon={SearchIcon}
+            onClick={this.handleSearchClick}
+            aria-label='Search'
+            styleName='search-button'
+          />}
+        {/* <div styleName='link' tabIndex='0' onClick={this.handleSearchClick}>
             {searchInProgress
               ? <Loader size='medium' />
               : <SearchIcon styleName='icon' />}
-          </div>}
-        <AutocompleteList
-          items={autocompleteItems}
-          currentIndex={this.state.currentSelectIndex}
-          searchInProgress={searchInProgress}
-          disabled={disabled}
-          onSelectItem={onAutocompleteResultSelect}
-        />
+          </div> */}
+        <FadeTransition in={showDropdown} appear mountOnEnter unmountOnExit>
+          <AutocompleteList
+            items={autocompleteItems}
+            currentIndex={this.state.currentSelectIndex}
+            searchInProgress={searchInProgress}
+            disabled={disabled}
+            onSelectItem={onAutocompleteResultSelect}
+          />
+        </FadeTransition>
       </div>
     )
   }
@@ -191,7 +207,7 @@ SearchInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool.isRequired,
   autocompleteItems: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
-  onFullSearch: PropTypes.func,
+  onSearch: PropTypes.func,
   onAutocompleteSearch: PropTypes.func.isRequired,
   onAutocompleteClear: PropTypes.func.isRequired,
   onAutocompleteResultSelect: PropTypes.func.isRequired,
@@ -205,7 +221,7 @@ SearchInput.propTypes = {
 }
 
 SearchInput.defaultProps = {
-  placeholder: 'Enter a search term...',
+  placeholder: 'Enter a search term\u2026',
   autocompleteMinSearchTermLength: 2,
   maxLength: 100,
   size: 'large'

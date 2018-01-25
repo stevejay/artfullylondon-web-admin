@@ -55,6 +55,7 @@ export class Quicksearch extends React.Component {
                 icon={Close}
                 onClick={onHide}
                 aria-label='Close quicksearch dialog'
+                styleName='close-button'
               />
             </ToolbarItem>
           </Toolbar>

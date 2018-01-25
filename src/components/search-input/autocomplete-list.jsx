@@ -13,6 +13,7 @@ const AutocompleteList = ({
   currentIndex,
   searchInProgress,
   disabled,
+  className,
   onSelectItem
 }) => {
   if (_.isEmpty(items) || searchInProgress || disabled) {
@@ -20,7 +21,7 @@ const AutocompleteList = ({
   }
 
   return (
-    <ul styleName='container'>
+    <ul styleName='container' className={className}>
       {items.map(
         (item, index) =>
           (item.autocompleteItemType ===
@@ -28,14 +29,14 @@ const AutocompleteList = ({
             ? <AutocompleteHeaderItem
               key={item.label}
               entityName={item.label}
-            />
+              />
             : <AutocompleteItem
               key={item.id}
               index={index}
               currentIndex={currentIndex}
               item={item}
               onSelect={onSelectItem}
-            />)
+              />)
       )}
     </ul>
   )
@@ -46,6 +47,7 @@ AutocompleteList.propTypes = {
   items: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
   searchInProgress: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
+  className: PropTypes.string,
   onSelectItem: PropTypes.func.isRequired
 }
 

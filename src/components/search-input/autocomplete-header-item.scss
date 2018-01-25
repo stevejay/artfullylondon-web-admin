@@ -2,9 +2,9 @@
 @import 'mixins.scss';
 
 .header {
-  @include boldFont;
+  @include extraBoldFont;
   text-transform: uppercase;
   font-size: 1.4rem;
   margin: .5rem 0 0rem 1rem;
-  color: $third-black;
+  color: $half-black;
 }

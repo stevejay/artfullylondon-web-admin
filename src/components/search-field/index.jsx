@@ -27,9 +27,9 @@ export class SearchField extends React.Component {
       }
     })
   }
-  handleFullSearch = () => {
+  handleSearch = () => {
     this.handleClearAutocomplete()
-    this.props.onFullSearch()
+    this.props.onSearch()
   }
   handleAutocompleteResultSelect = entity => {
     this.handleClearAutocomplete()
@@ -63,7 +63,7 @@ export class SearchField extends React.Component {
         onChange={onChange}
         searchInProgress={searchInProgress}
         autocompleteItems={items}
-        onFullSearch={this.handleFullSearch}
+        onSearch={this.handleSearch}
         onAutocompleteSearch={this.handleAutocompleteSearch}
         onAutocompleteClear={this.handleClearAutocomplete}
         onAutocompleteResultSelect={this.handleAutocompleteResultSelect}
@@ -87,7 +87,7 @@ SearchField.propTypes = {
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   autocompleteItems: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
-  onFullSearch: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
