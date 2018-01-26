@@ -11,7 +11,7 @@ import * as searchActionTypes from '_src/constants/action/search'
 export class SearchField extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
-      nextProps.value !== this.props.value ||
+      nextProps.input.value !== this.props.input.value ||
       nextProps.searchInProgress !== this.props.searchInProgress ||
       nextProps.placeholder !== this.props.placeholder ||
       nextProps.autocompleteItems !== this.props.autocompleteItems ||
@@ -29,7 +29,7 @@ export class SearchField extends React.Component {
   }
   handleSearch = () => {
     this.handleClearAutocomplete()
-    this.props.onSearch()
+    this.props.handleSubmit()
   }
   handleAutocompleteResultSelect = entity => {
     this.handleClearAutocomplete()
@@ -49,8 +49,7 @@ export class SearchField extends React.Component {
       autoFocus,
       disabled,
       maxLength,
-      value,
-      onChange,
+      input: { value, onChange },
       placeholder,
       canShowAutocompleteItems
     } = this.props
@@ -78,8 +77,10 @@ export class SearchField extends React.Component {
 }
 
 SearchField.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  input: PropTypes.shape({
+    value: PropTypes.string,
+    onChange: PropTypes.func.isRequired
+  }).isRequired,
   disabled: PropTypes.bool.isRequired,
   searchInProgress: PropTypes.bool.isRequired,
   maxLength: PropTypes.number.isRequired,
@@ -87,12 +88,11 @@ SearchField.propTypes = {
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   autocompleteItems: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
-  onSearch: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func,
   dispatch: PropTypes.func.isRequired
 }
 
 export default connect((state, ownProps) => ({
   autocompleteItems: state.search.autocompleteItems,
-  canShowAutocompleteItems: !ownProps.hideAutocompleteOnModal ||
-    !state.modal.showQuicksearch
+  canShowAutocompleteItems: true
 }))(SearchField)

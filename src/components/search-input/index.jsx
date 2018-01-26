@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import SearchIcon from 'react-icons/lib/fa/search'
-import Select from 'react-select'
+import document from 'global/document'
 
 import IconButton from '_src/components/button/icon'
 import Loader from '_src/components/loader'
@@ -42,6 +42,7 @@ class SearchInput extends React.Component {
       nextState.currentSelectIndex !== this.state.currentSelectIndex
     )
   }
+  // TODO is this method called?
   focus () {
     this._input.focus()
   }
@@ -177,13 +178,14 @@ class SearchInput extends React.Component {
           maxLength={maxLength}
           aria-label={ariaLabel}
         />
-        {!!onSearch &&
+        {/* {false &&
+          !!onSearch &&
           <IconButton
             icon={SearchIcon}
             onClick={this.handleSearchClick}
             aria-label='Search'
             styleName='search-button'
-          />}
+          />} */}
         <FadeTransition in={showDropdown} appear mountOnEnter unmountOnExit>
           <AutocompleteList
             items={autocompleteItems}
@@ -217,7 +219,7 @@ SearchInput.propTypes = {
 }
 
 SearchInput.defaultProps = {
-  placeholder: 'Enter a search term\u2026',
+  placeholder: 'Search\u2026',
   autocompleteMinSearchTermLength: 2,
   maxLength: 100,
   size: 'large'

@@ -29,7 +29,7 @@ class Dropdown extends React.Component {
   }
   handleItemClick = index => {
     this._closeMenu()
-    this.props.selected && this.props.onSelected(this.props.items[index])
+    this.props.onChange(this.props.items[index].value)
   }
   handleButtonClick = () => {
     if (!this.state.isOpen) {
@@ -47,11 +47,8 @@ class Dropdown extends React.Component {
       return
     }
 
-    this.setState(
-      { isOpen: false, selectedIndex: null },
-      () =>
-        this.props.selected &&
-        this.props.onSelected(this.props.items[selectedIndex])
+    this.setState({ isOpen: false, selectedIndex: null }, () =>
+      this.props.onChange(this.props.items[selectedIndex].value)
     )
   }
   handleKeyDown = event => {
@@ -113,7 +110,7 @@ class Dropdown extends React.Component {
     this.setState({ isOpen: true, selectedIndex })
   }
   render () {
-    const { label, items, compact, className } = this.props
+    const { value, items, compact, className } = this.props
     const { isOpen, selectedIndex } = this.state
 
     return (
@@ -124,7 +121,7 @@ class Dropdown extends React.Component {
       >
         <DropdownButton
           ref={this.handleHeaderButtonMounted}
-          label={label}
+          label={value} // TODO change this
           compact={compact}
           dropdownIsOpen={isOpen}
           onKeyDown={this.handleKeyDown}
@@ -158,10 +155,11 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
-  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
-  onSelected: PropTypes.func
+  onChange: PropTypes.func.isRequired,
+  compact: PropTypes.bool
 }
 
 export default Dropdown

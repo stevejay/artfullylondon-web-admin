@@ -5,6 +5,12 @@ import './button.scss'
 
 // Note: Must be a class as a ref is taken of this component.
 class DropdownButton extends React.Component {
+  shouldComponentUpdate (nextProps) {
+    return (
+      nextProps.label !== this.props.label ||
+      nextProps.dropdownIsOpen !== this.props.dropdownIsOpen
+    )
+  }
   render () {
     const {
       label,
@@ -31,7 +37,7 @@ class DropdownButton extends React.Component {
         onBlur={onBlur}
         aria-haspopup={!!ariaHaspopup}
       >
-        {label}{dropdownIsOpen ? '\u00a0\u25BE' : '\u00a0\u25BE'}
+        {label}{'\u00a0\u25BE'}
       </button>
     )
   }
@@ -41,8 +47,8 @@ DropdownButton.propTypes = {
   label: PropTypes.string.isRequired,
   compact: PropTypes.bool,
   dropdownIsOpen: PropTypes.bool.isRequired,
-  onClick: PropTypes.func,
   ariaHaspopup: PropTypes.bool,
+  onClick: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyPress: PropTypes.func,
   onFocus: PropTypes.func,

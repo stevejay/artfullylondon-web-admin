@@ -9,6 +9,13 @@ import {
   ENTITY_TYPE_ALL
 } from '_src/constants/entity'
 
+const SEARCH_ENTITY_DROPDOWN_OPTIONS = [
+  { label: 'All', value: ENTITY_TYPE_ALL },
+  { label: 'Venues', value: ENTITY_TYPE_VENUE },
+  { label: 'Events', value: ENTITY_TYPE_EVENT },
+  { label: 'Talent', value: ENTITY_TYPE_TALENT }
+]
+
 export const SEARCH_TYPE_BASIC = 'SEARCH_TYPE_BASIC'
 export const SEARCH_TYPE_EVENT = 'SEARCH_TYPE_EVENT'
 export const SEARCH_TYPE_AUTOCOMPLETE = 'SEARCH_TYPE_AUTOCOMPLETE'

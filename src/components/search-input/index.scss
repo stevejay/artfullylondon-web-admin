@@ -46,20 +46,20 @@
   }
 
   @include below-wide-mobile {
-    padding: .7rem 3.2rem .1rem .5rem;
+    padding: .7rem 4rem .4rem .5rem;
   }
 }
 
-.search-button {
-  position: absolute;
-  right: -.4rem;
-  top: calc(50% - 2.6rem);
+// .search-button {
+//   position: absolute;
+//   right: -.4rem;
+//   top: calc(50% - 2.6rem);
 
-  @include from-wide-mobile {
-    top: calc(50% - 3rem);
-    right: 0;
-  }
-}
+//   @include from-wide-mobile {
+//     top: calc(50% - 3rem);
+//     right: 0;
+//   }
+// }
 
 // .link {
 //   @include noWebKitHighlight;

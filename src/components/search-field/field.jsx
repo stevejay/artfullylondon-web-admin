@@ -14,7 +14,7 @@ class SearchField extends React.Component {
   }
   render () {
     const {
-      input: { value, onChange },
+      input,
       maxLength,
       placeholder,
       autoFocus,
@@ -27,15 +27,14 @@ class SearchField extends React.Component {
     return (
       <div styleName='container'>
         <Search
-          value={value}
-          onChange={onChange}
+          input={input}
           searchInProgress={searchInProgress}
           autoFocus={autoFocus}
           disabled={disabled}
           maxLength={maxLength}
           hideAutocompleteOnModal={hideAutocompleteOnModal}
           placeholder={placeholder}
-          onSearch={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </div>
     )
@@ -53,7 +52,7 @@ SearchField.propTypes = {
   hideAutocompleteOnModal: PropTypes.bool,
   autoFocus: PropTypes.bool,
   placeholder: PropTypes.string,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func
 }
 
 export default SearchField

@@ -12,7 +12,7 @@ class IconButton extends React.Component {
   }
   handleClick = event => {
     event.preventDefault()
-    this.props.onClick()
+    this.props.onClick(event)
   }
   handleKeyPress = event => {
     if (event.key === 'Enter') {
