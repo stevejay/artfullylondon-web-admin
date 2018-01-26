@@ -11,7 +11,7 @@ import {
   ENTITY_TYPE_EVENT_SERIES
 } from '_src/constants/entity'
 import SearchInput from '_src/components/entity-selector/search-input'
-import { autocompleteSearch, clearAutocomplete } from '_src/actions/entity'
+import { autocompleteSearch } from '_src/actions/entity'
 
 export class EntitySelectorSearch extends React.Component {
   handleAutocompleteResultSelect = result => {
@@ -20,7 +20,7 @@ export class EntitySelectorSearch extends React.Component {
     this.props.onSelectEntity(result)
   }
   handleAutocompleteClear = () => {
-    this.props.clearAutocomplete()
+    // this.props.clearAutocomplete()
   }
   handleAutocompleteSearch = term => {
     const { autocompleteSearch, entityType } = this.props
@@ -63,8 +63,7 @@ EntitySelectorSearch.propTypes = {
   error: PropTypes.any,
   entitySearchLabel: PropTypes.string.isRequired,
   autocompleteItems: PropTypes.array.isRequired,
-  autocompleteSearch: PropTypes.func.isRequired,
-  clearAutocomplete: PropTypes.func.isRequired
+  autocompleteSearch: PropTypes.func.isRequired
 }
 
 export default connect(
@@ -75,8 +74,7 @@ export default connect(
     )
   }),
   dispatch => ({
-    autocompleteSearch: bindActionCreators(autocompleteSearch, dispatch),
-    clearAutocomplete: bindActionCreators(clearAutocomplete, dispatch)
+    autocompleteSearch: bindActionCreators(autocompleteSearch, dispatch)
   })
 )(EntitySelectorSearch)
 

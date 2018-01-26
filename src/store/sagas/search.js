@@ -115,7 +115,6 @@ function * basicSearch ({ payload }) {
     // const existingItemsLength = searchReducer.items.length
 
     const requestUrl = searchLib.createBasicSearchRequestUrl(query)
-    yield put({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     yield put({ type: searchActionTypes.STARTING_BASIC_SEARCH })
 
     yield put({

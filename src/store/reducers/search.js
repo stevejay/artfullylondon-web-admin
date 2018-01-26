@@ -99,11 +99,7 @@ export default handleActions(
     //     ...state,
     //     autocompleteItems
     //   }
-    // },
-    // [searchActionTypes.CLEAR_AUTOCOMPLETE]: state => ({
-    //   ...state,
-    //   autocompleteItems: []
-    // })
+    // }
   },
   initialState
 )

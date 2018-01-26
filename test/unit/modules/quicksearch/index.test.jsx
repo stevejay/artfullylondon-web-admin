@@ -25,10 +25,6 @@ it('should handle hiding the quicksearch', () => {
   wrapper.find('Modal').prop('onHide')()
 
   expect(handleHide).toHaveBeenCalled()
-
-  expect(dispatch).toHaveBeenCalledWith({
-    type: searchActionTypes.CLEAR_AUTOCOMPLETE
-  })
 })
 
 it('should handle submitting the quicksearch form', () => {
@@ -45,10 +41,6 @@ it('should handle submitting the quicksearch form', () => {
   })
 
   expect(handleHide).toHaveBeenCalled()
-
-  expect(dispatch).toHaveBeenCalledWith({
-    type: searchActionTypes.CLEAR_AUTOCOMPLETE
-  })
 
   expect(dispatch).toHaveBeenCalledWith({
     type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,

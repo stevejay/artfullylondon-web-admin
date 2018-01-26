@@ -14,7 +14,6 @@ it('should render an info bar for a venue correctly', () => {
       entitySearchLabel='The Search Label'
       autocompleteItems={[]}
       autocompleteSearch={_.noop}
-      clearAutocomplete={_.noop}
     />
   )
 

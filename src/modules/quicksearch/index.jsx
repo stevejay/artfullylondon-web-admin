@@ -21,7 +21,6 @@ export class Quicksearch extends React.Component {
     return nextProps.show !== this.props.show
   }
   handleHideQuicksearch = () => {
-    this.props.dispatch({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     this.props.onHide()
   }
   handleSubmit = query => {
