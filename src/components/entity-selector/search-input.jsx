@@ -34,9 +34,6 @@ class SearchInput extends React.Component {
       nextState.currentSelectIndex !== this.state.currentSelectIndex
     )
   }
-  focus () {
-    this._input.focus()
-  }
   clearSearchTerm () {
     this.setState({ searchTerm: '' })
   }

@@ -7408,6 +7408,12 @@ redux-form@^7.2.0:
     lodash-es "^4.17.3"
     prop-types "^15.5.9"
 
+redux-saga-thunk@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/redux-saga-thunk/-/redux-saga-thunk-0.5.3.tgz#4ec7396f8240dc3f997f37ffc43caec51bde7297"
+  dependencies:
+    lodash "^4.17.4"
+
 redux-saga@^0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.0.tgz#0a231db0a1489301dd980f6f2f88d8ced418f724"

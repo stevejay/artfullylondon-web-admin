@@ -153,6 +153,7 @@
     "redux-actions": "^2.2.1",
     "redux-form": "^7.2.0",
     "redux-saga": "^0.16.0",
+    "redux-saga-thunk": "^0.5.3",
     "sanitize.css": "^5.0.0",
     "semver-compare": "^1.0.0",
     "sjcl": "^1.0.7",

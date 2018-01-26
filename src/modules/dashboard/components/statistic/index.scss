@@ -31,6 +31,10 @@
     align-self: flex-end;
     font-size: 10rem;
     line-height: 1;
+
+    @include below-tablet {
+      font-size: 7rem;
+    }
   }
 }
 

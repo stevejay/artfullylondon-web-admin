@@ -13,64 +13,61 @@ export class SearchField extends React.Component {
     return (
       nextProps.input.value !== this.props.input.value ||
       nextProps.searchInProgress !== this.props.searchInProgress ||
-      nextProps.placeholder !== this.props.placeholder ||
-      nextProps.autocompleteItems !== this.props.autocompleteItems ||
-      nextProps.canShowAutocompleteItems !== this.props.canShowAutocompleteItems
+      nextProps.placeholder !== this.props.placeholder
     )
   }
-  handleAutocompleteSearch = term => {
-    this.props.dispatch({
+  handleAutocompleteSearch = query => {
+    return this.props.dispatch({
       type: searchActionTypes.SEARCH,
       payload: {
         searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
-        query: { term, entityType: entityConstants.ENTITY_TYPE_ALL }
-      }
+        query
+      },
+      meta: { thunk: true }
     })
   }
-  handleSearch = () => {
-    this.handleClearAutocomplete()
-    this.props.handleSubmit()
-  }
-  handleAutocompleteResultSelect = entity => {
-    this.handleClearAutocomplete()
+  // handleSearch = () => {
+  //   this.handleClearAutocomplete()
+  //   this.props.handleSubmit()
+  // }
+  handleAutocompleteSelect = entity => {
+    // this.handleClearAutocomplete()
+
+    console.log('handleAutocompleteSelect', entity)
 
     this.props.dispatch({
       type: searchActionTypes.NAVIGATE_TO_ENTITY,
-      payload: { entityType: entity.entityType, id: entity.id }
+      payload: entity
     })
   }
-  handleClearAutocomplete = () => {
-    this.props.dispatch({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
-  }
+  // handleClearAutocomplete = () => {
+  //   this.props.dispatch({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
+  // }
   render () {
     const {
       searchInProgress,
-      autocompleteItems,
       autoFocus,
       disabled,
       maxLength,
       input: { value, onChange },
       placeholder,
-      canShowAutocompleteItems
+      handleSubmit
     } = this.props
-
-    const items = canShowAutocompleteItems ? autocompleteItems : []
 
     return (
       <SearchInput
         value={value}
         onChange={onChange}
         searchInProgress={searchInProgress}
-        autocompleteItems={items}
-        onSearch={this.handleSearch}
-        onAutocompleteSearch={this.handleAutocompleteSearch}
-        onAutocompleteClear={this.handleClearAutocomplete}
-        onAutocompleteResultSelect={this.handleAutocompleteResultSelect}
         autoFocus={autoFocus}
         disabled={disabled}
         maxLength={maxLength}
         placeholder={placeholder}
-        ariaLabel='Search for events, talents, and venues'
+        ariaLabel={'Search\u2026'}
+        onSearch={handleSubmit}
+        onAutocompleteSearch={this.handleAutocompleteSearch}
+        // onAutocompleteClear={this.handleClearAutocomplete}
+        onAutocompleteSelect={this.handleAutocompleteSelect}
       />
     )
   }
@@ -84,15 +81,10 @@ SearchField.propTypes = {
   disabled: PropTypes.bool.isRequired,
   searchInProgress: PropTypes.bool.isRequired,
   maxLength: PropTypes.number.isRequired,
-  canShowAutocompleteItems: PropTypes.bool.isRequired,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
-  autocompleteItems: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
   handleSubmit: PropTypes.func,
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect((state, ownProps) => ({
-  autocompleteItems: state.search.autocompleteItems,
-  canShowAutocompleteItems: true
-}))(SearchField)
+export default connect()(SearchField)

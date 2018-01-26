@@ -44,7 +44,7 @@ function * pushBasicSearchToUrl ({ payload }) {
   }
 }
 
-function * autocompleteSearch ({ payload }) {
+function * autocompleteSearch ({ payload, meta }) {
   yield call(delay, 300) // debounce
 
   const query = yield call(
@@ -61,17 +61,20 @@ function * autocompleteSearch ({ payload }) {
     true
   )
 
+  let items = []
+
   if (errors !== null) {
     yield call(log.error, 'autocompleteSearch validation errors', errors)
-    return
+  } else {
+    const requestUrl = searchLib.createAdminAutocompleteSearchRequestUrl(query)
+    const json = yield call(fetchLib.get, requestUrl)
+    items = json.items
   }
-
-  const requestUrl = searchLib.createAdminAutocompleteSearchRequestUrl(query)
-  const json = yield call(fetchLib.get, requestUrl)
 
   yield put({
     type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
-    payload: json
+    payload: { items },
+    meta
   })
 }
 
