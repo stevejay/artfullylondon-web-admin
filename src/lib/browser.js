@@ -3,7 +3,7 @@ import window from 'global/window'
 import * as browserConstants from '_src/constants/browser'
 
 export function forceReflow (node) {
-  node && node.scrollTop
+  node && node.scrollTop // eslint-disable-line
 }
 
 export function isDesktop () {

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import queryString from 'query-string'
 import _ from 'lodash'
 
@@ -35,6 +34,24 @@ class SearchResultsPage extends React.Component {
       query: this.props.resultParams,
       skip: (pageNumber - 1) * searchConstants.DEFAULT_TAKE,
       take: searchConstants.DEFAULT_TAKE
+    })
+  }
+  handleAutocompleteSearch = query => {
+    console.log('handleAutocompleteSearch', JSON.stringify(query))
+
+    return this.props.dispatch({
+      type: searchActionTypes.SEARCH,
+      payload: {
+        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
+        query
+      },
+      meta: { thunk: true }
+    })
+  }
+  handleAutocompleteSelect = entity => {
+    this.props.dispatch({
+      type: searchActionTypes.NAVIGATE_TO_ENTITY,
+      payload: entity
     })
   }
   handleSubmit = params => {
@@ -97,7 +114,11 @@ class SearchResultsPage extends React.Component {
         <SectionHeading>
           <span>Quick</span>&nbsp;Search
         </SectionHeading>
-        <BasicSearchForm onSubmit={this.handleSubmit} />
+        <BasicSearchForm
+          onSubmit={this.handleSubmit}
+          onAutocompleteSearch={this.handleAutocompleteSearch}
+          onAutocompleteSelect={this.handleAutocompleteSelect}
+        />
         {searchInProgress && <BoxesLoader />}
         {!searchInProgress &&
           !hasResults &&

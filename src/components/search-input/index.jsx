@@ -1,16 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
-import SearchIcon from 'react-icons/lib/fa/search'
 import document from 'global/document'
 
-import IconButton from '_src/components/button/icon'
-import Loader from '_src/components/loader'
 import AutocompleteList from '_src/components/search-input/autocomplete-list'
 import FadeTransition from '_src/components/transition/fade'
-import * as searchConstants from '_src/constants/search'
 import * as browserConstants from '_src/constants/browser'
-import * as entityConstants from '_src/constants/entity'
 import './index.scss'
 
 const AUTOCOMPLETE_MIN_SEARCH_TERM_LENGTH = 2
@@ -18,7 +13,13 @@ const AUTOCOMPLETE_MIN_SEARCH_TERM_LENGTH = 2
 class SearchInput extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { currentSelectIndex: -1, autocompleteItems: [] }
+
+    this.state = {
+      currentSelectIndex: -1,
+      autocompleteItems: [],
+      showAutocomplete: false
+    }
+
     this.mounted = true
   }
   handleInputMounted = ref => {
@@ -37,8 +38,8 @@ class SearchInput extends React.Component {
       nextProps.searchInProgress !== this.props.searchInProgress ||
       nextProps.value !== this.props.value ||
       nextProps.disabled !== this.props.disabled ||
-      nextProps.placeholder !== this.props.placeholder ||
       nextState.autocompleteItems !== this.state.autocompleteItems ||
+      nextState.showAutocomplete !== this.state.showAutocomplete ||
       nextState.currentSelectIndex !== this.state.currentSelectIndex
     )
   }
@@ -60,13 +61,13 @@ class SearchInput extends React.Component {
     } else {
       this.props
         .onAutocompleteSearch({
-          term,
-          entityType: entityConstants.ENTITY_TYPE_ALL
+          term
         })
         .then(({ items }) => {
           this.mounted &&
             this.setState({
               autocompleteItems: items,
+              showAutocomplete: true,
               currentSelectIndex: -1
             })
         })
@@ -74,11 +75,17 @@ class SearchInput extends React.Component {
   }
   handleSearchKeyDown = event => {
     const { keyCode } = event
-    const { currentSelectIndex, autocompleteItems } = this.state
+
+    const {
+      currentSelectIndex,
+      autocompleteItems,
+      showAutocomplete
+    } = this.state
 
     if (
       !(keyCode === browserConstants.ARROW_UP_KEYCODE ||
-        keyCode === browserConstants.ARROW_DOWN_KEYCODE)
+        keyCode === browserConstants.ARROW_DOWN_KEYCODE) ||
+      !showAutocomplete
     ) {
       return
     }
@@ -141,26 +148,22 @@ class SearchInput extends React.Component {
     this.props.onAutocompleteSelect(item)
   }
   _clearAutocomplete = () => {
-    this.setState({ autocompleteItems: [] })
+    this.setState({ showAutocomplete: false, currentSelectIndex: -1 })
   }
   render () {
     const {
       placeholder,
       searchInProgress,
-      onSearch,
       size,
       ariaLabel,
-      autoFocus,
       maxLength,
       value,
       disabled
     } = this.props
 
-    const { autocompleteItems } = this.state
+    const { autocompleteItems, showAutocomplete } = this.state
     const containerStyleName = `container-${size}`
-
-    const showDropdown =
-      !_.isEmpty(autocompleteItems) && !searchInProgress && !disabled
+    const showDropdown = showAutocomplete && !searchInProgress && !disabled
 
     return (
       <div styleName={containerStyleName}>
@@ -184,8 +187,6 @@ class SearchInput extends React.Component {
           <AutocompleteList
             items={autocompleteItems}
             currentIndex={this.state.currentSelectIndex}
-            searchInProgress={searchInProgress}
-            disabled={disabled}
             onSelectItem={this.handleAutocompleteSelect}
           />
         </FadeTransition>
@@ -198,12 +199,11 @@ SearchInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool.isRequired,
-  onSearch: PropTypes.func,
   onAutocompleteSearch: PropTypes.func.isRequired,
   onAutocompleteSelect: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'large']),
   maxLength: PropTypes.number,
   ariaLabel: PropTypes.string

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { Overlay } from 'react-overlays'
-import _ from 'lodash'
 import document from 'global/document'
 
 import DropdownTransition from '_src//components/dropdown/transition'

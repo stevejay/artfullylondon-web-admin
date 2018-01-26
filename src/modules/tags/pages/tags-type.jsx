@@ -7,12 +7,10 @@ import FieldDivider from '_src/components/field/divider'
 import Error from '_src/components/error'
 import BasicSection from '_src/components/section/basic'
 import SectionHeading from '_src/components/section/heading'
-import DetailsContainer from '_src/components/entity/details-container'
 import TagCollection from '_src/modules/tags/components/tag-collection'
 import AddTagForm from '_src/modules/tags/forms/add-tag'
 import * as tagSelectors from '_src/store/selectors/tag'
 import * as tagActionTypes from '_src/constants/action/tag'
-import * as tagConstants from '_src/constants/tag'
 import * as tagLib from '_src/lib/tag'
 import './tags-type.scss'
 
@@ -50,8 +48,7 @@ class TagsType extends React.Component {
       getInProgress,
       getFailed,
       deleteInProgress,
-      tags,
-      match
+      tags
     } = this.props
 
     return (
@@ -70,7 +67,6 @@ class TagsType extends React.Component {
             />
             <FieldDivider />
             <TagCollection
-              tagType={tagType}
               tags={tags}
               onDelete={this.handleDeleteTag}
               getInProgress={getInProgress}

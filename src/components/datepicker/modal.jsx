@@ -55,7 +55,6 @@ class DatepickerModal extends React.Component {
     })
   }
   render () {
-    const { title, onHide } = this.props
     const { selectedDay, from } = this.state
 
     return (

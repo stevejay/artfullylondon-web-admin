@@ -66,9 +66,13 @@ function * autocompleteSearch ({ payload, meta }) {
   if (errors !== null) {
     yield call(log.error, 'autocompleteSearch validation errors', errors)
   } else {
-    const requestUrl = searchLib.createAdminAutocompleteSearchRequestUrl(query)
-    const json = yield call(fetchLib.get, requestUrl)
-    items = json.items
+    try {
+      const requestUrl = searchLib.createAutocompleteSearchRequestUrl(query)
+      const json = yield call(fetchLib.get, requestUrl)
+      items = json.items
+    } catch (err) {
+      yield call(log.error, err)
+    }
   }
 
   yield put({
@@ -111,7 +115,7 @@ function * basicSearch ({ payload }) {
       return
     }
 
-    const requestUrl = searchLib.createAdminBasicSearchRequestUrl(query)
+    const requestUrl = searchLib.createBasicSearchRequestUrl(query)
     yield put({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     yield put({ type: searchActionTypes.STARTING_BASIC_SEARCH })
 

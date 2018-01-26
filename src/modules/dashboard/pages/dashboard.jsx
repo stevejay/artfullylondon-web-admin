@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import Error from '_src/components/error'
 import BoxesLoader from '_src/components/loader/boxes'

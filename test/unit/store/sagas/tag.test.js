@@ -1,13 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import { cloneableGenerator } from 'redux-saga/utils'
 import log from 'loglevel'
-import {
-  startSubmit,
-  stopSubmit,
-  reset,
-  getFormValues,
-  change
-} from 'redux-form'
+import { startSubmit, stopSubmit, reset } from 'redux-form'
 
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'

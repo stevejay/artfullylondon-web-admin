@@ -1,7 +1,6 @@
-import { put, call, takeLatest, fork, apply } from 'redux-saga/effects'
+import { put, call, apply } from 'redux-saga/effects'
 import { cloneableGenerator } from 'redux-saga/utils'
 import { delay } from 'redux-saga'
-import cmp from 'semver-compare'
 import window from 'global/window'
 import store from 'store2'
 import log from 'loglevel'

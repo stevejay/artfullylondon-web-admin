@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
@@ -15,14 +14,14 @@ export class LoginPage extends React.Component {
     this.props.dispatch({ type: authActionTypes.LOG_IN, payload })
   }
   render () {
-    const { dispatch, initialUsername } = this.props
+    const { initialUsername } = this.props
 
     return (
       <FormSection type='narrow' styleName='form-section'>
         <FormBorder title='Log In'>
           <LoginForm
             onSubmit={this.handleSubmit}
-            initialUsername={this.props.initialUsername}
+            initialUsername={initialUsername}
             constraint={authConstraints.logInConstraint}
           />
         </FormBorder>

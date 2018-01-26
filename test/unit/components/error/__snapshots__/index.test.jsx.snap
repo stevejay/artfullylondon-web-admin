@@ -10,7 +10,7 @@ exports[`should render a 404 error correctly 1`] = `
     <FaThumbsODown
       className="src-components-error-index__icon"
     />
-    Sorry—we couldn't find this page
+    Sorry—we couldn't find that info
   </h1>
 </BasicSection>
 `;

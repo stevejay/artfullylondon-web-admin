@@ -10,7 +10,7 @@ import ImageGridCard from '_src/components/image-grid/card'
 // import ImageEditorForm from '_src/containers/forms/image-editor'
 // import UpdateImageModal from '_src/containers/modals/update-image'
 
-import { addImageConstraint } from '_src/constants/image-constraints'
+// import { addImageConstraint } from '_src/constants/image-constraints'
 
 class ImagesField extends React.Component {
   handleSubmit = values => {
@@ -37,8 +37,7 @@ class ImagesField extends React.Component {
     imageActions.deleteImage({ id: key, parentFormName })
   }
   handleUpdateImage = ({ key, copyright }) => {
-    const { showModal, imageActions, parentFormName } = this.props
-
+    // const { showModal, imageActions, parentFormName } = this.props
     // showModal({
     //   component: UpdateImageModal,
     //   componentProps: {

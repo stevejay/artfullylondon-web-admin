@@ -1,6 +1,6 @@
 import * as search from '_src/lib/search'
 
-describe('createAdminAutocompleteSearchRequestUrl', () => {
+describe('createAutocompleteSearchRequestUrl', () => {
   const tests = [
     {
       it: 'should handle a request with only a term',
@@ -21,13 +21,13 @@ describe('createAdminAutocompleteSearchRequestUrl', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.createAdminAutocompleteSearchRequestUrl(test.arg)
+      const actual = search.createAutocompleteSearchRequestUrl(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
 })
 
-describe('createAdminBasicSearchRequestUrl', () => {
+describe('createBasicSearchRequestUrl', () => {
   const tests = [
     {
       it: 'should handle query with no skip and take',
@@ -48,7 +48,7 @@ describe('createAdminBasicSearchRequestUrl', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.createAdminBasicSearchRequestUrl(
+      const actual = search.createBasicSearchRequestUrl(
         test.args.query,
         test.args.skip,
         test.args.take

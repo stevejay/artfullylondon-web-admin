@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import Close from 'react-icons/lib/fa/close'
 
 import Toolbar from '_src/components/toolbar'
@@ -14,6 +13,7 @@ import ModalTransition
   from '_src/modules/quicksearch/components/modal-transition'
 import * as searchConstants from '_src/constants/search'
 import * as searchActionTypes from '_src/constants/action/search'
+import * as entityConstants from '_src/constants/entity'
 import './index.scss'
 
 export class Quicksearch extends React.Component {
@@ -35,6 +35,24 @@ export class Quicksearch extends React.Component {
       }
     })
   }
+  handleAutocompleteSearch = ({ term }) => {
+    return this.props.dispatch({
+      type: searchActionTypes.SEARCH,
+      payload: {
+        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
+        query: { term, entityType: entityConstants.ENTITY_TYPE_ALL }
+      },
+      meta: { thunk: true }
+    })
+  }
+  handleAutocompleteSelect = entity => {
+    this.handleHideQuicksearch()
+
+    this.props.dispatch({
+      type: searchActionTypes.NAVIGATE_TO_ENTITY,
+      payload: entity
+    })
+  }
   render () {
     const { show, onHide } = this.props
 
@@ -45,7 +63,7 @@ export class Quicksearch extends React.Component {
         onHide={this.handleHideQuicksearch}
         aria-label='Quicksearch'
       >
-        <div styleName='modal'>
+        <div styleName='modal-container'>
           <Toolbar styleName='toolbar'>
             <ToolbarItem>
               <Logo size='small' />
@@ -59,7 +77,11 @@ export class Quicksearch extends React.Component {
               />
             </ToolbarItem>
           </Toolbar>
-          <QuicksearchForm onSubmit={this.handleSubmit} />
+          <QuicksearchForm
+            onSubmit={this.handleSubmit}
+            onAutocompleteSearch={this.handleAutocompleteSearch}
+            onAutocompleteSelect={this.handleAutocompleteSelect}
+          />
         </div>
       </Modal>
     )

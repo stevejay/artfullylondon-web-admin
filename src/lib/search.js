@@ -15,7 +15,7 @@ export function createSearchPageUrl (baseUrl, query, skip, take) {
   return baseUrl + '?' + _createQueryString(params)
 }
 
-export function createAdminAutocompleteSearchRequestUrl (query) {
+export function createAutocompleteSearchRequestUrl (query) {
   const params = {}
 
   if (query.term) {
@@ -31,7 +31,7 @@ export function createAdminAutocompleteSearchRequestUrl (query) {
   return `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/auto?${queryString}`
 }
 
-export function createAdminBasicSearchRequestUrl (query, skip, take) {
+export function createBasicSearchRequestUrl (query, skip, take) {
   const params = {}
 
   if (query.term) {

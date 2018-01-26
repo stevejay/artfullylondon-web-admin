@@ -2,13 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { Overlay } from 'react-overlays'
-import _ from 'lodash'
 
 import DropdownTransition
   from '_src/modules/header/components/dropdown/transition'
 import DropdownButton from '_src/modules/header/components/dropdown/button'
 import DropdownMenu from '_src/modules/header/components/dropdown/menu'
-import DropdownMenuLink from '_src/modules/header/components/dropdown/menu-link'
 import * as browserConstants from '_src/constants/browser'
 import './index.scss'
 

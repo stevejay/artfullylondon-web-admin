@@ -8,6 +8,7 @@ import log from 'loglevel'
 
 import store from '_src/store'
 import * as authConstants from '_src/constants/auth'
+import * as authActionTypes from '_src/constants/action/auth'
 
 const USER_POOL_DATA = {
   UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,

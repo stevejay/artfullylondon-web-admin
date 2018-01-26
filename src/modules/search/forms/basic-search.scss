@@ -1,7 +1,7 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.container {
+.form-container {
   margin: 1.5rem 1.5rem .5rem;
 
   @include from-wide-mobile {
@@ -12,6 +12,26 @@
     margin: 2rem auto .8rem;
     width: 700px;
   }
+}
+
+.form-row {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+// TODO create component for this?
+.toolbar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-button {
+  margin-top: -3px;
 }
 
 // .top-inputs-container,

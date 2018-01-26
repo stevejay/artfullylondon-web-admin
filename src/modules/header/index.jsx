@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
 import Bars from 'react-icons/lib/fa/bars'
 import Search from 'react-icons/lib/fa/search'
@@ -49,8 +48,7 @@ export class Header extends React.Component {
       onShowQuicksearch,
       loggedIn,
       isWideBrowser,
-      showingSidenav,
-      history
+      showingSidenav
     } = this.props
 
     if (!loggedIn || this.state.hasError) {

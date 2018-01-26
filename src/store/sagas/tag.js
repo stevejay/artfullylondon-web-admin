@@ -1,18 +1,16 @@
-import { put, call, takeLatest, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
+import { put, call, takeLatest } from 'redux-saga/effects'
 import {
   startSubmit,
   stopSubmit,
-  reset,
-  getFormValues,
-  change
+  reset
+  // getFormValues,
+  // change
 } from 'redux-form'
 import log from 'loglevel'
 
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
-import * as tagConstants from '_src/constants/tag'
 import * as tagActionTypes from '_src/constants/action/tag'
 import * as formConstants from '_src/constants/form'
 import * as authLib from '_src/lib/auth'
@@ -139,20 +137,20 @@ export function * deleteTag (action) {
   }
 }
 
-function getEventTagsPropertyName (tagType) {
-  switch (tagType) {
-    case tagConstants.TAG_TYPE_MEDIUM:
-      return 'mediumTags'
-    case tagConstants.TAG_TYPE_STYLE:
-      return 'styleTags'
-    case tagConstants.TAG_TYPE_AUDIENCE:
-      return 'audienceTags'
-    case tagConstants.TAG_TYPE_GEO:
-      return 'geoTags'
-    default:
-      throw new Error(`tagType out of range: ${tagType}`)
-  }
-}
+// function getEventTagsPropertyName (tagType) {
+//   switch (tagType) {
+//     case tagConstants.TAG_TYPE_MEDIUM:
+//       return 'mediumTags'
+//     case tagConstants.TAG_TYPE_STYLE:
+//       return 'styleTags'
+//     case tagConstants.TAG_TYPE_AUDIENCE:
+//       return 'audienceTags'
+//     case tagConstants.TAG_TYPE_GEO:
+//       return 'geoTags'
+//     default:
+//       throw new Error(`tagType out of range: ${tagType}`)
+//   }
+// }
 
 export default [
   // takeLatest(tagActionTypes.GET_ALL_TAGS, getAllTags),

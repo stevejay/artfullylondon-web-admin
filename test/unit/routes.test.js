@@ -50,7 +50,7 @@ it('should render correctly when logged in', () => {
 it('should trigger initial actions', () => {
   const mockDispatch = jest.fn()
 
-  const wrapper = shallow(
+  shallow(
     <Routes
       loggedIn
       autoLogInAttempted

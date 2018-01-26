@@ -2,17 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
+import SearchIcon from 'react-icons/lib/fa/search'
 
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
-import FormHeading from '_src/components/form/heading'
-import RadioButtonField from '_src/components/radio-button/field'
-import Message from '_src/components/message'
-import SearchField from '_src/components/search-field/field'
+import IconButton from '_src/components/button/icon'
+import SearchInputFieldBasic from '_src/components/search-input/field-basic'
+import DropdownField from '_src/components/dropdown/field'
 import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/constants/search'
 import * as searchConstraints from '_src/constants/search-constraints'
+import * as browserConstants from '_src/constants/browser'
 import './basic-search.scss'
 
 export class BasicSearchForm extends React.Component {
@@ -21,55 +22,54 @@ export class BasicSearchForm extends React.Component {
       !!this.props.entityTypeSelector &&
       nextProps.entityTypeSelector !== this.props.entityTypeSelector
     ) {
-      this.props.submit()
-    }
-  }
-  getPlaceholderText (entityType) {
-    switch (entityType) {
-      case 'event':
-        return 'Enter an event name\u2026'
-      case 'talent':
-        return 'Enter a talent name\u2026'
-      case 'venue':
-        return 'Enter a venue name\u2026'
-      default:
-        return 'Enter anything\u2026'
-    }
-  }
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
       this.props.handleSubmit()
     }
   }
+  handleKeyPress = event => {
+    if (event.charCode === browserConstants.ENTER_CHARCODE) {
+      event.preventDefault()
+      this.props.handleSubmit()
+    }
+  }
+  handleAutocompleteSearch = ({ term }) => {
+    return this.props.onAutocompleteSearch({
+      term,
+      entityType: this.props.entityTypeSelector
+    })
+  }
   render () {
-    const { submitting, handleSubmit, error, entityTypeSelector } = this.props
+    const { submitting, handleSubmit, error, onAutocompleteSelect } = this.props
 
     return (
       <Form
         onKeyPress={this.handleKeyPress}
         onSubmit={handleSubmit}
-        styleName='container'
+        styleName='form-container'
       >
-        <FormRow>
+        <FormRow styleName='form-row'>
+          <div styleName='toolbar'>
+            <Field
+              name='entityType'
+              component={DropdownField}
+              items={searchConstants.SEARCH_ENTITY_DROPDOWN_OPTIONS}
+              compact
+            />
+            <IconButton
+              icon={SearchIcon}
+              onClick={handleSubmit}
+              aria-label='Search'
+              styleName='search-button'
+            />
+          </div>
           <Field
             name='term'
-            component={SearchField}
+            component={SearchInputFieldBasic}
             searchInProgress={submitting}
-            autoFocus={false}
-            disabled={false}
-            placeholder={this.getPlaceholderText(entityTypeSelector)}
-            maxLength={
-              searchConstraints.basicSearchConstraint.term.length.maximum
-            }
-            handleSubmit={handleSubmit}
+            maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
+            // onSearch={handleSubmit}
+            onAutocompleteSearch={this.handleAutocompleteSearch}
+            onAutocompleteSelect={onAutocompleteSelect}
           />
-          {/* <Field
-            name='entityType'
-            component={RadioButtonField}
-            options={searchConstants.ENTITY_TYPE_OPTIONS}
-            containerStyle={{ paddingTop: 0, margin: 0, width: '100%' }}
-          /> */}
         </FormRow>
         <FormError error={error} hideGenericErrorMessages />
       </Form>
@@ -88,11 +88,13 @@ BasicSearchForm.propTypes = {
     take: PropTypes.number.isRequired
   }).isRequired,
   entityTypeSelector: PropTypes.string,
+  error: PropTypes.string,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
-  error: PropTypes.string
+  onAutocompleteSearch: PropTypes.func.isRequired,
+  onAutocompleteSelect: PropTypes.func.isRequired
 }
 
 const WrappedSearchForm = reduxForm({

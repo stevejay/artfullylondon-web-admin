@@ -6,8 +6,8 @@ import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
 import LinkGridRow from '_src/components/links/grid-row'
 // import LinkEditorForm from '_src/containers/forms/link-editor'
-import linkConstraint from '_src/constants/link-constraint'
-import { getAvailableLinkTypeDropdownOptions } from '_src/lib/link'
+// import linkConstraint from '_src/constants/link-constraint'
+// import { getAvailableLinkTypeDropdownOptions } from '_src/lib/link'
 
 class LinksField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -27,7 +27,7 @@ class LinksField extends React.Component {
   }
   render () {
     const { label, input: { value }, meta: { touched, error } } = this.props
-    const linkTypeOptions = getAvailableLinkTypeDropdownOptions(value)
+    // const linkTypeOptions = getAvailableLinkTypeDropdownOptions(value)
 
     // TODO add form back in
 

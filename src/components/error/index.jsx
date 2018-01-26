@@ -8,7 +8,7 @@ import './index.scss'
 
 const Error = ({ type }) => {
   const text = type === errorConstants.NOT_FOUND
-    ? 'Sorry\u2014we couldn\u0027t find this page'
+    ? 'Sorry\u2014we couldn\u0027t find that info'
     : 'Oops\u2014something went wrong'
 
   return (

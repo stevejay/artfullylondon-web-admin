@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import _ from 'lodash'
 
 import FadeTransition from '_src/components/transition/fade'
@@ -27,7 +26,7 @@ class TagCollection extends React.Component {
     this.props.onDelete(key)
   }
   render () {
-    const { tagType, tags, getInProgress, deleteInProgress } = this.props
+    const { tags, getInProgress, deleteInProgress } = this.props
     const { deletingTagId } = this.state
     const loading = getInProgress || _.isNil(tags)
     const hasTags = !_.isEmpty(tags)
@@ -57,7 +56,6 @@ class TagCollection extends React.Component {
 }
 
 TagCollection.propTypes = {
-  tagType: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,

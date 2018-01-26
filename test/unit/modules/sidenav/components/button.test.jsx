@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
-import log from 'loglevel'
 
 import SidenavButton from '_src/modules/sidenav/components/button'
 

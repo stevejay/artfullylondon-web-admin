@@ -3,7 +3,6 @@ import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
 import * as authActionTypes from '_src/constants/action/auth'
-import * as tagActionTypes from '_src/constants/action/tag'
 import * as authLib from '_src/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
@@ -72,18 +71,8 @@ export function * logOut () {
   }
 }
 
-// // TODO why is this here?
-// function * getUserData () {
-//   try {
-//     yield put.resolve({ type: tagActionTypes.GET_ALL_TAGS })
-//   } catch (err) {
-//     log.error('getAllTags error', err)
-//   }
-// }
-
 export default [
   takeLatest(authActionTypes.LOG_IN, logIn),
   takeLatest(authActionTypes.LOG_OUT, logOut),
-  // takeLatest(authActionTypes.LOG_IN_SUCCEEDED, getUserData),
   takeLatest(authActionTypes.ATTEMPT_AUTO_LOG_IN, attemptAutoLogIn)
 ]
