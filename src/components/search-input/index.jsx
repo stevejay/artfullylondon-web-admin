@@ -43,6 +43,11 @@ class SearchInput extends React.Component {
       nextState.currentSelectIndex !== this.state.currentSelectIndex
     )
   }
+  // componentWillReceiveProps (nextProps) {
+  //   if (nextProps.searchInProgress) {
+  //     this._clearAutocomplete()
+  //   }
+  // }
   handleDocumentClick = event => {
     if (!ReactDOM.findDOMNode(this).contains(event.target)) {
       this._clearAutocomplete()
@@ -64,12 +69,17 @@ class SearchInput extends React.Component {
           term
         })
         .then(({ items }) => {
-          this.mounted &&
-            this.setState({
-              autocompleteItems: items,
-              showAutocomplete: true,
-              currentSelectIndex: -1
-            })
+          if (this.mounted) {
+            if (items.length) {
+              this.setState({
+                autocompleteItems: items,
+                showAutocomplete: true,
+                currentSelectIndex: -1
+              })
+            } else {
+              this._clearAutocomplete()
+            }
+          }
         })
     }
   }
@@ -96,7 +106,7 @@ class SearchInput extends React.Component {
     if (keyCode === browserConstants.ARROW_UP_KEYCODE) {
       if (currentSelectIndex > 0) {
         while (true) {
-          --nextSelectIndex
+          nextSelectIndex -= 1
 
           if (nextSelectIndex === -1) {
             break
@@ -110,7 +120,7 @@ class SearchInput extends React.Component {
     } else if (keyCode === browserConstants.ARROW_DOWN_KEYCODE) {
       if (currentSelectIndex < autocompleteItems.length - 1) {
         while (true) {
-          ++nextSelectIndex
+          nextSelectIndex += 1
 
           if (nextSelectIndex === autocompleteItems.length) {
             nextSelectIndex = currentSelectIndex
@@ -131,10 +141,12 @@ class SearchInput extends React.Component {
   handleSearchKeyPress = event => {
     const { currentSelectIndex, autocompleteItems } = this.state
 
-    if (
-      event.charCode !== browserConstants.ENTER_CHARCODE ||
-      currentSelectIndex === -1
-    ) {
+    if (event.charCode !== browserConstants.ENTER_CHARCODE) {
+      return
+    }
+
+    if (currentSelectIndex === -1) {
+      this._clearAutocomplete()
       return
     }
 

@@ -1,8 +1,7 @@
 import { delay } from 'redux-saga'
-import { call, put, select, takeLatest } from 'redux-saga/effects'
-import { startSubmit, stopSubmit, initialize } from 'redux-form'
+import { call, put, takeLatest } from 'redux-saga/effects'
+import { initialize } from 'redux-form'
 import log from 'loglevel'
-import _ from 'lodash'
 
 import history from '_src/history'
 import normalise from '_src/lib/normalise'
@@ -75,6 +74,12 @@ function * autocompleteSearch ({ payload, meta }) {
     }
   }
 
+  items.forEach(
+    item =>
+      (item.autocompleteItemType =
+        searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
+  )
+
   yield put({
     type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
     payload: { items },
@@ -84,6 +89,8 @@ function * autocompleteSearch ({ payload, meta }) {
 
 function * basicSearch ({ payload }) {
   try {
+    // yield put(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
+
     const query = yield call(
       normalise,
       payload.query,
@@ -103,17 +110,9 @@ function * basicSearch ({ payload }) {
       return
     }
 
-    yield put(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
-
-    const searchReducer = yield select(state => state.search)
-    const currentQuery = searchReducer.basicSearchParams
-    const existingItemsLength = searchReducer.items.length
-
-    if (_.isEqual(query, currentQuery) && existingItemsLength) {
-      yield call(delay, 300)
-      yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
-      return
-    }
+    // const searchReducer = yield select(state => state.search)
+    // const currentQuery = searchReducer.basicSearchParams
+    // const existingItemsLength = searchReducer.items.length
 
     const requestUrl = searchLib.createBasicSearchRequestUrl(query)
     yield put({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
@@ -131,9 +130,9 @@ function * basicSearch ({ payload }) {
       type: searchActionTypes.BASIC_SEARCH_SUCCEEDED,
       payload: json
     })
-
-    yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
   } catch (err) {
+    yield call(log.error, err)
+
     yield call(
       sagaLib.submitErrorHandler,
       err,
@@ -141,6 +140,8 @@ function * basicSearch ({ payload }) {
     )
 
     yield put({ type: searchActionTypes.BASIC_SEARCH_FAILED })
+  } finally {
+    // yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
   }
 }
 

@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import queryString from 'query-string'
 import _ from 'lodash'
 
+// import FadeTransition from '_src/components/transition/fade'
+import AltBackground from '_src/components/section/alt-background'
 import BasicSection from '_src/components/section/basic'
 import BoxesLoader from '_src/components/loader/boxes'
 import NoResults from '_src/components/search/no-results'
@@ -18,6 +20,7 @@ import * as timeLib from '_src/lib/time'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
 import * as searchActionTypes from '_src/constants/action/search'
+import './results.scss'
 
 class SearchResultsPage extends React.Component {
   constructor (props) {
@@ -37,8 +40,6 @@ class SearchResultsPage extends React.Component {
     })
   }
   handleAutocompleteSearch = query => {
-    console.log('handleAutocompleteSearch', JSON.stringify(query))
-
     return this.props.dispatch({
       type: searchActionTypes.SEARCH,
       payload: {
@@ -106,8 +107,12 @@ class SearchResultsPage extends React.Component {
 
     const dateStr = timeLib.getTodayDateAsString()
     const hasResults = !!resultParams && items.length > 0
+
     const isAllSearch =
       hasResults && resultParams.entityType === entityConstants.ENTITY_TYPE_ALL
+
+    const noResults =
+      !searchInProgress && !hasResults && canShowNoResultsMessage
 
     return (
       <BasicSection>
@@ -119,26 +124,28 @@ class SearchResultsPage extends React.Component {
           onAutocompleteSearch={this.handleAutocompleteSearch}
           onAutocompleteSelect={this.handleAutocompleteSelect}
         />
-        {searchInProgress && <BoxesLoader />}
-        {!searchInProgress &&
-          !hasResults &&
-          canShowNoResultsMessage &&
-          <NoResults
-            entityType={resultParams.entityType}
-            onTryAllClick={this.handleTryAllClick}
-          />}
-        {!searchInProgress &&
-          hasResults &&
-          <SearchResults
-            items={items}
-            total={total}
-            skip={resultParams.skip}
-            take={resultParams.take}
-            isAllSearch={isAllSearch}
-            dateStr={dateStr}
-            onPageClick={this.handlePageClick}
-            onMoreResultsClick={this.handleMoreResultsClick}
-          />}
+        <AltBackground styleName='results-container'>
+          {searchInProgress && <BoxesLoader />}
+          {/* <FadeTransition in={noResults} appear mountOnEnter unmountOnExit> */}
+          {noResults &&
+            <NoResults
+              entityType={resultParams ? resultParams.entityType : null}
+              onTryAllClick={this.handleTryAllClick}
+            />}
+          {/* </FadeTransition> */}
+          {!searchInProgress &&
+            hasResults &&
+            <SearchResults
+              items={items}
+              total={total}
+              skip={resultParams.skip}
+              take={resultParams.take}
+              isAllSearch={isAllSearch}
+              dateStr={dateStr}
+              onPageClick={this.handlePageClick}
+              onMoreResultsClick={this.handleMoreResultsClick}
+            />}
+        </AltBackground>
       </BasicSection>
     )
   }

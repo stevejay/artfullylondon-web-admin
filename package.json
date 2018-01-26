@@ -9,7 +9,7 @@
     "serve": "firebase serve --project artfullylondon-prod-admin",
     "deploy": "firebase deploy",
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
-    "lint": "standard",
+    "lint": "standard --fix",
     "test": "jest --no-cache"
   },
   "jest": {

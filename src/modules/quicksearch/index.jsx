@@ -24,15 +24,12 @@ export class Quicksearch extends React.Component {
     this.props.dispatch({ type: searchActionTypes.CLEAR_AUTOCOMPLETE })
     this.props.onHide()
   }
-  handleSubmit = ({ term, entityType }) => {
+  handleSubmit = query => {
     this.handleHideQuicksearch()
 
     this.props.dispatch({
       type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
-      payload: {
-        searchType: searchConstants.SEARCH_TYPE_BASIC,
-        query: { term, entityType }
-      }
+      payload: { query }
     })
   }
   handleAutocompleteSearch = ({ term }) => {

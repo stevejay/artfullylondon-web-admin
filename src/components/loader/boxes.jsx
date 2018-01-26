@@ -16,7 +16,7 @@ class BoxesLoader extends React.Component {
 
     this.timeout = window.setTimeout(
       () => this.mounted && this.setState({ visible: true }),
-      DELAY_MS
+      props.immediate ? 0 : DELAY_MS
     )
   }
   componentWillUnmount () {
@@ -58,6 +58,7 @@ class BoxesLoader extends React.Component {
 }
 
 BoxesLoader.propTypes = {
+  immediate: PropTypes.bool,
   className: PropTypes.string,
   size: PropTypes.oneOf([SIZE_LARGE]),
   type: PropTypes.oneOf([TYPE_DEFAULT])
