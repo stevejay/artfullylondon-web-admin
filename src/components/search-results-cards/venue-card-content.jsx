@@ -18,7 +18,6 @@ class VenueCardContent extends React.Component {
     return (
       <ContentContainer>
         <Heading id={entity.id}>{entity.name}</Heading>
-        <SubHeading>{entity.venueType}</SubHeading>
         <Summary style={SUMMARY_STYLE}>
           {entity.createFullAddress()}
         </Summary>

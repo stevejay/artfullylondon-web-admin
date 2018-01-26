@@ -7,11 +7,11 @@ import IconButton from '_src/components/button/icon'
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import SearchInputFieldBasic from '_src/components/search-input/field-basic'
+import SearchInputToolbar from '_src/components/search-input/toolbar'
 import * as entityConstants from '_src/constants/entity'
 import * as formConstants from '_src/constants/form'
 import * as browserConstants from '_src/constants/browser'
 import * as searchConstraints from '_src/constants/search-constraints'
-import './quicksearch.scss'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {
@@ -32,15 +32,7 @@ export class QuicksearchForm extends React.Component {
 
     return (
       <Form onKeyPress={this.handleKeyPress} onSubmit={handleSubmit}>
-        <FormRow styleName='form-row'>
-          <div styleName='toolbar'>
-            <IconButton
-              icon={SearchIcon}
-              onClick={handleSubmit}
-              aria-label='Search'
-              styleName='search-button'
-            />
-          </div>
+        <FormRow>
           <Field
             name='term'
             component={SearchInputFieldBasic}
@@ -49,10 +41,16 @@ export class QuicksearchForm extends React.Component {
             disabled={disabled}
             placeholder={placeholder}
             maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
-            // onSearch={handleSubmit}
             onAutocompleteSearch={onAutocompleteSearch}
             onAutocompleteSelect={onAutocompleteSelect}
           />
+          <SearchInputToolbar>
+            <IconButton
+              icon={SearchIcon}
+              onClick={handleSubmit}
+              aria-label='Search'
+            />
+          </SearchInputToolbar>
         </FormRow>
       </Form>
     )

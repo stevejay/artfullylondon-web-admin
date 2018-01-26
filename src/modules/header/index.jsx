@@ -36,8 +36,8 @@ export class Header extends React.Component {
     this.setState({ hasError: true })
     log.error(error, info.componentStack)
   }
-  handleMenuItemSelected = item => {
-    this.props.history.push(item.path)
+  handleMenuItemSelected = value => {
+    this.props.history.push(value)
   }
   handleLogout = () => {
     this.props.dispatch({ type: authActionTypes.LOG_OUT })
@@ -67,9 +67,9 @@ export class Header extends React.Component {
               <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
                 <Dropdown
                   styleName='dropdown'
-                  label={menu.label}
+                  value={menu.label}
                   items={menu.items}
-                  onSelected={this.handleMenuItemSelected}
+                  onChange={this.handleMenuItemSelected}
                 />
               </ToolbarItem>
             ))}

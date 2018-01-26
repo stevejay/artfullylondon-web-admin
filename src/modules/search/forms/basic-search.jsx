@@ -9,6 +9,7 @@ import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import IconButton from '_src/components/button/icon'
 import SearchInputFieldBasic from '_src/components/search-input/field-basic'
+import SearchInputToolbar from '_src/components/search-input/toolbar'
 import DropdownField from '_src/components/dropdown/field'
 import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/constants/search'
@@ -46,8 +47,16 @@ export class BasicSearchForm extends React.Component {
         onSubmit={handleSubmit}
         styleName='form-container'
       >
-        <FormRow styleName='form-row'>
-          <div styleName='toolbar'>
+        <FormRow>
+          <Field
+            name='term'
+            component={SearchInputFieldBasic}
+            searchInProgress={submitting}
+            maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
+            onAutocompleteSearch={this.handleAutocompleteSearch}
+            onAutocompleteSelect={onAutocompleteSelect}
+          />
+          <SearchInputToolbar>
             <Field
               name='entityType'
               component={DropdownField}
@@ -58,18 +67,8 @@ export class BasicSearchForm extends React.Component {
               icon={SearchIcon}
               onClick={handleSubmit}
               aria-label='Search'
-              styleName='search-button'
             />
-          </div>
-          <Field
-            name='term'
-            component={SearchInputFieldBasic}
-            searchInProgress={submitting}
-            maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
-            // onSearch={handleSubmit}
-            onAutocompleteSearch={this.handleAutocompleteSearch}
-            onAutocompleteSelect={onAutocompleteSelect}
-          />
+          </SearchInputToolbar>
         </FormRow>
         <FormError error={error} hideGenericErrorMessages />
       </Form>

@@ -17,32 +17,33 @@ class EntityCardCollection extends React.Component {
     return (
       nextProps.entities !== this.props.entities ||
       nextProps.getInProgress !== this.props.getInProgress ||
-      nextProps.dateStr !== this.props.dateStr
+      nextProps.dateStr !== this.props.dateStr ||
+      nextProps.className !== this.props.className
     )
   }
   componentDidMount () {
     this.props.onMounted && this.props.onMounted()
   }
   render () {
-    const { entities, cardContentFactory, dateStr, getInProgress } = this.props
+    const {
+      entities,
+      cardContentFactory,
+      dateStr,
+      getInProgress,
+      className
+    } = this.props
 
     return (
-      <AltBackground styleName='background'>
-        {getInProgress && <Loader size='large' />}
-        {!getInProgress && _.isEmpty(entities) && <NoContent />}
-        {!getInProgress &&
-          !_.isEmpty(entities) &&
-          <div styleName='cards-container'>
-            {entities.map(entity => (
-              <EntityCard
-                key={entity.key}
-                entity={entity}
-                dateStr={dateStr}
-                cardContentFactory={cardContentFactory}
-              />
-            ))}
-          </div>}
-      </AltBackground>
+      <div styleName='cards-container' className={className}>
+        {entities.map(entity => (
+          <EntityCard
+            key={entity.key}
+            entity={entity}
+            dateStr={dateStr}
+            cardContentFactory={cardContentFactory}
+          />
+        ))}
+      </div>
     )
   }
 }
@@ -58,6 +59,7 @@ EntityCardCollection.propTypes = {
   ),
   getInProgress: PropTypes.bool,
   dateStr: PropTypes.string.isRequired,
+  className: PropTypes.string,
   cardContentFactory: PropTypes.func.isRequired,
   onMounted: PropTypes.func
 }

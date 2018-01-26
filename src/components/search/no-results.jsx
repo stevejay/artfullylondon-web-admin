@@ -13,8 +13,7 @@ const SearchNoResults = ({ onTryAllClick, className, entityType }) => (
     {!!onTryAllClick &&
       entityType !== entityConstants.ENTITY_TYPE_ALL &&
       <p styleName='action'>
-        Try searching all
-        by <a onClick={onTryAllClick}>clicking here</a>
+        <a onClick={onTryAllClick}>Click here</a> to try searching everything.
       </p>}
   </div>
 )

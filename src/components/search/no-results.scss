@@ -2,7 +2,12 @@
 @import 'mixins.scss';
 
 .container {
+  position: absolute;
   display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -18,7 +23,7 @@
   width: 5em;
   height: 5em;
   color: $half-black;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 
 .message {

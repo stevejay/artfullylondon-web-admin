@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import queryString from 'query-string'
 import _ from 'lodash'
 
-// import FadeTransition from '_src/components/transition/fade'
+import FadeTransition from '_src/components/transition/fade'
 import AltBackground from '_src/components/section/alt-background'
 import BasicSection from '_src/components/section/basic'
 import BoxesLoader from '_src/components/loader/boxes'
@@ -133,7 +133,7 @@ class SearchResultsPage extends React.Component {
               onTryAllClick={this.handleTryAllClick}
             />}
           {/* </FadeTransition> */}
-          {!searchInProgress &&
+          {/* {!searchInProgress &&
             hasResults &&
             <SearchResults
               items={items}
@@ -144,7 +144,24 @@ class SearchResultsPage extends React.Component {
               dateStr={dateStr}
               onPageClick={this.handlePageClick}
               onMoreResultsClick={this.handleMoreResultsClick}
-            />}
+            />} */}
+          <FadeTransition
+            in={!searchInProgress && hasResults}
+            appear
+            mountOnEnter
+            unmountOnExit
+          >
+            <SearchResults
+              items={items}
+              total={total}
+              skip={resultParams ? resultParams.skip : 0}
+              take={resultParams ? resultParams.take : 0}
+              isAllSearch={isAllSearch}
+              dateStr={dateStr}
+              onPageClick={this.handlePageClick}
+              onMoreResultsClick={this.handleMoreResultsClick}
+            />
+          </FadeTransition>
         </AltBackground>
       </BasicSection>
     )
