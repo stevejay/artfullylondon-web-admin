@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AngleDoubleLeft from 'react-icons/lib/fa/angle-double-left'
 import AngleDoubleRight from 'react-icons/lib/fa/angle-double-right'
-import * as pagination from '_src/lib/pagination'
+
+import * as paginationLib from '_src/lib/pagination'
 import './link.scss'
 
 class PaginationLink extends React.Component {
@@ -23,7 +24,7 @@ class PaginationLink extends React.Component {
     const { pageNumber, currentPageNumber, totalPages } = this.props
 
     if (
-      pagination.showGoToFirstPageLink(
+      paginationLib.showGoToFirstPageLink(
         totalPages,
         pageNumber,
         currentPageNumber
@@ -33,7 +34,11 @@ class PaginationLink extends React.Component {
     }
 
     if (
-      pagination.showGoToLastPageLink(totalPages, pageNumber, currentPageNumber)
+      paginationLib.showGoToLastPageLink(
+        totalPages,
+        pageNumber,
+        currentPageNumber
+      )
     ) {
       return this.renderIconLink(AngleDoubleRight, this.handleClick)
     }

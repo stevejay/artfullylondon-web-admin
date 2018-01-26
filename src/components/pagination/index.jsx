@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PaginationLink from './link'
+
+import PaginationLink from '_src/components/pagination/link'
 import * as pagination from '_src/lib/pagination'
 import './index.scss'
 

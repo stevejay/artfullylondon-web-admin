@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import ContentContainer from '_src/components/entity-card/content-container'
 import Heading from '_src/components/entity-card/heading'
 import SubHeading from '_src/components/entity-card/sub-heading'

@@ -35,14 +35,15 @@ class EntityCardCollection extends React.Component {
 
     return (
       <div styleName='cards-container' className={className}>
-        {entities.map(entity => (
-          <EntityCard
-            key={entity.key}
-            entity={entity}
-            dateStr={dateStr}
-            cardContentFactory={cardContentFactory}
-          />
-        ))}
+        {(entities || [])
+          .map(entity => (
+            <EntityCard
+              key={entity.key}
+              entity={entity}
+              dateStr={dateStr}
+              cardContentFactory={cardContentFactory}
+            />
+          ))}
       </div>
     )
   }

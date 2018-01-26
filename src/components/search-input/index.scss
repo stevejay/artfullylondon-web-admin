@@ -49,33 +49,3 @@
     padding: .7rem 4rem .4rem .5rem;
   }
 }
-
-// .link {
-//   @include noWebKitHighlight;
-//   position: absolute;
-//   right: 1.5rem;
-//   top: calc(50% - 2rem);
-//   cursor: pointer;
-//   color: $half-black;
-//   height: 2.8rem;
-//   width: 2.4rem;
-//   &:hover {
-//     .icon {
-//       color: $three-quarter-black;
-//     }
-//   }
-//   @include below-wide-mobile {
-//     top: calc(50% - 1.7rem);
-//     right: .3rem;
-//   }
-// }
-// .icon {
-//   width: 2.4rem;
-//   height: 2.4rem;
-//   color: $half-black;
-//   transition: color .2s ease;
-//   @include below-wide-mobile {
-//     width: 2.2rem;
-//     height: 2.2rem;
-//   }
-// }

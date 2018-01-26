@@ -43,11 +43,6 @@ class SearchInput extends React.Component {
       nextState.currentSelectIndex !== this.state.currentSelectIndex
     )
   }
-  // componentWillReceiveProps (nextProps) {
-  //   if (nextProps.searchInProgress) {
-  //     this._clearAutocomplete()
-  //   }
-  // }
   handleDocumentClick = event => {
     if (!ReactDOM.findDOMNode(this).contains(event.target)) {
       this._clearAutocomplete()
@@ -159,6 +154,9 @@ class SearchInput extends React.Component {
     this._clearAutocomplete()
     this.props.onAutocompleteSelect(item)
   }
+  handleInputBlur = () => {
+    this._clearAutocomplete()
+  }
   _clearAutocomplete = () => {
     this.setState({ showAutocomplete: false, currentSelectIndex: -1 })
   }
@@ -187,6 +185,7 @@ class SearchInput extends React.Component {
           onChange={this.handleChange}
           onKeyDown={this.handleSearchKeyDown}
           onKeyPress={this.handleSearchKeyPress}
+          onBlur={this.handleInputBlur}
           placeholder={placeholder}
           autoCapitalize='none'
           autoCorrect='off'

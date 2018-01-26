@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  ENTITY_TYPE_VENUE,
-  ENTITY_TYPE_TALENT,
-  ENTITY_TYPE_EVENT,
-  EDITABLE_ENTITY_TYPES
-} from '_src/constants/entity'
-import * as search from '_src/lib/search'
+
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
+import * as entityConstants from '_src/constants/entity'
+import * as search from '_src/lib/search'
 
 class SearchMoreResults extends React.Component {
   shouldComponentUpdate () {
@@ -18,17 +14,17 @@ class SearchMoreResults extends React.Component {
     const { items, take, onClick } = this.props
 
     const maybeMoreVenues = search.maybeHasMoreSearchResults(
-      ENTITY_TYPE_VENUE,
+      entityConstants.ENTITY_TYPE_VENUE,
       items,
       take
     )
     const maybeMoreTalents = search.maybeHasMoreSearchResults(
-      ENTITY_TYPE_TALENT,
+      entityConstants.ENTITY_TYPE_TALENT,
       items,
       take
     )
     const maybeMoreEvents = search.maybeHasMoreSearchResults(
-      ENTITY_TYPE_EVENT,
+      entityConstants.ENTITY_TYPE_EVENT,
       items,
       take
     )
@@ -41,17 +37,17 @@ class SearchMoreResults extends React.Component {
           <Divider />
           {maybeMoreVenues &&
             <MoreResultsLink
-              entityType={ENTITY_TYPE_VENUE}
+              entityType={entityConstants.ENTITY_TYPE_VENUE}
               onClick={onClick}
             />}
           {maybeMoreTalents &&
             <MoreResultsLink
-              entityType={ENTITY_TYPE_TALENT}
+              entityType={entityConstants.ENTITY_TYPE_TALENT}
               onClick={onClick}
             />}
           {maybeMoreEvents &&
             <MoreResultsLink
-              entityType={ENTITY_TYPE_EVENT}
+              entityType={entityConstants.ENTITY_TYPE_EVENT}
               onClick={onClick}
             />}
         </div>
@@ -63,7 +59,8 @@ class SearchMoreResults extends React.Component {
 SearchMoreResults.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      entityType: PropTypes.oneOf(EDITABLE_ENTITY_TYPES).isRequired
+      entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
+        .isRequired
     })
   ).isRequired,
   take: PropTypes.number.isRequired,

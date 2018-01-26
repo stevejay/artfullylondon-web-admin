@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  ENTITY_TYPE_VENUE,
-  ENTITY_TYPE_TALENT,
-  ENTITY_TYPE_EVENT
-} from '_src/constants/entity'
+
+import * as entityConstants from '_src/constants/entity'
 import './more-results-link.scss'
 
 class MoreResultsLink extends React.Component {
@@ -28,9 +25,9 @@ class MoreResultsLink extends React.Component {
 
 MoreResultsLink.propTypes = {
   entityType: PropTypes.oneOf([
-    ENTITY_TYPE_VENUE,
-    ENTITY_TYPE_TALENT,
-    ENTITY_TYPE_EVENT
+    entityConstants.ENTITY_TYPE_VENUE,
+    entityConstants.ENTITY_TYPE_TALENT,
+    entityConstants.ENTITY_TYPE_EVENT
   ]).isRequired,
   onClick: PropTypes.func.isRequired
 }

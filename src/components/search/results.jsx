@@ -33,6 +33,8 @@ class SearchResults extends React.Component {
       isAllSearch
     } = this.props
 
+    // TODO think about reinstating MoreResults component.
+
     return (
       <React.Fragment>
         <EntityCardCollection
@@ -67,7 +69,7 @@ SearchResults.propTypes = {
       PropTypes.instanceOf(SummaryTalent),
       PropTypes.instanceOf(SummaryVenue)
     ]).isRequired
-  ).isRequired,
+  ),
   total: PropTypes.number.isRequired,
   skip: PropTypes.number.isRequired,
   take: PropTypes.number.isRequired,

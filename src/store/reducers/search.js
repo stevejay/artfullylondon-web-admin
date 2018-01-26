@@ -11,7 +11,6 @@ import * as authActionTypes from '_src/constants/action/auth'
 
 const initialState = {
   searchInProgress: false,
-  canShowNoResultsMessage: false,
   basicSearchParams: {
     entityType: entityConstants.ENTITY_TYPE_ALL,
     term: '',
@@ -20,17 +19,12 @@ const initialState = {
   },
   basicSearchResultParams: null,
   total: 0,
-  items: []
+  items: null
 }
 
 export default handleActions(
   {
     [authActionTypes.LOGGED_OUT]: () => initialState,
-    [searchActionTypes.BASIC_SEARCH_PAGE_ENTERED]: state => ({
-      ...state,
-      searchInProgress: false,
-      canShowNoResultsMessage: false
-    }),
     [searchActionTypes.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
       ...state,
       basicSearchParams: action.payload
@@ -63,7 +57,6 @@ export default handleActions(
       return {
         ...state,
         searchInProgress: false,
-        canShowNoResultsMessage: true,
         basicSearchResultParams: params,
         total,
         items: [...events, ...eventSeries, ...venues, ...talents]

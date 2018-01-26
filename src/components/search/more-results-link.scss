@@ -2,19 +2,19 @@
 @import 'mixins.scss';
 
 .container {
-    display: block;
-    margin-left: 3rem;
+  display: block;
+  margin-left: 3rem;
 
-    a {
-        cursor: pointer;
+  a {
+    cursor: pointer;
 
-        &:hover {
-            color: $black;
-        }
+    &:hover {
+      color: $black;
     }
+  }
 
-    @include below-wide-mobile {
-        font-size: 1.4rem;
-        margin-left: 1.5rem;
-    }
+  @include below-wide-mobile {
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+  }
 }

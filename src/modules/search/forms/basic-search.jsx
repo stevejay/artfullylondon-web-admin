@@ -15,6 +15,7 @@ import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/constants/search'
 import * as searchConstraints from '_src/constants/search-constraints'
 import * as browserConstants from '_src/constants/browser'
+import * as searchActionTypes from '_src/constants/action/search'
 import './basic-search.scss'
 
 export class BasicSearchForm extends React.Component {
@@ -33,9 +34,22 @@ export class BasicSearchForm extends React.Component {
     }
   }
   handleAutocompleteSearch = ({ term }) => {
-    return this.props.onAutocompleteSearch({
-      term,
-      entityType: this.props.entityTypeSelector
+    return this.props.dispatch({
+      type: searchActionTypes.SEARCH,
+      payload: {
+        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
+        query: {
+          term,
+          entityType: this.props.entityTypeSelector
+        }
+      },
+      meta: { thunk: true }
+    })
+  }
+  handleAutocompleteSelect = entity => {
+    this.props.dispatch({
+      type: searchActionTypes.NAVIGATE_TO_ENTITY,
+      payload: entity
     })
   }
   render () {
@@ -54,7 +68,7 @@ export class BasicSearchForm extends React.Component {
             searchInProgress={submitting}
             maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
             onAutocompleteSearch={this.handleAutocompleteSearch}
-            onAutocompleteSelect={onAutocompleteSelect}
+            onAutocompleteSelect={this.handleAutocompleteSelect}
           />
           <SearchInputToolbar>
             <Field
@@ -89,11 +103,10 @@ BasicSearchForm.propTypes = {
   entityTypeSelector: PropTypes.string,
   error: PropTypes.string,
   submitting: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired,
-  onAutocompleteSearch: PropTypes.func.isRequired,
-  onAutocompleteSelect: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired
 }
 
 const WrappedSearchForm = reduxForm({

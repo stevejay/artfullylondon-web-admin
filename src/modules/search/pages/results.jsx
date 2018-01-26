@@ -39,22 +39,6 @@ class SearchResultsPage extends React.Component {
       take: searchConstants.DEFAULT_TAKE
     })
   }
-  handleAutocompleteSearch = query => {
-    return this.props.dispatch({
-      type: searchActionTypes.SEARCH,
-      payload: {
-        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
-        query
-      },
-      meta: { thunk: true }
-    })
-  }
-  handleAutocompleteSelect = entity => {
-    this.props.dispatch({
-      type: searchActionTypes.NAVIGATE_TO_ENTITY,
-      payload: entity
-    })
-  }
   handleSubmit = params => {
     this._pushBasicSearchToUrl({
       query: params,
@@ -97,54 +81,28 @@ class SearchResultsPage extends React.Component {
     }
   }
   render () {
-    const {
-      searchInProgress,
-      resultParams,
-      canShowNoResultsMessage,
-      items,
-      total
-    } = this.props
+    const { searchInProgress, resultParams, items, total } = this.props
 
     const dateStr = timeLib.getTodayDateAsString()
-    const hasResults = !!resultParams && items.length > 0
+    const hasResults = !!resultParams && !_.isEmpty(items)
+    const noResults = !searchInProgress && !hasResults && !_.isNil(items)
 
     const isAllSearch =
       hasResults && resultParams.entityType === entityConstants.ENTITY_TYPE_ALL
-
-    const noResults =
-      !searchInProgress && !hasResults && canShowNoResultsMessage
 
     return (
       <BasicSection>
         <SectionHeading>
           <span>Quick</span>&nbsp;Search
         </SectionHeading>
-        <BasicSearchForm
-          onSubmit={this.handleSubmit}
-          onAutocompleteSearch={this.handleAutocompleteSearch}
-          onAutocompleteSelect={this.handleAutocompleteSelect}
-        />
+        <BasicSearchForm onSubmit={this.handleSubmit} />
         <AltBackground styleName='results-container'>
           {searchInProgress && <BoxesLoader />}
-          {/* <FadeTransition in={noResults} appear mountOnEnter unmountOnExit> */}
           {noResults &&
             <NoResults
               entityType={resultParams ? resultParams.entityType : null}
               onTryAllClick={this.handleTryAllClick}
             />}
-          {/* </FadeTransition> */}
-          {/* {!searchInProgress &&
-            hasResults &&
-            <SearchResults
-              items={items}
-              total={total}
-              skip={resultParams.skip}
-              take={resultParams.take}
-              isAllSearch={isAllSearch}
-              dateStr={dateStr}
-              onPageClick={this.handlePageClick}
-              onMoreResultsClick={this.handleMoreResultsClick}
-            />} */}
           <FadeTransition
             in={!searchInProgress && hasResults}
             appear
@@ -170,7 +128,6 @@ class SearchResultsPage extends React.Component {
 
 SearchResultsPage.propTypes = {
   searchInProgress: PropTypes.bool.isRequired,
-  canShowNoResultsMessage: PropTypes.bool.isRequired,
   resultParams: PropTypes.shape({
     entityType: PropTypes.oneOf(
       searchConstants.ALLOWED_BASIC_SEARCH_ENTITY_TYPES
@@ -186,7 +143,7 @@ SearchResultsPage.propTypes = {
       PropTypes.instanceOf(SummaryTalent),
       PropTypes.instanceOf(SummaryVenue)
     ]).isRequired
-  ).isRequired,
+  ),
   location: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 }
@@ -195,6 +152,5 @@ export default connect(state => ({
   resultParams: state.search.basicSearchResultParams,
   total: state.search.total,
   items: state.search.items,
-  searchInProgress: state.search.searchInProgress,
-  canShowNoResultsMessage: state.search.canShowNoResultsMessage
+  searchInProgress: state.search.searchInProgress
 }))(SearchResultsPage)
