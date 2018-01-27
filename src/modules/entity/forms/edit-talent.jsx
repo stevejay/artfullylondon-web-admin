@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import _ from 'lodash'
 
@@ -18,8 +17,8 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as formConstants from '_src/constants/form'
-import * as imageActions from '_src/actions/image'
-import * as linkActions from '_src/actions/link'
+import * as linkActionTypes from '_src/constants/action/link'
+import * as imageActionTypes from '_src/constants/action/image'
 import constraint from '_src/constants/talent-constraint'
 
 export class EditTalentForm extends React.Component {
@@ -28,6 +27,40 @@ export class EditTalentForm extends React.Component {
       this.props.change('firstNames', '')
     }
   }
+  handleAddLink = values => {
+    this.props.dispatch({
+      type: linkActionTypes.ADD_LINK,
+      payload: { values, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
+    })
+  }
+  handleDeleteLink = key => {
+    this.props.dispatch({
+      type: linkActionTypes.DELETE_LINK,
+      payload: { key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
+    })
+  }
+  handleAddImage = payload => {
+    this.props.dispatch({
+      type: imageActionTypes.ADD_IMAGE,
+      payload: {
+        ...payload,
+        entityType: entityConstants.ENTITY_TYPE_TALENT,
+        parentFormName: formConstants.EDIT_TALENT_FORM_NAME
+      }
+    })
+  }
+  handleSetMainImage = key => {
+    this.props.dispatch({
+      type: imageActionTypes.SET_MAIN_IMAGE,
+      payload: { id: key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
+    })
+  }
+  handleDeleteImage = key => {
+    this.props.dispatch({
+      type: imageActionTypes.DELETE_IMAGE,
+      payload: { id: key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
+    })
+  }
   render () {
     const {
       isEdit,
@@ -35,9 +68,7 @@ export class EditTalentForm extends React.Component {
       submitting,
       talentTypeValue,
       handleSubmit,
-      onCancel,
-      imageActions,
-      linkActions
+      onCancel
     } = this.props
 
     const isGroup = !talentLib.isIndividualTalent(talentTypeValue)
@@ -113,8 +144,8 @@ export class EditTalentForm extends React.Component {
             label='Links'
             name='links'
             component={LinksField}
-            parentFormName={formConstants.EDIT_TALENT_FORM_NAME}
-            linkActions={linkActions}
+            onAddLink={this.handleAddLink}
+            onDeleteLink={this.handleDeleteLink}
           />
         </FormRow>
         <FormRow>
@@ -123,9 +154,10 @@ export class EditTalentForm extends React.Component {
             entityType={entityConstants.ENTITY_TYPE_TALENT}
             name='images'
             component={ImagesField}
-            parentFormName={formConstants.EDIT_TALENT_FORM_NAME}
-            imageActions={imageActions}
             showModal={_.noop}
+            onAddImage={this.handleAddImage}
+            onSetMainImage={this.handleSetMainImage}
+            onDeleteImage={this.handleDeleteImage}
           />
         </FormRow>
         <Divider />
@@ -147,9 +179,8 @@ EditTalentForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
-  imageActions: PropTypes.object.isRequired,
-  linkActions: PropTypes.object.isRequired,
-  change: PropTypes.func.isRequired
+  change: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 const WrappedEditTalentForm = reduxForm({
@@ -159,10 +190,6 @@ const WrappedEditTalentForm = reduxForm({
 
 const selector = formValueSelector(formConstants.EDIT_TALENT_FORM_NAME)
 
-export default connect(
-  state => ({ talentTypeValue: selector(state, 'talentType') }),
-  dispatch => ({
-    imageActions: bindActionCreators(imageActions, dispatch),
-    linkActions: bindActionCreators(linkActions, dispatch)
-  })
-)(WrappedEditTalentForm)
+export default connect(state => ({
+  talentTypeValue: selector(state, 'talentType')
+}))(WrappedEditTalentForm)

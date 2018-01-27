@@ -1,41 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
-import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import ImageGrid from '_src/components/image-grid'
 import ImageGridCard from '_src/components/image-grid/card'
-// import ImageEditorForm from '_src/containers/forms/image-editor'
+import ImagesEditorForm from '_src/components/images/editor-form'
 // import UpdateImageModal from '_src/containers/modals/update-image'
-
-// import { addImageConstraint } from '_src/constants/image-constraints'
+import * as entityConstants from '_src/constants/entity'
 
 class ImagesField extends React.Component {
-  handleSubmit = values => {
-    const {
-      input: { value },
-      entityType,
-      parentFormName,
-      imageActions
-    } = this.props
-
-    imageActions.addImage({
-      values,
-      entityType,
-      isMain: value.length === 0,
-      parentFormName
-    })
-  }
-  handleSetMainImage = key => {
-    const { parentFormName, imageActions } = this.props
-    imageActions.setMainImage({ id: key, parentFormName })
-  }
-  handleDeleteImage = key => {
-    const { parentFormName, imageActions } = this.props
-    imageActions.deleteImage({ id: key, parentFormName })
-  }
   handleUpdateImage = ({ key, copyright }) => {
     // const { showModal, imageActions, parentFormName } = this.props
     // showModal({
@@ -51,15 +27,23 @@ class ImagesField extends React.Component {
     //   }
     // })
   }
+  handleAddImage = values => {
+    this.props.onAddImage({
+      values,
+      isMain: !_.isEmpty(this.props.input.value)
+    })
+  }
   render () {
     const {
       label,
       entityType,
       input: { value },
-      meta: { touched, error }
+      meta: { touched, error },
+      onSetMainImage,
+      onDeleteImage
     } = this.props
 
-    // TODO add form and modal back in
+    // TODO add modal back in
 
     return (
       <FieldContainer
@@ -69,11 +53,7 @@ class ImagesField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          {/* <ImageEditorForm
-            ref={ref => (this._form = ref)}
-            onSubmit={this.handleSubmit}
-            constraint={addImageConstraint}
-          /> */}
+          <ImagesEditorForm onSubmit={this.handleAddImage} />
           <FieldDivider />
           <ImageGrid>
             {value.map(element => (
@@ -81,9 +61,9 @@ class ImagesField extends React.Component {
                 key={element.id}
                 value={element}
                 entityType={entityType}
-                onDelete={this.handleDeleteImage}
+                onDelete={onDeleteImage}
                 onUpdateCopyright={this.handleUpdateImage}
-                onSetMain={this.handleSetMainImage}
+                onSetMain={onSetMainImage}
               />
             ))}
           </ImageGrid>
@@ -95,7 +75,7 @@ class ImagesField extends React.Component {
 
 ImagesField.propTypes = {
   label: PropTypes.string.isRequired,
-  entityType: PropTypes.oneOf(EDITABLE_ENTITY_TYPES).isRequired,
+  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
       PropTypes.shape({
@@ -110,14 +90,10 @@ ImagesField.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.any
   }),
-  parentFormName: PropTypes.string.isRequired,
-  imageActions: PropTypes.shape({
-    addImage: PropTypes.func.isRequired,
-    setMainImage: PropTypes.func.isRequired,
-    deleteImage: PropTypes.func.isRequired,
-    updateImage: PropTypes.func.isRequired
-  }).isRequired,
-  showModal: PropTypes.func.isRequired
+  showModal: PropTypes.func.isRequired,
+  onAddImage: PropTypes.func.isRequired,
+  onSetMainImage: PropTypes.func.isRequired,
+  onDeleteImage: PropTypes.func.isRequired
 }
 
 export default ImagesField

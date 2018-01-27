@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
 import LinkGridRow from '_src/components/links/grid-row'
-// import LinkEditorForm from '_src/containers/forms/link-editor'
-// import linkConstraint from '_src/constants/link-constraint'
-// import { getAvailableLinkTypeDropdownOptions } from '_src/lib/link'
+import LinksEditorForm from '_src/components/links/editor-form'
+import linkConstraint from '_src/constants/link-constraint'
+import * as linkLib from '_src/lib/link'
 
 class LinksField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -17,19 +18,16 @@ class LinksField extends React.Component {
       nextProps.meta.error !== this.props.meta.error
     )
   }
-  handleSubmit = values => {
-    const { parentFormName, linkActions } = this.props
-    linkActions.addLink({ values, parentFormName })
-  }
-  handleDelete = key => {
-    const { parentFormName, linkActions } = this.props
-    linkActions.deleteLink({ key, parentFormName })
-  }
   render () {
-    const { label, input: { value }, meta: { touched, error } } = this.props
-    // const linkTypeOptions = getAvailableLinkTypeDropdownOptions(value)
+    const {
+      label,
+      input: { value },
+      meta: { touched, error },
+      onAddLink,
+      onDeleteLink
+    } = this.props
 
-    // TODO add form back in
+    const linkTypeOptions = linkLib.getAvailableLinkTypeDropdownOptions(value)
 
     return (
       <FieldContainer
@@ -39,19 +37,18 @@ class LinksField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          {/* <LinkEditorForm
-            ref={ref => (this._form = ref)}
-            onSubmit={this.handleSubmit}
+          <LinksEditorForm
+            onSubmit={onAddLink}
             constraint={linkConstraint}
             linkTypeOptions={linkTypeOptions}
-          /> */}
+          />
           <FieldDivider />
           <Grid>
             {value.map(element => (
               <LinkGridRow
                 key={element.key}
                 value={element}
-                onDelete={this.handleDelete}
+                onDelete={onDeleteLink}
               />
             ))}
           </Grid>
@@ -75,11 +72,8 @@ LinksField.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.any
   }),
-  parentFormName: PropTypes.string.isRequired,
-  linkActions: PropTypes.shape({
-    addLink: PropTypes.func.isRequired,
-    deleteLink: PropTypes.func.isRequired
-  }).isRequired
+  onAddLink: PropTypes.func.isRequired,
+  onDeleteLink: PropTypes.func.isRequired
 }
 
 export default LinksField

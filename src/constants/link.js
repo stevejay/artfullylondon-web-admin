@@ -25,6 +25,3 @@ export const LINK_TYPE_DROPDOWN_OPTIONS = [
   { value: LINK_TYPE_ACCESS, label: LINK_TYPE_ACCESS },
   { value: LINK_TYPE_BOOKING, label: LINK_TYPE_BOOKING }
 ]
-
-export const ADD_LINK = 'link/ADD_LINK'
-export const DELETE_LINK = 'link/DELETE_LINK'

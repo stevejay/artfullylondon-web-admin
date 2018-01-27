@@ -15,7 +15,7 @@ class EntityExternalLinks extends React.Component {
   _createSocialLink (url, icon) {
     return (
       <a href={url} target='_blank' rel='noopener' styleName='link'>
-        {React.createElement(icon, { styleName: 'icon' })}
+        {React.createElement(icon, { className: 'icon' })}
       </a>
     )
   }

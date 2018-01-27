@@ -4,8 +4,8 @@ import authSagas from './auth'
 import browserSagas from './browser'
 import serverConstantsSagas from './server-constants'
 import entitySagas from './entity'
-// import imageSagas from './image';
-// import linkSagas from './link';
+import imageSagas from './image'
+import linkSagas from './link'
 // import monitorsSagas from './monitors';
 import searchSagas from './search'
 import tagSagas from './tag'
@@ -23,12 +23,10 @@ export default function * () {
     ...statusSagas,
     ...searchSagas,
     ...tagSagas,
-    ...entitySagas
+    ...entitySagas,
+    ...imageSagas,
+    ...linkSagas
   ])
-  //
-  //
-  // ...imageSagas,
-  // ...linkSagas,
   // ...monitorsSagas,
   // ...tagSagas,
   // ...timeSagas,
