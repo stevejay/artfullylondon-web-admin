@@ -4,13 +4,13 @@
 
 1. Install `yarn` and `standard` globally.
 
-1. Install firebase cli tools globally:
+2. Install firebase cli tools globally:
 
 ```bash
 npm install -g firebase-tools
 ```
 
-2. Copy the `build-constants.template.json` file to `build-constants.json`
+3. Copy the `build-constants.template.json` file to `build-constants.json`
 (in the same directory) and populate the values appropriately.
 
 ## Detail
@@ -52,14 +52,11 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
-- Look into using babili (for better tree-shaking?).
 - https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter/issues/5
 - template.html scripting example: https://github.com/martiensk/VueScssSSR/blob/master/views/index.html
 - for little PNG images: https://www.npmjs.com/package/url-loader
 - clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
 - serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
-- https://www.npmjs.com/package/redux-saga-thunk could use for 'then'-able sagas.
-  Also https://github.com/acdlite/flux-standard-action
 
 ## License
 
