@@ -8,10 +8,7 @@ import TagsIcon from 'react-icons/lib/fa/tags'
 
 import * as linkConstants from '_src/constants/link'
 import * as entityConstants from '_src/constants/entity'
-import { FullTalent } from '_src/entities/talent'
-import { FullVenue } from '_src/entities/venue'
-import { FullEvent } from '_src/entities/event'
-import { FullEventSeries } from '_src/entities/event-series'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './info-bar.scss'
 
 class InfoBar extends React.Component {
@@ -62,12 +59,7 @@ class InfoBar extends React.Component {
 }
 
 InfoBar.propTypes = {
-  entity: PropTypes.oneOfType([
-    PropTypes.instanceOf(FullTalent),
-    PropTypes.instanceOf(FullVenue),
-    PropTypes.instanceOf(FullEvent),
-    PropTypes.instanceOf(FullEventSeries)
-  ]).isRequired,
+  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired,
   onClickCopy: PropTypes.func
 }
 

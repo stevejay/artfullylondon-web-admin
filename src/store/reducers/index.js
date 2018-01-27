@@ -4,11 +4,9 @@ import app from './app'
 import auth from './auth'
 import serverConstants from './server-constants'
 import entity from './entity'
-// import eventForEdit from "./event-for-edit";
-// import eventSeriesForEdit from "./eventseries-for-edit";
+import entityForEdit from './entity-for-edit'
 import search from './search'
 import tag from './tag'
-// import talentForEdit from "./talent-for-edit";
 // import venueForEdit from "./venue-for-edit";
 // import eventMonitors from "./event-monitors";
 import notifications from './notifications'
@@ -16,11 +14,9 @@ import notifications from './notifications'
 // import venueMonitorForEdit from "./venue-monitor-for-edit";
 import browser from './browser'
 import status from './status'
-import { FullEvent } from '_src/entities/event'
-import { FullEventSeries } from '_src/entities/event-series'
-import { FullTalent } from '_src/entities/talent'
-import { FullVenue } from '_src/entities/venue'
 import * as entityConstants from '_src/constants/entity'
+
+// TODO try to consolidate entity reducers to single entries.
 
 export default combineReducers({
   form: formReducer,
@@ -34,16 +30,29 @@ export default combineReducers({
   // eventMonitors,
   // eventMonitorForEdit,
   // venueMonitorForEdit,
-  event: entity(entityConstants.ENTITY_TYPE_EVENT, FullEvent),
-  eventSeries: entity(
-    entityConstants.ENTITY_TYPE_EVENT_SERIES,
-    FullEventSeries
+  [entityConstants.ENTITY_TYPE_EVENT]: entity(
+    entityConstants.ENTITY_TYPE_EVENT
   ),
-  talent: entity(entityConstants.ENTITY_TYPE_TALENT, FullTalent),
-  venue: entity(entityConstants.ENTITY_TYPE_VENUE, FullVenue),
-  // eventForEdit,
-  // eventSeriesForEdit,
-  // talentForEdit,
-  // venueForEdit,
+  [entityConstants.ENTITY_TYPE_EVENT_SERIES]: entity(
+    entityConstants.ENTITY_TYPE_EVENT_SERIES
+  ),
+  [entityConstants.ENTITY_TYPE_TALENT]: entity(
+    entityConstants.ENTITY_TYPE_TALENT
+  ),
+  [entityConstants.ENTITY_TYPE_VENUE]: entity(
+    entityConstants.ENTITY_TYPE_VENUE
+  ),
+  [entityConstants.ENTITY_TYPE_EVENT + '-for-edit']: entityForEdit(
+    entityConstants.ENTITY_TYPE_EVENT
+  ),
+  [entityConstants.ENTITY_TYPE_EVENT_SERIES + '-for-edit']: entityForEdit(
+    entityConstants.ENTITY_TYPE_EVENT_SERIES
+  ),
+  [entityConstants.ENTITY_TYPE_TALENT + '-for-edit']: entityForEdit(
+    entityConstants.ENTITY_TYPE_TALENT
+  ),
+  [entityConstants.ENTITY_TYPE_VENUE + '-for-edit']: entityForEdit(
+    entityConstants.ENTITY_TYPE_VENUE
+  ),
   browser
 })

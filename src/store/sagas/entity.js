@@ -16,6 +16,7 @@ import eventSeriesNormaliser from '_src/constants/event-series-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as entityConstants from '_src/constants/entity'
+import * as entityActionTypes from '_src/constants/action/entity'
 import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/constants/search'
 import * as authLib from '_src/lib/auth'
@@ -31,23 +32,23 @@ function * getEntity (action) {
 
   try {
     yield put({
-      type: entityConstants.GET_ENTITY_STARTED,
+      type: entityActionTypes.GET_ENTITY_STARTED,
       payload: { entityType, id }
     })
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put({
-      type: entityConstants.GET_ENTITY_SUCCEEDED,
+      type: entityActionTypes.GET_ENTITY_SUCCEEDED,
       payload: { entityType, entity: json.entity }
     })
   } catch (err) {
     yield call(log.error, err)
 
     yield put({
-      type: entityConstants.GET_ENTITY_FAILED,
+      type: entityActionTypes.GET_ENTITY_FAILED,
       payload: { entityType, statusCode: err.statusCode || 500 }
     })
   }
@@ -66,7 +67,7 @@ function * saveEntity (action) {
     const constraint = _getConstraintForEntityType(entityType)
     yield call(validationLib.validate, values, constraint)
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const mapper = _getMapperForEntityType(entityType)
     let json = null
 
@@ -167,26 +168,24 @@ function * getEntityForEdit (action) {
 
   try {
     yield put({
-      type: entityConstants.GET_ENTITY_FOR_EDIT_STARTED,
+      type: entityActionTypes.GET_ENTITY_FOR_EDIT_STARTED,
       payload: { entityType, id }
     })
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
-    console.log('token', token)
-
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put({
-      type: entityConstants.GET_ENTITY_FOR_EDIT_SUCCEEDED,
+      type: entityActionTypes.GET_ENTITY_FOR_EDIT_SUCCEEDED,
       payload: { entityType, entity: json.entity }
     })
   } catch (err) {
     yield call(log.error, err)
 
     yield put({
-      type: entityConstants.GET_ENTITY_FOR_EDIT_FAILED,
-      payload: { entityType, statusCode: err.statusCode || 500 }
+      type: entityActionTypes.GET_ENTITY_FOR_EDIT_FAILED,
+      payload: { entityType }
     })
   }
 }
@@ -195,21 +194,21 @@ function * getEventAsCopy (action) {
   const { id } = action.payload
 
   try {
-    yield put({ type: entityConstants.GET_EVENT_AS_COPY_STARTED })
+    yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
     const json = yield call(get, url, token)
 
     yield put({
-      type: entityConstants.GET_EVENT_AS_COPY_SUCCEEDED,
+      type: entityActionTypes.GET_EVENT_AS_COPY_SUCCEEDED,
       payload: { entity: json.entity }
     })
   } catch (err) {
     yield call(log.error, err)
 
     yield put({
-      type: entityConstants.GET_EVENT_AS_COPY_FAILED,
+      type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
       payload: { statusCode: err.statusCode || 500 }
     })
   }
@@ -220,11 +219,11 @@ function * getSubEntity (action) {
 
   try {
     yield put({
-      type: entityConstants.GET_SUB_ENTITY_STARTED,
+      type: entityActionTypes.GET_SUB_ENTITY_STARTED,
       payload: { entityType, subEntityType }
     })
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
     const json = yield call(get, url, token)
 
@@ -242,7 +241,7 @@ function * getSubEntity (action) {
     })
   } finally {
     yield put({
-      type: entityConstants.GET_SUB_ENTITY_FINISHED,
+      type: entityActionTypes.GET_SUB_ENTITY_FINISHED,
       payload: { entityType, subEntityType }
     })
   }
@@ -272,7 +271,7 @@ function * autocompleteSearch (action) {
     const json = yield call(get, requestUrl)
 
     yield put({
-      type: entityConstants.AUTOCOMPLETE_SEARCH_SUCCEEDED,
+      type: entityActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
       payload: json
     })
   } catch (err) {
@@ -316,7 +315,7 @@ function * createTalentForEvent (action) {
       }
     }
 
-    const token = yield authLib.getAuthTokenForCurrentUser()
+    const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
     const mappedValues = mappingsLib.mapTalentToServer(values)
     const json = yield call(post, url, mappedValues, token)
@@ -354,11 +353,11 @@ function * createTalentForEvent (action) {
 }
 
 export default [
-  takeLatest(entityConstants.GET_ENTITY, getEntity)
-  // takeLatest(entityConstants.SAVE_ENTITY, saveEntity),
-  // takeLatest(entityConstants.GET_ENTITY_FOR_EDIT, getEntityForEdit),
-  // takeLatest(entityConstants.GET_SUB_ENTITY, getSubEntity),
-  // takeLatest(entityConstants.AUTOCOMPLETE_SEARCH, autocompleteSearch),
-  // takeLatest(entityConstants.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
-  // takeLatest(entityConstants.GET_EVENT_AS_COPY, getEventAsCopy)
+  takeLatest(entityActionTypes.GET_ENTITY, getEntity),
+  // takeLatest(entityActionTypes.SAVE_ENTITY, saveEntity),
+  takeLatest(entityActionTypes.GET_ENTITY_FOR_EDIT, getEntityForEdit)
+  // takeLatest(entityActionTypes.GET_SUB_ENTITY, getSubEntity),
+  // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),
+  // takeLatest(entityActionTypes.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
+  // takeLatest(entityActionTypes.GET_EVENT_AS_COPY, getEventAsCopy)
 ]

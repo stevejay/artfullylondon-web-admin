@@ -1,14 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Envelope from 'react-icons/lib/fa/envelope-o'
 import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
 
 import * as linkConstants from '_src/constants/link'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './external-links.scss'
 
-class ExternalLinks extends React.Component {
+class EntityExternalLinks extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -20,7 +20,7 @@ class ExternalLinks extends React.Component {
     )
   }
   render () {
-    const { email, links } = this.props
+    const { email, links } = this.props.entity
 
     const facebook = links.getLinkByType(linkConstants.LINK_TYPE_FACEBOOK)
     const twitter = links.getLinkByType(linkConstants.LINK_TYPE_TWITTER)
@@ -42,9 +42,8 @@ class ExternalLinks extends React.Component {
   }
 }
 
-ExternalLinks.propTypes = {
-  email: PropTypes.string,
-  links: PropTypes.object.isRequired
+EntityExternalLinks.propTypes = {
+  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired
 }
 
-export default ExternalLinks
+export default EntityExternalLinks

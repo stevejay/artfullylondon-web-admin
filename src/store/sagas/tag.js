@@ -23,7 +23,7 @@ import tagNormaliser from '_src/constants/tag-normaliser'
 //     yield put({ type: tagActionTypes.GET_TAGS_STARTED })
 
 //     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
-//     const token = yield authLib.getAuthTokenForCurrentUser()
+//     const token = yield call(authLib.getAuthTokenForCurrentUser)
 //     const json = yield call(fetchLib.get, url, token)
 
 //     yield put({

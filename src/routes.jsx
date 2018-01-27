@@ -20,11 +20,8 @@ import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
 import TagsTypePage from '_src/modules/tags/pages/tags-type'
 import SearchResultsPage from '_src/modules/search/pages/results'
-import EventDetailPage from '_src/modules/event/pages/detail'
-import EventSeriesDetailPage from '_src/modules/event-series/pages/detail'
-import TalentDetailPage from '_src/modules/talent/pages/detail'
-import TalentEditOrCreatePage from '_src/modules/talent/pages/edit-or-create'
-import VenueDetailPage from '_src/modules/venue/pages/detail'
+import EntityDetailPage from '_src/modules/entity/pages/detail'
+import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as appActionTypes from '_src/constants/action/app'
 import * as authActionTypes from '_src/constants/action/auth'
@@ -98,22 +95,19 @@ export class Routes extends React.Component {
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/tags/:type' component={TagsTypePage} />
                 <Route path='/search' component={SearchResultsPage} />
-                <Route path='/event/:id' component={EventDetailPage} />
                 <Route
-                  path='/event-series/:id'
-                  component={EventSeriesDetailPage}
-                />
-                <Route
-                  path='/talent'
+                  path='/:entityType(talent|venue|event|event-series)'
                   exact
-                  component={TalentEditOrCreatePage}
+                  component={EntityEditOrCreatePage}
                 />
                 <Route
-                  path='/talent/edit/(.*)'
-                  component={TalentEditOrCreatePage}
+                  path='/:entityType(talent|venue|event|event-series)/edit/(.*)'
+                  component={EntityEditOrCreatePage}
                 />
-                <Route path='/talent/(.*)' component={TalentDetailPage} />
-                <Route path='/venue/:id' component={VenueDetailPage} />
+                <Route
+                  path='/:entityType(talent|venue|event|event-series)/(.*)'
+                  component={EntityDetailPage}
+                />
                 <Redirect from='/login' to='/' />
                 <Route component={NotFound} />
               </Switch>

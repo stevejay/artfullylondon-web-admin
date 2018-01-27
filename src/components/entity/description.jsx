@@ -1,11 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import * as linkConstants from '_src/constants/link'
-import { FullTalent } from '_src/entities/talent'
-import { FullVenue } from '_src/entities/venue'
-import { FullEvent } from '_src/entities/event'
-import { FullEventSeries } from '_src/entities/event-series'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './description.scss'
 
 class EntityDescription extends React.Component {
@@ -14,9 +10,11 @@ class EntityDescription extends React.Component {
   }
   render () {
     const { entity } = this.props
+
     const wikipediaLink = entity.getLinkByType(
       linkConstants.LINK_TYPE_WIKIPEDIA
     )
+
     const resultHtml = entity.createFormattedDescription()
 
     return (
@@ -40,12 +38,7 @@ class EntityDescription extends React.Component {
 }
 
 EntityDescription.propTypes = {
-  entity: PropTypes.oneOfType([
-    PropTypes.instanceOf(FullTalent),
-    PropTypes.instanceOf(FullVenue),
-    PropTypes.instanceOf(FullEvent),
-    PropTypes.instanceOf(FullEventSeries)
-  ]).isRequired
+  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired
 }
 
 export default EntityDescription

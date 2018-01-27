@@ -1,6 +1,11 @@
 import { handleActions } from 'redux-actions'
 
+import { FullEvent } from '_src/entities/event'
+import { FullEventSeries } from '_src/entities/event-series'
+import { FullTalent } from '_src/entities/talent'
+import { FullVenue } from '_src/entities/venue'
 import * as entityConstants from '_src/constants/entity'
+import * as entityActionTypes from '_src/constants/action/entity'
 
 const initialState = {
   entityId: null,
@@ -13,10 +18,12 @@ const initialState = {
   // getEventMonitorsInProgress: false
 }
 
-export default function (entityType, EntityClass) {
+// TODO proper reducer filtering on entityType.
+
+export default function (entityType) {
   return handleActions(
     {
-      [entityConstants.GET_ENTITY_STARTED]: (state, action) => {
+      [entityActionTypes.GET_ENTITY_STARTED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -31,7 +38,7 @@ export default function (entityType, EntityClass) {
           // getEventMonitorsInProgress: false
         }
       },
-      [entityConstants.GET_ENTITY_SUCCEEDED]: (state, action) => {
+      [entityActionTypes.GET_ENTITY_SUCCEEDED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -45,10 +52,10 @@ export default function (entityType, EntityClass) {
           getInProgress: false,
           getFailed: false,
           // getFailedStatusCode: null,
-          entity: new EntityClass(action.payload.entity)
+          entity: createEntity(entityType, action.payload.entity)
         }
       },
-      [entityConstants.GET_ENTITY_FAILED]: (state, action) => {
+      [entityActionTypes.GET_ENTITY_FAILED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -59,7 +66,7 @@ export default function (entityType, EntityClass) {
           // getFailedStatusCode: action.payload.statusCode
         }
       }
-      // [entityConstants.TALENT_SELECTED]: (state, action) => {
+      // [entityActionTypes.TALENT_SELECTED]: (state, action) => {
       //   if (entityType !== entityConstants.ENTITY_TYPE_EVENT) {
       //     return state
       //   }
@@ -72,4 +79,19 @@ export default function (entityType, EntityClass) {
     },
     initialState
   )
+}
+
+function createEntity (entityType, entity) {
+  switch (entityType) {
+    case entityConstants.ENTITY_TYPE_EVENT:
+      return new FullEvent(entity)
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+      return new FullEventSeries(entity)
+    case entityConstants.ENTITY_TYPE_TALENT:
+      return new FullTalent(entity)
+    case entityConstants.ENTITY_TYPE_VENUE:
+      return new FullVenue(entity)
+    default:
+      throw new Error(`entityType ${entityType} not supported`)
+  }
 }

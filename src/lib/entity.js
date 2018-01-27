@@ -3,6 +3,10 @@ import _ from 'lodash'
 import * as entityConstants from '_src/constants/entity'
 import { createEntityCardImageUrl } from '_src/lib/image'
 
+export function getEntityTypeUrlParameter (match) {
+  return match.params.entityType.toLowerCase()
+}
+
 export function createEntityUrl (entityType, id) {
   return `/${entityType}/${id}`
 }
