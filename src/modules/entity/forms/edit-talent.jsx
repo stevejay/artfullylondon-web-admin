@@ -10,7 +10,7 @@ import FormRow from '_src/components/form/row'
 import TextField from '_src/components/text/field'
 import FormButtons from '_src/components/form/buttons'
 import Divider from '_src/components/divider'
-import DropdownField from '_src/components/dropdown/field'
+import SelectField from '_src/components/select/field'
 import LinksField from '_src/components/links/field'
 import ImagesField from '_src/components/images/field'
 import HtmlTextField from '_src/components/html-text/field'
@@ -49,7 +49,7 @@ export class EditTalentForm extends React.Component {
           <Field
             label='Talent Type'
             name='talentType'
-            component={DropdownField}
+            component={SelectField}
             options={talentConstants.TALENT_TYPES_DROPDOWN_OPTIONS}
             required
             searchable={false}
@@ -59,7 +59,7 @@ export class EditTalentForm extends React.Component {
             <Field
               label='Status'
               name='status'
-              component={DropdownField}
+              component={SelectField}
               options={initialValues.validStatuses}
               searchable={false}
             />}

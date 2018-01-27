@@ -31,6 +31,7 @@
     align-self: flex-end;
     font-size: 10rem;
     line-height: 1;
+    color: $highlight-color;
 
     @include below-tablet {
       font-size: 7rem;
@@ -40,32 +41,16 @@
 
 .container-event {
   composes: container;
-
-  p {
-    color: $event-color;
-  }
 }
 
 .container-event-series {
   composes: container;
-
-  p {
-    color: $event-series-color;
-  }
 }
 
 .container-talent {
   composes: container;
-
-  p {
-    color: $talent-color;
-  }
 }
 
 .container-venue {
   composes: container;
-
-  p {
-    color: $venue-color;
-  }
 }

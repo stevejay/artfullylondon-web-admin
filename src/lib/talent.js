@@ -5,5 +5,5 @@ export function isIndividualTalent (talentType) {
 }
 
 export function formatTalentName (talent) {
-  return `${talent.firstNames} ${talent.lastName}`.trim()
+  return `${talent.firstNames || ''} ${talent.lastName || ''}`.trim()
 }
