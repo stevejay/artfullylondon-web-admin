@@ -8,7 +8,8 @@ const VenueEditOrCreate = ({ entity }) => (
 )
 
 VenueEditOrCreate.propTypes = {
-  entity: PropTypes.object.isRequired
+  entity: PropTypes.object.isRequired,
+  isEdit: PropTypes.bool.isRequired
 }
 
 export default VenueEditOrCreate

@@ -5,6 +5,5 @@ export function isIndividualTalent (talentType) {
 }
 
 export function formatTalentName (talent) {
-  const { firstNames, lastName } = talent
-  return firstNames ? firstNames + ' ' + lastName : lastName || ''
+  return `${talent.firstNames} ${talent.lastName}`.trim()
 }

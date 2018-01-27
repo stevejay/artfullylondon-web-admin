@@ -43,7 +43,13 @@ class EntityEditOrCreatePage extends React.Component {
     }
   }
   render () {
-    const { entityType, entity, getInProgress, getFailed } = this.props
+    const {
+      entityType,
+      entityId,
+      entity,
+      getInProgress,
+      getFailed
+    } = this.props
 
     if (getFailed) {
       return <BasicSection><Error /></BasicSection>
@@ -53,17 +59,19 @@ class EntityEditOrCreatePage extends React.Component {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 
+    const isEdit = !!entityId
+
     return (
       <FadeTransition in appear mountOnEnter unmountOnExit>
         <BasicSection>
           {entityType === entityConstants.ENTITY_TYPE_TALENT &&
-            <TalentEditOrCreate entity={entity} />}
+            <TalentEditOrCreate entity={entity} isEdit={isEdit} />}
           {entityType === entityConstants.ENTITY_TYPE_VENUE &&
-            <VenueEditOrCreate entity={entity} />}
+            <VenueEditOrCreate entity={entity} isEdit={isEdit} />}
           {entityType === entityConstants.ENTITY_TYPE_EVENT &&
-            <EventEditOrCreate entity={entity} />}
+            <EventEditOrCreate entity={entity} isEdit={isEdit} />}
           {entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES &&
-            <EventSeriesEditOrCreate entity={entity} />}
+            <EventSeriesEditOrCreate entity={entity} isEdit={isEdit} />}
         </BasicSection>
       </FadeTransition>
     )

@@ -32,10 +32,10 @@ class ImagePlaceholder extends React.Component {
     }
   }
   render () {
-    const { type, size, ...rest } = this.props
+    const { type, size, className, ...rest } = this.props
 
     return (
-      <div {...rest} role='presentation' styleName={size}>
+      <div {...rest} role='presentation' styleName={size} className={className}>
         {this.getIcon(type)}
       </div>
     )
@@ -51,7 +51,8 @@ ImagePlaceholder.propTypes = {
     'smallmedium',
     'medium',
     'large'
-  ]).isRequired
+  ]).isRequired,
+  className: PropTypes.string
 }
 
 export default ImagePlaceholder

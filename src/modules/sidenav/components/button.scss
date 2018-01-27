@@ -2,7 +2,7 @@
 @import 'variables.scss';
 
 .button {
-  @include regularFont;
+  @include boldFont;
   @include noDefaultAnchorStyling;
   @include unstyledButton;
   display: block;

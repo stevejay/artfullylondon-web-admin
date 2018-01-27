@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 
 import './details-container.scss'
 
-const DetailsContainer = ({ type, ...rest }) => (
+const EntityDetailsContainer = ({ type, ...rest }) => (
   <div {...rest} styleName={`container-${type}`} />
 )
 
-DetailsContainer.propTypes = {
+EntityDetailsContainer.propTypes = {
   children: PropTypes.any.isRequired,
   type: PropTypes.oneOf(['default', 'narrow'])
 }
 
-DetailsContainer.defaultProps = {
+EntityDetailsContainer.defaultProps = {
   type: 'default'
 }
 
-export default DetailsContainer
+export default EntityDetailsContainer

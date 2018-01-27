@@ -8,7 +8,8 @@ const EventSeriesEditOrCreate = ({ entity }) => (
 )
 
 EventSeriesEditOrCreate.propTypes = {
-  entity: PropTypes.object.isRequired
+  entity: PropTypes.object.isRequired,
+  isEdit: PropTypes.bool.isRequired
 }
 
 export default EventSeriesEditOrCreate

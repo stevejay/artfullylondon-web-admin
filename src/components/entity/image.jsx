@@ -4,17 +4,16 @@ import PropTypes from 'prop-types'
 import ImagePlaceholder from '_src/components/image-placeholder'
 import ImageCarousel from '_src/components/entity/image-carousel'
 import ImageCredit from '_src/components/entity/image-credit'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 import './image.scss'
 
 class EntityImage extends React.Component {
   shouldComponentUpdate (nextProps) {
-    return nextProps.entity.images !== this.props.entity.images
+    return nextProps.images !== this.props.images
   }
   render () {
-    const { entity, showCarousel } = this.props
-    const { entityType, images } = entity
+    const { entityType, images, showCarousel } = this.props
     const hasImages = !!images && images.length > 0
 
     if (!hasImages) {
@@ -34,7 +33,7 @@ class EntityImage extends React.Component {
     }
 
     return (
-      <div>
+      <React.Fragment>
         <div styleName='container'>
           <img
             styleName='img'
@@ -42,13 +41,14 @@ class EntityImage extends React.Component {
           />
         </div>
         <ImageCredit credit={images[0].copyright} />
-      </div>
+      </React.Fragment>
     )
   }
 }
 
 EntityImage.propTypes = {
-  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired,
+  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
+  images: PropTypes.array,
   showCarousel: PropTypes.bool.isRequired
 }
 

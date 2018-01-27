@@ -354,7 +354,7 @@ function * createTalentForEvent (action) {
 
 export default [
   takeLatest(entityActionTypes.GET_ENTITY, getEntity),
-  // takeLatest(entityActionTypes.SAVE_ENTITY, saveEntity),
+  takeLatest(entityActionTypes.SAVE_ENTITY, saveEntity),
   takeLatest(entityActionTypes.GET_ENTITY_FOR_EDIT, getEntityForEdit)
   // takeLatest(entityActionTypes.GET_SUB_ENTITY, getSubEntity),
   // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),

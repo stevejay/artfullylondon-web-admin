@@ -24,7 +24,7 @@ export default function (entityType) {
 
         return {
           ...initialState,
-          entity: getDefaultEditEntity(entityType)
+          entity: getEntityDefaultValues(entityType)
         }
       },
       [entityActionTypes.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => {
@@ -53,7 +53,7 @@ export default function (entityType) {
           ...state,
           getInProgress: false,
           getFailed: false,
-          entity: mappingsLib.mapTalentFromServer(action.payload.entity)
+          entity: getMappingFunc(entityType)(action.payload.entity)
         }
       },
       [entityActionTypes.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => {
@@ -71,7 +71,22 @@ export default function (entityType) {
   )
 }
 
-function getDefaultEditEntity (entityType) {
+function getMappingFunc (entityType) {
+  switch (entityType) {
+    case entityConstants.ENTITY_TYPE_TALENT:
+      return mappingsLib.mapTalentFromServer
+    case entityConstants.ENTITY_TYPE_VENUE:
+      return mappingsLib.mapVenueFromServer
+    case entityConstants.ENTITY_TYPE_EVENT:
+      return mappingsLib.mapEventFromServer
+    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+      return mappingsLib.mapEventSeriesFromServer
+    default:
+      throw new Error(`entityType ${entityType} not supported`)
+  }
+}
+
+function getEntityDefaultValues (entityType) {
   switch (entityType) {
     case entityConstants.ENTITY_TYPE_TALENT:
       return {
