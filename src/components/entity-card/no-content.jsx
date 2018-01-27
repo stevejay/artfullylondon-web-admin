@@ -1,6 +1,6 @@
 import React from 'react'
-
 import ThumbsDown from 'react-icons/lib/fa/thumbs-o-down'
+
 import './no-content.scss'
 
 class NoContent extends React.Component {

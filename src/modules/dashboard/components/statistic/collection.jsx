@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import FadeTransition from '_src/components/transition/fade'
 import Statistic from '_src/modules/dashboard/components/statistic'
 import * as entityConstants from '_src/constants/entity'
 import './collection.scss'
@@ -19,25 +20,28 @@ class StatisticCollection extends React.Component {
     return entityCount ? entityCount.count : 0
   }
   render () {
-    if (this.props.entityCounts.length === 0) {
-      return null
-    }
-
     return (
-      <section styleName='container'>
-        {[
-          entityConstants.ENTITY_TYPE_EVENT,
-          entityConstants.ENTITY_TYPE_EVENT_SERIES,
-          entityConstants.ENTITY_TYPE_TALENT,
-          entityConstants.ENTITY_TYPE_VENUE
-        ].map(entityType => (
-          <Statistic
-            key={entityType}
-            entityType={entityType}
-            count={this._getEntityCount(entityType)}
-          />
-        ))}
-      </section>
+      <FadeTransition
+        in={!_.isEmpty(this.props.entityCounts)}
+        mountOnEnter
+        unmountOnExit
+        appear
+      >
+        <section styleName='container'>
+          {[
+            entityConstants.ENTITY_TYPE_EVENT,
+            entityConstants.ENTITY_TYPE_EVENT_SERIES,
+            entityConstants.ENTITY_TYPE_TALENT,
+            entityConstants.ENTITY_TYPE_VENUE
+          ].map(entityType => (
+            <Statistic
+              key={entityType}
+              entityType={entityType}
+              count={this._getEntityCount(entityType)}
+            />
+          ))}
+        </section>
+      </FadeTransition>
     )
   }
 }

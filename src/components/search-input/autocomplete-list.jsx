@@ -20,7 +20,7 @@ const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (
             currentIndex={currentIndex}
             item={item}
             onSelect={onSelectItem}
-            />)
+          />)
     )}
   </ul>
 )

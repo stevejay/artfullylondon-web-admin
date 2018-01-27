@@ -2,16 +2,16 @@
 @import 'mixins.scss';
 
 .container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: .8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: .8rem;
 
-    &:last-of-type {
-        margin-bottom: 0;
-    }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
-    @include below-wide-mobile {
-        margin-bottom: .5rem;
-    }
+  @include below-wide-mobile {
+    margin-bottom: .5rem;
+  }
 }

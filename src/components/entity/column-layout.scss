@@ -2,10 +2,10 @@
 @import 'mixins.scss';
 
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    @include below-tablet {
-        flex-direction: column;
-    }
+  @include below-tablet {
+    flex-direction: column;
+  }
 }

@@ -4,11 +4,8 @@ import Envelope from 'react-icons/lib/fa/envelope-o'
 import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
-import {
-  LINK_TYPE_FACEBOOK,
-  LINK_TYPE_TWITTER,
-  LINK_TYPE_INSTAGRAM
-} from '_src/constants/link'
+
+import * as linkConstants from '_src/constants/link'
 import './external-links.scss'
 
 class ExternalLinks extends React.Component {
@@ -25,9 +22,9 @@ class ExternalLinks extends React.Component {
   render () {
     const { email, links } = this.props
 
-    const facebook = links.getLinkByType(LINK_TYPE_FACEBOOK)
-    const twitter = links.getLinkByType(LINK_TYPE_TWITTER)
-    const instagram = links.getLinkByType(LINK_TYPE_INSTAGRAM)
+    const facebook = links.getLinkByType(linkConstants.LINK_TYPE_FACEBOOK)
+    const twitter = links.getLinkByType(linkConstants.LINK_TYPE_TWITTER)
+    const instagram = links.getLinkByType(linkConstants.LINK_TYPE_INSTAGRAM)
     const hasNoLinks = !email && !facebook && !twitter && !instagram
 
     if (hasNoLinks) {

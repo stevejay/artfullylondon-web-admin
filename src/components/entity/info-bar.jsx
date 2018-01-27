@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-
 import GlobeIcon from 'react-icons/lib/fa/globe'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 import CopyIcon from 'react-icons/lib/fa/copy'
 import TagsIcon from 'react-icons/lib/fa/tags'
-import { LINK_TYPE_HOMEPAGE } from '_src/constants/link'
-import { ENTITY_TYPE_EVENT } from '_src/constants/entity'
+
+import * as linkConstants from '_src/constants/link'
+import * as entityConstants from '_src/constants/entity'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
@@ -21,7 +21,7 @@ class InfoBar extends React.Component {
   render () {
     const { entity, onClickCopy } = this.props
     const tagsLabel = entity.createInfoBarLabel()
-    const homepage = entity.getLinkByType(LINK_TYPE_HOMEPAGE)
+    const homepage = entity.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
 
     return (
       <ul styleName='container'>
@@ -49,7 +49,7 @@ class InfoBar extends React.Component {
             Edit
           </Link>
         </li>
-        {entity.entityType === ENTITY_TYPE_EVENT &&
+        {entity.entityType === entityConstants.ENTITY_TYPE_EVENT &&
           <li styleName='item'>
             <CopyIcon styleName='icon' />
             <Link styleName='link' to='/event' onClick={onClickCopy}>

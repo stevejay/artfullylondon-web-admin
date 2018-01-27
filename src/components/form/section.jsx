@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './section.scss'
 
 const FormSection = ({ type, className, children, ...rest }) => (

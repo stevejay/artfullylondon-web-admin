@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Message from '_src/components/message'
-import { GENERIC_ERROR_MESSAGE } from '_src/constants/validation'
+import * as validationConstants from '_src/constants/validation'
 
 class FormError extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -14,7 +15,10 @@ class FormError extends React.Component {
       return null
     }
 
-    if (error === GENERIC_ERROR_MESSAGE && hideGenericErrorMessages) {
+    if (
+      error === validationConstants.GENERIC_ERROR_MESSAGE &&
+      hideGenericErrorMessages
+    ) {
       return null
     }
 

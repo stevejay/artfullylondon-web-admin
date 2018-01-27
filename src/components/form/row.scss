@@ -1,12 +1,12 @@
 @import 'mixins.scss';
 
 .container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-bottom: 1rem;
 
-    @include below-wide-mobile {
-        flex-direction: column;
-    }
+  @include below-wide-mobile {
+    flex-direction: column;
+  }
 }

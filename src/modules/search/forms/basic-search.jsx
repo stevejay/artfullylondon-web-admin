@@ -53,7 +53,7 @@ export class BasicSearchForm extends React.Component {
     })
   }
   render () {
-    const { submitting, handleSubmit, error, onAutocompleteSelect } = this.props
+    const { submitting, handleSubmit, error } = this.props
 
     return (
       <Form

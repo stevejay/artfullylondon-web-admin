@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Pagination from '_src/components/pagination'
-import AltBackground from '_src/components/section/alt-background'
 import EntityCardCollection from '_src/components/entity-card/collection'
 // import MoreResults from '_src/components/search/more-results'
 import { SummaryEvent } from '_src/entities/event'
@@ -28,9 +27,9 @@ class SearchResults extends React.Component {
       take,
       dateStr,
       className,
-      onPageClick,
-      onMoreResultsClick,
-      isAllSearch
+      onPageClick
+      // onMoreResultsClick,
+      // isAllSearch
     } = this.props
 
     // TODO think about reinstating MoreResults component.
@@ -74,10 +73,10 @@ SearchResults.propTypes = {
   skip: PropTypes.number.isRequired,
   take: PropTypes.number.isRequired,
   className: PropTypes.string,
-  isAllSearch: PropTypes.bool.isRequired,
+  // isAllSearch: PropTypes.bool.isRequired,
   dateStr: PropTypes.string.isRequired,
-  onPageClick: PropTypes.func.isRequired,
-  onMoreResultsClick: PropTypes.func
+  onPageClick: PropTypes.func.isRequired
+  // onMoreResultsClick: PropTypes.func
 }
 
 export default SearchResults

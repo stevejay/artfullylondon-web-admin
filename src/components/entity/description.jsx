@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { LINK_TYPE_WIKIPEDIA } from '_src/constants/link'
+
+import * as linkConstants from '_src/constants/link'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
@@ -13,7 +14,9 @@ class EntityDescription extends React.Component {
   }
   render () {
     const { entity } = this.props
-    const wikipediaLink = entity.getLinkByType(LINK_TYPE_WIKIPEDIA)
+    const wikipediaLink = entity.getLinkByType(
+      linkConstants.LINK_TYPE_WIKIPEDIA
+    )
     const resultHtml = entity.createFormattedDescription()
 
     return (

@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions'
 import * as types from '_src/constants/entity'
 
-export const getEntity = createAction(types.GET_ENTITY)
 export const saveEntity = createAction(types.SAVE_ENTITY)
 export const getEntityForEdit = createAction(types.GET_ENTITY_FOR_EDIT)
 export const resetEntityForEdit = createAction(types.RESET_ENTITY_FOR_EDIT)

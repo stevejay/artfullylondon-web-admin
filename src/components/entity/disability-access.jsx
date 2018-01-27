@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import AdditionalDetailHeading
   from '_src/components/entity/additional-detail-heading'
 import AdditionalDetailContent
   from '_src/components/entity/additional-detail-content'
-import { LINK_TYPE_ACCESS } from '_src/constants/link'
+import * as linkConstants from '_src/constants/link'
 import * as accessLib from '_src/lib/access'
 
 class DisabilityAccess extends React.Component {
@@ -19,7 +20,7 @@ class DisabilityAccess extends React.Component {
       links
     } = this.props
 
-    const accessLink = links.getLinkByType(LINK_TYPE_ACCESS)
+    const accessLink = links.getLinkByType(linkConstants.LINK_TYPE_ACCESS)
 
     const accessText = accessLib.getAccessText(
       wheelchairAccessType,

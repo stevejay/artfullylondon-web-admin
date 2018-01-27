@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './featured-detail-content.scss'
 
 class FeaturedDetailContent extends React.Component {

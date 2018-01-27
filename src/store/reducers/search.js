@@ -66,53 +66,6 @@ export default handleActions(
       ...state,
       searchInProgress: false
     })
-    // [searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED]: (state, action) => {
-    //   const { items } = action.payload
-
-    //   items.forEach(
-    //     item =>
-    //       (item.autocompleteItemType =
-    //         searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
-    //   )
-
-    //   const events = items.filter(
-    //     item =>
-    //       item.entityType === entityConstants.ENTITY_TYPE_EVENT ||
-    //       item.entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES
-    //   )
-
-    //   const venues = items.filter(
-    //     item => item.entityType === entityConstants.ENTITY_TYPE_VENUE
-    //   )
-
-    //   const talents = items.filter(
-    //     item => item.entityType === entityConstants.ENTITY_TYPE_TALENT
-    //   )
-
-    //   const autocompleteItems = []
-
-    //   _addLabelToAutocompleteItems(autocompleteItems, events, 'Events')
-    //   _addLabelToAutocompleteItems(autocompleteItems, venues, 'Venues')
-    //   _addLabelToAutocompleteItems(autocompleteItems, talents, 'Talents')
-
-    //   return {
-    //     ...state,
-    //     autocompleteItems
-    //   }
-    // }
   },
   initialState
 )
-
-// function _addLabelToAutocompleteItems (autocompleteItems, items, label) {
-//   if (!items.length) {
-//     return
-//   }
-
-//   autocompleteItems.push({
-//     autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_LABEL,
-//     label: label
-//   })
-
-//   Array.prototype.push.apply(autocompleteItems, items)
-// }

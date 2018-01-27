@@ -2,14 +2,14 @@
 @import 'mixins.scss';
 
 .container {
-    margin: 0;
-    padding: 0;
-    font-size: 2rem;
-    min-width: 11rem;
-    color: $dark-highlight-color;
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  min-width: 11rem;
+  color: $dark-highlight-color;
 
-    @include below-wide-mobile {
-        font-size: 1.8rem;
-        min-width: 10rem;
-    }
+  @include below-wide-mobile {
+    font-size: 1.8rem;
+    min-width: 10rem;
+  }
 }

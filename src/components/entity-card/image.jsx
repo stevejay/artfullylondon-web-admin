@@ -4,9 +4,9 @@ import LazyLoad from 'react-lazyload'
 import { Link } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import { getEntityCardImageDataForEntityType } from '_src/lib/entity'
-import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
 import ImagePlaceholder from '_src/components/image-placeholder'
+import * as entityLib from '_src/lib/entity'
+import * as entityConstants from '_src/constants/entity'
 import './image.scss'
 
 class Image extends React.Component {
@@ -36,7 +36,7 @@ class Image extends React.Component {
       )
     }
 
-    const imageData = getEntityCardImageDataForEntityType(
+    const imageData = entityLib.getEntityCardImageDataForEntityType(
       entityType,
       image,
       imageRatio
@@ -71,7 +71,8 @@ class Image extends React.Component {
 Image.propTypes = {
   entity: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    entityType: PropTypes.oneOf(EDITABLE_ENTITY_TYPES).isRequired,
+    entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
+      .isRequired,
     url: PropTypes.string.isRequired,
     image: PropTypes.string,
     imageRatio: PropTypes.number,

@@ -2,11 +2,11 @@
 @import 'variables.scss';
 
 .heading {
-    @include extraBoldFont;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    color: $three-quarter-black;
-    padding: 0;
-    margin: 0 0 .5rem;
-    line-height: 1.3;
+  @include extraBoldFont;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: $three-quarter-black;
+  padding: 0;
+  margin: 0 0 .5rem;
+  line-height: 1.3;
 }

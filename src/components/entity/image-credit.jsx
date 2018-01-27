@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './image-credit.scss'
 
-class ImageCredit extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.credit !== this.props.credit
-  }
+class ImageCredit extends React.PureComponent {
   render () {
     const { credit } = this.props
     return credit ? <div styleName='credit'>IMAGE CREDIT: {credit}</div> : null

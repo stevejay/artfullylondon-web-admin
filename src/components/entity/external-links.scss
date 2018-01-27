@@ -2,41 +2,41 @@
 @import 'mixins.scss';
 
 .links-container {
-    display: flex;
-    margin-bottom: 1.5rem;
+  display: flex;
+  margin-bottom: 1.5rem;
 }
 
 .link {
-    flex-shrink: 0;
-    flex-grow: 0;
-    padding: 1rem;
-    border: 2px solid $third-black;
-    border-radius: 500rem;
-    color: $half-black;
-    margin-right: 1.5rem;
-    line-height: 1px;
-    transition: color .2s ease-in-out, border-color .2s ease-in-out;
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding: 1rem;
+  border: 2px solid $third-black;
+  border-radius: 500rem;
+  color: $half-black;
+  margin-right: 1.5rem;
+  line-height: 1px;
+  transition: color .2s ease-in-out, border-color .2s ease-in-out;
 
-    @include below-wide-mobile {
-        padding: .8rem;
-    }
+  @include below-wide-mobile {
+    padding: .8rem;
+  }
 
-    &:hover {
-        color: $black;
-        border: 2px solid $three-quarter-black;
-    }
+  &:hover {
+    color: $black;
+    border: 2px solid $three-quarter-black;
+  }
 
-    &:last-of-type {
-        margin-right: 0;
-    }
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 .icon {
-    width: 2.5rem;
-    height: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
 
-    @include below-wide-mobile {
-        width: 2.4rem;
-        height: 2.4rem;
-    }
+  @include below-wide-mobile {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './border.scss'
 
 const FormBorder = ({ title, children, ...rest }) => (

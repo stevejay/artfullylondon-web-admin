@@ -2,34 +2,34 @@
 @import 'mixins.scss';
 
 :global(.image-gallery-image) {
-    background-color: #E3DCCF;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #E3DCCF;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 :global(.image-gallery-custom-left-nav),
 :global(.image-gallery-custom-right-nav) {
-    position: absolute;
-    top: calc(50% - 20px);
-    width: 40px;
-    height: 40px;
-    z-index: 10;
-    background-color: rgba(255,255,255,.75);
-    border-radius: 500px;
+  position: absolute;
+  top: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 500px;
 
-    &:hover {
-        background-color: rgba(255,255,255,1);
-    }
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
 }
 
 :global(.image-gallery-custom-left-nav) {
-    left: 20px;
-    padding: 8px 9px 8px 7px;
+  left: 20px;
+  padding: 8px 9px 8px 7px;
 }
 
 :global(.image-gallery-custom-right-nav) {
-    right: 20px;
-    padding: 8px 6px 8px 10px;
+  right: 20px;
+  padding: 8px 6px 8px 10px;
 }

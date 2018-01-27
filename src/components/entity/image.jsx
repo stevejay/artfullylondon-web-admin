@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { EDITABLE_ENTITY_TYPES } from '_src/constants/entity'
+
 import ImagePlaceholder from '_src/components/image-placeholder'
 import ImageCarousel from '_src/components/entity/image-carousel'
 import ImageCredit from '_src/components/entity/image-credit'
-import { createEntityPageImageUrl } from '_src/lib/image'
+import * as entityConstants from '_src/constants/entity'
+import * as imageLib from '_src/lib/image'
 import './image.scss'
 
 class EntityImage extends React.Component {
@@ -34,7 +35,10 @@ class EntityImage extends React.Component {
     return (
       <div>
         <div styleName='container'>
-          <img styleName='img' src={createEntityPageImageUrl(images[0].id)} />
+          <img
+            styleName='img'
+            src={imageLib.createEntityPageImageUrl(images[0].id)}
+          />
         </div>
         <ImageCredit credit={images[0].copyright} />
       </div>
@@ -43,7 +47,7 @@ class EntityImage extends React.Component {
 }
 
 EntityImage.propTypes = {
-  entityType: PropTypes.oneOf(EDITABLE_ENTITY_TYPES).isRequired,
+  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,

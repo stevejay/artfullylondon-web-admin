@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import { Link } from 'react-router-dom'
+
 import EntityCardShell from '_src/components/entity-card/shell'
-import Pusher from '_src/components/pusher'
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
@@ -29,7 +29,6 @@ class EntityCard extends React.Component {
       <EntityCardShell entity={entity}>
         {content}
         <div styleName='actions-row'>
-          <Pusher />
           <Link
             styleName='goto-entity'
             data-url={entity.url}

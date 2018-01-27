@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './section-header.scss'
 
 class FormSectionHeader extends React.Component {

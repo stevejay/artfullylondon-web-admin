@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import AdditionalDetailHeading
   from '_src/components/entity/additional-detail-heading'
 import AdditionalDetailContent
@@ -13,14 +14,14 @@ class Address extends React.Component {
     const { fullAddress } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <AdditionalDetailHeading>
           Address
         </AdditionalDetailHeading>
         <AdditionalDetailContent>
           {fullAddress}
         </AdditionalDetailContent>
-      </div>
+      </React.Fragment>
     )
   }
 }

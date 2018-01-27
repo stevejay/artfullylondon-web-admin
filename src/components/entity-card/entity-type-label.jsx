@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './entity-type-label.scss'
 
 class EntityTypeLabel extends React.Component {

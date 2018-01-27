@@ -1,15 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 
-import Loader from '_src/components/loader'
-import AltBackground from '_src/components/section/alt-background'
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import EntityCard from './index'
-import NoContent from './no-content'
 import './collection.scss'
 
 class EntityCardCollection extends React.Component {
@@ -25,13 +21,7 @@ class EntityCardCollection extends React.Component {
     this.props.onMounted && this.props.onMounted()
   }
   render () {
-    const {
-      entities,
-      cardContentFactory,
-      dateStr,
-      getInProgress,
-      className
-    } = this.props
+    const { entities, cardContentFactory, dateStr, className } = this.props
 
     return (
       <div styleName='cards-container' className={className}>
@@ -58,6 +48,7 @@ EntityCardCollection.propTypes = {
       PropTypes.instanceOf(SummaryVenue)
     ]).isRequired
   ),
+  // TODO is getInProgress needed by this component?
   getInProgress: PropTypes.bool,
   dateStr: PropTypes.string.isRequired,
   className: PropTypes.string,

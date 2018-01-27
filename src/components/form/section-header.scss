@@ -2,14 +2,14 @@
 @import 'mixins.scss';
 
 .h2 {
-    color: $half-black;
-    text-align: center;
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin: 0 1.5rem 1.5rem;
-    line-height: 1.2;
+  color: $half-black;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 0 1.5rem 1.5rem;
+  line-height: 1.2;
 
-    @include below-wide-mobile {
-        font-size: 1.8rem;
-    }
+  @include below-wide-mobile {
+    font-size: 1.8rem;
+  }
 }

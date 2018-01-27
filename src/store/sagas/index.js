@@ -3,7 +3,7 @@ import appSagas from './app'
 import authSagas from './auth'
 import browserSagas from './browser'
 import serverConstantsSagas from './server-constants'
-// import entitySagas from './entity';
+import entitySagas from './entity'
 // import imageSagas from './image';
 // import linkSagas from './link';
 // import monitorsSagas from './monitors';
@@ -22,10 +22,11 @@ export default function * () {
     ...notificationsSagas,
     ...statusSagas,
     ...searchSagas,
-    ...tagSagas
+    ...tagSagas,
+    ...entitySagas
   ])
   //
-  // ...entitySagas,
+  //
   // ...imageSagas,
   // ...linkSagas,
   // ...monitorsSagas,

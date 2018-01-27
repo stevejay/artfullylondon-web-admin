@@ -2,16 +2,16 @@
 @import 'variables.scss';
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 190px;
 }
 
 .graphic {
-    align-self: center;
-    width: 8rem;
-    height: 8rem;
-    color: $quarter-black;
+  align-self: center;
+  width: 8rem;
+  height: 8rem;
+  color: $quarter-black;
 }

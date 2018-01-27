@@ -2,25 +2,25 @@
 @import 'mixins.scss';
 
 .heading {
-    @include boldFont;
-    font-size: 3.8rem;
-    color: $half-black;
-    text-transform: lowercase;
-    text-align: center;
-    padding: 3rem 0 .5rem;
-    margin: 0;
+  @include boldFont;
+  font-size: 3.8rem;
+  color: $half-black;
+  text-transform: lowercase;
+  text-align: center;
+  padding: 3rem 0 .5rem;
+  margin: 0;
+
+  @include below-wide-mobile {
+    font-size: 3rem;
+  }
+
+  span {
+    @include cursiveBoldFont;
+    font-size: 4rem;
+    color: $dark-highlight-color;
 
     @include below-wide-mobile {
-        font-size: 3rem;
+      font-size: 3.1rem;
     }
-
-    span {
-        @include cursiveBoldFont;
-        font-size: 4rem;
-        color: $dark-highlight-color;
-
-        @include below-wide-mobile {
-            font-size: 3.1rem;
-        }
-    }
+  }
 }

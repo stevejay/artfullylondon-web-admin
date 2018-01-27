@@ -89,8 +89,6 @@ function * autocompleteSearch ({ payload, meta }) {
 
 function * basicSearch ({ payload }) {
   try {
-    // yield put(startSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
-
     const query = yield call(
       normalise,
       payload.query,
@@ -109,10 +107,6 @@ function * basicSearch ({ payload }) {
       yield call(log.error, 'basicSearch validation errors', errors)
       return
     }
-
-    // const searchReducer = yield select(state => state.search)
-    // const currentQuery = searchReducer.basicSearchParams
-    // const existingItemsLength = searchReducer.items.length
 
     const requestUrl = searchLib.createBasicSearchRequestUrl(query)
     yield put({ type: searchActionTypes.STARTING_BASIC_SEARCH })
@@ -139,8 +133,6 @@ function * basicSearch ({ payload }) {
     )
 
     yield put({ type: searchActionTypes.BASIC_SEARCH_FAILED })
-  } finally {
-    // yield put(stopSubmit(formConstants.BASIC_SEARCH_FORM_NAME))
   }
 }
 

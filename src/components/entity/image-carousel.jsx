@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ImageGallery from 'react-image-gallery'
-import { createPathsForImageCarousel } from '_src/lib/image'
-import ImageCredit from '_src/components/entity/image-credit'
-import './image-carousel.scss'
 import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
+
+import ImageCredit from '_src/components/entity/image-credit'
+import * as imageLib from '_src/lib/image'
+import './image-carousel.scss'
+
+// TODO remove the extra render methods.
 
 class ImageCarousel extends React.Component {
   constructor (props) {
@@ -55,7 +58,9 @@ class ImageCarousel extends React.Component {
   }
   render () {
     const { images } = this.props
-    const imagePaths = images.map(image => createPathsForImageCarousel(image))
+    const imagePaths = images.map(image =>
+      imageLib.createPathsForImageCarousel(image)
+    )
     const copyright = images[this.state.currentIndex].copyright
 
     return (
