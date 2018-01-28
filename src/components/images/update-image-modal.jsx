@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '_src/components/modal'
 import ModalContainer from '_src/components/modal/container'
-import UpdateImageForm from '_src/components/image-grid/update-image-form'
+import UpdateImageForm from '_src/components/images/update-image-form'
 import FadeTransition from '_src/components/transition/fade'
 
 const UpdateImageModal = ({ show, initialValues, onSubmit, onHide }) => (
@@ -21,7 +21,7 @@ const UpdateImageModal = ({ show, initialValues, onSubmit, onHide }) => (
 
 UpdateImageModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  initialValues: PropTypes.object.isRequired,
+  initialValues: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
   onHide: PropTypes.func.isRequired
 }

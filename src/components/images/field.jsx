@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import UpdateImageModal from '_src/components/images/update-image-modal'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
@@ -11,11 +12,36 @@ import ImagesEditorForm from '_src/components/images/editor-form'
 import * as entityConstants from '_src/constants/entity'
 
 class ImagesField extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { showModal: false, initialValues: null }
+    this.mounted = true
+  }
+  componentWillUnmount () {
+    this.mounted = false
+  }
   handleAddImage = values => {
     this.props.onAddImage({
       values,
       isMain: !_.isEmpty(this.props.input.value)
     })
+  }
+  handleUpdateImage = initialValues => {
+    this.setState({ showModal: true, initialValues })
+  }
+  handleSubmitModal = values => {
+    this.props
+      .onUpdateImage({
+        // TODO change this?
+        values: { copyright: values.copyright },
+        id: values.id
+      })
+      .then(() => {
+        this.mounted && this.handleHideModal()
+      })
+  }
+  handleHideModal = () => {
+    this.setState({ showModal: false, initialValues: null })
   }
   render () {
     const {
@@ -24,9 +50,10 @@ class ImagesField extends React.Component {
       input: { value },
       meta: { touched, error },
       onSetMainImage,
-      onUpdateImage,
       onDeleteImage
     } = this.props
+
+    const { showModal, initialValues } = this.state
 
     return (
       <FieldContainer
@@ -45,12 +72,18 @@ class ImagesField extends React.Component {
                 value={element}
                 entityType={entityType}
                 onDelete={onDeleteImage}
-                onUpdate={onUpdateImage}
+                onUpdate={this.handleUpdateImage}
                 onSetMain={onSetMainImage}
               />
             ))}
           </ImageGrid>
         </FieldBorder>
+        <UpdateImageModal
+          show={showModal}
+          initialValues={initialValues}
+          onSubmit={this.handleSubmitModal}
+          onHide={this.handleHideModal}
+        />
       </FieldContainer>
     )
   }
@@ -62,7 +95,6 @@ ImagesField.propTypes = {
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
       PropTypes.shape({
-        key: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
         isMain: PropTypes.bool.isRequired
       })

@@ -32,7 +32,7 @@ const UpdateImageForm = ({ submitting, handleSubmit }) => (
 )
 
 UpdateImageForm.propTypes = {
-  initialValues: PropTypes.object.isRequired,
+  initialValues: PropTypes.object,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
