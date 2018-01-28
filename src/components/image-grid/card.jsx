@@ -3,36 +3,59 @@ import PropTypes from 'prop-types'
 import Trash from 'react-icons/lib/fa/trash-o'
 import Heart from 'react-icons/lib/fa/heart'
 import Pencil from 'react-icons/lib/fa/pencil'
-import {
-  ENTITY_TYPE_EVENT,
-  ENTITY_TYPE_EVENT_SERIES,
-  ENTITY_TYPE_TALENT,
-  ENTITY_TYPE_VENUE
-} from '_src/constants/entity'
+
+import UpdateImageModal from '_src/components/image-grid/update-image-modal'
 import Image from '_src/components/image-grid/image'
+import * as entityConstants from '_src/constants/entity'
 import './card.scss'
 
 class ImageGridCard extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.value !== this.props.value
+  constructor (props) {
+    super(props)
+    this.state = { showModal: false }
+    this.mounted = true
+  }
+  shouldComponentUpdate (nextProps, nextState) {
+    return (
+      nextProps.value !== this.props.value ||
+      nextState.showModal !== this.state.showModal
+    )
+  }
+  componentWillUnmount () {
+    this.mounted = false
   }
   handleDelete = event => {
     event.preventDefault()
-    const { value: { key }, onDelete } = this.props
-    onDelete(key)
-  }
-  handleUpdateCopyright = event => {
-    event.preventDefault()
-    const { value: { key, copyright }, onUpdateCopyright } = this.props
-    onUpdateCopyright({ key, copyright })
+    this.props.onDelete(this.props.value.key)
   }
   handleSetMain = event => {
     event.preventDefault()
-    const { value: { key }, onSetMain } = this.props
-    onSetMain(key)
+    this.props.onSetMain(this.props.value.key)
+  }
+  handleEditImage = event => {
+    this.setState({ showModal: true })
+  }
+  handleSubmitModal = values => {
+    this.props
+      .onUpdate({
+        values: { copyright: values.copyright },
+        id: this.props.value.id
+      })
+      .then(() => {
+        this.mounted && this.handleHideModal()
+      })
+  }
+  handleHideModal = () => {
+    this.setState({ showModal: false })
   }
   render () {
-    const { value: { id, copyright, ratio, isMain }, entityType } = this.props
+    const {
+      value,
+      value: { id, copyright, ratio, isMain },
+      entityType
+    } = this.props
+
+    const { showModal } = this.state
 
     return (
       <div styleName='card'>
@@ -50,11 +73,17 @@ class ImageGridCard extends React.Component {
             <a styleName='link' onClick={this.handleDelete}>
               <Trash styleName='icon' />
             </a>
-            <a styleName='link' onClick={this.handleUpdateCopyright}>
+            <a styleName='link' onClick={this.handleEditImage}>
               <Pencil styleName='icon' />
             </a>
           </div>
         </div>
+        <UpdateImageModal
+          show={showModal}
+          initialValues={value}
+          onSubmit={this.handleSubmitModal}
+          onHide={this.handleHideModal}
+        />
       </div>
     )
   }
@@ -68,14 +97,9 @@ ImageGridCard.propTypes = {
     copyright: PropTypes.string,
     ratio: PropTypes.number
   }).isRequired,
-  entityType: PropTypes.oneOf([
-    ENTITY_TYPE_EVENT,
-    ENTITY_TYPE_EVENT_SERIES,
-    ENTITY_TYPE_TALENT,
-    ENTITY_TYPE_VENUE
-  ]).isRequired,
+  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   onDelete: PropTypes.func.isRequired,
-  onUpdateCopyright: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   onSetMain: PropTypes.func.isRequired
 }
 

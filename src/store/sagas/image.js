@@ -27,14 +27,14 @@ function * getImages (parentFormName) {
   return formValues.images
 }
 
-function * updateImage (action) {
+function * updateImage ({ payload, meta }) {
   try {
-    const { id, parentFormName } = action.payload
+    const { id, parentFormName } = payload
     yield put(startSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
 
     const values = yield call(
       normalise,
-      action.payload.values,
+      payload.values,
       imageNormalisers.updateImageNormaliser
     )
 
@@ -57,6 +57,11 @@ function * updateImage (action) {
 
     yield put(change(parentFormName, 'images', newImages))
     yield put(stopSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
+
+    yield put({
+      type: 'CLOSE_MODAL',
+      meta
+    })
   } catch (err) {
     yield call(log.error, err)
 

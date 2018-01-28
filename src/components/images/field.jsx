@@ -8,25 +8,9 @@ import FieldDivider from '_src/components/field/divider'
 import ImageGrid from '_src/components/image-grid'
 import ImageGridCard from '_src/components/image-grid/card'
 import ImagesEditorForm from '_src/components/images/editor-form'
-// import UpdateImageModal from '_src/containers/modals/update-image'
 import * as entityConstants from '_src/constants/entity'
 
 class ImagesField extends React.Component {
-  handleUpdateImage = ({ key, copyright }) => {
-    // const { showModal, imageActions, parentFormName } = this.props
-    // showModal({
-    //   component: UpdateImageModal,
-    //   componentProps: {
-    //     formData: { copyright },
-    //     onSubmit: values =>
-    //       imageActions.updateImage({
-    //         id: key,
-    //         values,
-    //         parentFormName
-    //       })
-    //   }
-    // })
-  }
   handleAddImage = values => {
     this.props.onAddImage({
       values,
@@ -40,10 +24,9 @@ class ImagesField extends React.Component {
       input: { value },
       meta: { touched, error },
       onSetMainImage,
+      onUpdateImage,
       onDeleteImage
     } = this.props
-
-    // TODO add modal back in
 
     return (
       <FieldContainer
@@ -62,7 +45,7 @@ class ImagesField extends React.Component {
                 value={element}
                 entityType={entityType}
                 onDelete={onDeleteImage}
-                onUpdateCopyright={this.handleUpdateImage}
+                onUpdate={onUpdateImage}
                 onSetMain={onSetMainImage}
               />
             ))}
@@ -90,8 +73,8 @@ ImagesField.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.any
   }),
-  showModal: PropTypes.func.isRequired,
   onAddImage: PropTypes.func.isRequired,
+  onUpdateImage: PropTypes.func.isRequired,
   onSetMainImage: PropTypes.func.isRequired,
   onDeleteImage: PropTypes.func.isRequired
 }

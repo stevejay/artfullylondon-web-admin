@@ -57,6 +57,7 @@ ImagesEditorForm.propTypes = {
   error: PropTypes.any
 }
 
-export default reduxForm({ form: formConstants.IMAGE_EDITOR_FORM_NAME })(
-  ImagesEditorForm
-)
+export default reduxForm({
+  form: formConstants.IMAGE_EDITOR_FORM_NAME,
+  enableReinitialize: true
+})(ImagesEditorForm)

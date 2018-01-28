@@ -49,6 +49,17 @@ export class EditTalentForm extends React.Component {
       }
     })
   }
+  handleUpdateImage = ({ values, id }) => {
+    return this.props.dispatch({
+      type: imageActionTypes.UPDATE_IMAGE,
+      meta: { thunk: true },
+      payload: {
+        values,
+        id,
+        parentFormName: formConstants.EDIT_TALENT_FORM_NAME
+      }
+    })
+  }
   handleSetMainImage = key => {
     this.props.dispatch({
       type: imageActionTypes.SET_MAIN_IMAGE,
@@ -156,6 +167,7 @@ export class EditTalentForm extends React.Component {
             component={ImagesField}
             showModal={_.noop}
             onAddImage={this.handleAddImage}
+            onUpdateImage={this.handleUpdateImage}
             onSetMainImage={this.handleSetMainImage}
             onDeleteImage={this.handleDeleteImage}
           />
