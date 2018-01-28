@@ -32,7 +32,7 @@ class ImageGridCard extends React.Component {
     event.preventDefault()
     this.props.onSetMain(this.props.value.key)
   }
-  handleEditImage = event => {
+  handleEditImage = () => {
     this.setState({ showModal: true })
   }
   handleSubmitModal = values => {

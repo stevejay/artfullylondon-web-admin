@@ -2,26 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
+import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import TextField from '_src/components/text/field'
 import FormButtons from '_src/components/form/buttons'
-import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import * as formConstants from '_src/constants/form'
 import { updateImageConstraint } from '_src/constants/image-constraints'
 import './update-image-form.scss'
 
-// TODO fix this form submit issue
+const FIELD_CONTAINER_STYLE = { flexBasis: 'auto' }
 
-export const UpdateImageForm = ({ submitting, handleSubmit }) => (
-  <Form
-    styleName='container'
-    onSubmit={event => {
-      // event.preventDefault()
-      event.stopPropagation()
-      handleSubmit(event)
-    }}
-  >
+const UpdateImageForm = ({ submitting, handleSubmit }) => (
+  <Form styleName='container' onSubmit={handleSubmit}>
     <FormRow>
       <Field
         label='Copyright'
@@ -30,7 +23,7 @@ export const UpdateImageForm = ({ submitting, handleSubmit }) => (
         required
         maxLength={updateImageConstraint.copyright.length.maximum}
         autos={false}
-        containerStyle={{ flexBasis: 'auto' }}
+        containerStyle={FIELD_CONTAINER_STYLE}
       />
     </FormRow>
     <Divider />
