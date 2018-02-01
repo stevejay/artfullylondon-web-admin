@@ -17,7 +17,7 @@ import * as sagaLib from '_src/lib/saga'
 import * as authLib from '_src/lib/auth'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '_src/store/actions/image'
-import * as appActions from '_src/store/actions/app'
+import * as sagaActions from '_src/store/actions/saga'
 import * as notificationsConstants from '_src/constants/notifications'
 import * as notificationActions from '_src/store/actions/notification'
 import * as imageConstraints from '_src/constants/image-constraints'
@@ -59,7 +59,7 @@ function * updateImage ({ payload, meta }) {
 
     yield put(change(parentFormName, 'images', newImages))
     yield put(stopSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
-    yield put(appActions.returnPromise(meta))
+    yield put(sagaActions.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
 

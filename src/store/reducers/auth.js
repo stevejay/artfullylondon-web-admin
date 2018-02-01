@@ -40,3 +40,8 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {
+  // parameters: (state)
+  isLoggedIn: state => state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
+}

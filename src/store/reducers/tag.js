@@ -85,3 +85,8 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {
+  getTagsForType: (state, tagType) =>
+    (tagType === state.tag.tagType ? state.tag.tags : null)
+}

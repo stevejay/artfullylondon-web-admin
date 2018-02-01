@@ -2,7 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import * as authConstants from '_src/constants/auth'
 import * as authActions from '_src/store/actions/auth'
-import authReducer from '_src/store/reducers/auth'
+import authReducer, { selectors } from '_src/store/reducers/auth'
 
 it('should have the correct initial state', () => {
   const actual = authReducer(undefined, {})
@@ -112,5 +112,27 @@ it('should handle a logged out message that does not reset the username', () => 
     state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
     cognitoUser: null,
     username: 'steve'
+  })
+})
+
+describe('selectors', () => {
+  describe('isLoggedIn', () => {
+    it('should return false when null', () => {
+      const state = { auth: { state: null } }
+      const result = selectors.isLoggedIn(state)
+      expect(result).toEqual(false)
+    })
+
+    it('should return false when not logged in', () => {
+      const state = { auth: { state: authConstants.AUTH_STATE_NOT_LOGGED_IN } }
+      const result = selectors.isLoggedIn(state)
+      expect(result).toEqual(false)
+    })
+
+    it('should return true when logged in', () => {
+      const state = { auth: { state: authConstants.AUTH_STATE_LOGGED_IN } }
+      const result = selectors.isLoggedIn(state)
+      expect(result).toEqual(true)
+    })
   })
 })

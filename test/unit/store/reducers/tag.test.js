@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze'
 
-import tagReducer from '_src/store/reducers/tag'
+import tagReducer, { selectors } from '_src/store/reducers/tag'
 import * as tagActions from '_src/store/actions/tag'
 
 it('should have the correct initial state', () => {
@@ -211,5 +211,33 @@ it('should handle a delete tag failed message', () => {
     deleteInProgress: false,
     tagType: 'medium',
     tags: [{ id: 1 }]
+  })
+})
+
+describe('selectors', () => {
+  describe('getTagsForType', () => {
+    it('should return null when the reducer is not for the requested tag type', () => {
+      const state = { tag: { tagType: 'medium', tags: [{ id: 1 }] } }
+      const result = selectors.getTagsForType(state, 'audience')
+      expect(result).toEqual(null)
+    })
+
+    it('should return null when the reducer tags are for the requested tag type but are null', () => {
+      const state = { tag: { tagType: 'medium', tags: null } }
+      const result = selectors.getTagsForType(state, 'medium')
+      expect(result).toEqual(null)
+    })
+
+    it('should return empty tags when the reducer tags are for the requested tag type but are empty', () => {
+      const state = { tag: { tagType: 'medium', tags: [] } }
+      const result = selectors.getTagsForType(state, 'medium')
+      expect(result).toEqual([])
+    })
+
+    it('should return populated tags when the reducer tags are for the requested tag type and are not empty', () => {
+      const state = { tag: { tagType: 'medium', tags: [{ id: 1 }] } }
+      const result = selectors.getTagsForType(state, 'medium')
+      expect(result).toEqual([{ id: 1 }])
+    })
   })
 })

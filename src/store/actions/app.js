@@ -15,8 +15,3 @@ export const updateApp = () => ({
 export const checkIfAppWasUpdated = () => ({
   type: types.CHECK_IF_APP_WAS_UPDATED
 })
-
-export const returnPromise = meta => ({
-  type: 'app/RETURN_THUNK',
-  meta
-})

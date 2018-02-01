@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions'
 
+import * as browserConstants from '_src/constants/browser'
 import * as browserLib from '_src/lib/browser'
 import { types } from '_src/store/actions/browser'
 
@@ -18,3 +19,9 @@ export default handleActions(
   },
   initialState
 )
+
+// parameters: (state)
+export const selectors = {
+  isWideBrowser: state =>
+    state.browser.widthType === browserConstants.BROWSER_WIDTH_TYPE_WIDE
+}
