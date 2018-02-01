@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects'
 import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
-import * as statusActionTypes from '_src/constants/action/status'
+import * as statusActions from '_src/store/actions/status'
 import * as statusSagas from '_src/store/sagas/status'
 
 describe('getEntityCounts', () => {
@@ -11,9 +11,7 @@ describe('getEntityCounts', () => {
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
-    )
+    expect(result.value).toEqual(put(statusActions.getEntityCountsStarted()))
 
     result = generator.next()
 
@@ -28,10 +26,7 @@ describe('getEntityCounts', () => {
     result = generator.next('some json')
 
     expect(result.value).toEqual(
-      put({
-        type: statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED,
-        payload: 'some json'
-      })
+      put(statusActions.getEntityCountsSucceeded('some json'))
     )
 
     result = generator.next()
@@ -45,9 +40,7 @@ describe('getEntityCounts', () => {
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put({ type: statusActionTypes.GET_ENTITY_COUNTS_STARTED })
-    )
+    expect(result.value).toEqual(put(statusActions.getEntityCountsStarted()))
 
     result = generator.next()
 
@@ -65,9 +58,7 @@ describe('getEntityCounts', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(
-      put({ type: statusActionTypes.GET_ENTITY_COUNTS_FAILED })
-    )
+    expect(result.value).toEqual(put(statusActions.getEntityCountsFailed()))
 
     result = generator.next()
 

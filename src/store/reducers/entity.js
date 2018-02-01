@@ -5,7 +5,7 @@ import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActionTypes from '_src/constants/action/entity'
+import { types } from '_src/store/actions/entity'
 
 const initialState = {
   entityId: null,
@@ -23,7 +23,7 @@ const initialState = {
 export default function (entityType) {
   return handleActions(
     {
-      [entityActionTypes.GET_ENTITY_STARTED]: (state, action) => {
+      [types.GET_ENTITY_STARTED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -38,7 +38,7 @@ export default function (entityType) {
           // getEventMonitorsInProgress: false
         }
       },
-      [entityActionTypes.GET_ENTITY_SUCCEEDED]: (state, action) => {
+      [types.GET_ENTITY_SUCCEEDED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -55,7 +55,7 @@ export default function (entityType) {
           entity: createEntity(entityType, action.payload.entity)
         }
       },
-      [entityActionTypes.GET_ENTITY_FAILED]: (state, action) => {
+      [types.GET_ENTITY_FAILED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -66,7 +66,7 @@ export default function (entityType) {
           // getFailedStatusCode: action.payload.statusCode
         }
       }
-      // [entityActionTypes.TALENT_SELECTED]: (state, action) => {
+      // [types.TALENT_SELECTED]: (state, action) => {
       //   if (entityType !== entityConstants.ENTITY_TYPE_EVENT) {
       //     return state
       //   }

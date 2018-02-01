@@ -11,7 +11,7 @@ import log from 'loglevel'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
-import * as tagActionTypes from '_src/constants/action/tag'
+import * as tagActions from '_src/store/actions/tag'
 import * as formConstants from '_src/constants/form'
 import * as authLib from '_src/lib/auth'
 import normalise from '_src/lib/normalise'
@@ -39,31 +39,24 @@ import tagNormaliser from '_src/constants/tag-normaliser'
 export function * getTags (action) {
   try {
     const tagType = action.payload.tagType
-
-    yield put({
-      type: tagActionTypes.GET_TAGS_STARTED,
-      payload: { tagType }
-    })
+    yield put(tagActions.getTagsStarted(tagType))
 
     const url =
       process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
     const token = yield call(authLib.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.get, url, token)
 
-    yield put({
-      type: tagActionTypes.GET_TAGS_SUCCEEDED,
-      payload: { tags: json.tags[tagType] || [] }
-    })
+    yield put(tagActions.getTagsSucceeded(json.tags[tagType] || []))
   } catch (err) {
     yield call(log.error, err)
-    yield put({ type: tagActionTypes.GET_TAGS_FAILED })
+    yield put(tagActions.getTagsFailed())
   }
 }
 
 export function * addTag (action) {
   try {
     yield put(startSubmit(formConstants.TAG_EDITOR_FORM_NAME))
-    yield put({ type: tagActionTypes.ADD_TAG_STARTED })
+    yield put(tagActions.addTagStarted())
 
     const values = yield call(normalise, action.payload, tagNormaliser)
     yield call(validationLib.validate, values, tagConstraint)
@@ -73,10 +66,7 @@ export function * addTag (action) {
     const token = yield call(authLib.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.post, url, { label }, token)
 
-    yield put({
-      type: tagActionTypes.ADD_TAG_SUCCEEDED,
-      payload: { tag: json.tag }
-    })
+    yield put(tagActions.addTagSucceeded(json.tag))
 
     // if (action.payload.addTagForEvent) {
     //   const propertyName = getEventTagsPropertyName(tagType)
@@ -101,7 +91,7 @@ export function * addTag (action) {
     yield put(reset(formConstants.TAG_EDITOR_FORM_NAME))
   } catch (err) {
     yield call(log.error, err)
-    yield put({ type: tagActionTypes.ADD_TAG_FAILED })
+    yield put(tagActions.addTagFailed())
 
     const payload = err.message === '[400] Stale Data'
       ? { label: 'A tag with this label already exists' }
@@ -119,21 +109,18 @@ export function * deleteTag (action) {
   try {
     const { id } = action.payload
 
-    yield put({ type: tagActionTypes.DELETE_TAG_STARTED })
+    yield put(tagActions.deleteTagStarted())
 
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
     const token = yield call(authLib.getAuthTokenForCurrentUser)
     yield call(fetchLib.httpDelete, url, token)
 
-    yield put({
-      type: tagActionTypes.DELETE_TAG_SUCCEEDED,
-      payload: { id }
-    })
+    yield put(tagActions.deleteTagSucceeded(id))
 
     // yield put({ type: tagActionTypes.TAG_DELETED })
   } catch (err) {
     yield call(log.error, err)
-    yield put({ type: tagActionTypes.DELETE_TAG_FAILED })
+    yield put(tagActions.deleteTagFailed())
   }
 }
 
@@ -154,7 +141,7 @@ export function * deleteTag (action) {
 
 export default [
   // takeLatest(tagActionTypes.GET_ALL_TAGS, getAllTags),
-  takeLatest(tagActionTypes.GET_TAGS, getTags),
-  takeLatest(tagActionTypes.ADD_TAG, addTag),
-  takeLatest(tagActionTypes.DELETE_TAG, deleteTag)
+  takeLatest(tagActions.types.GET_TAGS, getTags),
+  takeLatest(tagActions.types.ADD_TAG, addTag),
+  takeLatest(tagActions.types.DELETE_TAG, deleteTag)
 ]

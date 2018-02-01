@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { AppUpdater } from '_src/modules/app-updater'
-import * as appActionTypes from '_src/constants/action/app'
+import * as appActions from '_src/store/actions/app'
 import Button from '_src/components/button'
 
 it('should render correctly when should not update', () => {
@@ -22,5 +22,5 @@ it('should invoke the update action when the update button is clicked', () => {
   const wrapper = shallow(<AppUpdater shouldUpdate dispatch={dispatch} />)
   wrapper.find(Button).simulate('click')
 
-  expect(dispatch).toHaveBeenCalledWith({ type: appActionTypes.UPDATE_APP })
+  expect(dispatch).toHaveBeenCalledWith(appActions.updateApp())
 })

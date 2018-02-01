@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 import * as entityLib from '_src/lib/entity'
-import * as statusActionTypes from '_src/constants/action/status'
+import { types } from '_src/store/actions/status'
 
 const initialState = {
   entityCounts: [],
@@ -11,12 +11,12 @@ const initialState = {
 
 export default handleActions(
   {
-    [statusActionTypes.GET_ENTITY_COUNTS_STARTED]: state => ({
+    [types.GET_ENTITY_COUNTS_STARTED]: state => ({
       ...state,
       getEntityCountsInProgress: true,
       getEntityCountsFailed: false
     }),
-    [statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED]: (state, action) => {
+    [types.GET_ENTITY_COUNTS_SUCCEEDED]: (state, action) => {
       const entityCounts = action.payload.items.map(item => {
         item.label = entityLib.getLabelForEntityType(item.entityType)
         item.value = item.count
@@ -30,7 +30,7 @@ export default handleActions(
         entityCounts
       }
     },
-    [statusActionTypes.GET_ENTITY_COUNTS_FAILED]: state => ({
+    [types.GET_ENTITY_COUNTS_FAILED]: state => ({
       ...state,
       getEntityCountsInProgress: false,
       getEntityCountsFailed: true

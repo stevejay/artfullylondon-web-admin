@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import * as searchActionTypes from '_src/constants/action/search'
+import * as searchActions from '_src/store/actions/search'
 import * as searchConstants from '_src/constants/search'
 import { Quicksearch } from '_src/modules/quicksearch'
 
@@ -42,13 +42,12 @@ it('should handle submitting the quicksearch form', () => {
 
   expect(handleHide).toHaveBeenCalled()
 
-  expect(dispatch).toHaveBeenCalledWith({
-    type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
-    payload: {
+  expect(dispatch).toHaveBeenCalledWith(
+    searchActions.pushBasicSearchToUrl({
       searchType: searchConstants.SEARCH_TYPE_BASIC,
       query: { term: 'foo', entityType: 'venue' }
-    }
-  })
+    })
+  )
 })
 
 it('should update the component when props change', () => {

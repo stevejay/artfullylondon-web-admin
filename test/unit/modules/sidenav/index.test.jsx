@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 import * as menuConstants from '_src/constants/menu'
 import { Sidenav } from '_src/modules/sidenav'
 
@@ -147,7 +147,7 @@ it('should handle logging the user out', () => {
   wrapper.find('SidenavButton').prop('onClick')()
 
   expect(onHide).toHaveBeenCalled()
-  expect(dispatch).toHaveBeenCalledWith({ type: authActionTypes.LOG_OUT })
+  expect(dispatch).toHaveBeenCalledWith(authActions.logOut())
 })
 
 it('should handle a menu link click', () => {

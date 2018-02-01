@@ -19,7 +19,7 @@ import { SummaryVenue } from '_src/entities/venue'
 import * as timeLib from '_src/lib/time'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
-import * as searchActionTypes from '_src/constants/action/search'
+import * as searchActions from '_src/store/actions/search'
 import './results.scss'
 
 class SearchResultsPage extends React.Component {
@@ -64,21 +64,19 @@ class SearchResultsPage extends React.Component {
     })
   }
   _pushBasicSearchToUrl (payload) {
-    this.props.dispatch({
-      type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
-      payload
-    })
+    this.props.dispatch(searchActions.pushBasicSearchToUrl(payload))
   }
   _search (location) {
-    if (!_.isEmpty(location.search)) {
-      this.props.dispatch({
-        type: searchActionTypes.SEARCH,
-        payload: {
-          searchType: searchConstants.SEARCH_TYPE_BASIC,
-          query: queryString.parse(location.search)
-        }
-      })
+    if (_.isEmpty(location.search)) {
+      return
     }
+
+    this.props.dispatch(
+      searchActions.search({
+        searchType: searchConstants.SEARCH_TYPE_BASIC,
+        query: queryString.parse(location.search)
+      })
+    )
   }
   render () {
     const { searchInProgress, resultParams, items, total } = this.props

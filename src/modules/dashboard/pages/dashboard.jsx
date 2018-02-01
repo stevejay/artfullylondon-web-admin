@@ -8,11 +8,11 @@ import SectionHeading from '_src/components/section/heading'
 import BasicSection from '_src/components/section/basic'
 import StatisticCollection
   from '_src/modules/dashboard/components/statistic/collection'
-import * as statusActionTypes from '_src/constants/action/status'
+import * as statusActions from '_src/store/actions/status'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {
-    this.props.dispatch({ type: statusActionTypes.GET_ENTITY_COUNTS })
+    this.props.dispatch(statusActions.getEntityCounts())
   }
   render () {
     const { entityCounts, getInProgress, getFailed } = this.props

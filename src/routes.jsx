@@ -23,24 +23,21 @@ import SearchResultsPage from '_src/modules/search/pages/results'
 import EntityDetailPage from '_src/modules/entity/pages/detail'
 import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
 import * as authSelectors from '_src/store/selectors/auth'
-import * as appActionTypes from '_src/constants/action/app'
-import * as authActionTypes from '_src/constants/action/auth'
-import * as browserActionTypes from '_src/constants/action/browser'
-import * as serverConstantsTypes from '_src/constants/action/server-constants'
+import * as appActions from '_src/store/actions/app'
+import * as authActions from '_src/store/actions/auth'
+import * as browserActions from '_src/store/actions/browser'
+import * as serverConstantsActions from '_src/store/actions/server-constants'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { showQuicksearch: false, showSidenav: false }
-    props.dispatch({ type: authActionTypes.ATTEMPT_AUTO_LOG_IN })
-    props.dispatch({ type: serverConstantsTypes.FETCH_SERVER_CONSTANTS })
-    props.dispatch({ type: appActionTypes.CHECK_IF_APP_WAS_UPDATED })
+    props.dispatch(authActions.attemptAutoLogIn())
+    props.dispatch(serverConstantsActions.fetchServerConstants())
+    props.dispatch(appActions.checkIfAppWasUpdated())
   }
   handleWindowResize = width => {
-    this.props.dispatch({
-      type: browserActionTypes.BROWSER_WIDTH_CHANGED,
-      payload: { width }
-    })
+    this.props.dispatch(browserActions.browserWidthChanged(width))
   }
   handleHideQuicksearch = () => {
     this.setState({ showQuicksearch: false })

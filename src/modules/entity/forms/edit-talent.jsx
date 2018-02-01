@@ -17,8 +17,8 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as formConstants from '_src/constants/form'
-import * as linkActionTypes from '_src/constants/action/link'
-import * as imageActionTypes from '_src/constants/action/image'
+import * as imageActions from '_src/store/actions/image'
+import * as linkActions from '_src/store/actions/link'
 import constraint from '_src/constants/talent-constraint'
 
 export class EditTalentForm extends React.Component {
@@ -28,49 +28,38 @@ export class EditTalentForm extends React.Component {
     }
   }
   handleAddLink = values => {
-    this.props.dispatch({
-      type: linkActionTypes.ADD_LINK,
-      payload: { values, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
-    })
+    this.props.dispatch(
+      linkActions.addLink(values, formConstants.EDIT_TALENT_FORM_NAME)
+    )
   }
-  handleDeleteLink = key => {
-    this.props.dispatch({
-      type: linkActionTypes.DELETE_LINK,
-      payload: { key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
-    })
+  handleDeleteLink = id => {
+    this.props.dispatch(
+      linkActions.deleteLink(id, formConstants.EDIT_TALENT_FORM_NAME)
+    )
   }
-  handleAddImage = payload => {
-    this.props.dispatch({
-      type: imageActionTypes.ADD_IMAGE,
-      payload: {
-        ...payload,
-        entityType: entityConstants.ENTITY_TYPE_TALENT,
-        parentFormName: formConstants.EDIT_TALENT_FORM_NAME
-      }
-    })
+  handleAddImage = values => {
+    this.props.dispatch(
+      imageActions.addImage(
+        values,
+        entityConstants.ENTITY_TYPE_TALENT,
+        formConstants.EDIT_TALENT_FORM_NAME
+      )
+    )
   }
   handleUpdateImage = ({ values, id }) => {
-    return this.props.dispatch({
-      type: imageActionTypes.UPDATE_IMAGE,
-      meta: { thunk: true },
-      payload: {
-        values,
-        id,
-        parentFormName: formConstants.EDIT_TALENT_FORM_NAME
-      }
-    })
+    return this.props.dispatch(
+      imageActions.updateImage(values, id, formConstants.EDIT_TALENT_FORM_NAME)
+    )
   }
-  handleSetMainImage = key => {
-    this.props.dispatch({
-      type: imageActionTypes.SET_MAIN_IMAGE,
-      payload: { id: key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
-    })
+  handleSetMainImage = id => {
+    this.props.dispatch(
+      imageActions.setMainImage(id, formConstants.EDIT_TALENT_FORM_NAME)
+    )
   }
-  handleDeleteImage = key => {
-    this.props.dispatch({
-      type: imageActionTypes.DELETE_IMAGE,
-      payload: { id: key, parentFormName: formConstants.EDIT_TALENT_FORM_NAME }
-    })
+  handleDeleteImage = id => {
+    this.props.dispatch(
+      imageActions.deleteImage(id, formConstants.EDIT_TALENT_FORM_NAME)
+    )
   }
   render () {
     const {

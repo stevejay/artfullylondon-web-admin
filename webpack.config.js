@@ -9,6 +9,8 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const WebpackVersionFilePlugin = require('webpack-version-file')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const buildConstants = require('./build-constants')
 const packageJson = require('./package.json')
 
@@ -160,7 +162,11 @@ if (PRODUCTION) {
     new CopyWebpackPlugin([
       { from: '../static/robots.txt' },
       { from: '../static/favicon', to: 'favicon' }
-    ])
+    ]),
+    new BundleAnalyzerPlugin({
+      generateStatsFile: true,
+      analyzerMode: 'disabled'
+    })
     // new SWPrecacheWebpackPlugin({
     //   importScripts: [{ chunkName: 'vendor' }, { chunkName: 'app' }]
     // })

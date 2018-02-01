@@ -3,7 +3,7 @@ import RichTextEditor from 'react-rte'
 
 import * as mappingsLib from '_src/lib/mappings'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActionTypes from '_src/constants/action/entity'
+import { types } from '_src/store/actions/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as locationConstants from '_src/constants/location'
 
@@ -17,7 +17,7 @@ const initialState = {
 export default function (entityType) {
   return handleActions(
     {
-      [entityActionTypes.RESET_ENTITY_FOR_EDIT]: (state, action) => {
+      [types.RESET_ENTITY_FOR_EDIT]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -27,7 +27,7 @@ export default function (entityType) {
           entity: getEntityDefaultValues(entityType)
         }
       },
-      [entityActionTypes.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => {
+      [types.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -40,7 +40,7 @@ export default function (entityType) {
           getFailed: false
         }
       },
-      [entityActionTypes.GET_ENTITY_FOR_EDIT_SUCCEEDED]: (state, action) => {
+      [types.GET_ENTITY_FOR_EDIT_SUCCEEDED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }
@@ -56,7 +56,7 @@ export default function (entityType) {
           entity: getMappingFunc(entityType)(action.payload.entity)
         }
       },
-      [entityActionTypes.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => {
+      [types.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => {
         if (action.payload.entityType !== entityType) {
           return state
         }

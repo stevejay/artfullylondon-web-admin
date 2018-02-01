@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import _ from 'lodash'
 
-import * as tagActionTypes from '_src/constants/action/tag'
+import { types } from '_src/store/actions/tag'
 import * as tagLib from '_src/lib/tag'
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 
 export default handleActions(
   {
-    [tagActionTypes.GET_TAGS_STARTED]: (state, action) => ({
+    [types.GET_TAGS_STARTED]: (state, action) => ({
       ...state,
       getInProgress: true,
       getFailed: false,
@@ -24,22 +24,22 @@ export default handleActions(
       tagType: action.payload.tagType,
       tags: null
     }),
-    [tagActionTypes.GET_TAGS_SUCCEEDED]: (state, action) => ({
+    [types.GET_TAGS_SUCCEEDED]: (state, action) => ({
       ...state,
       getInProgress: false,
       deleteInProgress: false,
       tags: tagLib.processReceivedTags(action.payload.tags)
     }),
-    [tagActionTypes.GET_TAGS_FAILED]: state => ({
+    [types.GET_TAGS_FAILED]: state => ({
       ...state,
       getInProgress: false,
       getFailed: true
     }),
-    [tagActionTypes.ADD_TAG_STARTED]: state => ({
+    [types.ADD_TAG_STARTED]: state => ({
       ...state,
       addInProgress: true
     }),
-    [tagActionTypes.ADD_TAG_SUCCEEDED]: (state, action) => {
+    [types.ADD_TAG_SUCCEEDED]: (state, action) => {
       const { payload: { tag } } = action
 
       let spliceIndex = _.findIndex(state.tags, value => value.id > tag.id)
@@ -57,15 +57,15 @@ export default handleActions(
         tags: newTags
       }
     },
-    [tagActionTypes.ADD_TAG_FAILED]: state => ({
+    [types.ADD_TAG_FAILED]: state => ({
       ...state,
       addInProgress: false
     }),
-    [tagActionTypes.DELETE_TAG_STARTED]: state => ({
+    [types.DELETE_TAG_STARTED]: state => ({
       ...state,
       deleteInProgress: true
     }),
-    [tagActionTypes.DELETE_TAG_SUCCEEDED]: (state, action) => {
+    [types.DELETE_TAG_SUCCEEDED]: (state, action) => {
       const id = action.payload.id
       const deleteIndex = _.findIndex(state.tags, value => value.id === id)
 
@@ -78,7 +78,7 @@ export default handleActions(
         tags: newTags
       }
     },
-    [tagActionTypes.DELETE_TAG_FAILED]: state => ({
+    [types.DELETE_TAG_FAILED]: state => ({
       ...state,
       deleteInProgress: false
     })

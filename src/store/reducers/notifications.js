@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import * as notificationActionTypes from '_src/constants/action/notification'
+import { types } from '_src/store/actions/notification'
 
 const initialState = {
   items: []
@@ -8,11 +8,11 @@ const initialState = {
 
 export default handleActions(
   {
-    [notificationActionTypes.NOTIFICATION_ADDED]: (state, action) => ({
+    [types.NOTIFICATION_ADDED]: (state, action) => ({
       ...state,
       items: [action.payload, ...state.items]
     }),
-    [notificationActionTypes.REMOVE_NOTIFICATION]: (state, action) => {
+    [types.REMOVE_NOTIFICATION]: (state, action) => {
       return {
         ...state,
         items: state.items.filter(item => item.id !== action.payload.id)

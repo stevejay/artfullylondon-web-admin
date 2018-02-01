@@ -6,9 +6,9 @@ import store from 'store2'
 import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
-import * as appActionTypes from '_src/constants/action/app'
+import * as appActions from '_src/store/actions/app'
 import * as appConstants from '_src/constants/app'
-import * as notificationActionTypes from '_src/constants/action/notification'
+import * as notificationActions from '_src/store/actions/notification'
 import * as notificationsConstants from '_src/constants/notifications'
 import * as appSagas from '_src/store/sagas/app'
 
@@ -67,14 +67,13 @@ describe('checkIfAppWasUpdated', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put({
-        type: notificationActionTypes.ADD_NOTIFICATION,
-        payload: {
-          title: 'App Successfully Updated',
-          message: `This app was updated to version ${process.env.WEBSITE_VERSION}.`,
-          type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
-        }
-      })
+      put(
+        notificationActions.addNotification(
+          notificationsConstants.NOTIFICATION_TYPE_SUCCESS,
+          'App Successfully Updated',
+          `This app was updated to version ${process.env.WEBSITE_VERSION}.`
+        )
+      )
     )
 
     result = generatorClone.next()
@@ -103,12 +102,7 @@ describe('checkForUpdate', () => {
 
     result = generator.next({ version: '0.0.2' })
 
-    expect(result.value).toEqual(
-      put({
-        type: appActionTypes.APP_SHOULD_UPDATE,
-        payload: { version: '0.0.2' }
-      })
-    )
+    expect(result.value).toEqual(put(appActions.appShouldUpdate()))
 
     result = generator.next()
 

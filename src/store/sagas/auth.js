@@ -2,7 +2,7 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 import * as authLib from '_src/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
@@ -15,15 +15,12 @@ export function * attemptAutoLogIn () {
     const cognitoUser = yield call(authLib.attemptAutoLogIn)
 
     if (cognitoUser) {
-      yield put({
-        type: authActionTypes.LOG_IN_SUCCEEDED,
-        payload: { cognitoUser }
-      })
+      yield put(authActions.logInSucceeded(cognitoUser))
     }
   } catch (err) {
     yield call(log.error, err)
   } finally {
-    yield put({ type: authActionTypes.AUTO_LOG_IN_ATTEMPTED })
+    yield put(authActions.autoLogInAttempted())
   }
 }
 
@@ -44,16 +41,12 @@ export function * logIn ({ payload }) {
     )
 
     yield put(stopSubmit(formConstants.LOGIN_FORM_NAME))
-
-    yield put({
-      type: authActionTypes.LOG_IN_SUCCEEDED,
-      payload: { cognitoUser }
-    })
+    yield put(authActions.logInSucceeded(cognitoUser))
 
     // TODO could remember where the user was before logging in:
     yield call(history.push, '/')
   } catch (err) {
-    yield put({ type: authActionTypes.LOG_IN_FAILED })
+    yield put(authActions.logInFailed())
     yield call(sagaLib.submitErrorHandler, err, formConstants.LOGIN_FORM_NAME)
   }
 }
@@ -64,15 +57,12 @@ export function * logOut () {
   } catch (err) {
     yield call(log.error, err)
   } finally {
-    yield put({
-      type: authActionTypes.LOGGED_OUT,
-      payload: { resetUsername: true }
-    })
+    yield put(authActions.loggedOut({ resetUsername: true }))
   }
 }
 
 export default [
-  takeLatest(authActionTypes.LOG_IN, logIn),
-  takeLatest(authActionTypes.LOG_OUT, logOut),
-  takeLatest(authActionTypes.ATTEMPT_AUTO_LOG_IN, attemptAutoLogIn)
+  takeLatest(authActions.types.LOG_IN, logIn),
+  takeLatest(authActions.types.LOG_OUT, logOut),
+  takeLatest(authActions.types.ATTEMPT_AUTO_LOG_IN, attemptAutoLogIn)
 ]

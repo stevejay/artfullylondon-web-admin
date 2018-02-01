@@ -10,7 +10,7 @@ import SectionHeading from '_src/components/section/heading'
 import TagCollection from '_src/modules/tags/components/tag-collection'
 import AddTagForm from '_src/modules/tags/forms/add-tag'
 import * as tagSelectors from '_src/store/selectors/tag'
-import * as tagActionTypes from '_src/constants/action/tag'
+import * as tagActions from '_src/store/actions/tag'
 import * as tagLib from '_src/lib/tag'
 import './tags-type.scss'
 
@@ -25,22 +25,13 @@ class TagsType extends React.Component {
     }
   }
   handleDeleteTag = id => {
-    this.props.dispatch({
-      type: tagActionTypes.DELETE_TAG,
-      payload: { id }
-    })
+    this.props.dispatch(tagActions.deleteTag(id))
   }
   handleAddTag = values => {
-    this.props.dispatch({
-      type: tagActionTypes.ADD_TAG,
-      payload: values
-    })
+    this.props.dispatch(tagActions.addTag(values))
   }
   _getTags (tagType) {
-    this.props.dispatch({
-      type: tagActionTypes.GET_TAGS,
-      payload: { tagType }
-    })
+    this.props.dispatch(tagActions.getTags(tagType))
   }
   render () {
     const {

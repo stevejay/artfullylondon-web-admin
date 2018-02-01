@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
-import * as notificationActionTypes from '_src/constants/action/notification'
 import notificationsReducer from '_src/store/reducers/notifications'
+import * as notificationActions from '_src/store/actions/notification'
 
 it('should have the correct initial state', () => {
   const actual = notificationsReducer(undefined, {})
@@ -13,10 +13,10 @@ it('should handle adding a notification', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(state, {
-    type: notificationActionTypes.NOTIFICATION_ADDED,
-    payload: { id: 'b' }
-  })
+  const actual = notificationsReducer(
+    state,
+    notificationActions.notificationAdded({ id: 'b' })
+  )
 
   expect(actual).toEqual({ items: [{ id: 'b' }, { id: 'a' }] })
 })
@@ -26,10 +26,10 @@ it('should handle removing a notification that exists', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(state, {
-    type: notificationActionTypes.REMOVE_NOTIFICATION,
-    payload: { id: 'a' }
-  })
+  const actual = notificationsReducer(
+    state,
+    notificationActions.removeNotification('a')
+  )
 
   expect(actual).toEqual({ items: [] })
 })
@@ -39,10 +39,10 @@ it('should handle removing a notification that does not exist', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(state, {
-    type: notificationActionTypes.REMOVE_NOTIFICATION,
-    payload: { id: 'b' }
-  })
+  const actual = notificationsReducer(
+    state,
+    notificationActions.removeNotification('b')
+  )
 
   expect(actual).toEqual(state)
 })

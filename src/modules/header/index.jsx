@@ -13,7 +13,7 @@ import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 // import Dropdown from '_src/modules/header/components/dropdown'
 import Dropdown from '_src/components/dropdown'
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 import * as authSelectors from '_src/store/selectors/auth'
 import * as browserSelectors from '_src/store/selectors/browser'
 import * as menuConstants from '_src/constants/menu'
@@ -40,7 +40,7 @@ export class Header extends React.Component {
     this.props.history.push(value)
   }
   handleLogout = () => {
-    this.props.dispatch({ type: authActionTypes.LOG_OUT })
+    this.props.dispatch(authActions.logOut())
   }
   render () {
     const {

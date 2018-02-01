@@ -9,7 +9,7 @@ import HeaderLogo from '_src/components/logo/header'
 import SidenavButton from '_src/modules/sidenav/components/button'
 import ModalTransition from '_src/modules/sidenav/components/modal-transition'
 import Menu from '_src/modules/sidenav/components/menu'
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 import * as menuConstants from '_src/constants/menu'
 import * as authConstants from '_src/constants/auth'
 import './index.scss'
@@ -39,7 +39,7 @@ export class Sidenav extends React.Component {
   }
   handleLogOut = () => {
     this.props.onHide()
-    this.props.dispatch({ type: authActionTypes.LOG_OUT })
+    this.props.dispatch(authActions.logOut())
   }
   componentDidCatch (error, info) {
     this.setState({ hasError: true })

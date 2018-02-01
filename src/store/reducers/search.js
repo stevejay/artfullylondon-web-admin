@@ -4,10 +4,10 @@ import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
+import { types as searchActionTypes } from '_src/store/actions/search'
+import { types as authActionTypes } from '_src/store/actions/auth'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
-import * as searchActionTypes from '_src/constants/action/search'
-import * as authActionTypes from '_src/constants/action/auth'
 
 const initialState = {
   searchInProgress: false,

@@ -12,7 +12,7 @@ import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'
 import ModalTransition
   from '_src/modules/quicksearch/components/modal-transition'
 import * as searchConstants from '_src/constants/search'
-import * as searchActionTypes from '_src/constants/action/search'
+import * as searchActions from '_src/store/actions/search'
 import * as entityConstants from '_src/constants/entity'
 import './index.scss'
 
@@ -25,29 +25,19 @@ export class Quicksearch extends React.Component {
   }
   handleSubmit = query => {
     this.handleHideQuicksearch()
-
-    this.props.dispatch({
-      type: searchActionTypes.PUSH_BASIC_SEARCH_TO_URL,
-      payload: { query }
-    })
+    this.props.dispatch(searchActions.pushBasicSearchToUrl({ query }))
   }
   handleAutocompleteSearch = ({ term }) => {
-    return this.props.dispatch({
-      type: searchActionTypes.SEARCH,
-      payload: {
+    return this.props.dispatch(
+      searchActions.search({
         searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
         query: { term, entityType: entityConstants.ENTITY_TYPE_ALL }
-      },
-      meta: { thunk: true }
-    })
+      })
+    )
   }
   handleAutocompleteSelect = entity => {
     this.handleHideQuicksearch()
-
-    this.props.dispatch({
-      type: searchActionTypes.NAVIGATE_TO_ENTITY,
-      payload: entity
-    })
+    this.props.dispatch(searchActions.navigateToEntity(entity))
   }
   render () {
     const { show, onHide } = this.props

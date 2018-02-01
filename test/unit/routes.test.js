@@ -2,10 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import * as appActionTypes from '_src/constants/action/app'
-import * as authActionTypes from '_src/constants/action/auth'
-import * as browserActionTypes from '_src/constants/action/browser'
-import * as serverConstantsTypes from '_src/constants/action/server-constants'
+import * as appActions from '_src/store/actions/app'
+import * as authActions from '_src/store/actions/auth'
+import * as browserActions from '_src/store/actions/browser'
+import * as serverConstantsActions from '_src/store/actions/constants'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {
@@ -61,22 +61,14 @@ it('should trigger initial actions', () => {
 
   expect(mockDispatch.mock.calls.length).toEqual(3)
 
-  expect(mockDispatch.mock.calls[0]).toEqual([
-    {
-      type: authActionTypes.ATTEMPT_AUTO_LOG_IN
-    }
-  ])
+  expect(mockDispatch.mock.calls[0]).toEqual([authActions.attemptAutoLogIn()])
 
   expect(mockDispatch.mock.calls[1]).toEqual([
-    {
-      type: serverConstantsTypes.FETCH_SERVER_CONSTANTS
-    }
+    serverConstantsActions.fetchServerConstants()
   ])
 
   expect(mockDispatch.mock.calls[2]).toEqual([
-    {
-      type: appActionTypes.CHECK_IF_APP_WAS_UPDATED
-    }
+    appActions.checkIfAppWasUpdated()
   ])
 })
 
@@ -97,10 +89,7 @@ it('should handle a window resize event', () => {
   expect(mockDispatch.mock.calls.length).toEqual(4)
 
   expect(mockDispatch.mock.calls[3]).toEqual([
-    {
-      type: browserActionTypes.BROWSER_WIDTH_CHANGED,
-      payload: { width: 200 }
-    }
+    browserActions.browserWidthChanged(200)
   ])
 })
 

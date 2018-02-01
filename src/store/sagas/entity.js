@@ -1,7 +1,8 @@
-import { delay } from 'redux-saga'
-import _ from 'lodash'
+// import { delay } from 'redux-saga'
+// import _ from 'lodash'
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
+// import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
+import { startSubmit, stopSubmit } from 'redux-form'
 import { get, put as httpPut, post } from '_src/lib/fetch'
 import log from 'loglevel'
 
@@ -16,12 +17,12 @@ import eventSeriesNormaliser from '_src/constants/event-series-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActionTypes from '_src/constants/action/entity'
+import * as entityActions from '_src/store/actions/entity'
 import * as formConstants from '_src/constants/form'
-import * as searchConstants from '_src/constants/search'
+// import * as searchConstants from '_src/constants/search'
 import * as authLib from '_src/lib/auth'
-import * as searchLib from '_src/lib/search'
-import * as notificationActionTypes from '_src/constants/action/notification'
+// import * as searchLib from '_src/lib/search'
+import * as notificationActions from '_src/store/actions/notification'
 import * as notificationsConstants from '_src/constants/notifications'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
@@ -31,26 +32,16 @@ function * getEntity (action) {
   const { entityType, id } = action.payload
 
   try {
-    yield put({
-      type: entityActionTypes.GET_ENTITY_STARTED,
-      payload: { entityType, id }
-    })
+    yield put(entityActions.getEntityStarted(entityType, id))
 
     const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
     const json = yield call(get, url, token)
 
-    yield put({
-      type: entityActionTypes.GET_ENTITY_SUCCEEDED,
-      payload: { entityType, entity: json.entity }
-    })
+    yield put(entityActions.getEntitySucceeded(entityType, json.entity))
   } catch (err) {
     yield call(log.error, err)
-
-    yield put({
-      type: entityActionTypes.GET_ENTITY_FAILED,
-      payload: { entityType, statusCode: err.statusCode || 500 }
-    })
+    yield put(entityActions.getEntityFailed(entityType, err.statusCode))
   }
 }
 
@@ -89,15 +80,14 @@ function * saveEntity (action) {
   } catch (err) {
     yield call(log.error, err)
 
-    yield put({
-      type: notificationActionTypes.ADD_NOTIFICATION,
-      payload: {
-        title: 'Save Failed',
+    yield put(
+      notificationActions.addNotification(
+        notificationsConstants.NOTIFICATION_TYPE_ERROR,
+        'Save Failed',
         // message: 'This form has errors. Please correct them and try again.'
-        message: err.message,
-        type: notificationsConstants.NOTIFICATION_TYPE_ERROR
-      }
-    })
+        err.message
+      )
+    )
 
     yield call(sagaLib.submitErrorHandler, err, formName)
   }
@@ -167,195 +157,185 @@ function * getEntityForEdit (action) {
   const { entityType, id } = action.payload
 
   try {
-    yield put({
-      type: entityActionTypes.GET_ENTITY_FOR_EDIT_STARTED,
-      payload: { entityType, id }
-    })
+    yield put(entityActions.getEntityForEditStarted(entityType, id))
 
     const token = yield call(authLib.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
     const json = yield call(get, url, token)
 
-    yield put({
-      type: entityActionTypes.GET_ENTITY_FOR_EDIT_SUCCEEDED,
-      payload: { entityType, entity: json.entity }
-    })
+    yield put(entityActions.getEntityForEditSucceeded(entityType, json.entity))
   } catch (err) {
     yield call(log.error, err)
 
-    yield put({
-      type: entityActionTypes.GET_ENTITY_FOR_EDIT_FAILED,
-      payload: { entityType }
-    })
+    yield put(entityActions.getEntityForEditFailed(entityType))
   }
 }
 
-function * getEventAsCopy (action) {
-  const { id } = action.payload
+// function * getEventAsCopy (action) {
+//   const { id } = action.payload
 
-  try {
-    yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
+//   try {
+//     yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
-    const json = yield call(get, url, token)
+//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
+//     const json = yield call(get, url, token)
 
-    yield put({
-      type: entityActionTypes.GET_EVENT_AS_COPY_SUCCEEDED,
-      payload: { entity: json.entity }
-    })
-  } catch (err) {
-    yield call(log.error, err)
+//     yield put({
+//       type: entityActionTypes.GET_EVENT_AS_COPY_SUCCEEDED,
+//       payload: { entity: json.entity }
+//     })
+//   } catch (err) {
+//     yield call(log.error, err)
 
-    yield put({
-      type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
-      payload: { statusCode: err.statusCode || 500 }
-    })
-  }
-}
+//     yield put({
+//       type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
+//       payload: { statusCode: err.statusCode || 500 }
+//     })
+//   }
+// }
 
-function * getSubEntity (action) {
-  const { entityType, subEntityType, id, parentFormName } = action.payload
+// function * getSubEntity (action) {
+//   const { entityType, subEntityType, id, parentFormName } = action.payload
 
-  try {
-    yield put({
-      type: entityActionTypes.GET_SUB_ENTITY_STARTED,
-      payload: { entityType, subEntityType }
-    })
+//   try {
+//     yield put({
+//       type: entityActionTypes.GET_SUB_ENTITY_STARTED,
+//       payload: { entityType, subEntityType }
+//     })
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
-    const json = yield call(get, url, token)
+//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
+//     const json = yield call(get, url, token)
 
-    yield put(change(parentFormName, _.camelCase(subEntityType), json.entity))
-  } catch (err) {
-    yield call(log.error, err)
+//     yield put(change(parentFormName, _.camelCase(subEntityType), json.entity))
+//   } catch (err) {
+//     yield call(log.error, err)
 
-    yield put({
-      type: notificationActionTypes.ADD_NOTIFICATION,
-      payload: {
-        title: 'Get Failed',
-        message: 'The entity could not be read.',
-        type: notificationsConstants.NOTIFICATION_TYPE_ERROR
-      }
-    })
-  } finally {
-    yield put({
-      type: entityActionTypes.GET_SUB_ENTITY_FINISHED,
-      payload: { entityType, subEntityType }
-    })
-  }
-}
+//     yield put(
+//       notificationActions.addNotification(
+//         notificationsConstants.NOTIFICATION_TYPE_ERROR,
+//         'Get Failed',
+//         'The entity could not be read.'
+//       )
+//     )
+//   } finally {
+//     yield put({
+//       type: entityActionTypes.GET_SUB_ENTITY_FINISHED,
+//       payload: { entityType, subEntityType }
+//     })
+//   }
+// }
 
-function * autocompleteSearch (action) {
-  try {
-    yield call(delay, 300) // debounce
-    const query = normalise(
-      action.payload.query,
-      searchConstants.AUTO_SEARCH_QUERY_NORMALISER
-    )
-    const errors = yield call(
-      validationLib.validate,
-      query,
-      searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
-      null,
-      true
-    )
+// function * autocompleteSearch (action) {
+//   try {
+//     yield call(delay, 300) // debounce
+//     const query = normalise(
+//       action.payload.query,
+//       searchConstants.AUTO_SEARCH_QUERY_NORMALISER
+//     )
+//     const errors = yield call(
+//       validationLib.validate,
+//       query,
+//       searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
+//       null,
+//       true
+//     )
 
-    if (errors !== null) {
-      yield call(log.error, errors)
-      return
-    }
+//     if (errors !== null) {
+//       yield call(log.error, errors)
+//       return
+//     }
 
-    const requestUrl = searchLib.createAutocompleteSearchRequestUrl(query)
-    const json = yield call(get, requestUrl)
+//     const requestUrl = searchLib.createAutocompleteSearchRequestUrl(query)
+//     const json = yield call(get, requestUrl)
 
-    yield put({
-      type: entityActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
-      payload: json
-    })
-  } catch (err) {
-    yield call(log.error, err)
-  }
-}
+//     yield put({
+//       type: entityActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
+//       payload: json
+//     })
+//   } catch (err) {
+//     yield call(log.error, err)
+//   }
+// }
 
-function * createTalentForEvent (action) {
-  const { values, parentFormName, forceCreate } = action.payload
+// function * createTalentForEvent (action) {
+//   const { values, parentFormName, forceCreate } = action.payload
 
-  try {
-    yield put(startSubmit(formConstants.CREATE_TALENT_FORM_NAME))
-    yield call(validationLib.validate, values, talentConstraint)
+//   try {
+//     yield put(startSubmit(formConstants.CREATE_TALENT_FORM_NAME))
+//     yield call(validationLib.validate, values, talentConstraint)
 
-    if (!forceCreate) {
-      const query = {
-        entityType: 'talent',
-        term: `${values.firstNames} ${values.lastName}`,
-        take: 5
-      }
+//     if (!forceCreate) {
+//       const query = {
+//         entityType: 'talent',
+//         term: `${values.firstNames} ${values.lastName}`,
+//         take: 5
+//       }
 
-      const requestUrl = searchLib.createBasicSearchRequestUrl(query)
-      const json = yield call(get, requestUrl)
+//       const requestUrl = searchLib.createBasicSearchRequestUrl(query)
+//       const json = yield call(get, requestUrl)
 
-      if (json.total > 0) {
-        throw new Error('not implemented')
+//       if (json.total > 0) {
+//         throw new Error('not implemented')
 
-        // yield put({
-        //   type: modalTypes.SHOW_MODAL,
-        //   payload: {
-        //     component: TalentMatchesFoundModal,
-        //     componentProps: {
-        //       items: json.items,
-        //       values,
-        //       parentFormName
-        //     }
-        //   }
-        // })
+//         // yield put({
+//         //   type: modalTypes.SHOW_MODAL,
+//         //   payload: {
+//         //     component: TalentMatchesFoundModal,
+//         //     componentProps: {
+//         //       items: json.items,
+//         //       values,
+//         //       parentFormName
+//         //     }
+//         //   }
+//         // })
 
-        yield put(stopSubmit(formConstants.CREATE_TALENT_FORM_NAME))
-      }
-    }
+//         yield put(stopSubmit(formConstants.CREATE_TALENT_FORM_NAME))
+//       }
+//     }
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
-    const mappedValues = mappingsLib.mapTalentToServer(values)
-    const json = yield call(post, url, mappedValues, token)
+//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
+//     const mappedValues = mappingsLib.mapTalentToServer(values)
+//     const json = yield call(post, url, mappedValues, token)
 
-    yield put(stopSubmit(formConstants.CREATE_TALENT_FORM_NAME))
-    yield put(reset(formConstants.CREATE_TALENT_FORM_NAME))
+//     yield put(stopSubmit(formConstants.CREATE_TALENT_FORM_NAME))
+//     yield put(reset(formConstants.CREATE_TALENT_FORM_NAME))
 
-    const newTalent = {
-      ...json.entity,
-      key: json.entity.id,
-      roles: json.entity.commonRole,
-      characters: ''
-    }
+//     const newTalent = {
+//       ...json.entity,
+//       key: json.entity.id,
+//       roles: json.entity.commonRole,
+//       characters: ''
+//     }
 
-    yield put(arrayPush(parentFormName, 'talents', newTalent))
-  } catch (err) {
-    yield call(log.error, err)
+//     yield put(arrayPush(parentFormName, 'talents', newTalent))
+//   } catch (err) {
+//     yield call(log.error, err)
 
-    if (err.statusCode === 400) {
-      yield put({
-        type: notificationActionTypes.ADD_NOTIFICATION,
-        payload: {
-          message: 'The talent already exists.',
-          type: notificationsConstants.NOTIFICATION_TYPE_ERROR
-        }
-      })
-    }
+//     if (err.statusCode === 400) {
+//       yield put(
+//         notificationActions.addNotification(
+//           notificationsConstants.NOTIFICATION_TYPE_ERROR,
+//           null,
+//           'The talent already exists.'
+//         )
+//       )
+//     }
 
-    yield call(
-      sagaLib.submitErrorHandler,
-      err,
-      formConstants.CREATE_TALENT_FORM_NAME
-    )
-  }
-}
+//     yield call(
+//       sagaLib.submitErrorHandler,
+//       err,
+//       formConstants.CREATE_TALENT_FORM_NAME
+//     )
+//   }
+// }
 
 export default [
-  takeLatest(entityActionTypes.GET_ENTITY, getEntity),
-  takeLatest(entityActionTypes.SAVE_ENTITY, saveEntity),
-  takeLatest(entityActionTypes.GET_ENTITY_FOR_EDIT, getEntityForEdit)
+  takeLatest(entityActions.types.GET_ENTITY, getEntity),
+  takeLatest(entityActions.types.SAVE_ENTITY, saveEntity),
+  takeLatest(entityActions.types.GET_ENTITY_FOR_EDIT, getEntityForEdit)
   // takeLatest(entityActionTypes.GET_SUB_ENTITY, getSubEntity),
   // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),
   // takeLatest(entityActionTypes.CREATE_TALENT_FOR_EVENT, createTalentForEvent),

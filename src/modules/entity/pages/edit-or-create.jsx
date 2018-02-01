@@ -15,7 +15,7 @@ import EventEditOrCreate
 import EventSeriesEditOrCreate
   from '_src/modules/entity/components/event-series-edit-or-create'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActionTypes from '_src/constants/action/entity'
+import * as entityActions from '_src/store/actions/entity'
 
 class EntityEditOrCreatePage extends React.Component {
   componentWillMount () {
@@ -31,15 +31,9 @@ class EntityEditOrCreatePage extends React.Component {
   }
   _getOrResetEntity ({ entityType, entityId }) {
     if (entityId) {
-      this.props.dispatch({
-        type: entityActionTypes.GET_ENTITY_FOR_EDIT,
-        payload: { entityType, id: entityId }
-      })
+      this.props.dispatch(entityActions.getEntityForEdit(entityType, entityId))
     } else {
-      this.props.dispatch({
-        type: entityActionTypes.RESET_ENTITY_FOR_EDIT,
-        payload: { entityType }
-      })
+      this.props.dispatch(entityActions.resetEntityForEdit(entityType))
     }
   }
   render () {

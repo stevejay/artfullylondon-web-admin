@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 import * as authConstants from '_src/constants/auth'
-import * as authActionTypes from '_src/constants/action/auth'
+import { types } from '_src/store/actions/auth'
 
 const initialState = {
   autoLogInAttempted: false,
@@ -12,11 +12,11 @@ const initialState = {
 
 export default handleActions(
   {
-    [authActionTypes.AUTO_LOG_IN_ATTEMPTED]: state => ({
+    [types.AUTO_LOG_IN_ATTEMPTED]: state => ({
       ...state,
       autoLogInAttempted: true
     }),
-    [authActionTypes.LOG_IN_SUCCEEDED]: (state, action) => {
+    [types.LOG_IN_SUCCEEDED]: (state, action) => {
       return {
         ...state,
         state: authConstants.AUTH_STATE_LOGGED_IN,
@@ -24,12 +24,12 @@ export default handleActions(
         username: action.payload.cognitoUser.username
       }
     },
-    [authActionTypes.LOG_IN_FAILED]: state => ({
+    [types.LOG_IN_FAILED]: state => ({
       ...state,
       state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
       cognitoUser: null
     }),
-    [authActionTypes.LOGGED_OUT]: (state, action) => ({
+    [types.LOGGED_OUT]: (state, action) => ({
       ...state,
       state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
       username: action.payload && action.payload.resetUsername

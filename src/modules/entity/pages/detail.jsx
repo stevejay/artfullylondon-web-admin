@@ -13,7 +13,7 @@ import EventSeriesDetail
   from '_src/modules/entity/components/event-series-detail'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActionTypes from '_src/constants/action/entity'
+import * as entityActions from '_src/store/actions/entity'
 
 class EntityDetailPage extends React.Component {
   componentWillMount () {
@@ -28,10 +28,7 @@ class EntityDetailPage extends React.Component {
     }
   }
   _getEntity ({ entityType, entityId }) {
-    this.props.dispatch({
-      type: entityActionTypes.GET_ENTITY,
-      payload: { entityType, id: entityId }
-    })
+    this.props.dispatch(entityActions.getEntity(entityType, entityId))
   }
   render () {
     const {

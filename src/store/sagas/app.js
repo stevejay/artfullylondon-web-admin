@@ -6,9 +6,9 @@ import store from 'store2'
 import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
-import * as appActionTypes from '_src/constants/action/app'
 import * as appConstants from '_src/constants/app'
-import * as notificationActionTypes from '_src/constants/action/notification'
+import * as appActions from '_src/store/actions/app'
+import * as notificationActions from '_src/store/actions/notification'
 import * as notificationsConstants from '_src/constants/notifications'
 
 export function * checkForUpdate () {
@@ -28,10 +28,7 @@ export function * checkForUpdate () {
     yield call(delay, appConstants.CHECK_FOR_UPDATE_POLL_MS)
   }
 
-  yield put({
-    type: appActionTypes.APP_SHOULD_UPDATE,
-    payload: json
-  })
+  yield put(appActions.appShouldUpdate())
 }
 
 export function * updateApp () {
@@ -49,19 +46,18 @@ export function * checkIfAppWasUpdated () {
       appConstants.UPDATED_APP_VERSION_KEY
     ])
 
-    yield put({
-      type: notificationActionTypes.ADD_NOTIFICATION,
-      payload: {
-        title: 'App Successfully Updated',
-        message: `This app was updated to version ${process.env.WEBSITE_VERSION}.`,
-        type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
-      }
-    })
+    yield put(
+      notificationActions.addNotification(
+        notificationsConstants.NOTIFICATION_TYPE_SUCCESS,
+        'App Successfully Updated',
+        `This app was updated to version ${process.env.WEBSITE_VERSION}.`
+      )
+    )
   }
 }
 
 export default [
   fork(checkForUpdate),
-  takeLatest(appActionTypes.UPDATE_APP, updateApp),
-  takeLatest(appActionTypes.CHECK_IF_APP_WAS_UPDATED, checkIfAppWasUpdated)
+  takeLatest(appActions.types.UPDATE_APP, updateApp),
+  takeLatest(appActions.types.CHECK_IF_APP_WAS_UPDATED, checkIfAppWasUpdated)
 ]

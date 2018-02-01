@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import statusReducer from '_src/store/reducers/status'
-import * as statusActionTypes from '_src/constants/action/status'
+import * as statusActions from '_src/store/actions/status'
 
 it('should have the correct initial state', () => {
   const actual = statusReducer(undefined, {})
@@ -20,9 +20,7 @@ it('should handle a started message', () => {
     getEntityCountsFailed: false
   })
 
-  const actual = statusReducer(state, {
-    type: statusActionTypes.GET_ENTITY_COUNTS_STARTED
-  })
+  const actual = statusReducer(state, statusActions.getEntityCountsStarted())
 
   expect(actual).toEqual({
     entityCounts: [],
@@ -38,12 +36,12 @@ it('should handle a succeeded message', () => {
     getEntityCountsFailed: false
   })
 
-  const actual = statusReducer(state, {
-    type: statusActionTypes.GET_ENTITY_COUNTS_SUCCEEDED,
-    payload: {
+  const actual = statusReducer(
+    state,
+    statusActions.getEntityCountsSucceeded({
       items: [{ entityType: 'venue', count: 100 }]
-    }
-  })
+    })
+  )
 
   expect(actual).toEqual({
     entityCounts: [
@@ -61,9 +59,7 @@ it('should handle a failed message', () => {
     getEntityCountsFailed: false
   })
 
-  const actual = statusReducer(state, {
-    type: statusActionTypes.GET_ENTITY_COUNTS_FAILED
-  })
+  const actual = statusReducer(state, statusActions.getEntityCountsFailed())
 
   expect(actual).toEqual({
     entityCounts: [],

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import * as appActionTypes from '_src/constants/action/app'
+import { types } from '_src/store/actions/app'
 
 const initialState = {
   shouldUpdate: false
@@ -8,7 +8,7 @@ const initialState = {
 
 export default handleActions(
   {
-    [appActionTypes.APP_SHOULD_UPDATE]: (state, action) => ({
+    [types.APP_SHOULD_UPDATE]: state => ({
       ...state,
       shouldUpdate: true
     })

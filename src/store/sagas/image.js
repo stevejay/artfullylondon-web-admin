@@ -16,8 +16,9 @@ import { put as httpPut } from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as authLib from '_src/lib/auth'
 import * as validationLib from '_src/lib/validation'
-import * as imageActionTypes from '_src/constants/action/image'
-import * as notificationActionTypes from '_src/constants/action/notification'
+import * as imageActions from '_src/store/actions/image'
+import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationActions from '_src/store/actions/notification'
 import * as imageConstraints from '_src/constants/image-constraints'
 import * as imageNormalisers from '_src/constants/image-normalisers'
 import * as formConstants from '_src/constants/form'
@@ -176,14 +177,13 @@ function * addImage (action) {
   } catch (err) {
     yield call(log.error, err)
 
-    yield put({
-      type: notificationActionTypes.ADD_NOTIFICATION,
-      payload: {
-        type: 'Error',
-        title: 'Failed to save the image',
-        message: err.message
-      }
-    })
+    yield put(
+      notificationActions.addNotification(
+        notificationsConstants.NOTIFICATION_TYPE_ERROR,
+        'Failed to save the image',
+        err.message
+      )
+    )
 
     yield call(
       sagaLib.submitErrorHandler,
@@ -194,8 +194,8 @@ function * addImage (action) {
 }
 
 export default [
-  takeLatest(imageActionTypes.ADD_IMAGE, addImage),
-  takeLatest(imageActionTypes.SET_MAIN_IMAGE, setMainImage),
-  takeLatest(imageActionTypes.UPDATE_IMAGE, updateImage),
-  takeLatest(imageActionTypes.DELETE_IMAGE, deleteImage)
+  takeLatest(imageActions.types.ADD_IMAGE, addImage),
+  takeLatest(imageActions.types.SET_MAIN_IMAGE, setMainImage),
+  takeLatest(imageActions.types.UPDATE_IMAGE, updateImage),
+  takeLatest(imageActions.types.DELETE_IMAGE, deleteImage)
 ]

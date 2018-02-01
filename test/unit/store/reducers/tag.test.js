@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import tagReducer from '_src/store/reducers/tag'
-import * as tagActionTypes from '_src/constants/action/tag'
+import * as tagActions from '_src/store/actions/tag'
 
 it('should have the correct initial state', () => {
   const actual = tagReducer(undefined, {})
@@ -26,10 +26,7 @@ it('should handle a get tags started message', () => {
     tags: null
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.GET_TAGS_STARTED,
-    payload: { tagType: 'medium' }
-  })
+  const actual = tagReducer(state, tagActions.getTagsStarted('medium'))
 
   expect(actual).toEqual({
     getInProgress: true,
@@ -51,10 +48,7 @@ it('should handle a get tags succeeded message', () => {
     tags: null
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.GET_TAGS_SUCCEEDED,
-    payload: { tags: [{ id: 1 }] }
-  })
+  const actual = tagReducer(state, tagActions.getTagsSucceeded([{ id: 1 }]))
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -76,9 +70,7 @@ it('should handle a get tags failed message', () => {
     tags: null
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.GET_TAGS_FAILED
-  })
+  const actual = tagReducer(state, tagActions.getTagsFailed())
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -100,9 +92,7 @@ it('should handle an add tag started message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.ADD_TAG_STARTED
-  })
+  const actual = tagReducer(state, tagActions.addTagStarted())
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -124,10 +114,7 @@ it('should handle an add tag succeeded message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.ADD_TAG_SUCCEEDED,
-    payload: { tag: { id: 2 } }
-  })
+  const actual = tagReducer(state, tagActions.addTagSucceeded({ id: 2 }))
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -149,9 +136,7 @@ it('should handle an add tag failed message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.ADD_TAG_FAILED
-  })
+  const actual = tagReducer(state, tagActions.addTagFailed())
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -173,9 +158,7 @@ it('should handle a delete tag started message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.DELETE_TAG_STARTED
-  })
+  const actual = tagReducer(state, tagActions.deleteTagStarted())
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -197,10 +180,7 @@ it('should handle a delete tag succeeded message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.DELETE_TAG_SUCCEEDED,
-    payload: { id: 1 }
-  })
+  const actual = tagReducer(state, tagActions.deleteTagSucceeded(1))
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -222,9 +202,7 @@ it('should handle a delete tag failed message', () => {
     tags: [{ id: 1 }]
   })
 
-  const actual = tagReducer(state, {
-    type: tagActionTypes.DELETE_TAG_FAILED
-  })
+  const actual = tagReducer(state, tagActions.deleteTagFailed())
 
   expect(actual).toEqual({
     getInProgress: false,

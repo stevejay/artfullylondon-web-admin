@@ -1,7 +1,6 @@
 import { take, call, put } from 'redux-saga/effects'
 
-import * as serverConstantsActionTypes
-  from '_src/constants/action/server-constants'
+import * as serverConstantsActions from '_src/store/actions/server-constants'
 import * as serverConstantsSagas from '_src/store/sagas/server-constants'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
@@ -13,7 +12,7 @@ describe('fetchServerConstants', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      take(serverConstantsActionTypes.FETCH_SERVER_CONSTANTS)
+      take(serverConstantsActions.types.FETCH_SERVER_CONSTANTS)
     )
 
     result = generator.next('foo')
@@ -29,10 +28,7 @@ describe('fetchServerConstants', () => {
     result = generator.next('some json')
 
     expect(result.value).toEqual(
-      put({
-        type: serverConstantsActionTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED,
-        payload: 'some json'
-      })
+      put(serverConstantsActions.fetchServerConstantsSucceeded('some json'))
     )
 
     result = generator.next()

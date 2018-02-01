@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import * as notificationsConstants from '_src/constants/notifications'
-import * as notificationActionTypes from '_src/constants/action/notification'
+import * as notificationActions from '_src/store/actions/notification'
 import { Notification } from '_src/modules/notification'
 
 it('should render correctly', () => {
@@ -42,10 +42,7 @@ it('should raise a remove notification action when a notification is closed', ()
   expect(dispatchHandler).toHaveBeenCalled()
 
   expect(dispatchHandler.mock.calls[0]).toEqual([
-    {
-      type: notificationActionTypes.REMOVE_NOTIFICATION,
-      payload: { id: 'some-id' }
-    }
+    notificationActions.removeNotification('some-id')
   ])
 })
 

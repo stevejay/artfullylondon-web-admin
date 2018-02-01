@@ -5,7 +5,7 @@ import { startSubmit, stopSubmit, reset } from 'redux-form'
 
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
-import * as tagActionTypes from '_src/constants/action/tag'
+import * as tagActions from '_src/store/actions/tag'
 import * as tagSagas from '_src/store/sagas/tag'
 import * as authLib from '_src/lib/auth'
 import * as formConstants from '_src/constants/form'
@@ -22,12 +22,7 @@ describe('getTags', () => {
   it('should prepare to get the tags for a tag type', () => {
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.GET_TAGS_STARTED,
-        payload: { tagType: 'medium' }
-      })
-    )
+    expect(result.value).toEqual(put(tagActions.getTagsStarted('medium')))
 
     result = generator.next()
 
@@ -47,12 +42,7 @@ describe('getTags', () => {
 
     let result = generatorClone.next({ tags: { medium: [{ id: 1 }] } })
 
-    expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.GET_TAGS_SUCCEEDED,
-        payload: { tags: [{ id: 1 }] }
-      })
-    )
+    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([{ id: 1 }])))
 
     result = generatorClone.next()
 
@@ -64,12 +54,7 @@ describe('getTags', () => {
 
     let result = generatorClone.next({ tags: { audience: [{ id: 1 }] } })
 
-    expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.GET_TAGS_SUCCEEDED,
-        payload: { tags: [] }
-      })
-    )
+    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([])))
 
     result = generatorClone.next()
 
@@ -86,7 +71,7 @@ describe('getTags', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put({ type: tagActionTypes.GET_TAGS_FAILED }))
+    expect(result.value).toEqual(put(tagActions.getTagsFailed()))
 
     result = generatorClone.next()
 
@@ -108,7 +93,7 @@ describe('addTag', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(put({ type: tagActionTypes.ADD_TAG_STARTED }))
+    expect(result.value).toEqual(put(tagActions.addTagStarted()))
 
     result = generator.next()
 
@@ -150,10 +135,12 @@ describe('addTag', () => {
     })
 
     expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.ADD_TAG_SUCCEEDED,
-        payload: { tag: { id: 'medium/sculpture', label: 'sculpture' } }
-      })
+      put(
+        tagActions.addTagSucceeded({
+          id: 'medium/sculpture',
+          label: 'sculpture'
+        })
+      )
     )
 
     result = generatorClone.next()
@@ -181,7 +168,7 @@ describe('addTag', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put({ type: tagActionTypes.ADD_TAG_FAILED }))
+    expect(result.value).toEqual(put(tagActions.addTagFailed()))
 
     result = generatorClone.next()
 
@@ -207,9 +194,7 @@ describe('deleteTag', () => {
   it('should prepare to delete the tag', () => {
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put({ type: tagActionTypes.DELETE_TAG_STARTED })
-    )
+    expect(result.value).toEqual(put(tagActions.deleteTagStarted()))
 
     result = generator.next()
 
@@ -232,10 +217,7 @@ describe('deleteTag', () => {
     let result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.DELETE_TAG_SUCCEEDED,
-        payload: { id: 'medium/sculpture' }
-      })
+      put(tagActions.deleteTagSucceeded('medium/sculpture'))
     )
 
     result = generatorClone.next()
@@ -253,11 +235,7 @@ describe('deleteTag', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(
-      put({
-        type: tagActionTypes.DELETE_TAG_FAILED
-      })
-    )
+    expect(result.value).toEqual(put(tagActions.deleteTagFailed()))
 
     result = generatorClone.next()
 

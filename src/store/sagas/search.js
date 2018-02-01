@@ -10,7 +10,7 @@ import * as sagaLib from '_src/lib/saga'
 import * as searchLib from '_src/lib/search'
 import * as validationLib from '_src/lib/validation'
 import * as searchConstants from '_src/constants/search'
-import * as searchActionTypes from '_src/constants/action/search'
+import * as searchActions from '_src/store/actions/search'
 import * as formConstants from '_src/constants/form'
 
 function * pushBasicSearchToUrl ({ payload }) {
@@ -80,11 +80,7 @@ function * autocompleteSearch ({ payload, meta }) {
         searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
   )
 
-  yield put({
-    type: searchActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
-    payload: { items },
-    meta
-  })
+  yield put(searchActions.autocompleteSearchSucceeded(items, meta))
 }
 
 function * basicSearch ({ payload }) {
@@ -109,20 +105,11 @@ function * basicSearch ({ payload }) {
     }
 
     const requestUrl = searchLib.createBasicSearchRequestUrl(query)
-    yield put({ type: searchActionTypes.STARTING_BASIC_SEARCH })
-
-    yield put({
-      type: searchActionTypes.SET_BASIC_SEARCH_PARAMS,
-      payload: query
-    })
-
+    yield put(searchActions.startingBasicSearch())
+    yield put(searchActions.setBasicSearchParams(query))
     yield put(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
     const json = yield call(fetchLib.get, requestUrl)
-
-    yield put({
-      type: searchActionTypes.BASIC_SEARCH_SUCCEEDED,
-      payload: json
-    })
+    yield put(searchActions.basicSearchSucceeded(json))
   } catch (err) {
     yield call(log.error, err)
 
@@ -132,7 +119,7 @@ function * basicSearch ({ payload }) {
       formConstants.BASIC_SEARCH_FORM_NAME
     )
 
-    yield put({ type: searchActionTypes.BASIC_SEARCH_FAILED })
+    yield put(searchActions.basicSearchFailed())
   }
 }
 
@@ -162,7 +149,10 @@ function * navigateToEntity (action) {
 }
 
 export default [
-  takeLatest(searchActionTypes.SEARCH, search),
-  takeLatest(searchActionTypes.PUSH_BASIC_SEARCH_TO_URL, pushBasicSearchToUrl),
-  takeLatest(searchActionTypes.NAVIGATE_TO_ENTITY, navigateToEntity)
+  takeLatest(searchActions.types.SEARCH, search),
+  takeLatest(
+    searchActions.types.PUSH_BASIC_SEARCH_TO_URL,
+    pushBasicSearchToUrl
+  ),
+  takeLatest(searchActions.types.NAVIGATE_TO_ENTITY, navigateToEntity)
 ]

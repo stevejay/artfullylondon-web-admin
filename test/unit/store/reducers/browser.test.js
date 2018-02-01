@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import * as browserConstants from '_src/constants/browser'
-import * as browserActionTypes from '_src/constants/action/browser'
+import * as browserActions from '_src/store/actions/browser'
 import browserReducer from '_src/store/reducers/browser'
 
 it('should have the correct initial state', () => {
@@ -17,12 +17,12 @@ it('should handle updating the width type when the new width type is different',
     widthType: browserConstants.BROWSER_WIDTH_TYPE_NARROW
   })
 
-  const actual = browserReducer(state, {
-    type: browserActionTypes.UPDATE_BROWSER_WIDTH_TYPE,
-    payload: {
-      widthType: browserConstants.BROWSER_WIDTH_TYPE_WIDE
-    }
-  })
+  const actual = browserReducer(
+    state,
+    browserActions.updateBrowserWidthType(
+      browserConstants.BROWSER_WIDTH_TYPE_WIDE
+    )
+  )
 
   expect(actual).toEqual({
     widthType: browserConstants.BROWSER_WIDTH_TYPE_WIDE
@@ -34,12 +34,12 @@ it('should handle updating the width type when the new width type is not differe
     widthType: browserConstants.BROWSER_WIDTH_TYPE_NARROW
   })
 
-  const actual = browserReducer(state, {
-    type: browserActionTypes.UPDATE_BROWSER_WIDTH_TYPE,
-    payload: {
-      widthType: browserConstants.BROWSER_WIDTH_TYPE_NARROW
-    }
-  })
+  const actual = browserReducer(
+    state,
+    browserActions.updateBrowserWidthType(
+      browserConstants.BROWSER_WIDTH_TYPE_NARROW
+    )
+  )
 
   expect(actual).toEqual({
     widthType: browserConstants.BROWSER_WIDTH_TYPE_NARROW

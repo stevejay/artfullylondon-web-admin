@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import * as authConstants from '_src/constants/auth'
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 import authReducer from '_src/store/reducers/auth'
 
 it('should have the correct initial state', () => {
@@ -23,9 +23,7 @@ it('should handle an auto login attempted message', () => {
     username: ''
   })
 
-  const actual = authReducer(state, {
-    type: authActionTypes.AUTO_LOG_IN_ATTEMPTED
-  })
+  const actual = authReducer(state, authActions.autoLogInAttempted())
 
   expect(actual).toEqual({
     autoLogInAttempted: true,
@@ -43,14 +41,12 @@ it('should handle a login succeeded message', () => {
     username: ''
   })
 
-  const actual = authReducer(state, {
-    type: authActionTypes.LOG_IN_SUCCEEDED,
-    payload: {
-      cognitoUser: {
-        username: 'steve'
-      }
-    }
-  })
+  const actual = authReducer(
+    state,
+    authActions.logInSucceeded({
+      username: 'steve'
+    })
+  )
 
   expect(actual).toEqual({
     autoLogInAttempted: true,
@@ -68,9 +64,7 @@ it('should handle a login failed message', () => {
     username: ''
   })
 
-  const actual = authReducer(state, {
-    type: authActionTypes.LOG_IN_FAILED
-  })
+  const actual = authReducer(state, authActions.logInFailed())
 
   expect(actual).toEqual({
     autoLogInAttempted: true,
@@ -88,12 +82,12 @@ it('should handle a logged out message that resets the username', () => {
     username: 'steve'
   })
 
-  const actual = authReducer(state, {
-    type: authActionTypes.LOGGED_OUT,
-    payload: {
+  const actual = authReducer(
+    state,
+    authActions.loggedOut({
       resetUsername: true
-    }
-  })
+    })
+  )
 
   expect(actual).toEqual({
     autoLogInAttempted: true,
@@ -111,9 +105,7 @@ it('should handle a logged out message that does not reset the username', () => 
     username: 'steve'
   })
 
-  const actual = authReducer(state, {
-    type: authActionTypes.LOGGED_OUT
-  })
+  const actual = authReducer(state, authActions.loggedOut())
 
   expect(actual).toEqual({
     autoLogInAttempted: true,

@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { LoginPage } from '_src/modules/auth/pages/login'
 import LoginForm from '_src/modules/auth/forms/login'
-import * as authActionTypes from '_src/constants/action/auth'
+import * as authActions from '_src/store/actions/auth'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -23,8 +23,5 @@ it('should trigger the login action when the login form is submitted', () => {
 
   wrapper.find(LoginForm).prop('onSubmit')({ name: 'foo' })
 
-  expect(dispatch).toHaveBeenCalledWith({
-    type: authActionTypes.LOG_IN,
-    payload: { name: 'foo' }
-  })
+  expect(dispatch).toHaveBeenCalledWith(authActions.logIn({ name: 'foo' }))
 })

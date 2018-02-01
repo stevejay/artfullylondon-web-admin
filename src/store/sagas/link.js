@@ -13,7 +13,7 @@ import linkConstraint from '_src/constants/link-constraint'
 import linkNormaliser from '_src/constants/link-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as linkActionTypes from '_src/constants/action/link'
+import * as linkActions from '_src/store/actions/link'
 import * as formConstants from '_src/constants/form'
 
 function * getLinks (parentFormName) {
@@ -72,6 +72,6 @@ function * deleteLink (action) {
 }
 
 export default [
-  takeLatest(linkActionTypes.ADD_LINK, addLink),
-  takeLatest(linkActionTypes.DELETE_LINK, deleteLink)
+  takeLatest(linkActions.types.ADD_LINK, addLink),
+  takeLatest(linkActions.types.DELETE_LINK, deleteLink)
 ]

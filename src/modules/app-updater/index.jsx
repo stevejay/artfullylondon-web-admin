@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 
 import FadeTransition from '_src/components/transition/fade'
 import Button from '_src/components/button'
-import * as appActionTypes from '_src/constants/action/app'
+import * as appActions from '_src/store/actions/app'
 import './index.scss'
 
 export class AppUpdater extends React.Component {
   handleClick = () => {
-    this.props.dispatch({ type: appActionTypes.UPDATE_APP })
+    this.props.dispatch(appActions.updateApp())
   }
   render () {
     const { shouldUpdate } = this.props

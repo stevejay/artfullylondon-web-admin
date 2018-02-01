@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
 import LoginForm from '_src/modules/auth/forms/login'
-import * as authActionTypes from '_src/constants/action/auth'
 import * as authConstraints from '_src/constants/auth-constraints'
+import * as authActions from '_src/store/actions/auth'
 import './login.scss'
 
 export class LoginPage extends React.Component {
   handleSubmit = payload => {
-    this.props.dispatch({ type: authActionTypes.LOG_IN, payload })
+    this.props.dispatch(authActions.logIn(payload))
   }
   render () {
     const { initialUsername } = this.props

@@ -10,8 +10,8 @@ import EntityHeading from '_src/components/entity/heading'
 import EditTalentForm from '_src/modules/entity/forms/edit-talent'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import * as notificationActionTypes from '_src/constants/action/notification'
-import * as entityActionTypes from '_src/constants/action/entity'
+import * as notificationActions from '_src/store/actions/notification'
+import * as entityActions from '_src/store/actions/entity'
 import * as notificationsConstants from '_src/constants/notifications'
 import * as formConstants from '_src/constants/form'
 
@@ -25,23 +25,21 @@ class TalentEditOrCreate extends React.Component {
     } = this.props
 
     if (imageEditorIsPristine && linkEditorIsPristine) {
-      dispatch({
-        type: entityActionTypes.SAVE_ENTITY,
-        payload: {
-          entityType: entityConstants.ENTITY_TYPE_TALENT,
+      dispatch(
+        entityActions.saveEntity(
+          entityConstants.ENTITY_TYPE_TALENT,
           values,
           isEdit
-        }
-      })
+        )
+      )
     } else {
-      dispatch({
-        type: notificationActionTypes.ADD_NOTIFICATION,
-        payload: {
-          title: 'Submit Cancelled',
-          message: 'There are unsaved changes in the sub editors.',
-          type: notificationsConstants.NOTIFICATION_TYPE_ERROR
-        }
-      })
+      dispatch(
+        notificationActions.addNotification(
+          notificationsConstants.NOTIFICATION_TYPE_ERROR,
+          'Submit Cancelled',
+          'There are unsaved changes in the sub editors.'
+        )
+      )
     }
   }
   handleCancel = event => {

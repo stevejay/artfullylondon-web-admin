@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import * as serverConstantsTypes from '_src/constants/action/server-constants'
+import { types } from '_src/store/actions/server-constants'
 import * as serverConstantsLib from '_src/lib/server-constants'
 import serverConstants from './server-constants.json'
 
@@ -11,7 +11,7 @@ const initialState = Object.assign(
 
 export default handleActions(
   {
-    [serverConstantsTypes.FETCH_SERVER_CONSTANTS_SUCCEEDED]: (state, action) =>
+    [types.FETCH_SERVER_CONSTANTS_SUCCEEDED]: (state, action) =>
       Object.assign(
         {},
         state,

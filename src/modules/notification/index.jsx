@@ -5,18 +5,15 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import NotificationItem from '_src/modules/notification/components/notification'
 import * as notificationsConstants from '_src/constants/notifications'
-import * as notificationActionTypes from '_src/constants/action/notification'
+import * as notificationActions from '_src/store/actions/notification'
 import './index.scss'
 
 export class Notification extends React.Component {
   shouldComponentUpdate (nextProps) {
     return nextProps.notifications !== this.props.notifications
   }
-  handleClose = payload => {
-    this.props.dispatch({
-      type: notificationActionTypes.REMOVE_NOTIFICATION,
-      payload
-    })
+  handleClose = ({ id }) => {
+    this.props.dispatch(notificationActions.removeNotification(id))
   }
   render () {
     return (
