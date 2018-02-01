@@ -23,7 +23,7 @@ import * as formConstants from '_src/constants/form'
 import * as authLib from '_src/lib/auth'
 // import * as searchLib from '_src/lib/search'
 import * as notificationActions from '_src/store/actions/notification'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
 import * as mappingsLib from '_src/lib/mappings'
@@ -82,7 +82,7 @@ function * saveEntity (action) {
 
     yield put(
       notificationActions.addNotification(
-        notificationsConstants.NOTIFICATION_TYPE_ERROR,
+        notificationConstants.NOTIFICATION_TYPE_ERROR,
         'Save Failed',
         // message: 'This form has errors. Please correct them and try again.'
         err.message
@@ -214,7 +214,7 @@ function * getEntityForEdit (action) {
 
 //     yield put(
 //       notificationActions.addNotification(
-//         notificationsConstants.NOTIFICATION_TYPE_ERROR,
+//         notificationConstants.NOTIFICATION_TYPE_ERROR,
 //         'Get Failed',
 //         'The entity could not be read.'
 //       )
@@ -317,7 +317,7 @@ function * getEntityForEdit (action) {
 //     if (err.statusCode === 400) {
 //       yield put(
 //         notificationActions.addNotification(
-//           notificationsConstants.NOTIFICATION_TYPE_ERROR,
+//           notificationConstants.NOTIFICATION_TYPE_ERROR,
 //           null,
 //           'The talent already exists.'
 //         )

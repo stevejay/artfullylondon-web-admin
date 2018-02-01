@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import CloseButton from '_src/components/button/close'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import './notification.scss'
 
 class Notification extends React.Component {
@@ -41,7 +41,7 @@ Notification.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string,
     message: PropTypes.string,
-    type: PropTypes.oneOf(notificationsConstants.ALLOWED_NOTIFICATION_TYPES)
+    type: PropTypes.oneOf(notificationConstants.ALLOWED_NOTIFICATION_TYPES)
       .isRequired
   }).isRequired,
   onClose: PropTypes.func.isRequired

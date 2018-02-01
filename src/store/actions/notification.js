@@ -1,7 +1,7 @@
 export const types = {
-  ADD_NOTIFICATION: 'notifications/ADD_NOTIFICATION',
-  NOTIFICATION_ADDED: 'notifications/NOTIFICATION_ADDED',
-  REMOVE_NOTIFICATION: 'notifications/REMOVE_NOTIFICATION'
+  ADD_NOTIFICATION: 'notification/ADD_NOTIFICATION',
+  NOTIFICATION_ADDED: 'notification/NOTIFICATION_ADDED',
+  REMOVE_NOTIFICATION: 'notification/REMOVE_NOTIFICATION'
 }
 
 export const addNotification = (type, title, message) => ({

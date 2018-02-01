@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import * as notificationActions from '_src/store/actions/notification'
 import { Notification } from '_src/modules/notification'
 
@@ -12,7 +12,7 @@ it('should render correctly', () => {
       notifications={[
         {
           id: 'some-id',
-          type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
+          type: notificationConstants.NOTIFICATION_TYPE_SUCCESS
         }
       ]}
       dispatch={_.noop}
@@ -30,7 +30,7 @@ it('should raise a remove notification action when a notification is closed', ()
       notifications={[
         {
           id: 'some-id',
-          type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
+          type: notificationConstants.NOTIFICATION_TYPE_SUCCESS
         }
       ]}
       dispatch={dispatchHandler}
@@ -50,7 +50,7 @@ it('should not update if props do not change', () => {
   const notifications = [
     {
       id: 'some-id',
-      type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
+      type: notificationConstants.NOTIFICATION_TYPE_SUCCESS
     }
   ]
 
@@ -68,7 +68,7 @@ it('should update if props change', () => {
       notifications={[
         {
           id: 'some-id',
-          type: notificationsConstants.NOTIFICATION_TYPE_SUCCESS
+          type: notificationConstants.NOTIFICATION_TYPE_SUCCESS
         }
       ]}
       dispatch={_.noop}

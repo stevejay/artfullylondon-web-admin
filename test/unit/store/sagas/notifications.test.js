@@ -2,15 +2,15 @@ import { delay } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
 import _ from 'lodash'
 
-import * as notificationsSagas from '_src/store/sagas/notifications'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationSagas from '_src/store/sagas/notification'
+import * as notificationConstants from '_src/constants/notification'
 import * as notificationActions from '_src/store/actions/notification'
 
 describe('addNotification', () => {
   it('should handle adding a notification', () => {
     _.uniqueId = jest.fn().mockReturnValue('1234')
 
-    const generator = notificationsSagas.addNotification(
+    const generator = notificationSagas.addNotification(
       notificationActions.addNotification('Error', 'Title', 'Message')
     )
 
@@ -29,7 +29,7 @@ describe('addNotification', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(delay, notificationsConstants.DEFAULT_NOTIFICATION_DISPLAY_TIME_MS)
+      call(delay, notificationConstants.DEFAULT_NOTIFICATION_DISPLAY_TIME_MS)
     )
 
     result = generator.next()

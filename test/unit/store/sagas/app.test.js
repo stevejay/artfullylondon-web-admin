@@ -9,7 +9,7 @@ import * as fetchLib from '_src/lib/fetch'
 import * as appActions from '_src/store/actions/app'
 import * as appConstants from '_src/constants/app'
 import * as notificationActions from '_src/store/actions/notification'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import * as appSagas from '_src/store/sagas/app'
 
 describe('updateApp', () => {
@@ -69,7 +69,7 @@ describe('checkIfAppWasUpdated', () => {
     expect(result.value).toEqual(
       put(
         notificationActions.addNotification(
-          notificationsConstants.NOTIFICATION_TYPE_SUCCESS,
+          notificationConstants.NOTIFICATION_TYPE_SUCCESS,
           'App Successfully Updated',
           `This app was updated to version ${process.env.WEBSITE_VERSION}.`
         )

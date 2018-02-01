@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import NotificationItem from '_src/modules/notification/components/notification'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import * as notificationActions from '_src/store/actions/notification'
 import './index.scss'
 
@@ -39,7 +39,7 @@ Notification.propTypes = {
   notifications: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      type: PropTypes.oneOf(notificationsConstants.ALLOWED_NOTIFICATION_TYPES)
+      type: PropTypes.oneOf(notificationConstants.ALLOWED_NOTIFICATION_TYPES)
         .isRequired
     })
   ).isRequired,
@@ -48,7 +48,5 @@ Notification.propTypes = {
 
 export default connect(
   /* istanbul ignore next */
-  state => ({
-    notifications: state.notifications.items
-  })
+  state => ({ notifications: state.notification.items })
 )(Notification)

@@ -9,7 +9,7 @@ import search from './search'
 import tag from './tag'
 // import venueForEdit from "./venue-for-edit";
 // import eventMonitors from "./event-monitors";
-import notifications from './notifications'
+import notification from './notification'
 // import eventMonitorForEdit from "./event-monitor-for-edit";
 // import venueMonitorForEdit from "./venue-monitor-for-edit";
 import browser from './browser'
@@ -25,7 +25,7 @@ export default combineReducers({
   serverConstants,
   search,
   tag,
-  notifications,
+  notification,
   status,
   // eventMonitors,
   // eventMonitorForEdit,

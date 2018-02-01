@@ -11,7 +11,7 @@ import searchSagas from './search'
 import tagSagas from './tag'
 // import timeSagas from './time';
 import statusSagas from './status'
-import notificationsSagas from './notifications'
+import notificationSagas from './notification'
 
 export default function * () {
   yield all([
@@ -19,7 +19,7 @@ export default function * () {
     ...authSagas,
     ...serverConstantsSagas,
     ...browserSagas,
-    ...notificationsSagas,
+    ...notificationSagas,
     ...statusSagas,
     ...searchSagas,
     ...tagSagas,

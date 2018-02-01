@@ -18,7 +18,7 @@ import * as authLib from '_src/lib/auth'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '_src/store/actions/image'
 import * as sagaActions from '_src/store/actions/saga'
-import * as notificationsConstants from '_src/constants/notifications'
+import * as notificationConstants from '_src/constants/notification'
 import * as notificationActions from '_src/store/actions/notification'
 import * as imageConstraints from '_src/constants/image-constraints'
 import * as imageNormalisers from '_src/constants/image-normalisers'
@@ -176,7 +176,7 @@ function * addImage (action) {
 
     yield put(
       notificationActions.addNotification(
-        notificationsConstants.NOTIFICATION_TYPE_ERROR,
+        notificationConstants.NOTIFICATION_TYPE_ERROR,
         'Failed to save the image',
         err.message
       )

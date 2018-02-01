@@ -1,10 +1,10 @@
 import deepFreeze from 'deep-freeze'
 
-import notificationsReducer from '_src/store/reducers/notifications'
+import notificationReducer from '_src/store/reducers/notification'
 import * as notificationActions from '_src/store/actions/notification'
 
 it('should have the correct initial state', () => {
-  const actual = notificationsReducer(undefined, {})
+  const actual = notificationReducer(undefined, {})
   expect(actual).toEqual({ items: [] })
 })
 
@@ -13,7 +13,7 @@ it('should handle adding a notification', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(
+  const actual = notificationReducer(
     state,
     notificationActions.notificationAdded({ id: 'b' })
   )
@@ -26,7 +26,7 @@ it('should handle removing a notification that exists', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(
+  const actual = notificationReducer(
     state,
     notificationActions.removeNotification('a')
   )
@@ -39,7 +39,7 @@ it('should handle removing a notification that does not exist', () => {
     items: [{ id: 'a' }]
   })
 
-  const actual = notificationsReducer(
+  const actual = notificationReducer(
     state,
     notificationActions.removeNotification('b')
   )
