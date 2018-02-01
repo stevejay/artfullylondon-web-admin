@@ -12,6 +12,8 @@ it('should render correctly', () => {
       submitting={false}
       handleSubmit={_.noop}
       onSubmit={_.noop}
+      onAutocompleteSearch={_.noop}
+      onAutocompleteSelect={_.noop}
     />
   )
 
@@ -27,6 +29,8 @@ it('should not submit on a key press that is not a return key press', () => {
       submitting={false}
       handleSubmit={handleSubmit}
       onSubmit={_.noop}
+      onAutocompleteSearch={_.noop}
+      onAutocompleteSelect={_.noop}
     />
   )
 
@@ -47,6 +51,8 @@ it('should submit on a return key press', () => {
       submitting={false}
       handleSubmit={handleSubmit}
       onSubmit={_.noop}
+      onAutocompleteSearch={_.noop}
+      onAutocompleteSelect={_.noop}
     />
   )
 

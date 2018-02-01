@@ -18,4 +18,8 @@ exports[`should render correctly 1`] = `
 </div>
 `;
 
-exports[`should render correctly when there are no tags 1`] = `<NoEntries />`;
+exports[`should render correctly when there are no tags 1`] = `
+<NoEntries
+  label="No Entries"
+/>
+`;

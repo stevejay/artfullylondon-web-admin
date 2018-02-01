@@ -15,12 +15,12 @@ exports[`should render correctly 1`] = `
   <p
     className="src-components-search-no-results__action"
   >
-    Try searching all by 
     <a
       onClick={[Function]}
     >
-      clicking here
+      Click here
     </a>
+     to try searching everything.
   </p>
 </div>
 `;

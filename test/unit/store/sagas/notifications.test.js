@@ -18,7 +18,11 @@ describe('addNotification', () => {
 
     expect(result.value).toEqual(
       put(
-        notificationActions.notificationAdded({ name: 'Some name', id: '1234' })
+        notificationActions.notificationAdded({
+          type: 'Error',
+          title: 'Title',
+          message: 'Message'
+        })
       )
     )
 

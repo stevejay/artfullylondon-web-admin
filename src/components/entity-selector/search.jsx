@@ -11,7 +11,7 @@ import {
   ENTITY_TYPE_EVENT_SERIES
 } from '_src/constants/entity'
 import SearchInput from '_src/components/entity-selector/search-input'
-import { autocompleteSearch } from '_src/actions/entity'
+import { autocompleteSearch } from '_src/store/actions/entity'
 
 export class EntitySelectorSearch extends React.Component {
   handleAutocompleteResultSelect = result => {

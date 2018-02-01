@@ -23,10 +23,8 @@ it('should render correctly', () => {
         error: null
       }}
       parentFormName='TheParentFormName'
-      linkActions={{
-        addLink: _.noop,
-        deleteLink: _.noop
-      }}
+      onAddLink={_.noop}
+      onDeleteLink={_.noop}
     />
   )
 

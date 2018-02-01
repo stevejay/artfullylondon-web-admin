@@ -26,21 +26,25 @@ exports[`should render correctly when logged in 1`] = `
             "label": "Add Event",
             "match": /\\^\\\\/event\\$/i,
             "path": "/event",
+            "value": "/event",
           },
           Object {
             "label": "Add Event Series",
             "match": /\\^\\\\/event-series\\$/i,
             "path": "/event-series",
+            "value": "/event-series",
           },
           Object {
             "label": "Add Talent",
             "match": /\\^\\\\/talent\\$/i,
             "path": "/talent",
+            "value": "/talent",
           },
           Object {
             "label": "Add Venue",
             "match": /\\^\\\\/venue\\$/i,
             "path": "/venue",
+            "value": "/venue",
           },
         ]
       }
@@ -58,21 +62,25 @@ exports[`should render correctly when logged in 1`] = `
             "label": "Medium Tags",
             "match": /\\^\\\\/tags\\\\/medium\\$/i,
             "path": "/tags/medium",
+            "value": "/tags/medium",
           },
           Object {
             "label": "Style Tags",
             "match": /\\^\\\\/tags\\\\/style\\$/i,
             "path": "/tags/style",
+            "value": "/tags/style",
           },
           Object {
             "label": "Audience Tags",
             "match": /\\^\\\\/tags\\\\/audience\\$/i,
             "path": "/tags/audience",
+            "value": "/tags/audience",
           },
           Object {
             "label": "Geo Tags",
             "match": /\\^\\\\/tags\\\\/geo\\$/i,
             "path": "/tags/geo",
+            "value": "/tags/geo",
           },
         ]
       }
@@ -116,21 +124,25 @@ exports[`should render correctly when not showing 1`] = `
             "label": "Add Event",
             "match": /\\^\\\\/event\\$/i,
             "path": "/event",
+            "value": "/event",
           },
           Object {
             "label": "Add Event Series",
             "match": /\\^\\\\/event-series\\$/i,
             "path": "/event-series",
+            "value": "/event-series",
           },
           Object {
             "label": "Add Talent",
             "match": /\\^\\\\/talent\\$/i,
             "path": "/talent",
+            "value": "/talent",
           },
           Object {
             "label": "Add Venue",
             "match": /\\^\\\\/venue\\$/i,
             "path": "/venue",
+            "value": "/venue",
           },
         ]
       }
@@ -148,21 +160,25 @@ exports[`should render correctly when not showing 1`] = `
             "label": "Medium Tags",
             "match": /\\^\\\\/tags\\\\/medium\\$/i,
             "path": "/tags/medium",
+            "value": "/tags/medium",
           },
           Object {
             "label": "Style Tags",
             "match": /\\^\\\\/tags\\\\/style\\$/i,
             "path": "/tags/style",
+            "value": "/tags/style",
           },
           Object {
             "label": "Audience Tags",
             "match": /\\^\\\\/tags\\\\/audience\\$/i,
             "path": "/tags/audience",
+            "value": "/tags/audience",
           },
           Object {
             "label": "Geo Tags",
             "match": /\\^\\\\/tags\\\\/geo\\$/i,
             "path": "/tags/geo",
+            "value": "/tags/geo",
           },
         ]
       }

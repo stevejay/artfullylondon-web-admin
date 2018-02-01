@@ -134,7 +134,7 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  className="src-components-dropdown-index__error"
+  className="src-components-select-index__error"
 >
   <Select
     arrowRenderer={[Function]}

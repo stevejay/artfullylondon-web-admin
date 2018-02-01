@@ -7,16 +7,7 @@ exports[`should render correctly 1`] = `
   >
     Some Name
   </Heading>
-  <SubHeading>
-    Theatre
-  </SubHeading>
-  <Summary
-    style={
-      Object {
-        "marginRight": "3rem",
-      }
-    }
-  >
+  <Summary>
     The Full Address
   </Summary>
 </ContentContainer>

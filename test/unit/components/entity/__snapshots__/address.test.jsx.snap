@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div>
+<React.Fragment>
   <AdditionalDetailHeading>
     Address
   </AdditionalDetailHeading>
   <AdditionalDetailContent>
     26 Foo Street, Bar
   </AdditionalDetailContent>
-</div>
+</React.Fragment>
 `;

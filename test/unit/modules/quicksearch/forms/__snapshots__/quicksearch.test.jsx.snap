@@ -7,15 +7,24 @@ exports[`should render correctly 1`] = `
 >
   <FormRow>
     <Field
-      autoFocus={false}
+      autoFocus={true}
       component={[Function]}
       disabled={false}
-      handleSubmit={[Function]}
       maxLength={100}
       name="term"
-      placeholder="Enter a search term"
+      onAutocompleteSearch={[Function]}
+      onAutocompleteSelect={[Function]}
+      placeholder="Enter a search term…"
       searchInProgress={false}
     />
+    <SearchInputToolbar>
+      <IconButton
+        aria-label="Search"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </SearchInputToolbar>
   </FormRow>
 </Form>
 `;

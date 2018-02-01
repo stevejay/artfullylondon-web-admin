@@ -5,7 +5,7 @@ import _ from 'lodash'
 import * as appActions from '_src/store/actions/app'
 import * as authActions from '_src/store/actions/auth'
 import * as browserActions from '_src/store/actions/browser'
-import * as serverConstantsActions from '_src/store/actions/constants'
+import * as serverConstantsActions from '_src/store/actions/server-constants'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {

@@ -8,9 +8,7 @@ exports[`should render a default icon button correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <FaClose
-    className="icon-button-icon"
-  />
+  <FaClose />
 </button>
 `;
 
@@ -22,9 +20,7 @@ exports[`should render an inverse icon button correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <FaClose
-    className="icon-button-icon"
-  />
+  <FaClose />
 </button>
 `;
 
@@ -37,8 +33,6 @@ exports[`should render icon button that is aria-expanded correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <FaClose
-    className="icon-button-icon"
-  />
+  <FaClose />
 </button>
 `;

@@ -9,7 +9,7 @@ exports[`should render correctly 1`] = `
   transition={[Function]}
 >
   <div
-    className="src-modules-quicksearch-index__modal"
+    className="src-modules-quicksearch-index__modal-container"
   >
     <Toolbar
       className="src-modules-quicksearch-index__toolbar"
@@ -23,6 +23,7 @@ exports[`should render correctly 1`] = `
       <ToolbarItem>
         <IconButton
           aria-label="Close quicksearch dialog"
+          className="src-modules-quicksearch-index__close-button"
           icon={[Function]}
           onClick={[Function]}
           type="default"
@@ -30,6 +31,8 @@ exports[`should render correctly 1`] = `
       </ToolbarItem>
     </Toolbar>
     <ReduxForm
+      onAutocompleteSearch={[Function]}
+      onAutocompleteSelect={[Function]}
       onSubmit={[Function]}
     />
   </div>

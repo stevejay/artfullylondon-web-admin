@@ -18,6 +18,10 @@
       "./test/jest-raf-shim.js",
       "./test/jest-setup.js"
     ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/test___"
+    ],
     "snapshotSerializers": [
       "<rootDir>/node_modules/enzyme-to-json/serializer"
     ],

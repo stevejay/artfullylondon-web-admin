@@ -13,11 +13,6 @@ exports[`should render correctly 1`] = `
 exports[`should render correctly with a style 1`] = `
 <div
   className="src-components-field-border__container"
-  style={
-    Object {
-      "marginLeft": 5,
-    }
-  }
 >
   <div
     id="child"

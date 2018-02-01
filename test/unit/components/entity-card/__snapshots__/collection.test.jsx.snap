@@ -1,44 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly when get is in progress 1`] = `
-<AltBackgroundSection
-  className="src-components-entity-card-collection__background"
+<div
+  className="src-components-entity-card-collection__cards-container"
 >
-  <Loader
-    size="large"
-    type="default"
+  <EntityCard
+    cardContentFactory={[Function]}
+    dateStr="2017/01/18"
+    entity={
+      SummaryVenue {
+        "entity": Object {
+          "id": "some-venue-id",
+        },
+        "postcodeDistrict": undefined,
+      }
+    }
+    key="some-venue-id"
   />
-</AltBackgroundSection>
+</div>
 `;
 
 exports[`should render correctly when there are entities 1`] = `
-<AltBackgroundSection
-  className="src-components-entity-card-collection__background"
+<div
+  className="src-components-entity-card-collection__cards-container"
 >
-  <div
-    className="src-components-entity-card-collection__cards-container"
-  >
-    <EntityCard
-      cardContentFactory={[Function]}
-      dateStr="2017/01/18"
-      entity={
-        SummaryVenue {
-          "entity": Object {
-            "id": "some-venue-id",
-          },
-          "postcodeDistrict": undefined,
-        }
+  <EntityCard
+    cardContentFactory={[Function]}
+    dateStr="2017/01/18"
+    entity={
+      SummaryVenue {
+        "entity": Object {
+          "id": "some-venue-id",
+        },
+        "postcodeDistrict": undefined,
       }
-      key="some-venue-id"
-    />
-  </div>
-</AltBackgroundSection>
+    }
+    key="some-venue-id"
+  />
+</div>
 `;
 
 exports[`should render correctly when there are no entities 1`] = `
-<AltBackgroundSection
-  className="src-components-entity-card-collection__background"
->
-  <NoContent />
-</AltBackgroundSection>
+<div
+  className="src-components-entity-card-collection__cards-container"
+/>
 `;

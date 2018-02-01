@@ -13,7 +13,7 @@ exports[`should render correctly when there is a facebook link 1`] = `
     target="_blank"
   >
     <FaFacebook
-      styleName="icon"
+      className="icon"
     />
   </a>
 </div>
@@ -30,7 +30,7 @@ exports[`should render correctly when there is a twitter link 1`] = `
     target="_blank"
   >
     <FaTwitter
-      styleName="icon"
+      className="icon"
     />
   </a>
 </div>
@@ -47,7 +47,7 @@ exports[`should render correctly when there is an email 1`] = `
     target="_blank"
   >
     <FaEnvelopeO
-      styleName="icon"
+      className="icon"
     />
   </a>
 </div>
@@ -64,7 +64,7 @@ exports[`should render correctly when there is an instagram link 1`] = `
     target="_blank"
   >
     <FaInstagram
-      styleName="icon"
+      className="icon"
     />
   </a>
 </div>

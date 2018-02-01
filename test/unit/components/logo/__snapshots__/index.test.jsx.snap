@@ -204,9 +204,9 @@ exports[`should render a medium normal logo correctly 1`] = `
   aria-label="Artfully London Logo"
   style={
     Object {
-      "height": "47px",
+      "height": "40px",
       "verticalAlign": "bottom",
-      "width": "120px",
+      "width": "100px",
     }
   }
   version="1.1"

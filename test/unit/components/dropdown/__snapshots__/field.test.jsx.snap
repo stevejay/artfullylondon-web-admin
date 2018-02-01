@@ -9,7 +9,7 @@ exports[`should render correctly 1`] = `
   required={false}
   touched={false}
 >
-  <Dropdown
+  <Select
     disabled={false}
     error={null}
     htmlId="some-id"

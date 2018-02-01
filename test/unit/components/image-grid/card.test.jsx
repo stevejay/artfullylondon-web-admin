@@ -16,7 +16,7 @@ it('should render correctly when has a copyright', () => {
       }}
       entityType='venue'
       onDelete={_.noop}
-      onUpdateCopyright={_.noop}
+      onUpdate={_.noop}
       onSetMain={_.noop}
     />
   )
@@ -35,7 +35,7 @@ it('should render correctly when is not main', () => {
       }}
       entityType='venue'
       onDelete={_.noop}
-      onUpdateCopyright={_.noop}
+      onUpdate={_.noop}
       onSetMain={_.noop}
     />
   )
@@ -54,7 +54,7 @@ it('should render correctly when is main', () => {
       }}
       entityType='venue'
       onDelete={_.noop}
-      onUpdateCopyright={_.noop}
+      onUpdate={_.noop}
       onSetMain={_.noop}
     />
   )

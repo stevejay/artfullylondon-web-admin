@@ -8,6 +8,9 @@ exports[`should render correctly 1`] = `
   touched={false}
 >
   <FieldBorder>
+    <ReduxForm
+      onSubmit={[Function]}
+    />
     <Component />
     <ImageGrid>
       <ImageGridCard
@@ -15,7 +18,7 @@ exports[`should render correctly 1`] = `
         key="some-id"
         onDelete={[Function]}
         onSetMain={[Function]}
-        onUpdateCopyright={[Function]}
+        onUpdate={[Function]}
         value={
           Object {
             "id": "some-id",
@@ -26,5 +29,11 @@ exports[`should render correctly 1`] = `
       />
     </ImageGrid>
   </FieldBorder>
+  <UpdateImageModal
+    initialValues={null}
+    onHide={[Function]}
+    onSubmit={[Function]}
+    show={false}
+  />
 </Container>
 `;

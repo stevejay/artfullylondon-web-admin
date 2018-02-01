@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly when not showing the carousel 1`] = `
-<div>
+<React.Fragment>
   <div
     className="src-components-entity-image__container"
   >
@@ -11,7 +11,7 @@ exports[`should render correctly when not showing the carousel 1`] = `
     />
   </div>
   <ImageCredit />
-</div>
+</React.Fragment>
 `;
 
 exports[`should render correctly when showing the carousel 1`] = `

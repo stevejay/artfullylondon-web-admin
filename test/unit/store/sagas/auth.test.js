@@ -149,7 +149,7 @@ describe('attemptAutoLogIn', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.authLogInAttempted()))
+    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 
@@ -161,7 +161,7 @@ describe('attemptAutoLogIn', () => {
 
     let result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.authLogInAttempted()))
+    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 
@@ -178,7 +178,7 @@ describe('attemptAutoLogIn', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.authLogInAttempted()))
+    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 

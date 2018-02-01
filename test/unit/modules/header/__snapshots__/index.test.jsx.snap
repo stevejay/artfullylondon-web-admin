@@ -14,32 +14,37 @@ exports[`should render correctly when logged in 1`] = `
       key="Entities"
     >
       <Dropdown
-        history={Object {}}
+        className="src-modules-header-index__dropdown"
         items={
           Array [
             Object {
               "label": "Add Event",
               "match": /\\^\\\\/event\\$/i,
               "path": "/event",
+              "value": "/event",
             },
             Object {
               "label": "Add Event Series",
               "match": /\\^\\\\/event-series\\$/i,
               "path": "/event-series",
+              "value": "/event-series",
             },
             Object {
               "label": "Add Talent",
               "match": /\\^\\\\/talent\\$/i,
               "path": "/talent",
+              "value": "/talent",
             },
             Object {
               "label": "Add Venue",
               "match": /\\^\\\\/venue\\$/i,
               "path": "/venue",
+              "value": "/venue",
             },
           ]
         }
-        label="Entities"
+        onChange={[Function]}
+        value="Entities"
       />
     </ToolbarItem>
     <ToolbarItem
@@ -47,37 +52,42 @@ exports[`should render correctly when logged in 1`] = `
       key="Tags"
     >
       <Dropdown
-        history={Object {}}
+        className="src-modules-header-index__dropdown"
         items={
           Array [
             Object {
               "label": "Medium Tags",
               "match": /\\^\\\\/tags\\\\/medium\\$/i,
               "path": "/tags/medium",
+              "value": "/tags/medium",
             },
             Object {
               "label": "Style Tags",
               "match": /\\^\\\\/tags\\\\/style\\$/i,
               "path": "/tags/style",
+              "value": "/tags/style",
             },
             Object {
               "label": "Audience Tags",
               "match": /\\^\\\\/tags\\\\/audience\\$/i,
               "path": "/tags/audience",
+              "value": "/tags/audience",
             },
             Object {
               "label": "Geo Tags",
               "match": /\\^\\\\/tags\\\\/geo\\$/i,
               "path": "/tags/geo",
+              "value": "/tags/geo",
             },
           ]
         }
-        label="Tags"
+        onChange={[Function]}
+        value="Tags"
       />
     </ToolbarItem>
     <ToolbarItem>
       <Button
-        ariaLabel="Log out of the app"
+        aria-label="Log out of the app"
         onClick={[Function]}
         type="button"
       >
@@ -85,13 +95,12 @@ exports[`should render correctly when logged in 1`] = `
       </Button>
     </ToolbarItem>
     <ToolbarItem>
-      <Button
-        ariaLabel="Show quicksearch dialog"
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
         onClick={[Function]}
-        type="button"
-      >
-        Quicksearch
-      </Button>
+        type="default"
+      />
     </ToolbarItem>
   </Toolbar>
 </React.Fragment>
@@ -138,32 +147,37 @@ exports[`should render correctly when showing the sidenav 1`] = `
       key="Entities"
     >
       <Dropdown
-        history={Object {}}
+        className="src-modules-header-index__dropdown"
         items={
           Array [
             Object {
               "label": "Add Event",
               "match": /\\^\\\\/event\\$/i,
               "path": "/event",
+              "value": "/event",
             },
             Object {
               "label": "Add Event Series",
               "match": /\\^\\\\/event-series\\$/i,
               "path": "/event-series",
+              "value": "/event-series",
             },
             Object {
               "label": "Add Talent",
               "match": /\\^\\\\/talent\\$/i,
               "path": "/talent",
+              "value": "/talent",
             },
             Object {
               "label": "Add Venue",
               "match": /\\^\\\\/venue\\$/i,
               "path": "/venue",
+              "value": "/venue",
             },
           ]
         }
-        label="Entities"
+        onChange={[Function]}
+        value="Entities"
       />
     </ToolbarItem>
     <ToolbarItem
@@ -171,37 +185,42 @@ exports[`should render correctly when showing the sidenav 1`] = `
       key="Tags"
     >
       <Dropdown
-        history={Object {}}
+        className="src-modules-header-index__dropdown"
         items={
           Array [
             Object {
               "label": "Medium Tags",
               "match": /\\^\\\\/tags\\\\/medium\\$/i,
               "path": "/tags/medium",
+              "value": "/tags/medium",
             },
             Object {
               "label": "Style Tags",
               "match": /\\^\\\\/tags\\\\/style\\$/i,
               "path": "/tags/style",
+              "value": "/tags/style",
             },
             Object {
               "label": "Audience Tags",
               "match": /\\^\\\\/tags\\\\/audience\\$/i,
               "path": "/tags/audience",
+              "value": "/tags/audience",
             },
             Object {
               "label": "Geo Tags",
               "match": /\\^\\\\/tags\\\\/geo\\$/i,
               "path": "/tags/geo",
+              "value": "/tags/geo",
             },
           ]
         }
-        label="Tags"
+        onChange={[Function]}
+        value="Tags"
       />
     </ToolbarItem>
     <ToolbarItem>
       <Button
-        ariaLabel="Log out of the app"
+        aria-label="Log out of the app"
         onClick={[Function]}
         type="button"
       >
@@ -209,13 +228,12 @@ exports[`should render correctly when showing the sidenav 1`] = `
       </Button>
     </ToolbarItem>
     <ToolbarItem>
-      <Button
-        ariaLabel="Show quicksearch dialog"
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
         onClick={[Function]}
-        type="button"
-      >
-        Quicksearch
-      </Button>
+        type="default"
+      />
     </ToolbarItem>
   </Toolbar>
 </React.Fragment>

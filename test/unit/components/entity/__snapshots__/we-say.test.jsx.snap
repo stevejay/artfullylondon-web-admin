@@ -14,12 +14,10 @@ exports[`should render correctly 1`] = `
     className="src-components-entity-we-say__text"
   >
     “
-    <div
-      id="child"
-    />
+    What we say
     ”
   </span>
 </p>
 `;
 
-exports[`should render correctly when there is no content 1`] = `""`;
+exports[`should render correctly when there is no weSay content 1`] = `""`;

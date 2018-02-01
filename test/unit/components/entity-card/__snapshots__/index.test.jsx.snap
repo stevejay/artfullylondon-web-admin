@@ -25,7 +25,6 @@ exports[`should render correctly 1`] = `
   <div
     className="src-components-entity-card-index__actions-row"
   >
-    <Pusher />
     <Link
       className="src-components-entity-card-index__goto-entity"
       data-url="/venue/some-venue-id"

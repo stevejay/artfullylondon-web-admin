@@ -24,13 +24,10 @@ it('should render correctly', () => {
         error: null
       }}
       parentFormName='TheParentFormName'
-      imageActions={{
-        addImage: _.noop,
-        setMainImage: _.noop,
-        deleteImage: _.noop,
-        updateImage: _.noop
-      }}
-      showModal={_.noop}
+      onAddImage={_.noop}
+      onSetMainImage={_.noop}
+      onDeleteImage={_.noop}
+      onUpdateImage={_.noop}
     />
   )
 

@@ -1,3 +1,5 @@
+import * as searchConstants from '_src/constants/search'
+
 export const types = {
   PUSH_BASIC_SEARCH_TO_URL: 'search/PUSH_BASIC_SEARCH_TO_URL',
   SEARCH: 'search/SEARCH',
@@ -11,7 +13,7 @@ export const types = {
 
 export const pushBasicSearchToUrl = payload => ({
   type: types.PUSH_BASIC_SEARCH_TO_URL,
-  payload
+  payload: { ...payload, searchType: searchConstants.SEARCH_TYPE_BASIC }
 })
 
 export const search = payload => ({

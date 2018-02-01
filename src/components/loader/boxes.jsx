@@ -11,13 +11,18 @@ const DELAY_MS = 750
 class BoxesLoader extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { visible: false }
     this.mounted = true
 
-    this.timeout = window.setTimeout(
-      () => this.mounted && this.setState({ visible: true }),
-      props.immediate ? 0 : DELAY_MS
-    )
+    if (props.immediate) {
+      this.state = { visible: true }
+    } else {
+      this.state = { visible: false }
+
+      this.timeout = window.setTimeout(
+        () => this.mounted && this.setState({ visible: true }),
+        DELAY_MS
+      )
+    }
   }
   componentWillUnmount () {
     this.mounted = false

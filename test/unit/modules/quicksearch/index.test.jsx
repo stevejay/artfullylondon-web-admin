@@ -44,7 +44,6 @@ it('should handle submitting the quicksearch form', () => {
 
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.pushBasicSearchToUrl({
-      searchType: searchConstants.SEARCH_TYPE_BASIC,
       query: { term: 'foo', entityType: 'venue' }
     })
   )

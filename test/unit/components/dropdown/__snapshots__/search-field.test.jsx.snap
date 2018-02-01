@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-dropdown-search-field__container"
+  className="src-components-select-search-field__container"
 >
-  <Dropdown
-    className="src-components-dropdown-search-field__dropdown"
+  <Select
+    className="src-components-select-search-field__dropdown"
     disabled={false}
     error={false}
     htmlId="some-id"
@@ -35,10 +35,10 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when disabled 1`] = `
 <div
-  className="src-components-dropdown-search-field__container"
+  className="src-components-select-search-field__container"
 >
-  <Dropdown
-    className="src-components-dropdown-search-field__dropdown"
+  <Select
+    className="src-components-select-search-field__dropdown"
     disabled={true}
     error={false}
     htmlId="some-id"
@@ -64,10 +64,10 @@ exports[`should render correctly when disabled 1`] = `
 
 exports[`should render correctly with an error 1`] = `
 <div
-  className="src-components-dropdown-search-field__container"
+  className="src-components-select-search-field__container"
 >
-  <Dropdown
-    className="src-components-dropdown-search-field__dropdown"
+  <Select
+    className="src-components-select-search-field__dropdown"
     disabled={false}
     error={true}
     htmlId="some-id"
