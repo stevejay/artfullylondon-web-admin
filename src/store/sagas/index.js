@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects'
 import appSagas from './app'
 import authSagas from './auth'
 import browserSagas from './browser'
-import serverConstantsSagas from './server-constants'
+import serverConstantSagas from './server-constant'
 import entitySagas from './entity'
 import imageSagas from './image'
 import linkSagas from './link'
@@ -17,7 +17,7 @@ export default function * () {
   yield all([
     ...appSagas,
     ...authSagas,
-    ...serverConstantsSagas,
+    ...serverConstantSagas,
     ...browserSagas,
     ...notificationSagas,
     ...statusSagas,

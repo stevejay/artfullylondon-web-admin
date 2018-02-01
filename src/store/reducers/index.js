@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import app from './app'
 import auth from './auth'
-import serverConstants from './server-constants'
+import serverConstant from './server-constant'
 import entity from './entity'
 import entityForEdit from './entity-for-edit'
 import search from './search'
@@ -22,7 +22,7 @@ export default combineReducers({
   form: formReducer,
   app,
   auth,
-  serverConstants,
+  serverConstant,
   search,
   tag,
   notification,

@@ -26,14 +26,14 @@ import { selectors as authSelectors } from '_src/store/reducers/auth'
 import * as appActions from '_src/store/actions/app'
 import * as authActions from '_src/store/actions/auth'
 import * as browserActions from '_src/store/actions/browser'
-import * as serverConstantsActions from '_src/store/actions/server-constants'
+import * as serverConstantActions from '_src/store/actions/server-constant'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch(authActions.attemptAutoLogIn())
-    props.dispatch(serverConstantsActions.fetchServerConstants())
+    props.dispatch(serverConstantActions.fetchServerConstants())
     props.dispatch(appActions.checkIfAppWasUpdated())
   }
   handleWindowResize = width => {

@@ -1,11 +1,11 @@
 import deepFreeze from 'deep-freeze'
 
-import serverConstantsReducer from '_src/store/reducers/server-constants'
-import * as serverConstantsLib from '_src/lib/server-constants'
-import * as serverConstantsActions from '_src/store/actions/server-constants'
+import serverConstantReducer from '_src/store/reducers/server-constant'
+import * as serverConstantLib from '_src/lib/server-constant'
+import * as serverConstantActions from '_src/store/actions/server-constant'
 
 it('should have the correct initial state', () => {
-  const actual = serverConstantsReducer(undefined, {})
+  const actual = serverConstantReducer(undefined, {})
 
   expect(actual).toEqual(
     expect.objectContaining({
@@ -19,7 +19,7 @@ it('should have the correct initial state', () => {
 })
 
 it('should handle a fetch server constants succeeded action', () => {
-  serverConstantsLib.mapServerConstantsData = jest
+  serverConstantLib.mapServerConstantsData = jest
     .fn()
     .mockImplementation(data => data)
 
@@ -28,9 +28,9 @@ it('should handle a fetch server constants succeeded action', () => {
     heroImage: { name: 'old name' }
   })
 
-  const actual = serverConstantsReducer(
+  const actual = serverConstantReducer(
     state,
-    serverConstantsActions.fetchServerConstantsSucceeded({
+    serverConstantActions.fetchServerConstantsSucceeded({
       heroImage: { name: 'new name' }
     })
   )

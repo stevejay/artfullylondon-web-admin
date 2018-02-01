@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions'
 
-import { types } from '_src/store/actions/server-constants'
-import * as serverConstantsLib from '_src/lib/server-constants'
+import { types } from '_src/store/actions/server-constant'
+import * as serverConstantLib from '_src/lib/server-constant'
 import serverConstants from './server-constants.json'
 
 const initialState = Object.assign(
   { loading: true },
-  serverConstantsLib.mapServerConstantsData(serverConstants)
+  serverConstantLib.mapServerConstantsData(serverConstants)
 )
 
 export default handleActions(
@@ -16,7 +16,7 @@ export default handleActions(
         {},
         state,
         { loading: false },
-        serverConstantsLib.mapServerConstantsData(action.payload)
+        serverConstantLib.mapServerConstantsData(action.payload)
       )
   },
   initialState

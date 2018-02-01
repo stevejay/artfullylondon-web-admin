@@ -5,7 +5,7 @@ import _ from 'lodash'
 import * as appActions from '_src/store/actions/app'
 import * as authActions from '_src/store/actions/auth'
 import * as browserActions from '_src/store/actions/browser'
-import * as serverConstantsActions from '_src/store/actions/server-constants'
+import * as serverConstantActions from '_src/store/actions/server-constant'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {
@@ -64,7 +64,7 @@ it('should trigger initial actions', () => {
   expect(mockDispatch.mock.calls[0]).toEqual([authActions.attemptAutoLogIn()])
 
   expect(mockDispatch.mock.calls[1]).toEqual([
-    serverConstantsActions.fetchServerConstants()
+    serverConstantActions.fetchServerConstants()
   ])
 
   expect(mockDispatch.mock.calls[2]).toEqual([
