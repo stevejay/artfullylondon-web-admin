@@ -5,7 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import NotificationItem from '_src/modules/notification/components/notification'
 import * as notificationConstants from '_src/constants/notification'
-import * as notificationActions from '_src/store/actions/notification'
+import { selectors, notificationActions } from '_src/store'
 import './index.scss'
 
 export class Notification extends React.Component {
@@ -48,5 +48,5 @@ Notification.propTypes = {
 
 export default connect(
   /* istanbul ignore next */
-  state => ({ notifications: state.notification.items })
+  state => ({ notifications: selectors.notifications(state) })
 )(Notification)

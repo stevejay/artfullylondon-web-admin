@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { isPristine } from 'redux-form'
+import * as reduxForm from 'redux-form'
 
 import EntityImage from '_src/components/entity/image'
 import EntityDetailsContainer from '_src/components/entity/details-container'
@@ -10,8 +10,7 @@ import EntityHeading from '_src/components/entity/heading'
 import EditTalentForm from '_src/modules/entity/forms/edit-talent'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import * as notificationActions from '_src/store/actions/notification'
-import * as entityActions from '_src/store/actions/entity'
+import { notificationActions, entityActions } from '_src/store'
 import * as notificationConstants from '_src/constants/notification'
 import * as formConstants from '_src/constants/form'
 
@@ -80,11 +79,11 @@ TalentEditOrCreate.propTypes = {
 
 export default withRouter(
   connect(state => ({
-    imageEditorIsPristine: isPristine(formConstants.IMAGE_EDITOR_FORM_NAME)(
-      state
-    ),
-    linkEditorIsPristine: isPristine(formConstants.LINK_EDITOR_FORM_NAME)(
-      state
-    )
+    imageEditorIsPristine: reduxForm.isPristine(
+      formConstants.IMAGE_EDITOR_FORM_NAME
+    )(state),
+    linkEditorIsPristine: reduxForm.isPristine(
+      formConstants.LINK_EDITOR_FORM_NAME
+    )(state)
   }))(TalentEditOrCreate)
 )

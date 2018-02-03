@@ -4,12 +4,14 @@ import { types } from '_src/store/actions/server-constant'
 import * as serverConstantLib from '_src/lib/server-constant'
 import serverConstants from './server-constants.json'
 
-const initialState = Object.assign(
-  { loading: true },
-  serverConstantLib.mapServerConstantsData(serverConstants)
-)
+export const module = 'serverConstants'
 
-export default handleActions(
+const initialState = {
+  loading: true,
+  ...serverConstantLib.mapServerConstantsData(serverConstants)
+}
+
+export const reducer = handleActions(
   {
     [types.FETCH_SERVER_CONSTANTS_SUCCEEDED]: (state, action) =>
       Object.assign(
@@ -21,3 +23,5 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {}

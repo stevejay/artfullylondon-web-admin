@@ -3,13 +3,15 @@ import { handleActions } from 'redux-actions'
 import * as entityLib from '_src/lib/entity'
 import { types } from '_src/store/actions/status'
 
+export const module = 'status'
+
 const initialState = {
   entityCounts: [],
   getEntityCountsInProgress: false,
   getEntityCountsFailed: false
 }
 
-export default handleActions(
+export const reducer = handleActions(
   {
     [types.GET_ENTITY_COUNTS_STARTED]: state => ({
       ...state,
@@ -38,3 +40,9 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {
+  entityCounts: state => state.entityCounts,
+  gettingEntityCounts: state => state.getEntityCountsInProgress,
+  failedToGetEntityCounts: state => state.getEntityCountsFailed
+}

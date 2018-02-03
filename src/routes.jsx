@@ -22,22 +22,18 @@ import TagsTypePage from '_src/modules/tags/pages/tags-type'
 import SearchResultsPage from '_src/modules/search/pages/results'
 import EntityDetailPage from '_src/modules/entity/pages/detail'
 import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
-import { selectors as authSelectors } from '_src/store/reducers/auth'
-import * as appActions from '_src/store/actions/app'
-import * as authActions from '_src/store/actions/auth'
-import * as browserActions from '_src/store/actions/browser'
-import * as serverConstantActions from '_src/store/actions/server-constant'
+import * as store from '_src/store'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { showQuicksearch: false, showSidenav: false }
-    props.dispatch(authActions.attemptAutoLogIn())
-    props.dispatch(serverConstantActions.fetchServerConstants())
-    props.dispatch(appActions.checkIfAppWasUpdated())
+    props.dispatch(store.authActions.attemptAutoLogIn())
+    props.dispatch(store.serverConstantActions.fetchServerConstants())
+    props.dispatch(store.appActions.checkIfAppWasUpdated())
   }
   handleWindowResize = width => {
-    this.props.dispatch(browserActions.browserWidthChanged(width))
+    this.props.dispatch(store.browserActions.browserWidthChanged(width))
   }
   handleHideQuicksearch = () => {
     this.setState({ showQuicksearch: false })
@@ -129,8 +125,8 @@ export default withRouter(
   connect(
     /* istanbul ignore next */
     state => ({
-      autoLogInAttempted: state.auth.autoLogInAttempted,
-      loggedIn: authSelectors.isLoggedIn(state)
+      autoLogInAttempted: store.selectors.autoLogInAttempted(state),
+      loggedIn: store.selectors.isLoggedIn(state)
     })
   )(Routes)
 )

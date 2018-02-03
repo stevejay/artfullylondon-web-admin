@@ -15,7 +15,7 @@ import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/constants/search'
 import * as searchConstraints from '_src/constants/search-constraints'
 import * as browserConstants from '_src/constants/browser'
-import * as searchActions from '_src/store/actions/search'
+import { selectors, searchActions } from '_src/store'
 import './basic-search.scss'
 
 export class BasicSearchForm extends React.Component {
@@ -111,6 +111,6 @@ const WrappedSearchForm = reduxForm({
 const selector = formValueSelector(formConstants.BASIC_SEARCH_FORM_NAME)
 
 export default connect(state => ({
-  initialValues: state.search.basicSearchParams,
+  initialValues: selectors.basicSearchParams(state),
   entityTypeSelector: selector(state, 'entityType')
 }))(WrappedSearchForm)

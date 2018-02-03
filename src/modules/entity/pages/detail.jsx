@@ -13,7 +13,7 @@ import EventSeriesDetail
   from '_src/modules/entity/components/event-series-detail'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActions from '_src/store/actions/entity'
+import { selectors, entityActions } from '_src/store'
 
 class EntityDetailPage extends React.Component {
   componentWillMount () {
@@ -76,7 +76,7 @@ EntityDetailPage.propTypes = {
 export default connect((state, ownProps) => ({
   entityType: ownProps.match.params.entityType,
   entityId: ownProps.match.params[0],
-  entity: state[ownProps.match.params.entityType].entity,
-  getInProgress: state[ownProps.match.params.entityType].getInProgress,
-  getFailed: state[ownProps.match.params.entityType].getFailed
+  entity: selectors.entity(state),
+  getInProgress: selectors.gettingEntity(state),
+  getFailed: selectors.failedToGetEntity(state)
 }))(EntityDetailPage)

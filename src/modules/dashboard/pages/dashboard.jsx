@@ -8,7 +8,7 @@ import SectionHeading from '_src/components/section/heading'
 import BasicSection from '_src/components/section/basic'
 import StatisticCollection
   from '_src/modules/dashboard/components/statistic/collection'
-import * as statusActions from '_src/store/actions/status'
+import { selectors, statusActions } from '_src/store'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {
@@ -42,8 +42,8 @@ DashboardPage.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({
-    entityCounts: state.status.entityCounts,
-    getInProgress: state.status.getEntityCountsInProgress,
-    getFailed: state.status.getEntityCountsFailed
+    entityCounts: selectors.entityCounts(state),
+    getInProgress: selectors.gettingEntityCounts(state),
+    getFailed: selectors.failedToGetEntityCounts(state)
   })
 )(DashboardPage)

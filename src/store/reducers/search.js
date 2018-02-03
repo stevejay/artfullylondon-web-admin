@@ -9,6 +9,8 @@ import { types as authActionTypes } from '_src/store/actions/auth'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
 
+export const module = 'search'
+
 const initialState = {
   searchInProgress: false,
   basicSearchParams: {
@@ -22,7 +24,7 @@ const initialState = {
   items: null
 }
 
-export default handleActions(
+export const reducer = handleActions(
   {
     [authActionTypes.LOGGED_OUT]: () => initialState,
     [searchActionTypes.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
@@ -69,3 +71,11 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {
+  basicSearchInProgress: state => state.searchInProgress,
+  basicSearchParams: state => state.basicSearchParams,
+  basicSearchResultParams: state => state.basicSearchResultParams,
+  basicSearchTotal: state => state.total,
+  basicSearchItems: state => state.items
+}

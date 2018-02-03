@@ -4,6 +4,8 @@ import _ from 'lodash'
 import { types } from '_src/store/actions/tag'
 import * as tagLib from '_src/lib/tag'
 
+export const module = 'tag'
+
 const initialState = {
   getInProgress: false,
   getFailed: false,
@@ -13,7 +15,7 @@ const initialState = {
   tags: null
 }
 
-export default handleActions(
+export const reducer = handleActions(
   {
     [types.GET_TAGS_STARTED]: (state, action) => ({
       ...state,
@@ -88,5 +90,9 @@ export default handleActions(
 
 export const selectors = {
   getTagsForType: (state, tagType) =>
-    (tagType === state.tag.tagType ? state.tag.tags : null)
+    (tagType === state.tag.tagType ? state.tag.tags : null),
+  gettingTags: state => state.getInProgress,
+  failedToGetTags: state => state.getFailed,
+  addingTag: state => state.addInProgress,
+  deletingTag: state => state.deleteInProgress
 }

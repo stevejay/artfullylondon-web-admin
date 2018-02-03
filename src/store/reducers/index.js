@@ -1,58 +1,41 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import app from './app'
-import auth from './auth'
-import serverConstant from './server-constant'
-import entity from './entity'
-import entityForEdit from './entity-for-edit'
-import search from './search'
-import tag from './tag'
-// import venueForEdit from "./venue-for-edit";
-// import eventMonitors from "./event-monitors";
-import notification from './notification'
-// import eventMonitorForEdit from "./event-monitor-for-edit";
-// import venueMonitorForEdit from "./venue-monitor-for-edit";
-import browser from './browser'
-import status from './status'
-import * as entityConstants from '_src/constants/entity'
 
-// TODO try to consolidate entity reducers to single entries.
+import * as reduxLib from '_src/lib/redux'
+import * as app from './app'
+import * as auth from './auth'
+import * as browser from './browser'
+import * as entityForEdit from './entity-for-edit'
+import * as entity from './entity'
+import * as notification from './notification'
+import * as search from './search'
+import * as serverConstant from './server-constant'
+import * as status from './status'
+import * as tag from './tag'
 
-export default combineReducers({
+export const reducer = combineReducers({
   form: formReducer,
-  app,
-  auth,
-  serverConstant,
-  search,
-  tag,
-  notification,
-  status,
-  // eventMonitors,
-  // eventMonitorForEdit,
-  // venueMonitorForEdit,
-  [entityConstants.ENTITY_TYPE_EVENT]: entity(
-    entityConstants.ENTITY_TYPE_EVENT
-  ),
-  [entityConstants.ENTITY_TYPE_EVENT_SERIES]: entity(
-    entityConstants.ENTITY_TYPE_EVENT_SERIES
-  ),
-  [entityConstants.ENTITY_TYPE_TALENT]: entity(
-    entityConstants.ENTITY_TYPE_TALENT
-  ),
-  [entityConstants.ENTITY_TYPE_VENUE]: entity(
-    entityConstants.ENTITY_TYPE_VENUE
-  ),
-  [entityConstants.ENTITY_TYPE_EVENT + '-for-edit']: entityForEdit(
-    entityConstants.ENTITY_TYPE_EVENT
-  ),
-  [entityConstants.ENTITY_TYPE_EVENT_SERIES + '-for-edit']: entityForEdit(
-    entityConstants.ENTITY_TYPE_EVENT_SERIES
-  ),
-  [entityConstants.ENTITY_TYPE_TALENT + '-for-edit']: entityForEdit(
-    entityConstants.ENTITY_TYPE_TALENT
-  ),
-  [entityConstants.ENTITY_TYPE_VENUE + '-for-edit']: entityForEdit(
-    entityConstants.ENTITY_TYPE_VENUE
-  ),
-  browser
+  [app.module]: app.reducer,
+  [auth.module]: auth.reducer,
+  [browser.module]: browser.reducer,
+  [entityForEdit.module]: entityForEdit.reducer,
+  [entity.module]: entity.reducer,
+  [notification.module]: notification.reducer,
+  [search.module]: search.reducer,
+  [serverConstant.module]: serverConstant.reducer,
+  [status.module]: status.reducer,
+  [tag.module]: tag.reducer
 })
+
+export const selectors = reduxLib.combineSelectors(
+  reduxLib.mapSelectors(app.selectors, app.module),
+  reduxLib.mapSelectors(auth.selectors, auth.module),
+  reduxLib.mapSelectors(browser.selectors, browser.module),
+  reduxLib.mapSelectors(entityForEdit.selectors, entityForEdit.module),
+  reduxLib.mapSelectors(entity.selectors, entity.module),
+  reduxLib.mapSelectors(notification.selectors, notification.module),
+  reduxLib.mapSelectors(search.selectors, search.module),
+  reduxLib.mapSelectors(serverConstant.selectors, serverConstant.module),
+  reduxLib.mapSelectors(status.selectors, status.module),
+  reduxLib.mapSelectors(tag.selectors, tag.module)
+)

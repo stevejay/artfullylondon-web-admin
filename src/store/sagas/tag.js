@@ -8,22 +8,23 @@ import {
 } from 'redux-form'
 import log from 'loglevel'
 
+import normalise from '_src/lib/normalise'
+import tagConstraint from '_src/constants/tag-constraint'
+import tagNormaliser from '_src/constants/tag-normaliser'
+import * as authLib from '_src/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
 import * as tagActions from '_src/store/actions/tag'
 import * as formConstants from '_src/constants/form'
-import * as authLib from '_src/lib/auth'
-import normalise from '_src/lib/normalise'
-import tagConstraint from '_src/constants/tag-constraint'
-import tagNormaliser from '_src/constants/tag-normaliser'
+import * as authSagas from '_src/store/sagas/auth'
 
 // function * getAllTags () {
 //   try {
 //     yield put({ type: tagActionTypes.GET_TAGS_STARTED })
 
 //     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
-//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const token = yield call(authSagas.getAuthTokenForCurrentUser)
 //     const json = yield call(fetchLib.get, url, token)
 
 //     yield put({
@@ -43,7 +44,7 @@ export function * getTags (action) {
 
     const url =
       process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.get, url, token)
 
     yield put(tagActions.getTagsSucceeded(json.tags[tagType] || []))
@@ -63,7 +64,7 @@ export function * addTag (action) {
 
     const { tagType, label } = values
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${tagType}`
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     const json = yield call(fetchLib.post, url, { label }, token)
 
     yield put(tagActions.addTagSucceeded(json.tag))
@@ -112,7 +113,7 @@ export function * deleteTag (action) {
     yield put(tagActions.deleteTagStarted())
 
     const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     yield call(fetchLib.httpDelete, url, token)
 
     yield put(tagActions.deleteTagSucceeded(id))

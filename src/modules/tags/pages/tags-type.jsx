@@ -9,8 +9,7 @@ import BasicSection from '_src/components/section/basic'
 import SectionHeading from '_src/components/section/heading'
 import TagCollection from '_src/modules/tags/components/tag-collection'
 import AddTagForm from '_src/modules/tags/forms/add-tag'
-import { selectors as tagSelectors } from '_src/store/reducers/tag'
-import * as tagActions from '_src/store/actions/tag'
+import { selectors, tagActions } from '_src/store'
 import * as tagLib from '_src/lib/tag'
 import './tags-type.scss'
 
@@ -81,11 +80,11 @@ TagsType.propTypes = {
 
 export default connect((state, ownProps) => ({
   tagType: tagLib.getTagTypeUrlParameter(ownProps.match),
-  tags: tagSelectors.getTagsForType(
+  tags: selectors.getTagsForType(
     state,
     tagLib.getTagTypeUrlParameter(ownProps.match)
   ),
-  getInProgress: state.tag.getInProgress,
-  getFailed: state.tag.getFailed,
-  deleteInProgress: state.tag.deleteInProgress
+  getInProgress: selectors.gettingTags(state),
+  getFailed: selectors.failedToGetTags(state),
+  deleteInProgress: selectors.deletingTag(state)
 }))(TagsType)

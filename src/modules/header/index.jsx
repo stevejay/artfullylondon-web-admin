@@ -13,9 +13,7 @@ import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 // import Dropdown from '_src/modules/header/components/dropdown'
 import Dropdown from '_src/components/dropdown'
-import * as authActions from '_src/store/actions/auth'
-import { selectors as authSelectors } from '_src/store/reducers/auth'
-import { selectors as browserSelectors } from '_src/store/reducers/browser'
+import { selectors, authActions } from '_src/store'
 import * as menuConstants from '_src/constants/menu'
 import './index.scss'
 
@@ -119,8 +117,8 @@ export default withRouter(
   connect(
     /* istanbul ignore next */
     state => ({
-      loggedIn: authSelectors.isLoggedIn(state),
-      isWideBrowser: browserSelectors.isWideBrowser(state)
+      loggedIn: selectors.isLoggedIn(state),
+      isWideBrowser: selectors.isWideBrowser(state)
     })
   )(Header)
 )

@@ -1,13 +1,14 @@
-import { put, call, takeLatest } from 'redux-saga/effects'
+import { put, call, takeLatest, select } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
-import * as authActions from '_src/store/actions/auth'
 import * as authLib from '_src/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as authConstraints from '_src/constants/auth-constraints'
 import * as formConstants from '_src/constants/form'
+import * as authActions from '_src/store/actions/auth'
+import { selectors } from '_src/store/reducers'
 import history from '_src/history'
 
 export function * attemptAutoLogIn () {
@@ -58,6 +59,25 @@ export function * logOut () {
     yield call(log.error, err)
   } finally {
     yield put(authActions.loggedOut({ resetUsername: true }))
+  }
+}
+
+// used by others
+export function * getAuthTokenForCurrentUser () {
+  const isLoggedIn = yield select(selectors.isLoggedIn)
+
+  if (isLoggedIn) {
+    const cognitoUser = yield select(selectors.cognitoUser)
+    const token = yield call(authLib.getSessionToken, cognitoUser)
+
+    if (token) {
+      return token
+    } else {
+      yield put(authActions.loggedOut)
+      throw new Error('user not authenticated')
+    }
+  } else {
+    throw new Error('user not authenticated')
   }
 }
 

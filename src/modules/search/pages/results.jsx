@@ -19,7 +19,7 @@ import { SummaryVenue } from '_src/entities/venue'
 import * as timeLib from '_src/lib/time'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
-import * as searchActions from '_src/store/actions/search'
+import { selectors, searchActions } from '_src/store'
 import './results.scss'
 
 class SearchResultsPage extends React.Component {
@@ -147,8 +147,8 @@ SearchResultsPage.propTypes = {
 }
 
 export default connect(state => ({
-  resultParams: state.search.basicSearchResultParams,
-  total: state.search.total,
-  items: state.search.items,
-  searchInProgress: state.search.searchInProgress
+  resultParams: selectors.basicSearchResultParams(state),
+  total: selectors.basicSearchTotal(state),
+  items: selectors.basicSearchItems(state),
+  searchInProgress: selectors.basicSearchInProgress(state)
 }))(SearchResultsPage)

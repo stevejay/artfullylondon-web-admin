@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import FadeTransition from '_src/components/transition/fade'
 import Button from '_src/components/button'
-import * as appActions from '_src/store/actions/app'
+import { selectors, appActions } from '_src/store'
 import './index.scss'
 
 export class AppUpdater extends React.Component {
@@ -36,5 +36,5 @@ AppUpdater.propTypes = {
 }
 
 export default connect(state => ({
-  shouldUpdate: state.app.shouldUpdate
+  shouldUpdate: selectors.shouldUpdate(state)
 }))(AppUpdater)

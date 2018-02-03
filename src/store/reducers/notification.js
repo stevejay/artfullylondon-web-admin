@@ -2,11 +2,13 @@ import { handleActions } from 'redux-actions'
 
 import { types } from '_src/store/actions/notification'
 
+export const module = 'notification'
+
 const initialState = {
   items: []
 }
 
-export default handleActions(
+export const reducer = handleActions(
   {
     [types.NOTIFICATION_ADDED]: (state, action) => ({
       ...state,
@@ -21,3 +23,7 @@ export default handleActions(
   },
   initialState
 )
+
+export const selectors = {
+  notifications: state => state.items
+}

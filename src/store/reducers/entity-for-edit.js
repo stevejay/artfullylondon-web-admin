@@ -7,6 +7,8 @@ import { types } from '_src/store/actions/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as locationConstants from '_src/constants/location'
 
+export const module = 'entityForEdit'
+
 const initialState = {
   entityId: null,
   entity: null,
@@ -14,61 +16,40 @@ const initialState = {
   getFailed: false
 }
 
-export default function (entityType) {
-  return handleActions(
-    {
-      [types.RESET_ENTITY_FOR_EDIT]: (state, action) => {
-        if (action.payload.entityType !== entityType) {
-          return state
-        }
+export const reducer = handleActions(
+  {
+    [types.RESET_ENTITY_FOR_EDIT]: (state, action) => ({
+      ...initialState,
+      entity: getEntityDefaultValues(action.payload.entityType)
+    }),
+    [types.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => ({
+      ...initialState,
+      entityId: action.payload.id,
+      entity: null,
+      getInProgress: true,
+      getFailed: false
+    }),
+    [types.GET_ENTITY_FOR_EDIT_SUCCEEDED]: (state, action) => ({
+      ...state,
+      getInProgress: false,
+      getFailed: false,
+      entity: getMappingFunc(action.payload.entity.entityType)(
+        action.payload.entity
+      )
+    }),
+    [types.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => ({
+      ...initialState,
+      getFailed: true
+    })
+  },
+  initialState
+)
 
-        return {
-          ...initialState,
-          entity: getEntityDefaultValues(entityType)
-        }
-      },
-      [types.GET_ENTITY_FOR_EDIT_STARTED]: (state, action) => {
-        if (action.payload.entityType !== entityType) {
-          return state
-        }
-
-        return {
-          ...initialState,
-          entityId: action.payload.id,
-          entity: null,
-          getInProgress: true,
-          getFailed: false
-        }
-      },
-      [types.GET_ENTITY_FOR_EDIT_SUCCEEDED]: (state, action) => {
-        if (action.payload.entityType !== entityType) {
-          return state
-        }
-
-        if (action.payload.entity.id !== state.entityId) {
-          return state
-        }
-
-        return {
-          ...state,
-          getInProgress: false,
-          getFailed: false,
-          entity: getMappingFunc(entityType)(action.payload.entity)
-        }
-      },
-      [types.GET_ENTITY_FOR_EDIT_FAILED]: (state, action) => {
-        if (action.payload.entityType !== entityType) {
-          return state
-        }
-
-        return {
-          ...initialState,
-          getFailed: true
-        }
-      }
-    },
-    initialState
-  )
+export const selectors = {
+  entityForEdit: state => state.entity,
+  entityForEditId: state => state.entityId,
+  gettingEntityForEdit: state => state.getInProgress,
+  failedToGetEntityForEdit: state => state.getFailed
 }
 
 function getMappingFunc (entityType) {

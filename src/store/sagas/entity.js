@@ -27,6 +27,7 @@ import * as notificationConstants from '_src/constants/notification'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
 import * as mappingsLib from '_src/lib/mappings'
+import * as authSagas from '_src/store/sagas/auth'
 
 function * getEntity (action) {
   const { entityType, id } = action.payload
@@ -34,7 +35,7 @@ function * getEntity (action) {
   try {
     yield put(entityActions.getEntityStarted(entityType, id))
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
     const json = yield call(get, url, token)
 
@@ -58,7 +59,7 @@ function * saveEntity (action) {
     const constraint = _getConstraintForEntityType(entityType)
     yield call(validationLib.validate, values, constraint)
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     const mapper = _getMapperForEntityType(entityType)
     let json = null
 
@@ -159,7 +160,7 @@ function * getEntityForEdit (action) {
   try {
     yield put(entityActions.getEntityForEditStarted(entityType, id))
 
-    const token = yield call(authLib.getAuthTokenForCurrentUser)
+    const token = yield call(authSagas.getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
     const json = yield call(get, url, token)
 
@@ -177,7 +178,7 @@ function * getEntityForEdit (action) {
 //   try {
 //     yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
 
-//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const token = yield call(authSagas.getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
 //     const json = yield call(get, url, token)
 
@@ -204,7 +205,7 @@ function * getEntityForEdit (action) {
 //       payload: { entityType, subEntityType }
 //     })
 
-//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const token = yield call(authSagas.getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
 //     const json = yield call(get, url, token)
 
@@ -295,7 +296,7 @@ function * getEntityForEdit (action) {
 //       }
 //     }
 
-//     const token = yield call(authLib.getAuthTokenForCurrentUser)
+//     const token = yield call(authSagas.getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
 //     const mappedValues = mappingsLib.mapTalentToServer(values)
 //     const json = yield call(post, url, mappedValues, token)

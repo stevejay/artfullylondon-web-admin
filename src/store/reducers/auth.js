@@ -3,6 +3,8 @@ import { handleActions } from 'redux-actions'
 import * as authConstants from '_src/constants/auth'
 import { types } from '_src/store/actions/auth'
 
+export const module = 'auth'
+
 const initialState = {
   autoLogInAttempted: false,
   state: authConstants.AUTH_STATE_NOT_LOGGED_IN,
@@ -10,7 +12,7 @@ const initialState = {
   username: ''
 }
 
-export default handleActions(
+export const reducer = handleActions(
   {
     [types.AUTO_LOG_IN_ATTEMPTED]: state => ({
       ...state,
@@ -42,6 +44,8 @@ export default handleActions(
 )
 
 export const selectors = {
-  // parameters: (state)
-  isLoggedIn: state => state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
+  isLoggedIn: state => state.state === authConstants.AUTH_STATE_LOGGED_IN,
+  username: state => state.username,
+  autoLogInAttempted: state => state.autoLogInAttempted,
+  cognitoUser: state => state.cognitoUser
 }

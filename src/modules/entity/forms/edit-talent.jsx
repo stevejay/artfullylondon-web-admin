@@ -17,8 +17,7 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as formConstants from '_src/constants/form'
-import * as imageActions from '_src/store/actions/image'
-import * as linkActions from '_src/store/actions/link'
+import { imageActions, linkActions } from '_src/store'
 import constraint from '_src/constants/talent-constraint'
 
 export class EditTalentForm extends React.Component {

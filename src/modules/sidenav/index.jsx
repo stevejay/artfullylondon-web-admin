@@ -9,9 +9,8 @@ import HeaderLogo from '_src/components/logo/header'
 import SidenavButton from '_src/modules/sidenav/components/button'
 import ModalTransition from '_src/modules/sidenav/components/modal-transition'
 import Menu from '_src/modules/sidenav/components/menu'
-import * as authActions from '_src/store/actions/auth'
+import { selectors, authActions } from '_src/store'
 import * as menuConstants from '_src/constants/menu'
-import * as authConstants from '_src/constants/auth'
 import './index.scss'
 
 export class Sidenav extends React.Component {
@@ -87,8 +86,6 @@ Sidenav.propTypes = {
 export default withRouter(
   connect(
     /* istanbul ignore next */
-    state => ({
-      loggedIn: state.auth.state === authConstants.AUTH_STATE_LOGGED_IN
-    })
+    state => ({ loggedIn: selectors.isLoggedIn(state) })
   )(Sidenav)
 )

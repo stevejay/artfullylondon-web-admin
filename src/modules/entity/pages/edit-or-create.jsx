@@ -15,7 +15,7 @@ import EventEditOrCreate
 import EventSeriesEditOrCreate
   from '_src/modules/entity/components/event-series-edit-or-create'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActions from '_src/store/actions/entity'
+import { selectors, entityActions } from '_src/store'
 
 class EntityEditOrCreatePage extends React.Component {
   componentWillMount () {
@@ -84,8 +84,7 @@ EntityEditOrCreatePage.propTypes = {
 export default connect((state, ownProps) => ({
   entityType: ownProps.match.params.entityType,
   entityId: ownProps.match.params[0],
-  entity: state[ownProps.match.params.entityType + '-for-edit'].entity,
-  getInProgress: state[ownProps.match.params.entityType + '-for-edit']
-    .getInProgress,
-  getFailed: state[ownProps.match.params.entityType + '-for-edit'].getFailed
+  entity: selectors.entityForEdit(state),
+  getInProgress: selectors.gettingEntityForEdit(state),
+  getFailed: selectors.failedToGetEntityForEdit(state)
 }))(EntityEditOrCreatePage)

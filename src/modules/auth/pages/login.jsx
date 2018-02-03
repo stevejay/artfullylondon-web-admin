@@ -6,7 +6,7 @@ import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
 import LoginForm from '_src/modules/auth/forms/login'
 import * as authConstraints from '_src/constants/auth-constraints'
-import * as authActions from '_src/store/actions/auth'
+import { selectors, authActions } from '_src/store'
 import './login.scss'
 
 export class LoginPage extends React.Component {
@@ -37,5 +37,5 @@ LoginPage.propTypes = {
 
 export default connect(
   /* istanbul ignore next */
-  state => ({ initialUsername: state.auth.username })
+  state => ({ initialUsername: selectors.username(state) })
 )(LoginPage)
