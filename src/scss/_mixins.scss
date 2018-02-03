@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import '_variables';
 
 @mixin below-medium-mobile {
   @media (max-width: #{$medium-mobile-width - 1px}) {

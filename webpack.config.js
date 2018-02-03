@@ -22,6 +22,7 @@ const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
+const SCSS_DIR = path.join(SRC_DIR, './scss')
 const BUILD_DIR = path.join(__dirname, './build')
 const CSS_MODULES_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
 const VERSION_FILE_NAME = 'version.json'
@@ -33,7 +34,7 @@ const extractAppCSS = new ExtractTextPlugin({
 })
 
 const extractStartupCSS = new ExtractTextPlugin({
-  filename: 'static/startup.[contenthash].css',
+  filename: 'static/global.[contenthash].css',
   disable: !PRODUCTION,
   allChunks: true
 })
@@ -136,7 +137,7 @@ if (PRODUCTION) {
     // Must come after HtmlWebpackPlugin and the extract CSS plugins:
     new StyleExtHtmlWebpackPlugin({
       enabled: true,
-      cssRegExp: /startup/,
+      cssRegExp: /global/,
       position: 'head-bottom',
       minify: true
     }),
@@ -219,7 +220,7 @@ function sassLoader (extractTextPluginInstance, useModules, opts) {
           loader: 'sass-loader',
           options: {
             sourceMap: !PRODUCTION,
-            includePaths: [SRC_DIR]
+            includePaths: [SCSS_DIR]
           }
         }
       ]
@@ -293,12 +294,12 @@ module.exports = {
         include: CSS_MODULES_FILES_REGEX
       }),
       sassLoader(extractStartupCSS, false, {
-        include: path.resolve(SRC_DIR, 'startup.scss')
+        include: path.resolve(SCSS_DIR, 'global.scss')
       }),
       sassLoader(extractAppCSS, false, {
         exclude: [
           CSS_MODULES_FILES_REGEX,
-          path.resolve(SRC_DIR, 'startup.scss')
+          path.resolve(SCSS_DIR, 'global.scss')
         ]
       })
     ]

@@ -1,9 +1,6 @@
 import 'sanitize.css/sanitize.css'
-import './variables.scss'
-import './mixins.scss'
-import './site.scss'
-import './startup.scss'
 import 'react-day-picker/lib/style.css'
+import './scss/global.scss'
 
 import React from 'react'
 import { render } from 'react-dom'

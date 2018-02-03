@@ -61,3 +61,4 @@ _meta
 
 # Webpack build artifacts
 .webpack
+version.json

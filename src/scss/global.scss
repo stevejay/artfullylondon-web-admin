@@ -1,6 +1,7 @@
-// Site-wide CSS Rules
-@import 'variables.scss';
-@import 'mixins.scss';
+@import 'theme';
+@import '_loading-screen';
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
 
 html {
@@ -50,16 +51,6 @@ p {
   line-height: 1.4;
   color: $three-quarter-black;
 }
-
-$input-placeholder-color: rgba(0,
-0,
-0,
-.3);
-
-$input-placeholder-focus-color: rgba(0,
-0,
-0,
-.55);
 
 ::-webkit-input-placeholder {
   color: $input-placeholder-color;

@@ -36,8 +36,8 @@
 
 <body id="body">
     <div id="react-root"></div>
-    <div id='startup-dialog'>
-        <div id="startup-spinner" role='alert' aria-busy>
+    <div id='loading-screen-dialog'>
+        <div id="loading-screen-spinner" role='alert' aria-busy>
             <span></span>
             <span></span>
             <span></span>
@@ -55,7 +55,7 @@
     </div>
     <%= htmlWebpackPlugin.files.webpackManifest %>
         <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <% if (htmlWebpackPlugin.files.css[css].indexOf('startup') === -1) { %>
+            <% if (htmlWebpackPlugin.files.css[css].indexOf('global') === -1) { %>
                 <link rel="stylesheet" href="/<%= htmlWebpackPlugin.files.css[css] %>">
                 <% } %>
                     <% } %>

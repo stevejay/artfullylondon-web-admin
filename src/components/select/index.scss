@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import 'theme';
 
 :global(.Select) {
     font-size: $input-font-size;
@@ -60,7 +60,7 @@
     background-color: $eighth-black;
 }
 
-:global { @import '../../../node_modules/react-select/scss/default.scss'; }
+:global { @import '../../../node_modules/react-select/scss/default'; }
 
 :global(.Select-control),
 :global(.Select-value),

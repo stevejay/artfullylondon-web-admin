@@ -17,12 +17,11 @@ npm install -g firebase-tools
 
 ### Template HTML File
 
-The site CSS is split into the main CSS and the startup CSS. The aim is to
-get page content displayed as quickly as possible that indicates the site
-is loading. The CSS for this content is inlined into the head of the 
-site's HTML file. The main CSS is in it's own file and is linked to at the 
-bottom of the body of the site's HTML file, along with the site's JavaScript
-files.
+The site CSS is split into the React components' CSS and the global CSS. The aim is to
+get a non-React loading screen displayed while the SPA is downloading and initializing.
+The CSS for this loading screen content is inlined into the head of the 
+site's HTML file. The React components' CSS file is linked to at the bottom 
+of the HTML page body, along with the site's JavaScript files.
 
 The site's JavaScript is split into two files: app and vendor. The app file
 contains the site specific JavaScript and the vendor file contains the
