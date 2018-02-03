@@ -1,7 +1,7 @@
 import RichTextEditor from 'react-rte'
 import { createEntityEditPreviewImageUrl } from '_src/lib/image'
 import {
-  getDateForDatabase,
+  getDateNowForDatabase,
   periodIsLongerThanWeek,
   createTimeKey
 } from '_src/lib/time'
@@ -129,7 +129,7 @@ export function normaliseEventValues (values) {
 export function mapTalentToServer (values) {
   const isIndividual = isIndividualTalent(values.talentType)
   const firstNames = isIndividual ? values.firstNames.trim() : ''
-  const dbDate = getDateForDatabase()
+  const dbDate = getDateNowForDatabase()
 
   return {
     firstNames: firstNames,
@@ -171,7 +171,7 @@ export function mapTalentFromServer (payload) {
 }
 
 export function mapVenueToServer (values) {
-  const dbDate = getDateForDatabase()
+  const dbDate = getDateNowForDatabase()
 
   return {
     name: values.name.trim(),
@@ -252,7 +252,7 @@ export function mapVenueFromServer (payload) {
 }
 
 export function mapEventToServer (values) {
-  const dbDate = getDateForDatabase()
+  const dbDate = getDateNowForDatabase()
   const isFree = !eventIsPaid(values.costType)
   const costFrom = isFree ? null : parseFloat(values.costFrom)
   const costTo = isFree ? null : parseFloat(values.costTo)
@@ -402,7 +402,7 @@ export function mapEventSeriesFromServerForEvent (payload) {
 }
 
 export function mapEventSeriesToServer (values) {
-  const dbDate = getDateForDatabase()
+  const dbDate = getDateNowForDatabase()
 
   const result = {
     name: values.name.trim(),

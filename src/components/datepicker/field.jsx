@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CalendarIcon from 'react-icons/lib/fa/calendar'
+
 import FieldContainer from '_src/components/field/container'
 import Datepicker from '_src/components/datepicker'
 
@@ -24,7 +24,6 @@ class DatepickerField extends React.Component {
       disabled,
       containerStyle,
       dateFormat,
-      showModal,
       placeholder,
       minDate,
       maxDate
@@ -47,10 +46,7 @@ class DatepickerField extends React.Component {
           touched={touched}
           disabled={disabled}
           placeholder={placeholder}
-          forceSingleLine
-          icon={CalendarIcon}
           dateFormat={dateFormat}
-          showModal={showModal}
           minDate={minDate}
           maxDate={maxDate}
           onChange={onChange}
@@ -76,8 +72,7 @@ DatepickerField.propTypes = {
   containerStyle: PropTypes.object,
   minDate: PropTypes.string,
   maxDate: PropTypes.string,
-  placeholder: PropTypes.string,
-  showModal: PropTypes.func.isRequired
+  placeholder: PropTypes.string
 }
 
 export default DatepickerField

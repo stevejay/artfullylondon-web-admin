@@ -1,31 +1,31 @@
 @import 'theme';
 
 .divider {
-    margin: 0 0 1.5rem 0;
-    width: 100%;
-    line-height: 1;
-    height: 0;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    font-size: 1rem;
-    border-top: 1px solid $eighth-black;
+  margin: 0 0 1.5rem 0;
+  width: 100%;
+  line-height: 1;
+  height: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1rem;
+  border-top: 1px solid $eighth-black;
 }
 
 .basic {
-    composes: divider;
+  composes: divider;
 }
 
 .hidden {
-    composes: divider;
-    border-color: transparent !important;
+  composes: divider;
+  border-color: transparent !important;
 }
 
 .threedee {
-    composes: divider;
-    height: 3px;
-    border-top: 2px solid #e8e3d8;
-    border-bottom: 1px solid $white;
+  composes: divider;
+  height: 3px;
+  border-top: 2px solid #e8e3d8;
+  border-bottom: 1px solid $white;
 }

@@ -32,7 +32,7 @@ export function getLondonNowAsMomentDate () {
   return moment().tz('Europe/London')
 }
 
-export function getDateForDatabase () {
+export function getDateNowForDatabase () {
   return moment.utc().format(DATE_FORMAT)
 }
 
@@ -721,7 +721,7 @@ function _isNowClosed (nowStr, times) {
 
 function _getDayNumberFromStringDate (stringDate) {
   // Monday equal 0, Sunday equal 6.
-  const dateDay = _mapStringDateToMoment(stringDate).day()
+  const dateDay = mapStringDateToMoment(stringDate, true).day()
   return dateDay - 1 + (dateDay === 0 ? 7 : 0)
 }
 
@@ -793,8 +793,17 @@ function _removeTimeFromJsDate (date) {
   return moment(date).startOf('day').toDate()
 }
 
-function _mapStringDateToMoment (stringDate, dateFormat) {
-  return moment(stringDate, dateFormat || DATE_FORMAT).tz('Europe/London')
+export function mapStringDateToMoment (
+  stringDate,
+  useLondonTimezone,
+  dateFormat = DATE_FORMAT
+) {
+  if (!stringDate) {
+    return null
+  }
+
+  const result = moment(stringDate, dateFormat)
+  return useLondonTimezone ? result.tz('Europe/London') : result
 }
 
 function _formatTimesForDayDisplay (times) {
@@ -805,6 +814,7 @@ const STRING_DATE_REGEX = /^(\d\d\d\d)\/(\d\d)\/(\d\d)$/
 
 function _getPartsOfStringDate (stringDate) {
   const matches = stringDate.match(STRING_DATE_REGEX)
+
   if (!matches) {
     throw new Error(`failed to parse '${stringDate}' as date`)
   }
@@ -814,6 +824,20 @@ function _getPartsOfStringDate (stringDate) {
     month: matches[2],
     day: matches[3]
   }
+}
+
+export function mapStringDateToJsDate (stringDate) {
+  if (!stringDate || stringDate === '') {
+    return null
+  }
+
+  const parts = _getPartsOfStringDate(stringDate)
+
+  return new Date(
+    parseInt(parts.year),
+    parseInt(parts.month - 1),
+    parseInt(parts.day)
+  )
 }
 
 function _formatOpeningTimeForDisplay (range) {

@@ -1,19 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import moment from 'moment'
 
-import { DATE_FORMAT } from '_src/constants/time'
 import DatepickerModal from '_src/components/datepicker/modal'
 import Select from '_src/components/select'
 import Text from '_src/components/text'
 import FieldResetButton from '_src/components/field/reset-button'
-import {
-  ALLOWED_DATE_PRESET_TYPES,
-  DATE_PRESET_TYPE_DATE,
-  DATE_PRESET_TYPE_THIS_WEEKEND,
-  DATE_PRESET_TYPE_DROPDOWN_OPTIONS
-} from '_src/constants/search'
+import * as timeLib from '_src/lib/time'
+import * as searchConstants from '_src/constants/search'
 import * as browserConstants from '_src/constants/browser'
 import './search-field.scss'
 
@@ -27,14 +21,10 @@ class DatepickerSearchField extends React.Component {
     )
   }
   _convertToMoment (date) {
-    return !!date && date !== '' ? moment(date, DATE_FORMAT) : null
+    return date ? timeLib.mapStringDateToMoment(date) : null
   }
   handleClickText = () => {
-    const { input: { value, onChange }, disabled, minDate } = this.props
-
-    if (disabled) {
-      return
-    }
+    const { input: { value, onChange }, minDate } = this.props
 
     this.props.showModal({
       component: DatepickerModal,
@@ -51,7 +41,7 @@ class DatepickerSearchField extends React.Component {
     })
   }
   handleResetClick = () => {
-    this.props.input.onChange(DATE_PRESET_TYPE_THIS_WEEKEND)
+    this.props.input.onChange(searchConstants.DATE_PRESET_TYPE_THIS_WEEKEND)
   }
   handleKeyPressClose = event => {
     if (event.charCode === browserConstants.ENTER_CHARCODE) {
@@ -59,7 +49,7 @@ class DatepickerSearchField extends React.Component {
     }
   }
   handleChangeDropdown = value => {
-    if (value === DATE_PRESET_TYPE_DATE) {
+    if (value === searchConstants.DATE_PRESET_TYPE_DATE) {
       this.props.input.onChange('')
       setTimeout(this.handleClickText, 0)
     } else {
@@ -69,7 +59,7 @@ class DatepickerSearchField extends React.Component {
   render () {
     const { input: { value } } = this.props
 
-    return _.includes(ALLOWED_DATE_PRESET_TYPES, value)
+    return _.includes(searchConstants.ALLOWED_DATE_PRESET_TYPES, value)
       ? this.renderSelect()
       : this.renderDatepicker()
   }
@@ -91,7 +81,7 @@ class DatepickerSearchField extends React.Component {
           error={error}
           touched={touched}
           disabled={disabled}
-          options={DATE_PRESET_TYPE_DROPDOWN_OPTIONS}
+          options={searchConstants.DATE_PRESET_TYPE_DROPDOWN_OPTIONS}
           searchable={false}
           multi={false}
           htmlId={htmlId}
@@ -112,7 +102,7 @@ class DatepickerSearchField extends React.Component {
 
     const formattedValue = momentValue
       ? momentValue.format(dateFormat)
-      : 'Select a date...'
+      : 'Select a date\u2026'
 
     const hasError = touched && !!error
 
