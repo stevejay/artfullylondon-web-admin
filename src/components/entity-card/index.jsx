@@ -11,7 +11,7 @@ import { SummaryVenue } from '_src/entities/venue'
 import './index.scss'
 
 class EntityCard extends React.Component {
-  shouldComponentUpate (nextProps) {
+  shouldComponentUpdate (nextProps) {
     return (
       nextProps.entity !== this.props.entity ||
       nextProps.dateStr !== this.props.dateStr

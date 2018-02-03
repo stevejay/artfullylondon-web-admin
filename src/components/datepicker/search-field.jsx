@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import moment from 'moment'
+
 import { DATE_FORMAT } from '_src/constants/time'
 import DatepickerModal from '_src/components/datepicker/modal'
 import Select from '_src/components/select'
@@ -13,6 +14,7 @@ import {
   DATE_PRESET_TYPE_THIS_WEEKEND,
   DATE_PRESET_TYPE_DROPDOWN_OPTIONS
 } from '_src/constants/search'
+import * as browserConstants from '_src/constants/browser'
 import './search-field.scss'
 
 class DatepickerSearchField extends React.Component {
@@ -52,7 +54,7 @@ class DatepickerSearchField extends React.Component {
     this.props.input.onChange(DATE_PRESET_TYPE_THIS_WEEKEND)
   }
   handleKeyPressClose = event => {
-    if (event.key === 'Enter') {
+    if (event.charCode === browserConstants.ENTER_CHARCODE) {
       this.handleClickClose()
     }
   }

@@ -3,10 +3,6 @@ import {
   AuthenticationDetails,
   CognitoUser
 } from 'amazon-cognito-identity-js'
-import _ from 'lodash'
-import log from 'loglevel'
-
-import * as authConstants from '_src/constants/auth'
 
 const USER_POOL_DATA = {
   UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,

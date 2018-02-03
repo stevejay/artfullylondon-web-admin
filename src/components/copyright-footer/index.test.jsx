@@ -9,3 +9,9 @@ it('should render correctly', () => {
   const wrapper = shallow(<CopyrightFooter />)
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(<CopyrightFooter />)
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

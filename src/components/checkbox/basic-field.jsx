@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FieldError from '_src/components/field/error'
 import Checkbox from './index'
 
+// TODO remove this:
 const CONTAINER_STYLE = { marginBottom: '1.5rem' }
 
 class BasicField extends React.Component {
@@ -20,7 +22,7 @@ class BasicField extends React.Component {
       meta: { touched, error }
     } = this.props
 
-    // TODO shouldn't the error only be shown if also touched?
+    // TODO should the error only be shown if also touched?
 
     return (
       <div style={CONTAINER_STYLE}>

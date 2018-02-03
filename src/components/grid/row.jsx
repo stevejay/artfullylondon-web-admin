@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import Close from 'react-icons/lib/fa/close'
+
+import * as browserConstants from '_src/constants/browser'
 import './row.scss'
 
 class GridRow extends React.Component {
   handleKeyPress = event => {
-    if (event.key === 'Enter') {
+    if (event.charCode === browserConstants.ENTER_CHARCODE) {
       this.props.onDelete(this.props.id)
     }
   }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
 
 import Loader from '_src/components/loader'
+import * as browserConstants from '_src/constants/browser'
 import './tag.scss'
 
 class Tag extends React.Component {
@@ -13,7 +14,7 @@ class Tag extends React.Component {
     )
   }
   handleKeyPress = event => {
-    if (event.key === 'Enter') {
+    if (event.charCode === browserConstants.ENTER_CHARCODE) {
       this.props.onDelete(this.props.tag.id)
     }
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FieldContainer from '_src/components/field/container'
 import Checkbox from '_src/components/checkbox'
 

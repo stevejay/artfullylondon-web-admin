@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './index.scss'
 
 class Tag extends React.Component {
-  shouldComponentUpate (nextProps) {
+  shouldComponentUpdate (nextProps) {
     return nextProps.tag !== this.props.tag
   }
   render () {

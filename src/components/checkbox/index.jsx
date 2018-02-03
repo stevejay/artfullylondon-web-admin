@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Checkmark from 'react-icons/lib/fa/check'
+import _ from 'lodash'
+
 import './index.scss'
 
 class Checkbox extends React.Component {

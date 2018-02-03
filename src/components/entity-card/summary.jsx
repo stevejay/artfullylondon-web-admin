@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './summary.scss'
 
 class Summary extends React.Component {
-  shouldComponentUpate () {
+  shouldComponentUpdate () {
     return false
   }
   render () {

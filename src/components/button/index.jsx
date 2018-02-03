@@ -4,7 +4,7 @@ import Loader from '_src/components/loader'
 import './index.scss'
 
 class Button extends React.Component {
-  shouldComponentUpate (nextProps) {
+  shouldComponentUpdate (nextProps) {
     return (
       nextProps.disabled !== this.props.disabled ||
       nextProps.submitting !== this.props.submitting

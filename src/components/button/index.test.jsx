@@ -24,3 +24,23 @@ it('should render correctly when disabled', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update when props have not changed', () => {
+  const wrapper = shallow(
+    <Button onClick={_.noop} disabled><div id='child' /></Button>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate({ disabled: true })
+
+  expect(result).toEqual(false)
+})
+
+it('should update when props have changed', () => {
+  const wrapper = shallow(
+    <Button onClick={_.noop} disabled><div id='child' /></Button>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate({ disabled: false })
+
+  expect(result).toEqual(true)
+})

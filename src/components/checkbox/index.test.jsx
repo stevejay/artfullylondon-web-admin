@@ -33,3 +33,31 @@ it('should render correctly when has an error', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update when props have not changed', () => {
+  const wrapper = shallow(
+    <Checkbox checked error={null} touched={false} onChange={_.noop}>
+      <div id='child' />
+    </Checkbox>
+  )
+
+  const result = wrapper
+    .instance()
+    .shouldComponentUpdate({ checked: true, error: null, touched: false })
+
+  expect(result).toEqual(false)
+})
+
+it('should update when props have changed', () => {
+  const wrapper = shallow(
+    <Checkbox checked error={null} touched={false} onChange={_.noop}>
+      <div id='child' />
+    </Checkbox>
+  )
+
+  const result = wrapper
+    .instance()
+    .shouldComponentUpdate({ checked: true, error: null, touched: true })
+
+  expect(result).toEqual(true)
+})
