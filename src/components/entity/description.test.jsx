@@ -29,3 +29,14 @@ it('should render correctly when there is no wikipedia link', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const mockEntity = new FullVenue({})
+  mockEntity.getLinkByType = jest.fn().mockReturnValue(null)
+  mockEntity.createFormattedDescription = jest.fn().mockReturnValue('')
+
+  const wrapper = shallow(<EntityDescription entity={mockEntity} />)
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

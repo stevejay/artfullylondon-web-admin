@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when there is a credit 1`] = `
 <div
   className="src-components-entity-image-credit__credit"
 >
@@ -8,3 +8,5 @@ exports[`should render correctly 1`] = `
   The Credit
 </div>
 `;
+
+exports[`should render correctly when there is no credit 1`] = `""`;

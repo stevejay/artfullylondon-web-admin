@@ -26,10 +26,7 @@ it('should render correctly', () => {
 })
 
 it('should render correctly when there is no disability link', () => {
-  const mockLinks = {
-    getLinkByType: jest.fn().mockReturnValue(null)
-  }
-
+  const mockLinks = { getLinkByType: jest.fn().mockReturnValue(null) }
   accessLib.getAccessText = jest.fn().mockReturnValue('The Access Text')
 
   const wrapper = shallow(
@@ -44,4 +41,23 @@ it('should render correctly when there is no disability link', () => {
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should not update', () => {
+  const mockLinks = { getLinkByType: jest.fn().mockReturnValue(null) }
+  accessLib.getAccessText = jest.fn().mockReturnValue('')
+
+  const wrapper = shallow(
+    <EntityDisabilityAccess
+      wheelchairAccessType={accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS}
+      disabledBathroomType={accessConstants.DISABLED_BATHROOM_TYPE_PRESENT}
+      hearingFacilitiesType={
+        accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS
+      }
+      links={mockLinks}
+    />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
 })

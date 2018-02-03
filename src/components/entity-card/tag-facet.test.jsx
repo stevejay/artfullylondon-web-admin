@@ -22,3 +22,14 @@ it('should render an error tag facet correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(
+    <EntityCardTagFacet type='error'>
+      <div id='child' />
+    </EntityCardTagFacet>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

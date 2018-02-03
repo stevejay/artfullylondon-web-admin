@@ -1,35 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<Container
-  disabled={false}
-  error={null}
-  htmlFor="The Label"
-  label="The Label"
-  required={false}
-  touched={false}
->
-  <Select
-    disabled={false}
-    error={null}
-    htmlId="some-id"
-    labelKey="label"
-    multi={false}
-    name="The Label"
-    onChange={[Function]}
-    options={
-      Array [
-        Object {
-          "label": "A",
-          "value": "a",
-        },
-      ]
-    }
-    searchable={false}
-    simpleValue={false}
-    touched={false}
-    value="term"
-    valueKey="value"
-  />
-</Container>
+<Dropdown
+  compact={true}
+  items={
+    Array [
+      Object {
+        "label": "a",
+      },
+      Object {
+        "label": "b",
+      },
+    ]
+  }
+  onChange={[Function]}
+  value="the value"
+/>
 `;

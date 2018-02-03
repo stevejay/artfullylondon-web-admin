@@ -35,6 +35,9 @@ class DropdownMenuItem extends React.Component {
         {item.label}
       </button>
     )
+
+    // TODO think about an option to render the item as a link:
+
     // <Link
     //   role='menuitem'
     //   styleName={styleName}
@@ -50,7 +53,7 @@ class DropdownMenuItem extends React.Component {
 }
 
 DropdownMenuItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.shape({ label: PropTypes.string.isRequired }).isRequired,
   selected: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   compact: PropTypes.bool,

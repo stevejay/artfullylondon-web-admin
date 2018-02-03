@@ -25,3 +25,14 @@ it('should render an info bar for an event correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const mockVenue = new FullVenue({ id: 'some-venue-id' })
+  mockVenue.createInfoBarLabel = jest.fn().mockReturnValue('Tags Label')
+  mockVenue.getLinkByType = jest.fn().mockReturnValue('http://homepage/link')
+
+  const wrapper = shallow(<InfoBar entity={mockVenue} onClickCopy={_.noop} />)
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

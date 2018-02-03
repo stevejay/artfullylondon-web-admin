@@ -16,3 +16,9 @@ it('should render correctly when there is no weSay content', () => {
   const wrapper = shallow(<EntityWeSay entity={new FullVenue({})} />)
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(<EntityWeSay entity={new FullVenue({})} />)
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

@@ -50,3 +50,10 @@ it('should render correctly when there is an instagram link', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const entity = new FullVenue({ links: [] })
+  const wrapper = shallow(<EntityExternalLinks entity={entity} />)
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

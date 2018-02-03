@@ -8,10 +8,7 @@ import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 import './image.scss'
 
-class EntityImage extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.images !== this.props.images
-  }
+class EntityImage extends React.PureComponent {
   render () {
     const { entityType, images, showCarousel } = this.props
     const hasImages = !!images && images.length > 0
@@ -29,7 +26,7 @@ class EntityImage extends React.Component {
     }
 
     if (showCarousel) {
-      return <ImageCarousel images={images || []} />
+      return <ImageCarousel images={images} />
     }
 
     return (

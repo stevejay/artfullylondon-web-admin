@@ -2,198 +2,154 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className=""
+  className="src-components-dropdown-index__container"
 >
-  <Select
-    arrowRenderer={[Function]}
-    autoBlur={true}
-    autosize={true}
-    backspaceRemoves={true}
-    backspaceToRemoveMessage=""
-    clearAllText="Clear all"
-    clearRenderer={[Function]}
-    clearValueText="Clear value"
-    clearable={false}
-    closeOnSelect={true}
-    deleteRemoves={true}
-    delimiter=","
-    disabled={false}
-    escapeClearsValue={true}
-    filterOptions={[Function]}
-    id="some-id"
-    ignoreAccents={true}
-    ignoreCase={true}
-    inputProps={Object {}}
-    isLoading={false}
-    joinValues={false}
-    labelKey="label"
-    matchPos="any"
-    matchProp="any"
-    menuBuffer={0}
-    menuRenderer={[Function]}
-    multi={false}
-    name="The Name"
-    noResultsText="No results found"
-    onBlurResetsInput={true}
-    onChange={[Function]}
-    onCloseResetsInput={true}
-    onSelectResetsInput={true}
-    openOnClick={true}
-    optionComponent={[Function]}
-    options={
-      Array [
-        Object {
-          "label": "A",
+  <DropdownButton
+    ariaHaspopup={true}
+    compact={true}
+    dropdownIsOpen={false}
+    label="a"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+  />
+  <Overlay
+    container={
+      Dropdown {
+        "_closeMenu": [Function],
+        "_getOverlayTarget": [Function],
+        "context": Object {},
+        "handleBlur": [Function],
+        "handleButtonClick": [Function],
+        "handleContainerMounted": [Function],
+        "handleFocus": [Function],
+        "handleHeaderButtonMounted": [Function],
+        "handleItemClick": [Function],
+        "handleItemMouseEnter": [Function],
+        "handleKeyDown": [Function],
+        "handleKeyPress": [Function],
+        "props": Object {
+          "compact": true,
+          "items": Array [
+            Object {
+              "label": "A",
+              "value": "a",
+            },
+            Object {
+              "label": "B",
+              "value": "b",
+            },
+          ],
+          "onChange": [Function],
           "value": "a",
         },
-      ]
-    }
-    pageSize={5}
-    placeholder="Select..."
-    removeSelected={true}
-    required={false}
-    rtl={false}
-    scrollMenuIntoView={true}
-    searchable={false}
-    simpleValue={false}
-    tabIndex="0"
-    tabSelectsValue={true}
-    trimFilter={true}
-    value="term"
-    valueComponent={[Function]}
-    valueKey="value"
-  />
-</div>
-`;
-
-exports[`should render correctly when disabled 1`] = `
-<div
-  className=""
->
-  <Select
-    arrowRenderer={[Function]}
-    autoBlur={true}
-    autosize={true}
-    backspaceRemoves={true}
-    backspaceToRemoveMessage=""
-    clearAllText="Clear all"
-    clearRenderer={[Function]}
-    clearValueText="Clear value"
-    clearable={false}
-    closeOnSelect={true}
-    deleteRemoves={true}
-    delimiter=","
-    disabled={true}
-    escapeClearsValue={true}
-    filterOptions={[Function]}
-    id="some-id"
-    ignoreAccents={true}
-    ignoreCase={true}
-    inputProps={Object {}}
-    isLoading={false}
-    joinValues={false}
-    labelKey="label"
-    matchPos="any"
-    matchProp="any"
-    menuBuffer={0}
-    menuRenderer={[Function]}
-    multi={false}
-    name="The Name"
-    noResultsText="No results found"
-    onBlurResetsInput={true}
-    onChange={[Function]}
-    onCloseResetsInput={true}
-    onSelectResetsInput={true}
-    openOnClick={true}
-    optionComponent={[Function]}
-    options={
-      Array [
-        Object {
-          "label": "A",
-          "value": "a",
+        "refs": Object {},
+        "state": Object {
+          "isOpen": false,
+          "selectedIndex": null,
         },
-      ]
-    }
-    pageSize={5}
-    placeholder="Select..."
-    removeSelected={true}
-    required={false}
-    rtl={false}
-    scrollMenuIntoView={true}
-    searchable={false}
-    simpleValue={false}
-    tabIndex="-1"
-    tabSelectsValue={true}
-    trimFilter={true}
-    value="term"
-    valueComponent={[Function]}
-    valueKey="value"
-  />
-</div>
-`;
-
-exports[`should render correctly with an error 1`] = `
-<div
-  className="src-components-select-index__error"
->
-  <Select
-    arrowRenderer={[Function]}
-    autoBlur={true}
-    autosize={true}
-    backspaceRemoves={true}
-    backspaceToRemoveMessage=""
-    clearAllText="Clear all"
-    clearRenderer={[Function]}
-    clearValueText="Clear value"
-    clearable={false}
-    closeOnSelect={true}
-    deleteRemoves={true}
-    delimiter=","
-    disabled={false}
-    escapeClearsValue={true}
-    filterOptions={[Function]}
-    id="some-id"
-    ignoreAccents={true}
-    ignoreCase={true}
-    inputProps={Object {}}
-    isLoading={false}
-    joinValues={false}
-    labelKey="label"
-    matchPos="any"
-    matchProp="any"
-    menuBuffer={0}
-    menuRenderer={[Function]}
-    multi={false}
-    name="The Name"
-    noResultsText="No results found"
-    onBlurResetsInput={true}
-    onChange={[Function]}
-    onCloseResetsInput={true}
-    onSelectResetsInput={true}
-    openOnClick={true}
-    optionComponent={[Function]}
-    options={
-      Array [
-        Object {
-          "label": "A",
-          "value": "a",
+        "updater": Updater {
+          "_callbacks": Array [],
+          "_renderer": ReactShallowRenderer {
+            "_context": Object {},
+            "_element": <Dropdown
+              compact={true}
+              items={
+                Array [
+                  Object {
+                    "label": "A",
+                    "value": "a",
+                  },
+                  Object {
+                    "label": "B",
+                    "value": "b",
+                  },
+                ]
+              }
+              onChange={[Function]}
+              value="a"
+            />,
+            "_forcedUpdate": false,
+            "_instance": [Circular],
+            "_newState": null,
+            "_rendered": <div
+              className="src-components-dropdown-index__container"
+            >
+              <DropdownButton
+                ariaHaspopup={true}
+                compact={true}
+                dropdownIsOpen={false}
+                label="a"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+              />
+              <Overlay
+                container={[Circular]}
+                onHide={[Function]}
+                placement="bottom"
+                rootClose={true}
+                shouldUpdatePosition={true}
+                show={false}
+                target={[Function]}
+                transition={[Function]}
+              >
+                <DropdownMenu
+                  compact={true}
+                  items={
+                    Array [
+                      Object {
+                        "label": "A",
+                        "value": "a",
+                      },
+                      Object {
+                        "label": "B",
+                        "value": "b",
+                      },
+                    ]
+                  }
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  selectedIndex={null}
+                />
+              </Overlay>
+            </div>,
+            "_rendering": false,
+            "_updater": [Circular],
+          },
         },
-      ]
+      }
     }
-    pageSize={5}
-    placeholder="Select..."
-    removeSelected={true}
-    required={false}
-    rtl={false}
-    scrollMenuIntoView={true}
-    searchable={false}
-    simpleValue={false}
-    tabIndex="0"
-    tabSelectsValue={true}
-    trimFilter={true}
-    value="term"
-    valueComponent={[Function]}
-    valueKey="value"
-  />
+    onHide={[Function]}
+    placement="bottom"
+    rootClose={true}
+    shouldUpdatePosition={true}
+    show={false}
+    target={[Function]}
+    transition={[Function]}
+  >
+    <DropdownMenu
+      compact={true}
+      items={
+        Array [
+          Object {
+            "label": "A",
+            "value": "a",
+          },
+          Object {
+            "label": "B",
+            "value": "b",
+          },
+        ]
+      }
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      selectedIndex={null}
+    />
+  </Overlay>
 </div>
 `;

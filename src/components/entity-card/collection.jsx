@@ -5,18 +5,10 @@ import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
-import EntityCard from './index'
+import EntityCard from '_src/components/entity-card'
 import './collection.scss'
 
-class EntityCardCollection extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.entities !== this.props.entities ||
-      nextProps.getInProgress !== this.props.getInProgress ||
-      nextProps.dateStr !== this.props.dateStr ||
-      nextProps.className !== this.props.className
-    )
-  }
+class EntityCardCollection extends React.PureComponent {
   componentDidMount () {
     this.props.onMounted && this.props.onMounted()
   }

@@ -13,3 +13,14 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(
+    <EntityFeaturedDetailHeading>
+      <div id='child' />
+    </EntityFeaturedDetailHeading>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

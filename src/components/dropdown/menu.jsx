@@ -6,7 +6,6 @@ import './menu.scss'
 
 const DropdownMenu = ({
   className,
-  style,
   items,
   selectedIndex,
   compact,
@@ -17,7 +16,6 @@ const DropdownMenu = ({
     role='menu'
     className={className}
     styleName={`menu${compact ? '-compact' : ''}`}
-    style={style}
   >
     {items.map((item, index) => (
       <li key={index}>
@@ -36,7 +34,6 @@ const DropdownMenu = ({
 
 DropdownMenu.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.object,
   items: PropTypes.array.isRequired,
   selectedIndex: PropTypes.number,
   compact: PropTypes.bool,

@@ -54,3 +54,47 @@ it('should render correctly when there is no image', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should handle the image load event', () => {
+  const handleImageLoad = jest.fn()
+
+  const wrapper = shallow(
+    <EntityCardImage
+      entity={{
+        id: 'some-id',
+        entityType: 'venue',
+        url: 'http://some/url',
+        image: '12345678',
+        imageRatio: 2,
+        cardImageLoaded: false
+      }}
+      onImageLoad={handleImageLoad}
+    />
+  )
+
+  wrapper.find('img').simulate('load')
+
+  expect(handleImageLoad).toHaveBeenCalledWith({
+    id: 'some-id',
+    entityType: 'venue'
+  })
+})
+
+it('should not update', () => {
+  const wrapper = shallow(
+    <EntityCardImage
+      entity={{
+        id: 'some-id',
+        entityType: 'venue',
+        url: 'http://some/url',
+        image: '12345678',
+        imageRatio: 2,
+        cardImageLoaded: false
+      }}
+      onImageLoad={_.noop}
+    />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

@@ -10,13 +10,7 @@ import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import './index.scss'
 
-class EntityCard extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.entity !== this.props.entity ||
-      nextProps.dateStr !== this.props.dateStr
-    )
-  }
+class EntityCard extends React.PureComponent {
   render () {
     const { entity, cardContentFactory, dateStr, onClick } = this.props
 

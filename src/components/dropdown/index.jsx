@@ -120,7 +120,7 @@ class Dropdown extends React.Component {
       >
         <DropdownButton
           ref={this.handleHeaderButtonMounted}
-          label={value} // TODO change this
+          label={value} // TODO maybe change this
           compact={compact}
           dropdownIsOpen={isOpen}
           onKeyDown={this.handleKeyDown}
@@ -157,8 +157,8 @@ Dropdown.propTypes = {
   value: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  compact: PropTypes.bool
+  compact: PropTypes.bool,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Dropdown

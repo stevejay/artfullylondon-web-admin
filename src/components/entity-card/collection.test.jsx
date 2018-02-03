@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import _ from 'lodash'
 
 import EntityCardCollection from '_src/components/entity-card/collection'
 import { SummaryVenue } from '_src/entities/venue'
@@ -11,6 +12,7 @@ it('should render correctly when get is in progress', () => {
       getInProgress
       dateStr='2017/01/18'
       cardContentFactory={() => 'div'}
+      onMounted={_.noop}
     />
   )
 
@@ -33,7 +35,7 @@ it('should render correctly when there are entities', () => {
 it('should render correctly when there are no entities', () => {
   const wrapper = shallow(
     <EntityCardCollection
-      entities={[]}
+      entities={null}
       getInProgress={false}
       dateStr='2017/01/18'
       cardContentFactory={() => 'div'}

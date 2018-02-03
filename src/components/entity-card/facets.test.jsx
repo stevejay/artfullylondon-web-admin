@@ -12,3 +12,14 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(
+    <EntityCardFacets>
+      <div id='child' />
+    </EntityCardFacets>
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

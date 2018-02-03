@@ -15,10 +15,7 @@ class Image extends React.Component {
   }
   handleImageLoad = () => {
     const { entity: { entityType, id }, onImageLoad } = this.props
-
-    if (onImageLoad) {
-      onImageLoad({ entityType, id })
-    }
+    onImageLoad && onImageLoad({ entityType, id })
   }
   render () {
     const {

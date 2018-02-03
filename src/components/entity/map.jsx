@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import window from 'global/window'
 
 import StaticGoogleMap from '_src/components/google-map/static'
 import Loader from '_src/components/loader'
