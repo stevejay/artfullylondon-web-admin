@@ -9,7 +9,7 @@ import './image-carousel.scss'
 
 // TODO remove the extra render methods.
 
-class ImageCarousel extends React.Component {
+class EntityImageCarousel extends React.Component {
   constructor (props) {
     super(props)
     this.state = { currentIndex: 0 }
@@ -82,7 +82,7 @@ class ImageCarousel extends React.Component {
   }
 }
 
-ImageCarousel.propTypes = {
+EntityImageCarousel.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -93,4 +93,4 @@ ImageCarousel.propTypes = {
   ).isRequired
 }
 
-export default ImageCarousel
+export default EntityImageCarousel

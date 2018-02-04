@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 
 import './autocomplete-header-item.scss'
 
-const AutocompleteHeaderItem = ({ entityName }) =>
+const AutocompleteHeaderItem = ({ label }) => (
   <li styleName='header'>
-    {entityName}
+    {label}
   </li>
+)
 
 AutocompleteHeaderItem.propTypes = {
-  entityName: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired
 }
 
 export default AutocompleteHeaderItem

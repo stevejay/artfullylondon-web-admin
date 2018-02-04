@@ -8,10 +8,7 @@ import Summary from '_src/components/entity-card/summary'
 import Pusher from '_src/components/pusher'
 import { SummaryEvent } from '_src/entities/event'
 
-class EventCardContent extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.dateStr !== this.props.dateStr
-  }
+class EventCardContent extends React.PureComponent {
   render () {
     const { entity } = this.props
 

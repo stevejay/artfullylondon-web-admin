@@ -5,14 +5,7 @@ import PaginationLink from '_src/components/pagination/link'
 import * as pagination from '_src/lib/pagination'
 import './index.scss'
 
-class Pagination extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      this.props.skip !== nextProps.skip ||
-      this.props.take !== nextProps.take ||
-      this.props.total !== nextProps.total
-    )
-  }
+class Pagination extends React.PureComponent {
   render () {
     const { skip, take, total, onPageClick } = this.props
 

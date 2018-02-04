@@ -1,12 +1,12 @@
 @import 'theme';
 
 .options-container {
-    display: flex;
-    border: 1px solid $highlight-color;
-    border-radius: 5px;
-    padding: 1px;
+  display: flex;
+  border: 1px solid $highlight-color;
+  border-radius: 5px;
+  padding: 1px;
 
-    @include below-wide-mobile {
-        width: 100%;
-    }
+  @include below-wide-mobile {
+    width: 100%;
+  }
 }

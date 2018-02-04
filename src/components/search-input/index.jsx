@@ -10,7 +10,7 @@ import './index.scss'
 
 const AUTOCOMPLETE_MIN_SEARCH_TERM_LENGTH = 2
 
-class SearchInput extends React.Component {
+class SearchInput extends React.PureComponent {
   constructor (props) {
     super(props)
 
@@ -32,16 +32,6 @@ class SearchInput extends React.Component {
   componentWillUnmount () {
     this.mounted = false
     document.removeEventListener('click', this.handleDocumentClick, false)
-  }
-  shouldComponentUpdate (nextProps, nextState) {
-    return (
-      nextProps.searchInProgress !== this.props.searchInProgress ||
-      nextProps.value !== this.props.value ||
-      nextProps.disabled !== this.props.disabled ||
-      nextState.autocompleteItems !== this.state.autocompleteItems ||
-      nextState.showAutocomplete !== this.state.showAutocomplete ||
-      nextState.currentSelectIndex !== this.state.currentSelectIndex
-    )
   }
   handleDocumentClick = event => {
     if (!ReactDOM.findDOMNode(this).contains(event.target)) {

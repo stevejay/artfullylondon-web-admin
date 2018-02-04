@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import * as searchConstants from '_src/constants/search'
 import './autocomplete-item.scss'
 
+// TODO there's confusion here about item.output being used for the label,
+// as it's not in AUTOCOMPLETE_ITEM_PROPTYPES.
+
 class AutocompleteItem extends React.Component {
   handleClick = event => {
     event.preventDefault()

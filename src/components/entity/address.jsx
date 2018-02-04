@@ -6,7 +6,7 @@ import AdditionalDetailHeading
 import AdditionalDetailContent
   from '_src/components/entity/additional-detail-content'
 
-class Address extends React.Component {
+class EntityAddress extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -26,8 +26,8 @@ class Address extends React.Component {
   }
 }
 
-Address.propTypes = {
+EntityAddress.propTypes = {
   fullAddress: PropTypes.string.isRequired
 }
 
-export default Address
+export default EntityAddress

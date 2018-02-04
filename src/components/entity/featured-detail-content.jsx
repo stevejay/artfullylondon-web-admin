@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './featured-detail-content.scss'
 
-class FeaturedDetailContent extends React.Component {
+class EntityFeaturedDetailContent extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -12,8 +12,8 @@ class FeaturedDetailContent extends React.Component {
   }
 }
 
-FeaturedDetailContent.propTypes = {
+EntityFeaturedDetailContent.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default FeaturedDetailContent
+export default EntityFeaturedDetailContent

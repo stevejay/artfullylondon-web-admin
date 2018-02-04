@@ -17,3 +17,27 @@ exports[`should render correctly when is not current page 1`] = `
   2
 </button>
 `;
+
+exports[`should render correctly when should be a go to first page link 1`] = `
+<button
+  className="src-components-pagination-link__link-page src-components-pagination-link__base-page"
+  onClick={[Function]}
+  type="button"
+>
+  <FaAngleDoubleLeft
+    styleName="icon"
+  />
+</button>
+`;
+
+exports[`should render correctly when should be a go to last page link 1`] = `
+<button
+  className="src-components-pagination-link__link-page src-components-pagination-link__base-page"
+  onClick={[Function]}
+  type="button"
+>
+  <FaAngleDoubleRight
+    styleName="icon"
+  />
+</button>
+`;

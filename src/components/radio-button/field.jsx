@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RadioButton from './index'
+
+import RadioButton from '_src/components/radio-button'
 import FieldContainer from '_src/components/field/container'
 import './field.scss'
 

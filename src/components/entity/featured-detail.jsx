@@ -7,16 +7,16 @@ import FeaturedDetailContent
   from '_src/components/entity/featured-detail-content'
 import './featured-detail.scss'
 
-const FeaturedDetail = ({ heading, children }) => (
+const EntityFeaturedDetail = ({ heading, children }) => (
   <div styleName='container'>
     <FeaturedDetailHeading>{heading}</FeaturedDetailHeading>
     <FeaturedDetailContent>{children}</FeaturedDetailContent>
   </div>
 )
 
-FeaturedDetail.propTypes = {
+EntityFeaturedDetail.propTypes = {
   heading: PropTypes.any.isRequired,
   children: PropTypes.any.isRequired
 }
 
-export default FeaturedDetail
+export default EntityFeaturedDetail

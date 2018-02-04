@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './additional-detail-heading.scss'
 
-class AdditionalDetailHeading extends React.Component {
+class EntityAdditionalDetailHeading extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -12,8 +12,8 @@ class AdditionalDetailHeading extends React.Component {
   }
 }
 
-AdditionalDetailHeading.propTypes = {
+EntityAdditionalDetailHeading.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default AdditionalDetailHeading
+export default EntityAdditionalDetailHeading

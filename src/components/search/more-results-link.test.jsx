@@ -11,3 +11,15 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should handle being clicked', () => {
+  const handleClick = jest.fn()
+
+  const wrapper = shallow(
+    <SearchMoreResultsLink entityType='event' onClick={handleClick} />
+  )
+
+  wrapper.find('a').simulate('click')
+
+  expect(handleClick).toHaveBeenCalledWith({ entityType: 'event' })
+})

@@ -8,7 +8,7 @@ import AdditionalDetailContent
 import * as linkConstants from '_src/constants/link'
 import * as accessLib from '_src/lib/access'
 
-class DisabilityAccess extends React.Component {
+class EntityDisabilityAccess extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -48,11 +48,11 @@ class DisabilityAccess extends React.Component {
   }
 }
 
-DisabilityAccess.propTypes = {
+EntityDisabilityAccess.propTypes = {
   wheelchairAccessType: PropTypes.string.isRequired,
   disabledBathroomType: PropTypes.string.isRequired,
   hearingFacilitiesType: PropTypes.string.isRequired,
   links: PropTypes.object.isRequired
 }
 
-export default DisabilityAccess
+export default EntityDisabilityAccess

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './featured-detail-heading.scss'
 
-class FeaturedDetailHeading extends React.Component {
+class EntityFeaturedDetailHeading extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -11,8 +11,8 @@ class FeaturedDetailHeading extends React.Component {
   }
 }
 
-FeaturedDetailHeading.propTypes = {
+EntityFeaturedDetailHeading.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default FeaturedDetailHeading
+export default EntityFeaturedDetailHeading

@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import * as accessConstants from '_src/constants/access'
+
 import EntityDisabilityAccess from '_src/components/entity/disability-access'
+import * as accessConstants from '_src/constants/access'
 import * as accessLib from '_src/lib/access'
 
 it('should render correctly', () => {

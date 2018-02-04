@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './section-heading.scss'
 
-class SectionHeading extends React.Component {
+class EntitySectionHeading extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -12,8 +12,8 @@ class SectionHeading extends React.Component {
   }
 }
 
-SectionHeading.propTypes = {
+EntitySectionHeading.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default SectionHeading
+export default EntitySectionHeading

@@ -11,7 +11,7 @@ import * as entityConstants from '_src/constants/entity'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './info-bar.scss'
 
-class InfoBar extends React.Component {
+class EntityInfoBar extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -58,9 +58,9 @@ class InfoBar extends React.Component {
   }
 }
 
-InfoBar.propTypes = {
+EntityInfoBar.propTypes = {
   entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired,
   onClickCopy: PropTypes.func
 }
 
-export default InfoBar
+export default EntityInfoBar

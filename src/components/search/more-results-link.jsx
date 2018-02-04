@@ -12,12 +12,10 @@ class MoreResultsLink extends React.Component {
     this.props.onClick({ entityType: this.props.entityType })
   }
   render () {
-    const { entityType } = this.props
-
     return (
       <p styleName='container'>
         <a onClick={this.handleClick}>Click here</a> to see
-        the full <strong>{entityType}</strong> results
+        the full <strong>{this.props.entityType}</strong> results
       </p>
     )
   }

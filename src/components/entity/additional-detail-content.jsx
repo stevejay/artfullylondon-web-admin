@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './additional-detail-content.scss'
 
-class AdditionalDetailContent extends React.Component {
+class EntityAdditionalDetailContent extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -12,8 +12,8 @@ class AdditionalDetailContent extends React.Component {
   }
 }
 
-AdditionalDetailContent.propTypes = {
+EntityAdditionalDetailContent.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default AdditionalDetailContent
+export default EntityAdditionalDetailContent

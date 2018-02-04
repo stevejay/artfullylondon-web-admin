@@ -1,6 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when should not suggest searching all 1`] = `
+<div
+  className="src-components-search-no-results__container"
+>
+  <FaThumbsODown
+    className="src-components-search-no-results__icon"
+  />
+  <p
+    className="src-components-search-no-results__message"
+  >
+    Nothing found
+  </p>
+</div>
+`;
+
+exports[`should render correctly when should suggest searching all 1`] = `
 <div
   className="src-components-search-no-results__container"
 >

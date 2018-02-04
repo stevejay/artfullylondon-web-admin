@@ -13,14 +13,14 @@ const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (
       (item, index) =>
         (item.autocompleteItemType ===
           searchConstants.AUTOCOMPLETE_ITEM_TYPE_LABEL
-          ? <AutocompleteHeaderItem key={item.label} entityName={item.label} />
+          ? <AutocompleteHeaderItem key={item.label} label={item.label} />
           : <AutocompleteItem
             key={item.id}
             index={index}
             currentIndex={currentIndex}
             item={item}
             onSelect={onSelectItem}
-          />)
+            />)
     )}
   </ul>
 )

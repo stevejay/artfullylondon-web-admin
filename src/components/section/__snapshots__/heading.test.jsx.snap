@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when has a logo 1`] = `
+<div
+  className="src-components-section-heading__container-logo src-components-section-heading__container"
+>
+  <FaCheck
+    className="icon"
+  />
+  <h2
+    className="src-components-section-heading__title"
+  >
+    <div
+      id="child"
+    />
+  </h2>
+</div>
+`;
+
+exports[`should render correctly when has no logo 1`] = `
 <div
   className="src-components-section-heading__container-no-logo src-components-section-heading__container"
 >
