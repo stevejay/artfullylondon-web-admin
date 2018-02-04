@@ -1,20 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+
 import Message from '_src/components/message'
 import { SummaryEventSeries } from '_src/entities/event-series'
 
-const EventSeriesLink = ({ eventSeries }) => {
-  return (
-    <Message type='basic'>
-      This event is part of
-      a {eventSeries.eventSeriesTypeLabel} of events
-      called
-      {' '}
-      <Link to={`/event-series/${eventSeries.id}`}>{eventSeries.name}</Link>
-      .
-    </Message>
-  )
+class EventSeriesLink extends React.Component {
+  shouldComponentUpdate () {
+    return false
+  }
+  render () {
+    const { eventSeries } = this.props
+
+    return (
+      <Message type='basic'>
+        This event is part of
+        a {eventSeries.eventSeriesTypeLabel} of events
+        called
+        {' '}
+        <Link to={`/event-series/${eventSeries.id}`}>{eventSeries.name}</Link>
+        .
+      </Message>
+    )
+  }
 }
 
 EventSeriesLink.propTypes = {

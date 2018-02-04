@@ -20,3 +20,20 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should not update', () => {
+  const wrapper = shallow(
+    <EventSeriesLink
+      eventSeries={
+        new SummaryEventSeries({
+          id: 'some-id',
+          name: 'Some Name',
+          eventSeriesType: EVENT_SERIES_TYPE_SEASON
+        })
+      }
+    />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
+})

@@ -5,27 +5,39 @@ import EventMainDetails from '_src/components/event/main-details'
 import { FullEvent } from '_src/entities/event'
 
 it('should render correctly', () => {
-  const mockEvent = new FullEvent({
+  const event = new FullEvent({
     venue: { url: 'http://some/venue/url', name: 'Venue Name' }
   })
 
-  mockEvent.createEventOccurrenceDescriptionOn = jest
+  event.createEventOccurrenceDescriptionOn = jest
     .fn()
     .mockReturnValue('Event occurrence description')
 
-  mockEvent.createAgeDescription = jest.fn().mockReturnValue('Age description')
+  event.createAgeDescription = jest.fn().mockReturnValue('Age description')
+  event.createCostDescription = jest.fn().mockReturnValue('Cost description')
 
-  mockEvent.createCostDescription = jest
-    .fn()
-    .mockReturnValue('Cost description')
-
-  mockEvent.createBookingDescriptionOn = jest
+  event.createBookingDescriptionOn = jest
     .fn()
     .mockReturnValue('Booking description')
 
   const wrapper = shallow(
-    <EventMainDetails event={mockEvent} dateStr='2017/01/18' />
+    <EventMainDetails event={event} dateStr='2017/01/18' />
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should not update', () => {
+  const event = new FullEvent({ venue: {} })
+  event.createEventOccurrenceDescriptionOn = jest.fn().mockReturnValue('')
+  event.createAgeDescription = jest.fn().mockReturnValue('')
+  event.createCostDescription = jest.fn().mockReturnValue('')
+  event.createBookingDescriptionOn = jest.fn().mockReturnValue('')
+
+  const wrapper = shallow(
+    <EventMainDetails event={event} dateStr='2017/01/18' />
+  )
+
+  const result = wrapper.instance().shouldComponentUpdate()
+  expect(result).toEqual(false)
 })
