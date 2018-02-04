@@ -2,19 +2,19 @@
 
 .label,
 .time {
-    display: inline-block;
-    font-size: 1.2rem;
+  display: inline-block;
+  font-size: 1.2rem;
 }
 
 .label {
-    @include boldFont;
-    color: $three-quarter-black;
+  @include boldFont;
+  color: $three-quarter-black;
 }
 
 .label-basic,
 .label-additional,
 .label-special,
 .label-closure {
-    composes: label;
-    width: 9rem;
+  composes: label;
+  width: 9rem;
 }

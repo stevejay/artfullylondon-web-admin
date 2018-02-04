@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FeaturedDetail from '_src/components/entity/featured-detail'
-import { addDaysToStringDate } from '_src/lib/time'
+import * as timeLib from '_src/lib/time'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 import './current-times.scss'
@@ -15,7 +16,7 @@ class CurrentTimes extends React.Component {
   }
   render () {
     const { dateStr, timeStr, entity, namedClosuresLookup } = this.props
-    const tomorrowStr = addDaysToStringDate(dateStr, 1)
+    const tomorrowStr = timeLib.addDaysToStringDate(dateStr, 1)
 
     const timesTodayStr = entity.createTimesDescriptionForDate(
       dateStr,

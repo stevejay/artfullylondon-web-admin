@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 import Message from '_src/components/message'
@@ -15,8 +16,8 @@ class OpeningTimes extends React.Component {
   }
   render () {
     const { dateStr, entity } = this.props
-
     const timesDetails = entity.createTimesDetailsOn(dateStr)
+
     if (!timesDetails) {
       return null
     }
@@ -26,12 +27,8 @@ class OpeningTimes extends React.Component {
     const hasAdditionalTimes = times.additionalTimes.length > 0
     const hasSpecialTimes = times.specialTimes.length > 0
     const hasClosures = times.closures.length > 0
-    const hasAnyTimes = hasRegularTimes || hasAdditionalTimes
+    // const hasAnyTimes = hasRegularTimes || hasAdditionalTimes
     const showAdditionalTimesHeader = hasRegularTimes && hasAdditionalTimes
-
-    const message = hasAnyTimes
-      ? 'Please contact the venue to confirm these times before making a special trip, especially during holidays.'
-      : 'Openings are to be announced.'
 
     return (
       <div>
@@ -109,7 +106,8 @@ class OpeningTimes extends React.Component {
         </div>
         <Message type='basic'>
           <span styleName='small'>
-            {message}
+            Please contact the venue to confirm these times
+            before making a special trip, especially during holidays.
           </span>
         </Message>
       </div>
