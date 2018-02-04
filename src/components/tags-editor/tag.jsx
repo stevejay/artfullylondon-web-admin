@@ -6,13 +6,7 @@ import Loader from '_src/components/loader'
 import * as browserConstants from '_src/constants/browser'
 import './tag.scss'
 
-class Tag extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.value !== this.props.value ||
-      nextProps.isBeingDeleted !== this.props.isBeingDeleted
-    )
-  }
+class Tag extends React.PureComponent {
   handleKeyPress = event => {
     if (event.charCode === browserConstants.ENTER_CHARCODE) {
       this.props.onDelete(this.props.value.id)

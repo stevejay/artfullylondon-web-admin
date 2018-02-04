@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './index.scss'
 
-class Step extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return this.props.currentPage !== nextProps.currentPage
-  }
+class Step extends React.PureComponent {
   handleClick = () => {
     this.props.onClick(this.props.page)
   }
@@ -18,8 +16,8 @@ class Step extends React.Component {
     const stepStyle = showAsCompleted
       ? 'step-completed'
       : showAsNextPage
-        ? 'step-next'
-        : showAsCurrentPage ? 'step-active' : 'step-disabled'
+          ? 'step-next'
+          : showAsCurrentPage ? 'step-active' : 'step-disabled'
 
     if (showAsCompleted || showAsNextPage) {
       return (

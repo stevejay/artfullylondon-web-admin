@@ -21,3 +21,18 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should render correctly when there are no time range values', () => {
+  const wrapper = shallow(
+    <DateAndTimePeriodEntry
+      value={{
+        key: 'some-key',
+        date: '2017/01/18',
+        audienceTags: [{ id: 'tag-id', label: 'Tag Name' }]
+      }}
+      onDelete={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})

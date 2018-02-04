@@ -16,3 +16,20 @@ exports[`should render correctly 1`] = `
   time="13:00 to 14:00"
 />
 `;
+
+exports[`should render correctly when there are no time range values 1`] = `
+<TimeGridRow
+  audienceTags={
+    Array [
+      Object {
+        "id": "tag-id",
+        "label": "Tag Name",
+      },
+    ]
+  }
+  day="2017/01/18"
+  keyId="some-key"
+  onDelete={[Function]}
+  time={null}
+/>
+`;

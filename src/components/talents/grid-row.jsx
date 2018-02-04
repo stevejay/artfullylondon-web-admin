@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Text from '_src/components/text'
-import { formatTalentName } from '_src/lib/talent'
 import GridRow from '_src/components/grid/row'
+import * as talentLib from '_src/lib/talent'
 import './grid-row.scss'
 
-class TalentsGridRow extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.value !== this.props.value
-  }
+class TalentsGridRow extends React.PureComponent {
   handleRolesChange = event => {
     this.props.onRolesChange(this.props.value.key, event.target.value)
   }
@@ -22,7 +20,7 @@ class TalentsGridRow extends React.Component {
       <GridRow id={value.key} onDelete={onDelete}>
         <div styleName='first-row'>
           <a href={`/talent/${value.id}`} target='_blank' rel='noopener'>
-            {value.name || formatTalentName(value)}
+            {value.name || talentLib.formatTalentName(value)}
           </a>
         </div>
         <Text

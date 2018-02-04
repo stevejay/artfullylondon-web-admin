@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './icon'
+
+import Icon from '_src/components/text/icon'
 import './index.scss'
+
+const MAX_LINE_LENGTH = 100
 
 class Text extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -11,6 +14,10 @@ class Text extends React.Component {
       nextProps.touched !== this.props.touched ||
       nextProps.disabled !== this.props.disabled
     )
+  }
+  handleMounted = ref => {
+    /* istanbul ignore next */
+    this.props.autoFocus && ref.focus()
   }
   render () {
     const {
@@ -35,7 +42,7 @@ class Text extends React.Component {
     } = this.props
 
     const hasError = !!touched && !!error
-    const rows = Math.ceil(maxLength / 100)
+    const rows = Math.ceil(maxLength / MAX_LINE_LENGTH)
     const type = password ? 'password' : 'text'
     const autoCapitalize = autos ? 'sentences' : 'none'
     const autoCorrect = autos ? 'on' : 'off'
@@ -51,7 +58,7 @@ class Text extends React.Component {
         <Icon icon={icon} />
         <input
           {...rest}
-          ref={ref => ref && autoFocus && ref.focus()}
+          ref={this.handleMounted}
           styleName={styleName}
           id={id}
           type={type}
@@ -68,11 +75,11 @@ class Text extends React.Component {
           autoCorrect={autoCorrect}
           autoComplete={autoComplete}
           spellCheck={spellCheck}
-        />
+          />
       </div>
       : <textarea
         {...rest}
-        ref={ref => ref && autoFocus && ref.focus()}
+        ref={this.handleMounted}
         styleName={styleName}
         id={id}
         maxLength={maxLength}
@@ -89,7 +96,7 @@ class Text extends React.Component {
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
         spellCheck={spellCheck}
-      />
+        />
   }
 }
 

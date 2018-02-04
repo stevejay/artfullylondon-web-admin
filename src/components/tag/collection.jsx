@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tag from './index'
+
+import Tag from '_src/components/tag'
 import './collection.scss'
 
-class TagCollection extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.tags !== this.props.tags
-  }
+class TagCollection extends React.PureComponent {
   render () {
     const { tags } = this.props
 
@@ -16,7 +14,7 @@ class TagCollection extends React.Component {
 
     return (
       <div styleName='container'>
-        {(tags || []).map(tag => <Tag key={tag.id} tag={tag} />)}
+        {tags.map(tag => <Tag key={tag.id} tag={tag} />)}
       </div>
     )
   }

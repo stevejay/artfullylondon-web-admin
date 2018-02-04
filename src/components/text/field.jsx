@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Container from '_src/components/field/container'
 import RemainingChars from '_src/components/field/remaining-chars'
-import Text from './index'
+import Text from '_src/components/text'
 
 class TextField extends React.Component {
   constructor (props) {

@@ -43,3 +43,15 @@ it('should render correctly when showing step way after current step', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should handle a step being clicked', () => {
+  const handleClick = jest.fn()
+
+  const wrapper = shallow(
+    <Step title='The Title' page={1} currentPage={5} onClick={handleClick} />
+  )
+
+  wrapper.find('a').simulate('click')
+
+  expect(handleClick).toHaveBeenCalledWith(1)
+})

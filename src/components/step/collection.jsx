@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Step from '_src/components/step'
 import './collection.scss'
 
-class Collection extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return this.props.currentPage !== nextProps.currentPage
-  }
+class Collection extends React.PureComponent {
   render () {
     const { currentPage, onStepClick, steps } = this.props
 

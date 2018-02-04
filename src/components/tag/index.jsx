@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './index.scss'
 
-class Tag extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.tag !== this.props.tag
-  }
+class Tag extends React.PureComponent {
   render () {
     const { tag, ...rest } = this.props
     const { label } = tag

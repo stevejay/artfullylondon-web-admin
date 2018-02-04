@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
@@ -14,6 +15,10 @@ class TimesField extends React.Component {
       nextProps.meta.error !== this.props.meta.error ||
       nextProps.timesRangesOptions !== this.props.timesRangesOptions
     )
+  }
+  handleMounted = ref => {
+    /* istanbul ignore next */
+    this._form = ref
   }
   handleSubmit = values => {
     const { onSubmit, parentFormName } = this.props
@@ -47,7 +52,7 @@ class TimesField extends React.Component {
       >
         <FieldBorder>
           <this.props.formComponent
-            ref={ref => (this._form = ref)}
+            ref={this.handleMounted}
             onSubmit={this.handleSubmit}
             constraint={constraint}
             audienceTags={audienceTags}

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { formatDayNumberForDisplay } from '_src/lib/time'
+
+import * as timeLib from '_src/lib/time'
 import TimeGridRow from '_src/components/time/grid-row'
 
 class DayAndTimeEntry extends React.Component {
@@ -13,7 +14,7 @@ class DayAndTimeEntry extends React.Component {
     return (
       <TimeGridRow
         keyId={value.key}
-        day={formatDayNumberForDisplay(value.day)}
+        day={timeLib.formatDayNumberForDisplay(value.day)}
         time={value.at}
         timesRange={value.timesRangeId}
         audienceTags={value.audienceTags}

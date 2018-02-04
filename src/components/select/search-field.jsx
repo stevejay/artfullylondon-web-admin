@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Dropdown from './index'
+
+import Select from '_src/components/select'
 import FieldResetButton from '_src/components/field/reset-button'
-import { NO_FILTER_VALUE } from '_src/constants/search'
+import * as searchConstants from '_src/constants/search'
 import './search-field.scss'
 
 class SelectSearchField extends React.Component {
@@ -16,7 +17,7 @@ class SelectSearchField extends React.Component {
     )
   }
   handleResetClick = () => {
-    this.props.input.onChange(NO_FILTER_VALUE)
+    this.props.input.onChange(searchConstants.NO_FILTER_VALUE)
   }
   render () {
     const {
@@ -34,11 +35,12 @@ class SelectSearchField extends React.Component {
     } = this.props
 
     const hasError = touched && !!error
-    const hideResetButton = disabled || value === NO_FILTER_VALUE
+    const hideResetButton =
+      disabled || value === searchConstants.NO_FILTER_VALUE
 
     return (
       <div styleName='container'>
-        <Dropdown
+        <Select
           styleName='dropdown'
           value={value}
           onChange={onChange}

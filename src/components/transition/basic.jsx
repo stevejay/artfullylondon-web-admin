@@ -12,7 +12,7 @@ const TRANSITION_STYLES = {
 class BasicTransition extends React.Component {
   render () {
     const { className, children, timeoutMs, ...rest } = this.props
-    const childClassName = children.props ? children.props.className : null
+    const childClassName = children.props.className
 
     return (
       <Transition {...rest} timeout={timeoutMs}>

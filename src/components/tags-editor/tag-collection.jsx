@@ -1,21 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+
 import NoEntries from '_src/components/no-entries'
-import Tag from './tag'
+import Tag from '_src/components/tags-editor/tag'
 import './tag-collection.scss'
 
-class TagCollection extends React.Component {
+class TagCollection extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { deletingTagId: null }
-  }
-  shouldComponentUpdate (nextProps, nextState) {
-    return (
-      nextProps.value !== this.props.value ||
-      nextProps.deleteInProgress !== this.props.deleteInProgress ||
-      nextState.deletingTagId !== this.state.deletingTagId
-    )
   }
   handleDelete = key => {
     this.setState({ deletingTagId: key })

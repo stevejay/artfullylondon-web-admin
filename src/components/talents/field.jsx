@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import Grid from '_src/components/grid'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
-import Grid from '_src/components/grid'
 import TalentsGridRow from '_src/components/talents/grid-row'
-import array from '_src/lib/array'
+import arrayLib from '_src/lib/array'
 
 class TalentsField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -16,17 +17,17 @@ class TalentsField extends React.Component {
   }
   handleDelete = key => {
     const { input: { value, onChange } } = this.props
-    const newValue = array.removeElementByKey(value, key)
+    const newValue = arrayLib.removeElementByKey(value, key)
     onChange(newValue)
   }
   handleRolesChange = (key, roles) => {
     const { input: { value, onChange } } = this.props
-    const newValue = array.updateElementByKey(value, key, { roles })
+    const newValue = arrayLib.updateElementByKey(value, key, { roles })
     onChange(newValue)
   }
   handleCharactersChange = (key, characters) => {
     const { input: { value, onChange } } = this.props
-    const newValue = array.updateElementByKey(value, key, { characters })
+    const newValue = arrayLib.updateElementByKey(value, key, { characters })
     onChange(newValue)
   }
   render () {

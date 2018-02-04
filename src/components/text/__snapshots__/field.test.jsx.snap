@@ -30,6 +30,41 @@ exports[`should render correctly 1`] = `
 </Container>
 `;
 
+exports[`should render correctly when has remaining chars 1`] = `
+<Container
+  disabled={false}
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  required={false}
+  tooltip="The Tooltip"
+  touched={false}
+>
+  <RemainingChars
+    active={false}
+    maxLength={50}
+    value="term"
+  />
+  <Text
+    autoFocus={false}
+    autos={false}
+    disabled={false}
+    error={null}
+    forceSingleLine={false}
+    id="The Label"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    password={false}
+    placeholder="The Placeholder"
+    readOnly={false}
+    touched={false}
+    value="term"
+  />
+</Container>
+`;
+
 exports[`should render correctly with an error 1`] = `
 <Container
   disabled={false}
