@@ -1,8 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render a message with an icon 1`] = `
+<Link
+  className="src-components-message-index__info src-components-message-index__message"
+  replace={false}
+  role="alert"
+  to="/link/to"
+>
+  <FaInfoCircle
+    styleName="icon"
+  />
+  <div
+    className="src-components-message-index__text"
+  >
+    <h4
+      className="src-components-message-index__title"
+    >
+      The Title
+    </h4>
+    <div
+      className="src-components-message-index__detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`should render a message with no link 1`] = `
+<div
+  className="src-components-message-index__info src-components-message-index__message"
+  role="alert"
+>
+  <div
+    className="src-components-message-index__text"
+  >
+    <h4
+      className="src-components-message-index__title"
+    >
+      The Title
+    </h4>
+    <div
+      className="src-components-message-index__detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`should render a success message correctly 1`] = `
 <Link
   className="src-components-message-index__success src-components-message-index__message"
+  replace={false}
+  role="alert"
+  to="/link/to"
+>
+  <div
+    className="src-components-message-index__text"
+  >
+    <h4
+      className="src-components-message-index__title"
+    >
+      The Title
+    </h4>
+    <div
+      className="src-components-message-index__detail"
+    >
+      <div
+        id="child"
+      />
+    </div>
+  </div>
+</Link>
+`;
+
+exports[`should render a warning message correctly 1`] = `
+<Link
+  className="src-components-message-index__warning src-components-message-index__message"
   replace={false}
   role="alert"
   to="/link/to"

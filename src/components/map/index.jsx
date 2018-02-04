@@ -6,24 +6,26 @@ import {
   Marker,
   withScriptjs
 } from 'react-google-maps'
+
 import * as googleMapConstants from '_src/constants/google-map'
+import * as locationLib from '_src/lib/location'
 import './index.scss'
 
-function isEmpty (pin) {
-  return !pin || pin.lat === null || pin.lng === null
-}
-
 const EditorGoogleMap = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      defaultZoom={props.defaultZoom}
-      defaultCenter={props.defaultCenter}
-      onClick={props.onClick}
-      options={googleMapConstants.OPTIONS}
-    >
-      {!isEmpty(props.value) && <Marker position={props.value} />}
-    </GoogleMap>
-  ))
+  withGoogleMap(
+    /* istanbul ignore next */
+    props => (
+      <GoogleMap
+        defaultZoom={props.defaultZoom}
+        defaultCenter={props.defaultCenter}
+        onClick={props.onClick}
+        options={googleMapConstants.OPTIONS}
+      >
+        {!locationLib.isEmptyPin(props.value) &&
+          <Marker position={props.value} />}
+      </GoogleMap>
+    )
+  )
 )
 
 class Map extends React.Component {
@@ -36,19 +38,19 @@ class Map extends React.Component {
   handleClick = event => {
     const { onChange } = this.props
 
-    if (onChange) {
-      const value = {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng()
-      }
-
-      onChange(value)
+    const value = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng()
     }
+
+    onChange(value)
   }
   render () {
+    const { onChange, ...rest } = this.props
+
     return (
       <EditorGoogleMap
-        {...this.props}
+        {...rest}
         onClick={this.handleClick}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div className='map' />}
@@ -68,7 +70,7 @@ Map.propTypes = {
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired
   }).isRequired,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   defaultZoom: PropTypes.number
 }

@@ -12,6 +12,10 @@ const LONDON_BOUNDS = {
   west: MIN_LONDON_LNG
 }
 
+export function isEmptyPin (pin) {
+  return !pin || pin.lat === null || pin.lng === null
+}
+
 export function convertGoogleMapBoundsToNSEWBounds (googleMapBounds) {
   const northEast = googleMapBounds.getNorthEast()
   const soutWest = googleMapBounds.getSouthWest()

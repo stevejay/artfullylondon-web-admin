@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import Loader from '_src/components/loader'
 import Button from '_src/components/button'
-import { FullVenue } from '_src/entities/venue'
 import Grid from '_src/components/grid'
+import { FullVenue } from '_src/entities/venue'
 import './collection.scss'
 
 class MonitorCollection extends React.Component {
@@ -47,9 +47,9 @@ class MonitorCollection extends React.Component {
     const visibleMonitors = showAll
       ? monitors
       : monitors.filter(
-        monitor =>
-          !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-      )
+          monitor =>
+            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+        )
 
     const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
     const venueHomepageUrl = venue.getHomepageUrl()

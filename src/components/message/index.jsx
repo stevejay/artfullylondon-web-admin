@@ -11,29 +11,18 @@ const ALLOWED_MESSAGE_TYPES = [
   'basic-gray',
   'info',
   'warning',
-  'positive',
   'success',
-  'negative',
   'error',
   'validation',
   'field'
 ]
 
-class Message extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.type !== this.props.type ||
-      nextProps.heading !== this.props.title ||
-      nextProps.children !== this.props.children
-    )
-  }
+class Message extends React.PureComponent {
   getIcon (type) {
     switch (type) {
       case 'warning':
-      case 'negative':
       case 'error':
         return Alert
-      case 'positive':
       case 'success':
         return Checkmark
       case 'info':

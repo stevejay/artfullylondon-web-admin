@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import PencilIcon from 'react-icons/lib/fa/pencil'
 import _ from 'lodash'
 
-import EventMonitorGridRow
-  from '_src/components/monitor/event-monitor-grid-row'
+import EventMonitorGridRow from '_src/components/monitor/event-monitor-grid-row'
 
 it('should render correctly when has a url', () => {
   const wrapper = shallow(
@@ -14,8 +14,7 @@ it('should render correctly when has a url', () => {
         inArtfully: true,
         isIgnored: false,
         currentUrl: 'http://some/url',
-        combinedEvents: false,
-        title: 'Some Title'
+        combinedEvents: false
       }}
       venueHomepageUrl='http://some/venue/homepage/url'
       onEdit={_.noop}
@@ -34,8 +33,7 @@ it('should render correctly when has no url', () => {
         inArtfully: true,
         isIgnored: false,
         currentUrl: null,
-        combinedEvents: false,
-        title: 'Some Title'
+        combinedEvents: false
       }}
       venueHomepageUrl={null}
       onEdit={_.noop}
@@ -103,4 +101,29 @@ it('should render correctly when has changed', () => {
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should handle an edit click', () => {
+  const handleEdit = jest.fn()
+
+  const wrapper = shallow(
+    <EventMonitorGridRow
+      monitor={{
+        externalEventId: 'some-external-event-id',
+        hasChanged: false,
+        inArtfully: true,
+        isIgnored: false,
+        currentUrl: 'http://some/url',
+        combinedEvents: false
+      }}
+      venueHomepageUrl='http://some/venue/homepage/url'
+      onEdit={handleEdit}
+    />
+  )
+
+  wrapper.find(PencilIcon).simulate('click')
+
+  expect(handleEdit).toHaveBeenCalledWith({
+    externalEventId: 'some-external-event-id'
+  })
 })

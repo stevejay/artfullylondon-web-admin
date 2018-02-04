@@ -19,11 +19,13 @@ class BoxesLoader extends React.Component {
       this.state = { visible: false }
 
       this.timeout = window.setTimeout(
+        /* istanbul ignore next */
         () => this.mounted && this.setState({ visible: true }),
         DELAY_MS
       )
     }
   }
+  /* istanbul ignore next */
   componentWillUnmount () {
     this.mounted = false
     this.timeout && window.clearTimeout(this.timeout)
