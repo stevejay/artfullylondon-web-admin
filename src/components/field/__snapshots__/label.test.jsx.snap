@@ -1,5 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should handle the label being clicked to show the tooltip 1`] = `
+<div
+  className="src-components-field-label__basic"
+>
+  <label
+    className="src-components-field-label__has-tooltip"
+    htmlFor="some-id"
+    onClick={[Function]}
+  >
+    <div
+      id="child"
+    />
+  </label>
+  <Overlay
+    container={
+      Label {
+        "context": Object {},
+        "getTarget": [Function],
+        "handleClick": [Function],
+        "handleHide": [Function],
+        "handleMounted": [Function],
+        "props": Object {
+          "children": <div
+            id="child"
+          />,
+          "disabled": false,
+          "error": null,
+          "htmlFor": "some-id",
+          "required": false,
+          "tooltip": "The Tooltip",
+        },
+        "refs": Object {},
+        "state": Object {
+          "ignoreHide": true,
+          "showHelp": true,
+        },
+        "updater": Updater {
+          "_callbacks": Array [],
+          "_renderer": ReactShallowRenderer {
+            "_context": Object {},
+            "_element": <Label
+              disabled={false}
+              error={null}
+              htmlFor="some-id"
+              required={false}
+              tooltip="The Tooltip"
+            >
+              <div
+                id="child"
+              />
+            </Label>,
+            "_forcedUpdate": false,
+            "_instance": [Circular],
+            "_newState": Object {
+              "ignoreHide": true,
+              "showHelp": true,
+            },
+            "_rendered": <div
+              className="src-components-field-label__basic"
+            >
+              <label
+                className="src-components-field-label__has-tooltip"
+                htmlFor="some-id"
+                onClick={[Function]}
+              >
+                <div
+                  id="child"
+                />
+              </label>
+              <Overlay
+                container={[Circular]}
+                onHide={[Function]}
+                placement="bottom"
+                rootClose={true}
+                show={false}
+                target={[Function]}
+                transition={[Function]}
+              >
+                <div
+                  className="src-components-field-label__tooltip"
+                >
+                  The Tooltip
+                </div>
+              </Overlay>
+            </div>,
+            "_rendering": false,
+            "_updater": [Circular],
+          },
+        },
+      }
+    }
+    onHide={[Function]}
+    placement="bottom"
+    rootClose={true}
+    show={false}
+    target={[Function]}
+    transition={[Function]}
+  >
+    <div
+      className="src-components-field-label__tooltip"
+    >
+      The Tooltip
+    </div>
+  </Overlay>
+</div>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<div
+  className="src-components-field-label__disabled src-components-field-label__basic"
+>
+  <label
+    className=""
+    htmlFor="some-id"
+    onClick={[Function]}
+  >
+    <div
+      id="child"
+    />
+  </label>
+</div>
+`;
+
 exports[`should render correctly when required 1`] = `
 <div
   className="src-components-field-label__required src-components-field-label__basic"
@@ -33,8 +156,10 @@ exports[`should render correctly with a tooltip 1`] = `
     container={
       Label {
         "context": Object {},
+        "getTarget": [Function],
         "handleClick": [Function],
         "handleHide": [Function],
+        "handleMounted": [Function],
         "props": Object {
           "children": <div
             id="child"

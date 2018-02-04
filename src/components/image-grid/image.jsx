@@ -1,20 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as image from '_src/lib/image'
-import {
-  ENTITY_TYPE_EVENT,
-  ENTITY_TYPE_EVENT_SERIES,
-  ENTITY_TYPE_TALENT,
-  ENTITY_TYPE_VENUE
-} from '_src/constants/entity'
+import ShouldNotUpdateComponent from '_src/components/base/should-not-update'
 import ImagePlaceholder from '_src/components/image-placeholder'
+import * as image from '_src/lib/image'
+import * as entityConstants from '_src/constants/entity'
 import './image.scss'
 
-class Image extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class Image extends ShouldNotUpdateComponent {
   render () {
     const { imageId, size, type } = this.props
 
@@ -29,12 +22,7 @@ class Image extends React.Component {
 
 Image.propTypes = {
   imageId: PropTypes.string,
-  type: PropTypes.oneOf([
-    ENTITY_TYPE_EVENT,
-    ENTITY_TYPE_EVENT_SERIES,
-    ENTITY_TYPE_TALENT,
-    ENTITY_TYPE_VENUE
-  ]).isRequired,
+  type: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   size: PropTypes.oneOf(['tiny', 'very-small', 'small', 'medium']).isRequired
 }
 

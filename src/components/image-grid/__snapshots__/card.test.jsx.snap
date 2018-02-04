@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly when has a copyright 1`] = `
+exports[`should render correctly when the image has a copyright 1`] = `
 <div
   className="src-components-image-grid-card__card"
 >
@@ -52,52 +52,7 @@ exports[`should render correctly when has a copyright 1`] = `
 </div>
 `;
 
-exports[`should render correctly when is main 1`] = `
-<div
-  className="src-components-image-grid-card__card"
->
-  <Image
-    imageId="some-id"
-    ratio={2}
-    size="very-small"
-    type="venue"
-  />
-  <div
-    className="src-components-image-grid-card__details-container"
-  >
-    <p
-      className="src-components-image-grid-card__no-copyright"
-    >
-      No Copyright String
-    </p>
-    <div
-      className="src-components-image-grid-card__toolbar"
-    >
-      <FaHeart
-        className="src-components-image-grid-card__icon-main src-components-image-grid-card__icon"
-      />
-      <a
-        className="src-components-image-grid-card__link"
-        onClick={[Function]}
-      >
-        <FaTrashO
-          className="src-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-components-image-grid-card__link"
-        onClick={[Function]}
-      >
-        <FaPencil
-          className="src-components-image-grid-card__icon"
-        />
-      </a>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`should render correctly when is not main 1`] = `
+exports[`should render correctly when the image is not the main image 1`] = `
 <div
   className="src-components-image-grid-card__card"
 >
@@ -126,6 +81,51 @@ exports[`should render correctly when is not main 1`] = `
           className="src-components-image-grid-card__icon"
         />
       </a>
+      <a
+        className="src-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaTrashO
+          className="src-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaPencil
+          className="src-components-image-grid-card__icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when the image is the main image 1`] = `
+<div
+  className="src-components-image-grid-card__card"
+>
+  <Image
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    className="src-components-image-grid-card__details-container"
+  >
+    <p
+      className="src-components-image-grid-card__no-copyright"
+    >
+      No Copyright String
+    </p>
+    <div
+      className="src-components-image-grid-card__toolbar"
+    >
+      <FaHeart
+        className="src-components-image-grid-card__icon-main src-components-image-grid-card__icon"
+      />
       <a
         className="src-components-image-grid-card__link"
         onClick={[Function]}

@@ -18,10 +18,7 @@ it('should render correctly', () => {
         ],
         onChange: _.noop
       }}
-      meta={{
-        touched: false,
-        error: null
-      }}
+      meta={{ touched: false, error: null }}
       parentFormName='TheParentFormName'
       onAddLink={_.noop}
       onDeleteLink={_.noop}
@@ -29,4 +26,56 @@ it('should render correctly', () => {
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+describe('shouldComponentUpdate', () => {
+  it('should not update when props have not changed', () => {
+    const value = [{ key: 'key', type: 'Facebook', url: 'http://some/url' }]
+
+    const wrapper = shallow(
+      <LinksField
+        label='The Label'
+        input={{
+          value,
+          onChange: _.noop
+        }}
+        meta={{ touched: false, error: null }}
+        parentFormName='TheParentFormName'
+        onAddLink={_.noop}
+        onDeleteLink={_.noop}
+      />
+    )
+
+    const result = wrapper.instance().shouldComponentUpdate({
+      input: { value },
+      meta: { touched: false, error: null }
+    })
+
+    expect(result).toEqual(false)
+  })
+
+  it('should update when props have changed', () => {
+    const value = [{ key: 'key', type: 'Facebook', url: 'http://some/url' }]
+
+    const wrapper = shallow(
+      <LinksField
+        label='The Label'
+        input={{
+          value,
+          onChange: _.noop
+        }}
+        meta={{ touched: false, error: null }}
+        parentFormName='TheParentFormName'
+        onAddLink={_.noop}
+        onDeleteLink={_.noop}
+      />
+    )
+
+    const result = wrapper.instance().shouldComponentUpdate({
+      input: { value },
+      meta: { touched: true, error: null }
+    })
+
+    expect(result).toEqual(true)
+  })
 })

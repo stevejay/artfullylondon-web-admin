@@ -88,21 +88,3 @@
   border-style: solid;
   border-color: transparent transparent $three-quarter-black transparent;
 }
-
-$speed: 200ms;
-
-:global(.tooltip-transition.in) {
-  transition: opacity $speed ease-out;
-}
-
-:global(.tooltip-transition.out) {
-  transition: opacity $speed ease-in;
-}
-
-:global(.tooltip-transition.in).tooltip {
-  opacity: 1;
-}
-
-:global(.tooltip-transition.out).tooltip {
-  opacity: 0.01;
-}

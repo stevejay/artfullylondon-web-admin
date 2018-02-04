@@ -4,13 +4,7 @@ import PropTypes from 'prop-types'
 import Button from '_src/components/button'
 import './sub-form-buttons.scss'
 
-class SubFormButtons extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.submitting !== this.props.submitting ||
-      nextProps.pristine !== this.props.pristine
-    )
-  }
+class SubFormButtons extends React.PureComponent {
   render () {
     const { submitting, onSubmit, onReset, pristine } = this.props
 

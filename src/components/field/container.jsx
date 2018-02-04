@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Label from './label'
-import Error from './error'
+
+import FieldLabel from '_src/components/field/label'
+import FieldError from '_src/components/field/error'
 import './container.scss'
 
 const Container = ({
@@ -23,7 +24,7 @@ const Container = ({
   return (
     <div {...rest} styleName={containerStyle}>
       {!!label &&
-        <Label
+        <FieldLabel
           tooltip={tooltip}
           htmlFor={htmlFor}
           error={hasError ? error : null}
@@ -31,9 +32,9 @@ const Container = ({
           disabled={disabled}
         >
           {label}
-        </Label>}
+        </FieldLabel>}
       {children}
-      {hasError && <Error error={error} />}
+      {hasError && <FieldError error={error} />}
     </div>
   )
 }

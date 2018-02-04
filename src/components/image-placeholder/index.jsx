@@ -27,6 +27,7 @@ class ImagePlaceholder extends React.Component {
         return <Tags styleName='icon' />
       case entityConstants.ENTITY_TYPE_USER:
         return <Cogs styleName='icon' />
+      /* istanbul ignore next */
       default:
         throw new Error(`unknown type option of ${type}`)
     }

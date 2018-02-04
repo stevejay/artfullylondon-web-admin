@@ -8,6 +8,11 @@ it('should render correctly when there is an error', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
+it('should render correctly when there are multiple errors', () => {
+  const wrapper = shallow(<FieldError error={['Error One', 'Error Two']} />)
+  expect(wrapper).toMatchSnapshot()
+})
+
 it('should render correctly when there is no error', () => {
   const wrapper = shallow(<FieldError />)
   expect(wrapper).toMatchSnapshot()

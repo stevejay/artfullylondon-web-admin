@@ -8,6 +8,8 @@ import Image from '_src/components/image-grid/image'
 import * as entityConstants from '_src/constants/entity'
 import './card.scss'
 
+// TODO turn the links into buttons?
+
 class ImageGridCard extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
     return nextProps.value !== this.props.value

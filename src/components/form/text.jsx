@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './Text.scss'
+import './text.scss'
 
 class FormText extends React.Component {
   shouldComponentUpdate () {

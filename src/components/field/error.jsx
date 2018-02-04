@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './error.scss'
 
-class Error extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.error !== this.props.error
-  }
+class Error extends React.PureComponent {
   render () {
     const { error } = this.props
 

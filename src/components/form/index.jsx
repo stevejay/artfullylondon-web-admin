@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import './index.scss'
 
 class Form extends React.Component {
+  // Allows a form to be nested in another form;
+  // stops a submit of the child form also submitting the parent.
   handleSubmit = event => {
     event.stopPropagation()
     return this.props.onSubmit(event)

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      forceSingleLine={true}
+      label="Image URL"
+      maxLength={400}
+      name="imageUrl"
+      required={true}
+    />
+    <Field
+      autos={false}
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      forceSingleLine={true}
+      label="Copyright"
+      maxLength={300}
+      name="copyright"
+    />
+  </FormRow>
+  <FormError
+    hideGenericErrorMessages={true}
+  />
+  <SubFormButtons
+    onReset={[Function]}
+    onSubmit={[Function]}
+    pristine={true}
+    submitting={false}
+  />
+</div>
+`;

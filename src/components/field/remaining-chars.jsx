@@ -1,14 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './remaining-chars.scss'
 
-class RemainingChars extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.active !== this.props.active ||
-      nextProps.value !== this.props.value
-    )
-  }
+class RemainingChars extends React.PureComponent {
   render () {
     const { active, value, maxLength } = this.props
 

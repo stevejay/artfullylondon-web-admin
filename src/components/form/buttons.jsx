@@ -17,8 +17,6 @@ class FormButtons extends React.Component {
       containerStyle
     } = this.props
 
-    // TODO replace button style object
-
     return (
       <div styleName='container' style={containerStyle}>
         {!!onPrevious &&
@@ -26,7 +24,7 @@ class FormButtons extends React.Component {
             aria-label='Go back to previous form'
             onClick={onPrevious}
             disabled={submitting}
-            style={{ marginRight: 'auto' }}
+            styleName='back-button'
           >
             Previous
           </Button>}

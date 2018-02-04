@@ -17,20 +17,21 @@ class ImagesField extends React.Component {
     this.state = { showModal: false, initialValues: null }
     this.mounted = true
   }
+  /* istanbul ignore next */
   componentWillUnmount () {
     this.mounted = false
   }
   handleAddImage = values => {
     this.props.onAddImage({
       values,
-      isMain: !_.isEmpty(this.props.input.value)
+      isMain: _.isEmpty(this.props.input.value)
     })
   }
   handleUpdateImage = initialValues => {
     this.setState({ showModal: true, initialValues })
   }
   handleSubmitModal = values => {
-    this.props
+    return this.props
       .onUpdateImage({
         // TODO change this?
         values: { copyright: values.copyright },

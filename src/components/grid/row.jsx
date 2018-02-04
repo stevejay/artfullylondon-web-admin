@@ -12,11 +12,7 @@ class GridRow extends React.Component {
     }
   }
   handleClick = () => {
-    const { id, onDelete } = this.props
-
-    if (onDelete) {
-      onDelete(id)
-    }
+    this.props.onDelete(this.props.id)
   }
   render () {
     const { onDelete, children } = this.props

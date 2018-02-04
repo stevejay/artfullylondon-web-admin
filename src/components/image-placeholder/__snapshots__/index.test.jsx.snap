@@ -1,11 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render a tag placeholder image correctly 1`] = `
+<div
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
+  role="presentation"
+>
+  <FaTags
+    className="src-components-image-placeholder-index__icon"
+  />
+</div>
+`;
+
 exports[`should render a talent placeholder image correctly 1`] = `
 <div
   className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
   role="presentation"
 >
   <FaUser
+    className="src-components-image-placeholder-index__icon"
+  />
+</div>
+`;
+
+exports[`should render a user placeholder image correctly 1`] = `
+<div
+  className="src-components-image-placeholder-index__medium src-components-image-placeholder-index__base"
+  role="presentation"
+>
+  <FaCogs
     className="src-components-image-placeholder-index__icon"
   />
 </div>

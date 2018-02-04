@@ -9,22 +9,13 @@ import {
 } from 'react-google-maps'
 import MarkerClusterer
   from 'react-google-maps/lib/components/addons/MarkerClusterer'
-import { POINT_SHAPE } from '_src/constants/location'
+
+import * as locationConstants from '_src/constants/location'
 import * as mapConstants from '_src/constants/google-map'
 import * as location from '_src/lib/location'
-import { USER_LOCATION_IMAGE_URL } from '_src/constants/image'
+import * as imageConstants from '_src/constants/image'
 
-export class GoogleMap extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.zoom !== this.props.zoom ||
-      nextProps.center !== this.props.center ||
-      nextProps.markers !== this.props.markers ||
-      nextProps.selectedMarkerId !== this.props.selectedMarkerId ||
-      nextProps.isVisible !== this.props.isVisible ||
-      nextProps.userLocation !== this.props.userLocation
-    )
-  }
+export class GoogleMap extends React.PureComponent {
   componentWillUpdate (nextProps) {
     // http://stackoverflow.com/questions/4700594/google-maps-displaynone-problem
 
@@ -103,7 +94,7 @@ export class GoogleMap extends React.Component {
             <Marker
               key='current-location'
               position={userLocation}
-              icon={USER_LOCATION_IMAGE_URL}
+              icon={imageConstants.USER_LOCATION_IMAGE_URL}
             />}
         </MarkerClusterer>
       </ReactGoogleMap>
@@ -113,16 +104,16 @@ export class GoogleMap extends React.Component {
 
 GoogleMap.propTypes = {
   zoom: PropTypes.number.isRequired,
-  center: POINT_SHAPE.isRequired,
+  center: locationConstants.POINT_SHAPE.isRequired,
   markers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      pin: POINT_SHAPE.isRequired
+      pin: locationConstants.POINT_SHAPE.isRequired
     })
   ).isRequired,
   isVisible: PropTypes.bool.isRequired,
   selectedMarkerId: PropTypes.string,
-  userLocation: POINT_SHAPE,
+  userLocation: locationConstants.POINT_SHAPE,
   iconUrlFactory: PropTypes.func.isRequired,
   onCenterChanged: PropTypes.func.isRequired,
   onZoomChanged: PropTypes.func.isRequired,

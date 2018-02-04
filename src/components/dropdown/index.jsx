@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { Overlay } from 'react-overlays'
 import document from 'global/document'
 
-import DropdownTransition from '_src//components/dropdown/transition'
+import DropdownTransition from '_src/components/dropdown/transition'
 import DropdownButton from '_src/components/dropdown/button'
 import DropdownMenu from '_src/components/dropdown/menu'
 import * as browserConstants from '_src/constants/browser'

@@ -13,3 +13,20 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('should handle being submitted', () => {
+  const handleSubmit = jest.fn()
+  const stopPropagation = jest.fn()
+  const event = { stopPropagation }
+
+  const wrapper = shallow(
+    <Form onSubmit={handleSubmit}>
+      <div id='child' />
+    </Form>
+  )
+
+  wrapper.find('form').prop('onSubmit')(event)
+
+  expect(stopPropagation).toHaveBeenCalled()
+  expect(handleSubmit).toHaveBeenCalledWith(event)
+})

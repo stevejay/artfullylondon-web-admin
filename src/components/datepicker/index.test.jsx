@@ -42,7 +42,7 @@ it('should handle being clicked to show the datepicker modal', () => {
   )
 
   wrapper.find(Text).simulate('click', { preventDefault: jest.fn() })
-  wrapper.update()
+  wrapper.update() // TODO remove when enzyme bug fixed
 
   expect(wrapper).toMatchSnapshot()
 })

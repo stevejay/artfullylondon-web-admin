@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Form
+  className="src-components-images-update-image-form__container"
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      containerStyle={
+        Object {
+          "flexBasis": "auto",
+        }
+      }
+      label="Copyright"
+      maxLength={300}
+      name="copyright"
+      required={true}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

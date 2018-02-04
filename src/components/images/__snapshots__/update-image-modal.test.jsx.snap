@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Modal
+  aria-label="Update Image"
+  backdropTransition={[Function]}
+  onHide={[Function]}
+  show={true}
+  transition={[Function]}
+>
+  <ModalContainer
+    dismissable={true}
+    onHide={[Function]}
+    title="Edit Copyright"
+    type="narrow"
+  >
+    <ReduxForm
+      initialValues={
+        Object {
+          "copyright": "Some copyright",
+        }
+      }
+      onSubmit={[Function]}
+    />
+  </ModalContainer>
+</Modal>
+`;

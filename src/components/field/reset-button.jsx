@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
+
 import './reset-button.scss'
 
-class ResetButton extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.disabled !== this.props.disabled
-  }
+class ResetButton extends React.PureComponent {
   render () {
     return (
       <button

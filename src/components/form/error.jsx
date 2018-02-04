@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 import Message from '_src/components/message'
 import * as validationConstants from '_src/constants/validation'
 
-class FormError extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.error !== this.props.error
-  }
+class FormError extends React.PureComponent {
   render () {
     const { error, hideGenericErrorMessages } = this.props
 
@@ -22,7 +19,7 @@ class FormError extends React.Component {
       return null
     }
 
-    return error ? <Message type='error'>{error}</Message> : null
+    return <Message type='error'>{error}</Message>
   }
 }
 

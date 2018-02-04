@@ -4,15 +4,22 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1.5rem;
+
   button {
     margin-right: 1rem;
   }
+
   button:last-of-type {
     margin-right: 0;
   }
+
   @include below-wide-mobile {
     button {
       flex-grow: 1;
     }
   }
+}
+
+.back-button {
+  margin-right: auto;
 }

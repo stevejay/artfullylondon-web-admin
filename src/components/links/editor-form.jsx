@@ -8,12 +8,12 @@ import SubFormButtons from '_src/components/form/sub-form-buttons'
 import TextField from '_src/components/text/field'
 import SelectField from '_src/components/select/field'
 import * as formConstants from '_src/constants/form'
+import linkConstraint from '_src/constants/link-constraint'
 
 export const LinksEditorForm = ({
   pristine,
   submitting,
   handleSubmit,
-  constraint,
   linkTypeOptions,
   reset,
   error
@@ -34,7 +34,7 @@ export const LinksEditorForm = ({
         name='linkUrl'
         component={TextField}
         required
-        maxLength={constraint.linkUrl.length.maximum}
+        maxLength={linkConstraint.linkUrl.length.maximum}
         autos={false}
         forceSingleLine
         containerStyle={{ flexBasis: 'auto' }}
@@ -56,9 +56,6 @@ LinksEditorForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  constraint: PropTypes.shape({
-    linkUrl: PropTypes.object.isRequired
-  }).isRequired,
   linkTypeOptions: PropTypes.array.isRequired,
   error: PropTypes.any
 }

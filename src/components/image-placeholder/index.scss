@@ -1,64 +1,64 @@
 @import 'theme';
 
 .base {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    justify-content: center;
-    border-radius: $border-radius;
-    background-color: $quarter-black;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  border-radius: $border-radius;
+  background-color: $quarter-black;
 }
 
 .tiny {
-    composes: base;
-    width: 28px;
-    height: 28px;
-    border-radius: 14px;
+  composes: base;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
 }
 
 .very-small {
-    composes: base;
-    width: 60px;
-    height: 60px;
-    border-radius: $border-radius / 2;
+  composes: base;
+  width: 60px;
+  height: 60px;
+  border-radius: $border-radius / 2;
 }
 
 .small {
-    composes: base;
-    width: 150px;
-    height: 150px;
+  composes: base;
+  width: 150px;
+  height: 150px;
 
-    @include wide-desktop {
-        width: 175px;
-        height: 175px;
-    }
+  @include wide-desktop {
+    width: 175px;
+    height: 175px;
+  }
 }
 
 .smallmedium {
-    composes: base;
-    width: 250px;
-    height: 175px;
+  composes: base;
+  width: 250px;
+  height: 175px;
 }
 
 .medium {
-    composes: base;
-    width: 300px;
-    height: 300px;
+  composes: base;
+  width: 300px;
+  height: 300px;
 }
 
 .large {
-    composes: base;
-    width: 225px;
-    height: 225px;
+  composes: base;
+  width: 225px;
+  height: 225px;
 
-    @include wide-desktop {
-        width: 250px;
-        height: 250px;
-    }
+  @include wide-desktop {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 .icon {
-    width: 50%;
-    height: 50%;
-    color: $eighth-black;
+  width: 50%;
+  height: 50%;
+  color: $eighth-black;
 }

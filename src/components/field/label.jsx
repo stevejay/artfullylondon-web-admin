@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import { Overlay } from 'react-overlays'
-import TooltipTransition from './tooltip-transition'
+
+import FadeTransition from '_src/components/transition/fade'
 import './label.scss'
 
 class Label extends React.Component {
@@ -11,14 +12,22 @@ class Label extends React.Component {
 
     this.state = {
       showHelp: false,
-      ignoreHide: false // see handleHide for info
+      ignoreHide: false // see handleHide for what this is
     }
+  }
+  handleMounted = ref => {
+    /* istanbul ignore next */
+    this._label = ref
   }
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.error !== this.props.error ||
       nextProps.disabled !== this.props.disabled
     )
+  }
+  getTarget = () => {
+    /* istanbul ignore next */
+    return ReactDOM.findDOMNode(this._label)
   }
   handleClick = () => {
     this.setState({ showHelp: true, ignoreHide: true })
@@ -52,7 +61,7 @@ class Label extends React.Component {
     return (
       <div styleName={styleName}>
         <label
-          ref={ref => (this.label = ref)}
+          ref={this.handleMounted}
           {...rest}
           htmlFor={htmlFor}
           styleName={tooltip ? 'has-tooltip' : ''}
@@ -67,8 +76,8 @@ class Label extends React.Component {
             placement='bottom'
             container={this}
             rootClose
-            target={() => ReactDOM.findDOMNode(this.label)}
-            transition={TooltipTransition}
+            target={this.getTarget}
+            transition={FadeTransition}
           >
             <div styleName='tooltip'>{tooltip}</div>
           </Overlay>}

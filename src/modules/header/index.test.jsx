@@ -42,6 +42,7 @@ it('should render correctly when has an error', () => {
 
   expect(wrapper.state().hasError).toEqual(true)
   wrapper.update() // TODO remove when enzyme bug fixed
+
   expect(wrapper).toMatchSnapshot()
 })
 

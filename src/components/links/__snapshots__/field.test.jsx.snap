@@ -9,33 +9,6 @@ exports[`should render correctly 1`] = `
 >
   <FieldBorder>
     <ReduxForm
-      constraint={
-        Object {
-          "linkType": Object {
-            "inclusion": Array [
-              "Facebook",
-              "Homepage",
-              "Twitter",
-              "Wikipedia",
-              "Access",
-              "Instagram",
-              "Booking",
-            ],
-            "presence": Object {
-              "disallowEmpty": true,
-            },
-          },
-          "linkUrl": Object {
-            "length": Object {
-              "maximum": 200,
-            },
-            "presence": Object {
-              "disallowEmpty": true,
-            },
-            "url": true,
-          },
-        }
-      }
       linkTypeOptions={
         Array [
           Object {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RichTextEditor from 'react-rte'
+
 import FieldContainer from '_src/components/field/container'
 import './field.scss'
 

@@ -7,7 +7,6 @@ import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
 import LinkGridRow from '_src/components/links/grid-row'
 import LinksEditorForm from '_src/components/links/editor-form'
-import linkConstraint from '_src/constants/link-constraint'
 import * as linkLib from '_src/lib/link'
 
 class LinksField extends React.Component {
@@ -39,7 +38,6 @@ class LinksField extends React.Component {
         <FieldBorder>
           <LinksEditorForm
             onSubmit={onAddLink}
-            constraint={linkConstraint}
             linkTypeOptions={linkTypeOptions}
           />
           <FieldDivider />

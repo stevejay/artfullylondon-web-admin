@@ -13,7 +13,7 @@ import './update-image-form.scss'
 
 const FIELD_CONTAINER_STYLE = { flexBasis: 'auto' }
 
-const UpdateImageForm = ({ submitting, handleSubmit }) => (
+export const UpdateImageForm = ({ submitting, handleSubmit }) => (
   <Form styleName='container' onSubmit={handleSubmit}>
     <FormRow>
       <Field
