@@ -86,6 +86,6 @@ Sidenav.propTypes = {
 export default withRouter(
   connect(
     /* istanbul ignore next */
-    state => ({ loggedIn: selectors.isLoggedIn(state) })
+    state => ({ loggedIn: selectors.userIsLoggedIn(state) })
   )(Sidenav)
 )

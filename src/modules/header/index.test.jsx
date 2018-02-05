@@ -10,6 +10,7 @@ import { authActions } from '_src/store'
 it('should render correctly when logged in', () => {
   const wrapper = shallow(
     <Header
+      hasError={false}
       loggedIn
       isWideBrowser
       showingSidenav={false}
@@ -17,6 +18,7 @@ it('should render correctly when logged in', () => {
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
       dispatch={_.noop}
+      setHasError={_.noop}
     />
   )
 
@@ -28,6 +30,7 @@ it('should render correctly when has an error', () => {
 
   const wrapper = shallow(
     <Header
+      hasError
       loggedIn
       isWideBrowser
       showingSidenav={false}
@@ -35,20 +38,41 @@ it('should render correctly when has an error', () => {
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
       dispatch={_.noop}
+      setHasError={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should update state when an error has been caught', () => {
+  log.error = jest.fn()
+  const setHasError = jest.fn()
+
+  const wrapper = shallow(
+    <Header
+      hasError={false}
+      loggedIn
+      isWideBrowser
+      showingSidenav={false}
+      history={{}}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
+      dispatch={_.noop}
+      setHasError={setHasError}
     />
   )
 
   wrapper.instance().componentDidCatch({}, {})
 
-  expect(wrapper.state().hasError).toEqual(true)
-  wrapper.update() // TODO remove when enzyme bug fixed
-
-  expect(wrapper).toMatchSnapshot()
+  expect(setHasError).toHaveBeenCalledWith(true)
+  expect(log.error).toHaveBeenCalled()
 })
 
 it('should render correctly when showing the sidenav', () => {
   const wrapper = shallow(
     <Header
+      hasError={false}
       loggedIn
       isWideBrowser
       showingSidenav
@@ -56,6 +80,7 @@ it('should render correctly when showing the sidenav', () => {
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
       dispatch={_.noop}
+      setHasError={_.noop}
     />
   )
 
@@ -65,6 +90,7 @@ it('should render correctly when showing the sidenav', () => {
 it('should render correctly when narrow', () => {
   const wrapper = shallow(
     <Header
+      hasError={false}
       loggedIn
       isWideBrowser={false}
       showingSidenav={false}
@@ -72,6 +98,7 @@ it('should render correctly when narrow', () => {
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
       dispatch={_.noop}
+      setHasError={_.noop}
     />
   )
 
@@ -83,6 +110,7 @@ it('should handle a logout button click when wide', () => {
 
   const wrapper = shallow(
     <Header
+      hasError={false}
       loggedIn
       isWideBrowser
       showingSidenav={false}
@@ -90,6 +118,7 @@ it('should handle a logout button click when wide', () => {
       onShowSidenav={_.noop}
       onShowQuicksearch={_.noop}
       dispatch={dispatch}
+      setHasError={_.noop}
     />
   )
 

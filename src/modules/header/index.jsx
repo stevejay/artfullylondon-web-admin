@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import Bars from 'react-icons/lib/fa/bars'
 import Search from 'react-icons/lib/fa/search'
+import { withState } from 'recompose'
 import log from 'loglevel'
 
 import Button from '_src/components/button'
@@ -11,27 +12,22 @@ import IconButton from '_src/components/button/icon'
 import HeaderLogo from '_src/components/logo/header'
 import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
-// import Dropdown from '_src/modules/header/components/dropdown'
 import Dropdown from '_src/components/dropdown'
 import { selectors, authActions } from '_src/store'
 import * as menuConstants from '_src/constants/menu'
 import './index.scss'
 
 export class Header extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate (nextProps) {
     return (
       nextProps.loggedIn !== this.props.loggedIn ||
       nextProps.isWideBrowser !== this.props.isWideBrowser ||
       nextProps.showingSidenav !== this.props.showingSidenav ||
-      nextState.hasError !== this.state.hasError
+      nextProps.hasError !== this.props.hasError
     )
   }
   componentDidCatch (error, info) {
-    this.setState({ hasError: true })
+    this.props.setHasError(true)
     log.error(error, info.componentStack)
   }
   handleMenuItemSelected = value => {
@@ -46,10 +42,11 @@ export class Header extends React.Component {
       onShowQuicksearch,
       loggedIn,
       isWideBrowser,
-      showingSidenav
+      showingSidenav,
+      hasError
     } = this.props
 
-    if (!loggedIn || this.state.hasError) {
+    if (!loggedIn || hasError) {
       return null
     }
 
@@ -104,21 +101,23 @@ export class Header extends React.Component {
 }
 
 Header.propTypes = {
+  hasError: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   isWideBrowser: PropTypes.bool.isRequired,
   showingSidenav: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
   onShowSidenav: PropTypes.func.isRequired,
   onShowQuicksearch: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  setHasError: PropTypes.func.isRequired
 }
 
 export default withRouter(
   connect(
     /* istanbul ignore next */
     state => ({
-      loggedIn: selectors.isLoggedIn(state),
+      loggedIn: selectors.userIsLoggedIn(state),
       isWideBrowser: selectors.isWideBrowser(state)
     })
-  )(Header)
+  )(withState('hasError', 'setHasError', false)(Header))
 )

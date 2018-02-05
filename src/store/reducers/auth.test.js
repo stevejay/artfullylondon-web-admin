@@ -116,22 +116,22 @@ it('should handle a logged out message that does not reset the username', () => 
 })
 
 describe('selectors', () => {
-  describe('isLoggedIn', () => {
+  describe('userIsLoggedIn', () => {
     it('should return false when null', () => {
       const state = { state: null }
-      const result = selectors.isLoggedIn(state)
+      const result = selectors.userIsLoggedIn(state)
       expect(result).toEqual(false)
     })
 
     it('should return false when not logged in', () => {
       const state = { state: authConstants.AUTH_STATE_NOT_LOGGED_IN }
-      const result = selectors.isLoggedIn(state)
+      const result = selectors.userIsLoggedIn(state)
       expect(result).toEqual(false)
     })
 
     it('should return true when logged in', () => {
       const state = { state: authConstants.AUTH_STATE_LOGGED_IN }
-      const result = selectors.isLoggedIn(state)
+      const result = selectors.userIsLoggedIn(state)
       expect(result).toEqual(true)
     })
   })

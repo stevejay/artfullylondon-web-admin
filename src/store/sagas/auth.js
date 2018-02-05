@@ -59,7 +59,7 @@ export function * logOut () {
 
 // used by others
 export function * getAuthTokenForCurrentUser () {
-  const isLoggedIn = yield select(selectors.isLoggedIn)
+  const isLoggedIn = yield select(selectors.userIsLoggedIn)
 
   if (isLoggedIn) {
     const cognitoUser = yield select(selectors.cognitoUser)

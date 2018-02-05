@@ -125,7 +125,7 @@ export default withRouter(
     /* istanbul ignore next */
     state => ({
       autoLogInAttempted: store.selectors.autoLogInAttempted(state),
-      loggedIn: store.selectors.isLoggedIn(state)
+      loggedIn: store.selectors.userIsLoggedIn(state)
     })
   )(Routes)
 )

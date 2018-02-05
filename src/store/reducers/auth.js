@@ -44,7 +44,7 @@ export const reducer = handleActions(
 )
 
 export const selectors = {
-  isLoggedIn: state => state.state === authConstants.AUTH_STATE_LOGGED_IN,
+  userIsLoggedIn: state => state.state === authConstants.AUTH_STATE_LOGGED_IN,
   username: state => state.username,
   autoLogInAttempted: state => state.autoLogInAttempted,
   cognitoUser: state => state.cognitoUser
