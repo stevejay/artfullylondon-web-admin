@@ -1,4 +1,4 @@
-import * as talent from '_src/lib/talent'
+import * as talentLib from '_src/lib/talent'
 import * as talentConstants from '_src/constants/talent'
 
 describe('formatTalentName', () => {
@@ -22,7 +22,7 @@ describe('formatTalentName', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = talent.formatTalentName(test.arg)
+      const actual = talentLib.formatTalentName(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -44,7 +44,7 @@ describe('isIndividualTalent', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = talent.isIndividualTalent(test.arg)
+      const actual = talentLib.isIndividualTalent(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })

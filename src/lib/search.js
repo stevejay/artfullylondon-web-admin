@@ -1,6 +1,7 @@
 import moment from 'moment'
-import { mapJsDateToStringDate, mapMomentDateToStringDate } from '_src/lib/time'
-import { DEFAULT_TAKE } from '_src/constants/search'
+
+import * as timeLib from '_src/lib/time'
+import * as searchConstants from '_src/constants/search'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
   const threshold = Math.floor(take / 4)
@@ -55,14 +56,10 @@ function _createQueryString (params) {
   Object.keys(params).forEach(key => {
     let value = params[key]
 
-    if (value == null) {
-      return
-    }
-
     if (moment.isMoment(value)) {
-      value = mapMomentDateToStringDate(value)
+      value = timeLib.mapMomentDateToStringDate(value)
     } else if (value instanceof Date) {
-      value = mapJsDateToStringDate(value)
+      value = timeLib.mapJsDateToStringDate(value)
     }
 
     const keyValuePair = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
@@ -86,6 +83,6 @@ function _addTakeToParams (params, queryTake, take) {
   } else if (queryTake != null) {
     params.take = queryTake
   } else {
-    params.take = DEFAULT_TAKE
+    params.take = searchConstants.DEFAULT_TAKE
   }
 }

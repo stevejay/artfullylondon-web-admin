@@ -1,4 +1,4 @@
-import * as search from '_src/lib/link'
+import * as linkLib from '_src/lib/link'
 
 describe('getAvailableLinkTypeDropdownOptions', () => {
   it('should filter out link types in value', () => {
@@ -8,7 +8,7 @@ describe('getAvailableLinkTypeDropdownOptions', () => {
       { type: 'Access' }
     ]
 
-    const actual = search.getAvailableLinkTypeDropdownOptions(value)
+    const actual = linkLib.getAvailableLinkTypeDropdownOptions(value)
 
     expect(actual).toEqual([
       { value: 'Homepage', label: 'Homepage' },

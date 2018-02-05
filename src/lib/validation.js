@@ -1,38 +1,8 @@
-import {
-  LINK_TYPE_WIKIPEDIA,
-  LINK_TYPE_FACEBOOK,
-  LINK_TYPE_TWITTER,
-  LINK_TYPE_INSTAGRAM
-} from '_src/constants/link'
-
 import { ensure } from 'ensure-request'
 import { SubmissionError } from 'redux-form'
-import { GENERIC_ERROR_MESSAGE } from '_src/constants/validation'
 
-// // TODO might not be used anymore.
-// constraints.moment = value => {
-//   return value == null || moment.isMoment(value) ? null : 'is not a moment'
-// }
-
-export function validateSync (
-  values,
-  constraint,
-  additionalConstraints,
-  returnErrors
-) {
-  const errors = ensure(values, constraint) || {}
-
-  if (additionalConstraints) {
-    additionalConstraints(values, errors)
-  }
-
-  if (returnErrors) {
-    return _hasErrors(errors) ? errors : null
-  } else {
-    _throwValidationErrorIfInvalid(errors)
-    return values
-  }
-}
+import * as linkConstants from '_src/constants/link'
+import * as validationConstants from '_src/constants/validation'
 
 export function validate (
   values,
@@ -58,7 +28,7 @@ export function validate (
 
 function _throwValidationErrorIfInvalid (errors) {
   if (_hasErrors(errors)) {
-    errors._error = errors._error || GENERIC_ERROR_MESSAGE
+    errors._error = errors._error || validationConstants.GENERIC_ERROR_MESSAGE
     throw new SubmissionError(errors)
   }
 }
@@ -75,13 +45,13 @@ export function validateLink (values, errors) {
 
 function isValidUrlForLinkType (url, type) {
   switch (type) {
-    case LINK_TYPE_TWITTER:
+    case linkConstants.LINK_TYPE_TWITTER:
       return /https:\/\/twitter\.com\//.test(url)
-    case LINK_TYPE_WIKIPEDIA:
+    case linkConstants.LINK_TYPE_WIKIPEDIA:
       return /https:\/\/en\.wikipedia\.org\//.test(url)
-    case LINK_TYPE_FACEBOOK:
+    case linkConstants.LINK_TYPE_FACEBOOK:
       return /https:\/\/www\.facebook\.com\//.test(url)
-    case LINK_TYPE_INSTAGRAM:
+    case linkConstants.LINK_TYPE_INSTAGRAM:
       return /https:\/\/www\.instagram\.com\//.test(url)
   }
 

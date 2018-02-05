@@ -7,5 +7,5 @@ export function formatAddressForDisplay (address, postcode) {
 
 export function getPostcodeDistrict (postcode) {
   var matches = (postcode || '').match(POSTCODE_DISTRICT_REGEX)
-  return matches ? matches[0] : undefined
+  return matches ? matches[0] : null
 }

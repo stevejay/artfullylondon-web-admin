@@ -1,15 +1,10 @@
-import {
-  MIN_LONDON_LAT,
-  MAX_LONDON_LAT,
-  MIN_LONDON_LNG,
-  MAX_LONDON_LNG
-} from '_src/constants/location'
+import * as locationConstants from '_src/constants/location'
 
 const LONDON_BOUNDS = {
-  north: MAX_LONDON_LAT,
-  south: MIN_LONDON_LAT,
-  east: MAX_LONDON_LNG,
-  west: MIN_LONDON_LNG
+  north: locationConstants.MAX_LONDON_LAT,
+  south: locationConstants.MIN_LONDON_LAT,
+  east: locationConstants.MAX_LONDON_LNG,
+  west: locationConstants.MIN_LONDON_LNG
 }
 
 export function isEmptyPin (pin) {
@@ -45,10 +40,10 @@ export function convertGoogleMapZoomToInt (googleMapZoom) {
 
 export function pointIsInLondonArea (point) {
   return (
-    point.lat >= MIN_LONDON_LAT &&
-    point.lat <= MAX_LONDON_LAT &&
-    point.lng >= MIN_LONDON_LNG &&
-    point.lng <= MAX_LONDON_LNG
+    point.lat >= locationConstants.MIN_LONDON_LAT &&
+    point.lat <= locationConstants.MAX_LONDON_LAT &&
+    point.lng >= locationConstants.MIN_LONDON_LNG &&
+    point.lng <= locationConstants.MAX_LONDON_LNG
   )
 }
 

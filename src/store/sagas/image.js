@@ -11,7 +11,7 @@ import {
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import uuid from '_src/lib/uuid'
+import * as uuidLib from '_src/lib/uuid'
 import { put as httpPut } from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
@@ -119,7 +119,7 @@ function * setMainImage (action) {
 function * addImage (action) {
   const { entityType, isMain, parentFormName } = action.payload
   let values = action.payload.values
-  const id = uuid()
+  const id = uuidLib.create()
 
   try {
     yield put(startSubmit(formConstants.IMAGE_EDITOR_FORM_NAME))

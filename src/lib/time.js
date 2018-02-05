@@ -2,19 +2,10 @@ import moment from 'moment'
 import 'moment-timezone'
 import _ from 'lodash'
 
-import {
-  eventIsPerformance,
-  eventIsOneTime,
-  occurrenceTypeHasDateRange,
-  occurrenceTypeIsContinuous
-} from '_src/lib/event'
-import {
-  NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS,
-  DATE_FORMAT,
-  DAYS_OF_WEEK_MAPPING
-} from '_src/constants/time'
-import { OCCURRENCE_TYPE_BOUNDED } from '_src/constants/event'
-import { ENTITY_TYPE_VENUE } from '_src/constants/entity'
+import * as eventLib from '_src/lib/event'
+import * as timeConstants from '_src/constants/time'
+import * as eventConstants from '_src/constants/event'
+import * as entityConstants from '_src/constants/entity'
 
 export function getYearNow () {
   return new Date().getFullYear()
@@ -33,7 +24,7 @@ export function getLondonNowAsMomentDate () {
 }
 
 export function getDateNowForDatabase () {
-  return moment.utc().format(DATE_FORMAT)
+  return moment.utc().format(timeConstants.DATE_FORMAT)
 }
 
 export function mapJsDateToStringDate (date) {
@@ -49,11 +40,11 @@ export function mapMomentDateToStringDate (date) {
     return null
   }
 
-  return date.format(DATE_FORMAT)
+  return date.format(timeConstants.DATE_FORMAT)
 }
 
 export function formatStringDateForDisplay (date, includeDayName) {
-  return moment(date, DATE_FORMAT).format(
+  return moment(date, timeConstants.DATE_FORMAT).format(
     includeDayName ? 'dddd, Do MMM YYYY' : 'Do MMM YYYY'
   )
 }
@@ -68,9 +59,9 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
     yearInCommon && dateFrom.substring(5, 7) === dateTo.substring(5, 7)
 
   const fromStr = monthInCommon
-    ? moment(dateFrom, DATE_FORMAT).format('Do')
+    ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-      ? moment(dateFrom, DATE_FORMAT).format('Do MMM')
+      ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
       : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
@@ -101,7 +92,7 @@ export function getTodayDateAndTimeAsStrings () {
   const now = getLondonNowAsMomentDate()
 
   return {
-    dateStr: now.format(DATE_FORMAT),
+    dateStr: now.format(timeConstants.DATE_FORMAT),
     timeStr: now.format('HH:mm')
   }
 }
@@ -167,14 +158,14 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
 }
 
 export function getCountOfDaysBetweenStringDates (dateFrom, dateTo) {
-  const from = moment(dateFrom, DATE_FORMAT)
-  const to = moment(dateTo, DATE_FORMAT)
+  const from = moment(dateFrom, timeConstants.DATE_FORMAT)
+  const to = moment(dateTo, timeConstants.DATE_FORMAT)
   return to.diff(from, 'days')
 }
 
 export function addDaysToStringDate (dateStr, days) {
-  const date = moment(dateStr, DATE_FORMAT)
-  return date.add(days, 'days').format(DATE_FORMAT)
+  const date = moment(dateStr, timeConstants.DATE_FORMAT)
+  return date.add(days, 'days').format(timeConstants.DATE_FORMAT)
 }
 
 export function formatTimesStringForGivenDate (
@@ -183,8 +174,8 @@ export function formatTimesStringForGivenDate (
   timeStr,
   namedClosuresLookup
 ) {
-  const isVenue = entity.entityType === ENTITY_TYPE_VENUE
-  const isPerformance = eventIsPerformance(entity.eventType)
+  const isVenue = entity.entityType === entityConstants.ENTITY_TYPE_VENUE
+  const isPerformance = eventLib.eventIsPerformance(entity.eventType)
   let times = null
 
   if (isVenue) {
@@ -313,7 +304,7 @@ function _removeClosureTimes (hasOpeningTimes, times, closureTimes) {
 
 function _getTimesOnGivenDateForPerformanceEvent (dateStr, timeStr, event) {
   if (
-    event.occurrenceType === OCCURRENCE_TYPE_BOUNDED &&
+    event.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED &&
     _dateNotInRange(dateStr, event.dateFrom, event.dateTo)
   ) {
     return null
@@ -360,7 +351,7 @@ function _getTimesOnGivenDateForExhibitionEvent (
   namedClosuresLookup
 ) {
   if (
-    event.occurrenceType === OCCURRENCE_TYPE_BOUNDED &&
+    event.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED &&
     _dateNotInRange(dateStr, event.dateFrom, event.dateTo)
   ) {
     return null
@@ -415,8 +406,8 @@ function _getTimesOnGivenDateForExhibitionEvent (
 
 export function getTimesDetails (entity, entityType, fromStr) {
   const toStr = getYearFromTodayAsString()
-  const isVenue = entityType === ENTITY_TYPE_VENUE
-  const isPerformance = eventIsPerformance(entity.eventType)
+  const isVenue = entityType === entityConstants.ENTITY_TYPE_VENUE
+  const isPerformance = eventLib.eventIsPerformance(entity.eventType)
   let timesDetails = null
 
   if (isVenue) {
@@ -548,7 +539,7 @@ export function getRegularTimesForDisplay (regularTimes) {
 
   const result = []
 
-  DAYS_OF_WEEK_MAPPING.forEach(dayOfWeek => {
+  timeConstants.DAYS_OF_WEEK_MAPPING.forEach(dayOfWeek => {
     const mappedTimes = regularTimes
       .filter(time => time.day === dayOfWeek.value)
       .map(time => {
@@ -684,7 +675,7 @@ function _createNamedClosuresArray (namedClosures) {
   return namedClosures
     .map(namedClosure => {
       const match = _.find(
-        NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS,
+        timeConstants.NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS,
         x => x.value === namedClosure
       )
 
@@ -796,7 +787,7 @@ function _removeTimeFromJsDate (date) {
 export function mapStringDateToMoment (
   stringDate,
   useLondonTimezone,
-  dateFormat = DATE_FORMAT
+  dateFormat = timeConstants.DATE_FORMAT
 ) {
   if (!stringDate) {
     return null
@@ -858,17 +849,18 @@ export function getEventTimesFormDisplayFlags (
 ) {
   useVenueOpeningTimes = !!useVenueOpeningTimes
 
-  const isPerformance = eventIsPerformance(eventType)
-  const isOneTimePerformance = isPerformance && eventIsOneTime(occurrenceType)
+  const isPerformance = eventLib.eventIsPerformance(eventType)
+  const isOneTimePerformance =
+    isPerformance && eventLib.eventIsOneTime(occurrenceType)
 
   const isExhibition = !isPerformance
 
-  const hasRange = occurrenceTypeHasDateRange(occurrenceType)
+  const hasRange = eventLib.occurrenceTypeHasDateRange(occurrenceType)
   const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
 
   const isLongerThanWeek =
     (hasRange && periodIsLongerThanWeek(dateFrom, dateTo)) ||
-    occurrenceTypeIsContinuous(occurrenceType)
+    eventLib.occurrenceTypeIsContinuous(occurrenceType)
 
   const venueHasOpeningTimes =
     isExhibition &&
@@ -942,7 +934,7 @@ export function createTimeKey (obj) {
   if (obj.date) {
     dayOrDate = typeof obj.date === 'string'
       ? obj.date
-      : moment(obj.date).format(DATE_FORMAT)
+      : moment(obj.date).format(timeConstants.DATE_FORMAT)
   } else {
     dayOrDate = obj.day
   }

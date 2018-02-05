@@ -1,7 +1,7 @@
 import { SubmissionError } from 'redux-form'
 import { ensure } from 'ensure-request'
 
-import * as validation from '_src/lib/validation'
+import * as validationLib from '_src/lib/validation'
 
 describe('email validation', () => {
   const tests = [
@@ -90,7 +90,7 @@ describe('validate with error return', () => {
     it(`should ${test.failureExpected ? '' : 'not'} return errors when passed ${JSON.stringify(test.args)}`, function (
       done
     ) {
-      validation
+      validationLib
         .validate(
           test.args.values,
           test.args.constraints,
@@ -175,7 +175,7 @@ describe('validate', () => {
     it(`should ${test.failureExpected ? 'throw' : 'not throw'} when passed ${JSON.stringify(test.args)}`, function (
       done
     ) {
-      validation
+      validationLib
         .validate(
           test.args.values,
           test.args.constraints,
@@ -282,7 +282,7 @@ describe('validateLink', () => {
   tests.forEach(test => {
     it(test.it, () => {
       const errors = {}
-      validation.validateLink(test.args, errors)
+      validationLib.validateLink(test.args, errors)
       expect(Object.keys(errors).length).toBe(test.shouldValidate ? 0 : 1)
     })
   })

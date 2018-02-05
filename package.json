@@ -35,7 +35,10 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/lib/cognito-user.js",
-      "!src/lib/browser.js"
+      "!src/lib/browser.js",
+      "!src/lib/fetch-impl.js",
+      "!src/lib/normalise.js",
+      "!src/lib/saga.js"
     ]
   },
   "standard": {

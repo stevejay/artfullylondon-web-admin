@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-function addElement (array, newElement) {
+export function addElement (array, newElement) {
   if (_.find(array, x => (x.key || x) === (newElement.key || newElement))) {
     return null
   }
@@ -10,7 +10,7 @@ function addElement (array, newElement) {
   return newArray
 }
 
-function updateElementByKey (array, key, newValues) {
+export function updateElementByKey (array, key, newValues) {
   const index = _.findIndex(array, x => x.key === key)
 
   if (index === -1) {
@@ -24,12 +24,6 @@ function updateElementByKey (array, key, newValues) {
   return newArray
 }
 
-function removeElementByKey (array, key) {
+export function removeElementByKey (array, key) {
   return array.filter(x => (x.key || x) !== key)
-}
-
-export default {
-  addElement: addElement,
-  updateElementByKey: updateElementByKey,
-  removeElementByKey: removeElementByKey
 }

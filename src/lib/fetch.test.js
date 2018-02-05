@@ -1,5 +1,5 @@
 import * as fetchImpl from '_src/lib/fetch-impl'
-import * as fetch from '_src/lib/fetch'
+import * as fetchLib from '_src/lib/fetch'
 
 const SOME_URL = 'http://test.com'
 
@@ -7,10 +7,10 @@ describe('get', () => {
   it('should form a valid request without authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.get(SOME_URL).then(() => {
+    return fetchLib.get(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'GET',
@@ -25,10 +25,10 @@ describe('get', () => {
   it('should form a valid request with authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.get(SOME_URL, 'auth1').then(() => {
+    return fetchLib.get(SOME_URL, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'GET',
@@ -46,7 +46,7 @@ describe('get', () => {
       .fn()
       .mockReturnValue(createResponse(200, { errorMessage: 'error' }))
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -59,7 +59,7 @@ describe('get', () => {
   it('should throw an error for a CORS error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(0, {}))
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -76,7 +76,7 @@ describe('get', () => {
         createResponse(400, { errorMessage: 'foo already exists' })
       )
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -91,7 +91,7 @@ describe('get', () => {
       .fn()
       .mockReturnValue(createResponse(400, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -104,7 +104,7 @@ describe('get', () => {
   it('should throw an error for a 401 unauthorized error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(401, {}))
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -117,7 +117,7 @@ describe('get', () => {
   it('should throw an error for a 500 error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(500, {}))
 
-    return fetch
+    return fetchLib
       .get(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -132,10 +132,10 @@ describe('httpDelete', () => {
   it('should form a valid request without authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.httpDelete(SOME_URL).then(() => {
+    return fetchLib.httpDelete(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -150,10 +150,10 @@ describe('httpDelete', () => {
   it('should form a valid request with authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.httpDelete(SOME_URL, 'auth1').then(() => {
+    return fetchLib.httpDelete(SOME_URL, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -169,10 +169,10 @@ describe('httpDelete', () => {
   it('should not throw an error for a 200 response', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.httpDelete(SOME_URL).then(() => {
+    return fetchLib.httpDelete(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -189,7 +189,7 @@ describe('httpDelete', () => {
       .fn()
       .mockReturnValue(createResponse(200, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -202,7 +202,7 @@ describe('httpDelete', () => {
   it('should throw an error for a CORS error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(0, {}))
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -219,7 +219,7 @@ describe('httpDelete', () => {
         createResponse(400, { errorMessage: 'foo already exists' })
       )
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -234,7 +234,7 @@ describe('httpDelete', () => {
       .fn()
       .mockReturnValue(createResponse(400, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -247,7 +247,7 @@ describe('httpDelete', () => {
   it('should throw an error for a 401 unauthorized error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(401, {}))
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -260,7 +260,7 @@ describe('httpDelete', () => {
   it('should throw an error for a 500 error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(500, {}))
 
-    return fetch
+    return fetchLib
       .httpDelete(SOME_URL)
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -275,10 +275,10 @@ describe('put', () => {
   it('should form a valid request without authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.put(SOME_URL, { key: 'value' }).then(() => {
+    return fetchLib.put(SOME_URL, { key: 'value' }).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'PUT',
@@ -295,10 +295,10 @@ describe('put', () => {
   it('should form a valid request with authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.put(SOME_URL, { key: 'value' }, 'auth1').then(() => {
+    return fetchLib.put(SOME_URL, { key: 'value' }, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'PUT',
@@ -318,7 +318,7 @@ describe('put', () => {
       .fn()
       .mockReturnValue(createResponse(200, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -331,7 +331,7 @@ describe('put', () => {
   it('should throw an error for a CORS error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(0, {}))
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -348,7 +348,7 @@ describe('put', () => {
         createResponse(400, { errorMessage: 'foo already exists' })
       )
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -363,7 +363,7 @@ describe('put', () => {
       .fn()
       .mockReturnValue(createResponse(400, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -376,7 +376,7 @@ describe('put', () => {
   it('should throw an error for a 401 unauthorized error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(401, {}))
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -389,7 +389,7 @@ describe('put', () => {
   it('should throw an error for a 500 error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(500, {}))
 
-    return fetch
+    return fetchLib
       .put(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -404,10 +404,10 @@ describe('post', () => {
   it('should form a valid request without authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.post(SOME_URL, { key: 'value' }).then(() => {
+    return fetchLib.post(SOME_URL, { key: 'value' }).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'POST',
@@ -424,10 +424,10 @@ describe('post', () => {
   it('should form a valid request with authorization', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
-    return fetch.post(SOME_URL, { key: 'value' }, 'auth1').then(() => {
+    return fetchLib.post(SOME_URL, { key: 'value' }, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'POST',
@@ -447,7 +447,7 @@ describe('post', () => {
       .fn()
       .mockReturnValue(createResponse(200, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -460,7 +460,7 @@ describe('post', () => {
   it('should throw an error for a CORS error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(0, {}))
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -477,7 +477,7 @@ describe('post', () => {
         createResponse(400, { errorMessage: 'foo already exists' })
       )
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -492,7 +492,7 @@ describe('post', () => {
       .fn()
       .mockReturnValue(createResponse(400, { errorMessage: 'some error' }))
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -505,7 +505,7 @@ describe('post', () => {
   it('should throw an error for a 401 unauthorized error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(401, {}))
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {
@@ -518,7 +518,7 @@ describe('post', () => {
   it('should throw an error for a 500 error', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(500, {}))
 
-    return fetch
+    return fetchLib
       .post(SOME_URL, { key: 'value' })
       .then(() => new Error('should have thrown'))
       .catch(err => {

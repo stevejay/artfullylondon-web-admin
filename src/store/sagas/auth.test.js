@@ -5,11 +5,11 @@ import log from 'loglevel'
 
 import * as formConstants from '_src/constants/form'
 import * as authSagas from '_src/store/sagas/auth'
-import { authActions } from '_src/store'
 import * as authLib from '_src/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as authConstraints from '_src/constants/auth-constraints'
+import { authActions } from '_src/store'
 import history from '_src/history'
 
 describe('logIn', () => {
@@ -27,7 +27,7 @@ describe('logIn', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(validationLib.validateSync, payload, authConstraints.logInConstraint)
+      call(validationLib.validate, payload, authConstraints.logInConstraint)
     )
 
     result = generator.next()
@@ -67,7 +67,7 @@ describe('logIn', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(validationLib.validateSync, payload, authConstraints.logInConstraint)
+      call(validationLib.validate, payload, authConstraints.logInConstraint)
     )
 
     result = generator.throw(error)

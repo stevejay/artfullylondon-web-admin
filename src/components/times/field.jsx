@@ -5,7 +5,7 @@ import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
-import array from '_src/lib/array'
+import * as arrayLib from '_src/lib/array'
 
 class TimesField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -26,7 +26,7 @@ class TimesField extends React.Component {
   }
   handleDelete = key => {
     const { input: { value, onChange } } = this.props
-    const newValue = array.removeElementByKey(value, key)
+    const newValue = arrayLib.removeElementByKey(value, key)
     onChange(newValue)
   }
   render () {

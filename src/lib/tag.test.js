@@ -1,4 +1,4 @@
-import * as tag from '_src/lib/tag'
+import * as tagLib from '_src/lib/tag'
 
 describe('getTagTypeFromTagId', () => {
   const tests = [
@@ -26,23 +26,43 @@ describe('getTagTypeFromTagId', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = tag.getTagTypeFromTagId(test.arg)
+      const actual = tagLib.getTagTypeFromTagId(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
 
   it('should handle an unknown tag type', () => {
-    expect(() => tag.getTagTypeFromTagId('foo/bar')).toThrow()
+    expect(() => tagLib.getTagTypeFromTagId('foo/bar')).toThrow()
   })
 })
 
 describe('getTagTypeFromLocation', () => {
   it('should get tag type from valid location', () => {
-    const actual = tag.getTagTypeFromLocation({ pathname: '/foo/GEO' })
+    const actual = tagLib.getTagTypeFromLocation({ pathname: '/foo/GEO' })
     expect(actual).toEqual('geo')
   })
 
   it('should throw an error for invalid location', () => {
-    expect(() => tag.getTagTypeFromLocation({ pathname: '' })).toThrow()
+    expect(() => tagLib.getTagTypeFromLocation({ pathname: '' })).toThrow()
+  })
+})
+
+describe('getTagTypeUrlParameter', () => {
+  it('should get the parameter', () => {
+    const match = { params: { type: 'Medium' } }
+    const result = tagLib.getTagTypeUrlParameter(match)
+    expect(result).toEqual('medium')
+  })
+})
+
+describe('processReceivedTags', () => {
+  it('should process multiple tags', () => {
+    const actual = tagLib.processReceivedTags([{ id: 3 }, { id: 1 }, { id: 2 }])
+    expect(actual).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }])
+  })
+
+  it('should process a null array', () => {
+    const actual = tagLib.processReceivedTags(null)
+    expect(actual).toEqual([])
   })
 })

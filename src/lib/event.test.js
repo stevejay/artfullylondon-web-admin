@@ -1,12 +1,17 @@
-import * as event from '_src/lib/event'
 import { shallow } from 'enzyme'
 
-import * as eventConstants from '_src/constants/event'
+import * as eventLib from '_src/lib/event'
 import { LinkCollection } from '_src/entities/link-collection'
-import { LINK_TYPE_BOOKING } from '_src/constants/link'
+import * as eventConstants from '_src/constants/event'
+import * as linkConstants from '_src/constants/link'
 
 describe('groupTimesByDate', () => {
-  it('should correctly group a mix of dates and times', () => {
+  it('should handle no times', () => {
+    const actual = eventLib.groupTimesByDate([])
+    expect(actual).toEqual(null)
+  })
+
+  it('should correctly group a mix of dates and performance times', () => {
     const arg = [
       { date: '2017/01/14', at: '10:00' },
       { date: '2017/01/14', at: '12:00' },
@@ -25,7 +30,34 @@ describe('groupTimesByDate', () => {
       }
     ]
 
-    const actual = event.groupTimesByDate(arg)
+    const actual = eventLib.groupTimesByDate(arg)
+    expect(actual).toEqual(expected)
+  })
+
+  it('should correctly group a mix of dates and opening times', () => {
+    const arg = [
+      { date: '2017/01/14', from: '10:00', to: '11:00' },
+      { date: '2017/01/14', from: '12:00', to: '13:00' },
+      { date: '2017/01/14', from: '18:00', to: '19:00' },
+      { date: '2017/01/15', from: '10:00', to: '11:00' }
+    ]
+
+    const expected = [
+      {
+        date: '2017/01/14',
+        times: [
+          { from: '10:00', to: '11:00' },
+          { from: '12:00', to: '13:00' },
+          { from: '18:00', to: '19:00' }
+        ]
+      },
+      {
+        date: '2017/01/15',
+        times: [{ from: '10:00', to: '11:00' }]
+      }
+    ]
+
+    const actual = eventLib.groupTimesByDate(arg)
     expect(actual).toEqual(expected)
   })
 })
@@ -74,7 +106,9 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/22',
-        links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
+        links: [
+          { type: linkConstants.LINK_TYPE_BOOKING, url: 'https://test.com' }
+        ],
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens 22nd Jan 2017</a>)</span></span>'
@@ -83,7 +117,9 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/21',
-        links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
+        links: [
+          { type: linkConstants.LINK_TYPE_BOOKING, url: 'https://test.com' }
+        ],
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens tomorrow</a>)</span></span>'
@@ -92,7 +128,9 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/20',
-        links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
+        links: [
+          { type: linkConstants.LINK_TYPE_BOOKING, url: 'https://test.com' }
+        ],
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens today</a>)</span></span>'
@@ -101,16 +139,34 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
         bookingOpens: '2017/01/19',
-        links: [{ type: LINK_TYPE_BOOKING, url: 'https://test.com' }],
+        links: [
+          { type: linkConstants.LINK_TYPE_BOOKING, url: 'https://test.com' }
+        ],
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Open now</a>)</span></span>'
+    },
+    {
+      args: {
+        bookingType: eventConstants.BOOKING_TYPE_REQUIRED_FOR_NON_MEMBERS,
+        links: [
+          { type: linkConstants.LINK_TYPE_BOOKING, url: 'https://test.com' }
+        ],
+        today: '2017/01/20'
+      },
+      expected: '<span>Required for Non-members<span> (Booking date pending)</span></span>'
+    },
+    {
+      args: {
+        bookingType: eventConstants.BOOKING_TYPE_NOT_REQUIRED
+      },
+      expected: '<span>Not Required</span>'
     }
   ]
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const result = event.formatBookingInfoForDisplay(
+      const result = eventLib.formatBookingInfoForDisplay(
         test.args.bookingType,
         test.args.bookingOpens,
         new LinkCollection(test.args.links),
@@ -191,12 +247,7 @@ describe('formatEventOccurrenceForDisplay', () => {
       args: {
         occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
         eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-        performancesOverrides: [
-          {
-            date: '2017/01/20',
-            at: '18:00'
-          }
-        ],
+        performancesOverrides: [{ date: '2017/01/20', at: '18:00' }],
         today: '2017/01/20'
       },
       expected: 'Today at 6:00 pm'
@@ -205,12 +256,7 @@ describe('formatEventOccurrenceForDisplay', () => {
       args: {
         occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
         eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-        performancesOverrides: [
-          {
-            date: '2017/01/21',
-            at: '12:00'
-          }
-        ],
+        performancesOverrides: [{ date: '2017/01/21', at: '12:00' }],
         today: '2017/01/20'
       },
       expected: 'Tomorrow at 12:00 pm'
@@ -219,21 +265,37 @@ describe('formatEventOccurrenceForDisplay', () => {
       args: {
         occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
         eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-        performancesOverrides: [
-          {
-            date: '2017/01/25',
-            at: '08:00'
-          }
-        ],
+        performancesOverrides: [{ date: '2017/01/25', at: '08:00' }],
         today: '2017/01/20'
       },
       expected: '25th Jan 2017 at 8:00 am'
+    },
+    {
+      args: {
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
+        performancesOverrides: [],
+        today: '2017/01/20'
+      },
+      expected: 'Unknown'
+    },
+    {
+      args: {
+        occurrenceType: eventConstants.OCCURRENCE_TYPE_ONETIME,
+        eventType: eventConstants.EVENT_TYPE_EXHIBITION,
+        performancesOverrides: [
+          { date: '2017/01/25', at: '08:00' },
+          { date: '2017/01/25', at: '09:00' }
+        ],
+        today: '2017/01/20'
+      },
+      expected: 'Unknown'
     }
   ]
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const result = event.formatEventOccurrenceForDisplay(
+      const result = eventLib.formatEventOccurrenceForDisplay(
         test.args.occurrenceType,
         test.args.eventType,
         test.args.dateFrom,
@@ -291,7 +353,7 @@ describe('formatCostForDisplay', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const result = event.formatCostForDisplay(
+      const result = eventLib.formatCostForDisplay(
         test.args.costType,
         test.args.costFrom,
         test.args.costTo
@@ -316,7 +378,7 @@ describe('eventIsPerformance', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const result = event.eventIsPerformance(test.arg)
+      const result = eventLib.eventIsPerformance(test.arg)
       expect(result).toEqual(test.expected)
     })
   })
@@ -340,7 +402,7 @@ describe('eventIsOneTime', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const result = event.eventIsOneTime(test.arg)
+      const result = eventLib.eventIsOneTime(test.arg)
       expect(result).toEqual(test.expected)
     })
   })
@@ -360,7 +422,7 @@ describe('eventIsPaid', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const result = event.eventIsPaid(test.arg)
+      const result = eventLib.eventIsPaid(test.arg)
       expect(result).toEqual(test.expected)
     })
   })
@@ -387,7 +449,7 @@ describe('bookingRequired', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = event.bookingRequired(test.arg)
+      const actual = eventLib.bookingRequired(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -414,7 +476,7 @@ describe('occurrenceTypeHasDateRange', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = event.occurrenceTypeHasDateRange(test.arg)
+      const actual = eventLib.occurrenceTypeHasDateRange(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -441,7 +503,7 @@ describe('occurrenceTypeIsContinuous', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = event.occurrenceTypeIsContinuous(test.arg)
+      const actual = eventLib.occurrenceTypeIsContinuous(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })

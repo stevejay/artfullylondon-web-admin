@@ -1,4 +1,6 @@
-import * as search from '_src/lib/search'
+import moment from 'moment'
+
+import * as searchLib from '_src/lib/search'
 
 describe('createAutocompleteSearchRequestUrl', () => {
   const tests = [
@@ -21,7 +23,7 @@ describe('createAutocompleteSearchRequestUrl', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.createAutocompleteSearchRequestUrl(test.arg)
+      const actual = searchLib.createAutocompleteSearchRequestUrl(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -43,12 +45,22 @@ describe('createBasicSearchRequestUrl', () => {
       it: 'should handle query with skip and take overrides',
       args: { query: { term: 'foo', skip: 1, take: 2 }, skip: 10, take: 20 },
       expected: 'https://api.test.com/search-service/admin/search/basic?term=foo&skip=10&take=20'
+    },
+    {
+      it: 'should handle query with an entity type',
+      args: { query: { entityType: 'event' }, skip: 10, take: 20 },
+      expected: 'https://api.test.com/search-service/admin/search/basic?entityType=event&skip=10&take=20'
+    },
+    {
+      it: 'should handle query with a null term',
+      args: { query: { term: null } },
+      expected: 'https://api.test.com/search-service/admin/search/basic?take=12'
     }
   ]
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.createBasicSearchRequestUrl(
+      const actual = searchLib.createBasicSearchRequestUrl(
         test.args.query,
         test.args.skip,
         test.args.take
@@ -66,6 +78,14 @@ describe('createSearchPageUrl', () => {
       args: {
         baseUrl: 'http://search.com/search',
         query: { from: new Date(1238267253) }
+      },
+      expected: 'http://search.com/search?from=1970%2F01%2F15&take=12'
+    },
+    {
+      it: 'should handle a valid search with moment date decoding required',
+      args: {
+        baseUrl: 'http://search.com/search',
+        query: { from: moment(1238267253) }
       },
       expected: 'http://search.com/search?from=1970%2F01%2F15&take=12'
     },
@@ -107,7 +127,7 @@ describe('createSearchPageUrl', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.createSearchPageUrl(
+      const actual = searchLib.createSearchPageUrl(
         test.args.baseUrl,
         test.args.query,
         test.args.skip,
@@ -150,7 +170,7 @@ describe('maybeHasMoreSearchResults', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = search.maybeHasMoreSearchResults(
+      const actual = searchLib.maybeHasMoreSearchResults(
         test.args.entityType,
         test.args.items,
         test.args.take

@@ -28,12 +28,7 @@ export function * attemptAutoLogIn () {
 export function * logIn ({ payload }) {
   try {
     yield put(startSubmit(formConstants.LOGIN_FORM_NAME))
-
-    yield call(
-      validationLib.validateSync,
-      payload,
-      authConstraints.logInConstraint
-    )
+    yield call(validationLib.validate, payload, authConstraints.logInConstraint)
 
     const cognitoUser = yield call(
       authLib.authenticateUser,

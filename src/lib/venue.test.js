@@ -1,4 +1,4 @@
-import * as venue from '_src/lib/venue'
+import * as venueLib from '_src/lib/venue'
 
 describe('formatAddressForDisplay', () => {
   const tests = [
@@ -20,7 +20,7 @@ describe('formatAddressForDisplay', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = venue.formatAddressForDisplay(
+      const actual = venueLib.formatAddressForDisplay(
         test.args.address,
         test.args.postcode
       )
@@ -39,12 +39,16 @@ describe('getPostcodeDistrict', () => {
     {
       arg: 'W1W 3VV',
       expected: 'W1'
+    },
+    {
+      arg: null,
+      expected: null
     }
   ]
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = venue.getPostcodeDistrict(test.arg)
+      const actual = venueLib.getPostcodeDistrict(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })

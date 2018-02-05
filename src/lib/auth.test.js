@@ -1,5 +1,3 @@
-import { AuthenticationDetails } from 'amazon-cognito-identity-js'
-
 import * as cognitoUserLib from '_src/lib/cognito-user'
 import * as authLib from '_src/lib/auth'
 

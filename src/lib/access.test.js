@@ -1,9 +1,9 @@
-import * as access from '_src/lib/access'
+import * as accessLib from '_src/lib/access'
 import * as accessConstants from '_src/constants/access'
 
 describe('getAccessText', () => {
   it('should return correct text when has all types known and no access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
@@ -16,7 +16,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has one or more unknown types and no access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_UNKNOWN,
@@ -29,7 +29,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has all types known and an access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
@@ -42,7 +42,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has one or more unknown types and an access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_UNKNOWN,
@@ -55,7 +55,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has all partial access and no access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_PARTIAL_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_PARTIAL_HEARING_LOOPS,
@@ -68,7 +68,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has no access and no access link', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_NO_ACCESS,
       accessConstants.DISABLED_BATHROOM_TYPE_NOT_PRESENT,
       accessConstants.HEARING_FACILITIES_TYPE_NO_HEARING_LOOPS,
@@ -81,7 +81,7 @@ describe('getAccessText', () => {
   })
 
   it('should return correct text when has nothing known', () => {
-    const actual = access.getAccessText(
+    const actual = accessLib.getAccessText(
       accessConstants.WHEELCHAIR_ACCESS_TYPE_UNKNOWN,
       accessConstants.DISABLED_BATHROOM_TYPE_UNKNOWN,
       accessConstants.HEARING_FACILITIES_TYPE_UNKNOWN,

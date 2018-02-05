@@ -1,4 +1,5 @@
 import _ from 'lodash'
+
 import * as imageLib from '_src/lib/image'
 
 export function mapServerConstantsData (contentJson) {

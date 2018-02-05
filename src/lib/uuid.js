@@ -1,5 +1,5 @@
 import lodashUuid from 'lodash-uuid'
 
-export default function create () {
+export function create () {
   return lodashUuid.uuid().replace(/-/g, '')
 }

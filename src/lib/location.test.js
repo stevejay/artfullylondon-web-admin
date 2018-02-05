@@ -1,4 +1,4 @@
-import * as location from '_src/lib/location'
+import * as locationLib from '_src/lib/location'
 
 describe('convertGoogleMapBoundsToNSEWBounds', () => {
   it('should convert the bounds', () => {
@@ -7,7 +7,10 @@ describe('convertGoogleMapBoundsToNSEWBounds', () => {
       getSouthWest: () => ({ lat: () => 3, lng: () => 4 })
     }
 
-    const actual = location.convertGoogleMapBoundsToNSEWBounds(googleMapBounds)
+    const actual = locationLib.convertGoogleMapBoundsToNSEWBounds(
+      googleMapBounds
+    )
+
     expect(actual).toEqual({ north: 1, west: 4, south: 3, east: 2 })
   })
 })
@@ -15,21 +18,25 @@ describe('convertGoogleMapBoundsToNSEWBounds', () => {
 describe('convertGoogleMapPointToLatLngPoint', () => {
   it('should convert the point', () => {
     const googleMapPoint = { lat: () => 1, lng: () => 2 }
-    const actual = location.convertGoogleMapPointToLatLngPoint(googleMapPoint)
+
+    const actual = locationLib.convertGoogleMapPointToLatLngPoint(
+      googleMapPoint
+    )
+
     expect(actual).toEqual({ lat: 1, lng: 2 })
   })
 })
 
 describe('createGoogleMapLinkUrl', () => {
   it('should create the url', () => {
-    const actual = location.createGoogleMapLinkUrl(1, 2, 14)
+    const actual = locationLib.createGoogleMapLinkUrl(1, 2, 14)
     expect(actual).toEqual('https://www.google.com/maps/place//@1,2,14z/')
   })
 })
 
 describe('convertGoogleMapZoomToInt', () => {
   it('should convert the zoom', () => {
-    const actual = location.convertGoogleMapZoomToInt('14')
+    const actual = locationLib.convertGoogleMapZoomToInt('14')
     expect(actual).toEqual(14)
   })
 })
@@ -56,7 +63,7 @@ describe('pointIsInLondonArea', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = location.pointIsInLondonArea(test.arg)
+      const actual = locationLib.pointIsInLondonArea(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -110,7 +117,7 @@ describe('secondBoundsIsContainedByFirstBounds', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = location.secondBoundsIsContainedByFirstBounds(
+      const actual = locationLib.secondBoundsIsContainedByFirstBounds(
         test.args.first,
         test.args.second
       )
@@ -158,7 +165,7 @@ describe('mergeBounds', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = location.mergeBounds(
+      const actual = locationLib.mergeBounds(
         test.args.existingBounds,
         test.args.newBounds
       )
@@ -212,14 +219,88 @@ describe('isContainedBy', () => {
     }
   ]
 
-  tests.map(test => {
+  tests.forEach(test => {
     it(test.it, () => {
-      const actual = location.isContainedBy(
+      const actual = locationLib.isContainedBy(
         test.args.mergedBounds,
         test.args.bounds
       )
 
       expect(actual).toEqual(test.expected)
+    })
+  })
+})
+
+describe('isEmptyPin', () => {
+  const tests = [
+    { arg: null, expected: true },
+    { arg: { lat: null, lng: 2 }, expected: true },
+    { arg: { lat: 2, lng: null }, expected: true },
+    { arg: { lat: 2, lng: 3 }, expected: false }
+  ]
+
+  tests.forEach(test => {
+    it(`should return ${test.expected} for arg ${JSON.stringify(test.arg)}`, () => {
+      const actual = locationLib.isEmptyPin(test.arg)
+      expect(actual).toEqual(test.expected)
+    })
+  })
+})
+
+describe('containsAllOfLondon', () => {
+  it('should return true when bounds to test contains all of London', () => {
+    const actual = locationLib.containsAllOfLondon({
+      north: 80,
+      south: 0,
+      east: 50,
+      west: -50
+    })
+
+    expect(actual).toEqual(true)
+  })
+})
+
+describe('enlargeBounds', () => {
+  it('should enlarge the bounds', () => {
+    const actual = locationLib.enlargeBounds(
+      {
+        north: 80,
+        south: 0,
+        east: 50,
+        west: -50
+      },
+      1.1
+    )
+
+    expect(actual).toEqual({
+      east: 55.00000000000001,
+      north: 84,
+      south: -4,
+      west: -55.00000000000001
+    })
+  })
+})
+
+describe('getBounds', () => {
+  it('should get bounds for zoom level 14', () => {
+    const actual = locationLib.getBounds({ lat: 1, lng: 2 }, 14)
+
+    expect(actual).toEqual({
+      east: 2.06,
+      north: 1.024,
+      south: 0.976,
+      west: 1.94
+    })
+  })
+
+  it('should get bounds for zoom level other than 14', () => {
+    const actual = locationLib.getBounds({ lat: 1, lng: 2 }, 13)
+
+    expect(actual).toEqual({
+      east: 2.021,
+      north: 1.006,
+      south: 0.994,
+      west: 1.979
     })
   })
 })

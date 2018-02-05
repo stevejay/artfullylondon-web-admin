@@ -1,4 +1,4 @@
-import * as pagination from '_src/lib/pagination'
+import * as paginationLib from '_src/lib/pagination'
 
 describe('showGoToFirstPageLink', () => {
   const tests = [
@@ -26,7 +26,7 @@ describe('showGoToFirstPageLink', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = pagination.showGoToFirstPageLink(
+      const actual = paginationLib.showGoToFirstPageLink(
         test.args.totalPages,
         test.args.pageNumber,
         test.args.currentPageNumber
@@ -63,7 +63,7 @@ describe('showGoToLastPageLink', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = pagination.showGoToLastPageLink(
+      const actual = paginationLib.showGoToLastPageLink(
         test.args.totalPages,
         test.args.pageNumber,
         test.args.currentPageNumber
@@ -120,7 +120,7 @@ describe('getPaginationRange', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = pagination.getPaginationRange(
+      const actual = paginationLib.getPaginationRange(
         test.args.totalPages,
         test.args.currentPageNumber
       )

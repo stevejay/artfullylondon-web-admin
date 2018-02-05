@@ -33,9 +33,7 @@ export function getTagTypeFromLocation (location) {
 }
 
 export function getTagTypeUrlParameter (match) {
-  return match && match.params && match.params.type
-    ? match.params.type.toLowerCase()
-    : null
+  return match.params.type.toLowerCase()
 }
 
 export function processReceivedTags (tags) {
