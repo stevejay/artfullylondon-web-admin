@@ -4,7 +4,7 @@ exports[`should render correctly when the image has a copyright 1`] = `
 <div
   className="src-components-image-grid-card__card"
 >
-  <Image
+  <shouldUpdate(Image)
     imageId="some-id"
     ratio={2}
     size="very-small"
@@ -56,7 +56,7 @@ exports[`should render correctly when the image is not the main image 1`] = `
 <div
   className="src-components-image-grid-card__card"
 >
-  <Image
+  <shouldUpdate(Image)
     imageId="some-id"
     ratio={2}
     size="very-small"
@@ -106,7 +106,7 @@ exports[`should render correctly when the image is the main image 1`] = `
 <div
   className="src-components-image-grid-card__card"
 >
-  <Image
+  <shouldUpdate(Image)
     imageId="some-id"
     ratio={2}
     size="very-small"

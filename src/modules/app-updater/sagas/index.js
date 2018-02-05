@@ -21,7 +21,7 @@ export function * checkForNewAppVersion ({ meta }) {
       yield call(log.error, err)
     }
 
-    if (json && cmp(json.version, process.env.WEBSITE_VERSION) >= 0) {
+    if (json && cmp(json.version, process.env.WEBSITE_VERSION) > 0) {
       break
     }
 

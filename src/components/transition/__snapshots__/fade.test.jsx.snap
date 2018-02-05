@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<FadeTransition>
+<FadeTransition
+  in={false}
+>
   <BasicTransition
     appear={false}
     className="src-components-transition-fade__fade-transition"

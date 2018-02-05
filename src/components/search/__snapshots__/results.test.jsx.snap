@@ -9,7 +9,7 @@ exports[`should render correctly 1`] = `
       Array [
         SummaryVenue {
           "entity": Object {},
-          "postcodeDistrict": undefined,
+          "postcodeDistrict": null,
         },
       ]
     }

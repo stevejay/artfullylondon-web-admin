@@ -66,8 +66,8 @@ exports[`should render correctly when logged in 1`] = `
       <Footer />
     </PageFooter>
   </React.Fragment>
-  <Connect(AppUpdater) />
-  <Connect(Notification) />
+  <Connect(withState(AppUpdater)) />
+  <Connect(NotificationContainer) />
 </Page>
 `;
 
@@ -98,7 +98,7 @@ exports[`should render correctly when not logged in 1`] = `
       />
     </Switch>
   </PageMain>
-  <Connect(AppUpdater) />
-  <Connect(Notification) />
+  <Connect(withState(AppUpdater)) />
+  <Connect(NotificationContainer) />
 </Page>
 `;

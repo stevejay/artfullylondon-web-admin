@@ -56,7 +56,7 @@ it('should trigger initial actions', () => {
     />
   )
 
-  expect(mockDispatch.mock.calls.length).toEqual(3)
+  expect(mockDispatch.mock.calls.length).toEqual(2)
 
   expect(mockDispatch.mock.calls[0]).toEqual([authActions.attemptAutoLogIn()])
 
@@ -79,9 +79,9 @@ it('should handle a window resize event', () => {
 
   wrapper.find('BrowserResizeListener').prop('onWindowResize')(200)
 
-  expect(mockDispatch.mock.calls.length).toEqual(4)
+  expect(mockDispatch.mock.calls.length).toEqual(3)
 
-  expect(mockDispatch.mock.calls[3]).toEqual([
+  expect(mockDispatch.mock.calls[2]).toEqual([
     browserActions.browserWidthChanged(200)
   ])
 })

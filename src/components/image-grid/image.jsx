@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { shouldUpdate } from 'recompose'
 
-import ShouldNotUpdateComponent from '_src/components/base/should-not-update'
 import ImagePlaceholder from '_src/components/image-placeholder'
 import * as image from '_src/lib/image'
 import * as entityConstants from '_src/constants/entity'
 import './image.scss'
 
-class Image extends ShouldNotUpdateComponent {
+export class Image extends React.Component {
   render () {
     const { imageId, size, type } = this.props
 
@@ -26,4 +26,4 @@ Image.propTypes = {
   size: PropTypes.oneOf(['tiny', 'very-small', 'small', 'medium']).isRequired
 }
 
-export default Image
+export default shouldUpdate(() => false)(Image)
