@@ -47,9 +47,9 @@ class MonitorCollection extends React.Component {
     const visibleMonitors = showAll
       ? monitors
       : monitors.filter(
-          monitor =>
-            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-        )
+        monitor =>
+          !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+      )
 
     const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
     const venueHomepageUrl = venue.getHomepageUrl()

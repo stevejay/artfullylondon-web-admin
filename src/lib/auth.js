@@ -1,50 +1,37 @@
-import {
-  CognitoUserPool,
-  AuthenticationDetails,
-  CognitoUser
-} from 'amazon-cognito-identity-js'
+import { AuthenticationDetails } from 'amazon-cognito-identity-js'
 
-const USER_POOL_DATA = {
-  UserPoolId: process.env.WEBSITE_COGNITO_USER_POOL_ID,
-  ClientId: process.env.WEBSITE_COGNITO_USER_POOL_APP_CLIENT_ID,
-  Paranoia: 7
-}
+import * as cognitoUserLib from '_src/lib/cognito-user'
 
 export function attemptAutoLogIn () {
   return new Promise(resolve => {
-    const cognitoUser = getCognitoUserFromLocalStorage()
+    const cognitoUser = cognitoUserLib.getCurrentCognitoUser()
 
     if (cognitoUser) {
       cognitoUser.getSession((err, session) => {
         resolve(!err && session.isValid() ? cognitoUser : null)
       })
     } else {
-      resolve()
+      resolve(null)
     }
   })
 }
 
 export function authenticateUser (username, password) {
   return new Promise((resolve, reject) => {
-    const userPool = new CognitoUserPool(USER_POOL_DATA)
-    const userData = { Username: username, Pool: userPool }
-    const cognitoUser = new CognitoUser(userData)
+    const cognitoUser = cognitoUserLib.createCognitoUser(username)
     const authData = { Username: username, Password: password }
     const authDetails = new AuthenticationDetails(authData)
 
     cognitoUser.authenticateUser(authDetails, {
       onSuccess: () => resolve(cognitoUser),
-      onFailure: reject
+      onFailure: () => reject(new Error('Authentication failed'))
     })
   })
 }
 
 export function logOutCurrentUser () {
-  const cognitoUser = getCognitoUserFromLocalStorage()
-
-  if (cognitoUser !== null) {
-    cognitoUser.signOut()
-  }
+  const cognitoUser = cognitoUserLib.getCurrentCognitoUser()
+  cognitoUser && cognitoUser.signOut()
 }
 
 export function getSessionToken (cognitoUser) {
@@ -57,11 +44,6 @@ export function getSessionToken (cognitoUser) {
       }
     })
   })
-}
-
-function getCognitoUserFromLocalStorage () {
-  const userPool = new CognitoUserPool(USER_POOL_DATA)
-  return userPool.getCurrentUser()
 }
 
 // function redirectToLogIn (nextState, replace) {

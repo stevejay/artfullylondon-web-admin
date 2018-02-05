@@ -137,7 +137,7 @@ it('should handle hiding the edit image modal', () => {
 })
 
 it('should handle submitting the edit image modal', () => {
-  const handleUpdateImage = jest.fn().mockReturnValue(Promise.resolve())
+  const handleUpdateImage = jest.fn().mockResolvedValue()
 
   const wrapper = shallow(
     <ImagesField

@@ -33,7 +33,9 @@
     },
     "coverageDirectory": "./coverage/",
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}"
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/lib/cognito-user.js",
+      "!src/lib/browser.js"
     ]
   },
   "standard": {

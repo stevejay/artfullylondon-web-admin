@@ -14,12 +14,12 @@ export function isDesktop () {
 }
 
 export function hasGeolocation () {
-  return 'geolocation' in navigator
+  return 'geolocation' in window.navigator
 }
 
 export function getCurrentLocation () {
   return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
+    window.navigator.geolocation.getCurrentPosition(
       position =>
         resolve({
           lat: position.coords.latitude,

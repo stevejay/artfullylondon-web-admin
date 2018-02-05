@@ -11,7 +11,8 @@ function addElement (array, newElement) {
 }
 
 function updateElementByKey (array, key, newValues) {
-  const index = _.findIndex(array, x => (x.key || x) === key)
+  const index = _.findIndex(array, x => x.key === key)
+
   if (index === -1) {
     return array
   }

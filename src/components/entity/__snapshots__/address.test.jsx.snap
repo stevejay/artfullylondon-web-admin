@@ -2,11 +2,11 @@
 
 exports[`should render correctly 1`] = `
 <React.Fragment>
-  <AdditionalDetailHeading>
+  <EntityAdditionalDetailHeading>
     Address
-  </AdditionalDetailHeading>
-  <AdditionalDetailContent>
+  </EntityAdditionalDetailHeading>
+  <EntityAdditionalDetailContent>
     26 Foo Street, Bar
-  </AdditionalDetailContent>
+  </EntityAdditionalDetailContent>
 </React.Fragment>
 `;

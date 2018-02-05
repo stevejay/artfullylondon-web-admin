@@ -4,16 +4,16 @@ exports[`should render correctly 1`] = `
 <div
   className="src-components-opening-times-current-times__summary-container"
 >
-  <FeaturedDetail
+  <EntityFeaturedDetail
     heading="Today"
   >
     Today Description
-  </FeaturedDetail>
-  <FeaturedDetail
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
     heading="Tomorrow"
   >
     Tomorrow Description
-  </FeaturedDetail>
+  </EntityFeaturedDetail>
 </div>
 `;
 

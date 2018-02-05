@@ -75,7 +75,7 @@ class Text extends React.Component {
           autoCorrect={autoCorrect}
           autoComplete={autoComplete}
           spellCheck={spellCheck}
-          />
+        />
       </div>
       : <textarea
         {...rest}
@@ -96,7 +96,7 @@ class Text extends React.Component {
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
         spellCheck={spellCheck}
-        />
+      />
   }
 }
 

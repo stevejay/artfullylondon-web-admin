@@ -1,14 +1,16 @@
-import * as entity from '_src/lib/entity'
+import * as entityLib from '_src/lib/entity'
 import * as entityConstants from '_src/constants/entity'
 import * as image from '_src/lib/image'
 
-describe('getEntityCardImageDataForEntityType', () => {
-  afterEach(() => {
-    if (image.createEntityCardImageUrl.restore) {
-      image.createEntityCardImageUrl.restore()
-    }
+describe('getEntityTypeUrlParameter', () => {
+  it('should get the parameter', () => {
+    const match = { params: { entityType: 'Event' } }
+    const result = entityLib.getEntityTypeUrlParameter(match)
+    expect(result).toEqual('event')
   })
+})
 
+describe('getEntityCardImageDataForEntityType', () => {
   const tests = [
     {
       args: {
@@ -58,13 +60,22 @@ describe('getEntityCardImageDataForEntityType', () => {
         .fn()
         .mockImplementation(id => `/${id}`)
 
-      const actual = entity.getEntityCardImageDataForEntityType(
+      const actual = entityLib.getEntityCardImageDataForEntityType(
         test.args.entityType,
         test.args.image
       )
 
       expect(actual).toEqual(test.expected)
     })
+  })
+
+  it('should throw an error when getting data for an unknown entity type', () => {
+    expect(() => {
+      entityLib.getEntityCardImageDataForEntityType(
+        'unknown-entity-type',
+        '1234'
+      )
+    }).toThrow()
   })
 })
 
@@ -90,7 +101,7 @@ describe('getLabelForEntityType', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = entity.getLabelForEntityType(test.arg)
+      const actual = entityLib.getLabelForEntityType(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })
@@ -118,7 +129,7 @@ describe('getColorForEntityType', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = entity.getColorForEntityType({ entityType: test.arg })
+      const actual = entityLib.getColorForEntityType({ entityType: test.arg })
       expect(actual).toEqual(test.expected)
     })
   })
@@ -158,7 +169,10 @@ describe('createEntityUrl', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = entity.createEntityUrl(test.args.entityType, test.args.id)
+      const actual = entityLib.createEntityUrl(
+        test.args.entityType,
+        test.args.id
+      )
       expect(actual).toEqual(test.expected)
     })
   })
@@ -198,7 +212,7 @@ describe('createEntityEditUrl', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = entity.createEntityEditUrl(
+      const actual = entityLib.createEntityEditUrl(
         test.args.entityType,
         test.args.id
       )
@@ -235,7 +249,7 @@ describe('processDescription', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = entity.processDescription(
+      const actual = entityLib.processDescription(
         test.args.description,
         test.args.credit
       )
@@ -247,22 +261,22 @@ describe('processDescription', () => {
 
 describe('descriptionStringIsEmpty', () => {
   it('should handle a non-empty description string', () => {
-    const actual = entity.descriptionStringIsEmpty('<p> Some content   </p>')
+    const actual = entityLib.descriptionStringIsEmpty('<p> Some content   </p>')
     expect(actual).toEqual(false)
   })
 
   it('should handle an empty description string', () => {
-    const actual = entity.descriptionStringIsEmpty('<p></p>')
+    const actual = entityLib.descriptionStringIsEmpty('<p></p>')
     expect(actual).toEqual(true)
   })
 
   it('should handle a whitespace-only description string', () => {
-    const actual = entity.descriptionStringIsEmpty('<p>      </p>')
+    const actual = entityLib.descriptionStringIsEmpty('<p>      </p>')
     expect(actual).toEqual(true)
   })
 
   it('should handle a br-only description string', () => {
-    const actual = entity.descriptionStringIsEmpty('<p><br /></p>')
+    const actual = entityLib.descriptionStringIsEmpty('<p><br /></p>')
     expect(actual).toEqual(true)
   })
 })
@@ -329,7 +343,7 @@ describe('getValidStatuses', () => {
 
   tests.map(test => {
     it(test.it, () => {
-      const actual = entity.getValidStatuses(test.arg)
+      const actual = entityLib.getValidStatuses(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })

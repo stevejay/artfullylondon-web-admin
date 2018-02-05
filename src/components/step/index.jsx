@@ -16,8 +16,8 @@ class Step extends React.PureComponent {
     const stepStyle = showAsCompleted
       ? 'step-completed'
       : showAsNextPage
-          ? 'step-next'
-          : showAsCurrentPage ? 'step-active' : 'step-disabled'
+        ? 'step-next'
+        : showAsCurrentPage ? 'step-active' : 'step-disabled'
 
     if (showAsCompleted || showAsNextPage) {
       return (

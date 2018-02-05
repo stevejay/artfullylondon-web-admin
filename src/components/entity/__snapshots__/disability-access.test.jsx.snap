@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div>
-  <AdditionalDetailHeading>
+  <EntityAdditionalDetailHeading>
     Disability Access
-  </AdditionalDetailHeading>
-  <AdditionalDetailContent>
+  </EntityAdditionalDetailHeading>
+  <EntityAdditionalDetailContent>
     The Access Text
     <span>
       See
@@ -18,17 +18,17 @@ exports[`should render correctly 1`] = `
       </a>
       for full access details.
     </span>
-  </AdditionalDetailContent>
+  </EntityAdditionalDetailContent>
 </div>
 `;
 
 exports[`should render correctly when there is no disability link 1`] = `
 <div>
-  <AdditionalDetailHeading>
+  <EntityAdditionalDetailHeading>
     Disability Access
-  </AdditionalDetailHeading>
-  <AdditionalDetailContent>
+  </EntityAdditionalDetailHeading>
+  <EntityAdditionalDetailContent>
     The Access Text
-  </AdditionalDetailContent>
+  </EntityAdditionalDetailContent>
 </div>
 `;

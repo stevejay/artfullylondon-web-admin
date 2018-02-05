@@ -2,9 +2,9 @@
 
 exports[`should render additional only times details correctly 1`] = `
 <div>
-  <AdditionalDetailHeading>
+  <EntityAdditionalDetailHeading>
     Regular Times Header
-  </AdditionalDetailHeading>
+  </EntityAdditionalDetailHeading>
   <div
     className="src-components-opening-times-index__details-container"
   >
@@ -40,9 +40,9 @@ exports[`should render empty times details correctly 1`] = `""`;
 
 exports[`should render non-empty times details correctly 1`] = `
 <div>
-  <AdditionalDetailHeading>
+  <EntityAdditionalDetailHeading>
     Regular Times Header
-  </AdditionalDetailHeading>
+  </EntityAdditionalDetailHeading>
   <div
     className="src-components-opening-times-index__details-container"
   >
@@ -63,9 +63,9 @@ exports[`should render non-empty times details correctly 1`] = `
     <div
       className="src-components-opening-times-index__details-column"
     >
-      <AdditionalDetailHeading>
+      <EntityAdditionalDetailHeading>
         Additional Times Header
-      </AdditionalDetailHeading>
+      </EntityAdditionalDetailHeading>
       <div
         className="src-components-opening-times-index__times-container"
       >
@@ -80,9 +80,9 @@ exports[`should render non-empty times details correctly 1`] = `
     <div
       className="src-components-opening-times-index__details-column"
     >
-      <AdditionalDetailHeading>
+      <EntityAdditionalDetailHeading>
         Special Times Header
-      </AdditionalDetailHeading>
+      </EntityAdditionalDetailHeading>
       <div
         key="Special tag"
       >
@@ -115,9 +115,9 @@ exports[`should render non-empty times details correctly 1`] = `
     <div
       className="src-components-opening-times-index__details-column"
     >
-      <AdditionalDetailHeading>
+      <EntityAdditionalDetailHeading>
         Closures
-      </AdditionalDetailHeading>
+      </EntityAdditionalDetailHeading>
       <div
         className="src-components-opening-times-index__times-container"
       >

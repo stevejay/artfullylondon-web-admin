@@ -4,12 +4,12 @@ exports[`should render correctly 1`] = `
 <div
   className="src-components-event-main-details__container"
 >
-  <FeaturedDetail
+  <EntityFeaturedDetail
     heading="When"
   >
     Event occurrence description
-  </FeaturedDetail>
-  <FeaturedDetail
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
     heading="Where"
   >
     <Link
@@ -18,21 +18,21 @@ exports[`should render correctly 1`] = `
     >
       Venue Name
     </Link>
-  </FeaturedDetail>
-  <FeaturedDetail
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
     heading="Cost"
   >
     Cost description
-  </FeaturedDetail>
-  <FeaturedDetail
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
     heading="Booking"
   >
     Booking description
-  </FeaturedDetail>
-  <FeaturedDetail
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
     heading="Age"
   >
     Age description
-  </FeaturedDetail>
+  </EntityFeaturedDetail>
 </div>
 `;

@@ -43,7 +43,7 @@ exports[`should render correctly 1`] = `
     thumbnailPosition="bottom"
     useBrowserFullscreen={true}
   />
-  <ImageCredit
+  <EntityImageCredit
     credit="The Copyright"
   />
 </div>

@@ -10,12 +10,12 @@ exports[`should render correctly when not showing the carousel 1`] = `
       src="https://images.test.com/so/me/some-id/500x500.jpg"
     />
   </div>
-  <ImageCredit />
+  <EntityImageCredit />
 </React.Fragment>
 `;
 
 exports[`should render correctly when showing the carousel 1`] = `
-<ImageCarousel
+<EntityImageCarousel
   images={
     Array [
       Object {

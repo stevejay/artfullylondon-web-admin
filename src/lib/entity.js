@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 import * as entityConstants from '_src/constants/entity'
-import { createEntityCardImageUrl } from '_src/lib/image'
+import * as imageLib from '_src/lib/image'
 
 export function getEntityTypeUrlParameter (match) {
   return match.params.entityType.toLowerCase()
@@ -25,6 +25,7 @@ export function getLabelForEntityType (entityType) {
       return 'Talent'
     case entityConstants.ENTITY_TYPE_VENUE:
       return 'Venue'
+    /* istanbul ignore next */
     default:
       throw new Error(`entityType is out of range: ${entityType}`)
   }
@@ -40,6 +41,7 @@ export function getColorForEntityType (data) {
       return '#FF632A'
     case entityConstants.ENTITY_TYPE_VENUE:
       return '#DB3b9C'
+    /* istanbul ignore next */
     default:
       throw new Error(`entityType is out of range: ${data.entityType}`)
   }
@@ -53,7 +55,7 @@ export function getEntityCardImageDataForEntityType (entityType, image) {
     case entityConstants.ENTITY_TYPE_VENUE:
       return {
         height: entityConstants.DEFAULT_ENTITY_CARD_HEIGHT,
-        url: createEntityCardImageUrl(image)
+        url: imageLib.createEntityCardImageUrl(image)
       }
     default:
       throw new Error(`entityType is out of range: ${entityType}`)

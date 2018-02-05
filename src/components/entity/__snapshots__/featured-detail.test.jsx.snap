@@ -4,13 +4,13 @@ exports[`should render correctly 1`] = `
 <div
   className="src-components-entity-featured-detail__container"
 >
-  <FeaturedDetailHeading>
+  <EntityFeaturedDetailHeading>
     The Heading
-  </FeaturedDetailHeading>
-  <FeaturedDetailContent>
+  </EntityFeaturedDetailHeading>
+  <EntityFeaturedDetailContent>
     <div
       id="child"
     />
-  </FeaturedDetailContent>
+  </EntityFeaturedDetailContent>
 </div>
 `;
