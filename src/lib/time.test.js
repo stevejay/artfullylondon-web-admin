@@ -969,7 +969,7 @@ describe('getTimesDetailsForExhibitionEvent', () => {
         fromStr: today,
         toStr: '2017/01/01'
       },
-      expected: {"additionalTimes": [{"date": "2016/11/19", "label": "19th Nov 2016", "times": [{"date": "2016/11/19", "from": "10:00", "to": "12:00"}]}, {"date": "2016/11/23", "label": "23rd Nov 2016", "times": [{"date": "2016/11/23", "from": "16:00", "to": "18:00"}]}], "closures": [{"date": "2016/11/24", "label": "24th Nov 2016", "times": []}, {"date": "2016/11/25", "label": "25th Nov 2016", "times": []}], "regularTimes": [{"label": "Friday", "times": [{"from": "12:30", "to": "14:00"}]}], "specialTimes": []}
+      expected: {'additionalTimes': [{'date': '2016/11/19', 'label': '19th Nov 2016', 'times': [{'date': '2016/11/19', 'from': '10:00', 'to': '12:00'}]}, {'date': '2016/11/23', 'label': '23rd Nov 2016', 'times': [{'date': '2016/11/23', 'from': '16:00', 'to': '18:00'}]}], 'closures': [{'date': '2016/11/24', 'label': '24th Nov 2016', 'times': []}, {'date': '2016/11/25', 'label': '25th Nov 2016', 'times': []}], 'regularTimes': [{'label': 'Friday', 'times': [{'from': '12:30', 'to': '14:00'}]}], 'specialTimes': []}
     }
   ]
 
@@ -2219,24 +2219,24 @@ describe('mapMomentDateToStringDate', () => {
   })
 })
 
-describe ('formatDateRangeForDisplay', () => {
+describe('formatDateRangeForDisplay', () => {
   const tests = [
-    { 
-      args: { from: '2018/01/01', to: '2018/01/01'}, 
-  expected: '1st Jan 2018'
-},
-{
-  args: { from: '2018/01/01', to: '2018/01/02'}, 
-  expected: '1st to 2nd Jan 2018'
-},
-{
-  args: { from: '2018/01/01', to: '2018/02/01'}, 
-  expected: '1st Jan to 1st Feb 2018'
-},
-{
-  args: { from: '2018/01/01', to: '2019/01/01'}, 
-  expected: '1st Jan 2018 to 1st Jan 2019'
-}
+    {
+      args: { from: '2018/01/01', to: '2018/01/01' },
+      expected: '1st Jan 2018'
+    },
+    {
+      args: { from: '2018/01/01', to: '2018/01/02' },
+      expected: '1st to 2nd Jan 2018'
+    },
+    {
+      args: { from: '2018/01/01', to: '2018/02/01' },
+      expected: '1st Jan to 1st Feb 2018'
+    },
+    {
+      args: { from: '2018/01/01', to: '2019/01/01' },
+      expected: '1st Jan 2018 to 1st Jan 2019'
+    }
   ]
 
   tests.forEach(test => {
@@ -2247,22 +2247,22 @@ describe ('formatDateRangeForDisplay', () => {
   })
 })
 
-describe ('getYearFromTodayAsString', () => {
+describe('getYearFromTodayAsString', () => {
   it('should get the date', () => {
     const actual = timeLib.getYearFromTodayAsString()
     expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
   })
 })
 
-describe ('mapStringDateToJsDate', () => {
+describe('mapStringDateToJsDate', () => {
   const tests = [
-    { arg: '2018/02/18' , expected: 1518912000000 },
-    { arg: null , expected: null },
-    { arg: '' , expected: null }
+    { arg: '2018/02/18', expected: 1518912000000 },
+    { arg: null, expected: null },
+    { arg: '', expected: null }
   ]
 
   tests.forEach(test => {
-    it (`should return a date with epoch ${test.expected} for string '${test.arg}'`, () => {
+    it(`should return a date with epoch ${test.expected} for string '${test.arg}'`, () => {
       const actual = timeLib.mapStringDateToJsDate(test.arg)
 
       if (test.expected === null) {

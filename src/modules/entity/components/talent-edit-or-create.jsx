@@ -10,8 +10,8 @@ import EntityHeading from '_src/components/entity/heading'
 import EditTalentForm from '_src/modules/entity/forms/edit-talent'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import { notificationActions, entityActions } from '_src/store'
-import * as notificationConstants from '_src/constants/notification'
+import { entityActions } from '_src/store'
+import { actions as notificationActions } from '_src/modules/notification'
 import * as formConstants from '_src/constants/form'
 
 class TalentEditOrCreate extends React.Component {
@@ -33,8 +33,7 @@ class TalentEditOrCreate extends React.Component {
       )
     } else {
       dispatch(
-        notificationActions.addNotification(
-          notificationConstants.NOTIFICATION_TYPE_ERROR,
+        notificationActions.addErrorNotification(
           'Submit Cancelled',
           'There are unsaved changes in the sub editors.'
         )

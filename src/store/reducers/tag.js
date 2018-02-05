@@ -90,7 +90,7 @@ export const reducer = handleActions(
 
 export const selectors = {
   getTagsForType: (state, tagType) =>
-    (tagType === state.tag.tagType ? state.tag.tags : null),
+    (tagType === state.tagType ? state.tags : null),
   gettingTags: state => state.getInProgress,
   failedToGetTags: state => state.getFailed,
   addingTag: state => state.addInProgress,

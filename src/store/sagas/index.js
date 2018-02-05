@@ -1,5 +1,7 @@
 import { all } from 'redux-saga/effects'
-import appSagas from './app'
+
+import { sagas as appUpdaterSagas } from '_src/modules/app-updater'
+import { sagas as notificationSagas } from '_src/modules/notification'
 import authSagas from './auth'
 import browserSagas from './browser'
 import serverConstantSagas from './server-constant'
@@ -11,11 +13,10 @@ import searchSagas from './search'
 import tagSagas from './tag'
 // import timeSagas from './time';
 import statusSagas from './status'
-import notificationSagas from './notification'
 
 export const sagas = function * () {
   yield all([
-    ...appSagas,
+    ...appUpdaterSagas,
     ...authSagas,
     ...serverConstantSagas,
     ...browserSagas,

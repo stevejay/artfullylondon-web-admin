@@ -2,12 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import {
-  appActions,
-  authActions,
-  browserActions,
-  serverConstantActions
-} from '_src/store'
+import { authActions, browserActions, serverConstantActions } from '_src/store'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {
@@ -67,10 +62,6 @@ it('should trigger initial actions', () => {
 
   expect(mockDispatch.mock.calls[1]).toEqual([
     serverConstantActions.fetchServerConstants()
-  ])
-
-  expect(mockDispatch.mock.calls[2]).toEqual([
-    appActions.checkIfAppWasUpdated()
   ])
 })
 

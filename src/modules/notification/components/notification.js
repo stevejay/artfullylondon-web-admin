@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { shouldUpdate } from 'recompose'
 
 import CloseButton from '_src/components/button/close'
-import * as notificationConstants from '_src/constants/notification'
+import * as notificationConstants from '_src/modules/notification/constants'
 import './notification.scss'
 
-class Notification extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+export class Notification extends React.Component {
   handleCloseClick = () => {
     this.props.onClose({ id: this.props.notification.id })
   }
@@ -47,4 +45,6 @@ Notification.propTypes = {
   onClose: PropTypes.func.isRequired
 }
 
-export default Notification
+export default shouldUpdate(/* istanbul ignore next */ () => false)(
+  Notification
+)

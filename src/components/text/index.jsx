@@ -17,7 +17,7 @@ class Text extends React.Component {
   }
   handleMounted = ref => {
     /* istanbul ignore next */
-    this.props.autoFocus && ref.focus()
+    ref && this.props.autoFocus && ref.focus()
   }
   render () {
     const {

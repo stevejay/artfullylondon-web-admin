@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <TransitionGroup
   childFactory={[Function]}
-  className="src-modules-notification-index__container"
+  className="src-modules-notification-components-notification-container__container"
   component="ul"
   role="presentation"
 >
@@ -12,7 +12,7 @@ exports[`should render correctly 1`] = `
     key="some-id"
     timeout={250}
   >
-    <Notification
+    <shouldUpdate(Notification)
       notification={
         Object {
           "id": "some-id",

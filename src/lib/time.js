@@ -75,8 +75,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-        ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
-        : formatStringDateForDisplay(dateFrom)
+      ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
+      : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 
@@ -210,8 +210,8 @@ export function formatTimesStringForGivenDate (
   return times.closed
     ? isPerformance ? 'No performances' : 'Closed'
     : times.isNowClosed
-        ? isPerformance ? 'No performances' : 'Now closed'
-        : _formatTimesForDayDisplay(times.times)
+      ? isPerformance ? 'No performances' : 'Now closed'
+      : _formatTimesForDayDisplay(times.times)
 }
 
 function _getTimesOnGivenDateForVenue (

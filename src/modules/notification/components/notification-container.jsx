@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import NotificationItem from '_src/modules/notification/components/notification'
-import * as notificationConstants from '_src/constants/notification'
-import { selectors, notificationActions } from '_src/store'
-import './index.scss'
+import Notification from '_src/modules/notification/components/notification'
+import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationActions from '_src/modules/notification/actions'
+import { selectors } from '_src/modules/notification/reducers'
+import './notification-container.scss'
 
-export class Notification extends React.Component {
+export class NotificationContainer extends React.Component {
   shouldComponentUpdate (nextProps) {
     return nextProps.notifications !== this.props.notifications
   }
@@ -24,7 +25,7 @@ export class Notification extends React.Component {
             classNames='notification'
             timeout={250}
           >
-            <NotificationItem
+            <Notification
               notification={notification}
               onClose={this.handleClose}
             />
@@ -35,7 +36,7 @@ export class Notification extends React.Component {
   }
 }
 
-Notification.propTypes = {
+NotificationContainer.propTypes = {
   notifications: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -49,4 +50,4 @@ Notification.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({ notifications: selectors.notifications(state) })
-)(Notification)
+)(NotificationContainer)

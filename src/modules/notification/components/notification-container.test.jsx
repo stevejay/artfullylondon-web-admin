@@ -2,13 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import * as notificationConstants from '_src/constants/notification'
-import { notificationActions } from '_src/store'
-import { Notification } from '_src/modules/notification'
+import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationActions from '_src/modules/notification/actions'
+import {
+  NotificationContainer
+} from '_src/modules/notification/components/notification-container'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <Notification
+    <NotificationContainer
       notifications={[
         {
           id: 'some-id',
@@ -26,7 +28,7 @@ it('should raise a remove notification action when a notification is closed', ()
   const dispatchHandler = jest.fn()
 
   const wrapper = shallow(
-    <Notification
+    <NotificationContainer
       notifications={[
         {
           id: 'some-id',
@@ -37,13 +39,11 @@ it('should raise a remove notification action when a notification is closed', ()
     />
   )
 
-  wrapper.find('Notification').prop('onClose')({ id: 'some-id' })
+  wrapper.find('shouldUpdate(Notification)').prop('onClose')({ id: 'some-id' })
 
-  expect(dispatchHandler).toHaveBeenCalled()
-
-  expect(dispatchHandler.mock.calls[0]).toEqual([
+  expect(dispatchHandler).toHaveBeenCalledWith(
     notificationActions.removeNotification('some-id')
-  ])
+  )
 })
 
 it('should not update if props do not change', () => {
@@ -55,7 +55,7 @@ it('should not update if props do not change', () => {
   ]
 
   const wrapper = shallow(
-    <Notification notifications={notifications} dispatch={_.noop} />
+    <NotificationContainer notifications={notifications} dispatch={_.noop} />
   )
 
   const result = wrapper.instance().shouldComponentUpdate({ notifications })
@@ -64,7 +64,7 @@ it('should not update if props do not change', () => {
 
 it('should update if props change', () => {
   const wrapper = shallow(
-    <Notification
+    <NotificationContainer
       notifications={[
         {
           id: 'some-id',

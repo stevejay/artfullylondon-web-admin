@@ -17,8 +17,7 @@ import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '_src/store/actions/image'
 import * as sagaActions from '_src/store/actions/saga'
-import * as notificationConstants from '_src/constants/notification'
-import * as notificationActions from '_src/store/actions/notification'
+import { actions as notificationActions } from '_src/modules/notification'
 import * as imageConstraints from '_src/constants/image-constraints'
 import * as imageNormalisers from '_src/constants/image-normalisers'
 import * as formConstants from '_src/constants/form'
@@ -175,8 +174,7 @@ function * addImage (action) {
     yield call(log.error, err)
 
     yield put(
-      notificationActions.addNotification(
-        notificationConstants.NOTIFICATION_TYPE_ERROR,
+      notificationActions.addErrorNotification(
         'Failed to save the image',
         err.message
       )

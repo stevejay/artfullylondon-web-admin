@@ -21,8 +21,7 @@ import * as entityActions from '_src/store/actions/entity'
 import * as formConstants from '_src/constants/form'
 // import * as searchConstants from '_src/constants/search'
 // import * as searchLib from '_src/lib/search'
-import * as notificationActions from '_src/store/actions/notification'
-import * as notificationConstants from '_src/constants/notification'
+import { actions as notificationActions } from '_src/modules/notification'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
 import * as mappingsLib from '_src/lib/mappings'
@@ -81,8 +80,7 @@ function * saveEntity (action) {
     yield call(log.error, err)
 
     yield put(
-      notificationActions.addNotification(
-        notificationConstants.NOTIFICATION_TYPE_ERROR,
+      notificationActions.addErrorNotification(
         'Save Failed',
         // message: 'This form has errors. Please correct them and try again.'
         err.message

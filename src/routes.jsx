@@ -13,8 +13,8 @@ import Footer from '_src/modules/footer'
 import BrowserResizeListener from '_src/components/browser-resize-listener'
 import Dashboard from '_src/modules/dashboard/pages/dashboard'
 import NotFound from '_src/modules/error/pages/not-found'
-import Notification from '_src/modules/notification'
-import AppUpdater from '_src/modules/app-updater'
+import { NotificationContainer } from '_src/modules/notification'
+import { AppUpdater } from '_src/modules/app-updater'
 import Sidenav from '_src/modules/sidenav'
 import Quicksearch from '_src/modules/quicksearch'
 import LoginPage from '_src/modules/auth/pages/login'
@@ -30,7 +30,6 @@ export class Routes extends React.Component {
     this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch(store.authActions.attemptAutoLogIn())
     props.dispatch(store.serverConstantActions.fetchServerConstants())
-    props.dispatch(store.appActions.checkIfAppWasUpdated())
   }
   handleWindowResize = width => {
     this.props.dispatch(store.browserActions.browserWidthChanged(width))
@@ -108,7 +107,7 @@ export class Routes extends React.Component {
             <PageFooter><Footer /></PageFooter>
           </React.Fragment>}
         <AppUpdater />
-        <Notification />
+        <NotificationContainer />
       </Page>
     )
   }

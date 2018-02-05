@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when should not update 1`] = `
+<FadeTransition
+  in={false}
+>
+  <aside
+    className="src-modules-app-updater-components-app-updater__container"
+    role="note"
+  >
+    <p
+      className="src-modules-app-updater-components-app-updater__message"
+    >
+      A new version of the app is available! Click the Update button to reload the page and update.
+    </p>
+    <Button
+      onClick={[Function]}
+      type="submit"
+    >
+      Update
+    </Button>
+  </aside>
+</FadeTransition>
+`;
+
+exports[`should render correctly when should update 1`] = `
+<FadeTransition
+  in={true}
+>
+  <aside
+    className="src-modules-app-updater-components-app-updater__container"
+    role="note"
+  >
+    <p
+      className="src-modules-app-updater-components-app-updater__message"
+    >
+      A new version of the app is available! Click the Update button to reload the page and update.
+    </p>
+    <Button
+      onClick={[Function]}
+      type="submit"
+    >
+      Update
+    </Button>
+  </aside>
+</FadeTransition>
+`;
