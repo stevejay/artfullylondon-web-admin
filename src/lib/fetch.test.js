@@ -10,7 +10,7 @@ describe('get', () => {
     return fetchLib.get(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'GET',
@@ -28,7 +28,7 @@ describe('get', () => {
     return fetchLib.get(SOME_URL, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'GET',
@@ -135,7 +135,7 @@ describe('httpDelete', () => {
     return fetchLib.httpDelete(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -153,7 +153,7 @@ describe('httpDelete', () => {
     return fetchLib.httpDelete(SOME_URL, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -172,7 +172,7 @@ describe('httpDelete', () => {
     return fetchLib.httpDelete(SOME_URL).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'DELETE',
@@ -278,7 +278,7 @@ describe('put', () => {
     return fetchLib.put(SOME_URL, { key: 'value' }).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'PUT',
@@ -298,7 +298,7 @@ describe('put', () => {
     return fetchLib.put(SOME_URL, { key: 'value' }, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'PUT',
@@ -407,7 +407,7 @@ describe('post', () => {
     return fetchLib.post(SOME_URL, { key: 'value' }).then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'POST',
@@ -427,7 +427,7 @@ describe('post', () => {
     return fetchLib.post(SOME_URL, { key: 'value' }, 'auth1').then(() => {
       expect(fetchImpl.fetch).toHaveBeenCalled()
 
-      expect(fetchImpl.fetchLib.mock.calls[0]).toEqual([
+      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
         SOME_URL,
         {
           method: 'POST',
