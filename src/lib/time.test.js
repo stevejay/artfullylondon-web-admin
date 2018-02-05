@@ -1,3 +1,4 @@
+import moment from 'moment'
 import 'moment-timezone'
 
 import * as entityConstants from '_src/constants/entity'
@@ -76,7 +77,10 @@ describe('addDaysToStringDate', () => {
 
   tests.map(test => {
     it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = timeLib.addDaysToStringDate(test.args.dateStr, test.args.days)
+      const actual = timeLib.addDaysToStringDate(
+        test.args.dateStr,
+        test.args.days
+      )
       expect(actual).toEqual(test.expected)
     })
   })
@@ -88,6 +92,11 @@ describe('formatOpeningTimesOrPerformanceTimeForDisplay', () => {
       it: 'should format an opening time',
       arg: { from: '11:00', to: '14:05' },
       expected: '11:00 am to 2:05 pm'
+    },
+    {
+      it: 'should format an opening time that has the same from and to times',
+      arg: { from: '11:00', to: '11:00' },
+      expected: '11:00 am'
     },
     {
       it: 'should format a performance time',
@@ -335,7 +344,9 @@ describe('getRegularTimesForDisplay', () => {
         ' for arg ' +
         JSON.stringify(test.arg),
       () => {
-        expect(timeLib.getRegularTimesForDisplay(test.arg)).toEqual(test.expected)
+        expect(timeLib.getRegularTimesForDisplay(test.arg)).toEqual(
+          test.expected
+        )
       }
     )
   })
@@ -936,6 +947,29 @@ describe('getTimesDetailsForExhibitionEvent', () => {
         specialTimes: [],
         closures: []
       }
+    },
+    {
+      args: {
+        event: {
+          useVenueOpeningTimes: true,
+          venue: {
+            openingTimes: [{ day: 4, from: '12:30', to: '14:00' }],
+            additionalOpeningTimes: [
+              { date: dateAfterTodayOne, from: '10:00', to: '12:00' }
+            ],
+            openingTimesClosures: [{ date: dateAfterTodayThree }],
+            namedClosures: []
+          },
+          openingTimes: [{ day: 2, from: '09:30', to: '10:00' }],
+          additionalOpeningTimes: [
+            { date: dateAfterTodayTwo, from: '16:00', to: '18:00' }
+          ],
+          openingTimesClosures: [{ date: dateAfterTodayFour }]
+        },
+        fromStr: today,
+        toStr: '2017/01/01'
+      },
+      expected: {"additionalTimes": [{"date": "2016/11/19", "label": "19th Nov 2016", "times": [{"date": "2016/11/19", "from": "10:00", "to": "12:00"}]}, {"date": "2016/11/23", "label": "23rd Nov 2016", "times": [{"date": "2016/11/23", "from": "16:00", "to": "18:00"}]}], "closures": [{"date": "2016/11/24", "label": "24th Nov 2016", "times": []}, {"date": "2016/11/25", "label": "25th Nov 2016", "times": []}], "regularTimes": [{"label": "Friday", "times": [{"from": "12:30", "to": "14:00"}]}], "specialTimes": []}
     }
   ]
 
@@ -2134,6 +2168,108 @@ describe('createTimeKey', () => {
     it(test.it, () => {
       const actual = timeLib.createTimeKey(test.arg)
       expect(actual).toEqual(test.expected)
+    })
+  })
+})
+
+describe('getYearNow', () => {
+  it('should get the year now', () => {
+    const actual = timeLib.getYearNow()
+    expect(actual).toBeGreaterThan(2017)
+  })
+})
+
+describe('getMinJSDate', () => {
+  it('should get the min JavaScript date', () => {
+    const actual = timeLib.getMinJSDate()
+    expect(actual.getTime()).toEqual(0)
+  })
+})
+
+describe('getMaxJSDate', () => {
+  it('should get the max JavaScript date', () => {
+    const actual = timeLib.getMaxJSDate()
+    expect(actual.getTime()).toBeGreaterThan(0)
+  })
+})
+
+describe('getLondonNowAsMomentDate', () => {
+  it('should get london now', () => {
+    const actual = timeLib.getLondonNowAsMomentDate()
+    expect(actual.valueOf()).toBeGreaterThan(0)
+  })
+})
+
+describe('getDateNowForDatabase', () => {
+  it('should get the date', () => {
+    const actual = timeLib.getDateNowForDatabase()
+    expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
+  })
+})
+
+describe('mapMomentDateToStringDate', () => {
+  it('should handle a null moment', () => {
+    const actual = timeLib.mapMomentDateToStringDate(null)
+    expect(actual).toEqual(null)
+  })
+
+  it('should handle a valid moment', () => {
+    const actual = timeLib.mapMomentDateToStringDate(moment(1517788800000))
+    expect(actual).toEqual('2018/02/05')
+  })
+})
+
+describe ('formatDateRangeForDisplay', () => {
+  const tests = [
+    { 
+      args: { from: '2018/01/01', to: '2018/01/01'}, 
+  expected: '1st Jan 2018'
+},
+{
+  args: { from: '2018/01/01', to: '2018/01/02'}, 
+  expected: '1st to 2nd Jan 2018'
+},
+{
+  args: { from: '2018/01/01', to: '2018/02/01'}, 
+  expected: '1st Jan to 1st Feb 2018'
+},
+{
+  args: { from: '2018/01/01', to: '2019/01/01'}, 
+  expected: '1st Jan 2018 to 1st Jan 2019'
+}
+  ]
+
+  tests.forEach(test => {
+    it(`should return '${test.expected}' for args '${test.args.from}' and '${test.args.to}'`, () => {
+      const actual = timeLib.formatDateRangeForDisplay(test.args.from, test.args.to)
+      expect(actual).toEqual(test.expected)
+    })
+  })
+})
+
+describe ('getYearFromTodayAsString', () => {
+  it('should get the date', () => {
+    const actual = timeLib.getYearFromTodayAsString()
+    expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
+  })
+})
+
+describe ('mapStringDateToJsDate', () => {
+  const tests = [
+    { arg: '2018/02/18' , expected: 1518912000000 },
+    { arg: null , expected: null },
+    { arg: '' , expected: null }
+  ]
+
+  tests.forEach(test => {
+    it (`should return a date with epoch ${test.expected} for string '${test.arg}'`, () => {
+      const actual = timeLib.mapStringDateToJsDate(test.arg)
+
+      if (test.expected === null) {
+        expect(actual).toEqual(null)
+      } else {
+        expect(actual.getTime()).toEqual(test.expected)
+      }
     })
   })
 })

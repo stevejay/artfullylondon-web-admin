@@ -43,6 +43,20 @@ export function mapMomentDateToStringDate (date) {
   return date.format(timeConstants.DATE_FORMAT)
 }
 
+export function mapStringDateToJsDate (stringDate) {
+  if (!stringDate || stringDate === '') {
+    return null
+  }
+
+  const parts = _getPartsOfStringDate(stringDate)
+
+  return new Date(
+    parseInt(parts.year),
+    parseInt(parts.month - 1),
+    parseInt(parts.day)
+  )
+}
+
 export function formatStringDateForDisplay (date, includeDayName) {
   return moment(date, timeConstants.DATE_FORMAT).format(
     includeDayName ? 'dddd, Do MMM YYYY' : 'Do MMM YYYY'
@@ -61,8 +75,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-      ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
-      : formatStringDateForDisplay(dateFrom)
+        ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
+        : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 
@@ -86,15 +100,6 @@ export function getYearFromTodayAsString () {
   )
 
   return mapJsDateToStringDate(yearToday)
-}
-
-export function getTodayDateAndTimeAsStrings () {
-  const now = getLondonNowAsMomentDate()
-
-  return {
-    dateStr: now.format(timeConstants.DATE_FORMAT),
-    timeStr: now.format('HH:mm')
-  }
 }
 
 export function formatTime (time) {
@@ -205,8 +210,8 @@ export function formatTimesStringForGivenDate (
   return times.closed
     ? isPerformance ? 'No performances' : 'Closed'
     : times.isNowClosed
-      ? isPerformance ? 'No performances' : 'Now closed'
-      : _formatTimesForDayDisplay(times.times)
+        ? isPerformance ? 'No performances' : 'Now closed'
+        : _formatTimesForDayDisplay(times.times)
 }
 
 function _getTimesOnGivenDateForVenue (
@@ -251,6 +256,7 @@ function _getTimesOnGivenDateForVenue (
     return { times, isNowClosed: _isNowClosed(timeStr, times) }
   }
 
+  /* istanbul ignore next */
   return { closed: true }
 }
 
@@ -815,20 +821,6 @@ function _getPartsOfStringDate (stringDate) {
     month: matches[2],
     day: matches[3]
   }
-}
-
-export function mapStringDateToJsDate (stringDate) {
-  if (!stringDate || stringDate === '') {
-    return null
-  }
-
-  const parts = _getPartsOfStringDate(stringDate)
-
-  return new Date(
-    parseInt(parts.year),
-    parseInt(parts.month - 1),
-    parseInt(parts.day)
-  )
 }
 
 function _formatOpeningTimeForDisplay (range) {
