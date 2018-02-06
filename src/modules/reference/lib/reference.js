@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import * as imageLib from '_src/lib/image'
 
-export function mapServerConstantsData (contentJson) {
+export function mapReferenceData (contentJson) {
   const { heroImage, namedClosures } = contentJson
 
   return {

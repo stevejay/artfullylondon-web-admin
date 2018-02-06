@@ -17,7 +17,8 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as formConstants from '_src/constants/form'
-import { imageActions, linkActions } from '_src/store'
+import { actions as imageActions } from '_src/modules/image'
+import { actions as linkActions } from '_src/modules/link'
 import constraint from '_src/constants/talent-constraint'
 
 export class EditTalentForm extends React.Component {
@@ -190,6 +191,9 @@ const WrappedEditTalentForm = reduxForm({
 
 const selector = formValueSelector(formConstants.EDIT_TALENT_FORM_NAME)
 
-export default connect(state => ({
-  talentTypeValue: selector(state, 'talentType')
-}))(WrappedEditTalentForm)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    talentTypeValue: selector(state, 'talentType')
+  })
+)(WrappedEditTalentForm)

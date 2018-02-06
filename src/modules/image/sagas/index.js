@@ -11,24 +11,23 @@ import {
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import * as uuidLib from '_src/lib/uuid'
 import { put as httpPut } from '_src/lib/fetch'
+import { actions as notificationActions } from '_src/modules/notification'
+import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import * as uuidLib from '_src/lib/uuid'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as imageActions from '_src/store/actions/image'
-import * as sagaActions from '_src/store/actions/saga'
-import { actions as notificationActions } from '_src/modules/notification'
+import * as imageActions from '_src/modules/image/actions'
 import * as imageConstraints from '_src/constants/image-constraints'
 import * as imageNormalisers from '_src/constants/image-normalisers'
 import * as formConstants from '_src/constants/form'
-import { sagas as userSagas } from '_src/modules/user'
 
-function * getImages (parentFormName) {
+export function * getImages (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))
   return formValues.images
 }
 
-function * updateImage ({ payload, meta }) {
+export function * updateImage ({ payload, meta }) {
   try {
     const { id, parentFormName } = payload
     yield put(startSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
@@ -58,7 +57,7 @@ function * updateImage ({ payload, meta }) {
 
     yield put(change(parentFormName, 'images', newImages))
     yield put(stopSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
-    yield put(sagaActions.returnAsPromise(null, meta))
+    yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
 
@@ -70,7 +69,7 @@ function * updateImage ({ payload, meta }) {
   }
 }
 
-function * deleteImage (action) {
+export function * deleteImage (action) {
   try {
     const { id, parentFormName } = action.payload
     const images = yield call(getImages, parentFormName)
@@ -94,7 +93,7 @@ function * deleteImage (action) {
   }
 }
 
-function * setMainImage (action) {
+export function * setMainImage (action) {
   try {
     const { id, parentFormName } = action.payload
     const images = yield call(getImages, parentFormName)
@@ -142,7 +141,7 @@ function * addImage (action) {
 
   try {
     const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
-    const token = yield call(userSagas.getAuthTokenForCurrentUser)
+    const token = yield call(getAuthTokenForCurrentUser)
 
     const { json, timeout } = yield race({
       json: call(

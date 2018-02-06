@@ -119,19 +119,19 @@ export function normaliseEventValues (values) {
 
 export function mapTalentToServer (values) {
   const isIndividual = talentLib.isIndividualTalent(values.talentType)
-  const firstNames = isIndividual ? values.firstNames.trim() : ''
+  const firstNames = isIndividual ? (values.firstNames || '').trim() : ''
   const dbDate = timeLib.getDateNowForDatabase()
 
   return {
     firstNames: firstNames,
-    lastName: values.lastName.trim(),
+    lastName: (values.lastName || '').trim(),
     description: _mapDescriptionToServer(values.description),
     talentType: values.talentType,
     commonRole: values.commonRole,
     status: values.status,
     links: _mapLinksToServer(values.links),
     images: _mapImagesToServer(values.images),
-    weSay: values.weSay.trim(),
+    weSay: (values.weSay || '').trim(),
     version: values.version + 1,
     createdDate: values.createdDate || dbDate,
     updatedDate: dbDate
@@ -474,7 +474,9 @@ function _mapLinksFromServer (links) {
 }
 
 function _mapImagesToServer (images) {
-  images = (images || [])
+  images = images || []
+
+  images = images
     .filter(image => image.isMain)
     .filter(image => image.status !== imageConstants.IMAGE_STATUS_PROCESSING)
     .concat(images.filter(image => !image.isMain))

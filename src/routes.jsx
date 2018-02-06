@@ -15,19 +15,22 @@ import { AppUpdater } from '_src/modules/app-updater'
 import { Sidenav } from '_src/modules/sidenav'
 import { NotFoundPage } from '_src/modules/error'
 import { DashboardPage } from '_src/modules/dashboard'
-import { LoginPage, actions as userActions } from '_src/modules/user'
+import {
+  LoginPage,
+  actions as userActions,
+  selectors as userSelectors
+} from '_src/modules/user'
+import { actions as referenceActions } from '_src/modules/reference'
 import { TagsTypePage } from '_src/modules/tag'
 import { ResultsPage, Quicksearch } from '_src/modules/search'
-import EntityDetailPage from '_src/modules/entity/pages/detail'
-import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
-import * as store from '_src/store'
+import { EntityDetailPage, EntityEditOrCreatePage } from '_src/modules/entity'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch(userActions.attemptAutoLogIn())
-    props.dispatch(store.serverConstantActions.fetchServerConstants())
+    props.dispatch(referenceActions.fetchReferenceData())
   }
   handleHideQuicksearch = () => {
     this.setState({ showQuicksearch: false })
@@ -118,8 +121,8 @@ export default withRouter(
   connect(
     /* istanbul ignore next */
     state => ({
-      autoLogInAttempted: store.selectors.autoLogInAttempted(state),
-      loggedIn: store.selectors.userIsLoggedIn(state)
+      autoLogInAttempted: userSelectors.autoLogInAttempted(state),
+      loggedIn: userSelectors.userIsLoggedIn(state)
     })
   )(Routes)
 )

@@ -103,7 +103,7 @@ it('should render correctly when search is in progress', () => {
 it('should trigger a search on construction when there is a search', () => {
   const dispatch = jest.fn()
 
-  const wrapper = shallow(
+  shallow(
     <SearchResultsPage
       searchInProgress={false}
       resultParams={null}
@@ -125,7 +125,7 @@ it('should trigger a search on construction when there is a search', () => {
 it('should not trigger a search on construction when there is none', () => {
   const dispatch = jest.fn()
 
-  const wrapper = shallow(
+  shallow(
     <SearchResultsPage
       searchInProgress={false}
       resultParams={null}

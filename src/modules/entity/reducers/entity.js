@@ -1,13 +1,13 @@
 import { handleActions } from 'redux-actions'
 
+import { types } from '_src/modules/entity/actions'
 import { FullEvent } from '_src/entities/event'
 import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import * as entityConstants from '_src/constants/entity'
-import { types } from '_src/store/actions/entity'
 
-export const module = 'entity'
+export const moduleName = 'entity'
 
 const initialState = {
   entityId: null,
@@ -32,7 +32,6 @@ export const reducer = handleActions(
     [types.GET_ENTITY_SUCCEEDED]: (state, action) => ({
       ...state,
       getInProgress: false,
-      getFailed: false,
       entity: createEntity(action.payload.entity)
     }),
     [types.GET_ENTITY_FAILED]: (state, action) => ({

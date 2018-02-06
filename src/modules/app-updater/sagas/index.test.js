@@ -7,9 +7,9 @@ import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
 import { actions as notificationActions } from '_src/modules/notification'
-import * as sagaActions from '_src/store/actions/saga'
 import * as appUpdaterConstants from '_src/modules/app-updater/constants'
 import * as appUpdaterSagas from './index'
+import * as sagaLib from '_src/lib/saga'
 
 describe('updateApp', () => {
   it('should handle updating the app', () => {
@@ -100,7 +100,7 @@ describe('checkForNewAppVersion', () => {
 
     result = generator.next({ version: '0.0.2' })
 
-    expect(result.value).toEqual(put(sagaActions.returnAsPromise(null, 1234)))
+    expect(result.value).toEqual(put(sagaLib.returnAsPromise(null, 1234)))
 
     result = generator.next()
 

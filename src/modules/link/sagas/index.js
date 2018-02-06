@@ -13,15 +13,10 @@ import linkConstraint from '_src/constants/link-constraint'
 import linkNormaliser from '_src/constants/link-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as linkActions from '_src/store/actions/link'
+import * as linkActions from '_src/modules/link/actions'
 import * as formConstants from '_src/constants/form'
 
-function * getLinks (parentFormName) {
-  const formValues = yield select(getFormValues(parentFormName))
-  return formValues.links
-}
-
-function * addLink (action) {
+export function * addLink (action) {
   try {
     yield put(startSubmit(formConstants.LINK_EDITOR_FORM_NAME))
 
@@ -60,7 +55,7 @@ function * addLink (action) {
   }
 }
 
-function * deleteLink (action) {
+export function * deleteLink (action) {
   try {
     const { key, parentFormName } = action.payload
     const links = yield call(getLinks, parentFormName)
@@ -69,6 +64,11 @@ function * deleteLink (action) {
   } catch (err) {
     yield call(log.error, err)
   }
+}
+
+function * getLinks (parentFormName) {
+  const formValues = yield select(getFormValues(parentFormName))
+  return formValues.links
 }
 
 export default [

@@ -5,7 +5,6 @@ import log from 'loglevel'
 
 import history from '_src/history'
 import normalise from '_src/lib/normalise'
-import * as sagaActions from '_src/store/actions/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
@@ -76,10 +75,10 @@ export function * autocompleteSearch ({ payload, meta }) {
           searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
     )
 
-    yield put(sagaActions.returnAsPromise(items, meta))
+    yield put(sagaLib.returnAsPromise(items, meta))
   } catch (err) {
     yield call(log.error, err)
-    yield put(sagaActions.returnAsPromise([], meta))
+    yield put(sagaLib.returnAsPromise([], meta))
   }
 }
 

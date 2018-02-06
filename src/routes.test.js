@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { serverConstantActions } from '_src/store'
+import { actions as referenceActions } from '_src/modules/reference'
 import { actions as userActions } from '_src/modules/user'
 import { Routes } from '_src/routes'
 
@@ -62,7 +62,7 @@ it('should trigger initial actions', () => {
   expect(mockDispatch.mock.calls[0]).toEqual([userActions.attemptAutoLogIn()])
 
   expect(mockDispatch.mock.calls[1]).toEqual([
-    serverConstantActions.fetchServerConstants()
+    referenceActions.fetchReferenceData()
   ])
 })
 

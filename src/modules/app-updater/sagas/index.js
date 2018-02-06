@@ -8,7 +8,7 @@ import log from 'loglevel'
 import * as fetchLib from '_src/lib/fetch'
 import * as appUpdaterConstants from '_src/modules/app-updater/constants'
 import * as appUpdaterActions from '_src/modules/app-updater/actions'
-import * as sagaActions from '_src/store/actions/saga'
+import * as sagaLib from '_src/lib/saga'
 import { actions as notificationActions } from '_src/modules/notification'
 
 export function * checkForNewAppVersion ({ meta }) {
@@ -28,7 +28,7 @@ export function * checkForNewAppVersion ({ meta }) {
     yield call(delay, appUpdaterConstants.CHECK_FOR_UPDATE_POLL_MS)
   }
 
-  yield put(sagaActions.returnAsPromise(null, meta))
+  yield put(sagaLib.returnAsPromise(null, meta))
 }
 
 export function * updateApp () {

@@ -1,18 +1,18 @@
 import { take, call, put } from 'redux-saga/effects'
 
-import { serverConstantActions } from '_src/store'
-import * as serverConstantSagas from '_src/store/sagas/server-constant'
+import * as referenceActions from '_src/modules/reference/actions'
+import * as sagas from './index'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 
-describe('fetchServerConstants', () => {
+describe('fetchReferenceData', () => {
   it('should fetch the server constants', () => {
-    const generator = serverConstantSagas.fetchServerConstants()
+    const generator = sagas.fetchReferenceData()
 
     let result = generator.next()
 
     expect(result.value).toEqual(
-      take(serverConstantActions.types.FETCH_SERVER_CONSTANTS)
+      take(referenceActions.types.FETCH_REFERENCE_DATA)
     )
 
     result = generator.next('foo')
@@ -28,7 +28,7 @@ describe('fetchServerConstants', () => {
     result = generator.next('some json')
 
     expect(result.value).toEqual(
-      put(serverConstantActions.fetchServerConstantsSucceeded('some json'))
+      put(referenceActions.fetchReferenceDataSucceeded('some json'))
     )
 
     result = generator.next()

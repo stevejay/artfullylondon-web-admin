@@ -22,7 +22,7 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 //     yield put({ type: tagActionTypes.GET_TAGS_STARTED })
 
 //     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
-//     const token = yield call(userSagas.getAuthTokenForCurrentUser)
+//     const token = yield call(getAuthTokenForCurrentUser)
 //     const json = yield call(fetchLib.get, url, token)
 
 //     yield put({

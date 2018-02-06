@@ -1,14 +1,14 @@
 import { put, take, fork, call } from 'redux-saga/effects'
 
-import * as serverConstantActions from '_src/store/actions/server-constant'
+import * as referenceActions from '_src/modules/reference/actions'
 import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 
-export function * fetchServerConstants () {
-  yield take(serverConstantActions.types.FETCH_SERVER_CONSTANTS)
+export function * fetchReferenceData () {
+  yield take(referenceActions.types.FETCH_REFERENCE_DATA)
   const url = process.env.WEBSITE_API_HOST_URL + '/data-service/admin-site-data'
   const json = yield call(sagaLib.callWithInfiniteRetry, fetchLib.get, url)
-  yield put(serverConstantActions.fetchServerConstantsSucceeded(json))
+  yield put(referenceActions.fetchReferenceDataSucceeded(json))
 }
 
-export default [fork(fetchServerConstants)]
+export default [fork(fetchReferenceData)]

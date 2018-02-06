@@ -13,11 +13,13 @@ import EventSeriesDetail
   from '_src/modules/entity/components/event-series-detail'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityConstants from '_src/constants/entity'
-import { selectors, entityActions } from '_src/store'
+import * as entityActions from '_src/modules/entity/actions'
+import { selectors as entitySelectors } from '_src/modules/entity/reducers'
 
-class EntityDetailPage extends React.Component {
-  componentWillMount () {
-    this._getEntity(this.props)
+export class EntityDetailPage extends React.Component {
+  constructor (props) {
+    super(props)
+    this._getEntity(props)
   }
   componentWillReceiveProps (nextProps) {
     if (
@@ -73,10 +75,13 @@ EntityDetailPage.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect((state, ownProps) => ({
-  entityType: ownProps.match.params.entityType,
-  entityId: ownProps.match.params[0],
-  entity: selectors.entity(state),
-  getInProgress: selectors.gettingEntity(state),
-  getFailed: selectors.failedToGetEntity(state)
-}))(EntityDetailPage)
+export default connect(
+  /* istanbul ignore next */
+  (state, ownProps) => ({
+    entityType: ownProps.match.params.entityType,
+    entityId: ownProps.match.params[0],
+    entity: entitySelectors.entity(state),
+    getInProgress: entitySelectors.gettingEntity(state),
+    getFailed: entitySelectors.failedToGetEntity(state)
+  })
+)(EntityDetailPage)

@@ -1,7 +1,7 @@
-import * as serverConstantLib from '_src/lib/server-constant'
+import * as referenceLib from '_src/modules/reference/lib/reference'
 import * as imageLib from '_src/lib/image'
 
-describe('mapServerConstantsData', () => {
+describe('mapReferenceData', () => {
   it('should create a server constants structure from the input', () => {
     const contentJson = {
       heroImage: {
@@ -30,7 +30,7 @@ describe('mapServerConstantsData', () => {
       .fn()
       .mockImplementation((a, b) => `${a} ${b}`)
 
-    const actual = serverConstantLib.mapServerConstantsData(contentJson)
+    const actual = referenceLib.mapReferenceData(contentJson)
 
     expect(actual).toEqual({
       heroImage: {

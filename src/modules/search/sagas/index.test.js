@@ -2,10 +2,10 @@ import { call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import log from 'loglevel'
 import { initialize } from 'redux-form'
+import { cloneableGenerator } from 'redux-saga/utils'
 
 import normalise from '_src/lib/normalise'
 import history from '_src/history'
-import * as sagaActions from '_src/store/actions/saga'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
@@ -14,7 +14,6 @@ import * as searchActions from '_src/modules/search/actions'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchLib from '_src/modules/search/lib/search'
 import * as formConstants from '_src/constants/form'
-import { cloneableGenerator } from 'redux-saga/utils'
 
 describe('pushBasicSearchToUrl', () => {
   it('should create the url and push it', () => {
@@ -341,7 +340,7 @@ describe('autocompleteSearch', () => {
 
     expect(result.value).toEqual(
       put(
-        sagaActions.returnAsPromise(
+        sagaLib.returnAsPromise(
           [
             {
               id: 1,
@@ -368,7 +367,7 @@ describe('autocompleteSearch', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(sagaActions.returnAsPromise([], meta)))
+    expect(result.value).toEqual(put(sagaLib.returnAsPromise([], meta)))
 
     result = generatorClone.next()
 

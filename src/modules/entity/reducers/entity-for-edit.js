@@ -1,13 +1,13 @@
 import { handleActions } from 'redux-actions'
 import RichTextEditor from 'react-rte'
 
+import { types } from '_src/modules/entity/actions'
 import * as mappingsLib from '_src/lib/mappings'
 import * as entityConstants from '_src/constants/entity'
-import { types } from '_src/store/actions/entity'
 import * as talentConstants from '_src/constants/talent'
 import * as locationConstants from '_src/constants/location'
 
-export const module = 'entityForEdit'
+export const moduleName = 'entityForEdit'
 
 const initialState = {
   entityId: null,

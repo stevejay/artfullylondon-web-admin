@@ -10,11 +10,11 @@ import EntityHeading from '_src/components/entity/heading'
 import EditTalentForm from '_src/modules/entity/forms/edit-talent'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import { entityActions } from '_src/store'
+import * as entityActions from '_src/modules/entity/actions'
 import { actions as notificationActions } from '_src/modules/notification'
 import * as formConstants from '_src/constants/form'
 
-class TalentEditOrCreate extends React.Component {
+export class TalentEditOrCreate extends React.Component {
   handleSubmit = values => {
     const {
       imageEditorIsPristine,
@@ -23,6 +23,7 @@ class TalentEditOrCreate extends React.Component {
       dispatch
     } = this.props
 
+    // TODO should the saveEntity dispatch happen in the parent instead of here?
     if (imageEditorIsPristine && linkEditorIsPristine) {
       dispatch(
         entityActions.saveEntity(
@@ -73,10 +74,13 @@ TalentEditOrCreate.propTypes = {
   entity: PropTypes.object.isRequired,
   isEdit: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  imageEditorIsPristine: PropTypes.bool.isRequired,
+  linkEditorIsPristine: PropTypes.bool.isRequired
 }
 
 export default withRouter(
+  /* istanbul ignore next */
   connect(state => ({
     imageEditorIsPristine: reduxForm.isPristine(
       formConstants.IMAGE_EDITOR_FORM_NAME

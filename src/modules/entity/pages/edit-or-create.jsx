@@ -15,9 +15,10 @@ import EventEditOrCreate
 import EventSeriesEditOrCreate
   from '_src/modules/entity/components/event-series-edit-or-create'
 import * as entityConstants from '_src/constants/entity'
-import { selectors, entityActions } from '_src/store'
+import * as entityActions from '_src/modules/entity/actions'
+import { selectors as entitySelectors } from '_src/modules/entity/reducers'
 
-class EntityEditOrCreatePage extends React.Component {
+export class EntityEditOrCreatePage extends React.Component {
   componentWillMount () {
     this._getOrResetEntity(this.props)
   }
@@ -81,10 +82,13 @@ EntityEditOrCreatePage.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect((state, ownProps) => ({
-  entityType: ownProps.match.params.entityType,
-  entityId: ownProps.match.params[0],
-  entity: selectors.entityForEdit(state),
-  getInProgress: selectors.gettingEntityForEdit(state),
-  getFailed: selectors.failedToGetEntityForEdit(state)
-}))(EntityEditOrCreatePage)
+export default connect(
+  /* istanbul ignore next */
+  (state, ownProps) => ({
+    entityType: ownProps.match.params.entityType,
+    entityId: ownProps.match.params[0],
+    entity: entitySelectors.entityForEdit(state),
+    getInProgress: entitySelectors.gettingEntityForEdit(state),
+    getFailed: entitySelectors.failedToGetEntityForEdit(state)
+  })
+)(EntityEditOrCreatePage)

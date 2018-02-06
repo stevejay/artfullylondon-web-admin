@@ -17,22 +17,22 @@ import eventSeriesNormaliser from '_src/constants/event-series-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActions from '_src/store/actions/entity'
 import * as formConstants from '_src/constants/form'
 // import * as searchLib from '_src/lib/search'
-import { actions as notificationActions } from '_src/modules/notification'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
 import * as mappingsLib from '_src/lib/mappings'
-import { sagas as userSagas } from '_src/modules/user'
+import * as entityActions from '_src/modules/entity/actions'
+import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import { actions as notificationActions } from '_src/modules/notification'
 
-function * getEntity (action) {
+export function * getEntity (action) {
   const { entityType, id } = action.payload
 
   try {
     yield put(entityActions.getEntityStarted(entityType, id))
 
-    const token = yield call(userSagas.getAuthTokenForCurrentUser)
+    const token = yield call(getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
     const json = yield call(get, url, token)
 
@@ -43,7 +43,7 @@ function * getEntity (action) {
   }
 }
 
-function * saveEntity (action) {
+export function * saveEntity (action) {
   const { entityType, isEdit } = action.payload
   const formName = _getFormNameForEntityType(entityType)
 
@@ -56,7 +56,7 @@ function * saveEntity (action) {
     const constraint = _getConstraintForEntityType(entityType)
     yield call(validationLib.validate, values, constraint)
 
-    const token = yield call(userSagas.getAuthTokenForCurrentUser)
+    const token = yield call(getAuthTokenForCurrentUser)
     const mapper = _getMapperForEntityType(entityType)
     let json = null
 
@@ -89,6 +89,26 @@ function * saveEntity (action) {
     yield call(sagaLib.submitErrorHandler, err, formName)
   }
 }
+
+export function * getEntityForEdit (action) {
+  const { entityType, id } = action.payload
+
+  try {
+    yield put(entityActions.getEntityForEditStarted(entityType, id))
+
+    const token = yield call(getAuthTokenForCurrentUser)
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
+    const json = yield call(get, url, token)
+
+    yield put(entityActions.getEntityForEditSucceeded(entityType, json.entity))
+  } catch (err) {
+    yield call(log.error, err)
+
+    yield put(entityActions.getEntityForEditFailed(entityType))
+  }
+}
+
+// TODO do all these mappings a different way
 
 function _getConstraintForEntityType (entityType) {
   switch (entityType) {
@@ -150,31 +170,13 @@ function _getFormNameForEntityType (entityType) {
   }
 }
 
-function * getEntityForEdit (action) {
-  const { entityType, id } = action.payload
-
-  try {
-    yield put(entityActions.getEntityForEditStarted(entityType, id))
-
-    const token = yield call(userSagas.getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
-    const json = yield call(get, url, token)
-
-    yield put(entityActions.getEntityForEditSucceeded(entityType, json.entity))
-  } catch (err) {
-    yield call(log.error, err)
-
-    yield put(entityActions.getEntityForEditFailed(entityType))
-  }
-}
-
 // function * getEventAsCopy (action) {
 //   const { id } = action.payload
 
 //   try {
 //     yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
 
-//     const token = yield call(userSagas.getAuthTokenForCurrentUser)
+//     const token = yield call(getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
 //     const json = yield call(get, url, token)
 
@@ -201,7 +203,7 @@ function * getEntityForEdit (action) {
 //       payload: { entityType, subEntityType }
 //     })
 
-//     const token = yield call(userSagas.getAuthTokenForCurrentUser)
+//     const token = yield call(getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${subEntityType}/${id}`
 //     const json = yield call(get, url, token)
 
@@ -292,7 +294,7 @@ function * getEntityForEdit (action) {
 //       }
 //     }
 
-//     const token = yield call(userSagas.getAuthTokenForCurrentUser)
+//     const token = yield call(getAuthTokenForCurrentUser)
 //     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/talent`
 //     const mappedValues = mappingsLib.mapTalentToServer(values)
 //     const json = yield call(post, url, mappedValues, token)

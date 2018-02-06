@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze'
 
-import { reducer } from '_src/store/reducers/server-constant'
-import * as serverConstantLib from '_src/lib/server-constant'
-import { serverConstantActions } from '_src/store'
+import { reducer } from '_src/modules/reference/reducers/reference-data'
+import * as referenceLib from '_src/modules/reference/lib/reference'
+import * as referenceActions from '_src/modules/reference/actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
@@ -19,9 +19,7 @@ it('should have the correct initial state', () => {
 })
 
 it('should handle a fetch server constants succeeded action', () => {
-  serverConstantLib.mapServerConstantsData = jest
-    .fn()
-    .mockImplementation(data => data)
+  referenceLib.mapReferenceData = jest.fn().mockImplementation(data => data)
 
   const state = deepFreeze({
     loading: true,
@@ -30,7 +28,7 @@ it('should handle a fetch server constants succeeded action', () => {
 
   const actual = reducer(
     state,
-    serverConstantActions.fetchServerConstantsSucceeded({
+    referenceActions.fetchReferenceDataSucceeded({
       heroImage: { name: 'new name' }
     })
   )
