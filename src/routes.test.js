@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { authActions, browserActions, serverConstantActions } from '_src/store'
+import { authActions, serverConstantActions } from '_src/store'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {
@@ -62,27 +62,6 @@ it('should trigger initial actions', () => {
 
   expect(mockDispatch.mock.calls[1]).toEqual([
     serverConstantActions.fetchServerConstants()
-  ])
-})
-
-it('should handle a window resize event', () => {
-  const mockDispatch = jest.fn()
-
-  const wrapper = shallow(
-    <Routes
-      loggedIn
-      autoLogInAttempted
-      dispatch={mockDispatch}
-      location={{ pathname: '/some/path' }}
-    />
-  )
-
-  wrapper.find('BrowserResizeListener').prop('onWindowResize')(200)
-
-  expect(mockDispatch.mock.calls.length).toEqual(3)
-
-  expect(mockDispatch.mock.calls[2]).toEqual([
-    browserActions.browserWidthChanged(200)
   ])
 })
 

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
-import { Header } from '_src/modules/header'
+import { Header } from '_src/modules/header/components/header'
 import Button from '_src/components/button'
 import { authActions } from '_src/store'
 
@@ -12,7 +12,6 @@ it('should render correctly when logged in', () => {
     <Header
       hasError={false}
       loggedIn
-      isWideBrowser
       showingSidenav={false}
       history={{}}
       onShowSidenav={_.noop}
@@ -32,7 +31,6 @@ it('should render correctly when has an error', () => {
     <Header
       hasError
       loggedIn
-      isWideBrowser
       showingSidenav={false}
       history={{}}
       onShowSidenav={_.noop}
@@ -53,7 +51,6 @@ it('should update state when an error has been caught', () => {
     <Header
       hasError={false}
       loggedIn
-      isWideBrowser
       showingSidenav={false}
       history={{}}
       onShowSidenav={_.noop}
@@ -74,7 +71,6 @@ it('should render correctly when showing the sidenav', () => {
     <Header
       hasError={false}
       loggedIn
-      isWideBrowser
       showingSidenav
       history={{}}
       onShowSidenav={_.noop}
@@ -87,32 +83,13 @@ it('should render correctly when showing the sidenav', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly when narrow', () => {
-  const wrapper = shallow(
-    <Header
-      hasError={false}
-      loggedIn
-      isWideBrowser={false}
-      showingSidenav={false}
-      history={{}}
-      onShowSidenav={_.noop}
-      onShowQuicksearch={_.noop}
-      dispatch={_.noop}
-      setHasError={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should handle a logout button click when wide', () => {
+it('should handle a logout button click', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
     <Header
       hasError={false}
       loggedIn
-      isWideBrowser
       showingSidenav={false}
       history={{}}
       onShowSidenav={_.noop}

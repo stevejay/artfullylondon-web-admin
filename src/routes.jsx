@@ -8,9 +8,8 @@ import Page from '_src/components/page'
 import PageHeader from '_src/components/page/header'
 import PageMain from '_src/components/page/main'
 import PageFooter from '_src/components/page/footer'
-import Header from '_src/modules/header'
-import Footer from '_src/modules/footer'
-import BrowserResizeListener from '_src/components/browser-resize-listener'
+import { Header } from '_src/modules/header'
+import { Footer } from '_src/modules/footer'
 import Dashboard from '_src/modules/dashboard/pages/dashboard'
 import NotFound from '_src/modules/error/pages/not-found'
 import { NotificationContainer } from '_src/modules/notification'
@@ -30,9 +29,6 @@ export class Routes extends React.Component {
     this.state = { showQuicksearch: false, showSidenav: false }
     props.dispatch(store.authActions.attemptAutoLogIn())
     props.dispatch(store.serverConstantActions.fetchServerConstants())
-  }
-  handleWindowResize = width => {
-    this.props.dispatch(store.browserActions.browserWidthChanged(width))
   }
   handleHideQuicksearch = () => {
     this.setState({ showQuicksearch: false })
@@ -56,7 +52,6 @@ export class Routes extends React.Component {
 
     return (
       <Page>
-        <BrowserResizeListener onWindowResize={this.handleWindowResize} />
         <Sidenav
           show={showSidenav}
           onHide={this.handleHideSidenav}

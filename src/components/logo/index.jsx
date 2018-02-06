@@ -2,42 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import './index.scss'
+
 const LOGO_SIZE_SMALL = 'small'
 const LOGO_SIZE_MEDIUM = 'medium'
 const LOGO_SIZE_LARGE = 'large'
 const LOGO_SIZE_XLARGE = 'xlarge'
 
-const LOGO_SIZE_PARAMS = {
-  [LOGO_SIZE_SMALL]: { width: '80px', height: '32px', verticalAlign: 'bottom' },
-  [LOGO_SIZE_MEDIUM]: {
-    width: '100px',
-    height: '40px',
-    verticalAlign: 'bottom'
-  },
-  [LOGO_SIZE_LARGE]: {
-    width: '218px',
-    height: '86px',
-    verticalAlign: 'bottom'
-  },
-  [LOGO_SIZE_XLARGE]: {
-    width: '500px',
-    height: '198px',
-    verticalAlign: 'bottom'
-  }
-}
-
 const LOGO_TYPE_NORMAL = 'normal'
 const LOGO_TYPE_INVERSE = 'inverse'
 
-class Logo extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.size !== this.props.size
-  }
+class Logo extends React.PureComponent {
   render () {
     const { size, type } = this.props
 
     // There was a problem when more than one instance of this class was rendered
-    // at the same time: the gradient ids needed to be unique.
+    // at the same time--the gradient ids needed to be unique.
 
     const gradientPrefix = _.uniqueId('linearGradient_')
     const textFillColor = type === LOGO_TYPE_NORMAL ? '#FF632A' : '#FFF'
@@ -45,7 +25,7 @@ class Logo extends React.Component {
     return (
       <svg
         aria-label='Artfully London Logo'
-        style={LOGO_SIZE_PARAMS[size]}
+        styleName={size}
         viewBox='0 0 820 320'
         version='1.1'
       >

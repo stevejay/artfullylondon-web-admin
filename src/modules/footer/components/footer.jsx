@@ -1,23 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import log from 'loglevel'
+import { withState } from 'recompose'
 
 import * as timeLib from '_src/lib/time'
-import './index.scss'
+import './footer.scss'
 
-class Footer extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextState.hasError !== this.state.hasError
-  }
+export class Footer extends React.PureComponent {
   componentDidCatch (error, info) {
-    this.setState({ hasError: true })
+    this.props.setHasError(true)
     log.error(error, info.componentStack)
   }
   render () {
-    if (this.state.hasError) {
+    if (this.props.hasError) {
       return null
     }
 
@@ -32,4 +27,9 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer
+Footer.propTypes = {
+  hasError: PropTypes.bool.isRequired,
+  setHasError: PropTypes.func.isRequired
+}
+
+export default withState('hasError', 'setHasError', false)(Footer)

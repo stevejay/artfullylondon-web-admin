@@ -3,7 +3,6 @@ import { reducer as formReducer } from 'redux-form'
 
 import * as reduxLib from '_src/lib/redux'
 import * as auth from './auth'
-import * as browser from './browser'
 import * as entityForEdit from './entity-for-edit'
 import * as entity from './entity'
 import * as notification from '_src/modules/notification'
@@ -15,7 +14,6 @@ import * as tag from './tag'
 export const reducer = combineReducers({
   form: formReducer,
   [auth.module]: auth.reducer,
-  [browser.module]: browser.reducer,
   [entityForEdit.module]: entityForEdit.reducer,
   [entity.module]: entity.reducer,
   [notification.moduleName]: notification.reducer,
@@ -27,7 +25,6 @@ export const reducer = combineReducers({
 
 export const selectors = reduxLib.combineSelectors(
   reduxLib.mapSelectors(auth.selectors, auth.module),
-  reduxLib.mapSelectors(browser.selectors, browser.module),
   reduxLib.mapSelectors(entityForEdit.selectors, entityForEdit.module),
   reduxLib.mapSelectors(entity.selectors, entity.module),
   notification.selectors,

@@ -22,15 +22,3 @@ it('should render an extra large inverse logo correctly', () => {
   const wrapper = shallow(<Logo type='inverse' size='xlarge' />)
   expect(wrapper).toMatchSnapshot()
 })
-
-it('should not update when props have not changed', () => {
-  const wrapper = shallow(<Logo size='medium' />)
-  const result = wrapper.instance().shouldComponentUpdate({ size: 'medium' })
-  expect(result).toEqual(false)
-})
-
-it('should update when props have changed', () => {
-  const wrapper = shallow(<Logo size='medium' />)
-  const result = wrapper.instance().shouldComponentUpdate({ size: 'small' })
-  expect(result).toEqual(true)
-})
