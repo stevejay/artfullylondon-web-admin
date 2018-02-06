@@ -2,16 +2,16 @@ import { call, put } from 'redux-saga/effects'
 import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
-import { statusActions } from '_src/store'
-import * as statusSagas from '_src/store/sagas/status'
+import * as dashboardActions from '_src/modules/dashboard/actions'
+import * as dashboardSagas from '_src/modules/dashboard/sagas'
 
 describe('getEntityCounts', () => {
   it('should get the entity counts', () => {
-    const generator = statusSagas.getEntityCounts()
+    const generator = dashboardSagas.getEntityCounts()
 
     let result = generator.next()
 
-    expect(result.value).toEqual(put(statusActions.getEntityCountsStarted()))
+    expect(result.value).toEqual(put(dashboardActions.getEntityCountsStarted()))
 
     result = generator.next()
 
@@ -26,7 +26,7 @@ describe('getEntityCounts', () => {
     result = generator.next('some json')
 
     expect(result.value).toEqual(
-      put(statusActions.getEntityCountsSucceeded('some json'))
+      put(dashboardActions.getEntityCountsSucceeded('some json'))
     )
 
     result = generator.next()
@@ -35,12 +35,12 @@ describe('getEntityCounts', () => {
   })
 
   it('should handle an error when getting the error counts', () => {
-    const generator = statusSagas.getEntityCounts()
+    const generator = dashboardSagas.getEntityCounts()
     const error = new Error('deliberately thrown')
 
     let result = generator.next()
 
-    expect(result.value).toEqual(put(statusActions.getEntityCountsStarted()))
+    expect(result.value).toEqual(put(dashboardActions.getEntityCountsStarted()))
 
     result = generator.next()
 
@@ -58,7 +58,7 @@ describe('getEntityCounts', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(put(statusActions.getEntityCountsFailed()))
+    expect(result.value).toEqual(put(dashboardActions.getEntityCountsFailed()))
 
     result = generator.next()
 

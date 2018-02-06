@@ -15,13 +15,12 @@ import { AppUpdater } from '_src/modules/app-updater'
 import { Sidenav } from '_src/modules/sidenav'
 import { Quicksearch } from '_src/modules/quicksearch'
 import { NotFoundPage } from '_src/modules/error'
-import Dashboard from '_src/modules/dashboard/pages/dashboard'
-import { LoginPage } from '_src/modules/user'
+import { DashboardPage } from '_src/modules/dashboard'
+import { LoginPage, actions as userActions } from '_src/modules/user'
 import TagsTypePage from '_src/modules/tags/pages/tags-type'
 import SearchResultsPage from '_src/modules/search/pages/results'
 import EntityDetailPage from '_src/modules/entity/pages/detail'
 import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
-import { actions as userActions } from '_src/modules/user'
 import * as store from '_src/store'
 
 export class Routes extends React.Component {
@@ -80,7 +79,7 @@ export class Routes extends React.Component {
             </PageHeader>
             <PageMain>
               <Switch>
-                <Route path='/' exact component={Dashboard} />
+                <Route path='/' exact component={DashboardPage} />
                 <Route path='/tags/:type' component={TagsTypePage} />
                 <Route path='/search' component={SearchResultsPage} />
                 <Route

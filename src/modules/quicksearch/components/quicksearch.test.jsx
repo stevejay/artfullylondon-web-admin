@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { searchActions } from '_src/store'
-import * as searchConstants from '_src/constants/search'
 import * as entityConstants from '_src/constants/entity'
 import { Quicksearch } from '_src/modules/quicksearch/components/quicksearch'
 import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'

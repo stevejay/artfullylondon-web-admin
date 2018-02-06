@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { DashboardPage } from '_src/modules/dashboard/pages/dashboard'
 import * as entityConstants from '_src/constants/entity'
-import { statusActions } from '_src/store'
+import * as dashboardActions from '_src/modules/dashboard/actions'
 
 it('should render correctly while the entity counts are being fetched', () => {
   const wrapper = shallow(
@@ -64,5 +64,5 @@ it('should get the entity counts while it is being mounted', () => {
     />
   )
 
-  expect(dispatch).toHaveBeenCalledWith(statusActions.getEntityCounts())
+  expect(dispatch).toHaveBeenCalledWith(dashboardActions.getEntityCounts())
 })

@@ -1,9 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 import * as entityLib from '_src/lib/entity'
-import { types } from '_src/store/actions/status'
-
-export const module = 'status'
+import { types } from '_src/modules/dashboard/actions'
 
 const initialState = {
   entityCounts: [],

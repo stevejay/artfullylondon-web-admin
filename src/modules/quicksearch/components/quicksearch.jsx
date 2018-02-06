@@ -11,7 +11,6 @@ import IconButton from '_src/components/button/icon'
 import QuicksearchForm from '_src/modules/quicksearch/forms/quicksearch'
 import ModalTransition
   from '_src/modules/quicksearch/components/modal-transition'
-import * as searchConstants from '_src/constants/search'
 import { searchActions } from '_src/store'
 import * as entityConstants from '_src/constants/entity'
 import './quicksearch.scss'

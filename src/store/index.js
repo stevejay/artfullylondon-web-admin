@@ -4,7 +4,6 @@ import * as imageActions from './actions/image'
 import * as linkActions from './actions/link'
 import * as searchActions from './actions/search'
 import * as serverConstantActions from './actions/server-constant'
-import * as statusActions from './actions/status'
 import * as tagActions from './actions/tag'
 
 export { reducer, selectors } from './reducers'
@@ -16,7 +15,6 @@ export {
   linkActions,
   searchActions,
   serverConstantActions,
-  statusActions,
   tagActions
 }
 
@@ -26,5 +24,4 @@ export { selectors as searchSelectors } from './reducers/search'
 export {
   selectors as serverConstantSelectors
 } from './reducers/server-constant'
-export { selectors as statusSelectors } from './reducers/status'
 export { selectors as tagSelectors } from './reducers/tag'
