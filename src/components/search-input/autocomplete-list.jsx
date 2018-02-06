@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import AutocompleteHeaderItem
   from '_src/components/search-input/autocomplete-header-item'
 import AutocompleteItem from '_src/components/search-input/autocomplete-item'
-import * as searchConstants from '_src/constants/search'
+import * as searchConstants from '_src/constants/search-temp'
 import './autocomplete-list.scss'
 
 const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (

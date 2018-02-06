@@ -49,7 +49,11 @@
     ],
     "env": {
       "jest": true
-    }
+    },
+    "globals": [
+      "shallow",
+      "mount"
+    ]
   },
   "devDependencies": {
     "@types/googlemaps": "^3.30.4",

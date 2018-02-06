@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ThumbsDown from 'react-icons/lib/fa/thumbs-o-down'
 
 import * as entityConstants from '_src/constants/entity'
-import * as searchConstants from '_src/constants/search'
+import * as searchConstants from '_src/constants/search-temp'
 import './no-results.scss'
 
 const SearchNoResults = ({ onTryAllClick, className, entityType }) => (

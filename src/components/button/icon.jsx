@@ -27,6 +27,7 @@ class IconButton extends React.Component {
       icon,
       ariaExpanded,
       className,
+      compact,
       ...rest
     } = this.props
 
@@ -34,7 +35,7 @@ class IconButton extends React.Component {
       <button
         {...rest}
         type='button'
-        styleName={'link-' + type}
+        styleName={`button${compact ? '-compact' : ''}-${type}`}
         className={className}
         tabIndex={0}
         onKeyPress={this.handleKeyPress}
@@ -52,7 +53,8 @@ IconButton.propTypes = {
   icon: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   ariaExpanded: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  compact: PropTypes.bool
 }
 
 IconButton.defaultProps = {

@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import SearchInputAutocompleteList
   from '_src/components/search-input/autocomplete-list'
-import * as searchConstants from '_src/constants/search'
+import * as searchConstants from '_src/constants/search-temp'
 
 it('should render an autocomplete list with a single entity entry correctly', () => {
   const wrapper = shallow(

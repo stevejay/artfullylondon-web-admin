@@ -4,7 +4,6 @@ import _ from 'lodash'
 
 import FieldResetButton from '_src/components/field/reset-button'
 import SelectSearchField from '_src/components/select/search-field'
-import * as searchConstants from '_src/constants/search'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -145,5 +144,5 @@ it('should handle the reset button being clicked', () => {
 
   wrapper.find(FieldResetButton).simulate('click')
 
-  expect(handleChange).toHaveBeenCalledWith(searchConstants.NO_FILTER_VALUE)
+  expect(handleChange).toHaveBeenCalledWith(':all')
 })

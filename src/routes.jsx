@@ -13,12 +13,11 @@ import { Footer } from '_src/modules/footer'
 import { NotificationContainer } from '_src/modules/notification'
 import { AppUpdater } from '_src/modules/app-updater'
 import { Sidenav } from '_src/modules/sidenav'
-import { Quicksearch } from '_src/modules/quicksearch'
 import { NotFoundPage } from '_src/modules/error'
 import { DashboardPage } from '_src/modules/dashboard'
 import { LoginPage, actions as userActions } from '_src/modules/user'
-import TagsTypePage from '_src/modules/tags/pages/tags-type'
-import SearchResultsPage from '_src/modules/search/pages/results'
+import { TagsTypePage } from '_src/modules/tag'
+import { ResultsPage, Quicksearch } from '_src/modules/search'
 import EntityDetailPage from '_src/modules/entity/pages/detail'
 import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
 import * as store from '_src/store'
@@ -81,7 +80,7 @@ export class Routes extends React.Component {
               <Switch>
                 <Route path='/' exact component={DashboardPage} />
                 <Route path='/tags/:type' component={TagsTypePage} />
-                <Route path='/search' component={SearchResultsPage} />
+                <Route path='/search' component={ResultsPage} />
                 <Route
                   path='/:entityType(talent|venue|event|event-series)'
                   exact

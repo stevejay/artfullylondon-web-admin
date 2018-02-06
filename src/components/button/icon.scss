@@ -1,6 +1,6 @@
 @import 'theme';
 
-.link {
+.button {
   @include unstyledButton;
   @include noWebKitHighlight;
   display: inline-block;
@@ -8,42 +8,67 @@
   padding: 1rem;
   border-bottom: none;
   cursor: pointer;
+  line-height: 0;
+
+  svg {
+    margin-top: -1px;
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: color .2s ease-in;
+  }
+
+  &:hover {
+    border-bottom: none;
+  }
 }
 
-.link svg {
-  width: 2.4rem;
-  height: 2.4rem;
-  transition: color .2s ease-in;
+.button-compact {
+  composes: button;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
-.link-default {
-  composes: link;
+.button-default {
+  composes: button;
+}
 
+.button-compact-default {
+  composes: button-compact;
+}
+
+.button-inverse {
+  composes: button;
+}
+
+.button-compact-inverse {
+  composes: button-compact;
+}
+
+.button-default,
+.button-compact-default {
   svg {
     color: $two-third-black;
   }
 
   &:hover {
-    border-bottom: none;
-
     svg {
       color: $black;
     }
   }
 }
 
-.link-inverse {
-  composes: link;
-
+.button-inverse,
+.button-compact-inverse {
   svg {
-    color: $white;
+    color: $eighth-black;
   }
 
   &:hover {
-    border-bottom: none;
-
     svg {
-      color: $eighth-black;
+      color: $white;
     }
   }
 }

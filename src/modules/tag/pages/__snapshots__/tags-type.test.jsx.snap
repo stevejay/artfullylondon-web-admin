@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when get tags failed 1`] = `
+<BasicSection>
+  <SectionHeading>
+    <span>
+      medium
+    </span>
+     Tags
+  </SectionHeading>
+  <Error
+    type="DEFAULT"
+  />
+</BasicSection>
+`;
+
+exports[`should render correctly when get tags succeeded 1`] = `
+<BasicSection>
+  <SectionHeading>
+    <span>
+      medium
+    </span>
+     Tags
+  </SectionHeading>
+  <FieldBorder
+    className="src-modules-tag-pages-tags-type__field-container"
+  >
+    <ReduxForm
+      canAddTag={true}
+      initialValues={
+        Object {
+          "label": "",
+          "tagType": "medium",
+        }
+      }
+      onSubmit={[Function]}
+      tagType="medium"
+    />
+    <Component />
+    <withState(TagCollection)
+      deleteInProgress={false}
+      getInProgress={false}
+      onDelete={[Function]}
+      tags={
+        Array [
+          Object {
+            "id": "medium/one",
+            "label": "one",
+          },
+        ]
+      }
+    />
+  </FieldBorder>
+</BasicSection>
+`;

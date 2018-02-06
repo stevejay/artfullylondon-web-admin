@@ -12,10 +12,10 @@ import SearchInputFieldBasic from '_src/components/search-input/field-basic'
 import SearchInputToolbar from '_src/components/search-input/toolbar'
 import DropdownField from '_src/components/dropdown/field'
 import * as formConstants from '_src/constants/form'
-import * as searchConstants from '_src/constants/search'
-import * as searchConstraints from '_src/constants/search-constraints'
+import * as searchConstants from '_src/modules/search/constants'
 import * as browserConstants from '_src/constants/browser'
-import { selectors, searchActions } from '_src/store'
+import * as searchActions from '_src/modules/search/actions'
+import { selectors as searchSelectors } from '_src/modules/search/reducers'
 import './basic-search.scss'
 
 export class BasicSearchForm extends React.Component {
@@ -55,7 +55,9 @@ export class BasicSearchForm extends React.Component {
             name='term'
             component={SearchInputFieldBasic}
             searchInProgress={submitting}
-            maxLength={searchConstraints.BASIC_SEARCH.term.length.maximum}
+            maxLength={
+              searchConstants.BASIC_SEARCH_CONSTRAINT.term.length.maximum
+            }
             onAutocompleteSearch={this.handleAutocompleteSearch}
             onAutocompleteSelect={this.handleAutocompleteSelect}
           />
@@ -105,6 +107,6 @@ const WrappedSearchForm = reduxForm({
 const selector = formValueSelector(formConstants.BASIC_SEARCH_FORM_NAME)
 
 export default connect(state => ({
-  initialValues: selectors.basicSearchParams(state),
+  initialValues: searchSelectors.basicSearchParams(state),
   entityTypeSelector: selector(state, 'entityType')
 }))(WrappedSearchForm)

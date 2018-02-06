@@ -51,6 +51,7 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- use factories in component tests.
 - remove .mock.calls invocations.
 - remove shallow and mount imports (they are globals now)
 - move the files I am ignoring from istanbul to a shims/adaptor/wrappers folder?
