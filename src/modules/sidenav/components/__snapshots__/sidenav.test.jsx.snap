@@ -10,7 +10,7 @@ exports[`should render correctly when logged in 1`] = `
   transition={[Function]}
 >
   <div
-    className="nocontent src-modules-sidenav-index__modal"
+    className="nocontent src-modules-sidenav-components-sidenav__modal"
     role="navigation"
   >
     <HeaderLogo
@@ -91,9 +91,10 @@ exports[`should render correctly when logged in 1`] = `
     />
     <SidenavButton
       ariaHaspopup={false}
-      label="Log Out"
       onClick={[Function]}
-    />
+    >
+      Log out
+    </SidenavButton>
   </div>
 </Modal>
 `;
@@ -108,7 +109,7 @@ exports[`should render correctly when not showing 1`] = `
   transition={[Function]}
 >
   <div
-    className="nocontent src-modules-sidenav-index__modal"
+    className="nocontent src-modules-sidenav-components-sidenav__modal"
     role="navigation"
   >
     <HeaderLogo
@@ -189,9 +190,10 @@ exports[`should render correctly when not showing 1`] = `
     />
     <SidenavButton
       ariaHaspopup={false}
-      label="Log Out"
       onClick={[Function]}
-    />
+    >
+      Log out
+    </SidenavButton>
   </div>
 </Modal>
 `;

@@ -9,10 +9,10 @@ exports[`should render correctly 1`] = `
   transition={[Function]}
 >
   <div
-    className="src-modules-quicksearch-index__modal-container"
+    className="src-modules-quicksearch-components-quicksearch__modal-container"
   >
     <Toolbar
-      className="src-modules-quicksearch-index__toolbar"
+      className="src-modules-quicksearch-components-quicksearch__toolbar"
     >
       <ToolbarItem>
         <Logo
@@ -23,7 +23,7 @@ exports[`should render correctly 1`] = `
       <ToolbarItem>
         <IconButton
           aria-label="Close quicksearch dialog"
-          className="src-modules-quicksearch-index__close-button"
+          className="src-modules-quicksearch-components-quicksearch__close-button"
           icon={[Function]}
           onClick={[Function]}
           type="default"

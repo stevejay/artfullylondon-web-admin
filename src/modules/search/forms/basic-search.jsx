@@ -35,13 +35,7 @@ export class BasicSearchForm extends React.Component {
   }
   handleAutocompleteSearch = ({ term }) => {
     return this.props.dispatch(
-      searchActions.search({
-        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
-        query: {
-          term,
-          entityType: this.props.entityTypeSelector
-        }
-      })
+      searchActions.autocompleteSearch(term, this.props.entityTypeSelector)
     )
   }
   handleAutocompleteSelect = entity => {

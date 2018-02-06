@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <FormSection
-  className="src-modules-auth-pages-login__form-section"
+  className="src-modules-user-pages-login__form-section"
   type="narrow"
 >
   <FormBorder

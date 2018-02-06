@@ -1,11 +1,11 @@
 export const types = {
-  LOGGED_OUT: 'auth/LOGGED_OUT',
-  LOG_IN: 'auth/LOG_IN',
-  LOG_IN_SUCCEEDED: 'auth/LOG_IN_SUCCEEDED',
-  LOG_IN_FAILED: 'auth/LOG_IN_FAILED',
-  LOG_OUT: 'auth/LOG_OUT',
-  ATTEMPT_AUTO_LOG_IN: 'auth/ATTEMPT_AUTO_LOG_IN',
-  AUTO_LOG_IN_ATTEMPTED: 'auth/AUTO_LOG_IN_ATTEMPTED'
+  LOGGED_OUT: 'user/LOGGED_OUT',
+  LOG_IN: 'user/LOG_IN',
+  LOG_IN_SUCCEEDED: 'user/LOG_IN_SUCCEEDED',
+  LOG_IN_FAILED: 'user/LOG_IN_FAILED',
+  LOG_OUT: 'user/LOG_OUT',
+  ATTEMPT_AUTO_LOG_IN: 'user/ATTEMPT_AUTO_LOG_IN',
+  AUTO_LOG_IN_ATTEMPTED: 'user/AUTO_LOG_IN_ATTEMPTED'
 }
 
 export const loggedOut = options => ({

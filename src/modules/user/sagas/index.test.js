@@ -1,22 +1,79 @@
-import { put, call } from 'redux-saga/effects'
+import { put, call, select } from 'redux-saga/effects'
 import { cloneableGenerator } from 'redux-saga/utils'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
 import * as formConstants from '_src/constants/form'
-import * as authSagas from '_src/store/sagas/auth'
-import * as authLib from '_src/lib/auth'
+import * as userSagas from '_src/modules/user/sagas'
+import * as authLib from '_src/modules/user/lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as authConstraints from '_src/constants/auth-constraints'
-import { authActions } from '_src/store'
+import * as userConstants from '_src/modules/user/constants'
+import * as userActions from '_src/modules/user/actions'
+import { selectors } from '_src/modules/user/reducers'
 import history from '_src/history'
+
+describe('getAuthTokenForCurrentUser', () => {
+  describe('user is not logged in', () => {
+    it('should fail', () => {
+      const generator = userSagas.getAuthTokenForCurrentUser()
+
+      let result = generator.next()
+
+      expect(result.value).toEqual(select(selectors.userIsLoggedIn))
+
+      expect(() => generator.next(false)).toThrow()
+    })
+  })
+
+  describe('user is logged in', () => {
+    const generator = cloneableGenerator(userSagas.getAuthTokenForCurrentUser)()
+
+    it('should try to get an auth token', () => {
+      let result = generator.next()
+
+      expect(result.value).toEqual(select(selectors.userIsLoggedIn))
+
+      result = generator.next(true)
+
+      expect(result.value).toEqual(select(selectors.cognitoUser))
+
+      result = generator.next({ id: 'some-user' })
+
+      expect(result.value).toEqual(
+        call(authLib.getSessionToken, { id: 'some-user' })
+      )
+    })
+
+    it('should handle successfully getting an auth token', () => {
+      const generatorClone = generator.clone()
+
+      let result = generatorClone.next('some-token')
+
+      expect(result.value).toEqual('some-token')
+
+      result = generatorClone.next()
+
+      expect(result.done).toEqual(true)
+    })
+
+    it('should handle failing to get an auth token', () => {
+      const generatorClone = generator.clone()
+
+      let result = generatorClone.next(null)
+
+      expect(result.value).toEqual(put(userActions.loggedOut))
+
+      expect(() => generatorClone.next(false)).toThrow()
+    })
+  })
+})
 
 describe('logIn', () => {
   it('should successfully log the user in', () => {
     const payload = { username: 'steve', password: 'pwd' }
     const cognitoUser = { username: 'steve' }
-    const generator = authSagas.logIn(authActions.logIn(payload))
+    const generator = userSagas.logIn(userActions.logIn(payload))
 
     let result = generator.next()
 
@@ -27,7 +84,7 @@ describe('logIn', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(validationLib.validate, payload, authConstraints.logInConstraint)
+      call(validationLib.validate, payload, userConstants.logInConstraint)
     )
 
     result = generator.next()
@@ -42,7 +99,7 @@ describe('logIn', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(put(authActions.logInSucceeded(cognitoUser)))
+    expect(result.value).toEqual(put(userActions.logInSucceeded(cognitoUser)))
 
     result = generator.next()
 
@@ -56,7 +113,7 @@ describe('logIn', () => {
   it('should handle a validation error', () => {
     const payload = { username: 'steve', password: '' }
     const error = new Error('deliberately thrown')
-    const generator = authSagas.logIn(authActions.logIn(payload))
+    const generator = userSagas.logIn(userActions.logIn(payload))
 
     let result = generator.next()
 
@@ -67,12 +124,12 @@ describe('logIn', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(validationLib.validate, payload, authConstraints.logInConstraint)
+      call(validationLib.validate, payload, userConstants.logInConstraint)
     )
 
     result = generator.throw(error)
 
-    expect(result.value).toEqual(put(authActions.logInFailed()))
+    expect(result.value).toEqual(put(userActions.logInFailed()))
 
     result = generator.next()
 
@@ -87,7 +144,7 @@ describe('logIn', () => {
 })
 
 describe('logOut', () => {
-  const generator = cloneableGenerator(authSagas.logOut)(authActions.logOut())
+  const generator = cloneableGenerator(userSagas.logOut)(userActions.logOut())
 
   it('should try to log the user out', () => {
     const result = generator.next()
@@ -100,7 +157,7 @@ describe('logOut', () => {
     let result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(authActions.loggedOut({ resetUsername: true }))
+      put(userActions.loggedOut({ resetUsername: true }))
     )
 
     result = generatorClone.next()
@@ -119,7 +176,7 @@ describe('logOut', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(authActions.loggedOut({ resetUsername: true }))
+      put(userActions.loggedOut({ resetUsername: true }))
     )
 
     result = generatorClone.next()
@@ -129,8 +186,8 @@ describe('logOut', () => {
 })
 
 describe('attemptAutoLogIn', () => {
-  const generator = cloneableGenerator(authSagas.attemptAutoLogIn)(
-    authActions.attemptAutoLogIn()
+  const generator = cloneableGenerator(userSagas.attemptAutoLogIn)(
+    userActions.attemptAutoLogIn()
   )
 
   it('should attempt the auto login', () => {
@@ -144,12 +201,12 @@ describe('attemptAutoLogIn', () => {
     let result = generatorClone.next({ username: 'steve' })
 
     expect(result.value).toEqual(
-      put(authActions.logInSucceeded({ username: 'steve' }))
+      put(userActions.logInSucceeded({ username: 'steve' }))
     )
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
+    expect(result.value).toEqual(put(userActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 
@@ -161,7 +218,7 @@ describe('attemptAutoLogIn', () => {
 
     let result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
+    expect(result.value).toEqual(put(userActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 
@@ -178,7 +235,7 @@ describe('attemptAutoLogIn', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(authActions.autoLogInAttempted()))
+    expect(result.value).toEqual(put(userActions.autoLogInAttempted()))
 
     result = generatorClone.next()
 

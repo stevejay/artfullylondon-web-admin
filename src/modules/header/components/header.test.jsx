@@ -5,7 +5,7 @@ import log from 'loglevel'
 
 import { Header } from '_src/modules/header/components/header'
 import Button from '_src/components/button'
-import { authActions } from '_src/store'
+import { actions as userActions } from '_src/modules/user'
 
 it('should render correctly when logged in', () => {
   const wrapper = shallow(
@@ -101,5 +101,5 @@ it('should handle a logout button click', () => {
 
   wrapper.find(Button).at(0).simulate('click')
 
-  expect(dispatch).toHaveBeenCalledWith(authActions.logOut())
+  expect(dispatch).toHaveBeenCalledWith(userActions.logOut())
 })

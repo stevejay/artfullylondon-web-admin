@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
+
 import Divider from '_src/components/divider'
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'

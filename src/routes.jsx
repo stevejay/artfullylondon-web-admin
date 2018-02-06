@@ -10,24 +10,25 @@ import PageMain from '_src/components/page/main'
 import PageFooter from '_src/components/page/footer'
 import { Header } from '_src/modules/header'
 import { Footer } from '_src/modules/footer'
-import Dashboard from '_src/modules/dashboard/pages/dashboard'
-import NotFound from '_src/modules/error/pages/not-found'
 import { NotificationContainer } from '_src/modules/notification'
 import { AppUpdater } from '_src/modules/app-updater'
-import Sidenav from '_src/modules/sidenav'
-import Quicksearch from '_src/modules/quicksearch'
-import LoginPage from '_src/modules/auth/pages/login'
+import { Sidenav } from '_src/modules/sidenav'
+import { Quicksearch } from '_src/modules/quicksearch'
+import { NotFoundPage } from '_src/modules/error'
+import Dashboard from '_src/modules/dashboard/pages/dashboard'
+import { LoginPage } from '_src/modules/user'
 import TagsTypePage from '_src/modules/tags/pages/tags-type'
 import SearchResultsPage from '_src/modules/search/pages/results'
 import EntityDetailPage from '_src/modules/entity/pages/detail'
 import EntityEditOrCreatePage from '_src/modules/entity/pages/edit-or-create'
+import { actions as userActions } from '_src/modules/user'
 import * as store from '_src/store'
 
 export class Routes extends React.Component {
   constructor (props) {
     super(props)
     this.state = { showQuicksearch: false, showSidenav: false }
-    props.dispatch(store.authActions.attemptAutoLogIn())
+    props.dispatch(userActions.attemptAutoLogIn())
     props.dispatch(store.serverConstantActions.fetchServerConstants())
   }
   handleHideQuicksearch = () => {
@@ -96,7 +97,7 @@ export class Routes extends React.Component {
                   component={EntityDetailPage}
                 />
                 <Redirect from='/login' to='/' />
-                <Route component={NotFound} />
+                <Route component={NotFoundPage} />
               </Switch>
             </PageMain>
             <PageFooter><Footer /></PageFooter>

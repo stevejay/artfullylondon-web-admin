@@ -2,9 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { LoginPage } from '_src/modules/auth/pages/login'
-import LoginForm from '_src/modules/auth/forms/login'
-import { authActions } from '_src/store'
+import { LoginPage } from '_src/modules/user/pages/login'
+import LoginForm from '_src/modules/user/forms/login'
+import * as userActions from '_src/modules/user/actions'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -23,5 +23,5 @@ it('should trigger the login action when the login form is submitted', () => {
 
   wrapper.find(LoginForm).prop('onSubmit')({ name: 'foo' })
 
-  expect(dispatch).toHaveBeenCalledWith(authActions.logIn({ name: 'foo' }))
+  expect(dispatch).toHaveBeenCalledWith(userActions.logIn({ name: 'foo' }))
 })

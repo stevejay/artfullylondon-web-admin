@@ -14,7 +14,7 @@ import ModalTransition
 import * as searchConstants from '_src/constants/search'
 import { searchActions } from '_src/store'
 import * as entityConstants from '_src/constants/entity'
-import './index.scss'
+import './quicksearch.scss'
 
 export class Quicksearch extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -29,10 +29,7 @@ export class Quicksearch extends React.Component {
   }
   handleAutocompleteSearch = ({ term }) => {
     return this.props.dispatch(
-      searchActions.search({
-        searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
-        query: { term, entityType: entityConstants.ENTITY_TYPE_ALL }
-      })
+      searchActions.autocompleteSearch(term, entityConstants.ENTITY_TYPE_ALL)
     )
   }
   handleAutocompleteSelect = entity => {

@@ -22,6 +22,14 @@ export const search = payload => ({
   meta: { thunk: true }
 })
 
+export const autocompleteSearch = (term, entityType) => ({
+  type: types.SEARCH,
+  payload: {
+    searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
+    query: { term, entityType }
+  }
+})
+
 export const setBasicSearchParams = payload => ({
   type: types.SET_BASIC_SEARCH_PARAMS,
   payload

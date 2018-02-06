@@ -9,9 +9,9 @@ import HeaderLogo from '_src/components/logo/header'
 import SidenavButton from '_src/modules/sidenav/components/button'
 import ModalTransition from '_src/modules/sidenav/components/modal-transition'
 import Menu from '_src/modules/sidenav/components/menu'
-import { selectors, authActions } from '_src/store'
+import { selectors, actions as userActions } from '_src/modules/user'
 import * as menuConstants from '_src/constants/menu'
-import './index.scss'
+import './sidenav.scss'
 
 export class Sidenav extends React.Component {
   constructor (props) {
@@ -38,7 +38,7 @@ export class Sidenav extends React.Component {
   }
   handleLogOut = () => {
     this.props.onHide()
-    this.props.dispatch(authActions.logOut())
+    this.props.dispatch(userActions.logOut())
   }
   componentDidCatch (error, info) {
     this.setState({ hasError: true })
@@ -67,7 +67,7 @@ export class Sidenav extends React.Component {
               idOfOpenMenu={idOfOpenMenu}
             />
           ))}
-          <SidenavButton label='Log Out' onClick={this.handleLogOut} />
+          <SidenavButton onClick={this.handleLogOut}>Log out</SidenavButton>
         </div>
       </Modal>
     )

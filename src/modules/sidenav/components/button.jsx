@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './button.scss'
 
 const SidenavButton = ({
-  label,
+  children,
   onClick,
   onKeyDown,
   onKeyPress,
@@ -25,12 +25,12 @@ const SidenavButton = ({
     role='menuitem'
     aria-haspopup={ariaHaspopup}
   >
-    {label}
+    {children}
   </button>
 )
 
 SidenavButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  children: PropTypes.any,
   onClick: PropTypes.func.isRequired,
   ariaHaspopup: PropTypes.bool,
   onKeyDown: PropTypes.func,

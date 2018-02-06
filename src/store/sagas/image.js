@@ -21,7 +21,7 @@ import { actions as notificationActions } from '_src/modules/notification'
 import * as imageConstraints from '_src/constants/image-constraints'
 import * as imageNormalisers from '_src/constants/image-normalisers'
 import * as formConstants from '_src/constants/form'
-import * as authSagas from '_src/store/sagas/auth'
+import { sagas as userSagas } from '_src/modules/user'
 
 function * getImages (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))
@@ -142,7 +142,7 @@ function * addImage (action) {
 
   try {
     const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
-    const token = yield call(authSagas.getAuthTokenForCurrentUser)
+    const token = yield call(userSagas.getAuthTokenForCurrentUser)
 
     const { json, timeout } = yield race({
       json: call(

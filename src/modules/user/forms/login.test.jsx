@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { LoginForm } from '_src/modules/auth/forms/login'
+import { LoginForm } from '_src/modules/user/forms/login'
 
 it('should render correctly', () => {
   const wrapper = shallow(

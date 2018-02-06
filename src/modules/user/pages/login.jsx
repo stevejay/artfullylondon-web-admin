@@ -4,14 +4,15 @@ import { connect } from 'react-redux'
 
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
-import LoginForm from '_src/modules/auth/forms/login'
-import * as authConstraints from '_src/constants/auth-constraints'
-import { selectors, authActions } from '_src/store'
+import LoginForm from '_src/modules/user/forms/login'
+import * as userConstants from '_src/modules/user/constants'
+import * as userActions from '_src/modules/user/actions'
+import { selectors } from '_src/modules/user/reducers'
 import './login.scss'
 
 export class LoginPage extends React.Component {
   handleSubmit = payload => {
-    this.props.dispatch(authActions.logIn(payload))
+    this.props.dispatch(userActions.logIn(payload))
   }
   render () {
     const { initialUsername } = this.props
@@ -22,7 +23,7 @@ export class LoginPage extends React.Component {
           <LoginForm
             onSubmit={this.handleSubmit}
             initialUsername={initialUsername}
-            constraint={authConstraints.logInConstraint}
+            constraint={userConstants.logInConstraint}
           />
         </FormBorder>
       </FormSection>

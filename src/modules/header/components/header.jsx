@@ -13,7 +13,7 @@ import HeaderLogo from '_src/components/logo/header'
 import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 import Dropdown from '_src/components/dropdown'
-import { selectors, authActions } from '_src/store'
+import { selectors, actions as userActions } from '_src/modules/user'
 import * as menuConstants from '_src/constants/menu'
 import './header.scss'
 
@@ -33,7 +33,7 @@ export class Header extends React.Component {
     this.props.history.push(value)
   }
   handleLogout = () => {
-    this.props.dispatch(authActions.logOut())
+    this.props.dispatch(userActions.logOut())
   }
   render () {
     const {

@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { authActions, serverConstantActions } from '_src/store'
+import { serverConstantActions } from '_src/store'
+import { actions as userActions } from '_src/modules/user'
 import { Routes } from '_src/routes'
 
 it('should render correctly when auto login not yet attempted', () => {
@@ -58,7 +59,7 @@ it('should trigger initial actions', () => {
 
   expect(mockDispatch.mock.calls.length).toEqual(2)
 
-  expect(mockDispatch.mock.calls[0]).toEqual([authActions.attemptAutoLogIn()])
+  expect(mockDispatch.mock.calls[0]).toEqual([userActions.attemptAutoLogIn()])
 
   expect(mockDispatch.mock.calls[1]).toEqual([
     serverConstantActions.fetchServerConstants()

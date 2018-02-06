@@ -5,7 +5,7 @@ import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { types as searchActionTypes } from '_src/store/actions/search'
-import { types as authActionTypes } from '_src/store/actions/auth'
+import { actions as userActions } from '_src/modules/user'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/constants/search'
 
@@ -26,7 +26,7 @@ const initialState = {
 
 export const reducer = handleActions(
   {
-    [authActionTypes.LOGGED_OUT]: () => initialState,
+    [userActions.types.LOGGED_OUT]: () => initialState,
     [searchActionTypes.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
       ...state,
       basicSearchParams: action.payload

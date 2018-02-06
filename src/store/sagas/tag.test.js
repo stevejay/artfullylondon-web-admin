@@ -12,7 +12,7 @@ import normalise from '_src/lib/normalise'
 import tagConstraint from '_src/constants/tag-constraint'
 import tagNormaliser from '_src/constants/tag-normaliser'
 import { tagActions } from '_src/store'
-import * as authSagas from '_src/store/sagas/auth'
+import { sagas as userSagas } from '_src/modules/user'
 
 describe('getTags', () => {
   const generator = cloneableGenerator(tagSagas.getTags)({
@@ -26,7 +26,7 @@ describe('getTags', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(call(authSagas.getAuthTokenForCurrentUser))
+    expect(result.value).toEqual(call(userSagas.getAuthTokenForCurrentUser))
 
     result = generator.next({ the: 'token' })
 
@@ -113,7 +113,7 @@ describe('addTag', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(call(authSagas.getAuthTokenForCurrentUser))
+    expect(result.value).toEqual(call(userSagas.getAuthTokenForCurrentUser))
 
     result = generator.next({ the: 'token' })
 
@@ -198,7 +198,7 @@ describe('deleteTag', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(call(authSagas.getAuthTokenForCurrentUser))
+    expect(result.value).toEqual(call(userSagas.getAuthTokenForCurrentUser))
 
     result = generator.next({ the: 'token' })
 

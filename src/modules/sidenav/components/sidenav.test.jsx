@@ -3,9 +3,9 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
-import { authActions } from '_src/store'
+import { actions as userActions } from '_src/modules/user'
 import * as menuConstants from '_src/constants/menu'
-import { Sidenav } from '_src/modules/sidenav'
+import { Sidenav } from '_src/modules/sidenav/components/sidenav'
 
 const MENU_ID = menuConstants.MENUS[0].label
 
@@ -148,7 +148,7 @@ it('should handle logging the user out', () => {
   wrapper.find('SidenavButton').prop('onClick')()
 
   expect(onHide).toHaveBeenCalled()
-  expect(dispatch).toHaveBeenCalledWith(authActions.logOut())
+  expect(dispatch).toHaveBeenCalledWith(userActions.logOut())
 })
 
 it('should handle a menu link click', () => {

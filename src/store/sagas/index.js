@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects'
 
 import { sagas as appUpdaterSagas } from '_src/modules/app-updater'
 import { sagas as notificationSagas } from '_src/modules/notification'
-import authSagas from './auth'
+import { sagas as userSagas } from '_src/modules/user'
 import serverConstantSagas from './server-constant'
 import entitySagas from './entity'
 import imageSagas from './image'
@@ -16,7 +16,6 @@ import statusSagas from './status'
 export const sagas = function * () {
   yield all([
     ...appUpdaterSagas,
-    ...authSagas,
     ...serverConstantSagas,
     ...notificationSagas,
     ...statusSagas,
@@ -24,7 +23,8 @@ export const sagas = function * () {
     ...tagSagas,
     ...entitySagas,
     ...imageSagas,
-    ...linkSagas
+    ...linkSagas,
+    ...userSagas
   ])
   // ...monitorsSagas,
   // ...timeSagas,
