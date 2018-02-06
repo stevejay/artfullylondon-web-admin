@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
 import EntityCard from '_src/components/entity-card'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './collection.scss'
 
 class EntityCardCollection extends React.PureComponent {
@@ -32,14 +29,7 @@ class EntityCardCollection extends React.PureComponent {
 }
 
 EntityCardCollection.propTypes = {
-  entities: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.instanceOf(SummaryEvent),
-      PropTypes.instanceOf(SummaryEventSeries),
-      PropTypes.instanceOf(SummaryTalent),
-      PropTypes.instanceOf(SummaryVenue)
-    ]).isRequired
-  ),
+  entities: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
   // TODO is getInProgress needed by this component?
   getInProgress: PropTypes.bool,
   dateStr: PropTypes.string.isRequired,

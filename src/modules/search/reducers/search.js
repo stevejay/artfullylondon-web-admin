@@ -4,7 +4,7 @@ import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
-import { types as searchActionTypes } from '_src/modules/search/actions'
+import * as searchActions from '_src/modules/search/actions'
 import { actions as userActions } from '_src/modules/user'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/modules/search/constants'
@@ -24,16 +24,15 @@ const initialState = {
 
 export const reducer = handleActions(
   {
-    [userActions.types.LOGGED_OUT]: () => initialState,
-    [searchActionTypes.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
+    [searchActions.types.SET_BASIC_SEARCH_PARAMS]: (state, action) => ({
       ...state,
       basicSearchParams: action.payload
     }),
-    [searchActionTypes.STARTING_BASIC_SEARCH]: state => ({
+    [searchActions.types.STARTING_BASIC_SEARCH]: state => ({
       ...state,
       searchInProgress: true
     }),
-    [searchActionTypes.BASIC_SEARCH_SUCCEEDED]: (state, action) => {
+    [searchActions.types.BASIC_SEARCH_SUCCEEDED]: (state, action) => {
       const { total, items, params } = action.payload
 
       const events = items
@@ -62,10 +61,11 @@ export const reducer = handleActions(
         items: [...events, ...eventSeries, ...venues, ...talents]
       }
     },
-    [searchActionTypes.BASIC_SEARCH_FAILED]: state => ({
+    [searchActions.types.BASIC_SEARCH_FAILED]: state => ({
       ...state,
       searchInProgress: false
-    })
+    }),
+    [userActions.types.LOGGED_OUT]: () => initialState
   },
   initialState
 )

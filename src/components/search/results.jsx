@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 import Pagination from '_src/components/pagination'
 import EntityCardCollection from '_src/components/entity-card/collection'
 // import MoreResults from '_src/components/search/more-results'
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as cardContentFactory
   from '_src/components/search-results-cards/card-content-factory'
 
@@ -61,14 +58,7 @@ class SearchResults extends React.Component {
 }
 
 SearchResults.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.instanceOf(SummaryEvent),
-      PropTypes.instanceOf(SummaryEventSeries),
-      PropTypes.instanceOf(SummaryTalent),
-      PropTypes.instanceOf(SummaryVenue)
-    ]).isRequired
-  ),
+  items: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
   total: PropTypes.number.isRequired,
   skip: PropTypes.number.isRequired,
   take: PropTypes.number.isRequired,

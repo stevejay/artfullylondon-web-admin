@@ -51,6 +51,8 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- flexbox/grid component to lessen need for CSS on containers
+- move formconstants to the modules the forms are in?
 - use factories in component tests.
 - remove .mock.calls invocations.
 - remove shallow and mount imports (they are globals now)

@@ -8,9 +8,12 @@ export const types = {
   AUTO_LOG_IN_ATTEMPTED: 'user/AUTO_LOG_IN_ATTEMPTED'
 }
 
-export const loggedOut = options => ({
-  type: types.LOGGED_OUT,
-  payload: options
+export const attemptAutoLogIn = () => ({
+  type: types.ATTEMPT_AUTO_LOG_IN
+})
+
+export const autoLogInAttempted = () => ({
+  type: types.AUTO_LOG_IN_ATTEMPTED
 })
 
 export const logIn = values => ({
@@ -31,10 +34,7 @@ export const logOut = () => ({
   type: types.LOG_OUT
 })
 
-export const attemptAutoLogIn = () => ({
-  type: types.ATTEMPT_AUTO_LOG_IN
-})
-
-export const autoLogInAttempted = () => ({
-  type: types.AUTO_LOG_IN_ATTEMPTED
+export const loggedOut = options => ({
+  type: types.LOGGED_OUT,
+  payload: options
 })

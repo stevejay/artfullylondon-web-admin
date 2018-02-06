@@ -5,6 +5,7 @@ import log from 'loglevel'
 
 import history from '_src/history'
 import normalise from '_src/lib/normalise'
+import * as sagaActions from '_src/store/actions/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
@@ -13,7 +14,7 @@ import * as searchLib from '_src/modules/search/lib/search'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchActions from '_src/modules/search/actions'
 
-function * pushBasicSearchToUrl ({ payload }) {
+export function * pushBasicSearchToUrl ({ payload }) {
   try {
     const { skip, take } = payload
 
@@ -30,7 +31,8 @@ function * pushBasicSearchToUrl ({ payload }) {
       null
     )
 
-    const requestUrl = searchLib.createSearchPageUrl(
+    const requestUrl = yield call(
+      searchLib.createSearchPageUrl,
       '/search',
       query,
       skip,
@@ -43,47 +45,45 @@ function * pushBasicSearchToUrl ({ payload }) {
   }
 }
 
-function * autocompleteSearch ({ payload, meta }) {
-  yield call(delay, 300) // debounce
+export function * autocompleteSearch ({ payload, meta }) {
+  try {
+    yield call(delay, 300) // debounce
 
-  const query = yield call(
-    normalise,
-    payload.query,
-    searchConstants.AUTO_SEARCH_QUERY_NORMALISER
-  )
+    const query = yield call(
+      normalise,
+      payload.query,
+      searchConstants.AUTO_SEARCH_QUERY_NORMALISER
+    )
 
-  const errors = yield call(
-    validationLib.validate,
-    query,
-    searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
-    null,
-    true
-  )
+    yield call(
+      validationLib.validate,
+      query,
+      searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
+      null
+    )
 
-  let items = []
+    const requestUrl = yield call(
+      searchLib.createAutocompleteSearchRequestUrl,
+      query
+    )
 
-  if (errors !== null) {
-    yield call(log.error, 'autocompleteSearch validation errors', errors)
-  } else {
-    try {
-      const requestUrl = searchLib.createAutocompleteSearchRequestUrl(query)
-      const json = yield call(fetchLib.get, requestUrl)
-      items = json.items
-    } catch (err) {
-      yield call(log.error, err)
-    }
+    const json = yield call(fetchLib.get, requestUrl)
+    const items = json.items
+
+    items.forEach(
+      item =>
+        (item.autocompleteItemType =
+          searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
+    )
+
+    yield put(sagaActions.returnAsPromise(items, meta))
+  } catch (err) {
+    yield call(log.error, err)
+    yield put(sagaActions.returnAsPromise([], meta))
   }
-
-  items.forEach(
-    item =>
-      (item.autocompleteItemType =
-        searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
-  )
-
-  yield put(searchActions.autocompleteSearchSucceeded(items, meta))
 }
 
-function * basicSearch ({ payload }) {
+export function * basicSearch ({ payload }) {
   try {
     const query = yield call(
       normalise,
@@ -96,7 +96,7 @@ function * basicSearch ({ payload }) {
       query,
       searchConstants.BASIC_SEARCH_QUERY_CONSTRAINT,
       null,
-      true
+      true // TODO why am I not just throwing validation errors?
     )
 
     if (errors !== null) {
@@ -104,7 +104,7 @@ function * basicSearch ({ payload }) {
       return
     }
 
-    const requestUrl = searchLib.createBasicSearchRequestUrl(query)
+    const requestUrl = yield call(searchLib.createBasicSearchRequestUrl, query)
     yield put(searchActions.startingBasicSearch())
     yield put(searchActions.setBasicSearchParams(query))
     yield put(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
@@ -123,7 +123,7 @@ function * basicSearch ({ payload }) {
   }
 }
 
-function * search (action) {
+export function * search (action) {
   try {
     const searchType = action.payload.searchType
 
@@ -134,17 +134,17 @@ function * search (action) {
       case searchConstants.SEARCH_TYPE_BASIC:
         yield call(basicSearch, action)
         break
+      /* istanbul ignore next */
       default:
         throw new Error(`searchType is out of range: ${searchType}`)
     }
   } catch (err) {
-    yield call(log.error, 'search error', err)
+    yield call(log.error, err)
   }
 }
 
-function * navigateToEntity (action) {
-  const entity = action.payload
-  const entityUrl = `/${entity.entityType}/${entity.id}`
+export function * navigateToEntity ({ payload }) {
+  const entityUrl = `/${payload.entityType}/${payload.id}`
   yield call(history.push, entityUrl)
 }
 

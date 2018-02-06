@@ -4,10 +4,7 @@ import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import { Link } from 'react-router-dom'
 
 import EntityCardShell from '_src/components/entity-card/shell'
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './index.scss'
 
 class EntityCard extends React.PureComponent {
@@ -38,12 +35,7 @@ class EntityCard extends React.PureComponent {
 }
 
 EntityCard.propTypes = {
-  entity: PropTypes.oneOfType([
-    PropTypes.instanceOf(SummaryEvent),
-    PropTypes.instanceOf(SummaryEventSeries),
-    PropTypes.instanceOf(SummaryTalent),
-    PropTypes.instanceOf(SummaryVenue)
-  ]).isRequired,
+  entity: entitiesPropTypes.SUMMARY_ENTITY.isRequired,
   dateStr: PropTypes.string.isRequired,
   cardContentFactory: PropTypes.func.isRequired,
   onClick: PropTypes.func

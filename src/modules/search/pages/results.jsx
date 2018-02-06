@@ -12,18 +12,15 @@ import NoResults from '_src/components/search/no-results'
 import SearchResults from '_src/components/search/results'
 import SectionHeading from '_src/components/section/heading'
 import BasicSearchForm from '_src/modules/search/forms/basic-search'
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
+import { selectors as searchSelectors } from '_src/modules/search/reducers'
 import * as timeLib from '_src/lib/time'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/modules/search/constants'
-import { selectors as searchSelectors } from '_src/modules/search/reducers'
 import * as searchActions from '_src/modules/search/actions'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './results.scss'
 
-class SearchResultsPage extends React.Component {
+export class SearchResultsPage extends React.Component {
   constructor (props) {
     super(props)
     this._search(props.location)
@@ -135,21 +132,17 @@ SearchResultsPage.propTypes = {
     take: PropTypes.number.isRequired
   }),
   total: PropTypes.number.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.instanceOf(SummaryEvent),
-      PropTypes.instanceOf(SummaryEventSeries),
-      PropTypes.instanceOf(SummaryTalent),
-      PropTypes.instanceOf(SummaryVenue)
-    ]).isRequired
-  ),
+  items: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
   location: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  resultParams: searchSelectors.basicSearchResultParams(state),
-  total: searchSelectors.basicSearchTotal(state),
-  items: searchSelectors.basicSearchItems(state),
-  searchInProgress: searchSelectors.basicSearchInProgress(state)
-}))(SearchResultsPage)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    resultParams: searchSelectors.basicSearchResultParams(state),
+    total: searchSelectors.basicSearchTotal(state),
+    items: searchSelectors.basicSearchItems(state),
+    searchInProgress: searchSelectors.basicSearchInProgress(state)
+  })
+)(SearchResultsPage)

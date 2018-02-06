@@ -27,6 +27,7 @@ export class BasicSearchForm extends React.Component {
       this.props.handleSubmit()
     }
   }
+  // TODO can I change the Form component somehow so this handle is unnecessary?
   handleKeyPress = event => {
     if (event.charCode === browserConstants.ENTER_CHARCODE) {
       event.preventDefault()
@@ -106,7 +107,10 @@ const WrappedSearchForm = reduxForm({
 
 const selector = formValueSelector(formConstants.BASIC_SEARCH_FORM_NAME)
 
-export default connect(state => ({
-  initialValues: searchSelectors.basicSearchParams(state),
-  entityTypeSelector: selector(state, 'entityType')
-}))(WrappedSearchForm)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    initialValues: searchSelectors.basicSearchParams(state),
+    entityTypeSelector: selector(state, 'entityType')
+  })
+)(WrappedSearchForm)

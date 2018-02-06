@@ -18,8 +18,7 @@ export const pushBasicSearchToUrl = payload => ({
 
 export const search = payload => ({
   type: types.SEARCH,
-  payload,
-  meta: { thunk: true }
+  payload
 })
 
 export const autocompleteSearch = (term, entityType) => ({
@@ -27,7 +26,8 @@ export const autocompleteSearch = (term, entityType) => ({
   payload: {
     searchType: searchConstants.SEARCH_TYPE_AUTOCOMPLETE,
     query: { term, entityType }
-  }
+  },
+  meta: { thunk: true }
 })
 
 export const setBasicSearchParams = payload => ({
@@ -46,12 +46,6 @@ export const basicSearchSucceeded = payload => ({
 
 export const basicSearchFailed = () => ({
   type: types.BASIC_SEARCH_FAILED
-})
-
-export const autocompleteSearchSucceeded = (items, meta) => ({
-  type: types.AUTOCOMPLETE_SEARCH_SUCCEEDED,
-  payload: { items },
-  meta
 })
 
 export const navigateToEntity = entity => ({
