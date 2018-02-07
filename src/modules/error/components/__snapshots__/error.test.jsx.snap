@@ -2,13 +2,13 @@
 
 exports[`should render a 404 error correctly 1`] = `
 <BasicSection
-  className="src-components-error-index__section"
+  className="src-modules-error-components-error__section"
 >
   <h1
-    className="src-components-error-index__heading"
+    className="src-modules-error-components-error__heading"
   >
     <FaThumbsODown
-      className="src-components-error-index__icon"
+      className="src-modules-error-components-error__icon"
     />
     Sorry—we couldn't find that info
   </h1>
@@ -17,13 +17,13 @@ exports[`should render a 404 error correctly 1`] = `
 
 exports[`should render a 500 error correctly 1`] = `
 <BasicSection
-  className="src-components-error-index__section"
+  className="src-modules-error-components-error__section"
 >
   <h1
-    className="src-components-error-index__heading"
+    className="src-modules-error-components-error__heading"
   >
     <FaThumbsODown
-      className="src-components-error-index__icon"
+      className="src-modules-error-components-error__icon"
     />
     Oops—something went wrong
   </h1>

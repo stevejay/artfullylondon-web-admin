@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import FadeTransition from '_src/components/transition/fade'
-import Error from '_src/components/error'
+import { Error } from '_src/modules/error'
 import BoxesLoader from '_src/components/loader/boxes'
 import BasicSection from '_src/components/section/basic'
 import TalentEditOrCreate

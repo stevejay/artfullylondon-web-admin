@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
-import Error from '_src/components/error'
+import { Error } from '_src/modules/error'
 import BasicSection from '_src/components/section/basic'
 import SectionHeading from '_src/components/section/heading'
 import EditableTagCollection
