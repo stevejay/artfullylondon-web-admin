@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Expander from '_src/components/expander'
-import MenuLink from '_src/modules/sidenav/components/menu-link'
+import MenuLink from '_src/modules/nav/components/sidenav/menu-link'
 import './menu.scss'
 
 class Menu extends React.Component {

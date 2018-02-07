@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import Menu from '_src/modules/sidenav/components/menu'
+import Menu from './menu'
 
 it('should render correctly when closed', () => {
   const wrapper = shallow(

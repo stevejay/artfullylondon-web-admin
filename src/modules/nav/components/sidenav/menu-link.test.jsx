@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import MenuLink from '_src/modules/sidenav/components/menu-link'
+import MenuLink from './menu-link'
 
 it('should render correctly', () => {
   const wrapper = shallow(

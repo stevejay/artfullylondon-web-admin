@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
-import { Header } from '_src/modules/header/components/header'
+import { Header } from './index'
 import Button from '_src/components/button'
 import { actions as userActions } from '_src/modules/user'
 

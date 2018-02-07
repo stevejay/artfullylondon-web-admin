@@ -14,8 +14,8 @@ import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 import Dropdown from '_src/components/dropdown'
 import { selectors, actions as userActions } from '_src/modules/user'
-import * as menuConstants from '_src/constants/menu'
-import './header.scss'
+import * as navConstants from '_src/modules/nav/constants'
+import './index.scss'
 
 export class Header extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -52,7 +52,7 @@ export class Header extends React.Component {
       <React.Fragment>
         <HeaderLogo styleName='logo' size='medium' />
         <Toolbar styleName='wide-toolbar'>
-          {menuConstants.MENUS.map(menu => (
+          {navConstants.MENUS.map(menu => (
             <ToolbarItem key={menu.label} styleName='dropdown-toolbar-item'>
               <Dropdown
                 styleName='dropdown'

@@ -6,12 +6,13 @@ import log from 'loglevel'
 
 import Modal from '_src/components/modal'
 import HeaderLogo from '_src/components/logo/header'
-import SidenavButton from '_src/modules/sidenav/components/button'
-import ModalTransition from '_src/modules/sidenav/components/modal-transition'
-import Menu from '_src/modules/sidenav/components/menu'
+import SidenavButton from '_src/modules/nav/components/sidenav/button'
+import ModalTransition
+  from '_src/modules/nav/components/sidenav/modal-transition'
+import Menu from '_src/modules/nav/components/sidenav/menu'
 import { selectors, actions as userActions } from '_src/modules/user'
-import * as menuConstants from '_src/constants/menu'
-import './sidenav.scss'
+import * as navConstants from '_src/modules/nav/constants'
+import './index.scss'
 
 export class Sidenav extends React.Component {
   constructor (props) {
@@ -56,7 +57,7 @@ export class Sidenav extends React.Component {
       <Modal show={show} transition={ModalTransition} onHide={onHide}>
         <div styleName='modal' className='nocontent' role='navigation'>
           <HeaderLogo size='small' onClick={this.handleLinkClick} />
-          {menuConstants.MENUS.map(menu => (
+          {navConstants.MENUS.map(menu => (
             <Menu
               key={menu.label}
               id={menu.label}

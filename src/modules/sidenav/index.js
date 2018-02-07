@@ -1,2 +1,2 @@
-import Sidenav from '_src/modules/sidenav/components/sidenav'
+import Sidenav from '_src/modules/nav/components/sidenav/sidenav'
 export { Sidenav }

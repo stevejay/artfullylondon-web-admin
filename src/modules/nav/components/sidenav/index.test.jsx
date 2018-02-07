@@ -4,10 +4,10 @@ import _ from 'lodash'
 import log from 'loglevel'
 
 import { actions as userActions } from '_src/modules/user'
-import * as menuConstants from '_src/constants/menu'
-import { Sidenav } from '_src/modules/sidenav/components/sidenav'
+import * as navConstants from '_src/modules/nav/constants'
+import { Sidenav } from './index'
 
-const MENU_ID = menuConstants.MENUS[0].label
+const MENU_ID = navConstants.MENUS[0].label
 
 it('should render correctly when logged in', () => {
   const wrapper = shallow(
