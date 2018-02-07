@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import NoEntries from '_src/components/no-entries'
-import './index.scss'
+import './image-grid.scss'
 
 const ImageGrid = ({ children }) =>
   (_.isEmpty(children)

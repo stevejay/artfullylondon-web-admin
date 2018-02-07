@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ImagePlaceholder from '_src/components/image-placeholder'
+import { ImagePlaceholder } from '_src/modules/image'
 import ImageCarousel from '_src/components/entity/image-carousel'
 import ImageCredit from '_src/components/entity/image-credit'
 import * as entityConstants from '_src/constants/entity'

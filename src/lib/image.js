@@ -1,5 +1,7 @@
 import * as venueConstants from '_src/constants/venue'
 
+// TODO this is more of a set of URL helpers.
+
 export function createPngIconUrl (name, isSelected) {
   return (
     process.env.WEBSITE_SITE_IMAGES_ROOT_URL +

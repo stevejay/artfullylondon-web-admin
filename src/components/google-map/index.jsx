@@ -11,9 +11,8 @@ import MarkerClusterer
   from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 import * as locationConstants from '_src/constants/location'
-import * as mapConstants from '_src/constants/google-map'
+import * as googleMapConstants from '_src/constants/google-map'
 import * as location from '_src/lib/location'
-import * as imageConstants from '_src/constants/image'
 
 export class GoogleMap extends React.PureComponent {
   componentWillUpdate (nextProps) {
@@ -70,7 +69,7 @@ export class GoogleMap extends React.PureComponent {
         onZoomChanged={this.handleZoomChanged}
         center={center}
         onCenterChanged={this.handleCenterChanged}
-        options={mapConstants.OPTIONS}
+        options={googleMapConstants.OPTIONS}
       >
         <MarkerClusterer
           averageCenter
@@ -94,7 +93,7 @@ export class GoogleMap extends React.PureComponent {
             <Marker
               key='current-location'
               position={userLocation}
-              icon={imageConstants.USER_LOCATION_IMAGE_URL}
+              icon={googleMapConstants.USER_LOCATION_IMAGE_URL}
             />}
         </MarkerClusterer>
       </ReactGoogleMap>

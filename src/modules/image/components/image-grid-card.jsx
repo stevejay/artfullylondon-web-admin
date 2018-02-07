@@ -4,9 +4,9 @@ import Trash from 'react-icons/lib/fa/trash-o'
 import Heart from 'react-icons/lib/fa/heart'
 import Pencil from 'react-icons/lib/fa/pencil'
 
-import Image from '_src/components/image-grid/image'
+import ImageGridImage from '_src/modules/image/components/image-grid-image'
 import * as entityConstants from '_src/constants/entity'
-import './card.scss'
+import './image-grid-card.scss'
 
 // TODO turn the links into buttons?
 
@@ -30,7 +30,12 @@ class ImageGridCard extends React.Component {
 
     return (
       <div styleName='card'>
-        <Image imageId={id} type={entityType} ratio={ratio} size='very-small' />
+        <ImageGridImage
+          imageId={id}
+          type={entityType}
+          ratio={ratio}
+          size='very-small'
+        />
         <div styleName='details-container'>
           {copyright
             ? <p><strong>©</strong> {copyright}</p>

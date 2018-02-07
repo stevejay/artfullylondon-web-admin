@@ -2,10 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import ImagesField from '_src/components/images/field'
-import ImagesEditorForm from '_src/components/images/editor-form'
-import ImageGridCard from '_src/components/image-grid/card'
-import UpdateImageModal from '_src/components/images/update-image-modal'
+import ImagesField from '_src/modules/image/components/images-field'
+import AddImageForm from '_src/modules/image/forms/add-image-form'
+import ImageGridCard from '_src/modules/image/components/image-grid-card'
+import UpdateImageModal from '_src/modules/image/components/update-image-modal'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -45,7 +45,7 @@ it('should handle adding an image that should be marked as the main image', () =
     />
   )
 
-  wrapper.find(ImagesEditorForm).prop('onSubmit')({ url: 'http://some-url' })
+  wrapper.find(AddImageForm).prop('onSubmit')({ url: 'http://some-url' })
 
   expect(handleAddImage).toHaveBeenCalledWith({
     values: { url: 'http://some-url' },
@@ -73,7 +73,7 @@ it('should handle adding an image that should be marked as the main image', () =
     />
   )
 
-  wrapper.find(ImagesEditorForm).prop('onSubmit')({ url: 'http://some-url' })
+  wrapper.find(AddImageForm).prop('onSubmit')({ url: 'http://some-url' })
 
   expect(handleAddImage).toHaveBeenCalledWith({
     values: { url: 'http://some-url' },

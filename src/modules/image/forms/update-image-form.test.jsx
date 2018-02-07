@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { UpdateImageForm } from '_src/components/images/update-image-form'
+import { UpdateImageForm } from '_src/modules/image/forms/update-image-form'
 
 it('should render correctly', () => {
   const wrapper = shallow(

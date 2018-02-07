@@ -5,14 +5,12 @@ import User from 'react-icons/lib/fa/user'
 import Star from 'react-icons/lib/fa/star-o'
 import Tags from 'react-icons/lib/fa/tags'
 import Cogs from 'react-icons/lib/fa/cogs'
+import { shouldUpdate } from 'recompose'
 
 import * as entityConstants from '_src/constants/entity'
-import './index.scss'
+import './image-placeholder.scss'
 
-class ImagePlaceholder extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+export class ImagePlaceholder extends React.Component {
   getIcon (type) {
     switch (type) {
       case entityConstants.ENTITY_TYPE_EVENT:
@@ -56,4 +54,7 @@ ImagePlaceholder.propTypes = {
   className: PropTypes.string
 }
 
-export default ImagePlaceholder
+export default shouldUpdate(
+  /* istanbul ignore next */
+  () => false
+)(ImagePlaceholder)

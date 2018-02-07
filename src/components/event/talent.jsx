@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import ImagePlaceholder from '_src/components/image-placeholder'
+import { ImagePlaceholder } from '_src/modules/image'
 import * as entityConstants from '_src/constants/entity'
 import * as image from '_src/lib/image'
 import { SummaryTalent } from '_src/entities/talent'

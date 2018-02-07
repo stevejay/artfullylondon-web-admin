@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import UpdateImageModal from '_src/components/images/update-image-modal'
+import UpdateImageModal from '_src/modules/image/components/update-image-modal'
 
 it('should render correctly', () => {
   const wrapper = shallow(

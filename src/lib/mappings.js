@@ -3,9 +3,11 @@ import RichTextEditor from 'react-rte'
 import * as imageLib from '_src/lib/image'
 import * as timeLib from '_src/lib/time'
 import * as eventLib from '_src/lib/event'
-import * as imageConstants from '_src/constants/image'
 import * as entityLib from '_src/lib/entity'
 import * as talentLib from '_src/lib/talent'
+
+// TODO maybe make part of domain
+const IMAGE_STATUS_PROCESSING = 'Processing'
 
 export function normaliseEventValues (values) {
   const isPerformance = eventLib.eventIsPerformance(values.eventType)
@@ -478,7 +480,7 @@ function _mapImagesToServer (images) {
 
   images = images
     .filter(image => image.isMain)
-    .filter(image => image.status !== imageConstants.IMAGE_STATUS_PROCESSING)
+    .filter(image => image.status !== IMAGE_STATUS_PROCESSING)
     .concat(images.filter(image => !image.isMain))
 
   return images.map(image => ({

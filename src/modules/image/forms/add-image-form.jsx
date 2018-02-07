@@ -6,10 +6,9 @@ import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import TextField from '_src/components/text/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
-import * as formConstants from '_src/constants/form'
-import { addImageConstraint } from '_src/constants/image-constraints'
+import * as imageConstants from '_src/modules/image/constants'
 
-export const ImagesEditorForm = ({
+export const AddImageForm = ({
   pristine,
   submitting,
   handleSubmit,
@@ -23,7 +22,7 @@ export const ImagesEditorForm = ({
         name='imageUrl'
         component={TextField}
         required
-        maxLength={addImageConstraint.imageUrl.length.maximum}
+        maxLength={imageConstants.ADD_IMAGE_CONSTRAINT.imageUrl.length.maximum}
         autos={false}
         forceSingleLine
         containerStyle={{ flexBasis: 'auto' }}
@@ -32,7 +31,7 @@ export const ImagesEditorForm = ({
         label='Copyright'
         name='copyright'
         component={TextField}
-        maxLength={addImageConstraint.copyright.length.maximum}
+        maxLength={imageConstants.ADD_IMAGE_CONSTRAINT.copyright.length.maximum}
         autos={false}
         forceSingleLine
         containerStyle={{ flexBasis: 'auto' }}
@@ -48,7 +47,7 @@ export const ImagesEditorForm = ({
   </div>
 )
 
-ImagesEditorForm.propTypes = {
+AddImageForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -58,6 +57,6 @@ ImagesEditorForm.propTypes = {
 }
 
 export default reduxForm({
-  form: formConstants.IMAGE_EDITOR_FORM_NAME,
+  form: imageConstants.IMAGE_EDITOR_FORM_NAME,
   enableReinitialize: true
-})(ImagesEditorForm)
+})(AddImageForm)

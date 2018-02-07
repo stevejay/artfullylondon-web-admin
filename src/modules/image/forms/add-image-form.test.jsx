@@ -2,11 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { ImagesEditorForm } from '_src/components/images/editor-form'
+import { AddImageForm } from '_src/modules/image/forms/add-image-form'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <ImagesEditorForm
+    <AddImageForm
       pristine
       submitting={false}
       handleSubmit={_.noop}

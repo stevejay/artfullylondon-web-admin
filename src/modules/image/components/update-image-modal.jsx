@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '_src/components/modal'
 import ModalContainer from '_src/components/modal/container'
-import UpdateImageForm from '_src/components/images/update-image-form'
+import UpdateImageForm from '_src/modules/image/forms/update-image-form'
 import FadeTransition from '_src/components/transition/fade'
 
 const UpdateImageModal = ({ show, initialValues, onSubmit, onHide }) => (

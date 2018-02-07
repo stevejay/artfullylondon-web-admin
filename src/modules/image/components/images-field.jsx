@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import UpdateImageModal from '_src/components/images/update-image-modal'
+import UpdateImageModal from '_src/modules/image/components/update-image-modal'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
-import ImageGrid from '_src/components/image-grid'
-import ImageGridCard from '_src/components/image-grid/card'
-import ImagesEditorForm from '_src/components/images/editor-form'
+import ImageGrid from '_src/modules/image/components/image-grid'
+import ImageGridCard from '_src/modules/image/components/image-grid-card'
+import AddImageForm from '_src/modules/image/forms/add-image-form'
 import * as entityConstants from '_src/constants/entity'
 
 class ImagesField extends React.Component {
@@ -64,7 +64,7 @@ class ImagesField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          <ImagesEditorForm onSubmit={this.handleAddImage} />
+          <AddImageForm onSubmit={this.handleAddImage} />
           <FieldDivider />
           <ImageGrid>
             {value.map(element => (

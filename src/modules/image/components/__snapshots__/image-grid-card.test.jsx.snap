@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when the image has a copyright 1`] = `
+<div
+  className="src-modules-image-components-image-grid-card__card"
+>
+  <shouldUpdate(ImageGridImage)
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    className="src-modules-image-components-image-grid-card__details-container"
+  >
+    <p>
+      <strong>
+        ©
+      </strong>
+       
+      The Copyright
+    </p>
+    <div
+      className="src-modules-image-components-image-grid-card__toolbar"
+    >
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaHeart
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaTrashO
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaPencil
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when the image is not the main image 1`] = `
+<div
+  className="src-modules-image-components-image-grid-card__card"
+>
+  <shouldUpdate(ImageGridImage)
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    className="src-modules-image-components-image-grid-card__details-container"
+  >
+    <p
+      className="src-modules-image-components-image-grid-card__no-copyright"
+    >
+      No Copyright String
+    </p>
+    <div
+      className="src-modules-image-components-image-grid-card__toolbar"
+    >
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaHeart
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaTrashO
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaPencil
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render correctly when the image is the main image 1`] = `
+<div
+  className="src-modules-image-components-image-grid-card__card"
+>
+  <shouldUpdate(ImageGridImage)
+    imageId="some-id"
+    ratio={2}
+    size="very-small"
+    type="venue"
+  />
+  <div
+    className="src-modules-image-components-image-grid-card__details-container"
+  >
+    <p
+      className="src-modules-image-components-image-grid-card__no-copyright"
+    >
+      No Copyright String
+    </p>
+    <div
+      className="src-modules-image-components-image-grid-card__toolbar"
+    >
+      <FaHeart
+        className="src-modules-image-components-image-grid-card__icon-main src-modules-image-components-image-grid-card__icon"
+      />
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaTrashO
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+      <a
+        className="src-modules-image-components-image-grid-card__link"
+        onClick={[Function]}
+      >
+        <FaPencil
+          className="src-modules-image-components-image-grid-card__icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;

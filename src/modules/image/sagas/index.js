@@ -18,8 +18,7 @@ import * as uuidLib from '_src/lib/uuid'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '_src/modules/image/actions'
-import * as imageConstraints from '_src/constants/image-constraints'
-import * as imageNormalisers from '_src/constants/image-normalisers'
+import * as imageConstants from '_src/modules/image/constants'
 import * as formConstants from '_src/constants/form'
 
 export function * getImages (parentFormName) {
@@ -35,13 +34,13 @@ export function * updateImage ({ payload, meta }) {
     const values = yield call(
       normalise,
       payload.values,
-      imageNormalisers.updateImageNormaliser
+      imageConstants.UPDATE_IMAGE_NORMALISER
     )
 
     yield call(
       validationLib.validate,
       values,
-      imageConstraints.updateImageConstraint
+      imageConstants.UPDATE_IMAGE_CONSTRAINT
     )
 
     const images = yield call(getImages, parentFormName)
@@ -120,20 +119,20 @@ function * addImage (action) {
   const id = uuidLib.create()
 
   try {
-    yield put(startSubmit(formConstants.IMAGE_EDITOR_FORM_NAME))
+    yield put(startSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
 
-    values = yield call(normalise, values, imageNormalisers.addImageNormaliser)
+    values = yield call(normalise, values, imageConstants.ADD_IMAGE_NORMALISER)
 
     yield call(
       validationLib.validate,
       values,
-      imageConstraints.addImageConstraint
+      imageConstants.ADD_IMAGE_CONSTRAINT
     )
   } catch (err) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      formConstants.IMAGE_EDITOR_FORM_NAME
+      imageConstants.IMAGE_EDITOR_FORM_NAME
     )
 
     return
@@ -167,8 +166,8 @@ function * addImage (action) {
     }
 
     yield put(arrayPush(parentFormName, 'images', newImage))
-    yield put(reset(formConstants.IMAGE_EDITOR_FORM_NAME))
-    yield put(stopSubmit(formConstants.IMAGE_EDITOR_FORM_NAME))
+    yield put(reset(imageConstants.IMAGE_EDITOR_FORM_NAME))
+    yield put(stopSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
   } catch (err) {
     yield call(log.error, err)
 
@@ -182,7 +181,7 @@ function * addImage (action) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      formConstants.IMAGE_EDITOR_FORM_NAME
+      imageConstants.IMAGE_EDITOR_FORM_NAME
     )
   }
 }

@@ -12,8 +12,8 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as entityActions from '_src/modules/entity/actions'
 import { actions as notificationActions } from '_src/modules/notification'
-import * as formConstants from '_src/constants/form'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
+import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 
 export class TalentEditOrCreate extends React.Component {
   handleSubmit = values => {
@@ -83,9 +83,7 @@ TalentEditOrCreate.propTypes = {
 export default withRouter(
   /* istanbul ignore next */
   connect(state => ({
-    imageEditorIsPristine: reduxForm.isPristine(
-      formConstants.IMAGE_EDITOR_FORM_NAME
-    )(state),
+    imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(state),
     linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
   }))(TalentEditOrCreate)
 )

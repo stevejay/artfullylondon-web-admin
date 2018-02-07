@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazyload'
 import { Link } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import ImagePlaceholder from '_src/components/image-placeholder'
+import { ImagePlaceholder } from '_src/modules/image'
 import * as entityLib from '_src/lib/entity'
 import * as entityConstants from '_src/constants/entity'
 import './image.scss'

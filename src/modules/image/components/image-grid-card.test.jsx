@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import ImageGridCard from '_src/components/image-grid/card'
+import ImageGridCard from '_src/modules/image/components/image-grid-card'
 
 it('should render correctly when the image has a copyright', () => {
   const wrapper = shallow(
