@@ -8,7 +8,7 @@ exports[`should render correctly when has an image id 1`] = `
 `;
 
 exports[`should render correctly when has no image id 1`] = `
-<shouldUpdate(ImagePlaceholder)
+<ImagePlaceholder
   size="small"
   type="venue"
 />

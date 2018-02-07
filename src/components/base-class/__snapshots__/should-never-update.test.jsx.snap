@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not affect the rendering of the test component 1`] = `
+<div
+  id="content"
+>
+  Foo
+</div>
+`;

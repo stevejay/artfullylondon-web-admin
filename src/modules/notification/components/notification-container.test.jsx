@@ -7,6 +7,7 @@ import * as notificationActions from '_src/modules/notification/actions'
 import {
   NotificationContainer
 } from '_src/modules/notification/components/notification-container'
+import Notification from '_src/modules/notification/components/notification'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -39,7 +40,7 @@ it('should raise a remove notification action when a notification is closed', ()
     />
   )
 
-  wrapper.find('shouldUpdate(Notification)').prop('onClose')({ id: 'some-id' })
+  wrapper.find(Notification).prop('onClose')({ id: 'some-id' })
 
   expect(dispatchHandler).toHaveBeenCalledWith(
     notificationActions.removeNotification('some-id')

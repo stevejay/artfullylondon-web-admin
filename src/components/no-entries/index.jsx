@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { shouldUpdate } from 'recompose'
 
+import ShouldNeverUpdateComponent
+  from '_src/components/base-class/should-never-update'
 import './index.scss'
 
-const NoEntries = ({ message }) => <div styleName='container'>{message}</div>
+class NoEntries extends ShouldNeverUpdateComponent {
+  render () {
+    return <div styleName='container'>{this.props.message}</div>
+  }
+}
 
 NoEntries.propTypes = {
   message: PropTypes.string.isRequired
@@ -14,4 +19,4 @@ NoEntries.defaultProps = {
   message: 'No Entries'
 }
 
-export default shouldUpdate(() => false)(NoEntries)
+export default NoEntries

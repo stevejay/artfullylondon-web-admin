@@ -1,4 +1,4 @@
-import * as locationLib from '_src/lib/location'
+import * as locationLib from './location'
 
 describe('convertGoogleMapBoundsToNSEWBounds', () => {
   it('should convert the bounds', () => {

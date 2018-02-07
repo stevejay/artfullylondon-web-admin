@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import window from 'global/window'
 
-import StaticGoogleMap from '_src/components/google-map/static'
 import Loader from '_src/components/loader'
-import * as locationLib from '_src/lib/location'
-import * as googleMapConstants from '_src/constants/google-map'
-import * as locationConstants from '_src/constants/location'
-import './map.scss'
+import GoogleMapStatic from '_src/modules/location/components/google-map-static'
+import * as locationLib from '_src/modules/location/lib/location'
+import * as locationConstants from '_src/modules/location/constants'
+import './entity-page-map.scss'
 
 const CONTAINER_ELEMENT_STYLE = { height: '100%' }
 
@@ -24,7 +23,7 @@ class EntityMap extends React.Component {
     const { zoom, pin, userLocation } = this.props
 
     return (
-      <StaticGoogleMap
+      <GoogleMapStatic
         zoom={zoom}
         pin={pin}
         userLocation={userLocation}
@@ -34,7 +33,7 @@ class EntityMap extends React.Component {
         loadingElement={
           <div className='entity-map'><Loader size='large' /></div>
         }
-        googleMapURL={googleMapConstants.SCRIPT_URL}
+        googleMapURL={locationConstants.GOOGLE_MAP_SCRIPT_URL}
       />
     )
   }

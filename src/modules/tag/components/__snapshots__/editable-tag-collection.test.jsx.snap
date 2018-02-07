@@ -7,8 +7,9 @@ exports[`should render correctly when a tag is being deleted 1`] = `
   <FadeTransition
     in={false}
   >
-    <shouldUpdate(NoEntries)
+    <NoEntries
       label="No Tags"
+      message="No Entries"
     />
   </FadeTransition>
   <FadeTransition
@@ -55,8 +56,9 @@ exports[`should render correctly when loading 1`] = `
   <FadeTransition
     in={false}
   >
-    <shouldUpdate(NoEntries)
+    <NoEntries
       label="No Tags"
+      message="No Entries"
     />
   </FadeTransition>
   <FadeTransition
@@ -76,8 +78,9 @@ exports[`should render correctly when no tags were loaded 1`] = `
   <FadeTransition
     in={true}
   >
-    <shouldUpdate(NoEntries)
+    <NoEntries
       label="No Tags"
+      message="No Entries"
     />
   </FadeTransition>
   <FadeTransition
@@ -101,8 +104,9 @@ exports[`should render correctly when tags are null 1`] = `
   <FadeTransition
     in={false}
   >
-    <shouldUpdate(NoEntries)
+    <NoEntries
       label="No Tags"
+      message="No Entries"
     />
   </FadeTransition>
   <FadeTransition
@@ -122,8 +126,9 @@ exports[`should render correctly when tags were loaded 1`] = `
   <FadeTransition
     in={false}
   >
-    <shouldUpdate(NoEntries)
+    <NoEntries
       label="No Tags"
+      message="No Entries"
     />
   </FadeTransition>
   <FadeTransition

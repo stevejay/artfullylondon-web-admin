@@ -21,12 +21,12 @@ exports[`should render correctly 1`] = `
   googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=undefined"
   loadingElement={
     <div
-      className="map"
+      className="editor-map"
     />
   }
   mapElement={
     <div
-      className="map"
+      className="editor-map"
     />
   }
   onClick={[Function]}

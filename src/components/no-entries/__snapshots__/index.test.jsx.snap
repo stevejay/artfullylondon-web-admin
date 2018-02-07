@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly with a custom message 1`] = `
+<div
+  className="src-components-no-entries-index__container"
+>
+  Custom
+</div>
+`;
+
+exports[`should render correctly with the default message 1`] = `
 <div
   className="src-components-no-entries-index__container"
 >

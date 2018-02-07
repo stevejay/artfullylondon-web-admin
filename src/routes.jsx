@@ -20,7 +20,7 @@ import {
   actions as userActions,
   selectors as userSelectors
 } from '_src/modules/user'
-import { actions as referenceActions } from '_src/modules/reference'
+import { actions as referenceActions } from '_src/modules/reference-data'
 import { TagsTypePage } from '_src/modules/tag'
 import { ResultsPage, Quicksearch } from '_src/modules/search'
 import { EntityDetailPage, EntityEditOrCreatePage } from '_src/modules/entity'

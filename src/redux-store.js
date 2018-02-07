@@ -12,7 +12,7 @@ import * as dashboard from '_src/modules/dashboard'
 import * as tag from '_src/modules/tag'
 import * as user from '_src/modules/user'
 import * as search from '_src/modules/search'
-import * as reference from '_src/modules/reference'
+import * as referenceData from '_src/modules/reference-data'
 import * as image from '_src/modules/image'
 import * as link from '_src/modules/link'
 
@@ -24,13 +24,13 @@ const reducer = combineReducers({
   [tag.moduleName]: tag.reducer,
   [search.moduleName]: search.reducer,
   [entity.moduleName]: entity.reducer,
-  [reference.moduleName]: reference.reducer
+  [referenceData.moduleName]: referenceData.reducer
 })
 
 const sagas = function * () {
   yield all([
     ...appUpdater.sagas,
-    ...reference.sagas,
+    ...referenceData.sagas,
     ...notification.sagas,
     ...search.sagas,
     ...tag.sagas,

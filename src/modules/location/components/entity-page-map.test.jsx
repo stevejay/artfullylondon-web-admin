@@ -2,13 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import window from 'global/window'
 
-import EntityMap from '_src/components/entity/map'
-import StaticGoogleMap from '_src/components/google-map/static'
-import * as locationLib from '_src/lib/location'
+import EntityPageMap from './entity-page-map'
+import GoogleMapStatic from '_src/modules/location/components/google-map-static'
+import * as locationLib from '_src/modules/location/lib/location'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <EntityMap
+    <EntityPageMap
       zoom={14}
       pin={{ lat: 2, lng: 4 }}
       userLocation={{ lat: 6, lng: 8 }}
@@ -19,12 +19,12 @@ it('should render correctly', () => {
 })
 
 it('should render correctly when there is no user location', () => {
-  const wrapper = shallow(<EntityMap zoom={14} pin={{ lat: 2, lng: 4 }} />)
+  const wrapper = shallow(<EntityPageMap zoom={14} pin={{ lat: 2, lng: 4 }} />)
   expect(wrapper).toMatchSnapshot()
 })
 
 it('should not update', () => {
-  const wrapper = shallow(<EntityMap zoom={14} pin={{ lat: 2, lng: 4 }} />)
+  const wrapper = shallow(<EntityPageMap zoom={14} pin={{ lat: 2, lng: 4 }} />)
   const result = wrapper.instance().shouldComponentUpdate()
   expect(result).toEqual(false)
 })
@@ -37,14 +37,14 @@ it('should handle a pin click', () => {
     .mockReturnValue('https://some-url')
 
   const wrapper = shallow(
-    <EntityMap
+    <EntityPageMap
       zoom={14}
       pin={{ lat: 2, lng: 4 }}
       userLocation={{ lat: 6, lng: 8 }}
     />
   )
 
-  wrapper.find(StaticGoogleMap).prop('onPinClick')()
+  wrapper.find(GoogleMapStatic).prop('onPinClick')()
 
   expect(locationLib.createGoogleMapLinkUrl).toHaveBeenCalledWith(2, 4, 16)
   expect(window.open).toHaveBeenCalledWith('https://some-url', '_blank')

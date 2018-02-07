@@ -5,7 +5,7 @@ import { types } from '_src/modules/entity/actions'
 import * as mappingsLib from '_src/lib/mappings'
 import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '_src/constants/talent'
-import * as locationConstants from '_src/constants/location'
+import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 
 export const moduleName = 'entityForEdit'
 
@@ -99,10 +99,7 @@ function getEntityDefaultValues (entityType) {
           lat: null,
           lng: null
         },
-        defaultCenter: {
-          lat: locationConstants.LONDON_LAT,
-          lng: locationConstants.LONDON_LNG
-        },
+        defaultCenter: DEFAULT_MAP_CENTER,
         postcode: '',
         email: '',
         telephone: '',

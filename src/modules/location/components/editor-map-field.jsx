@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
-import Map from '_src/components/map'
+import EditorMap from './editor-map'
 
-class MapField extends React.Component {
+class EditorMapField extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.input.value !== this.props.input.value ||
@@ -36,7 +36,7 @@ class MapField extends React.Component {
         style={containerStyle}
       >
         <FieldBorder>
-          <Map
+          <EditorMap
             value={value}
             onChange={onChange}
             disabled={disabled}
@@ -48,7 +48,7 @@ class MapField extends React.Component {
   }
 }
 
-MapField.propTypes = {
+EditorMapField.propTypes = {
   label: PropTypes.string.isRequired,
   input: PropTypes.shape({
     value: PropTypes.shape({
@@ -70,4 +70,4 @@ MapField.propTypes = {
   containerStyle: PropTypes.object
 }
 
-export default MapField
+export default EditorMapField

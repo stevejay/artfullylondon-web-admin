@@ -2,15 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import MapField from '_src/components/map/field'
+import EditorMap from './editor-map'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <MapField
-      label='The Label'
-      input={{ value: { lat: 11, lng: 22 }, onChange: _.noop }}
-      meta={{ touched: false, error: null }}
+    <EditorMap
+      value={{ lat: 11, lng: 22 }}
       defaultCenter={{ lat: 33, lng: 44 }}
+      onChange={_.noop}
     />
   )
 
@@ -22,19 +21,17 @@ describe('shouldComponentUpdate', () => {
     const value = { lat: 11, lng: 22 }
 
     const wrapper = shallow(
-      <MapField
-        label='The Label'
-        input={{ value, onChange: _.noop }}
-        meta={{ touched: false, error: null }}
+      <EditorMap
+        value={value}
         defaultCenter={{ lat: 33, lng: 44 }}
-        disabled={false}
+        disabled
+        onChange={_.noop}
       />
     )
 
     const result = wrapper.instance().shouldComponentUpdate({
-      input: { value },
-      meta: { touched: false, error: null },
-      disabled: false
+      value,
+      disabled: true
     })
 
     expect(result).toEqual(false)
@@ -44,21 +41,37 @@ describe('shouldComponentUpdate', () => {
     const value = { lat: 11, lng: 22 }
 
     const wrapper = shallow(
-      <MapField
-        label='The Label'
-        input={{ value, onChange: _.noop }}
-        meta={{ touched: false, error: null }}
+      <EditorMap
+        value={value}
         defaultCenter={{ lat: 33, lng: 44 }}
-        disabled={false}
+        disabled
+        onChange={_.noop}
       />
     )
 
     const result = wrapper.instance().shouldComponentUpdate({
-      input: { value },
-      meta: { touched: false, error: null },
-      disabled: true
+      value,
+      disabled: false
     })
 
     expect(result).toEqual(true)
   })
+})
+
+it('should handle a click on the map', () => {
+  const handleChange = jest.fn()
+
+  const wrapper = shallow(
+    <EditorMap
+      value={{ lat: 11, lng: 22 }}
+      defaultCenter={{ lat: 33, lng: 44 }}
+      onChange={handleChange}
+    />
+  )
+
+  wrapper.find('withScriptjs(withGoogleMap(Component))').simulate('click', {
+    latLng: { lat: () => 55, lng: () => 66 }
+  })
+
+  expect(handleChange).toHaveBeenCalledWith({ lat: 55, lng: 66 })
 })

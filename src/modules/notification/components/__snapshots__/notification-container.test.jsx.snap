@@ -12,7 +12,7 @@ exports[`should render correctly 1`] = `
     key="some-id"
     timeout={250}
   >
-    <shouldUpdate(Notification)
+    <Notification
       notification={
         Object {
           "id": "some-id",

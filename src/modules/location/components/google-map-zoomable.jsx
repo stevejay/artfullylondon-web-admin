@@ -10,11 +10,10 @@ import {
 import MarkerClusterer
   from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
-import * as locationConstants from '_src/constants/location'
-import * as googleMapConstants from '_src/constants/google-map'
-import * as location from '_src/lib/location'
+import * as locationConstants from '_src/modules/location/constants'
+import * as locationLib from '_src/modules/location/lib/location'
 
-export class GoogleMap extends React.PureComponent {
+export class GoogleMapZoomable extends React.PureComponent {
   componentWillUpdate (nextProps) {
     // http://stackoverflow.com/questions/4700594/google-maps-displaynone-problem
 
@@ -31,16 +30,22 @@ export class GoogleMap extends React.PureComponent {
   }
   handleZoomChanged = () => {
     const googleMapZoom = this._googleMap.getZoom()
-    const zoom = location.convertGoogleMapZoomToInt(googleMapZoom)
+    const zoom = locationLib.convertGoogleMapZoomToInt(googleMapZoom)
     const googleMapBounds = this._googleMap.getBounds()
-    const bounds = location.convertGoogleMapBoundsToNSEWBounds(googleMapBounds)
+    const bounds = locationLib.convertGoogleMapBoundsToNSEWBounds(
+      googleMapBounds
+    )
     this.props.onZoomChanged({ zoom, bounds })
   }
   handleCenterChanged = () => {
     const googleMapCenter = this._googleMap.getCenter()
-    const center = location.convertGoogleMapPointToLatLngPoint(googleMapCenter)
+    const center = locationLib.convertGoogleMapPointToLatLngPoint(
+      googleMapCenter
+    )
     const googleMapBounds = this._googleMap.getBounds()
-    const bounds = location.convertGoogleMapBoundsToNSEWBounds(googleMapBounds)
+    const bounds = locationLib.convertGoogleMapBoundsToNSEWBounds(
+      googleMapBounds
+    )
     this.props.onCenterChanged({ center, bounds })
   }
   handleMounted = ref => {
@@ -69,7 +74,7 @@ export class GoogleMap extends React.PureComponent {
         onZoomChanged={this.handleZoomChanged}
         center={center}
         onCenterChanged={this.handleCenterChanged}
-        options={googleMapConstants.OPTIONS}
+        options={locationConstants.GOOGLE_MAP_OPTIONS}
       >
         <MarkerClusterer
           averageCenter
@@ -93,7 +98,7 @@ export class GoogleMap extends React.PureComponent {
             <Marker
               key='current-location'
               position={userLocation}
-              icon={googleMapConstants.USER_LOCATION_IMAGE_URL}
+              icon={locationConstants.USER_LOCATION_IMAGE_URL}
             />}
         </MarkerClusterer>
       </ReactGoogleMap>
@@ -101,7 +106,7 @@ export class GoogleMap extends React.PureComponent {
   }
 }
 
-GoogleMap.propTypes = {
+GoogleMapZoomable.propTypes = {
   zoom: PropTypes.number.isRequired,
   center: locationConstants.POINT_SHAPE.isRequired,
   markers: PropTypes.arrayOf(
@@ -120,4 +125,4 @@ GoogleMap.propTypes = {
   onMounted: PropTypes.func
 }
 
-export default withScriptjs(withGoogleMap(GoogleMap))
+export default withScriptjs(withGoogleMap(GoogleMapZoomable))

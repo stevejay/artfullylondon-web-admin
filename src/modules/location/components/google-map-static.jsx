@@ -7,10 +7,9 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import * as googleMapConstants from '_src/constants/google-map'
-import * as locationConstants from '_src/constants/location'
+import * as locationConstants from '_src/modules/location/constants'
 
-export class StaticGoogleMap extends React.PureComponent {
+export class GoogleMapStatic extends React.PureComponent {
   render () {
     const { zoom, pin, userLocation, onPinClick } = this.props
 
@@ -18,25 +17,25 @@ export class StaticGoogleMap extends React.PureComponent {
       <GoogleMap
         defaultZoom={zoom}
         center={pin}
-        options={googleMapConstants.OPTIONS}
+        options={locationConstants.GOOGLE_MAP_OPTIONS}
       >
         <Marker position={pin} onClick={onPinClick} />
         {!!userLocation &&
           <Marker
             key='current-location'
             position={userLocation}
-            icon={googleMapConstants.USER_LOCATION_IMAGE_URL}
+            icon={locationConstants.USER_LOCATION_IMAGE_URL}
           />}
       </GoogleMap>
     )
   }
 }
 
-StaticGoogleMap.propTypes = {
+GoogleMapStatic.propTypes = {
   zoom: PropTypes.number.isRequired,
   pin: locationConstants.POINT_SHAPE.isRequired,
   userLocation: locationConstants.POINT_SHAPE,
   onPinClick: PropTypes.func.isRequired
 }
 
-export default withScriptjs(withGoogleMap(StaticGoogleMap))
+export default withScriptjs(withGoogleMap(GoogleMapStatic))

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { ImageGridImage } from '_src/modules/image/components/image-grid-image'
+import ImageGridImage from '_src/modules/image/components/image-grid-image'
 
 it('should render correctly when has an image id', () => {
   const wrapper = shallow(

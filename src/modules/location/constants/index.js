@@ -1,7 +1,32 @@
+import PropTypes from 'prop-types'
+
+export const POINT_SHAPE = PropTypes.shape({
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired
+})
+
+const londonLatRange = 0.3
+
+export const LONDON_LAT = 51.507398
+export const MIN_LONDON_LAT = LONDON_LAT - londonLatRange
+export const MAX_LONDON_LAT = LONDON_LAT + londonLatRange
+
+const londonLngRange = 0.6
+
+export const LONDON_LNG = -0.127675
+export const MIN_LONDON_LNG = LONDON_LNG - londonLngRange
+export const MAX_LONDON_LNG = LONDON_LNG + londonLngRange
+
+// TODO deep freeze this?
+export const DEFAULT_MAP_CENTER = {
+  lat: LONDON_LAT,
+  lng: LONDON_LNG
+}
+
 export const USER_LOCATION_IMAGE_URL =
   process.env.WEBSITE_SITE_IMAGES_ROOT_URL + '/female.png'
 
-export const STYLES = [
+export const GOOGLE_MAP_STYLES = [
   {
     featureType: 'road',
     elementType: 'geometry.stroke',
@@ -242,12 +267,12 @@ export const STYLES = [
   {}
 ]
 
-export const OPTIONS = {
+export const GOOGLE_MAP_OPTIONS = {
   mapTypeControl: false,
   streetViewControl: false,
   clickableIcons: false,
-  styles: STYLES,
+  styles: GOOGLE_MAP_STYLES,
   scrollwheel: false
 }
 
-export const SCRIPT_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.WEBSITE_GOOGLEMAPS_API_KEY}`
+export const GOOGLE_MAP_SCRIPT_URL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.WEBSITE_GOOGLEMAPS_API_KEY}`

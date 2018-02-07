@@ -7,9 +7,9 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import * as googleMapConstants from '_src/constants/google-map'
-import * as locationLib from '_src/lib/location'
-import './index.scss'
+import * as locationConstants from '_src/modules/location/constants'
+import * as locationLib from '_src/modules/location/lib/location'
+import './editor-map.scss'
 
 const EditorGoogleMap = withScriptjs(
   withGoogleMap(
@@ -19,7 +19,7 @@ const EditorGoogleMap = withScriptjs(
         defaultZoom={props.defaultZoom}
         defaultCenter={props.defaultCenter}
         onClick={props.onClick}
-        options={googleMapConstants.OPTIONS}
+        options={locationConstants.GOOGLE_MAP_OPTIONS}
       >
         {!locationLib.isEmptyPin(props.value) &&
           <Marker position={props.value} />}
@@ -28,7 +28,7 @@ const EditorGoogleMap = withScriptjs(
   )
 )
 
-class Map extends React.Component {
+class EditorMap extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       this.props.disabled !== nextProps.disabled ||
@@ -53,15 +53,15 @@ class Map extends React.Component {
         {...rest}
         onClick={this.handleClick}
         containerElement={<div style={{ height: '100%' }} />}
-        mapElement={<div className='map' />}
-        loadingElement={<div className='map' />}
-        googleMapURL={googleMapConstants.SCRIPT_URL}
+        mapElement={<div className='editor-map' />}
+        loadingElement={<div className='editor-map' />}
+        googleMapURL={locationConstants.GOOGLE_MAP_SCRIPT_URL}
       />
     )
   }
 }
 
-Map.propTypes = {
+EditorMap.propTypes = {
   value: PropTypes.shape({
     lat: PropTypes.number,
     lng: PropTypes.number
@@ -75,8 +75,8 @@ Map.propTypes = {
   defaultZoom: PropTypes.number
 }
 
-Map.defaultProps = {
+EditorMap.defaultProps = {
   defaultZoom: 14
 }
 
-export default Map
+export default EditorMap
