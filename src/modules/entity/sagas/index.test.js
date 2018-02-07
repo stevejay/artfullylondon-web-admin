@@ -6,6 +6,7 @@ import { startSubmit, stopSubmit } from 'redux-form'
 
 import * as sagas from './index'
 import * as sagaLib from '_src/lib/saga'
+import * as timeLib from '_src/lib/time'
 import history from '_src/history'
 import * as entityActions from '_src/modules/entity/actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
@@ -15,6 +16,9 @@ import normalise from '_src/lib/normalise'
 import talentConstraint from '_src/constants/talent-constraint'
 import talentNormaliser from '_src/constants/talent-normaliser'
 import { actions as notificationActions } from '_src/modules/notification'
+
+// Pin created dates on entities:
+timeLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')
 
 describe('getEntity', () => {
   it('should successfully get an entity', () => {
@@ -182,7 +186,7 @@ describe('saveEntity', () => {
         'https://api.test.com/event-service/admin/talent',
         {
           commonRole: undefined,
-          createdDate: '2018/02/06',
+          createdDate: '2018/01/01',
           description: null,
           firstNames: '',
           images: [],
@@ -190,7 +194,7 @@ describe('saveEntity', () => {
           links: [],
           status: undefined,
           talentType: undefined,
-          updatedDate: '2018/02/06',
+          updatedDate: '2018/01/01',
           version: NaN,
           weSay: ''
         },
@@ -252,7 +256,7 @@ describe('saveEntity', () => {
         'https://api.test.com/event-service/admin/talent/existing-id',
         {
           commonRole: undefined,
-          createdDate: '2018/02/06',
+          createdDate: '2018/01/01',
           description: null,
           firstNames: '',
           images: [],
@@ -260,7 +264,7 @@ describe('saveEntity', () => {
           links: [],
           status: undefined,
           talentType: undefined,
-          updatedDate: '2018/02/06',
+          updatedDate: '2018/01/01',
           version: NaN,
           weSay: ''
         },

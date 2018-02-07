@@ -4,9 +4,6 @@ exports[`should render correctly when auto login not yet attempted 1`] = `""`;
 
 exports[`should render correctly when logged in 1`] = `
 <Page>
-  <BrowserResizeListener
-    onWindowResize={[Function]}
-  />
   <withRouter(Connect(Sidenav))
     onHide={[Function]}
     pathname="/some/path"
@@ -18,7 +15,7 @@ exports[`should render correctly when logged in 1`] = `
   />
   <React.Fragment>
     <PageHeader>
-      <withRouter(Connect(Header))
+      <withRouter(Connect(withState(Header)))
         onShowQuicksearch={[Function]}
         onShowSidenav={[Function]}
         showingSidenav={false}
@@ -63,7 +60,7 @@ exports[`should render correctly when logged in 1`] = `
       </Switch>
     </PageMain>
     <PageFooter>
-      <Footer />
+      <withState(Footer) />
     </PageFooter>
   </React.Fragment>
   <Connect(withState(AppUpdater)) />
@@ -73,9 +70,6 @@ exports[`should render correctly when logged in 1`] = `
 
 exports[`should render correctly when not logged in 1`] = `
 <Page>
-  <BrowserResizeListener
-    onWindowResize={[Function]}
-  />
   <withRouter(Connect(Sidenav))
     onHide={[Function]}
     pathname="/some/path"

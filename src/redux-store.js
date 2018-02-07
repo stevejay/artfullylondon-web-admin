@@ -5,14 +5,16 @@ import { middleware as thunkMiddleware } from 'redux-saga-thunk'
 import { reducer as formReducer } from 'redux-form'
 
 import * as devTools from '_src/debug/dev-tools'
-import * as reduxLib from '_src/lib/redux'
 import * as entity from '_src/modules/entity'
+import * as appUpdater from '_src/modules/app-updater'
 import * as notification from '_src/modules/notification'
 import * as dashboard from '_src/modules/dashboard'
 import * as tag from '_src/modules/tag'
 import * as user from '_src/modules/user'
 import * as search from '_src/modules/search'
 import * as reference from '_src/modules/reference'
+import * as image from '_src/modules/image'
+import * as link from '_src/modules/link'
 
 const reducer = combineReducers({
   form: formReducer,

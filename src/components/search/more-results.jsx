@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
 import * as entityConstants from '_src/constants/entity'
-import * as search from '_src/lib/search'
+// TODO fix this:
+import * as searchLib from '_src/modules/search/lib/search'
 
 class SearchMoreResults extends React.Component {
   shouldComponentUpdate () {
@@ -13,17 +14,17 @@ class SearchMoreResults extends React.Component {
   render () {
     const { items, take, onClick } = this.props
 
-    const maybeMoreVenues = search.maybeHasMoreSearchResults(
+    const maybeMoreVenues = searchLib.maybeHasMoreSearchResults(
       entityConstants.ENTITY_TYPE_VENUE,
       items,
       take
     )
-    const maybeMoreTalents = search.maybeHasMoreSearchResults(
+    const maybeMoreTalents = searchLib.maybeHasMoreSearchResults(
       entityConstants.ENTITY_TYPE_TALENT,
       items,
       take
     )
-    const maybeMoreEvents = search.maybeHasMoreSearchResults(
+    const maybeMoreEvents = searchLib.maybeHasMoreSearchResults(
       entityConstants.ENTITY_TYPE_EVENT,
       items,
       take

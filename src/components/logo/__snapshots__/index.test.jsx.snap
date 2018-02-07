@@ -3,13 +3,7 @@
 exports[`should render a large inverse logo correctly 1`] = `
 <svg
   aria-label="Artfully London Logo"
-  style={
-    Object {
-      "height": "86px",
-      "verticalAlign": "bottom",
-      "width": "218px",
-    }
-  }
+  className="src-components-logo-index__large src-components-logo-index__logo"
   version="1.1"
   viewBox="0 0 820 320"
 >
@@ -202,13 +196,7 @@ exports[`should render a large inverse logo correctly 1`] = `
 exports[`should render a medium normal logo correctly 1`] = `
 <svg
   aria-label="Artfully London Logo"
-  style={
-    Object {
-      "height": "40px",
-      "verticalAlign": "bottom",
-      "width": "100px",
-    }
-  }
+  className="src-components-logo-index__medium src-components-logo-index__logo"
   version="1.1"
   viewBox="0 0 820 320"
 >
@@ -401,13 +389,7 @@ exports[`should render a medium normal logo correctly 1`] = `
 exports[`should render a small normal logo correctly 1`] = `
 <svg
   aria-label="Artfully London Logo"
-  style={
-    Object {
-      "height": "32px",
-      "verticalAlign": "bottom",
-      "width": "80px",
-    }
-  }
+  className="src-components-logo-index__small src-components-logo-index__logo"
   version="1.1"
   viewBox="0 0 820 320"
 >
@@ -600,13 +582,7 @@ exports[`should render a small normal logo correctly 1`] = `
 exports[`should render an extra large inverse logo correctly 1`] = `
 <svg
   aria-label="Artfully London Logo"
-  style={
-    Object {
-      "height": "198px",
-      "verticalAlign": "bottom",
-      "width": "500px",
-    }
-  }
+  className="src-components-logo-index__xlarge src-components-logo-index__logo"
   version="1.1"
   viewBox="0 0 820 320"
 >
