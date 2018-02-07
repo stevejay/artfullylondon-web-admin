@@ -10,10 +10,10 @@ import './talent.scss'
 
 class EventTalentComponent extends React.PureComponent {
   render () {
-    const { talent, ...rest } = this.props
+    const { talent, className, ...rest } = this.props
 
     return (
-      <div {...rest} styleName='container'>
+      <div {...rest} className={className} styleName='container'>
         {talent.hasImage &&
           <img
             styleName='img'
@@ -41,6 +41,7 @@ class EventTalentComponent extends React.PureComponent {
 }
 
 EventTalentComponent.propTypes = {
+  className: PropTypes.string,
   talent: PropTypes.instanceOf(SummaryTalent).isRequired
 }
 

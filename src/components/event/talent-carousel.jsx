@@ -5,7 +5,6 @@ import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import _ from 'lodash'
 
 import EventTalentComponent from '_src/components/event/talent'
-import Pusher from '_src/components/pusher'
 import IconButton from '_src/components/button/icon'
 import { SummaryTalent } from '_src/entities/talent'
 import './talent-carousel.scss'
@@ -56,8 +55,10 @@ class EventTalentCarousel extends React.PureComponent {
 
     return (
       <div styleName='container'>
-        <EventTalentComponent talent={talents[talentIndex]} />
-        <Pusher />
+        <EventTalentComponent
+          talent={talents[talentIndex]}
+          styleName='event-talent'
+        />
         <div styleName='buttons-container'>
           <IconButton
             type='default'

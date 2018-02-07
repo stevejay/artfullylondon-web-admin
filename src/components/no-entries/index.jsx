@@ -1,23 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { shouldUpdate } from 'recompose'
 
 import './index.scss'
 
-class NoEntries extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
-  render () {
-    return <div styleName='container'>{this.props.label}</div>
-  }
-}
+const NoEntries = ({ message }) => <div styleName='container'>{message}</div>
 
 NoEntries.propTypes = {
-  label: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired
 }
 
 NoEntries.defaultProps = {
-  label: 'No Entries'
+  message: 'No Entries'
 }
 
-export default NoEntries
+export default shouldUpdate(() => false)(NoEntries)
