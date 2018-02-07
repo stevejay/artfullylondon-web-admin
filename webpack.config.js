@@ -110,7 +110,7 @@ let PLUGINS = [
   }),
   new HtmlWebpackPlugin({
     title: 'Artfully London Admin',
-    template: './template.html',
+    template: '../assets/template.html',
     inject: false,
     hash: false,
     minify: PRODUCTION
@@ -161,8 +161,8 @@ if (PRODUCTION) {
       mangle: { except: ['exports'] }
     }),
     new CopyWebpackPlugin([
-      { from: '../static/robots.txt' },
-      { from: '../static/favicon', to: 'favicon' }
+      { from: '../assets/robots.txt' },
+      { from: '../assets/favicon', to: 'favicon' }
     ]),
     new BundleAnalyzerPlugin({
       generateStatsFile: true,
@@ -178,7 +178,7 @@ if (PRODUCTION) {
     new webpack.NoEmitOnErrorsPlugin(),
     new CopyWebpackPlugin([
       {
-        from: '../static/favicon/favicon.ico',
+        from: '../assets/favicon/favicon.ico',
         to: 'favicon/favicon.ico'
       }
     ]),

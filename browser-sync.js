@@ -21,7 +21,7 @@ browserSync({
           {
             from: /^\/favicon\/.*$/,
             to: function (context) {
-              return '/static' + context.parsedUrl.pathname
+              return '/assets' + context.parsedUrl.pathname
             }
           }
         ]
