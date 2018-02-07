@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-search-components-search-input-field__container"
+>
+  <SearchInput
+    maxLength={100}
+    onAutocompleteSearch={[Function]}
+    onAutocompleteSelect={[Function]}
+    onChange={[Function]}
+    placeholder="Search…"
+    searchInProgress={false}
+    size="large"
+    value="some value"
+  />
+</div>
+`;

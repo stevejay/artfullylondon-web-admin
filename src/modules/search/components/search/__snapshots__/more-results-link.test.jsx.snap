@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<p
+  className="src-modules-search-components-search-more-results-link__container"
+>
+  <a
+    onClick={[Function]}
+  >
+    Click here
+  </a>
+   to see the full 
+  <strong>
+    event
+  </strong>
+   results
+</p>
+`;
