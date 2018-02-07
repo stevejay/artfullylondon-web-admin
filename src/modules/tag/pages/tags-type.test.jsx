@@ -3,7 +3,8 @@ import _ from 'lodash'
 
 import { TagsTypePage } from './tags-type'
 import * as tagActions from '_src/modules/tag/actions'
-import TagCollection from '_src/modules/tag/components/tag-collection'
+import EditableTagCollection
+  from '_src/modules/tag/components/editable-tag-collection'
 import AddTagForm from '_src/modules/tag/forms/add-tag'
 
 it('should render correctly when get tags succeeded', () => {
@@ -71,7 +72,7 @@ it('should handle deleting a tag', () => {
     />
   )
 
-  wrapper.find(TagCollection).prop('onDelete')('medium/two')
+  wrapper.find(EditableTagCollection).prop('onDelete')('medium/two')
 
   expect(dispatch).toHaveBeenCalledWith(tagActions.deleteTag('medium/two'))
 })

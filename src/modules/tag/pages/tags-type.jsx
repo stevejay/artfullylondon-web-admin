@@ -7,7 +7,8 @@ import FieldDivider from '_src/components/field/divider'
 import Error from '_src/components/error'
 import BasicSection from '_src/components/section/basic'
 import SectionHeading from '_src/components/section/heading'
-import TagCollection from '_src/modules/tag/components/tag-collection'
+import EditableTagCollection
+  from '_src/modules/tag/components/editable-tag-collection'
 import AddTagForm from '_src/modules/tag/forms/add-tag'
 import { selectors as tagSelectors } from '_src/modules/tag/reducers'
 import * as tagConstants from '_src/modules/tag/constants'
@@ -58,7 +59,7 @@ export class TagsTypePage extends React.Component {
               onSubmit={this.handleAddTag}
             />
             <FieldDivider />
-            <TagCollection
+            <EditableTagCollection
               tags={tags}
               onDelete={this.handleDeleteTag}
               getInProgress={getInProgress}

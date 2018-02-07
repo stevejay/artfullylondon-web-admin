@@ -1,149 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly when a tag is being deleted 1`] = `
+exports[`should render correctly when there are tags 1`] = `
 <div
   className="src-modules-tag-components-tag-collection__container"
 >
-  <FadeTransition
-    in={false}
-  >
-    <NoEntries
-      label="No Tags"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={true}
-  >
-    <ul
-      role="presentation"
-    >
-      <Tag
-        isBeingDeleted={false}
-        key="medium/one"
-        onDelete={[Function]}
-        tag={
-          Object {
-            "id": "medium/one",
-            "label": "One",
-          }
-        }
-      />
-      <Tag
-        isBeingDeleted={true}
-        key="medium/two"
-        onDelete={[Function]}
-        tag={
-          Object {
-            "id": "medium/two",
-            "label": "Two",
-          }
-        }
-      />
-    </ul>
-  </FadeTransition>
-</div>
-`;
-
-exports[`should render correctly when loading 1`] = `
-<div
-  className="src-modules-tag-components-tag-collection__container"
->
-  <BoxesLoader
-    size="large"
-    type="default"
+  <Tag
+    key="tag-1"
+    tag={
+      Object {
+        "id": "tag-1",
+        "label": "Tag One",
+      }
+    }
   />
-  <FadeTransition
-    in={false}
-  >
-    <NoEntries
-      label="No Tags"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={false}
-  >
-    <ul
-      role="presentation"
-    />
-  </FadeTransition>
-</div>
-`;
-
-exports[`should render correctly when no tags were loaded 1`] = `
-<div
-  className="src-modules-tag-components-tag-collection__container"
->
-  <FadeTransition
-    in={true}
-  >
-    <NoEntries
-      label="No Tags"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={false}
-  >
-    <ul
-      role="presentation"
-    />
-  </FadeTransition>
-</div>
-`;
-
-exports[`should render correctly when tags are null 1`] = `
-<div
-  className="src-modules-tag-components-tag-collection__container"
->
-  <BoxesLoader
-    size="large"
-    type="default"
+  <Tag
+    key="tag-2"
+    tag={
+      Object {
+        "id": "tag-2",
+        "label": "Tag Two",
+      }
+    }
   />
-  <FadeTransition
-    in={false}
-  >
-    <NoEntries
-      label="No Tags"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={false}
-  >
-    <ul
-      role="presentation"
-    />
-  </FadeTransition>
 </div>
 `;
 
-exports[`should render correctly when tags were loaded 1`] = `
-<div
-  className="src-modules-tag-components-tag-collection__container"
->
-  <FadeTransition
-    in={false}
-  >
-    <NoEntries
-      label="No Tags"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={true}
-  >
-    <ul
-      role="presentation"
-    >
-      <Tag
-        isBeingDeleted={false}
-        key="medium/one"
-        onDelete={[Function]}
-        tag={
-          Object {
-            "id": "medium/one",
-            "label": "One",
-          }
-        }
-      />
-    </ul>
-  </FadeTransition>
-</div>
-`;
+exports[`should render correctly when there no tags 1`] = `""`;
