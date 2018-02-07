@@ -1,6 +1,6 @@
 import { take, call, put } from 'redux-saga/effects'
 
-import * as referenceActions from '_src/modules/reference/actions'
+import * as referenceActions from '_src/modules/reference-data/actions'
 import * as sagas from './index'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'

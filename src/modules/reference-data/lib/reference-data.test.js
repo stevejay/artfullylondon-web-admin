@@ -1,4 +1,5 @@
-import * as referenceLib from '_src/modules/reference/lib/reference'
+import * as referenceDataLib
+  from '_src/modules/reference-data/lib/reference-data'
 import * as imageLib from '_src/lib/image'
 
 describe('mapReferenceData', () => {
@@ -30,7 +31,7 @@ describe('mapReferenceData', () => {
       .fn()
       .mockImplementation((a, b) => `${a} ${b}`)
 
-    const actual = referenceLib.mapReferenceData(contentJson)
+    const actual = referenceDataLib.mapReferenceData(contentJson)
 
     expect(actual).toEqual({
       heroImage: {

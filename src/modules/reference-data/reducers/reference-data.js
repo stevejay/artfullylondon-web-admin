@@ -1,12 +1,13 @@
 import { handleActions } from 'redux-actions'
 
-import { types } from '_src/modules/reference/actions'
-import * as referenceLib from '_src/modules/reference/lib/reference'
+import { types } from '_src/modules/reference-data/actions'
+import * as referenceDataLib
+  from '_src/modules/reference-data/lib/reference-data'
 import referenceData from './reference-data.json'
 
 const initialState = {
   loading: true,
-  ...referenceLib.mapReferenceData(referenceData)
+  ...referenceDataLib.mapReferenceData(referenceData)
 }
 
 export const reducer = handleActions(
@@ -14,7 +15,7 @@ export const reducer = handleActions(
     [types.FETCH_REFERENCE_DATA_SUCCEEDED]: (state, action) => ({
       ...state,
       loading: false,
-      ...referenceLib.mapReferenceData(action.payload)
+      ...referenceDataLib.mapReferenceData(action.payload)
     })
   },
   initialState

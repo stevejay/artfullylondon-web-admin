@@ -1,8 +1,9 @@
 import deepFreeze from 'deep-freeze'
 
-import { reducer } from '_src/modules/reference/reducers/reference-data'
-import * as referenceLib from '_src/modules/reference/lib/reference'
-import * as referenceActions from '_src/modules/reference/actions'
+import { reducer } from '_src/modules/reference-data/reducers/reference-data'
+import * as referenceDataLib
+  from '_src/modules/reference-data/lib/reference-data'
+import * as referenceActions from '_src/modules/reference-data/actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
@@ -19,7 +20,7 @@ it('should have the correct initial state', () => {
 })
 
 it('should handle a fetch server constants succeeded action', () => {
-  referenceLib.mapReferenceData = jest.fn().mockImplementation(data => data)
+  referenceDataLib.mapReferenceData = jest.fn().mockImplementation(data => data)
 
   const state = deepFreeze({
     loading: true,
