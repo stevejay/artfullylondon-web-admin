@@ -8,10 +8,11 @@ import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import IconButton from '_src/components/button/icon'
-import SearchInputFieldBasic from '_src/modules/search/components/search-input/field-basic'
-import SearchInputToolbar from '_src/modules/search/components/search-input/toolbar'
+import SearchInputFieldBasic
+  from '_src/modules/search/components/search-input/field-basic'
+import SearchInputToolbar
+  from '_src/modules/search/components/search-input/toolbar'
 import DropdownField from '_src/components/dropdown/field'
-import * as formConstants from '_src/constants/form'
 import * as searchConstants from '_src/modules/search/constants'
 import * as browserConstants from '_src/constants/browser'
 import * as searchActions from '_src/modules/search/actions'
@@ -102,10 +103,10 @@ BasicSearchForm.propTypes = {
 }
 
 const WrappedSearchForm = reduxForm({
-  form: formConstants.BASIC_SEARCH_FORM_NAME
+  form: searchConstants.BASIC_SEARCH_FORM_NAME
 })(BasicSearchForm)
 
-const selector = formValueSelector(formConstants.BASIC_SEARCH_FORM_NAME)
+const selector = formValueSelector(searchConstants.BASIC_SEARCH_FORM_NAME)
 
 export default connect(
   /* istanbul ignore next */

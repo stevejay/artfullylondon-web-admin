@@ -9,7 +9,7 @@ import FormRow from '_src/components/form/row'
 import FormButtons from '_src/components/form/buttons'
 import TextField from '_src/components/text/field'
 import FormError from '_src/components/form/error'
-import * as formConstants from '_src/constants/form'
+import * as userConstants from '_src/modules/user/constants'
 
 export const LoginForm = ({ submitting, handleSubmit, constraint, error }) => (
   <Form onSubmit={handleSubmit}>
@@ -60,4 +60,4 @@ export default connect(
       password: ''
     }
   })
-)(reduxForm({ form: formConstants.LOGIN_FORM_NAME })(LoginForm))
+)(reduxForm({ form: userConstants.LOGIN_FORM_NAME })(LoginForm))

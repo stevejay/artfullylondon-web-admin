@@ -3,7 +3,6 @@ import { cloneableGenerator } from 'redux-saga/utils'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
-import * as formConstants from '_src/constants/form'
 import * as userSagas from '_src/modules/user/sagas'
 import * as authLib from '_src/modules/user/lib/auth'
 import * as sagaLib from '_src/lib/saga'
@@ -78,7 +77,7 @@ describe('logIn', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(startSubmit(formConstants.LOGIN_FORM_NAME))
+      put(startSubmit(userConstants.LOGIN_FORM_NAME))
     )
 
     result = generator.next()
@@ -95,7 +94,7 @@ describe('logIn', () => {
 
     result = generator.next(cognitoUser)
 
-    expect(result.value).toEqual(put(stopSubmit(formConstants.LOGIN_FORM_NAME)))
+    expect(result.value).toEqual(put(stopSubmit(userConstants.LOGIN_FORM_NAME)))
 
     result = generator.next()
 
@@ -118,7 +117,7 @@ describe('logIn', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(startSubmit(formConstants.LOGIN_FORM_NAME))
+      put(startSubmit(userConstants.LOGIN_FORM_NAME))
     )
 
     result = generator.next()
@@ -134,7 +133,7 @@ describe('logIn', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(sagaLib.submitErrorHandler, error, formConstants.LOGIN_FORM_NAME)
+      call(sagaLib.submitErrorHandler, error, userConstants.LOGIN_FORM_NAME)
     )
 
     result = generator.next()

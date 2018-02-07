@@ -2,6 +2,9 @@ import PropTypes from 'prop-types'
 
 import * as entityConstants from '_src/constants/entity'
 
+export const BASIC_SEARCH_FORM_NAME = 'BasicSearch'
+export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'
+
 export const SEARCH_ENTITY_DROPDOWN_OPTIONS = [
   { label: 'All', value: entityConstants.ENTITY_TYPE_ALL },
   { label: 'Venues', value: entityConstants.ENTITY_TYPE_VENUE },

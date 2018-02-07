@@ -1,4 +1,5 @@
 export const IMAGE_EDITOR_FORM_NAME = 'ImageEditor'
+export const UPDATE_IMAGE_FORM_NAME = 'UpdateImage'
 
 export const ADD_IMAGE_NORMALISER = {
   imageUrl: {

@@ -6,7 +6,6 @@ import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as authLib from '_src/modules/user/lib/auth'
 import * as userConstants from '_src/modules/user/constants'
-import * as formConstants from '_src/constants/form'
 import * as userActions from '_src/modules/user/actions'
 import { selectors } from '_src/modules/user/reducers'
 import history from '_src/history'
@@ -27,7 +26,7 @@ export function * attemptAutoLogIn () {
 
 export function * logIn ({ payload }) {
   try {
-    yield put(startSubmit(formConstants.LOGIN_FORM_NAME))
+    yield put(startSubmit(userConstants.LOGIN_FORM_NAME))
     yield call(validationLib.validate, payload, userConstants.logInConstraint)
 
     const cognitoUser = yield call(
@@ -36,14 +35,14 @@ export function * logIn ({ payload }) {
       payload.password
     )
 
-    yield put(stopSubmit(formConstants.LOGIN_FORM_NAME))
+    yield put(stopSubmit(userConstants.LOGIN_FORM_NAME))
     yield put(userActions.logInSucceeded(cognitoUser))
 
     // TODO could remember where the user was before logging in:
     yield call(history.push, '/')
   } catch (err) {
     yield put(userActions.logInFailed())
-    yield call(sagaLib.submitErrorHandler, err, formConstants.LOGIN_FORM_NAME)
+    yield call(sagaLib.submitErrorHandler, err, userConstants.LOGIN_FORM_NAME)
   }
 }
 

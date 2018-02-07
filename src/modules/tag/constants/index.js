@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+export const TAG_EDITOR_FORM_NAME = 'TagEditor'
+
 export const TAG_TYPE_MEDIUM = 'medium'
 export const TAG_TYPE_STYLE = 'style'
 export const TAG_TYPE_GEO = 'geo'

@@ -7,7 +7,6 @@ import normalise from '_src/lib/normalise'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as tagSagas from '_src/modules/tag/sagas'
-import * as formConstants from '_src/constants/form'
 import * as validationLib from '_src/lib/validation'
 import * as tagConstants from '_src/modules/tag/constants'
 import * as tagActions from '_src/modules/tag/actions'
@@ -87,7 +86,7 @@ describe('addTag', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(startSubmit(formConstants.TAG_EDITOR_FORM_NAME))
+      put(startSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     )
 
     result = generator.next()
@@ -149,12 +148,12 @@ describe('addTag', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(stopSubmit(formConstants.TAG_EDITOR_FORM_NAME))
+      put(stopSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(reset(formConstants.TAG_EDITOR_FORM_NAME)))
+    expect(result.value).toEqual(put(reset(tagConstants.TAG_EDITOR_FORM_NAME)))
 
     result = generatorClone.next()
 
@@ -176,11 +175,7 @@ describe('addTag', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      call(
-        sagaLib.submitErrorHandler,
-        error,
-        formConstants.TAG_EDITOR_FORM_NAME
-      )
+      call(sagaLib.submitErrorHandler, error, tagConstants.TAG_EDITOR_FORM_NAME)
     )
 
     result = generatorClone.next()
@@ -206,7 +201,7 @@ describe('addTag', () => {
       call(
         sagaLib.submitErrorHandler,
         { label: 'A tag with this label already exists' },
-        formConstants.TAG_EDITOR_FORM_NAME
+        tagConstants.TAG_EDITOR_FORM_NAME
       )
     )
 

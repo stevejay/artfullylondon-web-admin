@@ -14,7 +14,6 @@ import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
 import * as tagActions from '_src/modules/tag/actions'
-import * as formConstants from '_src/constants/form'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 // function * getAllTags () {
@@ -54,7 +53,7 @@ export function * getTags (action) {
 
 export function * addTag (action) {
   try {
-    yield put(startSubmit(formConstants.TAG_EDITOR_FORM_NAME))
+    yield put(startSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     yield put(tagActions.addTagStarted())
 
     const values = yield call(
@@ -76,7 +75,7 @@ export function * addTag (action) {
     //   const propertyName = getEventTagsPropertyName(tagType)
 
     //   const formValues = yield select(
-    //     getFormValues(formConstants.EDIT_EVENT_TAGS_FORM_NAME)
+    //     getFormValues(tagConstants.EDIT_EVENT_TAGS_FORM_NAME)
     //   )
 
     //   const tags = formValues[propertyName]
@@ -86,13 +85,13 @@ export function * addTag (action) {
     //     newTags.push(json.tag)
 
     //     yield put(
-    //       change(formConstants.EDIT_EVENT_TAGS_FORM_NAME, propertyName, newTags)
+    //       change(tagConstants.EDIT_EVENT_TAGS_FORM_NAME, propertyName, newTags)
     //     )
     //   }
     // }
 
-    yield put(stopSubmit(formConstants.TAG_EDITOR_FORM_NAME))
-    yield put(reset(formConstants.TAG_EDITOR_FORM_NAME))
+    yield put(stopSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
+    yield put(reset(tagConstants.TAG_EDITOR_FORM_NAME))
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.addTagFailed())
@@ -104,7 +103,7 @@ export function * addTag (action) {
     yield call(
       sagaLib.submitErrorHandler,
       payload,
-      formConstants.TAG_EDITOR_FORM_NAME
+      tagConstants.TAG_EDITOR_FORM_NAME
     )
   }
 }

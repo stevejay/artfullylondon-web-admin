@@ -1,3 +1,5 @@
+export const LOGIN_FORM_NAME = 'LogIn'
+
 export const AUTH_STATE_NOT_LOGGED_IN = 'AUTH_STATE_NOT_LOGGED_IN'
 export const AUTH_STATE_LOGGED_IN = 'AUTH_STATE_LOGGED_IN'
 

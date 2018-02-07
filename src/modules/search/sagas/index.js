@@ -8,7 +8,6 @@ import normalise from '_src/lib/normalise'
 import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as formConstants from '_src/constants/form'
 import * as searchLib from '_src/modules/search/lib/search'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchActions from '_src/modules/search/actions'
@@ -106,7 +105,7 @@ export function * basicSearch ({ payload }) {
     const requestUrl = yield call(searchLib.createBasicSearchRequestUrl, query)
     yield put(searchActions.startingBasicSearch())
     yield put(searchActions.setBasicSearchParams(query))
-    yield put(initialize(formConstants.BASIC_SEARCH_FORM_NAME, query))
+    yield put(initialize(searchConstants.BASIC_SEARCH_FORM_NAME, query))
     const json = yield call(fetchLib.get, requestUrl)
     yield put(searchActions.basicSearchSucceeded(json))
   } catch (err) {
@@ -115,7 +114,7 @@ export function * basicSearch ({ payload }) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      formConstants.BASIC_SEARCH_FORM_NAME
+      searchConstants.BASIC_SEARCH_FORM_NAME
     )
 
     yield put(searchActions.basicSearchFailed())

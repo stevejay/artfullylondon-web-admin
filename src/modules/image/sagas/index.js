@@ -19,7 +19,6 @@ import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '_src/modules/image/actions'
 import * as imageConstants from '_src/modules/image/constants'
-import * as formConstants from '_src/constants/form'
 
 export function * getImages (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))
@@ -29,7 +28,7 @@ export function * getImages (parentFormName) {
 export function * updateImage ({ payload, meta }) {
   try {
     const { id, parentFormName } = payload
-    yield put(startSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
+    yield put(startSubmit(imageConstants.UPDATE_IMAGE_FORM_NAME))
 
     const values = yield call(
       normalise,
@@ -55,7 +54,7 @@ export function * updateImage ({ payload, meta }) {
     newImages[imageIndex] = newImage
 
     yield put(change(parentFormName, 'images', newImages))
-    yield put(stopSubmit(formConstants.UPDATE_IMAGE_FORM_NAME))
+    yield put(stopSubmit(imageConstants.UPDATE_IMAGE_FORM_NAME))
     yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
@@ -63,7 +62,7 @@ export function * updateImage ({ payload, meta }) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      formConstants.UPDATE_IMAGE_FORM_NAME
+      imageConstants.UPDATE_IMAGE_FORM_NAME
     )
   }
 }

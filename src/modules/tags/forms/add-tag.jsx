@@ -9,7 +9,7 @@ import TextField from '_src/components/text/field'
 import ButtonField from '_src/components/button/field'
 import * as tagConstants from '_src/modules/tag/constants'
 
-export const AddTagForm = ({
+export const TagEditorForm = ({
   canAddTag,
   handleSubmit,
   pristine,
@@ -39,7 +39,7 @@ export const AddTagForm = ({
   </Form>
 )
 
-AddTagForm.propTypes = {
+TagEditorForm.propTypes = {
   canAddTag: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -55,4 +55,4 @@ export default reduxForm({
   form: tagConstants.TAG_EDITOR_FORM_NAME,
   enableReinitialize: true,
   touchOnBlur: false
-})(AddTagForm)
+})(TagEditorForm)

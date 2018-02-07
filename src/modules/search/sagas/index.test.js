@@ -13,7 +13,6 @@ import * as sagas from './index'
 import * as searchActions from '_src/modules/search/actions'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchLib from '_src/modules/search/lib/search'
-import * as formConstants from '_src/constants/form'
 
 describe('pushBasicSearchToUrl', () => {
   it('should create the url and push it', () => {
@@ -221,7 +220,7 @@ describe('basicSearch', () => {
 
     expect(result.value).toEqual(
       put(
-        initialize(formConstants.BASIC_SEARCH_FORM_NAME, {
+        initialize(searchConstants.BASIC_SEARCH_FORM_NAME, {
           term: 'normalised term'
         })
       )
@@ -271,7 +270,7 @@ describe('basicSearch', () => {
       call(
         sagaLib.submitErrorHandler,
         error,
-        formConstants.BASIC_SEARCH_FORM_NAME
+        searchConstants.BASIC_SEARCH_FORM_NAME
       )
     )
 

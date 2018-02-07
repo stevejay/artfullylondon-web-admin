@@ -6,10 +6,11 @@ import SearchIcon from 'react-icons/lib/fa/search'
 import IconButton from '_src/components/button/icon'
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
-import SearchInputFieldBasic from '_src/modules/search/components/search-input/field-basic'
-import SearchInputToolbar from '_src/modules/search/components/search-input/toolbar'
+import SearchInputFieldBasic
+  from '_src/modules/search/components/search-input/field-basic'
+import SearchInputToolbar
+  from '_src/modules/search/components/search-input/toolbar'
 import * as entityConstants from '_src/constants/entity'
-import * as formConstants from '_src/constants/form'
 import * as browserConstants from '_src/constants/browser'
 import * as searchConstants from '_src/modules/search/constants'
 
@@ -77,7 +78,7 @@ QuicksearchForm.defaultProps = {
 
 /* istanbul ignore next */
 export default reduxForm({
-  form: formConstants.HEADER_SEARCH_FORM_NAME,
+  form: searchConstants.HEADER_SEARCH_FORM_NAME,
   initialValues: {
     term: '',
     entityType: entityConstants.ENTITY_TYPE_ALL

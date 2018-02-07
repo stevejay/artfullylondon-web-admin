@@ -7,7 +7,6 @@ import FormRow from '_src/components/form/row'
 import TextField from '_src/components/text/field'
 import FormButtons from '_src/components/form/buttons'
 import Divider from '_src/components/divider'
-import * as formConstants from '_src/constants/form'
 import * as imageConstants from '_src/modules/image/constants'
 import './update-image-form.scss'
 
@@ -41,6 +40,6 @@ UpdateImageForm.propTypes = {
 }
 
 export default reduxForm({
-  form: formConstants.UPDATE_IMAGE_FORM_NAME,
+  form: imageConstants.UPDATE_IMAGE_FORM_NAME,
   enableReinitialize: true
 })(UpdateImageForm)
