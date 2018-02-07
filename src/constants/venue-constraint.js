@@ -1,5 +1,4 @@
 import { ALLOWED_VENUE_TYPES } from '_src/constants/venue'
-import { ALLOWED_LINK_TYPES } from '_src/constants/link'
 import {
   ALLOWED_WHEELCHAIR_ACCESS_TYPES,
   ALLOWED_DISABLED_BATHROOM_TYPES,
@@ -43,12 +42,6 @@ export default {
   hearingFacilitiesType: {
     presence: { disallowEmpty: true },
     inclusion: { within: ALLOWED_HEARING_FACILITIES_TYPES }
-  },
-  links: {
-    length: {
-      maximum: ALLOWED_LINK_TYPES.length,
-      tooLong: 'has too many elements'
-    }
   },
   images: {
     length: { maximum: 10, tooLong: 'has too many elements' }

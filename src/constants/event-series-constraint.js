@@ -1,5 +1,4 @@
 import { ALLOWED_EVENT_SERIES_TYPES } from '_src/constants/event-series'
-import { ALLOWED_LINK_TYPES } from '_src/constants/link'
 
 export default {
   name: {
@@ -20,12 +19,6 @@ export default {
   },
   descriptionCredit: {
     length: { maximum: 200 }
-  },
-  links: {
-    length: {
-      maximum: ALLOWED_LINK_TYPES.length,
-      tooLong: 'has too many elements'
-    }
   },
   images: {
     length: { maximum: 10, tooLong: 'has too many elements' }

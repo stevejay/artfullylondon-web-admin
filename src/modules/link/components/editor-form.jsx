@@ -7,8 +7,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import TextField from '_src/components/text/field'
 import SelectField from '_src/components/select/field'
-import * as formConstants from '_src/constants/form'
-import linkConstraint from '_src/constants/link-constraint'
+import * as linkConstants from '_src/modules/link/constants'
 
 export const LinksEditorForm = ({
   pristine,
@@ -34,7 +33,7 @@ export const LinksEditorForm = ({
         name='linkUrl'
         component={TextField}
         required
-        maxLength={linkConstraint.linkUrl.length.maximum}
+        maxLength={linkConstants.LINK_CONSTRAINT.linkUrl.length.maximum}
         autos={false}
         forceSingleLine
         containerStyle={{ flexBasis: 'auto' }}
@@ -60,6 +59,6 @@ LinksEditorForm.propTypes = {
   error: PropTypes.any
 }
 
-export default reduxForm({ form: formConstants.LINK_EDITOR_FORM_NAME })(
+export default reduxForm({ form: linkConstants.LINK_EDITOR_FORM_NAME })(
   LinksEditorForm
 )

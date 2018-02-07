@@ -1,5 +1,3 @@
-import { ALLOWED_LINK_TYPES } from '_src/constants/link'
-
 export default {
   firstNames: {
     length: { maximum: 200 }
@@ -11,12 +9,6 @@ export default {
   commonRole: {
     presence: { disallowEmpty: true },
     length: { maximum: 200 }
-  },
-  links: {
-    length: {
-      maximum: ALLOWED_LINK_TYPES.length,
-      tooLong: 'has too many elements'
-    }
   },
   images: {
     length: {

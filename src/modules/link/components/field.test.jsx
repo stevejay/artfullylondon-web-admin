@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import LinksField from '_src/components/links/field'
+import LinksField from './field'
+import * as linkConstants from '_src/constants/link'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -12,7 +13,7 @@ it('should render correctly', () => {
         value: [
           {
             key: 'some-key',
-            type: 'Facebook',
+            type: linkConstants.LINK_TYPE_FACEBOOK,
             url: 'http://some/url'
           }
         ],
@@ -30,7 +31,13 @@ it('should render correctly', () => {
 
 describe('shouldComponentUpdate', () => {
   it('should not update when props have not changed', () => {
-    const value = [{ key: 'key', type: 'Facebook', url: 'http://some/url' }]
+    const value = [
+      {
+        key: 'key',
+        type: linkConstants.LINK_TYPE_FACEBOOK,
+        url: 'http://some/url'
+      }
+    ]
 
     const wrapper = shallow(
       <LinksField
@@ -55,7 +62,13 @@ describe('shouldComponentUpdate', () => {
   })
 
   it('should update when props have changed', () => {
-    const value = [{ key: 'key', type: 'Facebook', url: 'http://some/url' }]
+    const value = [
+      {
+        key: 'key',
+        type: linkConstants.LINK_TYPE_FACEBOOK,
+        url: 'http://some/url'
+      }
+    ]
 
     const wrapper = shallow(
       <LinksField

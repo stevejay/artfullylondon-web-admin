@@ -9,25 +9,29 @@ import {
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import linkConstraint from '_src/constants/link-constraint'
-import linkNormaliser from '_src/constants/link-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
+import * as linkLib from '_src/modules/link/lib/link'
 import * as linkActions from '_src/modules/link/actions'
-import * as formConstants from '_src/constants/form'
+import * as linkConstants from '_src/modules/link/constants'
 
 export function * addLink (action) {
   try {
-    yield put(startSubmit(formConstants.LINK_EDITOR_FORM_NAME))
+    yield put(startSubmit(linkConstants.LINK_EDITOR_FORM_NAME))
 
     const { parentFormName } = action.payload
-    const values = yield call(normalise, action.payload.values, linkNormaliser)
+
+    const values = yield call(
+      normalise,
+      action.payload.values,
+      linkConstants.LINK_NORMALISER
+    )
 
     yield call(
       validationLib.validate,
       values,
-      linkConstraint,
-      validationLib.validateLink
+      linkConstants.LINK_CONSTRAINT,
+      linkLib.validateLink
     )
 
     const links = yield call(getLinks, parentFormName)
@@ -42,15 +46,15 @@ export function * addLink (action) {
     newLinks.push(newLink)
 
     yield put(change(parentFormName, 'links', newLinks))
-    yield put(reset(formConstants.LINK_EDITOR_FORM_NAME))
-    yield put(stopSubmit(formConstants.LINK_EDITOR_FORM_NAME))
+    yield put(reset(linkConstants.LINK_EDITOR_FORM_NAME))
+    yield put(stopSubmit(linkConstants.LINK_EDITOR_FORM_NAME))
   } catch (err) {
     yield call(log.error, err)
 
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      formConstants.LINK_EDITOR_FORM_NAME
+      linkConstants.LINK_EDITOR_FORM_NAME
     )
   }
 }
@@ -66,7 +70,7 @@ export function * deleteLink (action) {
   }
 }
 
-function * getLinks (parentFormName) {
+export function * getLinks (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))
   return formValues.links
 }

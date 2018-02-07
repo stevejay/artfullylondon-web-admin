@@ -41,7 +41,7 @@ exports[`should render correctly 1`] = `
     />
     <Component />
     <Grid>
-      <LinkGridRow
+      <LinksGridRow
         key="some-key"
         onDelete={[Function]}
         value={

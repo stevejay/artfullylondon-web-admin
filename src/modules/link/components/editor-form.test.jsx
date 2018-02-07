@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import { LinksEditorForm } from '_src/components/links/editor-form'
+import { LinksEditorForm } from './editor-form'
 
 it('should render correctly', () => {
   const wrapper = shallow(

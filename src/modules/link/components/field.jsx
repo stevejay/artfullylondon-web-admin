@@ -5,9 +5,9 @@ import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
-import LinkGridRow from '_src/components/links/grid-row'
-import LinksEditorForm from '_src/components/links/editor-form'
-import * as linkLib from '_src/lib/link'
+import LinksGridRow from '_src/modules/link/components/grid-row'
+import LinksEditorForm from '_src/modules/link/components/editor-form'
+import * as linkLib from '_src/modules/link/lib/link'
 
 class LinksField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -43,7 +43,7 @@ class LinksField extends React.Component {
           <FieldDivider />
           <Grid>
             {value.map(element => (
-              <LinkGridRow
+              <LinksGridRow
                 key={element.key}
                 value={element}
                 onDelete={onDeleteLink}
