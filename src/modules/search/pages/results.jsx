@@ -13,7 +13,7 @@ import SearchResults from '_src/modules/search/components/search/results'
 import SectionHeading from '_src/components/section/heading'
 import BasicSearchForm from '_src/modules/search/forms/basic-search'
 import { selectors as searchSelectors } from '_src/modules/search/reducers'
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchActions from '_src/modules/search/actions'
@@ -79,7 +79,7 @@ export class SearchResultsPage extends React.Component {
   render () {
     const { searchInProgress, resultParams, items, total } = this.props
 
-    const dateStr = timeLib.getTodayDateAsString()
+    const dateStr = dateLib.getTodayDateAsString()
     const hasResults = !!resultParams && !_.isEmpty(items)
     const noResults = !searchInProgress && !hasResults && !_.isNil(items)
 

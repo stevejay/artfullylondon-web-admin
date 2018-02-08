@@ -6,12 +6,12 @@ import { SummaryVenue } from '_src/entities/venue'
 import SearchResults from '_src/modules/search/components/search/results'
 import BasicSearchForm from '_src/modules/search/forms/basic-search'
 import NoResults from '_src/modules/search/components/search/no-results'
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import * as searchConstants from '_src/modules/search/constants'
 import * as searchActions from '_src/modules/search/actions'
 import * as entityConstants from '_src/constants/entity'
 
-timeLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
+dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
 
 it('should render correctly when search returned results', () => {
   const wrapper = shallow(

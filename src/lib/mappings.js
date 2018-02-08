@@ -1,7 +1,7 @@
 import RichTextEditor from 'react-rte'
 
 import * as imageLib from '_src/lib/image'
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import * as eventLib from '_src/lib/event'
 import * as entityLib from '_src/lib/entity'
 import * as talentLib from '_src/lib/talent'
@@ -48,7 +48,7 @@ export function normaliseEventValues (values) {
     isOneTimePerformance || (hasRange && values.dateFrom === values.dateTo)
 
   const isLongerThanWeek =
-    hasRange && timeLib.periodIsLongerThanWeek(values.dateFrom, values.dateTo)
+    hasRange && dateLib.periodIsLongerThanWeek(values.dateFrom, values.dateTo)
 
   values.useVenueOpeningTimes = isExhibition && values.useVenueOpeningTimes
 
@@ -122,7 +122,7 @@ export function normaliseEventValues (values) {
 export function mapTalentToServer (values) {
   const isIndividual = talentLib.isIndividualTalent(values.talentType)
   const firstNames = isIndividual ? (values.firstNames || '').trim() : ''
-  const dbDate = timeLib.getDateNowForDatabase()
+  const dbDate = dateLib.getDateNowForDatabase()
 
   return {
     firstNames: firstNames,
@@ -164,7 +164,7 @@ export function mapTalentFromServer (payload) {
 }
 
 export function mapVenueToServer (values) {
-  const dbDate = timeLib.getDateNowForDatabase()
+  const dbDate = dateLib.getDateNowForDatabase()
 
   return {
     name: values.name.trim(),
@@ -245,7 +245,7 @@ export function mapVenueFromServer (payload) {
 }
 
 export function mapEventToServer (values) {
-  const dbDate = timeLib.getDateNowForDatabase()
+  const dbDate = dateLib.getDateNowForDatabase()
   const isFree = !eventLib.eventIsPaid(values.costType)
   const costFrom = isFree ? null : parseFloat(values.costFrom)
   const costTo = isFree ? null : parseFloat(values.costTo)
@@ -399,7 +399,7 @@ export function mapEventSeriesFromServerForEvent (payload) {
 }
 
 export function mapEventSeriesToServer (values) {
-  const dbDate = timeLib.getDateNowForDatabase()
+  const dbDate = dateLib.getDateNowForDatabase()
 
   const result = {
     name: values.name.trim(),
@@ -526,7 +526,7 @@ function _mapTimesRangesFromServer (timesRanges) {
 
 function _mapOpeningTimesFromServer (openingTimes) {
   return (openingTimes || []).map(openingTime => ({
-    key: timeLib.createTimeKey(openingTime),
+    key: dateLib.createTimeKey(openingTime),
     day: openingTime.day.toString(),
     from: openingTime.from,
     to: openingTime.to,
@@ -536,7 +536,7 @@ function _mapOpeningTimesFromServer (openingTimes) {
 
 function _mapAdditionalOpeningTimesFromServer (additionalOpeningTimes) {
   return (additionalOpeningTimes || []).map(addition => ({
-    key: timeLib.createTimeKey(addition),
+    key: dateLib.createTimeKey(addition),
     date: addition.date,
     from: addition.from,
     to: addition.to
@@ -545,7 +545,7 @@ function _mapAdditionalOpeningTimesFromServer (additionalOpeningTimes) {
 
 function _mapAdditionalPerformancesFromServer (additionalPerformances) {
   return (additionalPerformances || []).map(addition => ({
-    key: timeLib.createTimeKey(addition),
+    key: dateLib.createTimeKey(addition),
     date: addition.date,
     at: addition.at
   }))
@@ -553,7 +553,7 @@ function _mapAdditionalPerformancesFromServer (additionalPerformances) {
 
 function _mapSpecialOpeningTimesFromServer (specialOpeningTimes) {
   return (specialOpeningTimes || []).map(special => ({
-    key: timeLib.createTimeKey(special),
+    key: dateLib.createTimeKey(special),
     date: special.date,
     from: special.from,
     to: special.to,
@@ -563,7 +563,7 @@ function _mapSpecialOpeningTimesFromServer (specialOpeningTimes) {
 
 function _mapSpecialPerformancesFromServer (specialPerformances) {
   return (specialPerformances || []).map(special => ({
-    key: timeLib.createTimeKey(special),
+    key: dateLib.createTimeKey(special),
     date: special.date,
     at: special.at,
     audienceTags: _mapAudienceTagsFromServer(special.audienceTags)
@@ -580,7 +580,7 @@ function _mapClosuresFromServer (closures) {
 function _mapOpeningTimesClosuresFromServer (openingTimesClosures) {
   return (openingTimesClosures || []).map(closure => {
     const result = {
-      key: timeLib.createTimeKey(closure),
+      key: dateLib.createTimeKey(closure),
       date: closure.date
     }
 
@@ -596,7 +596,7 @@ function _mapOpeningTimesClosuresFromServer (openingTimesClosures) {
 function _mapPerformancesClosuresFromServer (peformancesClosures) {
   return (peformancesClosures || []).map(closure => {
     const result = {
-      key: timeLib.createTimeKey(closure),
+      key: dateLib.createTimeKey(closure),
       date: closure.date
     }
 
@@ -614,7 +614,7 @@ function _mapNamedClosuresFromServer (namedClosures) {
 
 function _mapPerformancesFromServer (performances) {
   return (performances || []).map(performance => ({
-    key: timeLib.createTimeKey(performance),
+    key: dateLib.createTimeKey(performance),
     day: performance.day.toString(),
     at: performance.at,
     timesRangeId: performance.timesRangeId

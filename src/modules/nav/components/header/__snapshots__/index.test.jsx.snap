@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when has an error 1`] = `""`;
+
+exports[`should render correctly when logged in 1`] = `
+<React.Fragment>
+  <HeaderLogo
+    className="src-modules-nav-components-header-index__logo"
+    size="medium"
+  />
+  <Toolbar
+    className="src-modules-nav-components-header-index__wide-toolbar"
+  >
+    <ToolbarItem
+      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      key="Entities"
+    >
+      <Dropdown
+        className="src-modules-nav-components-header-index__dropdown"
+        items={
+          Array [
+            Object {
+              "label": "Add Event",
+              "match": /\\^\\\\/event\\$/i,
+              "path": "/event",
+              "value": "/event",
+            },
+            Object {
+              "label": "Add Event Series",
+              "match": /\\^\\\\/event-series\\$/i,
+              "path": "/event-series",
+              "value": "/event-series",
+            },
+            Object {
+              "label": "Add Talent",
+              "match": /\\^\\\\/talent\\$/i,
+              "path": "/talent",
+              "value": "/talent",
+            },
+            Object {
+              "label": "Add Venue",
+              "match": /\\^\\\\/venue\\$/i,
+              "path": "/venue",
+              "value": "/venue",
+            },
+          ]
+        }
+        onChange={[Function]}
+        value="Entities"
+      />
+    </ToolbarItem>
+    <ToolbarItem
+      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      key="Tags"
+    >
+      <Dropdown
+        className="src-modules-nav-components-header-index__dropdown"
+        items={
+          Array [
+            Object {
+              "label": "Medium Tags",
+              "match": /\\^\\\\/tags\\\\/medium\\$/i,
+              "path": "/tags/medium",
+              "value": "/tags/medium",
+            },
+            Object {
+              "label": "Style Tags",
+              "match": /\\^\\\\/tags\\\\/style\\$/i,
+              "path": "/tags/style",
+              "value": "/tags/style",
+            },
+            Object {
+              "label": "Audience Tags",
+              "match": /\\^\\\\/tags\\\\/audience\\$/i,
+              "path": "/tags/audience",
+              "value": "/tags/audience",
+            },
+            Object {
+              "label": "Geo Tags",
+              "match": /\\^\\\\/tags\\\\/geo\\$/i,
+              "path": "/tags/geo",
+              "value": "/tags/geo",
+            },
+          ]
+        }
+        onChange={[Function]}
+        value="Tags"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        aria-label="Log out of the app"
+        onClick={[Function]}
+        type="button"
+      >
+        Log Out
+      </Button>
+    </ToolbarItem>
+    <ToolbarItem>
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+  </Toolbar>
+  <Toolbar
+    className="src-modules-nav-components-header-index__narrow-toolbar"
+  >
+    <ToolbarItem>
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <IconButton
+        aria-controls="sidenav"
+        aria-label="Show navigation menu"
+        ariaExpanded={false}
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+  </Toolbar>
+</React.Fragment>
+`;
+
+exports[`should render correctly when showing the sidenav 1`] = `
+<React.Fragment>
+  <HeaderLogo
+    className="src-modules-nav-components-header-index__logo"
+    size="medium"
+  />
+  <Toolbar
+    className="src-modules-nav-components-header-index__wide-toolbar"
+  >
+    <ToolbarItem
+      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      key="Entities"
+    >
+      <Dropdown
+        className="src-modules-nav-components-header-index__dropdown"
+        items={
+          Array [
+            Object {
+              "label": "Add Event",
+              "match": /\\^\\\\/event\\$/i,
+              "path": "/event",
+              "value": "/event",
+            },
+            Object {
+              "label": "Add Event Series",
+              "match": /\\^\\\\/event-series\\$/i,
+              "path": "/event-series",
+              "value": "/event-series",
+            },
+            Object {
+              "label": "Add Talent",
+              "match": /\\^\\\\/talent\\$/i,
+              "path": "/talent",
+              "value": "/talent",
+            },
+            Object {
+              "label": "Add Venue",
+              "match": /\\^\\\\/venue\\$/i,
+              "path": "/venue",
+              "value": "/venue",
+            },
+          ]
+        }
+        onChange={[Function]}
+        value="Entities"
+      />
+    </ToolbarItem>
+    <ToolbarItem
+      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      key="Tags"
+    >
+      <Dropdown
+        className="src-modules-nav-components-header-index__dropdown"
+        items={
+          Array [
+            Object {
+              "label": "Medium Tags",
+              "match": /\\^\\\\/tags\\\\/medium\\$/i,
+              "path": "/tags/medium",
+              "value": "/tags/medium",
+            },
+            Object {
+              "label": "Style Tags",
+              "match": /\\^\\\\/tags\\\\/style\\$/i,
+              "path": "/tags/style",
+              "value": "/tags/style",
+            },
+            Object {
+              "label": "Audience Tags",
+              "match": /\\^\\\\/tags\\\\/audience\\$/i,
+              "path": "/tags/audience",
+              "value": "/tags/audience",
+            },
+            Object {
+              "label": "Geo Tags",
+              "match": /\\^\\\\/tags\\\\/geo\\$/i,
+              "path": "/tags/geo",
+              "value": "/tags/geo",
+            },
+          ]
+        }
+        onChange={[Function]}
+        value="Tags"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Button
+        aria-label="Log out of the app"
+        onClick={[Function]}
+        type="button"
+      >
+        Log Out
+      </Button>
+    </ToolbarItem>
+    <ToolbarItem>
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+  </Toolbar>
+  <Toolbar
+    className="src-modules-nav-components-header-index__narrow-toolbar"
+  >
+    <ToolbarItem>
+      <IconButton
+        aria-label="Show quicksearch dialog"
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <IconButton
+        aria-controls="sidenav"
+        aria-label="Show navigation menu"
+        ariaExpanded={true}
+        icon={[Function]}
+        onClick={[Function]}
+        type="default"
+      />
+    </ToolbarItem>
+  </Toolbar>
+</React.Fragment>
+`;

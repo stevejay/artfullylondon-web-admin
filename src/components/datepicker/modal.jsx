@@ -5,11 +5,11 @@ import DayPicker, { DateUtils } from 'react-day-picker'
 import Modal from '_src/components/modal'
 import ModalContainer from '_src/components/modal/container'
 import FadeTransition from '_src/components/transition/fade'
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import './modal.scss'
 
-const MIN_JS_DATE = timeLib.getMinJSDate()
-const MAX_JS_DATE = timeLib.getMaxJSDate()
+const MIN_JS_DATE = new Date(0)
+const MAX_JS_DATE = new Date(8640000000000000)
 
 class DatepickerModal extends React.Component {
   constructor (props) {
@@ -26,7 +26,7 @@ class DatepickerModal extends React.Component {
     }
   }
   handleDayClick = (_, day) => {
-    this.props.onChange({ date: timeLib.mapJsDateToStringDate(day) })
+    this.props.onChange({ date: dateLib.mapJsDateToStringDate(day) })
     this.props.onHide()
   }
   selectedDays = day => {
@@ -40,9 +40,9 @@ class DatepickerModal extends React.Component {
     })
   _createState (props) {
     return {
-      selectedDay: timeLib.mapStringDateToJsDate(props.value),
-      from: timeLib.mapStringDateToJsDate(props.minDate),
-      to: timeLib.mapStringDateToJsDate(props.maxDate)
+      selectedDay: dateLib.mapStringDateToJsDate(props.value),
+      from: dateLib.mapStringDateToJsDate(props.minDate),
+      to: dateLib.mapStringDateToJsDate(props.maxDate)
     }
   }
   render () {

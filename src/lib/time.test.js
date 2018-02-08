@@ -1,6 +1,3 @@
-import moment from 'moment'
-import 'moment-timezone'
-
 import * as entityConstants from '_src/constants/entity'
 import * as eventConstants from '_src/constants/event'
 import * as timeLib from '_src/lib/time'
@@ -16,14 +13,6 @@ const dateAfterTodayThree = '2016/11/24' // 24th Nov 2016
 const dateAfterTodayFour = '2016/11/25' // 25th Nov 2016
 const dateAfterTodayFourDayNumber = 2
 
-const VENUE_WITH_OPENING_TIMES = {
-  openingTimes: [{}]
-}
-
-const VENUE_WITHOUT_OPENING_TIMES = {
-  openingTimes: []
-}
-
 const activeNamedClosuresLookup = {
   Named1: {
     '2016': [dateAfterTodayOne],
@@ -36,26 +25,6 @@ const activeNamedClosuresLookup = {
 }
 
 const emptyNamedClosuresLookup = {}
-
-describe('mapJsDateToStringDate', () => {
-  const tests = [
-    {
-      arg: new Date(0),
-      expected: '1970/01/01'
-    },
-    {
-      arg: null,
-      expected: null
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = timeLib.mapJsDateToStringDate(test.arg)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
 
 describe('addDaysToStringDate', () => {
   const tests = [
@@ -112,43 +81,6 @@ describe('formatOpeningTimesOrPerformanceTimeForDisplay', () => {
       )
       expect(actual).toEqual(test.expected)
     })
-  })
-})
-
-describe('formatStringDateForDisplay', () => {
-  const tests = [
-    {
-      args: {
-        date: new Date(0),
-        includeDayName: false
-      },
-      expected: '1st Jan 1970'
-    },
-    {
-      args: {
-        date: new Date(0),
-        includeDayName: true
-      },
-      expected: 'Thursday, 1st Jan 1970'
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      const actual = timeLib.formatStringDateForDisplay(
-        test.args.date,
-        test.args.includeDayName
-      )
-
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('getTodayDateAsString', () => {
-  it('should return a string in a valid format', () => {
-    const actual = timeLib.getTodayDateAsString()
-    expect(actual).toEqual(expect.stringMatching(/^20\d\d\/\d\d\/\d\d$/))
   })
 })
 
@@ -1707,569 +1639,343 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
   })
 })
 
-describe('getEventTimesFormDisplayFlags', () => {
-  const tests = [
-    {
-      it: 'should handle a one-time performance',
-      args: {
-        eventType: 'Performance',
-        occurrenceType: 'OneTime',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20'
-      },
-      expected: {
-        showPerformances: false,
-        showAdditionalPerformances: false,
-        showAdditionalPerformancesAsPerformances: true,
-        showSpecialPerformances: false,
-        showPerformancesClosures: false,
-        showTimesRanges: false
-      }
-    },
+// describe('getEventTimesFormDisplayFlags', () => {
+//   const tests = [
+//     {
+//       it: 'should handle a one-time performance',
+//       args: {
+//         eventType: 'Performance',
+//         occurrenceType: 'OneTime',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/20'
+//       },
+//       expected: {
+//         showPerformances: false,
+//         showAdditionalPerformances: false,
+//         showAdditionalPerformancesAsPerformances: true,
+//         showSpecialPerformances: false,
+//         showPerformancesClosures: false,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a one-day performance',
-      args: {
-        eventType: 'Performance',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20'
-      },
-      expected: {
-        showPerformances: false,
-        showAdditionalPerformances: false,
-        showAdditionalPerformancesAsPerformances: true,
-        showSpecialPerformances: true,
-        showPerformancesClosures: false,
-        showTimesRanges: false
-      }
-    },
+//     {
+//       it: 'should handle a one-day performance',
+//       args: {
+//         eventType: 'Performance',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/20'
+//       },
+//       expected: {
+//         showPerformances: false,
+//         showAdditionalPerformances: false,
+//         showAdditionalPerformancesAsPerformances: true,
+//         showSpecialPerformances: true,
+//         showPerformancesClosures: false,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a four-day performance',
-      args: {
-        eventType: 'Performance',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/23'
-      },
-      expected: {
-        showPerformances: false,
-        showAdditionalPerformances: false,
-        showAdditionalPerformancesAsPerformances: true,
-        showSpecialPerformances: true,
-        showPerformancesClosures: true,
-        showTimesRanges: false
-      }
-    },
+//     {
+//       it: 'should handle a four-day performance',
+//       args: {
+//         eventType: 'Performance',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/23'
+//       },
+//       expected: {
+//         showPerformances: false,
+//         showAdditionalPerformances: false,
+//         showAdditionalPerformancesAsPerformances: true,
+//         showSpecialPerformances: true,
+//         showPerformancesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a four-week performance',
-      args: {
-        eventType: 'Performance',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/02/16'
-      },
-      expected: {
-        showPerformances: true,
-        showAdditionalPerformances: true,
-        showAdditionalPerformancesAsPerformances: false,
-        showSpecialPerformances: true,
-        showPerformancesClosures: true,
-        showTimesRanges: true
-      }
-    },
+//     {
+//       it: 'should handle a four-week performance',
+//       args: {
+//         eventType: 'Performance',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/02/16'
+//       },
+//       expected: {
+//         showPerformances: true,
+//         showAdditionalPerformances: true,
+//         showAdditionalPerformancesAsPerformances: false,
+//         showSpecialPerformances: true,
+//         showPerformancesClosures: true,
+//         showTimesRanges: true
+//       }
+//     },
 
-    {
-      it: 'should handle a continuous performance',
-      args: {
-        eventType: 'Performance',
-        occurrenceType: 'Continuous'
-      },
-      expected: {
-        showPerformances: true,
-        showAdditionalPerformances: true,
-        showAdditionalPerformancesAsPerformances: false,
-        showSpecialPerformances: true,
-        showPerformancesClosures: true,
-        showTimesRanges: false
-      }
-    },
+//     {
+//       it: 'should handle a continuous performance',
+//       args: {
+//         eventType: 'Performance',
+//         occurrenceType: 'Continuous'
+//       },
+//       expected: {
+//         showPerformances: true,
+//         showAdditionalPerformances: true,
+//         showAdditionalPerformancesAsPerformances: false,
+//         showSpecialPerformances: true,
+//         showPerformancesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a one-day exhibition for a venue with no opening times',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20',
-        venue: VENUE_WITHOUT_OPENING_TIMES
-      },
-      expected: {
-        showUseVenueTimesOption: false,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: false,
-        showAdditionalOpeningTimesAsOpeningTimes: true,
-        showSpecialOpeningTimes: false,
-        showOpeningTimesClosures: false,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a one-day exhibition for a venue with opening times that are used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: true
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: false,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: false,
-        showOpeningTimesClosures: false,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a one-day exhibition for a venue with opening times that are not used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: false
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: false,
-        showAdditionalOpeningTimesAsOpeningTimes: true,
-        showSpecialOpeningTimes: false,
-        showOpeningTimesClosures: false,
-        showTimesRanges: false
-      }
-    },
+//     {
+//       it: 'should handle a one-day exhibition for a venue with no opening times',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/20',
+//         venue: VENUE_WITHOUT_OPENING_TIMES
+//       },
+//       expected: {
+//         showUseVenueTimesOption: false,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: false,
+//         showAdditionalOpeningTimesAsOpeningTimes: true,
+//         showSpecialOpeningTimes: false,
+//         showOpeningTimesClosures: false,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a one-day exhibition for a venue with opening times that are used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/20',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: true
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: false,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: false,
+//         showOpeningTimesClosures: false,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a one-day exhibition for a venue with opening times that are not used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/20',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: false
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: false,
+//         showAdditionalOpeningTimesAsOpeningTimes: true,
+//         showSpecialOpeningTimes: false,
+//         showOpeningTimesClosures: false,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a four-day exhibition for a venue with no opening times',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/23',
-        venue: VENUE_WITHOUT_OPENING_TIMES
-      },
-      expected: {
-        showUseVenueTimesOption: false,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: false,
-        showAdditionalOpeningTimesAsOpeningTimes: true,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a four-day exhibition for a venue with opening times that are used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/23',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: true
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a four-day exhibition for a venue with opening times that are not used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/23',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: false
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: false,
-        showAdditionalOpeningTimesAsOpeningTimes: true,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
+//     {
+//       it: 'should handle a four-day exhibition for a venue with no opening times',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/23',
+//         venue: VENUE_WITHOUT_OPENING_TIMES
+//       },
+//       expected: {
+//         showUseVenueTimesOption: false,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: false,
+//         showAdditionalOpeningTimesAsOpeningTimes: true,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a four-day exhibition for a venue with opening times that are used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/23',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: true
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a four-day exhibition for a venue with opening times that are not used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/01/23',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: false
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: false,
+//         showAdditionalOpeningTimesAsOpeningTimes: true,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
 
-    {
-      it: 'should handle a four-week exhibition for a venue with no opening times',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/02/16',
-        venue: VENUE_WITHOUT_OPENING_TIMES
-      },
-      expected: {
-        showUseVenueTimesOption: false,
-        showOpeningTimes: true,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: true
-      }
-    },
-    {
-      it: 'should handle a four-week exhibition for a venue with opening times that are used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/02/16',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: true
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a four-week exhibition for a venue with opening times that are not used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Bounded',
-        dateFrom: '2017/01/20',
-        dateTo: '2017/02/16',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: false
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: true,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: true
-      }
-    },
+//     {
+//       it: 'should handle a four-week exhibition for a venue with no opening times',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/02/16',
+//         venue: VENUE_WITHOUT_OPENING_TIMES
+//       },
+//       expected: {
+//         showUseVenueTimesOption: false,
+//         showOpeningTimes: true,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: true
+//       }
+//     },
+//     {
+//       it: 'should handle a four-week exhibition for a venue with opening times that are used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/02/16',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: true
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a four-week exhibition for a venue with opening times that are not used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Bounded',
+//         dateFrom: '2017/01/20',
+//         dateTo: '2017/02/16',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: false
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: true,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: true
+//       }
+//     },
 
-    {
-      it: 'should handle a continuous exhibition for a venue with no opening times',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Continuous',
-        venue: VENUE_WITHOUT_OPENING_TIMES
-      },
-      expected: {
-        showUseVenueTimesOption: false,
-        showOpeningTimes: true,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a continuous exhibition for a venue with opening times that are used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Continuous',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: true
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: false,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    },
-    {
-      it: 'should handle a continuous exhibition for a venue with opening times that are not used',
-      args: {
-        eventType: 'Exhibition',
-        occurrenceType: 'Continuous',
-        venue: VENUE_WITH_OPENING_TIMES,
-        useVenueOpeningTimes: false
-      },
-      expected: {
-        showUseVenueTimesOption: true,
-        showOpeningTimes: true,
-        showAdditionalOpeningTimes: true,
-        showAdditionalOpeningTimesAsOpeningTimes: false,
-        showSpecialOpeningTimes: true,
-        showOpeningTimesClosures: true,
-        showTimesRanges: false
-      }
-    }
-  ]
+//     {
+//       it: 'should handle a continuous exhibition for a venue with no opening times',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Continuous',
+//         venue: VENUE_WITHOUT_OPENING_TIMES
+//       },
+//       expected: {
+//         showUseVenueTimesOption: false,
+//         showOpeningTimes: true,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a continuous exhibition for a venue with opening times that are used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Continuous',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: true
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: false,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     },
+//     {
+//       it: 'should handle a continuous exhibition for a venue with opening times that are not used',
+//       args: {
+//         eventType: 'Exhibition',
+//         occurrenceType: 'Continuous',
+//         venue: VENUE_WITH_OPENING_TIMES,
+//         useVenueOpeningTimes: false
+//       },
+//       expected: {
+//         showUseVenueTimesOption: true,
+//         showOpeningTimes: true,
+//         showAdditionalOpeningTimes: true,
+//         showAdditionalOpeningTimesAsOpeningTimes: false,
+//         showSpecialOpeningTimes: true,
+//         showOpeningTimesClosures: true,
+//         showTimesRanges: false
+//       }
+//     }
+//   ]
 
-  tests.map(test => {
-    it(test.it, () => {
-      const actual = timeLib.getEventTimesFormDisplayFlags(
-        test.args.eventType,
-        test.args.occurrenceType,
-        test.args.dateFrom,
-        test.args.dateTo,
-        test.args.venue,
-        test.args.useVenueOpeningTimes
-      )
+//   tests.map(test => {
+//     it(test.it, () => {
+//       const actual = timeLib.getEventTimesFormDisplayFlags(
+//         test.args.eventType,
+//         test.args.occurrenceType,
+//         test.args.dateFrom,
+//         test.args.dateTo,
+//         test.args.venue,
+//         test.args.useVenueOpeningTimes
+//       )
 
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('periodIsLongerThanWeek', () => {
-  const tests = [
-    {
-      it: 'should handle period equal to week',
-      args: {
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/26'
-      },
-      expected: false
-    },
-    {
-      it: 'should handle period longer than a week',
-      args: {
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/27'
-      },
-      expected: true
-    },
-    {
-      it: 'should handle period longer than a week that straddles a year',
-      args: {
-        dateFrom: '2016/12/30',
-        dateTo: '2017/01/10'
-      },
-      expected: true
-    },
-    {
-      it: 'should handle period less than a week that straddles a year',
-      args: {
-        dateFrom: '2016/12/30',
-        dateTo: '2017/01/02'
-      },
-      expected: false
-    },
-    {
-      it: 'should handle same day period',
-      args: {
-        dateFrom: '2017/01/20',
-        dateTo: '2017/01/20'
-      },
-      expected: false
-    },
-    {
-      it: 'should handle null date from',
-      args: {
-        dateFrom: null,
-        dateTo: '2017/01/20'
-      },
-      expected: false
-    },
-    {
-      it: 'should handle null date to',
-      args: {
-        dateFrom: '2017/01/20',
-        dateTo: null
-      },
-      expected: false
-    }
-  ]
-
-  tests.forEach(test => {
-    it(test.it, () => {
-      const actual = timeLib.periodIsLongerThanWeek(
-        test.args.dateFrom,
-        test.args.dateTo
-      )
-
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-it('should perform formatDayNumberForDisplay on all days', () => {
-  expect(timeLib.formatDayNumberForDisplay('0')).toEqual('Monday')
-  expect(timeLib.formatDayNumberForDisplay('1')).toEqual('Tuesday')
-  expect(timeLib.formatDayNumberForDisplay('2')).toEqual('Wednesday')
-  expect(timeLib.formatDayNumberForDisplay('3')).toEqual('Thursday')
-  expect(timeLib.formatDayNumberForDisplay('4')).toEqual('Friday')
-  expect(timeLib.formatDayNumberForDisplay('5')).toEqual('Saturday')
-  expect(timeLib.formatDayNumberForDisplay('6')).toEqual('Sunday')
-})
-
-describe('createTimeKey', () => {
-  const tests = [
-    {
-      it: 'should handle date obj with time period',
-      arg: { date: new Date(13287634233), from: '16:00', to: '18:00' },
-      expected: '1970/06/03-16:00-18:00'
-    },
-    {
-      it: 'should handle date obj with time',
-      arg: { date: new Date(13287634233), at: '16:00' },
-      expected: '1970/06/03-16:00'
-    },
-    {
-      it: 'should handle string date with time period',
-      arg: { date: '2017/01/20', from: '16:00', to: '18:00' },
-      expected: '2017/01/20-16:00-18:00'
-    },
-    {
-      it: 'should handle string date with time',
-      arg: { date: '2017/01/20', at: '16:00' },
-      expected: '2017/01/20-16:00'
-    },
-    {
-      it: 'should handle day with time period',
-      arg: { day: '2', from: '16:00', to: '18:00' },
-      expected: '2-16:00-18:00'
-    },
-    {
-      it: 'should handle day with time',
-      arg: { day: '2', at: '16:00' },
-      expected: '2-16:00'
-    }
-  ]
-
-  tests.forEach(test => {
-    it(test.it, () => {
-      const actual = timeLib.createTimeKey(test.arg)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('getYearNow', () => {
-  it('should get the year now', () => {
-    const actual = timeLib.getYearNow()
-    expect(actual).toBeGreaterThan(2017)
-  })
-})
-
-describe('getMinJSDate', () => {
-  it('should get the min JavaScript date', () => {
-    const actual = timeLib.getMinJSDate()
-    expect(actual.getTime()).toEqual(0)
-  })
-})
-
-describe('getMaxJSDate', () => {
-  it('should get the max JavaScript date', () => {
-    const actual = timeLib.getMaxJSDate()
-    expect(actual.getTime()).toBeGreaterThan(0)
-  })
-})
-
-describe('getLondonNowAsMomentDate', () => {
-  it('should get london now', () => {
-    const actual = timeLib.getLondonNowAsMomentDate()
-    expect(actual.valueOf()).toBeGreaterThan(0)
-  })
-})
-
-describe('getDateNowForDatabase', () => {
-  it('should get the date', () => {
-    const actual = timeLib.getDateNowForDatabase()
-    expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
-  })
-})
-
-describe('mapMomentDateToStringDate', () => {
-  it('should handle a null moment', () => {
-    const actual = timeLib.mapMomentDateToStringDate(null)
-    expect(actual).toEqual(null)
-  })
-
-  it('should handle a valid moment', () => {
-    const actual = timeLib.mapMomentDateToStringDate(moment(1517788800000))
-    expect(actual).toEqual('2018/02/05')
-  })
-})
-
-describe('formatDateRangeForDisplay', () => {
-  const tests = [
-    {
-      args: { from: '2018/01/01', to: '2018/01/01' },
-      expected: '1st Jan 2018'
-    },
-    {
-      args: { from: '2018/01/01', to: '2018/01/02' },
-      expected: '1st to 2nd Jan 2018'
-    },
-    {
-      args: { from: '2018/01/01', to: '2018/02/01' },
-      expected: '1st Jan to 1st Feb 2018'
-    },
-    {
-      args: { from: '2018/01/01', to: '2019/01/01' },
-      expected: '1st Jan 2018 to 1st Jan 2019'
-    }
-  ]
-
-  tests.forEach(test => {
-    it(`should return '${test.expected}' for args '${test.args.from}' and '${test.args.to}'`, () => {
-      const actual = timeLib.formatDateRangeForDisplay(test.args.from, test.args.to)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('getYearFromTodayAsString', () => {
-  it('should get the date', () => {
-    const actual = timeLib.getYearFromTodayAsString()
-    expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
-  })
-})
-
-describe('mapStringDateToJsDate', () => {
-  const tests = [
-    { arg: '2018/02/18', expected: 1518912000000 },
-    { arg: null, expected: null },
-    { arg: '', expected: null }
-  ]
-
-  tests.forEach(test => {
-    it(`should return a date with epoch ${test.expected} for string '${test.arg}'`, () => {
-      const actual = timeLib.mapStringDateToJsDate(test.arg)
-
-      if (test.expected === null) {
-        expect(actual).toEqual(null)
-      } else {
-        expect(actual.getTime()).toEqual(test.expected)
-      }
-    })
-  })
-})
+//       expect(actual).toEqual(test.expected)
+//     })
+//   })
+// })

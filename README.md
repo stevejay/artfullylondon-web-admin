@@ -51,6 +51,9 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- replace divs with fragments where possible
+- switch to netlify hosting?
+- https://github.com/marmelab/battery-friendly-timer for the app-updater.
 - relative paths for files (check react codebase for this)
 - flexbox/grid component to lessen need for CSS on containers
 - move formconstants to the modules the forms are in?

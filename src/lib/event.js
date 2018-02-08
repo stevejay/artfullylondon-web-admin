@@ -2,7 +2,7 @@ import React from 'react' // required
 
 import * as eventConstants from '_src/constants/event'
 import * as linkConstants from '_src/constants/link'
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 
 export function eventIsPerformance (eventType) {
   return eventType === eventConstants.EVENT_TYPE_PERFORMANCE
@@ -67,7 +67,7 @@ export function formatEventOccurrenceForDisplay (
 ) {
   switch (occurrenceType) {
     case eventConstants.OCCURRENCE_TYPE_BOUNDED:
-      return timeLib.formatDateRangeForDisplay(dateFrom, dateTo)
+      return dateLib.formatDateRangeForDisplay(dateFrom, dateTo)
     case eventConstants.OCCURRENCE_TYPE_CONTINUOUS:
       return eventIsPerformance(eventType)
         ? 'Regularly showing'
@@ -79,17 +79,17 @@ export function formatEventOccurrenceForDisplay (
       }
 
       const occurrence = additionalPerformances[0]
-      const displayTime = timeLib.formatTime(occurrence.at)
+      const displayTime = dateLib.formatTime(occurrence.at)
 
       if (occurrence.date === dateStr) {
         return 'Today at ' + displayTime
       } else if (
-        timeLib.getCountOfDaysBetweenStringDates(dateStr, occurrence.date) === 1
+        dateLib.getCountOfDaysBetweenStringDates(dateStr, occurrence.date) === 1
       ) {
         return 'Tomorrow at ' + displayTime
       } else {
         return (
-          timeLib.formatStringDateForDisplay(occurrence.date) +
+          dateLib.formatStringDateForDisplay(occurrence.date) +
           ' at ' +
           displayTime
         )
@@ -141,13 +141,13 @@ function _formatBookingOpensDateForDisplay (bookingOpens, bookingLink, today) {
       ? _formatBookingOpensDateWithLink(bookingLink, 'Opens today')
       : <span> (Opens today)</span>
   } else if (
-    timeLib.getCountOfDaysBetweenStringDates(today, bookingOpens) === 1
+    dateLib.getCountOfDaysBetweenStringDates(today, bookingOpens) === 1
   ) {
     return bookingLink
       ? _formatBookingOpensDateWithLink(bookingLink, 'Opens tomorrow')
       : <span> (Opens tomorrow)</span>
   } else {
-    const formattedDate = timeLib.formatStringDateForDisplay(bookingOpens)
+    const formattedDate = dateLib.formatStringDateForDisplay(bookingOpens)
 
     return bookingLink
       ? _formatBookingOpensDateWithLink(bookingLink, 'Opens ' + formattedDate)

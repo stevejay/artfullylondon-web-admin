@@ -3,10 +3,10 @@ import { shallow } from 'enzyme'
 import log from 'loglevel'
 import _ from 'lodash'
 
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import { Footer } from '_src/modules/footer/components/footer'
 
-timeLib.getYearNow = jest.fn().mockReturnValue('2015')
+dateLib.getYearNow = jest.fn().mockReturnValue('2015')
 
 it('should render correctly when has no error', () => {
   const wrapper = shallow(<Footer hasError={false} setHasError={_.noop} />)

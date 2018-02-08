@@ -3,124 +3,35 @@ import 'moment-timezone'
 import _ from 'lodash'
 
 import * as eventLib from '_src/lib/event'
-import * as timeConstants from '_src/constants/time'
+import * as dateLib from '_src/lib/date'
+import * as dateConstants from '_src/constants/date'
 import * as eventConstants from '_src/constants/event'
 import * as entityConstants from '_src/constants/entity'
 
-export function getYearNow () {
-  return new Date().getFullYear()
-}
+const DAYS_OF_WEEK_MAPPING = [
+  { value: 0, label: 'Monday' },
+  { value: 1, label: 'Tuesday' },
+  { value: 2, label: 'Wednesday' },
+  { value: 3, label: 'Thursday' },
+  { value: 4, label: 'Friday' },
+  { value: 5, label: 'Saturday' },
+  { value: 6, label: 'Sunday' }
+]
 
-export function getMinJSDate () {
-  return new Date(0)
-}
-
-export function getMaxJSDate () {
-  return new Date(8640000000000000)
-}
-
-export function getLondonNowAsMomentDate () {
-  return moment().tz('Europe/London')
-}
-
-export function getDateNowForDatabase () {
-  return moment.utc().format(timeConstants.DATE_FORMAT)
-}
-
-export function mapJsDateToStringDate (date) {
-  if (date === null) {
-    return null
-  }
-
-  return mapMomentDateToStringDate(moment(date))
-}
-
-export function mapMomentDateToStringDate (date) {
-  if (date === null) {
-    return null
-  }
-
-  return date.format(timeConstants.DATE_FORMAT)
-}
-
-export function mapStringDateToJsDate (stringDate) {
-  if (!stringDate || stringDate === '') {
-    return null
-  }
-
-  const parts = _getPartsOfStringDate(stringDate)
-
-  return new Date(
-    parseInt(parts.year),
-    parseInt(parts.month - 1),
-    parseInt(parts.day)
-  )
-}
-
-export function formatStringDateForDisplay (date, includeDayName) {
-  return moment(date, timeConstants.DATE_FORMAT).format(
-    includeDayName ? 'dddd, Do MMM YYYY' : 'Do MMM YYYY'
-  )
-}
-
-export function formatDateRangeForDisplay (dateFrom, dateTo) {
-  if (dateFrom === dateTo) {
-    return formatStringDateForDisplay(dateFrom, false)
-  }
-
-  const yearInCommon = dateFrom.substring(0, 4) === dateTo.substring(0, 4)
-  const monthInCommon =
-    yearInCommon && dateFrom.substring(5, 7) === dateTo.substring(5, 7)
-
-  const fromStr = monthInCommon
-    ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do')
-    : yearInCommon
-      ? moment(dateFrom, timeConstants.DATE_FORMAT).format('Do MMM')
-      : formatStringDateForDisplay(dateFrom)
-
-  const toStr = formatStringDateForDisplay(dateTo)
-
-  return fromStr + ' to ' + toStr
-}
-
-export function getTodayDateAsString () {
-  const now = _getLondonNowAsJsDate()
-  const today = _removeTimeFromJsDate(now)
-  return mapJsDateToStringDate(today)
-}
-
-export function getYearFromTodayAsString () {
-  const now = _getLondonNowAsJsDate()
-  const today = _removeTimeFromJsDate(now)
-
-  const yearToday = new Date(
-    today.getFullYear() + 1,
-    today.getMonth(),
-    today.getDate()
-  )
-
-  return mapJsDateToStringDate(yearToday)
-}
-
-export function formatTime (time) {
-  const intHours = parseInt(time.substring(0, 2))
-  const hoursStr = intHours % 12 === 0 ? 12 : intHours % 12
-  const rawMinutes = time.substring(3, 5)
-  return `${hoursStr}:${rawMinutes} ${intHours < 12 ? 'am' : 'pm'}`
-}
-
+// opening-times component
 export function formatOpeningTimesOrPerformanceTimeForDisplay (timeOrRange) {
   if (timeOrRange.from && timeOrRange.from === timeOrRange.to) {
-    return formatTime(timeOrRange.from)
+    return dateLib.formatTime(timeOrRange.from)
   }
 
   if (timeOrRange.at) {
-    return formatTime(timeOrRange.at)
+    return dateLib.formatTime(timeOrRange.at)
   }
 
-  return _formatOpeningTimeForDisplay(timeOrRange)
+  return dateLib.formatOpeningTimeForDisplay(timeOrRange)
 }
 
+// domain
 export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
   if (!dateFrom) {
     return 'Now on'
@@ -129,7 +40,10 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
   const oneDayOnly = dateTo === dateFrom
 
   if (dateStr < dateFrom) {
-    const daysUntilStart = getCountOfDaysBetweenStringDates(dateStr, dateFrom)
+    const daysUntilStart = dateLib.getCountOfDaysBetweenStringDates(
+      dateStr,
+      dateFrom
+    )
 
     if (daysUntilStart === 1) {
       return oneDayOnly ? 'Tomorrow only' : 'Opens tomorrow'
@@ -138,7 +52,7 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
         ? 'Open in ' + daysUntilStart + ' days'
         : 'Opens in ' + daysUntilStart + ' days'
     } else {
-      const dateFromLabel = formatStringDateForDisplay(dateFrom)
+      const dateFromLabel = dateLib.formatStringDateForDisplay(dateFrom)
 
       return oneDayOnly ? 'Open ' + dateFromLabel : 'Opens ' + dateFromLabel
     }
@@ -146,7 +60,10 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
     return oneDayOnly ? 'Today only' : 'Opens today'
   } else {
     // dateStr > dateFrom
-    const daysUntilEnd = getCountOfDaysBetweenStringDates(dateStr, dateTo)
+    const daysUntilEnd = dateLib.getCountOfDaysBetweenStringDates(
+      dateStr,
+      dateTo
+    )
 
     if (daysUntilEnd === 0) {
       return 'Ends today'
@@ -162,17 +79,13 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
   }
 }
 
-export function getCountOfDaysBetweenStringDates (dateFrom, dateTo) {
-  const from = moment(dateFrom, timeConstants.DATE_FORMAT)
-  const to = moment(dateTo, timeConstants.DATE_FORMAT)
-  return to.diff(from, 'days')
-}
-
+// opening-times component
 export function addDaysToStringDate (dateStr, days) {
-  const date = moment(dateStr, timeConstants.DATE_FORMAT)
-  return date.add(days, 'days').format(timeConstants.DATE_FORMAT)
+  const date = moment(dateStr, dateConstants.DATE_FORMAT)
+  return date.add(days, 'days').format(dateConstants.DATE_FORMAT)
 }
 
+// domain
 export function formatTimesStringForGivenDate (
   entity,
   dateStr,
@@ -252,7 +165,7 @@ function _getTimesOnGivenDateForVenue (
   finalTimes = _removeClosureTimes(true, finalTimes, closures)
 
   if (finalTimes.length) {
-    const times = finalTimes.map(_formatOpeningTimeForDisplay)
+    const times = finalTimes.map(dateLib.formatOpeningTimeForDisplay)
     return { times, isNowClosed: _isNowClosed(timeStr, times) }
   }
 
@@ -343,7 +256,7 @@ function _getTimesOnGivenDateForPerformanceEvent (dateStr, timeStr, event) {
   finalTimes = _removeClosureTimes(false, finalTimes, closures)
 
   if (finalTimes.length) {
-    const times = finalTimes.map(_formatPerformanceTimeForDisplay)
+    const times = finalTimes.map(dateLib.formatPerformanceTimeForDisplay)
     return { times, isNowClosed: _isNowClosed(timeStr, times) }
   }
 
@@ -403,13 +316,14 @@ function _getTimesOnGivenDateForExhibitionEvent (
   finalTimes = _removeClosureTimes(true, finalTimes, closures)
 
   if (finalTimes.length) {
-    const times = finalTimes.map(_formatOpeningTimeForDisplay)
+    const times = finalTimes.map(dateLib.formatOpeningTimeForDisplay)
     return { times, isNowClosed: _isNowClosed(timeStr, times) }
   }
 
   return { closed: true }
 }
 
+// domain
 export function getTimesDetails (entity, entityType, fromStr) {
   const toStr = getYearFromTodayAsString()
   const isVenue = entityType === entityConstants.ENTITY_TYPE_VENUE
@@ -455,6 +369,20 @@ export function getTimesDetails (entity, entityType, fromStr) {
   return timesDetails
 }
 
+function getYearFromTodayAsString () {
+  const now = dateLib.getLondonNowAsJsDate()
+  const today = dateLib.removeTimeFromJsDate(now)
+
+  const yearToday = new Date(
+    today.getFullYear() + 1,
+    today.getMonth(),
+    today.getDate()
+  )
+
+  return dateLib.mapJsDateToStringDate(yearToday)
+}
+
+// domain
 export function getTimesDetailsForVenue (venue, fromStr, toStr) {
   return {
     regularTimes: getRegularTimesForDisplay(venue.openingTimes),
@@ -475,6 +403,7 @@ export function getTimesDetailsForVenue (venue, fromStr, toStr) {
   }
 }
 
+// domain
 export function getTimesDetailsForExhibitionEvent (event, fromStr, toStr) {
   return {
     regularTimes: getRegularTimesForDisplay(
@@ -501,6 +430,7 @@ export function getTimesDetailsForExhibitionEvent (event, fromStr, toStr) {
   }
 }
 
+// domain
 export function getTimesDetailsForPerformanceEvent (event, fromStr, toStr) {
   return {
     regularTimes: getRegularTimesForDisplay(event.performances),
@@ -524,6 +454,7 @@ export function getTimesDetailsForPerformanceEvent (event, fromStr, toStr) {
   }
 }
 
+// domain
 export function getAdditionalOpeningTimesForDisplay (
   eventAdditionalOpeningTimes,
   venueAdditionalOpeningTimes,
@@ -538,6 +469,7 @@ export function getAdditionalOpeningTimesForDisplay (
   )
 }
 
+// domain
 export function getRegularTimesForDisplay (regularTimes) {
   if (!regularTimes || regularTimes.length === 0) {
     return []
@@ -545,7 +477,7 @@ export function getRegularTimesForDisplay (regularTimes) {
 
   const result = []
 
-  timeConstants.DAYS_OF_WEEK_MAPPING.forEach(dayOfWeek => {
+  DAYS_OF_WEEK_MAPPING.forEach(dayOfWeek => {
     const mappedTimes = regularTimes
       .filter(time => time.day === dayOfWeek.value)
       .map(time => {
@@ -567,6 +499,7 @@ export function getRegularTimesForDisplay (regularTimes) {
   return result
 }
 
+// domain
 export function getAdditionalPerformancesForDisplay (
   additionalPerformances,
   fromStr,
@@ -580,6 +513,7 @@ export function getAdditionalPerformancesForDisplay (
   )
 }
 
+// domain
 export function getSpecialTimesForDisplay (specialTimes, fromStr, toStr) {
   if (!specialTimes || specialTimes.length === 0) {
     return []
@@ -601,7 +535,7 @@ export function getSpecialTimesForDisplay (specialTimes, fromStr, toStr) {
           tagsLookup[tag.label] = []
         }
 
-        const dateLabel = formatStringDateForDisplay(special.date)
+        const dateLabel = dateLib.formatStringDateForDisplay(special.date)
 
         const timeEntry = {
           date: special.date,
@@ -632,6 +566,7 @@ export function getSpecialTimesForDisplay (specialTimes, fromStr, toStr) {
   return result
 }
 
+// domain
 export function getClosuresForDisplay (
   eventClosures,
   venueClosures,
@@ -656,7 +591,7 @@ export function getClosuresForDisplay (
 
 function _dateIsInNamedClosures (dateStr, namedClosures, namedClosuresLookup) {
   const namedClosuresAsArray = namedClosures || []
-  const year = _getPartsOfStringDate(dateStr).year
+  const year = dateLib.getPartsOfStringDate(dateStr).year
 
   for (let i = 0; i < namedClosuresAsArray.length; ++i) {
     const closuresForName = namedClosuresLookup[namedClosuresAsArray[i]]
@@ -673,6 +608,9 @@ function _dateIsInNamedClosures (dateStr, namedClosures, namedClosuresLookup) {
   return false
 }
 
+// TODO what should this be????
+const NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS = []
+
 function _createNamedClosuresArray (namedClosures) {
   if (!namedClosures || namedClosures.length === 0) {
     return []
@@ -681,7 +619,7 @@ function _createNamedClosuresArray (namedClosures) {
   return namedClosures
     .map(namedClosure => {
       const match = _.find(
-        timeConstants.NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS,
+        NAMED_CLOSURE_TYPE_DROPDOWN_OPTIONS,
         x => x.value === namedClosure
       )
 
@@ -718,7 +656,7 @@ function _isNowClosed (nowStr, times) {
 
 function _getDayNumberFromStringDate (stringDate) {
   // Monday equal 0, Sunday equal 6.
-  const dateDay = mapStringDateToMoment(stringDate, true).day()
+  const dateDay = _mapStringDateToMoment(stringDate, true).day()
   return dateDay - 1 + (dateDay === 0 ? 7 : 0)
 }
 
@@ -742,7 +680,7 @@ function _createMergedDateTimesForDateRange (
   uniqueDates.sort()
 
   return uniqueDates.map(dateStr => {
-    const label = formatStringDateForDisplay(dateStr)
+    const label = dateLib.formatStringDateForDisplay(dateStr)
 
     const eventTimes = (eventDateTimes || []).filter(x => x.date === dateStr)
     const venueTimes = (venueDateTimes || []).filter(x => x.date === dateStr)
@@ -781,19 +719,10 @@ function _createMergedDateTimesForDate (
   return times
 }
 
-function _getLondonNowAsJsDate () {
-  return moment().tz('Europe/London').toDate()
-}
-
-// Note: returns a new Date object
-function _removeTimeFromJsDate (date) {
-  return moment(date).startOf('day').toDate()
-}
-
-export function mapStringDateToMoment (
+function _mapStringDateToMoment (
   stringDate,
   useLondonTimezone,
-  dateFormat = timeConstants.DATE_FORMAT
+  dateFormat = dateConstants.DATE_FORMAT
 ) {
   if (!stringDate) {
     return null
@@ -807,140 +736,69 @@ function _formatTimesForDayDisplay (times) {
   return times ? times.join(', ') : 'Closed'
 }
 
-const STRING_DATE_REGEX = /^(\d\d\d\d)\/(\d\d)\/(\d\d)$/
+// export function getEventTimesFormDisplayFlags (
+//   eventType,
+//   occurrenceType,
+//   dateFrom,
+//   dateTo,
+//   venue,
+//   useVenueOpeningTimes
+// ) {
+//   useVenueOpeningTimes = !!useVenueOpeningTimes
 
-function _getPartsOfStringDate (stringDate) {
-  const matches = stringDate.match(STRING_DATE_REGEX)
+//   const isPerformance = eventLib.eventIsPerformance(eventType)
+//   const isOneTimePerformance =
+//     isPerformance && eventLib.eventIsOneTime(occurrenceType)
 
-  if (!matches) {
-    throw new Error(`failed to parse '${stringDate}' as date`)
-  }
+//   const isExhibition = !isPerformance
 
-  return {
-    year: matches[1],
-    month: matches[2],
-    day: matches[3]
-  }
-}
+//   const hasRange = eventLib.occurrenceTypeHasDateRange(occurrenceType)
+//   const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
 
-function _formatOpeningTimeForDisplay (range) {
-  return `${formatTime(range.from)} to ${formatTime(range.to)}`
-}
+//   const isLongerThanWeek =
+//     (hasRange && dateLib.periodIsLongerThanWeek(dateFrom, dateTo)) ||
+//     eventLib.occurrenceTypeIsContinuous(occurrenceType)
 
-function _formatPerformanceTimeForDisplay (time) {
-  return formatTime(time.at)
-}
+//   const venueHasOpeningTimes =
+//     isExhibition &&
+//     ((!!venue.openingTimes && venue.openingTimes.length > 0) ||
+//       (!!venue.openingTimesOverrides && venue.openingTimesOverrides.length > 0))
 
-export function getEventTimesFormDisplayFlags (
-  eventType,
-  occurrenceType,
-  dateFrom,
-  dateTo,
-  venue,
-  useVenueOpeningTimes
-) {
-  useVenueOpeningTimes = !!useVenueOpeningTimes
+//   const showSingleDayOpeningTimes =
+//     isExhibition && isSingleDay && !useVenueOpeningTimes
 
-  const isPerformance = eventLib.eventIsPerformance(eventType)
-  const isOneTimePerformance =
-    isPerformance && eventLib.eventIsOneTime(occurrenceType)
+//   const showOpeningTimesByDate =
+//     isExhibition && !isSingleDay && !isLongerThanWeek && !useVenueOpeningTimes
 
-  const isExhibition = !isPerformance
+//   const showPerformancesByDate =
+//     isPerformance && !isSingleDay && !isLongerThanWeek
 
-  const hasRange = eventLib.occurrenceTypeHasDateRange(occurrenceType)
-  const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
+//   const showSingleDayPerformances = isPerformance && isSingleDay
 
-  const isLongerThanWeek =
-    (hasRange && periodIsLongerThanWeek(dateFrom, dateTo)) ||
-    eventLib.occurrenceTypeIsContinuous(occurrenceType)
-
-  const venueHasOpeningTimes =
-    isExhibition &&
-    ((!!venue.openingTimes && venue.openingTimes.length > 0) ||
-      (!!venue.openingTimesOverrides && venue.openingTimesOverrides.length > 0))
-
-  const showSingleDayOpeningTimes =
-    isExhibition && isSingleDay && !useVenueOpeningTimes
-
-  const showOpeningTimesByDate =
-    isExhibition && !isSingleDay && !isLongerThanWeek && !useVenueOpeningTimes
-
-  const showPerformancesByDate =
-    isPerformance && !isSingleDay && !isLongerThanWeek
-
-  const showSingleDayPerformances = isPerformance && isSingleDay
-
-  if (isExhibition) {
-    return {
-      showUseVenueTimesOption: venueHasOpeningTimes,
-      showTimesRanges: !isSingleDay &&
-        isLongerThanWeek &&
-        !useVenueOpeningTimes &&
-        hasRange,
-      showOpeningTimes: isLongerThanWeek && !useVenueOpeningTimes,
-      showAdditionalOpeningTimes: !isSingleDay &&
-        (isLongerThanWeek || useVenueOpeningTimes),
-      showAdditionalOpeningTimesAsOpeningTimes: showSingleDayOpeningTimes ||
-        showOpeningTimesByDate,
-      showSpecialOpeningTimes: !isSingleDay,
-      showOpeningTimesClosures: !isSingleDay
-    }
-  } else {
-    return {
-      showTimesRanges: !isSingleDay && isLongerThanWeek && hasRange,
-      showPerformances: isLongerThanWeek,
-      showAdditionalPerformances: !isSingleDay && isLongerThanWeek,
-      showAdditionalPerformancesAsPerformances: showSingleDayPerformances ||
-        showPerformancesByDate,
-      showSpecialPerformances: !isOneTimePerformance,
-      showPerformancesClosures: !isSingleDay
-    }
-  }
-}
-
-export function periodIsLongerThanWeek (dateFrom, dateTo) {
-  if (!dateFrom || !dateTo) {
-    return false
-  }
-
-  return getCountOfDaysBetweenStringDates(dateFrom, dateTo) > 6
-}
-
-const DAYS = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday'
-]
-
-export function formatDayNumberForDisplay (dayNumber) {
-  return DAYS[parseInt(dayNumber)]
-}
-
-export function createTimeKey (obj) {
-  let dayOrDate = null
-
-  if (obj.date) {
-    dayOrDate = typeof obj.date === 'string'
-      ? obj.date
-      : moment(obj.date).format(timeConstants.DATE_FORMAT)
-  } else {
-    dayOrDate = obj.day
-  }
-
-  const time = obj.from ? obj.from + '-' + obj.to : obj.at
-  const timesRange = obj.timesRangeId ? '-' + obj.timesRangeId : ''
-  return dayOrDate + '-' + time + timesRange
-}
-
-export function getTimesRangesOptions (timesRanges) {
-  return (timesRanges || []).map(timesRange => {
-    return {
-      value: timesRange.dateFrom,
-      label: 'From ' + timesRange.dateFrom
-    }
-  })
-}
+//   if (isExhibition) {
+//     return {
+//       showUseVenueTimesOption: venueHasOpeningTimes,
+//       showTimesRanges: !isSingleDay &&
+//         isLongerThanWeek &&
+//         !useVenueOpeningTimes &&
+//         hasRange,
+//       showOpeningTimes: isLongerThanWeek && !useVenueOpeningTimes,
+//       showAdditionalOpeningTimes: !isSingleDay &&
+//         (isLongerThanWeek || useVenueOpeningTimes),
+//       showAdditionalOpeningTimesAsOpeningTimes: showSingleDayOpeningTimes ||
+//         showOpeningTimesByDate,
+//       showSpecialOpeningTimes: !isSingleDay,
+//       showOpeningTimesClosures: !isSingleDay
+//     }
+//   } else {
+//     return {
+//       showTimesRanges: !isSingleDay && isLongerThanWeek && hasRange,
+//       showPerformances: isLongerThanWeek,
+//       showAdditionalPerformances: !isSingleDay && isLongerThanWeek,
+//       showAdditionalPerformancesAsPerformances: showSingleDayPerformances ||
+//         showPerformancesByDate,
+//       showSpecialPerformances: !isOneTimePerformance,
+//       showPerformancesClosures: !isSingleDay
+//     }
+//   }
+// }

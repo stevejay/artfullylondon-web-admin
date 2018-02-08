@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import log from 'loglevel'
 import { withState } from 'recompose'
 
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import './footer.scss'
 
 export class Footer extends React.PureComponent {
@@ -19,7 +19,7 @@ export class Footer extends React.PureComponent {
     return (
       <ul role='presentation' styleName='item-container'>
         <li styleName='item'>
-          © {timeLib.getYearNow()} Middle Engine Software Ltd
+          © {dateLib.getYearNow()} Middle Engine Software Ltd
         </li>
         <li styleName='item'>Version {process.env.WEBSITE_VERSION}</li>
       </ul>

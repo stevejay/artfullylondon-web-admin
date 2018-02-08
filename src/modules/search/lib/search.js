@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-import * as timeLib from '_src/lib/time'
+import * as dateLib from '_src/lib/date'
 import * as searchConstants from '_src/modules/search/constants'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
@@ -57,9 +57,9 @@ function _createQueryString (params) {
     let value = params[key]
 
     if (moment.isMoment(value)) {
-      value = timeLib.mapMomentDateToStringDate(value)
+      value = dateLib.mapMomentDateToStringDate(value)
     } else if (value instanceof Date) {
-      value = timeLib.mapJsDateToStringDate(value)
+      value = dateLib.mapJsDateToStringDate(value)
     }
 
     const keyValuePair = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`

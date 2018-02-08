@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <button
   aria-haspopup={false}
-  className="src-modules-sidenav-components-button__button"
+  className="src-modules-nav-components-sidenav-button__button"
   label="The Label"
   onClick={[Function]}
   role="menuitem"
