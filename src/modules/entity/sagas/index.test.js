@@ -12,8 +12,6 @@ import * as formConstants from '_src/constants/form'
 import * as validationLib from '_src/lib/validation'
 import history from '_src/history'
 import normalise from '_src/lib/normalise'
-import talentConstraint from '_src/constants/talent-constraint'
-import talentNormaliser from '_src/constants/talent-normaliser'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import { actions as notificationActions } from '_src/modules/notification'
 
@@ -84,27 +82,35 @@ describe('getEntity', () => {
 })
 
 describe('saveEntity', () => {
+  const normaliser = jest.fn()
+  const constraint = jest.fn()
+  const mapper = jest.fn().mockImplementation(x => x)
+
   it('should create an entity', () => {
     const generator = cloneableGenerator(sagas.saveEntity)(
-      entityActions.saveEntity('talent', { name: 'foo' }, false)
+      entityActions.saveEntity(
+        'talent',
+        { name: 'foo' },
+        false,
+        'SomeFormName',
+        normaliser,
+        constraint,
+        mapper
+      )
     )
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put(startSubmit(formConstants.EDIT_TALENT_FORM_NAME))
-    )
+    expect(result.value).toEqual(put(startSubmit('SomeFormName')))
 
     result = generator.next()
 
-    expect(result.value).toEqual(
-      call(normalise, { name: 'foo' }, talentNormaliser)
-    )
+    expect(result.value).toEqual(call(normalise, { name: 'foo' }, normaliser))
 
     result = generator.next({ name: 'normalised foo' })
 
     expect(result.value).toEqual(
-      call(validationLib.validate, { name: 'normalised foo' }, talentConstraint)
+      call(validationLib.validate, { name: 'normalised foo' }, constraint)
     )
 
     result = generator.next()
@@ -118,18 +124,7 @@ describe('saveEntity', () => {
         post,
         'https://api.test.com/event-service/admin/talent',
         {
-          commonRole: undefined,
-          createdDate: '2018/01/01',
-          description: null,
-          firstNames: '',
-          images: [],
-          lastName: '',
-          links: [],
-          status: undefined,
-          talentType: undefined,
-          updatedDate: '2018/01/01',
-          version: NaN,
-          weSay: ''
+          name: 'normalised foo'
         },
         'some-token'
       )
@@ -137,9 +132,7 @@ describe('saveEntity', () => {
 
     result = generator.next({ entity: { id: 'server-id' } })
 
-    expect(result.value).toEqual(
-      put(stopSubmit(formConstants.EDIT_TALENT_FORM_NAME))
-    )
+    expect(result.value).toEqual(put(stopSubmit('SomeFormName')))
 
     result = generator.next()
 
@@ -152,20 +145,24 @@ describe('saveEntity', () => {
 
   it('should update an entity', () => {
     const generator = cloneableGenerator(sagas.saveEntity)(
-      entityActions.saveEntity('talent', { name: 'foo' }, true)
+      entityActions.saveEntity(
+        'talent',
+        { name: 'foo' },
+        true,
+        'SomeFormName',
+        normaliser,
+        constraint,
+        mapper
+      )
     )
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put(startSubmit(formConstants.EDIT_TALENT_FORM_NAME))
-    )
+    expect(result.value).toEqual(put(startSubmit('SomeFormName')))
 
     result = generator.next()
 
-    expect(result.value).toEqual(
-      call(normalise, { name: 'foo' }, talentNormaliser)
-    )
+    expect(result.value).toEqual(call(normalise, { name: 'foo' }, normaliser))
 
     result = generator.next({ name: 'normalised foo', id: 'existing-id' })
 
@@ -173,7 +170,7 @@ describe('saveEntity', () => {
       call(
         validationLib.validate,
         { name: 'normalised foo', id: 'existing-id' },
-        talentConstraint
+        constraint
       )
     )
 
@@ -188,18 +185,8 @@ describe('saveEntity', () => {
         httpPut,
         'https://api.test.com/event-service/admin/talent/existing-id',
         {
-          commonRole: undefined,
-          createdDate: '2018/01/01',
-          description: null,
-          firstNames: '',
-          images: [],
-          lastName: '',
-          links: [],
-          status: undefined,
-          talentType: undefined,
-          updatedDate: '2018/01/01',
-          version: NaN,
-          weSay: ''
+          id: 'existing-id',
+          name: 'normalised foo'
         },
         'some-token'
       )
@@ -207,9 +194,7 @@ describe('saveEntity', () => {
 
     result = generator.next({ entity: { id: 'server-id' } })
 
-    expect(result.value).toEqual(
-      put(stopSubmit(formConstants.EDIT_TALENT_FORM_NAME))
-    )
+    expect(result.value).toEqual(put(stopSubmit('SomeFormName')))
 
     result = generator.next()
 
@@ -222,14 +207,20 @@ describe('saveEntity', () => {
 
   it('should handle an error being raised', () => {
     const generator = cloneableGenerator(sagas.saveEntity)(
-      entityActions.saveEntity('talent', { name: 'foo' }, false)
+      entityActions.saveEntity(
+        'talent',
+        { name: 'foo' },
+        false,
+        'SomeFormName',
+        normaliser,
+        constraint,
+        mapper
+      )
     )
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put(startSubmit(formConstants.EDIT_TALENT_FORM_NAME))
-    )
+    expect(result.value).toEqual(put(startSubmit('SomeFormName')))
 
     const error = new Error('deliberately thrown')
     result = generator.throw(error)
@@ -250,11 +241,7 @@ describe('saveEntity', () => {
     result = generator.next()
 
     expect(result.value).toEqual(
-      call(
-        sagaLib.submitErrorHandler,
-        error,
-        formConstants.EDIT_TALENT_FORM_NAME
-      )
+      call(sagaLib.submitErrorHandler, error, 'SomeFormName')
     )
   })
 })

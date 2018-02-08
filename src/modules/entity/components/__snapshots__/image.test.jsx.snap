@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not showing the carousel 1`] = `
+<React.Fragment>
+  <div
+    className="src-modules-entity-components-image__container"
+  >
+    <img
+      className="src-modules-entity-components-image__img"
+      src="https://images.test.com/so/me/some-id/500x500.jpg"
+    />
+  </div>
+  <EntityImageCredit />
+</React.Fragment>
+`;
+
+exports[`should render correctly when showing the carousel 1`] = `
+<EntityImageCarousel
+  images={
+    Array [
+      Object {
+        "id": "some-id",
+        "ratio": 2,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`should render correctly when there are no images 1`] = `
+<div
+  className="src-modules-entity-components-image__container"
+>
+  <ImagePlaceholder
+    className="src-modules-entity-components-image__placeholder"
+    size="medium"
+    type="venue"
+  />
+</div>
+`;

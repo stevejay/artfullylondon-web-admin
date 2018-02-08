@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<article
+  className="src-modules-entity-components-entity-card-shell__container"
+  key="some-id"
+  onClick={[Function]}
+>
+  <EntityTypeLabel
+    entity={
+      Object {
+        "entityType": "venue",
+        "entityTypeLabel": "The Label",
+        "id": "some-id",
+        "image": "12345678",
+        "imageRatio": 2,
+        "url": "http://some/url",
+      }
+    }
+  />
+  <Image
+    entity={
+      Object {
+        "entityType": "venue",
+        "entityTypeLabel": "The Label",
+        "id": "some-id",
+        "image": "12345678",
+        "imageRatio": 2,
+        "url": "http://some/url",
+      }
+    }
+    onImageLoad={[Function]}
+  />
+  <div
+    className="src-modules-entity-components-entity-card-shell__detail"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</article>
+`;

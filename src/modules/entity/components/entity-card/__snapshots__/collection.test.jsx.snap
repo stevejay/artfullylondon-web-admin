@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when get is in progress 1`] = `
+<div
+  className="src-modules-entity-components-entity-card-collection__cards-container"
+>
+  <EntityCard
+    cardContentFactory={[Function]}
+    dateStr="2017/01/18"
+    entity={
+      SummaryVenue {
+        "entity": Object {
+          "id": "some-venue-id",
+        },
+        "postcodeDistrict": null,
+      }
+    }
+    key="some-venue-id"
+  />
+</div>
+`;
+
+exports[`should render correctly when there are entities 1`] = `
+<div
+  className="src-modules-entity-components-entity-card-collection__cards-container"
+>
+  <EntityCard
+    cardContentFactory={[Function]}
+    dateStr="2017/01/18"
+    entity={
+      SummaryVenue {
+        "entity": Object {
+          "id": "some-venue-id",
+        },
+        "postcodeDistrict": null,
+      }
+    }
+    key="some-venue-id"
+  />
+</div>
+`;
+
+exports[`should render correctly when there are no entities 1`] = `
+<div
+  className="src-modules-entity-components-entity-card-collection__cards-container"
+/>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when there are no links 1`] = `""`;
+
+exports[`should render correctly when there is a facebook link 1`] = `
+<div
+  className="src-modules-entity-components-external-links__links-container"
+>
+  <a
+    className="src-modules-entity-components-external-links__link"
+    href="http://facebook/link"
+    rel="noopener"
+    target="_blank"
+  >
+    <FaFacebook
+      className="icon"
+    />
+  </a>
+</div>
+`;
+
+exports[`should render correctly when there is a twitter link 1`] = `
+<div
+  className="src-modules-entity-components-external-links__links-container"
+>
+  <a
+    className="src-modules-entity-components-external-links__link"
+    href="http://twitter/link"
+    rel="noopener"
+    target="_blank"
+  >
+    <FaTwitter
+      className="icon"
+    />
+  </a>
+</div>
+`;
+
+exports[`should render correctly when there is an email 1`] = `
+<div
+  className="src-modules-entity-components-external-links__links-container"
+>
+  <a
+    className="src-modules-entity-components-external-links__link"
+    href="mailto:steve@test.com"
+    rel="noopener"
+    target="_blank"
+  >
+    <FaEnvelopeO
+      className="icon"
+    />
+  </a>
+</div>
+`;
+
+exports[`should render correctly when there is an instagram link 1`] = `
+<div
+  className="src-modules-entity-components-external-links__links-container"
+>
+  <a
+    className="src-modules-entity-components-external-links__link"
+    href="http://instagram/link"
+    rel="noopener"
+    target="_blank"
+  >
+    <FaInstagram
+      className="icon"
+    />
+  </a>
+</div>
+`;

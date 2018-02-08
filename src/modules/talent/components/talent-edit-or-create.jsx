@@ -4,16 +4,19 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
-// import EntityImage from '_src/components/entity/image'
-// import EntityDetailsContainer from '_src/components/entity/details-container'
-// import EntityHeading from '_src/components/entity/heading'
-// import EditTalentForm from '_src/modules/entity/forms/edit-talent'
-// import * as talentLib from '_src/lib/talent'
+import EntityImage from '_src/modules/entity/components/image'
+import EntityDetailsContainer
+  from '_src/modules/entity/components/details-container'
+import EntityHeading from '_src/modules/entity/components/heading'
+import EditTalentForm from '_src/modules/talent/forms/edit-talent'
+import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActions from '_src/modules/entity/actions'
+import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
+import * as talentConstants from '_src/modules/talent/constants'
+import * as mappingsLib from '_src/lib/mappings'
 
 export class TalentEditOrCreate extends React.Component {
   handleSubmit = values => {
@@ -24,13 +27,16 @@ export class TalentEditOrCreate extends React.Component {
       dispatch
     } = this.props
 
-    // TODO should the saveEntity dispatch happen in the parent instead of here?
     if (imageEditorIsPristine && linkEditorIsPristine) {
       dispatch(
         entityActions.saveEntity(
           entityConstants.ENTITY_TYPE_TALENT,
           values,
-          isEdit
+          isEdit,
+          talentConstants.EDIT_TALENT_FORM_NAME,
+          talentConstants.TALENT_NORMALISER,
+          talentConstants.TALENT_CONSTRAINT,
+          mappingsLib.mapTalentToServer
         )
       )
     } else {
@@ -47,28 +53,27 @@ export class TalentEditOrCreate extends React.Component {
     this.props.history.goBack()
   }
   render () {
-    // const { entity, isEdit } = this.props
+    const { entity, isEdit } = this.props
 
-    return <div>Talent edit or create</div>
-    // (
-    //   <React.Fragment>
-    //     <EntityImage
-    //       entityType={entityConstants.ENTITY_TYPE_TALENT}
-    //       images={entity.images}
-    //     />
-    //     <EntityHeading>
-    //       {talentLib.formatTalentName(entity) || 'New Talent'}
-    //     </EntityHeading>
-    //     <EntityDetailsContainer>
-    //       <EditTalentForm
-    //         isEdit={isEdit}
-    //         initialValues={entity}
-    //         onSubmit={this.handleSubmit}
-    //         onCancel={this.handleCancel}
-    //       />
-    //     </EntityDetailsContainer>
-    //   </React.Fragment>
-    // )
+    return (
+      <React.Fragment>
+        <EntityImage
+          entityType={entityConstants.ENTITY_TYPE_TALENT}
+          images={entity.images}
+        />
+        <EntityHeading>
+          {talentLib.formatTalentName(entity) || 'New Talent'}
+        </EntityHeading>
+        <EntityDetailsContainer>
+          <EditTalentForm
+            isEdit={isEdit}
+            initialValues={entity}
+            onSubmit={this.handleSubmit}
+            onCancel={this.handleCancel}
+          />
+        </EntityDetailsContainer>
+      </React.Fragment>
+    )
   }
 }
 

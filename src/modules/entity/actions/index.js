@@ -40,9 +40,25 @@ export const getEntityFailed = (entityType, statusCode) => ({
   payload: { entityType, statusCode: statusCode || 500 }
 })
 
-export const saveEntity = (entityType, values, isEdit) => ({
+export const saveEntity = (
+  entityType,
+  values,
+  isEdit,
+  formName,
+  normaliser,
+  constraint,
+  mapper
+) => ({
   type: types.SAVE_ENTITY,
-  payload: { entityType, values, isEdit }
+  payload: {
+    entityType,
+    values,
+    isEdit,
+    formName,
+    normaliser,
+    constraint,
+    mapper
+  }
 })
 
 export const resetEntityForCreate = entityType => ({

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<h4
+  className="src-modules-entity-components-entity-card-sub-heading__sub-heading"
+>
+  <div
+    id="child"
+  />
+</h4>
+`;

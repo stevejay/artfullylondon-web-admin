@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import FeaturedDetail from '_src/components/entity/featured-detail'
+import FeaturedDetail from '_src/modules/entity/components/featured-detail'
 import { FullEvent } from '_src/entities/event'
 import './main-details.scss'
 

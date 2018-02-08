@@ -2,11 +2,11 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditTalentForm } from './edit-talent'
-import * as formConstants from '_src/constants/form'
 import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
 import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
+import * as talentConstants from '_src/modules/talent/constants'
+import * as talentDomainConstants from '_src/constants/talent'
 
 it('should render correctly when editing an individual', () => {
   const wrapper = shallow(
@@ -15,7 +15,7 @@ it('should render correctly when editing an individual', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -33,7 +33,7 @@ it('should render correctly when creating a group', () => {
       isEdit={false}
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_GROUP}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_GROUP}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -53,7 +53,7 @@ it('should handle deleting an image', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -66,7 +66,7 @@ it('should handle deleting an image', () => {
   expect(dispatch).toHaveBeenCalledWith(
     imageActions.deleteImage(
       'some-image-id',
-      formConstants.EDIT_TALENT_FORM_NAME
+      talentConstants.EDIT_TALENT_FORM_NAME
     )
   )
 })
@@ -80,7 +80,7 @@ it('should handle setting the main image', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -93,7 +93,7 @@ it('should handle setting the main image', () => {
   expect(dispatch).toHaveBeenCalledWith(
     imageActions.setMainImage(
       'some-image-id',
-      formConstants.EDIT_TALENT_FORM_NAME
+      talentConstants.EDIT_TALENT_FORM_NAME
     )
   )
 })
@@ -107,7 +107,7 @@ it('should handle updating an image', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -124,7 +124,7 @@ it('should handle updating an image', () => {
     imageActions.updateImage(
       { name: 'foo' },
       'some-image-id',
-      formConstants.EDIT_TALENT_FORM_NAME
+      talentConstants.EDIT_TALENT_FORM_NAME
     )
   )
 })
@@ -138,7 +138,7 @@ it('should handle adding an image', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -152,7 +152,7 @@ it('should handle adding an image', () => {
     imageActions.addImage(
       { name: 'foo' },
       entityConstants.ENTITY_TYPE_TALENT,
-      formConstants.EDIT_TALENT_FORM_NAME
+      talentConstants.EDIT_TALENT_FORM_NAME
     )
   )
 })
@@ -166,7 +166,7 @@ it('should handle deleting a link', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -177,7 +177,10 @@ it('should handle deleting a link', () => {
   wrapper.find('[name="links"]').prop('onDeleteLink')('some-link-id')
 
   expect(dispatch).toHaveBeenCalledWith(
-    linkActions.deleteLink('some-link-id', formConstants.EDIT_TALENT_FORM_NAME)
+    linkActions.deleteLink(
+      'some-link-id',
+      talentConstants.EDIT_TALENT_FORM_NAME
+    )
   )
 })
 
@@ -190,7 +193,7 @@ it('should handle adding a link', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -201,7 +204,7 @@ it('should handle adding a link', () => {
   wrapper.find('[name="links"]').prop('onAddLink')({ foo: 'bar' })
 
   expect(dispatch).toHaveBeenCalledWith(
-    linkActions.addLink({ foo: 'bar' }, formConstants.EDIT_TALENT_FORM_NAME)
+    linkActions.addLink({ foo: 'bar' }, talentConstants.EDIT_TALENT_FORM_NAME)
   )
 })
 
@@ -214,7 +217,7 @@ it('should handle changing the talent type from individual to group', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={change}
@@ -224,7 +227,7 @@ it('should handle changing the talent type from individual to group', () => {
 
   wrapper.find('[name="talentType"]').prop('onChange')(
     _.noop,
-    talentConstants.TALENT_TYPE_GROUP
+    talentDomainConstants.TALENT_TYPE_GROUP
   )
 
   expect(change).toHaveBeenCalledWith('firstNames', '')
@@ -239,7 +242,7 @@ it('should handle changing the talent type from group to individual', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentConstants.TALENT_TYPE_GROUP}
+      talentTypeValue={talentDomainConstants.TALENT_TYPE_GROUP}
       submitting={false}
       handleSubmit={_.noop}
       change={change}

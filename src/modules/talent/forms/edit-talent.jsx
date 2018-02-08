@@ -13,26 +13,25 @@ import SelectField from '_src/components/select/field'
 import HtmlTextField from '_src/components/html-text/field'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
-import * as formConstants from '_src/constants/form'
+import * as talentDomainConstants from '_src/constants/talent'
+import * as talentConstants from '_src/modules/talent/constants'
 import { actions as imageActions, ImagesField } from '_src/modules/image'
 import { actions as linkActions, LinksField } from '_src/modules/link'
-import constraint from '_src/constants/talent-constraint'
 
 export class EditTalentForm extends React.Component {
   handleChangeTalentType = (_, newValue) => {
-    if (newValue === talentConstants.TALENT_TYPE_GROUP) {
+    if (newValue === talentDomainConstants.TALENT_TYPE_GROUP) {
       this.props.change('firstNames', '')
     }
   }
   handleAddLink = values => {
     this.props.dispatch(
-      linkActions.addLink(values, formConstants.EDIT_TALENT_FORM_NAME)
+      linkActions.addLink(values, talentConstants.EDIT_TALENT_FORM_NAME)
     )
   }
   handleDeleteLink = id => {
     this.props.dispatch(
-      linkActions.deleteLink(id, formConstants.EDIT_TALENT_FORM_NAME)
+      linkActions.deleteLink(id, talentConstants.EDIT_TALENT_FORM_NAME)
     )
   }
   handleAddImage = values => {
@@ -40,23 +39,27 @@ export class EditTalentForm extends React.Component {
       imageActions.addImage(
         values,
         entityConstants.ENTITY_TYPE_TALENT,
-        formConstants.EDIT_TALENT_FORM_NAME
+        talentConstants.EDIT_TALENT_FORM_NAME
       )
     )
   }
   handleUpdateImage = ({ values, id }) => {
     return this.props.dispatch(
-      imageActions.updateImage(values, id, formConstants.EDIT_TALENT_FORM_NAME)
+      imageActions.updateImage(
+        values,
+        id,
+        talentConstants.EDIT_TALENT_FORM_NAME
+      )
     )
   }
   handleSetMainImage = id => {
     this.props.dispatch(
-      imageActions.setMainImage(id, formConstants.EDIT_TALENT_FORM_NAME)
+      imageActions.setMainImage(id, talentConstants.EDIT_TALENT_FORM_NAME)
     )
   }
   handleDeleteImage = id => {
     this.props.dispatch(
-      imageActions.deleteImage(id, formConstants.EDIT_TALENT_FORM_NAME)
+      imageActions.deleteImage(id, talentConstants.EDIT_TALENT_FORM_NAME)
     )
   }
   render () {
@@ -100,7 +103,9 @@ export class EditTalentForm extends React.Component {
             component={TextField}
             disabled={isGroup}
             forceSingleLine
-            maxLength={constraint.firstNames.length.maximum}
+            maxLength={
+              talentConstants.TALENT_CONSTRAINT.firstNames.length.maximum
+            }
           />
           <Field
             label='Last Name / Group Name'
@@ -108,7 +113,9 @@ export class EditTalentForm extends React.Component {
             component={TextField}
             required
             forceSingleLine
-            maxLength={constraint.lastName.length.maximum}
+            maxLength={
+              talentConstants.TALENT_CONSTRAINT.lastName.length.maximum
+            }
           />
         </FormRow>
         <FormRow>
@@ -118,7 +125,9 @@ export class EditTalentForm extends React.Component {
             component={TextField}
             required
             forceSingleLine
-            maxLength={constraint.commonRole.length.maximum}
+            maxLength={
+              talentConstants.TALENT_CONSTRAINT.commonRole.length.maximum
+            }
           />
         </FormRow>
         <FormRow>
@@ -134,7 +143,7 @@ export class EditTalentForm extends React.Component {
             label='We Say'
             name='weSay'
             component={TextField}
-            maxLength={constraint.weSay.length.maximum}
+            maxLength={talentConstants.TALENT_CONSTRAINT.weSay.length.maximum}
           />
         </FormRow>
         <FormRow>
@@ -174,7 +183,7 @@ EditTalentForm.propTypes = {
   isEdit: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  talentTypeValue: PropTypes.string,
+  talentTypeValue: PropTypes.string.isRequired,
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
@@ -183,11 +192,11 @@ EditTalentForm.propTypes = {
 }
 
 const WrappedEditTalentForm = reduxForm({
-  form: formConstants.EDIT_TALENT_FORM_NAME,
+  form: talentConstants.EDIT_TALENT_FORM_NAME,
   enableReinitialize: true
 })(EditTalentForm)
 
-const selector = formValueSelector(formConstants.EDIT_TALENT_FORM_NAME)
+const selector = formValueSelector(talentConstants.EDIT_TALENT_FORM_NAME)
 
 export default connect(
   /* istanbul ignore next */

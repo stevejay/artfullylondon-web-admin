@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<p
+  className="src-modules-entity-components-entity-card-summary__summary"
+>
+  <div
+    id="child"
+  />
+</p>
+`;

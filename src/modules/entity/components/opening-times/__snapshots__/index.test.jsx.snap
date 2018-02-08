@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render additional only times details correctly 1`] = `
+<div>
+  <EntityAdditionalDetailHeading>
+    Regular Times Header
+  </EntityAdditionalDetailHeading>
+  <div
+    className="src-modules-entity-components-opening-times-index__details-container"
+  >
+    <div
+      className="src-modules-entity-components-opening-times-index__details-column"
+    >
+      <div
+        className="src-modules-entity-components-opening-times-index__times-container"
+      >
+        <OpeningTimesEntry
+          key="Additional 1"
+          label="Additional 1"
+          times={Array []}
+          type="additional"
+        />
+      </div>
+    </div>
+  </div>
+  <Message
+    showIcon={false}
+    type="basic"
+  >
+    <span
+      className="src-modules-entity-components-opening-times-index__small"
+    >
+      Please contact the venue to confirm these times before making a special trip, especially during holidays.
+    </span>
+  </Message>
+</div>
+`;
+
+exports[`should render empty times details correctly 1`] = `""`;
+
+exports[`should render non-empty times details correctly 1`] = `
+<div>
+  <EntityAdditionalDetailHeading>
+    Regular Times Header
+  </EntityAdditionalDetailHeading>
+  <div
+    className="src-modules-entity-components-opening-times-index__details-container"
+  >
+    <div
+      className="src-modules-entity-components-opening-times-index__details-column"
+    >
+      <div
+        className="src-modules-entity-components-opening-times-index__times-container"
+      >
+        <OpeningTimesEntry
+          key="Regular 1"
+          label="Regular 1"
+          times={Array []}
+          type="basic"
+        />
+      </div>
+    </div>
+    <div
+      className="src-modules-entity-components-opening-times-index__details-column"
+    >
+      <EntityAdditionalDetailHeading>
+        Additional Times Header
+      </EntityAdditionalDetailHeading>
+      <div
+        className="src-modules-entity-components-opening-times-index__times-container"
+      >
+        <OpeningTimesEntry
+          key="Additional 1"
+          label="Additional 1"
+          times={Array []}
+          type="additional"
+        />
+      </div>
+    </div>
+    <div
+      className="src-modules-entity-components-opening-times-index__details-column"
+    >
+      <EntityAdditionalDetailHeading>
+        Special Times Header
+      </EntityAdditionalDetailHeading>
+      <div
+        key="Special tag"
+      >
+        <Tag
+          className="src-modules-entity-components-opening-times-index__tag"
+          tag={
+            Object {
+              "label": "Special tag",
+            }
+          }
+        />
+        <div
+          className="src-modules-entity-components-opening-times-index__times-container"
+        >
+          <OpeningTimesEntry
+            key="Special 1 "
+            label="Special 1 "
+            times={
+              Array [
+                Object {
+                  "label": "Special 1 ",
+                },
+              ]
+            }
+            type="special"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="src-modules-entity-components-opening-times-index__details-column"
+    >
+      <EntityAdditionalDetailHeading>
+        Closures
+      </EntityAdditionalDetailHeading>
+      <div
+        className="src-modules-entity-components-opening-times-index__times-container"
+      >
+        <OpeningTimesEntry
+          key="Closure 1"
+          label="Closure 1"
+          times={Array []}
+          type="closure"
+        />
+      </div>
+    </div>
+  </div>
+  <Message
+    showIcon={false}
+    type="basic"
+  >
+    <span
+      className="src-modules-entity-components-opening-times-index__small"
+    >
+      Please contact the venue to confirm these times before making a special trip, especially during holidays.
+    </span>
+  </Message>
+</div>
+`;

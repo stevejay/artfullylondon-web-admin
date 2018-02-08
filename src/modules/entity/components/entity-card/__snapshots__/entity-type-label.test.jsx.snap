@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-entity-components-entity-card-entity-type-label__venue src-modules-entity-components-entity-card-entity-type-label__label"
+>
+  The Label
+</div>
+`;

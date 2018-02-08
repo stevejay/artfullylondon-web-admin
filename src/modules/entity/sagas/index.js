@@ -8,17 +8,10 @@ import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
 import history from '_src/history'
-import talentConstraint from '_src/constants/talent-constraint'
-import talentNormaliser from '_src/constants/talent-normaliser'
-import venueConstraint from '_src/constants/venue-constraint'
-import venueNormaliser from '_src/constants/venue-normaliser'
-import eventSeriesConstraint from '_src/constants/event-series-constraint'
-import eventSeriesNormaliser from '_src/constants/event-series-normaliser'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as entityConstants from '_src/constants/entity'
 import * as formConstants from '_src/constants/form'
-// import * as searchLib from '_src/lib/search'
 import * as eventConstraints from '_src/constants/event-constraints'
 import * as eventNormalisers from '_src/constants/event-normalisers'
 import * as mappingsLib from '_src/lib/mappings'
@@ -43,21 +36,22 @@ export function * getEntity (action) {
   }
 }
 
-export function * saveEntity (action) {
-  const { entityType, isEdit } = action.payload
-  const formName = _getFormNameForEntityType(entityType)
-
+export function * saveEntity ({
+  payload: {
+    entityType,
+    values: payloadValues,
+    isEdit,
+    formName,
+    normaliser,
+    constraint,
+    mapper
+  }
+}) {
   try {
     yield put(startSubmit(formName))
-
-    const normaliser = _getNormaliserForEntityType(entityType)
-    const values = yield call(normalise, action.payload.values, normaliser)
-
-    const constraint = _getConstraintForEntityType(entityType)
+    const values = yield call(normalise, payloadValues, normaliser)
     yield call(validationLib.validate, values, constraint)
-
     const token = yield call(getAuthTokenForCurrentUser)
-    const mapper = _getMapperForEntityType(entityType)
     let json = null
 
     if (isEdit) {
@@ -90,67 +84,65 @@ export function * saveEntity (action) {
   }
 }
 
-// TODO do all these mappings a different way
+// function _getConstraintForEntityType (entityType) {
+//   switch (entityType) {
+//     case entityConstants.ENTITY_TYPE_TALENT:
+//       return talentConstraint
+//     case entityConstants.ENTITY_TYPE_VENUE:
+//       return venueConstraint
+//     case entityConstants.ENTITY_TYPE_EVENT:
+//       return eventConstraints.BASIC_CONSTRAINT
+//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+//       return eventSeriesConstraint
+//     default:
+//       throw new Error(`entityType out of range: ${entityType}`)
+//   }
+// }
 
-function _getConstraintForEntityType (entityType) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_TALENT:
-      return talentConstraint
-    case entityConstants.ENTITY_TYPE_VENUE:
-      return venueConstraint
-    case entityConstants.ENTITY_TYPE_EVENT:
-      return eventConstraints.BASIC_CONSTRAINT
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-      return eventSeriesConstraint
-    default:
-      throw new Error(`entityType out of range: ${entityType}`)
-  }
-}
+// function _getNormaliserForEntityType (entityType) {
+//   switch (entityType) {
+//     case entityConstants.ENTITY_TYPE_TALENT:
+//       return talentNormaliser
+//     case entityConstants.ENTITY_TYPE_VENUE:
+//       return venueNormaliser
+//     case entityConstants.ENTITY_TYPE_EVENT:
+//       return eventNormalisers.basicNormaliser
+//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+//       return eventSeriesNormaliser
+//     default:
+//       throw new Error(`entityType out of range: ${entityType}`)
+//   }
+// }
 
-function _getNormaliserForEntityType (entityType) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_TALENT:
-      return talentNormaliser
-    case entityConstants.ENTITY_TYPE_VENUE:
-      return venueNormaliser
-    case entityConstants.ENTITY_TYPE_EVENT:
-      return eventNormalisers.basicNormaliser
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-      return eventSeriesNormaliser
-    default:
-      throw new Error(`entityType out of range: ${entityType}`)
-  }
-}
+// function _getMapperForEntityType (entityType) {
+//   switch (entityType) {
+//     case entityConstants.ENTITY_TYPE_TALENT:
+//       return mappingsLib.mapTalentToServer
+//     case entityConstants.ENTITY_TYPE_VENUE:
+//       return mappingsLib.mapVenueToServer
+//     case entityConstants.ENTITY_TYPE_EVENT:
+//       return mappingsLib.mapEventToServer
+//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+//       return mappingsLib.mapEventSeriesToServer
+//     default:
+//       throw new Error(`entityType out of range: ${entityType}`)
+//   }
+// }
 
-function _getMapperForEntityType (entityType) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_TALENT:
-      return mappingsLib.mapTalentToServer
-    case entityConstants.ENTITY_TYPE_VENUE:
-      return mappingsLib.mapVenueToServer
-    case entityConstants.ENTITY_TYPE_EVENT:
-      return mappingsLib.mapEventToServer
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-      return mappingsLib.mapEventSeriesToServer
-    default:
-      throw new Error(`entityType out of range: ${entityType}`)
-  }
-}
-
-function _getFormNameForEntityType (entityType) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_TALENT:
-      return formConstants.EDIT_TALENT_FORM_NAME
-    case entityConstants.ENTITY_TYPE_VENUE:
-      return formConstants.EDIT_VENUE_FORM_NAME
-    case entityConstants.ENTITY_TYPE_EVENT:
-      return formConstants.EDIT_EVENT_IMAGES_FORM_NAME
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-      return formConstants.EDIT_EVENT_SERIES_FORM_NAME
-    default:
-      throw new Error(`entityType out of range: ${entityType}`)
-  }
-}
+// function _getFormNameForEntityType (entityType) {
+//   switch (entityType) {
+//     case entityConstants.ENTITY_TYPE_TALENT:
+//       return formConstants.EDIT_TALENT_FORM_NAME
+//     case entityConstants.ENTITY_TYPE_VENUE:
+//       return formConstants.EDIT_VENUE_FORM_NAME
+//     case entityConstants.ENTITY_TYPE_EVENT:
+//       return formConstants.EDIT_EVENT_IMAGES_FORM_NAME
+//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+//       return formConstants.EDIT_EVENT_SERIES_FORM_NAME
+//     default:
+//       throw new Error(`entityType out of range: ${entityType}`)
+//   }
+// }
 
 // function * getEventAsCopy (action) {
 //   const { id } = action.payload

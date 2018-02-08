@@ -42,12 +42,12 @@ export function mapStringDateToJsDate (stringDate) {
   )
 }
 
-function getLondonNowAsJsDate () {
+export function getLondonNowAsJsDate () {
   return moment().tz('Europe/London').toDate()
 }
 
 // Note: returns a new Date object
-function removeTimeFromJsDate (date) {
+export function removeTimeFromJsDate (date) {
   return moment(date).startOf('day').toDate()
 }
 
@@ -112,8 +112,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-      ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
-      : formatStringDateForDisplay(dateFrom)
+        ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
+        : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 

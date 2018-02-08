@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render an info bar for a venue correctly 1`] = `
+<ul
+  className="src-modules-entity-components-info-bar__container"
+>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaTags
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <span>
+      Tags Label
+    </span>
+  </li>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaGlobe
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <a
+      className="src-modules-entity-components-info-bar__link"
+      rel="noopener"
+      target="_blank"
+    >
+      Website
+    </a>
+  </li>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaPencil
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <Link
+      className="src-modules-entity-components-info-bar__link"
+      replace={false}
+      to="/venue/edit/some-venue-id"
+    >
+      Edit
+    </Link>
+  </li>
+</ul>
+`;
+
+exports[`should render an info bar for an event correctly 1`] = `
+<ul
+  className="src-modules-entity-components-info-bar__container"
+>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaTags
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <span>
+      Tags Label
+    </span>
+  </li>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaGlobe
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <a
+      className="src-modules-entity-components-info-bar__link"
+      rel="noopener"
+      target="_blank"
+    >
+      Website
+    </a>
+  </li>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaPencil
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <Link
+      className="src-modules-entity-components-info-bar__link"
+      replace={false}
+      to="/event/edit/some-event-id"
+    >
+      Edit
+    </Link>
+  </li>
+  <li
+    className="src-modules-entity-components-info-bar__item"
+  >
+    <FaCopy
+      className="src-modules-entity-components-info-bar__icon"
+    />
+    <Link
+      className="src-modules-entity-components-info-bar__link"
+      onClick={[Function]}
+      replace={false}
+      to="/event"
+    >
+      Copy
+    </Link>
+  </li>
+</ul>
+`;

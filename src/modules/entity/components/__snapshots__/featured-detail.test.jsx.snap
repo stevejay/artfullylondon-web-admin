@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-entity-components-featured-detail__container"
+>
+  <EntityFeaturedDetailHeading>
+    The Heading
+  </EntityFeaturedDetailHeading>
+  <EntityFeaturedDetailContent>
+    <div
+      id="child"
+    />
+  </EntityFeaturedDetailContent>
+</div>
+`;

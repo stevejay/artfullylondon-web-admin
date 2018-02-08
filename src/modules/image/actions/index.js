@@ -13,7 +13,7 @@ export const addImage = (values, entityType, parentFormName) => ({
   payload: {
     ...values,
     entityType: entityConstants.ENTITY_TYPE_TALENT,
-    parentFormName: formConstants.EDIT_TALENT_FORM_NAME
+    parentFormName
   }
 })
 

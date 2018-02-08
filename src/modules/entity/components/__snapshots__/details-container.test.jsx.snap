@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default container correctly 1`] = `
+<div
+  className="src-modules-entity-components-details-container__container-default src-modules-entity-components-details-container__container"
+>
+  <div
+    id="child"
+  />
+</div>
+`;
+
+exports[`should render a narrow container correctly 1`] = `
+<div
+  className="src-modules-entity-components-details-container__container-narrow src-modules-entity-components-details-container__container"
+>
+  <div
+    id="child"
+  />
+</div>
+`;

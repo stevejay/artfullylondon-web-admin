@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when there is a credit 1`] = `
+<div
+  className="src-modules-entity-components-image-credit__credit"
+>
+  IMAGE CREDIT: 
+  The Credit
+</div>
+`;
+
+exports[`should render correctly when there is no credit 1`] = `""`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-entity-components-opening-times-current-times__summary-container"
+>
+  <EntityFeaturedDetail
+    heading="Today"
+  >
+    Today Description
+  </EntityFeaturedDetail>
+  <EntityFeaturedDetail
+    heading="Tomorrow"
+  >
+    Tomorrow Description
+  </EntityFeaturedDetail>
+</div>
+`;
+
+exports[`should render correctly when no descriptions 1`] = `""`;
