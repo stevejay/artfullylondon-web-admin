@@ -15,6 +15,7 @@ import * as search from '_src/modules/search'
 import * as referenceData from '_src/modules/reference-data'
 import * as image from '_src/modules/image'
 import * as link from '_src/modules/link'
+import * as time from '_src/modules/time'
 
 const reducer = combineReducers({
   form: formReducer,
@@ -38,10 +39,10 @@ const sagas = function * () {
     ...image.sagas,
     ...link.sagas,
     ...user.sagas,
-    ...dashboard.sagas
+    ...dashboard.sagas,
+    ...time.sagas
   ])
   // ...monitorsSagas,
-  // ...timeSagas,
 }
 
 const sagaMiddleware = createSagaMiddleware()

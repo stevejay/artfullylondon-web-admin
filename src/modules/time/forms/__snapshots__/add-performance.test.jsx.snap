@@ -1,0 +1,455 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div>
+  <FormRow>
+    <Field
+      component={[Function]}
+      containerStyle={
+        Object {
+          "minWidth": "12rem",
+        }
+      }
+      label="Day"
+      name="day"
+      options={
+        Array [
+          Object {
+            "label": "Monday",
+            "value": "0",
+          },
+          Object {
+            "label": "Tuesday",
+            "value": "1",
+          },
+          Object {
+            "label": "Wednesday",
+            "value": "2",
+          },
+          Object {
+            "label": "Thursday",
+            "value": "3",
+          },
+          Object {
+            "label": "Friday",
+            "value": "4",
+          },
+          Object {
+            "label": "Saturday",
+            "value": "5",
+          },
+          Object {
+            "label": "Sunday",
+            "value": "6",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+    <Field
+      component={[Function]}
+      label="At"
+      name="at"
+      options={
+        Array [
+          Object {
+            "label": "12:00 am",
+            "value": "00:00",
+          },
+          Object {
+            "label": "12:15 am",
+            "value": "00:15",
+          },
+          Object {
+            "label": "12:30 am",
+            "value": "00:30",
+          },
+          Object {
+            "label": "12:45 am",
+            "value": "00:45",
+          },
+          Object {
+            "label": " 1:00 am",
+            "value": "01:00",
+          },
+          Object {
+            "label": " 1:15 am",
+            "value": "01:15",
+          },
+          Object {
+            "label": " 1:30 am",
+            "value": "01:30",
+          },
+          Object {
+            "label": " 1:45 am",
+            "value": "01:45",
+          },
+          Object {
+            "label": " 2:00 am",
+            "value": "02:00",
+          },
+          Object {
+            "label": " 2:15 am",
+            "value": "02:15",
+          },
+          Object {
+            "label": " 2:30 am",
+            "value": "02:30",
+          },
+          Object {
+            "label": " 2:45 am",
+            "value": "02:45",
+          },
+          Object {
+            "label": " 3:00 am",
+            "value": "03:00",
+          },
+          Object {
+            "label": " 3:15 am",
+            "value": "03:15",
+          },
+          Object {
+            "label": " 3:30 am",
+            "value": "03:30",
+          },
+          Object {
+            "label": " 3:45 am",
+            "value": "03:45",
+          },
+          Object {
+            "label": " 4:00 am",
+            "value": "04:00",
+          },
+          Object {
+            "label": " 4:15 am",
+            "value": "04:15",
+          },
+          Object {
+            "label": " 4:30 am",
+            "value": "04:30",
+          },
+          Object {
+            "label": " 4:45 am",
+            "value": "04:45",
+          },
+          Object {
+            "label": " 5:00 am",
+            "value": "05:00",
+          },
+          Object {
+            "label": " 5:15 am",
+            "value": "05:15",
+          },
+          Object {
+            "label": " 5:30 am",
+            "value": "05:30",
+          },
+          Object {
+            "label": " 5:45 am",
+            "value": "05:45",
+          },
+          Object {
+            "label": " 6:00 am",
+            "value": "06:00",
+          },
+          Object {
+            "label": " 6:15 am",
+            "value": "06:15",
+          },
+          Object {
+            "label": " 6:30 am",
+            "value": "06:30",
+          },
+          Object {
+            "label": " 6:45 am",
+            "value": "06:45",
+          },
+          Object {
+            "label": " 7:00 am",
+            "value": "07:00",
+          },
+          Object {
+            "label": " 7:15 am",
+            "value": "07:15",
+          },
+          Object {
+            "label": " 7:30 am",
+            "value": "07:30",
+          },
+          Object {
+            "label": " 7:45 am",
+            "value": "07:45",
+          },
+          Object {
+            "label": " 8:00 am",
+            "value": "08:00",
+          },
+          Object {
+            "label": " 8:15 am",
+            "value": "08:15",
+          },
+          Object {
+            "label": " 8:30 am",
+            "value": "08:30",
+          },
+          Object {
+            "label": " 8:45 am",
+            "value": "08:45",
+          },
+          Object {
+            "label": " 9:00 am",
+            "value": "09:00",
+          },
+          Object {
+            "label": " 9:15 am",
+            "value": "09:15",
+          },
+          Object {
+            "label": " 9:30 am",
+            "value": "09:30",
+          },
+          Object {
+            "label": " 9:45 am",
+            "value": "09:45",
+          },
+          Object {
+            "label": "10:00 am",
+            "value": "10:00",
+          },
+          Object {
+            "label": "10:15 am",
+            "value": "10:15",
+          },
+          Object {
+            "label": "10:30 am",
+            "value": "10:30",
+          },
+          Object {
+            "label": "10:45 am",
+            "value": "10:45",
+          },
+          Object {
+            "label": "11:00 am",
+            "value": "11:00",
+          },
+          Object {
+            "label": "11:15 am",
+            "value": "11:15",
+          },
+          Object {
+            "label": "11:30 am",
+            "value": "11:30",
+          },
+          Object {
+            "label": "11:45 am",
+            "value": "11:45",
+          },
+          Object {
+            "label": "12:00 pm",
+            "value": "12:00",
+          },
+          Object {
+            "label": "12:15 pm",
+            "value": "12:15",
+          },
+          Object {
+            "label": "12:30 pm",
+            "value": "12:30",
+          },
+          Object {
+            "label": "12:45 pm",
+            "value": "12:45",
+          },
+          Object {
+            "label": " 1:00 pm",
+            "value": "13:00",
+          },
+          Object {
+            "label": " 1:15 pm",
+            "value": "13:15",
+          },
+          Object {
+            "label": " 1:30 pm",
+            "value": "13:30",
+          },
+          Object {
+            "label": " 1:45 pm",
+            "value": "13:45",
+          },
+          Object {
+            "label": " 2:00 pm",
+            "value": "14:00",
+          },
+          Object {
+            "label": " 2:15 pm",
+            "value": "14:15",
+          },
+          Object {
+            "label": " 2:30 pm",
+            "value": "14:30",
+          },
+          Object {
+            "label": " 2:45 pm",
+            "value": "14:45",
+          },
+          Object {
+            "label": " 3:00 pm",
+            "value": "15:00",
+          },
+          Object {
+            "label": " 3:15 pm",
+            "value": "15:15",
+          },
+          Object {
+            "label": " 3:30 pm",
+            "value": "15:30",
+          },
+          Object {
+            "label": " 3:45 pm",
+            "value": "15:45",
+          },
+          Object {
+            "label": " 4:00 pm",
+            "value": "16:00",
+          },
+          Object {
+            "label": " 4:15 pm",
+            "value": "16:15",
+          },
+          Object {
+            "label": " 4:30 pm",
+            "value": "16:30",
+          },
+          Object {
+            "label": " 4:45 pm",
+            "value": "16:45",
+          },
+          Object {
+            "label": " 5:00 pm",
+            "value": "17:00",
+          },
+          Object {
+            "label": " 5:15 pm",
+            "value": "17:15",
+          },
+          Object {
+            "label": " 5:30 pm",
+            "value": "17:30",
+          },
+          Object {
+            "label": " 5:45 pm",
+            "value": "17:45",
+          },
+          Object {
+            "label": " 6:00 pm",
+            "value": "18:00",
+          },
+          Object {
+            "label": " 6:15 pm",
+            "value": "18:15",
+          },
+          Object {
+            "label": " 6:30 pm",
+            "value": "18:30",
+          },
+          Object {
+            "label": " 6:45 pm",
+            "value": "18:45",
+          },
+          Object {
+            "label": " 7:00 pm",
+            "value": "19:00",
+          },
+          Object {
+            "label": " 7:15 pm",
+            "value": "19:15",
+          },
+          Object {
+            "label": " 7:30 pm",
+            "value": "19:30",
+          },
+          Object {
+            "label": " 7:45 pm",
+            "value": "19:45",
+          },
+          Object {
+            "label": " 8:00 pm",
+            "value": "20:00",
+          },
+          Object {
+            "label": " 8:15 pm",
+            "value": "20:15",
+          },
+          Object {
+            "label": " 8:30 pm",
+            "value": "20:30",
+          },
+          Object {
+            "label": " 8:45 pm",
+            "value": "20:45",
+          },
+          Object {
+            "label": " 9:00 pm",
+            "value": "21:00",
+          },
+          Object {
+            "label": " 9:15 pm",
+            "value": "21:15",
+          },
+          Object {
+            "label": " 9:30 pm",
+            "value": "21:30",
+          },
+          Object {
+            "label": " 9:45 pm",
+            "value": "21:45",
+          },
+          Object {
+            "label": "10:00 pm",
+            "value": "22:00",
+          },
+          Object {
+            "label": "10:15 pm",
+            "value": "22:15",
+          },
+          Object {
+            "label": "10:30 pm",
+            "value": "22:30",
+          },
+          Object {
+            "label": "10:45 pm",
+            "value": "22:45",
+          },
+          Object {
+            "label": "11:00 pm",
+            "value": "23:00",
+          },
+          Object {
+            "label": "11:15 pm",
+            "value": "23:15",
+          },
+          Object {
+            "label": "11:30 pm",
+            "value": "23:30",
+          },
+          Object {
+            "label": "11:45 pm",
+            "value": "23:45",
+          },
+        ]
+      }
+      required={true}
+    />
+  </FormRow>
+  <FormError
+    hideGenericErrorMessages={true}
+  />
+  <SubFormButtons
+    onReset={[Function]}
+    onSubmit={[Function]}
+    pristine={true}
+    submitting={false}
+  />
+</div>
+`;
