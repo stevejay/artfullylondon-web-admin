@@ -6,6 +6,12 @@ import {
 } from '_src/modules/entity/pages/edit-or-create'
 import * as entityActions from '_src/modules/entity/actions'
 
+class EditComponent extends React.Component {
+  render () {
+    return <div id='component' />
+  }
+}
+
 it('should render correctly when get entity failed', () => {
   const wrapper = shallow(
     <EntityEditOrCreatePage
@@ -14,6 +20,7 @@ it('should render correctly when get entity failed', () => {
       entity={null}
       getInProgress={false}
       getFailed
+      component={EditComponent}
       dispatch={_.noop}
     />
   )
@@ -29,6 +36,7 @@ it('should render correctly when get is in progress', () => {
       entity={null}
       getInProgress
       getFailed={false}
+      component={EditComponent}
       dispatch={_.noop}
     />
   )
@@ -44,6 +52,7 @@ it('should render correctly when has no entity', () => {
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={EditComponent}
       dispatch={_.noop}
     />
   )
@@ -51,7 +60,7 @@ it('should render correctly when has no entity', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly when has a talent entity', () => {
+it('should render correctly when has an entity', () => {
   const wrapper = shallow(
     <EntityEditOrCreatePage
       entityType='talent'
@@ -59,51 +68,7 @@ it('should render correctly when has a talent entity', () => {
       entity={{ id: 'some-id', entityType: 'talent' }}
       getInProgress={false}
       getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has a venue entity', () => {
-  const wrapper = shallow(
-    <EntityEditOrCreatePage
-      entityType='venue'
-      entityId='some-id'
-      entity={{ id: 'some-id', entityType: 'venue' }}
-      getInProgress={false}
-      getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has an event entity', () => {
-  const wrapper = shallow(
-    <EntityEditOrCreatePage
-      entityType='event'
-      entityId='some-id'
-      entity={{ id: 'some-id', entityType: 'event' }}
-      getInProgress={false}
-      getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has an event series entity', () => {
-  const wrapper = shallow(
-    <EntityEditOrCreatePage
-      entityType='event-series'
-      entityId='some-id'
-      entity={{ id: 'some-id', entityType: 'event-series' }}
-      getInProgress={false}
-      getFailed={false}
+      component={EditComponent}
       dispatch={_.noop}
     />
   )
@@ -121,6 +86,7 @@ it('should trigger getting the entity on construction when editing an entity', (
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={EditComponent}
       dispatch={dispatch}
     />
   )
@@ -140,6 +106,7 @@ it('should trigger getting the entity on construction when creating an entity', 
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={EditComponent}
       dispatch={dispatch}
     />
   )
@@ -159,6 +126,7 @@ it('should not trigger getting the entity when props change but the same entity 
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={EditComponent}
       dispatch={dispatch}
     />
   )
@@ -180,6 +148,7 @@ it('should trigger getting the entity when props change and a different entity i
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={EditComponent}
       dispatch={dispatch}
     />
   )

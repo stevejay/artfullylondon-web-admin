@@ -2,8 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import DayAndTimePeriodEntry
-  from '_src/components/time/day-and-time-period-entry'
+import DayAndTimePeriodEntry from './day-and-time-period-entry'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -105,10 +105,7 @@ it('should handle submitting the form', () => {
 
   wrapper.find('formComponent').simulate('submit', { foo: 'bar' })
 
-  expect(handleSubmit).toHaveBeenCalledWith({
-    values: { foo: 'bar' },
-    parentFormName: 'TheParentFormName'
-  })
+  expect(handleSubmit).toHaveBeenCalledWith({ foo: 'bar' }, 'TheParentFormName')
 })
 
 it('should handle deleting a time', () => {

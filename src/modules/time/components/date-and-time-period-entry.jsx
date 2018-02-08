@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import TimeGridRow from '_src/components/time/grid-row'
+import TimeGridRow from './grid-row'
 
 class DateAndTimePeriodEntry extends ShouldNeverUpdateComponent {
   render () {

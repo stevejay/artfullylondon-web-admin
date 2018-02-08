@@ -37,17 +37,19 @@ exports[`should render correctly when logged in 1`] = `
           path="/search"
         />
         <Route
-          component={[Function]}
           exact={true}
-          path="/:entityType(talent|venue|event|event-series)"
+          path="/talent"
+          render={[Function]}
         />
         <Route
-          component={[Function]}
-          path="/:entityType(talent|venue|event|event-series)/edit/(.*)"
+          exact={true}
+          path="/talent/edit/(.*)"
+          render={[Function]}
         />
         <Route
-          component={[Function]}
-          path="/:entityType(talent|venue|event|event-series)/(.*)"
+          exact={true}
+          path="/talent/(.*)"
+          render={[Function]}
         />
         <Redirect
           from="/login"

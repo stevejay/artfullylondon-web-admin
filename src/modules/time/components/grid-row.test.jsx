@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import TimeGridRow from '_src/components/time/grid-row'
+import TimeGridRow from './grid-row'
 
 it('should render correctly with a time', () => {
   const wrapper = shallow(

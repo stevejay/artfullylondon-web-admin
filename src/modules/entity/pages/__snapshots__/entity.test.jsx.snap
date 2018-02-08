@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when get entity failed 1`] = `
+<BasicSection>
+  <Error
+    type="DEFAULT"
+  />
+</BasicSection>
+`;
+
+exports[`should render correctly when get is in progress 1`] = `
+<BasicSection>
+  <BoxesLoader
+    size="large"
+    type="default"
+  />
+</BasicSection>
+`;
+
+exports[`should render correctly when has an entity 1`] = `
+<FadeTransition
+  appear={true}
+  in={true}
+  mountOnEnter={true}
+  unmountOnExit={true}
+>
+  <BasicSection>
+    <SomeComponent
+      entity={
+        FullTalent {
+          "entity": Object {
+            "id": "some-id",
+          },
+          "links": LinkCollection {
+            "links": undefined,
+          },
+        }
+      }
+      isEdit={true}
+    />
+  </BasicSection>
+</FadeTransition>
+`;
+
+exports[`should render correctly when has no entity 1`] = `
+<BasicSection>
+  <BoxesLoader
+    size="large"
+    type="default"
+  />
+</BasicSection>
+`;

@@ -2,23 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import FadeTransition from '_src/components/transition/fade'
 import { Error } from '_src/modules/error'
+import FadeTransition from '_src/components/transition/fade'
 import BoxesLoader from '_src/components/loader/boxes'
 import BasicSection from '_src/components/section/basic'
-import TalentEditOrCreate
-  from '_src/modules/entity/components/talent-edit-or-create'
-import VenueEditOrCreate
-  from '_src/modules/entity/components/venue-edit-or-create'
-import EventEditOrCreate
-  from '_src/modules/entity/components/event-edit-or-create'
-import EventSeriesEditOrCreate
-  from '_src/modules/entity/components/event-series-edit-or-create'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityConstants from '_src/constants/entity'
 import * as entityActions from '_src/modules/entity/actions'
 import { selectors as entitySelectors } from '_src/modules/entity/reducers'
 
-export class EntityEditOrCreatePage extends React.Component {
+export class EntityPage extends React.Component {
   componentWillMount () {
     this._getOrResetEntity(this.props)
   }
@@ -32,9 +25,9 @@ export class EntityEditOrCreatePage extends React.Component {
   }
   _getOrResetEntity ({ entityType, entityId }) {
     if (entityId) {
-      this.props.dispatch(entityActions.getEntityForEdit(entityType, entityId))
+      this.props.dispatch(entityActions.getEntity(entityType, entityId))
     } else {
-      this.props.dispatch(entityActions.resetEntityForEdit(entityType))
+      this.props.dispatch(entityActions.resetEntityForCreate(entityType))
     }
   }
   render () {
@@ -43,7 +36,8 @@ export class EntityEditOrCreatePage extends React.Component {
       entityId,
       entity,
       getInProgress,
-      getFailed
+      getFailed,
+      component: Component
     } = this.props
 
     if (getFailed) {
@@ -54,41 +48,32 @@ export class EntityEditOrCreatePage extends React.Component {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 
-    const isEdit = !!entityId
-
     return (
       <FadeTransition in appear mountOnEnter unmountOnExit>
         <BasicSection>
-          {entityType === entityConstants.ENTITY_TYPE_TALENT &&
-            <TalentEditOrCreate entity={entity} isEdit={isEdit} />}
-          {entityType === entityConstants.ENTITY_TYPE_VENUE &&
-            <VenueEditOrCreate entity={entity} isEdit={isEdit} />}
-          {entityType === entityConstants.ENTITY_TYPE_EVENT &&
-            <EventEditOrCreate entity={entity} isEdit={isEdit} />}
-          {entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES &&
-            <EventSeriesEditOrCreate entity={entity} isEdit={isEdit} />}
+          <Component entity={entity} isEdit={!!entityId} />
         </BasicSection>
       </FadeTransition>
     )
   }
 }
 
-EntityEditOrCreatePage.propTypes = {
+EntityPage.propTypes = {
   entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   entityId: PropTypes.string,
-  entity: PropTypes.object,
+  entity: entitiesPropTypes.EDITABLE_ENTITY,
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
+  component: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 export default connect(
   /* istanbul ignore next */
   (state, ownProps) => ({
-    entityType: ownProps.match.params.entityType,
     entityId: ownProps.match.params[0],
-    entity: entitySelectors.entityForEdit(state),
-    getInProgress: entitySelectors.gettingEntityForEdit(state),
-    getFailed: entitySelectors.failedToGetEntityForEdit(state)
+    entity: entitySelectors.entity(state),
+    getInProgress: entitySelectors.gettingEntity(state),
+    getFailed: entitySelectors.failedToGetEntity(state)
   })
-)(EntityEditOrCreatePage)
+)(EntityPage)

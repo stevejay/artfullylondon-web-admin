@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import TimesRangeEntry from '_src/components/time/times-range-entry'
+import TimesRangeEntry from './times-range-entry'
 
 it('should render correctly', () => {
   const wrapper = shallow(

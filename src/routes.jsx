@@ -22,7 +22,9 @@ import {
 import { actions as referenceActions } from '_src/modules/reference-data'
 import { TagsTypePage } from '_src/modules/tag'
 import { ResultsPage, Quicksearch } from '_src/modules/search'
-import { EntityDetailPage, EntityEditOrCreatePage } from '_src/modules/entity'
+import { EntityPage } from '_src/modules/entity'
+import { TalentEditOrCreate, TalentDetail } from '_src/modules/talent'
+import * as entityConstants from '_src/constants/entity'
 
 export class Routes extends React.Component {
   constructor (props) {
@@ -84,17 +86,34 @@ export class Routes extends React.Component {
                 <Route path='/tags/:type' component={TagsTypePage} />
                 <Route path='/search' component={ResultsPage} />
                 <Route
-                  path='/:entityType(talent|venue|event|event-series)'
+                  path='/talent'
                   exact
-                  component={EntityEditOrCreatePage}
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      component={TalentEditOrCreate}
+                    />
+                  )}
                 />
                 <Route
-                  path='/:entityType(talent|venue|event|event-series)/edit/(.*)'
-                  component={EntityEditOrCreatePage}
+                  path='/talent/edit/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      component={TalentEditOrCreate}
+                    />
+                  )}
                 />
                 <Route
-                  path='/:entityType(talent|venue|event|event-series)/(.*)'
-                  component={EntityDetailPage}
+                  path='/talent/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      component={TalentDetail}
+                    />
+                  )}
                 />
                 <Redirect from='/login' to='/' />
                 <Route component={NotFoundPage} />

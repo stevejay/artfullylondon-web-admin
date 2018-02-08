@@ -8,6 +8,12 @@ import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import * as entityActions from '_src/modules/entity/actions'
 
+class DetailComponent extends React.Component {
+  render () {
+    return <div id='component' />
+  }
+}
+
 it('should render correctly when get entity failed', () => {
   const wrapper = shallow(
     <EntityDetailPage
@@ -16,6 +22,7 @@ it('should render correctly when get entity failed', () => {
       entity={null}
       getInProgress={false}
       getFailed
+      component={DetailComponent}
       dispatch={_.noop}
     />
   )
@@ -31,6 +38,7 @@ it('should render correctly when get is in progress', () => {
       entity={null}
       getInProgress
       getFailed={false}
+      component={DetailComponent}
       dispatch={_.noop}
     />
   )
@@ -46,6 +54,7 @@ it('should render correctly when has no entity', () => {
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={DetailComponent}
       dispatch={_.noop}
     />
   )
@@ -61,6 +70,7 @@ it('should render correctly when has an entity but it has a different id', () =>
       entity={new FullTalent({ id: 'some-other-id' })}
       getInProgress={false}
       getFailed={false}
+      component={DetailComponent}
       dispatch={_.noop}
     />
   )
@@ -68,7 +78,7 @@ it('should render correctly when has an entity but it has a different id', () =>
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly when has a talent entity', () => {
+it('should render correctly when has an entity', () => {
   const wrapper = shallow(
     <EntityDetailPage
       entityType='talent'
@@ -76,51 +86,7 @@ it('should render correctly when has a talent entity', () => {
       entity={new FullTalent({ id: 'some-id' })}
       getInProgress={false}
       getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has a venue entity', () => {
-  const wrapper = shallow(
-    <EntityDetailPage
-      entityType='venue'
-      entityId='some-id'
-      entity={new FullVenue({ id: 'some-id' })}
-      getInProgress={false}
-      getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has an event entity', () => {
-  const wrapper = shallow(
-    <EntityDetailPage
-      entityType='event'
-      entityId='some-id'
-      entity={new FullEvent({ id: 'some-id', venue: {} })}
-      getInProgress={false}
-      getFailed={false}
-      dispatch={_.noop}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has an event series entity', () => {
-  const wrapper = shallow(
-    <EntityDetailPage
-      entityType='event-series'
-      entityId='some-id'
-      entity={new FullEventSeries({ id: 'some-id' })}
-      getInProgress={false}
-      getFailed={false}
+      component={DetailComponent}
       dispatch={_.noop}
     />
   )
@@ -138,6 +104,7 @@ it('should trigger getting the entity on construction', () => {
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={DetailComponent}
       dispatch={dispatch}
     />
   )
@@ -157,6 +124,7 @@ it('should not trigger getting the entity when props change but the same entity 
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={DetailComponent}
       dispatch={dispatch}
     />
   )
@@ -178,6 +146,7 @@ it('should trigger getting the entity when props change and a different entity i
       entity={null}
       getInProgress={false}
       getFailed={false}
+      component={DetailComponent}
       dispatch={dispatch}
     />
   )

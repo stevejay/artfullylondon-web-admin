@@ -15,6 +15,22 @@ it('should have the correct initial state', () => {
   })
 })
 
+it('should handle resetting an entity for create', () => {
+  const state = deepFreeze({
+    entityId: 'some-id',
+    entity: { name: 'foo' },
+    getInProgress: true,
+    getFailed: true
+  })
+
+  const actual = reducer(state, entityActions.resetEntityForCreate('talent'))
+
+  expect(actual.entityId).toEqual(null)
+  expect(actual.entity).not.toEqual(null)
+  expect(actual.getInProgress).toEqual(false)
+  expect(actual.getFailed).toEqual(false)
+})
+
 it('should handle starting to get an entity', () => {
   const state = deepFreeze({
     entityId: null,

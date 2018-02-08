@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  touched={false}
+>
+  <FieldBorder>
+    <formComponent
+      constraint={Object {}}
+      maxDate="2017/01/18"
+      minDate="2016/01/18"
+      onSubmit={[Function]}
+      timesRangesOptions={Array []}
+    />
+    <Component />
+    <Grid>
+      <itemComponent
+        key="some-key"
+        onDelete={[Function]}
+        value={
+          Object {
+            "key": "some-key",
+          }
+        }
+      />
+    </Grid>
+  </FieldBorder>
+</Container>
+`;

@@ -33,13 +33,13 @@ export function * getEntity (action) {
     yield put(entityActions.getEntityStarted(entityType, id))
 
     const token = yield call(getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${id}`
+    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
     const json = yield call(get, url, token)
 
     yield put(entityActions.getEntitySucceeded(entityType, json.entity))
   } catch (err) {
     yield call(log.error, err)
-    yield put(entityActions.getEntityFailed(entityType, err.statusCode))
+    yield put(entityActions.getEntityFailed(entityType))
   }
 }
 
@@ -87,24 +87,6 @@ export function * saveEntity (action) {
     )
 
     yield call(sagaLib.submitErrorHandler, err, formName)
-  }
-}
-
-export function * getEntityForEdit (action) {
-  const { entityType, id } = action.payload
-
-  try {
-    yield put(entityActions.getEntityForEditStarted(entityType, id))
-
-    const token = yield call(getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
-    const json = yield call(get, url, token)
-
-    yield put(entityActions.getEntityForEditSucceeded(entityType, json.entity))
-  } catch (err) {
-    yield call(log.error, err)
-
-    yield put(entityActions.getEntityForEditFailed(entityType))
   }
 }
 
@@ -333,8 +315,7 @@ function _getFormNameForEntityType (entityType) {
 
 export default [
   takeLatest(entityActions.types.GET_ENTITY, getEntity),
-  takeLatest(entityActions.types.SAVE_ENTITY, saveEntity),
-  takeLatest(entityActions.types.GET_ENTITY_FOR_EDIT, getEntityForEdit)
+  takeLatest(entityActions.types.SAVE_ENTITY, saveEntity)
   // takeLatest(entityActionTypes.GET_SUB_ENTITY, getSubEntity),
   // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),
   // takeLatest(entityActionTypes.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
