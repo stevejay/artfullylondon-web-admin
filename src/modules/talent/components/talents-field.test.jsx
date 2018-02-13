@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import TalentsField from '_src/components/talents/field'
-import TalentsGridRow from '_src/components/talents/grid-row'
+import TalentsField from './talents-field'
+import TalentsGridRow from './talents-grid-row'
 
 it('should render correctly', () => {
   const wrapper = shallow(

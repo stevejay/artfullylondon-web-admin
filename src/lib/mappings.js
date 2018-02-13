@@ -119,50 +119,6 @@ export function normaliseEventValues (values) {
   }
 }
 
-export function mapTalentToServer (values) {
-  const isIndividual = talentLib.isIndividualTalent(values.talentType)
-  const firstNames = isIndividual ? (values.firstNames || '').trim() : ''
-  const dbDate = dateLib.getDateNowForDatabase()
-
-  return {
-    firstNames: firstNames,
-    lastName: (values.lastName || '').trim(),
-    description: _mapDescriptionToServer(values.description),
-    talentType: values.talentType,
-    commonRole: values.commonRole,
-    status: values.status,
-    links: _mapLinksToServer(values.links),
-    images: _mapImagesToServer(values.images),
-    weSay: (values.weSay || '').trim(),
-    version: values.version + 1,
-    createdDate: values.createdDate || dbDate,
-    updatedDate: dbDate
-  }
-}
-
-export function mapTalentFromServer (payload) {
-  const isIndividual = talentLib.isIndividualTalent(payload.talentType)
-  const firstNames = isIndividual ? payload.firstNames : ''
-
-  return {
-    id: payload.id,
-    status: payload.status,
-    validStatuses: entityLib.getValidStatuses(payload.status),
-    firstNames: firstNames || '',
-    lastName: payload.lastName,
-    talentType: payload.talentType,
-    commonRole: payload.commonRole,
-    description: _mapDescriptionFromServer(payload.description),
-    links: _mapLinksFromServer(payload.links),
-    images: _mapImagesFromServer(payload.images),
-    currentEvents: [],
-    futureEvents: [],
-    weSay: payload.weSay || '',
-    version: payload.version,
-    createdDate: payload.createdDate
-  }
-}
-
 export function mapVenueToServer (values) {
   const dbDate = dateLib.getDateNowForDatabase()
 

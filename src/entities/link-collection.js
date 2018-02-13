@@ -1,6 +1,10 @@
 export class LinkCollection {
   constructor (links) {
-    this.links = links
+    this._links = links
+  }
+
+  get links () {
+    return this._links
   }
 
   getLinkByType (linkType) {

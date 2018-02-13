@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import TalentsGridRow from '_src/components/talents/grid-row'
+import TalentsGridRow from './talents-grid-row'
 import Text from '_src/components/text'
 
 it('should render correctly', () => {

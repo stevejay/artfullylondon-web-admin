@@ -77,6 +77,7 @@ export function processDescription (description, credit) {
   return result
 }
 
+// MOVED!
 export const getValidStatuses = function (currentState) {
   switch (currentState) {
     case entityConstants.PENDING_STATUS:

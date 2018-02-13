@@ -1,18 +1,15 @@
 import _ from 'lodash'
+import RichTextEditor from 'react-rte'
 
 import { LinkCollection } from '_src/entities/link-collection'
 import * as entityConstants from '_src/constants/entity'
+import * as talentConstants from '_src/constants/talent'
 import * as entityLib from '_src/lib/entity'
 import * as talentLib from '_src/lib/talent'
 
 export class SummaryTalent {
   constructor (entity) {
-    /* istanbul ignore if */
-    if (!entity) {
-      throw new Error('null or undefined entity')
-    }
-
-    this.entity = entity
+    this.entity = entity || {}
   }
 
   get entityType () {
@@ -37,6 +34,14 @@ export class SummaryTalent {
 
   get name () {
     return talentLib.formatTalentName(this.entity)
+  }
+
+  get firstNames () {
+    return this.entity.firstNames
+  }
+
+  get lastName () {
+    return this.entity.lastName
   }
 
   get talentType () {
@@ -75,19 +80,6 @@ export class SummaryTalent {
     return false
   }
 
-  isBeingWatched (watches) {
-    return !!watches[this.id]
-  }
-
-  createWatchLabel () {
-    return `${this.name} (${this.commonRole})`
-  }
-
-  createWatchChangeInstruction (isBeingWatched) {
-    const prefix = isBeingWatched ? 'Unwatch' : 'Watch'
-    return prefix + ' this talent'
-  }
-
   createRolesString () {
     return this.entity.roles ? this.entity.roles.join(' / ') : ''
   }
@@ -104,7 +96,23 @@ export class SummaryTalent {
 export class FullTalent extends SummaryTalent {
   constructor (entity) {
     super(entity)
-    this.links = new LinkCollection(entity.links)
+    this._links = new LinkCollection(this.entity.links)
+  }
+
+  get version () {
+    return this.entity.version
+  }
+
+  get createdDate () {
+    return this.entity.createdDate
+  }
+
+  get isFullEntity () {
+    return true
+  }
+
+  get isNew () {
+    return !this.entity.id
   }
 
   get images () {
@@ -123,8 +131,8 @@ export class FullTalent extends SummaryTalent {
     return this.entity.weSay
   }
 
-  get isFullEntity () {
-    return true
+  get links () {
+    return this._links.links
   }
 
   createInfoBarLabel () {
@@ -139,6 +147,6 @@ export class FullTalent extends SummaryTalent {
   }
 
   getLinkByType (linkType) {
-    return this.links.getLinkByType(linkType)
+    return this._links.getLinkByType(linkType)
   }
 }

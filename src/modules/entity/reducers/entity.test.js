@@ -26,7 +26,7 @@ it('should handle resetting an entity for create', () => {
   const actual = reducer(state, entityActions.resetEntityForCreate('talent'))
 
   expect(actual.entityId).toEqual(null)
-  expect(actual.entity).not.toEqual(null)
+  expect(actual.entity).toEqual(new FullTalent())
   expect(actual.getInProgress).toEqual(false)
   expect(actual.getFailed).toEqual(false)
 })

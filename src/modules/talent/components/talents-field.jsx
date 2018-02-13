@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Grid from '_src/components/grid'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
-import TalentsGridRow from '_src/components/talents/grid-row'
+import TalentsGridRow from './talents-grid-row'
 import * as arrayLib from '_src/lib/array'
 
 class TalentsField extends React.Component {

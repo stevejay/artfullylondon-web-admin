@@ -16,9 +16,12 @@ import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 import * as talentConstants from '_src/modules/talent/constants'
-import * as mappingsLib from '_src/lib/mappings'
+import * as talentMapper from '_src/modules/talent/lib/mapper'
 
 export class TalentEditOrCreate extends React.Component {
+  shouldComponentUpdate (nextProps) {
+    return nextProps.entity !== this.props.entity
+  }
   handleSubmit = values => {
     const {
       imageEditorIsPristine,
@@ -36,7 +39,7 @@ export class TalentEditOrCreate extends React.Component {
           talentConstants.EDIT_TALENT_FORM_NAME,
           talentConstants.TALENT_NORMALISER,
           talentConstants.TALENT_CONSTRAINT,
-          mappingsLib.mapTalentToServer
+          talentMapper.mapSubmittedValues
         )
       )
     } else {
@@ -67,7 +70,7 @@ export class TalentEditOrCreate extends React.Component {
         <EntityDetailsContainer>
           <EditTalentForm
             isEdit={isEdit}
-            initialValues={entity}
+            initialValues={talentMapper.getInitialValues(entity)}
             onSubmit={this.handleSubmit}
             onCancel={this.handleCancel}
           />

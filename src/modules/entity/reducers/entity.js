@@ -22,10 +22,7 @@ export const reducer = handleActions(
     [types.CLEAR_ENTITY]: () => initialState,
     [types.RESET_ENTITY_FOR_CREATE]: (state, action) => ({
       ...initialState,
-      entity: createEntity(
-        action.payload.entityType,
-        getEntityDefaultValues(action.payload.entityType)
-      )
+      entity: createEntity(action.payload.entityType)
     }),
     [types.GET_ENTITY_STARTED]: (state, action) => ({
       ...state,
@@ -54,7 +51,7 @@ export const selectors = {
   failedToGetEntity: state => state.getFailed
 }
 
-function createEntity (entityType, entity) {
+function createEntity (entityType, entity = null) {
   switch (entityType) {
     case entityConstants.ENTITY_TYPE_EVENT:
       return new FullEvent(entity)
@@ -72,24 +69,24 @@ function createEntity (entityType, entity) {
 // TODO rip all this stuff out and put it in the domain!!
 function getEntityDefaultValues (entityType) {
   switch (entityType) {
-    case entityConstants.ENTITY_TYPE_TALENT:
-      return {
-        id: null,
-        status: entityConstants.ACTIVE_STATUS,
-        validStatuses: [entityConstants.ACTIVE_STATUS],
-        firstNames: '',
-        lastName: '',
-        talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
-        commonRole: '',
-        description: RichTextEditor.createEmptyValue(),
-        links: [],
-        images: [],
-        currentEvents: [],
-        futureEvents: [],
-        weSay: '',
-        version: 0,
-        createdDate: null
-      }
+    // case entityConstants.ENTITY_TYPE_TALENT:
+    //   return {
+    //     id: null,
+    //     status: entityConstants.ACTIVE_STATUS,
+    //     validStatuses: [entityConstants.ACTIVE_STATUS],
+    //     firstNames: '',
+    //     lastName: '',
+    //     talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
+    //     commonRole: '',
+    //     description: RichTextEditor.createEmptyValue(),
+    //     links: [],
+    //     images: [],
+    //     currentEvents: [],
+    //     futureEvents: [],
+    //     weSay: '',
+    //     version: 0,
+    //     createdDate: null
+    //   }
     case entityConstants.ENTITY_TYPE_VENUE:
       return {
         id: null,
