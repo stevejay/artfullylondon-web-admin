@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
-import DropdownField from '_src/components/dropdown/field'
+import SelectField from '_src/components/select/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import * as dateConstants from '_src/constants/date'
@@ -35,7 +35,7 @@ export const AddAdditionalPerformanceForm = ({
       <Field
         label='At'
         name='at'
-        component={DropdownField}
+        component={SelectField}
         options={timeConstants.TIME_OF_DAY_DROPDOWN_OPTIONS}
         required
       />

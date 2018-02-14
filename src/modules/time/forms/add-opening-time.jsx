@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
-import DropdownField from '_src/components/dropdown/field'
+import SelectField from '_src/components/select/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import * as timeConstants from '_src/modules/time/constants'
 
@@ -21,7 +21,7 @@ export const AddOpeningTimeForm = ({
       <Field
         label='Day'
         name='day'
-        component={DropdownField}
+        component={SelectField}
         options={timeConstants.DAYS_OF_WEEK_DROPDOWN_OPTIONS}
         required
         searchable={false}
@@ -30,14 +30,14 @@ export const AddOpeningTimeForm = ({
       <Field
         label='From'
         name='from'
-        component={DropdownField}
+        component={SelectField}
         options={timeConstants.TIME_OF_DAY_DROPDOWN_OPTIONS}
         required
       />
       <Field
         label='To'
         name='to'
-        component={DropdownField}
+        component={SelectField}
         options={timeConstants.TIME_OF_DAY_DROPDOWN_OPTIONS}
         required
       />
@@ -46,7 +46,7 @@ export const AddOpeningTimeForm = ({
         <Field
           label='Times Range'
           name='timesRangeId'
-          component={DropdownField}
+          component={SelectField}
           options={timesRangesOptions}
           required
         />}

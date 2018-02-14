@@ -21,4 +21,6 @@ export const reducer = handleActions(
   initialState
 )
 
-export const selectors = {}
+export const selectors = {
+  namedClosuresDropdownOptions: state => state.namedClosuresDropdownOptions
+}

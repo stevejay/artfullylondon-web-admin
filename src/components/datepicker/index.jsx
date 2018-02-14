@@ -7,20 +7,10 @@ import DatepickerModal from '_src/components/datepicker/modal'
 
 // TODO think about a better way to control the modal.
 
-class Datepicker extends React.Component {
+class Datepicker extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { showModal: false }
-  }
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.value !== this.props.value ||
-      nextProps.error !== this.props.error ||
-      nextProps.touched !== this.props.touched ||
-      nextProps.disabled !== this.props.disabled ||
-      nextProps.minDate !== this.props.minDate ||
-      nextProps.maxDate !== this.props.maxDate
-    )
   }
   handleClick = event => {
     event.preventDefault()

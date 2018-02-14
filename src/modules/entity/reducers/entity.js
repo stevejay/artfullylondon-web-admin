@@ -7,7 +7,6 @@ import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { types } from '_src/modules/entity/actions'
 import * as entityConstants from '_src/constants/entity'
-import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 
 const initialState = {
   entityId: null,
@@ -86,38 +85,38 @@ function getEntityDefaultValues (entityType) {
     //     version: 0,
     //     createdDate: null
     //   }
-    case entityConstants.ENTITY_TYPE_VENUE:
-      return {
-        id: null,
-        status: entityConstants.ACTIVE_STATUS,
-        validStatuses: [entityConstants.ACTIVE_STATUS],
-        name: '',
-        venueType: '',
-        address: '',
-        pin: {
-          lat: null,
-          lng: null
-        },
-        defaultCenter: DEFAULT_MAP_CENTER,
-        postcode: '',
-        email: '',
-        telephone: '',
-        description: RichTextEditor.createEmptyValue(),
-        wheelchairAccessType: '',
-        disabledBathroomType: '',
-        hearingFacilitiesType: '',
-        hasPermanentCollection: false,
-        openingTimes: [],
-        additionalOpeningTimes: [],
-        openingTimesClosures: [],
-        namedClosures: '',
-        links: [],
-        images: [],
-        weSay: '',
-        notes: '',
-        version: 0,
-        createdDate: null
-      }
+    // case entityConstants.ENTITY_TYPE_VENUE:
+    //   return {
+    //     id: null,
+    //     status: entityConstants.ACTIVE_STATUS,
+    //     validStatuses: [entityConstants.ACTIVE_STATUS],
+    //     name: '',
+    //     venueType: '',
+    //     address: '',
+    //     pin: {
+    //       lat: null,
+    //       lng: null
+    //     },
+    //     defaultCenter: DEFAULT_MAP_CENTER,
+    //     postcode: '',
+    //     email: '',
+    //     telephone: '',
+    //     description: RichTextEditor.createEmptyValue(),
+    //     wheelchairAccessType: '',
+    //     disabledBathroomType: '',
+    //     hearingFacilitiesType: '',
+    //     hasPermanentCollection: false,
+    //     openingTimes: [],
+    //     additionalOpeningTimes: [],
+    //     openingTimesClosures: [],
+    //     namedClosures: '',
+    //     links: [],
+    //     images: [],
+    //     weSay: '',
+    //     notes: '',
+    //     version: 0,
+    //     createdDate: null
+    //   }
     case entityConstants.ENTITY_TYPE_EVENT:
       return {
         id: null,

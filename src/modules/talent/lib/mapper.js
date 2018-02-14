@@ -35,8 +35,6 @@ export function getInitialValues (talent) {
     description: entityMapper.getRichTextInitialValue(talent.description),
     links: entityMapper.getLinksInitialValue(talent.links.links),
     images: entityMapper.getImagesInitialValue(talent.images),
-    currentEvents: [],
-    futureEvents: [],
     weSay: talent.weSay || '',
     version: talent.version,
     createdDate: talent.createdDate

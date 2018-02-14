@@ -2,6 +2,7 @@ import RichTextEditor from 'react-rte'
 
 import * as imageLib from '_src/lib/image'
 import * as entityLib from '_src/lib/entity'
+import * as dateLib from '_src/lib/date'
 import * as entityConstants from '_src/constants/entity'
 
 // TODO maybe make part of domain
@@ -115,4 +116,202 @@ export function getValidStatusesInitialValue (status) {
         }
       ]
   }
+}
+
+export function getTimesRangesInitialValue (timesRanges) {
+  return (timesRanges || []).map(timesRange => ({
+    key: timesRange.id,
+    id: timesRange.id,
+    label: timesRange.label || '',
+    dateFrom: timesRange.dateFrom,
+    dateTo: timesRange.dateTo
+  }))
+}
+
+export function getOpeningTimesInitialValue (openingTimes) {
+  return (openingTimes || []).map(openingTime => ({
+    key: dateLib.createTimeKey(openingTime),
+    day: openingTime.day.toString(),
+    from: openingTime.from,
+    to: openingTime.to,
+    timesRangeId: openingTime.timesRangeId
+  }))
+}
+
+export function getAdditionalOpeningTimesInitialValue (additionalOpeningTimes) {
+  return (additionalOpeningTimes || []).map(addition => ({
+    key: dateLib.createTimeKey(addition),
+    date: addition.date,
+    from: addition.from,
+    to: addition.to
+  }))
+}
+
+export function getAdditionalPerformancesInitialValue (additionalPerformances) {
+  return (additionalPerformances || []).map(addition => ({
+    key: dateLib.createTimeKey(addition),
+    date: addition.date,
+    at: addition.at
+  }))
+}
+
+export function getSpecialOpeningTimesInitialValue (specialOpeningTimes) {
+  return (specialOpeningTimes || []).map(special => ({
+    key: dateLib.createTimeKey(special),
+    date: special.date,
+    from: special.from,
+    to: special.to,
+    audienceTags: getAudienceTagsInitialValue(special.audienceTags)
+  }))
+}
+
+export function getSpecialPerformancesInitialValue (specialPerformances) {
+  return (specialPerformances || []).map(special => ({
+    key: dateLib.createTimeKey(special),
+    date: special.date,
+    at: special.at,
+    audienceTags: getAudienceTagsInitialValue(special.audienceTags)
+  }))
+}
+
+export function getClosuresInitialValue (closures) {
+  return (closures || []).map(closure => ({
+    key: closure,
+    date: closure
+  }))
+}
+
+export function getOpeningTimesClosuresInitialValue (openingTimesClosures) {
+  return (openingTimesClosures || []).map(closure => {
+    const result = {
+      key: dateLib.createTimeKey(closure),
+      date: closure.date
+    }
+
+    if (closure.from) {
+      result.from = closure.from
+      result.to = closure.to
+    }
+
+    return result
+  })
+}
+
+export function getPerformancesClosuresInitialValue (peformancesClosures) {
+  return (peformancesClosures || []).map(closure => {
+    const result = {
+      key: dateLib.createTimeKey(closure),
+      date: closure.date
+    }
+
+    if (closure.at) {
+      result.at = closure.at
+    }
+
+    return result
+  })
+}
+
+export function getNamedClosuresInitialValue (namedClosures) {
+  return (namedClosures || []).join(',')
+}
+
+export function getPerformancesInitialValue (performances) {
+  return (performances || []).map(performance => ({
+    key: dateLib.createTimeKey(performance),
+    day: performance.day.toString(),
+    at: performance.at,
+    timesRangeId: performance.timesRangeId
+  }))
+}
+
+function getAudienceTagsInitialValue (audienceTags) {
+  return (audienceTags || []).map(tag => ({ id: tag.id, label: tag.label }))
+}
+
+export function mapSubmittedTimesRanges (timesRanges) {
+  return (timesRanges || []).map(timesRange => ({
+    id: timesRange.id,
+    label: timesRange.label,
+    dateFrom: timesRange.dateFrom,
+    dateTo: timesRange.dateTo
+  }))
+}
+
+export function mapSubmittedOpeningTimes (openingTimes) {
+  return (openingTimes || []).map(openingTime => ({
+    day: parseInt(openingTime.day),
+    from: openingTime.from,
+    to: openingTime.to,
+    timesRangeId: openingTime.timesRangeId
+  }))
+}
+
+export function mapSubmittedPerformances (performances) {
+  return (performances || []).map(performance => ({
+    day: parseInt(performance.day),
+    at: performance.at,
+    timesRangeId: performance.timesRangeId
+  }))
+}
+
+export function mapSubmittedAdditionalOpeningTimes (additionalOpeningTimes) {
+  return (additionalOpeningTimes || []).map(addition => ({
+    date: addition.date,
+    from: addition.from,
+    to: addition.to
+  }))
+}
+
+export function mapSubmittedAdditionalPerformances (additionalPerformances) {
+  return (additionalPerformances || []).map(addition => ({
+    date: addition.date,
+    at: addition.at
+  }))
+}
+
+export function mapSubmittedSpecialOpeningTimes (specialOpeningTimes) {
+  return (specialOpeningTimes || []).map(special => ({
+    date: special.date,
+    from: special.from,
+    to: special.to,
+    audienceTags: mapSubmittedAudienceTags(special.audienceTags)
+  }))
+}
+
+export function mapSubmittedSpecialPerformances (specialPerformances) {
+  return (specialPerformances || []).map(special => ({
+    date: special.date,
+    at: special.at,
+    audienceTags: mapSubmittedAudienceTags(special.audienceTags)
+  }))
+}
+
+export function mapSubmittedOpeningTimesClosures (openingTimesClosures) {
+  return (openingTimesClosures || []).map(closure => {
+    const result = { date: closure.date }
+
+    if (closure.from) {
+      result.from = closure.from
+      result.to = closure.to
+    }
+
+    return result
+  })
+}
+
+export function mapSubmittedPerformancesClosures (performancesClosures) {
+  return (performancesClosures || []).map(closure => {
+    const result = { date: closure.date }
+
+    if (closure.at) {
+      result.at = closure.at
+    }
+
+    return result
+  })
+}
+
+function mapSubmittedAudienceTags (audienceTags) {
+  return (audienceTags || []).map(tag => ({ id: tag.id, label: tag.label }))
 }

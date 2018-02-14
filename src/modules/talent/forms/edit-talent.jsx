@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
-import _ from 'lodash'
 
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
@@ -163,7 +162,6 @@ export class EditTalentForm extends React.Component {
             entityType={entityConstants.ENTITY_TYPE_TALENT}
             name='images'
             component={ImagesField}
-            showModal={_.noop}
             onAddImage={this.handleAddImage}
             onUpdateImage={this.handleUpdateImage}
             onSetMainImage={this.handleSetMainImage}

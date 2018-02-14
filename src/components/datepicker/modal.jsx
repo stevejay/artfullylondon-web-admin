@@ -25,8 +25,8 @@ class DatepickerModal extends React.Component {
       this.setState(this._createState(nextProps))
     }
   }
-  handleDayClick = (_, day) => {
-    this.props.onChange({ date: dateLib.mapJsDateToStringDate(day) })
+  handleDayClick = day => {
+    this.props.onChange(dateLib.mapJsDateToStringDate(day))
     this.props.onHide()
   }
   selectedDays = day => {

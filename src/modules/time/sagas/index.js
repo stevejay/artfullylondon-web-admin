@@ -69,7 +69,7 @@ function * addAdditionalOpeningTime (action) {
     yield call(
       validate,
       values,
-      timeConstraints.ADDITIONAL_OPENING_TIMES_CONSTRAINT
+      timeConstraints.ADDITIONAL_OPENING_TIME_CONSTRAINT
     )
 
     const formValues = yield select(getFormValues(parentFormName))

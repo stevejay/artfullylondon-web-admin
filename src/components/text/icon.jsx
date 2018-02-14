@@ -7,9 +7,10 @@ class TextIcon extends React.Component {
   shouldComponentUpdate () {
     return false
   }
+  // TODO find a solution for the className here:
   render () {
     const { icon } = this.props
-    return icon ? React.createElement(icon, { styleName: 'icon' }) : null
+    return icon ? React.createElement(icon, { className: 'text-icon' }) : null
   }
 }
 

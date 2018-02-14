@@ -129,7 +129,15 @@ export class SummaryVenue {
 export class FullVenue extends SummaryVenue {
   constructor (entity) {
     super(entity)
-    this.links = new LinkCollection(entity.links)
+    this._links = new LinkCollection(entity.links)
+  }
+
+  get version () {
+    return this.entity.version
+  }
+
+  get createdDate () {
+    return this.entity.createdDate
   }
 
   createTimesDescriptionForDate (dateStr, timeStr, namedClosuresLookup) {
@@ -160,6 +168,14 @@ export class FullVenue extends SummaryVenue {
     return this.entity.images
   }
 
+  get links () {
+    return this._links
+  }
+
+  get address () {
+    return this.entity.address
+  }
+
   get description () {
     return this.entity.description
   }
@@ -170,6 +186,10 @@ export class FullVenue extends SummaryVenue {
 
   get weSay () {
     return this.entity.weSay
+  }
+
+  get notes () {
+    return this.entity.notes
   }
 
   get email () {
@@ -198,6 +218,22 @@ export class FullVenue extends SummaryVenue {
 
   get isFullEntity () {
     return true
+  }
+
+  get openingTimes () {
+    return this.entity.openingTimes
+  }
+
+  get additionalOpeningTimes () {
+    return this.entity.additionalOpeningTimes
+  }
+
+  get openingTimesClosures () {
+    return this.entity.openingTimesClosures
+  }
+
+  get namedClosures () {
+    return this.entity.namedClosures
   }
 
   shallowClone (newProps) {

@@ -58,12 +58,7 @@ export function * saveEntity ({
     }
 
     yield put(stopSubmit(formName))
-
-    if (isEdit) {
-      yield call(history.goBack)
-    } else {
-      yield call(history.push, `/${entityType}/${json.entity.id}`)
-    }
+    yield call(history.push, `/${entityType}/${json.entity.id}`)
   } catch (err) {
     yield call(log.error, err)
 

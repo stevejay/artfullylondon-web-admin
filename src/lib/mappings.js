@@ -118,87 +118,6 @@ export function normaliseEventValues (values) {
   }
 }
 
-export function mapVenueToServer (values) {
-  const dbDate = dateLib.getDateNowForDatabase()
-
-  return {
-    name: values.name.trim(),
-    description: _mapDescriptionToServer(values.description),
-    status: values.status,
-    venueType: values.venueType,
-    address: values.address.trim(),
-    postcode: values.postcode.trim().toUpperCase(),
-    latitude: values.pin.lat,
-    longitude: values.pin.lng,
-    wheelchairAccessType: values.wheelchairAccessType,
-    disabledBathroomType: values.disabledBathroomType,
-    hearingFacilitiesType: values.hearingFacilitiesType,
-    hasPermanentCollection: values.hasPermanentCollection,
-    email: values.email.trim(),
-    telephone: values.telephone.trim(),
-    openingTimes: _mapOpeningTimesToServer(values.openingTimes),
-    additionalOpeningTimes: _mapAdditionalOpeningTimesToServer(
-      values.additionalOpeningTimes
-    ),
-    openingTimesClosures: _mapOpeningTimesClosuresToServer(
-      values.openingTimesClosures
-    ),
-    namedClosures: values.namedClosures
-      ? values.namedClosures.split(',')
-      : null,
-    links: _mapLinksToServer(values.links),
-    images: _mapImagesToServer(values.images),
-    weSay: values.weSay.trim(),
-    notes: values.notes.trim(),
-    version: values.version + 1,
-    createdDate: values.createdDate || dbDate,
-    updatedDate: dbDate
-  }
-}
-
-export function mapVenueFromServer (payload) {
-  const result = {
-    id: payload.id,
-    name: payload.name,
-    status: payload.status,
-    validStatuses: entityLib.getValidStatuses(payload.status),
-    venueType: payload.venueType,
-    description: _mapDescriptionFromServer(payload.description),
-    address: payload.address,
-    pin: {
-      lat: payload.latitude,
-      lng: payload.longitude
-    },
-    defaultCenter: {
-      lat: payload.latitude,
-      lng: payload.longitude
-    },
-    postcode: payload.postcode,
-    email: payload.email || '',
-    telephone: payload.telephone || '',
-    wheelchairAccessType: payload.wheelchairAccessType,
-    disabledBathroomType: payload.disabledBathroomType,
-    hearingFacilitiesType: payload.hearingFacilitiesType,
-    hasPermanentCollection: payload.hasPermanentCollection,
-    openingTimes: _mapOpeningTimesFromServer(payload.openingTimes),
-    additionalOpeningTimes: _mapAdditionalOpeningTimesFromServer(
-      payload.additionalOpeningTimes
-    ),
-    openingTimesClosures: _mapOpeningTimesClosuresFromServer(
-      payload.openingTimesClosures
-    ),
-    namedClosures: _mapNamedClosuresFromServer(payload.namedClosures),
-    links: _mapLinksFromServer(payload.links),
-    images: _mapImagesFromServer(payload.images),
-    weSay: payload.weSay || '',
-    notes: payload.notes || '',
-    version: payload.version,
-    createdDate: payload.createdDate
-  }
-
-  return result
-}
-
 export function mapEventToServer (values) {
   const dbDate = dateLib.getDateNowForDatabase()
   const isFree = !eventLib.eventIsPaid(values.costType)
@@ -561,10 +480,6 @@ function _mapPerformancesClosuresFromServer (peformancesClosures) {
 
     return result
   })
-}
-
-function _mapNamedClosuresFromServer (namedClosures) {
-  return (namedClosures || []).join(',')
 }
 
 function _mapPerformancesFromServer (performances) {

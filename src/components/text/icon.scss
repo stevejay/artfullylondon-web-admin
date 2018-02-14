@@ -1,6 +1,6 @@
 @import 'theme';
 
-.icon {
+:global(.text-icon) {
   position: absolute;
   top: .9rem;
   left: .7rem;
@@ -9,6 +9,6 @@
   color: $third-black;
 }
 
-.icon+ :global(input) {
+:global(.text-icon) + input {
   padding-left: 3.3rem;
 }

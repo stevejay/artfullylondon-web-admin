@@ -53,7 +53,7 @@ export class TalentEditOrCreate extends React.Component {
   }
   handleCancel = event => {
     event.preventDefault()
-    this.props.history.goBack()
+    this.props.history.push(`/talent/${this.props.entity.id}`)
   }
   render () {
     const { entity, isEdit } = this.props

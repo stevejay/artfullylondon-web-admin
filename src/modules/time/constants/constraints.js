@@ -59,7 +59,7 @@ export const PERFORMANCE_CONSTRAINT = {
   }
 }
 
-export const ADDITIONAL_OPENING_TIMES_CONSTRAINT = {
+export const ADDITIONAL_OPENING_TIME_CONSTRAINT = {
   date: {
     presence: { disallowEmpty: true },
     format: DATE_REGEX

@@ -197,7 +197,7 @@ describe('saveEntity', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(call(history.goBack))
+    expect(result.value).toEqual(call(history.push, '/talent/server-id'))
 
     result = generator.next()
 

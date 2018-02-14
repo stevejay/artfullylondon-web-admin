@@ -25,6 +25,9 @@ import TimesRangeEntry from '_src/modules/time/components/times-range-entry'
 
 import sagas from '_src/modules/time/sagas'
 import * as actions from '_src/modules/time/actions'
+import * as constraints from '_src/modules/time/constants/constraints'
+
+// TODO export constraints
 
 export {
   AddAdditionalOpeningTimeForm,
@@ -43,5 +46,6 @@ export {
   TimesField,
   TimesRangeEntry,
   sagas,
-  actions
+  actions,
+  constraints
 }
