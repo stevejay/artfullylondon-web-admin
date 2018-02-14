@@ -142,37 +142,6 @@ describe('SummaryEvent', () => {
     expect(subject.isFullEntity).toBe(false)
   })
 
-  it('should have correct isBeingWatched when is being watched', () => {
-    const watches = { 'almeida-theatre': true }
-    const subject = new SummaryEvent({ id: 'almeida-theatre' })
-    expect(subject.isBeingWatched(watches)).toBe(true)
-  })
-
-  it('should have correct isBeingWatched when is not being watched', () => {
-    const watches = {}
-    const subject = new SummaryEvent({ id: 'almeida-theatre' })
-    expect(subject.isBeingWatched(watches)).toBe(false)
-  })
-
-  it('should have correct createWatchLabel', () => {
-    const subject = new SummaryEvent({ name: 'Almeida' })
-    expect(subject.createWatchLabel()).toBe('Almeida')
-  })
-
-  it('should have correct createWatchChangeInstruction when is being watched', () => {
-    const subject = new SummaryEvent({})
-    expect(subject.createWatchChangeInstruction(true)).toBe(
-      'Unbookmark this event'
-    )
-  })
-
-  it('should have correct createWatchChangeInstruction when is not being watched', () => {
-    const subject = new SummaryEvent({})
-    expect(subject.createWatchChangeInstruction(false)).toBe(
-      'Bookmark this event'
-    )
-  })
-
   it('should have correct isExpiredOn when event is expired', () => {
     const subject = new SummaryEvent({ dateTo: '2017/01/01' })
     expect(subject.isExpiredOn('2017/01/20')).toBe(true)
@@ -481,7 +450,7 @@ describe('FullEvent', () => {
     expect(eventLib.formatBookingInfoForDisplay).toBeCalledWith(
       eventConstants.BOOKING_TYPE_REQUIRED,
       '2017/01/20',
-      { links: [] },
+      { _links: [] },
       '2017/01/21'
     )
   })

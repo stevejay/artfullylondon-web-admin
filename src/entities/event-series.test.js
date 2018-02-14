@@ -96,37 +96,6 @@ describe('SummaryEventSeries', () => {
     const subject = new SummaryEventSeries({})
     expect(subject.isFullEntity).toBe(false)
   })
-
-  it('should have correct isBeingWatched when is being watched', () => {
-    const watches = { 'carrie-cracknell': true }
-    const subject = new SummaryEventSeries({ id: 'carrie-cracknell' })
-    expect(subject.isBeingWatched(watches)).toBe(true)
-  })
-
-  it('should have correct isBeingWatched when is not being watched', () => {
-    const watches = { 'carrie-cracknell': false }
-    const subject = new SummaryEventSeries({ id: 'carrie-cracknell' })
-    expect(subject.isBeingWatched(watches)).toBe(false)
-  })
-
-  it('should have correct createWatchLabel', () => {
-    const subject = new SummaryEventSeries({ name: 'Some Series' })
-    expect(subject.createWatchLabel()).toBe('Some Series')
-  })
-
-  it('should have correct createWatchChangeInstruction when is being watched', () => {
-    const subject = new SummaryEventSeries({})
-    expect(subject.createWatchChangeInstruction(true)).toBe(
-      'Unwatch this event series'
-    )
-  })
-
-  it('should have correct createWatchChangeInstruction when is not being watched', () => {
-    const subject = new SummaryEventSeries({})
-    expect(subject.createWatchChangeInstruction(false)).toBe(
-      'Watch this event series'
-    )
-  })
 })
 
 describe('FullEventSeries', () => {

@@ -3,8 +3,11 @@ import _ from 'lodash'
 
 import { TalentEditOrCreate } from './talent-edit-or-create'
 import { FullTalent } from '_src/entities/talent'
+import * as talentMapper from '_src/modules/talent/lib/mapper'
 
 it('should render correctly when creating a talent', () => {
+  talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+
   const talent = new FullTalent()
 
   const wrapper = shallow(
@@ -22,6 +25,8 @@ it('should render correctly when creating a talent', () => {
 })
 
 it('should render correctly when editing a talent', () => {
+  talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+
   const talent = new FullTalent({
     firstNames: 'First',
     lastName: 'Last',

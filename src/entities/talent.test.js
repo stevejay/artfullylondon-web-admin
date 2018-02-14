@@ -96,42 +96,6 @@ describe('SummaryTalent', () => {
     expect(subject.isFullEntity).toBe(false)
   })
 
-  it('should have correct isBeingWatched when is being watched', () => {
-    const watches = { 'carrie-cracknell': true }
-    const subject = new SummaryTalent({ id: 'carrie-cracknell' })
-    expect(subject.isBeingWatched(watches)).toBe(true)
-  })
-
-  it('should have correct isBeingWatched when is not being watched', () => {
-    const watches = { 'carrie-cracknell': false }
-    const subject = new SummaryTalent({ id: 'carrie-cracknell' })
-    expect(subject.isBeingWatched(watches)).toBe(false)
-  })
-
-  it('should have correct createWatchLabel', () => {
-    const subject = new SummaryTalent({
-      firstNames: 'Bob Arnold',
-      lastName: 'Smith',
-      commonRole: 'Actor'
-    })
-
-    expect(subject.createWatchLabel()).toBe('Bob Arnold Smith (Actor)')
-  })
-
-  it('should have correct createWatchChangeInstruction when is being watched', () => {
-    const subject = new SummaryTalent({})
-    expect(subject.createWatchChangeInstruction(true)).toBe(
-      'Unwatch this talent'
-    )
-  })
-
-  it('should have correct createWatchChangeInstruction when is not being watched', () => {
-    const subject = new SummaryTalent({})
-    expect(subject.createWatchChangeInstruction(false)).toBe(
-      'Watch this talent'
-    )
-  })
-
   it('should have correct createRolesString when has roles', () => {
     const subject = new SummaryTalent({ roles: ['A', 'B'] })
     expect(subject.createRolesString()).toBe('A / B')

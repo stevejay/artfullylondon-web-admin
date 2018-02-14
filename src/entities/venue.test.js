@@ -106,35 +106,6 @@ describe('SummaryVenue', () => {
     expect(subject.isFullEntity).toBe(false)
   })
 
-  it('should have correct isBeingWatched when is being watched', () => {
-    const watches = { 'almeida-theatre': true }
-    const subject = new SummaryVenue({ id: 'almeida-theatre' })
-    expect(subject.isBeingWatched(watches)).toBe(true)
-  })
-
-  it('should have correct isBeingWatched when is not being watched', () => {
-    const watches = {}
-    const subject = new SummaryVenue({ id: 'almeida-theatre' })
-    expect(subject.isBeingWatched(watches)).toBe(false)
-  })
-
-  it('should have correct createWatchLabel', () => {
-    const subject = new SummaryVenue({ name: 'Almeida' })
-    expect(subject.createWatchLabel()).toBe('Almeida')
-  })
-
-  it('should have correct createWatchChangeInstruction when is being watched', () => {
-    const subject = new SummaryVenue({})
-    expect(subject.createWatchChangeInstruction(true)).toBe(
-      'Unwatch this venue'
-    )
-  })
-
-  it('should have correct createWatchChangeInstruction when is not being watched', () => {
-    const subject = new SummaryVenue({})
-    expect(subject.createWatchChangeInstruction(false)).toBe('Watch this venue')
-  })
-
   it('should have correct createFullAddress', () => {
     const subject = new SummaryVenue({
       address: '50 Foo Street',
