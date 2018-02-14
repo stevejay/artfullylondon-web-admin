@@ -6,8 +6,8 @@ import './event-monitor-grid-row.scss'
 
 class EventMonitorGridRow extends React.Component {
   handleEdit = () => {
-    const { monitor: { externalEventId }, onEdit } = this.props
-    onEdit({ externalEventId })
+    const { monitor, onEdit } = this.props
+    onEdit(monitor)
   }
   render () {
     const {

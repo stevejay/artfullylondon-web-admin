@@ -16,6 +16,7 @@ import * as referenceData from '_src/modules/reference-data'
 import * as image from '_src/modules/image'
 import * as link from '_src/modules/link'
 import * as time from '_src/modules/time'
+import * as venue from '_src/modules/venue'
 
 const reducer = combineReducers({
   form: formReducer,
@@ -25,7 +26,8 @@ const reducer = combineReducers({
   [tag.moduleName]: tag.reducer,
   [search.moduleName]: search.reducer,
   [entity.moduleName]: entity.reducer,
-  [referenceData.moduleName]: referenceData.reducer
+  [referenceData.moduleName]: referenceData.reducer,
+  [venue.moduleName]: venue.reducer
 })
 
 const sagas = function * () {
@@ -40,9 +42,9 @@ const sagas = function * () {
     ...link.sagas,
     ...user.sagas,
     ...dashboard.sagas,
-    ...time.sagas
+    ...time.sagas,
+    ...venue.sagas
   ])
-  // ...monitorsSagas,
 }
 
 const sagaMiddleware = createSagaMiddleware()

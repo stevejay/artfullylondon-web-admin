@@ -2,8 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
-import VenueMonitorGridRow
-  from '_src/components/monitor/venue-monitor-grid-row'
+import VenueMonitorGridRow from './venue-monitor-grid-row'
 
 it('should render correctly when has not changed', () => {
   const wrapper = shallow(

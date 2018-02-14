@@ -4,7 +4,6 @@ import * as imageLib from '_src/lib/image'
 import * as dateLib from '_src/lib/date'
 import * as eventLib from '_src/lib/event'
 import * as entityLib from '_src/lib/entity'
-import * as talentLib from '_src/lib/talent'
 
 // TODO maybe make part of domain
 const IMAGE_STATUS_PROCESSING = 'Processing'

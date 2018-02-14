@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 
 import TalentDetail from './talent-detail'
 import { FullTalent } from '_src/entities/talent'

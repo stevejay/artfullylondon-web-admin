@@ -7,18 +7,17 @@ import AdditionalDetailHeading
   from '_src/modules/entity/components/additional-detail-heading'
 import AdditionalDetailContent
   from '_src/modules/entity/components/additional-detail-content'
+import { SummaryVenue } from '_src/entities/venue'
 
 class EntityAddress extends ShouldNeverUpdateComponent {
   render () {
-    const { fullAddress } = this.props
-
     return (
       <React.Fragment>
         <AdditionalDetailHeading>
           Address
         </AdditionalDetailHeading>
         <AdditionalDetailContent>
-          {fullAddress}
+          {this.props.venue.createFullAddress()}
         </AdditionalDetailContent>
       </React.Fragment>
     )
@@ -26,7 +25,7 @@ class EntityAddress extends ShouldNeverUpdateComponent {
 }
 
 EntityAddress.propTypes = {
-  fullAddress: PropTypes.string.isRequired
+  venue: PropTypes.instanceOf(SummaryVenue).isRequired
 }
 
 export default EntityAddress

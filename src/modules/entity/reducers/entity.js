@@ -7,7 +7,6 @@ import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { types } from '_src/modules/entity/actions'
 import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 
 const initialState = {

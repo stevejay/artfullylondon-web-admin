@@ -1,5 +1,4 @@
 import * as entityConstants from '_src/constants/entity'
-import * as formConstants from '_src/constants/form'
 
 export const types = {
   ADD_IMAGE: 'image/ADD_IMAGE',

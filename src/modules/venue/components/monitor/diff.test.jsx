@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import MonitorDiff from '_src/components/monitor/diff'
+import MonitorDiff from './diff'
 
 it('should render correctly when there is a diff', () => {
   const wrapper = shallow(<MonitorDiff changeDiff='The Diff' />)

@@ -24,6 +24,7 @@ import { TagsTypePage } from '_src/modules/tag'
 import { ResultsPage, Quicksearch } from '_src/modules/search'
 import { EntityPage } from '_src/modules/entity'
 import { TalentEditOrCreate, TalentDetail } from '_src/modules/talent'
+import { VenueEditOrCreate, VenueDetail } from '_src/modules/venue'
 import * as entityConstants from '_src/constants/entity'
 
 export class Routes extends React.Component {
@@ -112,6 +113,36 @@ export class Routes extends React.Component {
                     <EntityPage
                       entityType={entityConstants.ENTITY_TYPE_TALENT}
                       component={TalentDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/venue'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      component={VenueEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/venue/edit/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      component={VenueEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/venue/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      component={VenueDetail}
                     />
                   )}
                 />

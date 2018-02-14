@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-
 import { Field, reduxForm } from 'redux-form'
+
 import FormRow from '_src/components/form/row'
 import FormButtons from '_src/components/form/buttons'
 import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import CheckboxField from '_src/components/checkbox/field'
-import Diff from '_src/components/monitor/diff'
-import { UPDATE_MONITOR_FORM_NAME } from '_src/constants/form'
-import './index.scss'
+import Diff from '_src/modules/venue/components/monitor/diff'
+import * as venueConstants from '_src/modules/venue/constants'
+import './update-monitor.scss'
 
 export const UpdateMonitorForm = ({
   submitting,
@@ -48,10 +47,6 @@ UpdateMonitorForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default connect((_, ownProps) => ({
-  initialValues: ownProps.initialValues
-}))(
-  reduxForm({
-    form: UPDATE_MONITOR_FORM_NAME
-  })(UpdateMonitorForm)
-)
+export default reduxForm({
+  form: venueConstants.UPDATE_MONITOR_FORM_NAME
+})(UpdateMonitorForm)

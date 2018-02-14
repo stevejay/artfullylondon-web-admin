@@ -23,12 +23,6 @@ it('should render correctly when there is no user location', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should not update', () => {
-  const wrapper = shallow(<EntityPageMap zoom={14} pin={{ lat: 2, lng: 4 }} />)
-  const result = wrapper.instance().shouldComponentUpdate()
-  expect(result).toEqual(false)
-})
-
 it('should handle a pin click', () => {
   window.open = jest.fn()
 

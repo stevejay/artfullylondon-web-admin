@@ -47,28 +47,6 @@ function * getVenueEventMonitor (action) {
   }
 }
 
-function * getVenueMonitor (action) {
-  try {
-    const { venueId } = action.payload
-    yield put.resolve({ type: types.GET_VENUE_MONITOR_STARTED })
-
-    const token = yield getAuthTokenForCurrentUser()
-    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}`
-    const json = yield call(get, url, token)
-
-    yield put.resolve({
-      type: types.GET_VENUE_MONITOR_SUCCEEDED,
-      payload: json
-    })
-  } catch (err) {
-    if (err.statusCode !== 404) {
-      console.error('getVenueMonitor failed: ', err)
-    }
-
-    yield put.resolve({ type: types.GET_VENUE_MONITOR_FAILED })
-  }
-}
-
 function * updateVenueEventMonitor (action) {
   try {
     const values = action.payload
@@ -95,6 +73,28 @@ function * updateVenueEventMonitor (action) {
   } catch (err) {
     console.error('updateVenueEventMonitor failed: ', err)
     yield call(submitErrorHandler, err, UPDATE_MONITOR_FORM_NAME)
+  }
+}
+
+function * getVenueMonitor (action) {
+  try {
+    const { venueId } = action.payload
+    yield put.resolve({ type: types.GET_VENUE_MONITOR_STARTED })
+
+    const token = yield getAuthTokenForCurrentUser()
+    const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}`
+    const json = yield call(get, url, token)
+
+    yield put.resolve({
+      type: types.GET_VENUE_MONITOR_SUCCEEDED,
+      payload: json
+    })
+  } catch (err) {
+    if (err.statusCode !== 404) {
+      console.error('getVenueMonitor failed: ', err)
+    }
+
+    yield put.resolve({ type: types.GET_VENUE_MONITOR_FAILED })
   }
 }
 
@@ -131,7 +131,6 @@ export default [
   takeLatest(types.GET_VENUE_EVENT_MONITORS, getVenueEventMonitors),
   takeLatest(types.GET_VENUE_EVENT_MONITOR, getVenueEventMonitor),
   takeEvery(types.UPDATE_VENUE_EVENT_MONITOR, updateVenueEventMonitor),
-
   takeLatest(types.GET_VENUE_MONITOR, getVenueMonitor),
   takeEvery(types.UPDATE_VENUE_MONITOR, updateVenueMonitor)
 ]

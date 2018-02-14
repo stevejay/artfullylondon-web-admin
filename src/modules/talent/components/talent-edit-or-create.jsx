@@ -9,7 +9,6 @@ import EntityDetailsContainer
   from '_src/modules/entity/components/details-container'
 import EntityHeading from '_src/modules/entity/components/heading'
 import EditTalentForm from '_src/modules/talent/forms/edit-talent'
-import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'

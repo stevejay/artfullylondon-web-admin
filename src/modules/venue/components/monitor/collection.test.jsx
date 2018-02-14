@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import _ from 'lodash'
 
+import MonitorCollection from './collection'
 import { FullVenue } from '_src/entities/venue'
-import MonitorCollection from '_src/components/monitor/collection'
 
 it('should render correctly', () => {
   const wrapper = shallow(

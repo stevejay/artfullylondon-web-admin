@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 import _ from 'lodash'
 
-import EventMonitorGridRow from '_src/components/monitor/event-monitor-grid-row'
+import EventMonitorGridRow from './event-monitor-grid-row'
 
 it('should render correctly when has a url', () => {
   const wrapper = shallow(

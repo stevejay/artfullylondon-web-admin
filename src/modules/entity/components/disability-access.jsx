@@ -9,6 +9,8 @@ import AdditionalDetailContent
   from '_src/modules/entity/components/additional-detail-content'
 import * as linkConstants from '_src/constants/link'
 import * as accessLib from '_src/lib/access'
+import { FullVenue } from '_src/entities/venue'
+import { FullEvent } from '_src/entities/event'
 
 class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
   render () {
@@ -17,15 +19,16 @@ class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
       disabledBathroomType,
       hearingFacilitiesType,
       links
-    } = this.props
+    } = this.props.entity
 
     const accessLink = links.getLinkByType(linkConstants.LINK_TYPE_ACCESS)
+    const hasAccessLink = !!accessLink
 
     const accessText = accessLib.getAccessText(
       wheelchairAccessType,
       disabledBathroomType,
       hearingFacilitiesType,
-      !!accessLink
+      hasAccessLink
     )
 
     return (
@@ -33,7 +36,8 @@ class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
         <AdditionalDetailHeading>Disability Access</AdditionalDetailHeading>
         <AdditionalDetailContent>
           {accessText}
-          {!!accessLink &&
+          {accessText && hasAccessLink && '\u00a0'}
+          {hasAccessLink &&
             <span>
               See
               <a href={accessLink.url} target='_blank' rel='noopener'>
@@ -48,10 +52,10 @@ class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
 }
 
 EntityDisabilityAccess.propTypes = {
-  wheelchairAccessType: PropTypes.string.isRequired,
-  disabledBathroomType: PropTypes.string.isRequired,
-  hearingFacilitiesType: PropTypes.string.isRequired,
-  links: PropTypes.object.isRequired
+  entity: PropTypes.oneOfType([
+    PropTypes.instanceOf(FullVenue),
+    PropTypes.instanceOf(FullEvent)
+  ]).isRequired
 }
 
 export default EntityDisabilityAccess

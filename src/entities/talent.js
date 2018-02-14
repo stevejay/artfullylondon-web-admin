@@ -1,9 +1,7 @@
 import _ from 'lodash'
-import RichTextEditor from 'react-rte'
 
 import { LinkCollection } from '_src/entities/link-collection'
 import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
 import * as entityLib from '_src/lib/entity'
 import * as talentLib from '_src/lib/talent'
 
