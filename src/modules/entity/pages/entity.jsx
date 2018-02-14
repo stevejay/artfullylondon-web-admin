@@ -17,10 +17,7 @@ export class EntityPage extends React.Component {
     this._getOrResetEntity(this.props)
   }
   componentWillReceiveProps (nextProps) {
-    if (
-      nextProps.entityType !== this.props.entityType ||
-      nextProps.entityId !== this.props.entityId
-    ) {
+    if (nextProps.location !== this.props.location) {
       this._getOrResetEntity(nextProps)
     }
   }
@@ -67,13 +64,15 @@ EntityPage.propTypes = {
   getFailed: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 export default withRouter(
   connect(
     /* istanbul ignore next */
     (state, ownProps) => ({
+      // TODO create selector for match param
       entityId: ownProps.match.params[0],
       entity: entitySelectors.entity(state),
       getInProgress: entitySelectors.gettingEntity(state),

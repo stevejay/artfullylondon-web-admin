@@ -22,6 +22,7 @@ it('should render correctly when get entity failed', () => {
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
+      location={{}}
     />
   )
 
@@ -39,6 +40,7 @@ it('should render correctly when get is in progress', () => {
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
+      location={{}}
     />
   )
 
@@ -56,6 +58,7 @@ it('should render correctly when has no entity', () => {
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
+      location={{}}
     />
   )
 
@@ -73,6 +76,7 @@ it('should render correctly when has an entity', () => {
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
+      location={{}}
     />
   )
 
@@ -92,6 +96,7 @@ it('should trigger getting the entity on construction when editing an entity', (
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
+      location={{}}
     />
   )
 
@@ -113,6 +118,7 @@ it('should trigger getting the entity on construction when creating an entity', 
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
+      location={{}}
     />
   )
 
@@ -123,6 +129,7 @@ it('should trigger getting the entity on construction when creating an entity', 
 
 it('should not trigger getting the entity when props change but the same entity is specified', () => {
   const dispatch = jest.fn()
+  const location = { path: '/first' }
 
   const wrapper = shallow(
     <EntityPage
@@ -134,12 +141,11 @@ it('should not trigger getting the entity when props change but the same entity 
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
+      location={location}
     />
   )
 
-  wrapper
-    .instance()
-    .componentWillReceiveProps({ entityType: 'talent', entityId: 'some-id' })
+  wrapper.instance().componentWillReceiveProps({ location })
 
   expect(dispatch).toHaveBeenCalledTimes(1)
 })
@@ -157,10 +163,12 @@ it('should trigger getting the entity when props change and a different entity i
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
+      location={{ path: '/first' }}
     />
   )
 
   wrapper.instance().componentWillReceiveProps({
+    location: { path: '/second' },
     entityType: 'talent',
     entityId: 'some-other-id'
   })

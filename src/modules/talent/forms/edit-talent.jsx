@@ -103,6 +103,7 @@ export class EditTalentForm extends React.Component {
             component={TextField}
             disabled={isGroup}
             forceSingleLine
+            autos={false}
             maxLength={
               talentConstants.TALENT_CONSTRAINT.firstNames.length.maximum
             }
@@ -113,6 +114,7 @@ export class EditTalentForm extends React.Component {
             component={TextField}
             required
             forceSingleLine
+            autos={false}
             maxLength={
               talentConstants.TALENT_CONSTRAINT.lastName.length.maximum
             }
