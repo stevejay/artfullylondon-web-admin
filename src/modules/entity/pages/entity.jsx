@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import { Error } from '_src/modules/error'
 import FadeTransition from '_src/components/transition/fade'
@@ -24,11 +25,11 @@ export class EntityPage extends React.Component {
     }
   }
   _getOrResetEntity ({ entityType, entityId }) {
-    if (entityId) {
-      this.props.dispatch(entityActions.getEntity(entityType, entityId))
-    } else {
-      this.props.dispatch(entityActions.resetEntityForCreate(entityType))
-    }
+    this.props.dispatch(
+      entityId
+        ? entityActions.getEntity(entityType, entityId)
+        : entityActions.resetEntityForCreate(entityType)
+    )
   }
   render () {
     const {
@@ -65,15 +66,18 @@ EntityPage.propTypes = {
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired
 }
 
-export default connect(
-  /* istanbul ignore next */
-  (state, ownProps) => ({
-    entityId: ownProps.match.params[0],
-    entity: entitySelectors.entity(state),
-    getInProgress: entitySelectors.gettingEntity(state),
-    getFailed: entitySelectors.failedToGetEntity(state)
-  })
-)(EntityPage)
+export default withRouter(
+  connect(
+    /* istanbul ignore next */
+    (state, ownProps) => ({
+      entityId: ownProps.match.params[0],
+      entity: entitySelectors.entity(state),
+      getInProgress: entitySelectors.gettingEntity(state),
+      getFailed: entitySelectors.failedToGetEntity(state)
+    })
+  )(EntityPage)
+)

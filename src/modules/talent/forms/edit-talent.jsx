@@ -183,7 +183,7 @@ EditTalentForm.propTypes = {
   isEdit: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  talentTypeValue: PropTypes.string.isRequired,
+  talentTypeValue: PropTypes.string,
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,

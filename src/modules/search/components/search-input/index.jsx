@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import document from 'global/document'
 
-import AutocompleteList from '_src/modules/search/components/search-input/autocomplete-list'
+import AutocompleteList
+  from '_src/modules/search/components/search-input/autocomplete-list'
 import FadeTransition from '_src/components/transition/fade'
 import * as browserConstants from '_src/constants/browser'
 import './index.scss'
@@ -53,7 +54,7 @@ class SearchInput extends React.PureComponent {
         .onAutocompleteSearch({
           term
         })
-        .then(({ items }) => {
+        .then(items => {
           if (this.mounted) {
             if (items.length) {
               this.setState({

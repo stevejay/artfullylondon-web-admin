@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
 
-import ImageCredit from '_src/modules/entity/components/image-credit'
+import ImageCredit from '_src/modules/image/components/image-credit'
 import * as imageLib from '_src/lib/image'
 import './image-carousel.scss'
 
 // TODO remove the extra render methods.
 
-class EntityImageCarousel extends React.Component {
+class ImageCarousel extends React.Component {
   constructor (props) {
     super(props)
     this.state = { currentIndex: 0 }
@@ -82,7 +82,7 @@ class EntityImageCarousel extends React.Component {
   }
 }
 
-EntityImageCarousel.propTypes = {
+ImageCarousel.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -93,4 +93,4 @@ EntityImageCarousel.propTypes = {
   ).isRequired
 }
 
-export default EntityImageCarousel
+export default ImageCarousel

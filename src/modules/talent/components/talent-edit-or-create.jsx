@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
-import EntityImage from '_src/modules/entity/components/image'
+import Image from '_src/modules/image/components/image'
 import EntityDetailsContainer
   from '_src/modules/entity/components/details-container'
 import EntityHeading from '_src/modules/entity/components/heading'
@@ -17,6 +17,7 @@ import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 import * as talentConstants from '_src/modules/talent/constants'
 import * as talentMapper from '_src/modules/talent/lib/mapper'
+import { FullTalent } from '_src/entities/talent'
 
 export class TalentEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -60,12 +61,12 @@ export class TalentEditOrCreate extends React.Component {
 
     return (
       <React.Fragment>
-        <EntityImage
+        <Image
           entityType={entityConstants.ENTITY_TYPE_TALENT}
           images={entity.images}
         />
         <EntityHeading>
-          {talentLib.formatTalentName(entity) || 'New Talent'}
+          {entity.name || 'New Talent'}
         </EntityHeading>
         <EntityDetailsContainer>
           <EditTalentForm
@@ -81,7 +82,7 @@ export class TalentEditOrCreate extends React.Component {
 }
 
 TalentEditOrCreate.propTypes = {
-  entity: PropTypes.object.isRequired,
+  entity: PropTypes.instanceOf(FullTalent).isRequired,
   isEdit: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,

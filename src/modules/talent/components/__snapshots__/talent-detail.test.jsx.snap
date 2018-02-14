@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <React.Fragment>
-  <EntityImage
+  <Image
     entityType="talent"
     images={Array []}
     showCarousel={false}

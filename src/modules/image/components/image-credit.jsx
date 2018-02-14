@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import './image-credit.scss'
 
-class EntityImageCredit extends React.PureComponent {
+class ImageCredit extends React.PureComponent {
   render () {
     const { credit } = this.props
     return credit ? <div styleName='credit'>IMAGE CREDIT: {credit}</div> : null
   }
 }
 
-EntityImageCredit.propTypes = {
+ImageCredit.propTypes = {
   credit: PropTypes.string
 }
 
-export default EntityImageCredit
+export default ImageCredit

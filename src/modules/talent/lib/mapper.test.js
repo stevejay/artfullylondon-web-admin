@@ -34,7 +34,7 @@ describe('getInitialValues', () => {
       version: 9,
       createdDate: '2018/01/01',
       description: 'Description',
-      links: [{ type: 'Wikipedia' }],
+      links: { links: [{ type: 'Wikipedia' }] },
       images: [{ id: '1111' }]
     }
 

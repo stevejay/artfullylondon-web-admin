@@ -21,6 +21,7 @@ it('should render correctly when get entity failed', () => {
       getFailed
       component={SomeComponent}
       dispatch={_.noop}
+      match={{}}
     />
   )
 
@@ -37,6 +38,7 @@ it('should render correctly when get is in progress', () => {
       getFailed={false}
       component={SomeComponent}
       dispatch={_.noop}
+      match={{}}
     />
   )
 
@@ -53,6 +55,7 @@ it('should render correctly when has no entity', () => {
       getFailed={false}
       component={SomeComponent}
       dispatch={_.noop}
+      match={{}}
     />
   )
 
@@ -69,6 +72,7 @@ it('should render correctly when has an entity', () => {
       getFailed={false}
       component={SomeComponent}
       dispatch={_.noop}
+      match={{}}
     />
   )
 
@@ -87,6 +91,7 @@ it('should trigger getting the entity on construction when editing an entity', (
       getFailed={false}
       component={SomeComponent}
       dispatch={dispatch}
+      match={{}}
     />
   )
 
@@ -107,6 +112,7 @@ it('should trigger getting the entity on construction when creating an entity', 
       getFailed={false}
       component={SomeComponent}
       dispatch={dispatch}
+      match={{}}
     />
   )
 
@@ -127,6 +133,7 @@ it('should not trigger getting the entity when props change but the same entity 
       getFailed={false}
       component={SomeComponent}
       dispatch={dispatch}
+      match={{}}
     />
   )
 
@@ -149,6 +156,7 @@ it('should trigger getting the entity when props change and a different entity i
       getFailed={false}
       component={SomeComponent}
       dispatch={dispatch}
+      match={{}}
     />
   )
 

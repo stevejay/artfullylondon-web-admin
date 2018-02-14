@@ -132,7 +132,7 @@ export class FullTalent extends SummaryTalent {
   }
 
   get links () {
-    return this._links.links
+    return this._links
   }
 
   createInfoBarLabel () {
@@ -147,6 +147,6 @@ export class FullTalent extends SummaryTalent {
   }
 
   getLinkByType (linkType) {
-    return this._links.getLinkByType(linkType)
+    return this.links.getLinkByType(linkType)
   }
 }

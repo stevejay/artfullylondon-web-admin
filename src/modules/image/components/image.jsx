@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ImagePlaceholder } from '_src/modules/image'
-import ImageCarousel from '_src/modules/entity/components/image-carousel'
-import ImageCredit from '_src/modules/entity/components/image-credit'
+import ImagePlaceholder from '_src/modules/image/components/image-placeholder'
+import ImageCarousel from '_src/modules/image/components/image-carousel'
+import ImageCredit from '_src/modules/image/components/image-credit'
 import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 import './image.scss'
 
-class EntityImage extends React.PureComponent {
+class Image extends React.PureComponent {
   render () {
     const { entityType, images, showCarousel } = this.props
     const hasImages = !!images && images.length > 0
@@ -43,14 +43,14 @@ class EntityImage extends React.PureComponent {
   }
 }
 
-EntityImage.propTypes = {
+Image.propTypes = {
   entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   images: PropTypes.array,
   showCarousel: PropTypes.bool.isRequired
 }
 
-EntityImage.defaultProps = {
+Image.defaultProps = {
   showCarousel: false
 }
 
-export default EntityImage
+export default Image

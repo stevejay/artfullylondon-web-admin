@@ -2,7 +2,7 @@
 
 exports[`should render correctly when creating a talent 1`] = `
 <React.Fragment>
-  <EntityImage
+  <Image
     entityType="talent"
     showCarousel={false}
   />
@@ -28,7 +28,7 @@ exports[`should render correctly when creating a talent 1`] = `
 
 exports[`should render correctly when editing a talent 1`] = `
 <React.Fragment>
-  <EntityImage
+  <Image
     entityType="talent"
     images={Array []}
     showCarousel={false}

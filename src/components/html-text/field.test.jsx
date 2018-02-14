@@ -8,10 +8,7 @@ it('should render correctly', () => {
   const wrapper = shallow(
     <HtmlTextField
       label='The Label'
-      input={{
-        value: 'The Value',
-        onChange: _.noop
-      }}
+      input={{ value: 'The Value', onChange: _.noop }}
       meta={{ touched: false, error: null }}
       maxLength={300}
     />
