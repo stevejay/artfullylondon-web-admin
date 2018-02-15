@@ -100,9 +100,9 @@ describe('createEventTalentImageUrl', () => {
   })
 })
 
-describe('createPathsForImageCarousel', () => {
+describe('createItemsForImageCarousel', () => {
   it('should create the paths for an image in a carousel', () => {
-    const actual = imageLib.createPathsForImageCarousel({
+    const actual = imageLib.createItemsForImageCarousel({
       id: '123456',
       ratio: 2,
       copyright: 'Almeida'

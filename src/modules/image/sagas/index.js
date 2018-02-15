@@ -42,6 +42,8 @@ export function * updateImage ({ payload, meta }) {
       imageConstants.UPDATE_IMAGE_CONSTRAINT
     )
 
+    // TODO maybe do this manipulation out of the saga?
+
     const images = yield call(getImages, parentFormName)
 
     const imageIndex = images.findIndex(x => x.id === id)
@@ -72,6 +74,8 @@ export function * deleteImage (action) {
     const { id, parentFormName } = action.payload
     const images = yield call(getImages, parentFormName)
 
+    // TODO maybe do this manipulation out of the saga?
+
     const imageIndex = images.findIndex(x => x.id === id)
     if (imageIndex === -1) {
       return
@@ -96,6 +100,8 @@ export function * setMainImage (action) {
     const { id, parentFormName } = action.payload
     const images = yield call(getImages, parentFormName)
 
+    // TODO maybe do this manipulation out of the saga?
+
     const imageIndex = images.findIndex(x => x.id === id)
     if (imageIndex === -1) {
       return
@@ -112,7 +118,7 @@ export function * setMainImage (action) {
   }
 }
 
-function * addImage (action) {
+export function * addImage (action) {
   const { entityType, isMain, parentFormName } = action.payload
   let values = action.payload.values
   const id = uuidLib.create()
@@ -138,8 +144,8 @@ function * addImage (action) {
   }
 
   try {
-    const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
     const token = yield call(getAuthTokenForCurrentUser)
+    const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
 
     const { json, timeout } = yield race({
       json: call(

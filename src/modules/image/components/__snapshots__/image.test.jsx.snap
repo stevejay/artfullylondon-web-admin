@@ -15,7 +15,7 @@ exports[`should render correctly when not showing the carousel 1`] = `
 `;
 
 exports[`should render correctly when showing the carousel 1`] = `
-<ImageCarousel
+<withState(ImageCarousel)
   images={
     Array [
       Object {

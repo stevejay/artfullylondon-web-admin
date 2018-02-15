@@ -178,6 +178,11 @@ describe('createTimeKey', () => {
       it: 'should handle day with time',
       arg: { day: '2', at: '16:00' },
       expected: '2-16:00'
+    },
+    {
+      it: 'should handle string date with no time',
+      arg: { date: '2017/01/20' },
+      expected: '2017/01/20'
     }
   ]
 

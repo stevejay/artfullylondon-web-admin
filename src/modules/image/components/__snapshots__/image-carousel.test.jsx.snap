@@ -14,6 +14,7 @@ exports[`should render correctly 1`] = `
       Array [
         Object {
           "copyright": "The Copyright",
+          "dominantColor": "AAAAAA",
           "original": "https://images.test.com/so/me/some-id/750x.jpg",
           "ratio": 2,
         },
@@ -48,4 +49,260 @@ exports[`should render correctly 1`] = `
     credit="The Copyright"
   />
 </div>
+`;
+
+exports[`should render correctly when mounted 1`] = `
+<ImageCarousel
+  currentIndex={1}
+  images={
+    Array [
+      Object {
+        "copyright": "The Copyright",
+        "dominantColor": "AAAAAA",
+        "id": "image-0",
+        "ratio": 1,
+      },
+      Object {
+        "copyright": "The Copyright",
+        "dominantColor": "AAAAAA",
+        "id": "image-1",
+        "ratio": 2,
+      },
+      Object {
+        "copyright": "The Copyright",
+        "id": "image-2",
+        "ratio": 3,
+      },
+    ]
+  }
+  setCurrentIndex={[Function]}
+>
+  <div>
+    <ImageGallery
+      autoPlay={false}
+      disableArrowKeys={false}
+      disableSwipe={false}
+      disableThumbnailScroll={false}
+      flickThreshold={0.4}
+      indexSeparator=" / "
+      infinite={true}
+      items={
+        Array [
+          Object {
+            "copyright": "The Copyright",
+            "dominantColor": "AAAAAA",
+            "original": "https://images.test.com/im/ag/image-0/750x.jpg",
+            "ratio": 1,
+          },
+          Object {
+            "copyright": "The Copyright",
+            "dominantColor": "AAAAAA",
+            "original": "https://images.test.com/im/ag/image-1/750x.jpg",
+            "ratio": 2,
+          },
+          Object {
+            "copyright": "The Copyright",
+            "dominantColor": undefined,
+            "original": "https://images.test.com/im/ag/image-2/750x.jpg",
+            "ratio": 3,
+          },
+        ]
+      }
+      lazyLoad={true}
+      onSlide={[Function]}
+      preventDefaultTouchmoveEvent={false}
+      renderFullscreenButton={[Function]}
+      renderItem={[Function]}
+      renderLeftNav={[Function]}
+      renderPlayPauseButton={[Function]}
+      renderRightNav={[Function]}
+      showBullets={false}
+      showFullscreenButton={false}
+      showIndex={false}
+      showNav={true}
+      showPlayButton={false}
+      showThumbnails={false}
+      slideDuration={450}
+      slideInterval={3000}
+      slideOnThumbnailHover={false}
+      startIndex={0}
+      stopPropagation={false}
+      swipeThreshold={30}
+      swipingTransitionDuration={0}
+      thumbnailPosition="bottom"
+      useBrowserFullscreen={true}
+      useTranslate3D={true}
+    >
+      <div
+        aria-live="polite"
+        className="image-gallery "
+      >
+        <div
+          className="image-gallery-content"
+        >
+          <div
+            className="image-gallery-slide-wrapper bottom"
+          >
+            <span
+              key="navigation"
+            >
+              <div
+                className="image-gallery-custom-left-nav"
+                onClick={[Function]}
+              >
+                <svg
+                  fill="#333333"
+                  height="24"
+                  viewBox="0 0 512 512"
+                  width="24"
+                >
+                  <path
+                    d="M 416.00,416.00l-96.00,96.00L 64.00,256.00L 320.00,0.00l 96.00,96.00L 256.00,256.00L 416.00,416.00z"
+                  />
+                </svg>
+              </div>
+              <div
+                className="image-gallery-custom-right-nav"
+                onClick={[Function]}
+              >
+                <svg
+                  fill="#333333"
+                  height="24"
+                  viewBox="0 0 512 512"
+                  width="24"
+                >
+                  <path
+                    d="M 64.00,416.00l 96.00,96.00l 256.00-256.00L 160.00,0.00L 64.00,96.00l 160.00,160.00L 64.00,416.00z"
+                  />
+                </svg>
+              </div>
+            </span>
+            <Swipeable
+              className="image-gallery-swipe"
+              delta={0}
+              disabled={false}
+              flickThreshold={0.4}
+              key="swipeable"
+              nodeName="div"
+              onSwiped={[Function]}
+              onSwiping={[Function]}
+              onSwipingDown={[Function]}
+              onSwipingLeft={[Function]}
+              onSwipingRight={[Function]}
+              onSwipingUp={[Function]}
+              preventDefaultTouchmoveEvent={false}
+              stopPropagation={false}
+            >
+              <div
+                className="image-gallery-swipe"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+              >
+                <div
+                  className="image-gallery-slides"
+                >
+                  <div
+                    className="image-gallery-slide center"
+                    key="0"
+                    style={
+                      Object {
+                        "MozTransform": "translate3d(0%, 0, 0)",
+                        "OTransform": "translate3d(0%, 0, 0)",
+                        "WebkitTransform": "translate3d(0%, 0, 0)",
+                        "msTransform": "translate3d(0%, 0, 0)",
+                        "transform": "translate3d(0%, 0, 0)",
+                      }
+                    }
+                  >
+                    <div
+                      className="image-gallery-image"
+                    >
+                      <img
+                        src="https://images.test.com/im/ag/image-0/750x.jpg"
+                        style={
+                          Object {
+                            "backgroundColor": "#AAAAAA",
+                            "maxWidth": "400px",
+                            "width": "100vw",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="image-gallery-slide right"
+                    key="1"
+                    style={
+                      Object {
+                        "MozTransform": "translate3d(100%, 0, 0)",
+                        "OTransform": "translate3d(100%, 0, 0)",
+                        "WebkitTransform": "translate3d(100%, 0, 0)",
+                        "msTransform": "translate3d(100%, 0, 0)",
+                        "transform": "translate3d(100%, 0, 0)",
+                      }
+                    }
+                  >
+                    <div
+                      className="image-gallery-image"
+                    >
+                      <img
+                        src="https://images.test.com/im/ag/image-1/750x.jpg"
+                        style={
+                          Object {
+                            "backgroundColor": "#AAAAAA",
+                            "maxWidth": "200px",
+                            "width": "100vw",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="image-gallery-slide left"
+                    key="2"
+                    style={
+                      Object {
+                        "MozTransform": "translate3d(-100%, 0, 0)",
+                        "OTransform": "translate3d(-100%, 0, 0)",
+                        "WebkitTransform": "translate3d(-100%, 0, 0)",
+                        "msTransform": "translate3d(-100%, 0, 0)",
+                        "transform": "translate3d(-100%, 0, 0)",
+                      }
+                    }
+                  >
+                    <div
+                      className="image-gallery-image"
+                    >
+                      <img
+                        src="https://images.test.com/im/ag/image-2/750x.jpg"
+                        style={
+                          Object {
+                            "maxWidth": "133px",
+                            "width": "100vw",
+                          }
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Swipeable>
+          </div>
+        </div>
+      </div>
+    </ImageGallery>
+    <ImageCredit
+      credit="The Copyright"
+    >
+      <div
+        className="src-modules-image-components-image-credit__credit"
+      >
+        IMAGE CREDIT: 
+        The Copyright
+      </div>
+    </ImageCredit>
+  </div>
+</ImageCarousel>
 `;

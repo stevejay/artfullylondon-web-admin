@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<React.Fragment>
+  <Image
+    entityType="event-series"
+    images={Array []}
+    showCarousel={false}
+  />
+  <EntityHeading>
+    The Name
+  </EntityHeading>
+  <EntityDetailsContainer
+    type="narrow"
+  >
+    <EntityInfoBar
+      entity={
+        FullEventSeries {
+          "_links": LinkCollection {
+            "_links": undefined,
+          },
+          "entity": Object {
+            "images": Array [],
+            "name": "The Name",
+          },
+        }
+      }
+    />
+    <EntityDescription
+      entity={
+        FullEventSeries {
+          "_links": LinkCollection {
+            "_links": undefined,
+          },
+          "entity": Object {
+            "images": Array [],
+            "name": "The Name",
+          },
+        }
+      }
+    />
+    <EntityWeSay
+      entity={
+        FullEventSeries {
+          "_links": LinkCollection {
+            "_links": undefined,
+          },
+          "entity": Object {
+            "images": Array [],
+            "name": "The Name",
+          },
+        }
+      }
+    />
+    <EntityExternalLinks
+      entity={
+        FullEventSeries {
+          "_links": LinkCollection {
+            "_links": undefined,
+          },
+          "entity": Object {
+            "images": Array [],
+            "name": "The Name",
+          },
+        }
+      }
+    />
+  </EntityDetailsContainer>
+</React.Fragment>
+`;

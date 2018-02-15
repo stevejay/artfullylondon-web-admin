@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when creating an event series 1`] = `
+<React.Fragment>
+  <Image
+    entityType="event-series"
+    showCarousel={false}
+  />
+  <EntityHeading>
+    New Event Series
+  </EntityHeading>
+  <EntityDetailsContainer
+    type="default"
+  >
+    <Connect(ReduxForm)
+      initialValues={
+        Object {
+          "id": 1,
+        }
+      }
+      isEdit={false}
+      onCancel={[Function]}
+      onSubmit={[Function]}
+    />
+  </EntityDetailsContainer>
+</React.Fragment>
+`;
+
+exports[`should render correctly when editing an event series 1`] = `
+<React.Fragment>
+  <Image
+    entityType="event-series"
+    images={Array []}
+    showCarousel={false}
+  />
+  <EntityHeading>
+    New Event Series
+  </EntityHeading>
+  <EntityDetailsContainer
+    type="default"
+  >
+    <Connect(ReduxForm)
+      initialValues={
+        Object {
+          "id": 1,
+        }
+      }
+      isEdit={true}
+      onCancel={[Function]}
+      onSubmit={[Function]}
+    />
+  </EntityDetailsContainer>
+</React.Fragment>
+`;

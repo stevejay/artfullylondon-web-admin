@@ -59,125 +59,52 @@ function createEntity (entityType, entity = null) {
       return new FullTalent(entity)
     case entityConstants.ENTITY_TYPE_VENUE:
       return new FullVenue(entity)
+    /* istanbul ignore next */
     default:
       throw new Error(`entityType ${entityType} not supported`)
   }
 }
 
-// TODO rip all this stuff out and put it in the domain!!
-function getEntityDefaultValues (entityType) {
-  switch (entityType) {
-    // case entityConstants.ENTITY_TYPE_TALENT:
-    //   return {
-    //     id: null,
-    //     status: entityConstants.ACTIVE_STATUS,
-    //     validStatuses: [entityConstants.ACTIVE_STATUS],
-    //     firstNames: '',
-    //     lastName: '',
-    //     talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
-    //     commonRole: '',
-    //     description: RichTextEditor.createEmptyValue(),
-    //     links: [],
-    //     images: [],
-    //     currentEvents: [],
-    //     futureEvents: [],
-    //     weSay: '',
-    //     version: 0,
-    //     createdDate: null
-    //   }
-    // case entityConstants.ENTITY_TYPE_VENUE:
-    //   return {
-    //     id: null,
-    //     status: entityConstants.ACTIVE_STATUS,
-    //     validStatuses: [entityConstants.ACTIVE_STATUS],
-    //     name: '',
-    //     venueType: '',
-    //     address: '',
-    //     pin: {
-    //       lat: null,
-    //       lng: null
-    //     },
-    //     defaultCenter: DEFAULT_MAP_CENTER,
-    //     postcode: '',
-    //     email: '',
-    //     telephone: '',
-    //     description: RichTextEditor.createEmptyValue(),
-    //     wheelchairAccessType: '',
-    //     disabledBathroomType: '',
-    //     hearingFacilitiesType: '',
-    //     hasPermanentCollection: false,
-    //     openingTimes: [],
-    //     additionalOpeningTimes: [],
-    //     openingTimesClosures: [],
-    //     namedClosures: '',
-    //     links: [],
-    //     images: [],
-    //     weSay: '',
-    //     notes: '',
-    //     version: 0,
-    //     createdDate: null
-    //   }
-    case entityConstants.ENTITY_TYPE_EVENT:
-      return {
-        id: null,
-        status: entityConstants.ACTIVE_STATUS,
-        validStatuses: [entityConstants.ACTIVE_STATUS],
-        name: '',
-        eventType: '',
-        dateFrom: null,
-        dateTo: null,
-        costType: '',
-        summary: '',
-        description: RichTextEditor.createEmptyValue(),
-        descriptionCredit: '',
-        links: [],
-        costFrom: '',
-        costTo: '',
-        bookingType: '',
-        bookingOpens: null,
-        venue: {},
-        venueGuidance: '',
-        eventSeries: {},
-        duration: '',
-        weSay: '',
-        rating: '3',
-        minAge: '',
-        useVenueOpeningTimes: false,
-        openingTimes: [],
-        additionalOpeningTimes: [],
-        specialOpeningTimes: [],
-        openingTimesClosures: [],
-        performances: [],
-        additionalPerformances: [],
-        specialPerformances: [],
-        performancesClosures: [],
-        talents: [],
-        mediumTags: [],
-        styleTags: [],
-        audienceTags: [],
-        geoTags: [],
-        images: [],
-        version: 0,
-        createdDate: null
-      }
-    // case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-    //   return {
-    //     id: null,
-    //     status: entityConstants.ACTIVE_STATUS,
-    //     validStatuses: [entityConstants.ACTIVE_STATUS],
-    //     name: '',
-    //     eventSeriesType: '',
-    //     occurrence: '',
-    //     summary: '',
-    //     description: RichTextEditor.createEmptyValue(),
-    //     images: [],
-    //     links: [],
-    //     descriptionCredit: '',
-    //     weSay: '',
-    //     version: 0,
-    //     createdDate: null
-    //   }
-    // default:
-    //   throw new Error(`entityType ${entityType} not supported`)
-  }
-}
+// case entityConstants.ENTITY_TYPE_EVENT:
+//   return {
+//     id: null,
+//     status: entityConstants.ACTIVE_STATUS,
+//     validStatuses: [entityConstants.ACTIVE_STATUS],
+//     name: '',
+//     eventType: '',
+//     dateFrom: null,
+//     dateTo: null,
+//     costType: '',
+//     summary: '',
+//     description: RichTextEditor.createEmptyValue(),
+//     descriptionCredit: '',
+//     links: [],
+//     costFrom: '',
+//     costTo: '',
+//     bookingType: '',
+//     bookingOpens: null,
+//     venue: {},
+//     venueGuidance: '',
+//     eventSeries: {},
+//     duration: '',
+//     weSay: '',
+//     rating: '3',
+//     minAge: '',
+//     useVenueOpeningTimes: false,
+//     openingTimes: [],
+//     additionalOpeningTimes: [],
+//     specialOpeningTimes: [],
+//     openingTimesClosures: [],
+//     performances: [],
+//     additionalPerformances: [],
+//     specialPerformances: [],
+//     performancesClosures: [],
+//     talents: [],
+//     mediumTags: [],
+//     styleTags: [],
+//     audienceTags: [],
+//     geoTags: [],
+//     images: [],
+//     version: 0,
+//     createdDate: null
+//   }

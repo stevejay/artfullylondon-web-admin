@@ -10,11 +10,11 @@ import EntityDetailsContainer
 import EntityHeading from '_src/modules/entity/components/heading'
 import EditEventSeriesForm
   from '_src/modules/event-series/forms/edit-event-series'
-import * as entityConstants from '_src/constants/entity'
 import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
+import * as entityConstants from '_src/constants/entity'
 import * as eventSeriesConstants from '_src/modules/event-series/constants'
 import * as eventSeriesMapper from '_src/modules/event-series/lib/mapper'
 import { FullEventSeries } from '_src/entities/event-series'
@@ -91,9 +91,13 @@ EventSeriesEditOrCreate.propTypes = {
 }
 
 export default withRouter(
-  /* istanbul ignore next */
-  connect(state => ({
-    imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(state),
-    linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
-  }))(EventSeriesEditOrCreate)
+  connect(
+    /* istanbul ignore next */
+    state => ({
+      imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(
+        state
+      ),
+      linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
+    })
+  )(EventSeriesEditOrCreate)
 )

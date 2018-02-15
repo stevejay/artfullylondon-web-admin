@@ -1,6 +1,7 @@
 /* global google */
 import React from 'react'
 import PropTypes from 'prop-types'
+import window from 'global/window'
 import {
   withGoogleMap,
   GoogleMap as ReactGoogleMap,
@@ -21,7 +22,7 @@ export class GoogleMapZoomable extends React.PureComponent {
       const googleMap = this._googleMap
       const KEY = '__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED'
 
-      setTimeout(() => {
+      window.setTimeout(() => {
         if (google && googleMap) {
           google.maps.event.trigger(googleMap.context[KEY], 'resize') // eslint-disable-line
         }
@@ -32,29 +33,32 @@ export class GoogleMapZoomable extends React.PureComponent {
     const googleMapZoom = this._googleMap.getZoom()
     const zoom = locationLib.convertGoogleMapZoomToInt(googleMapZoom)
     const googleMapBounds = this._googleMap.getBounds()
+
     const bounds = locationLib.convertGoogleMapBoundsToNSEWBounds(
       googleMapBounds
     )
+
     this.props.onZoomChanged({ zoom, bounds })
   }
   handleCenterChanged = () => {
     const googleMapCenter = this._googleMap.getCenter()
+
     const center = locationLib.convertGoogleMapPointToLatLngPoint(
       googleMapCenter
     )
+
     const googleMapBounds = this._googleMap.getBounds()
+
     const bounds = locationLib.convertGoogleMapBoundsToNSEWBounds(
       googleMapBounds
     )
+
     this.props.onCenterChanged({ center, bounds })
   }
   handleMounted = ref => {
     const { onMounted } = this.props
     this._googleMap = ref
-
-    if (onMounted) {
-      onMounted(ref)
-    }
+    onMounted && onMounted(ref)
   }
   render () {
     const {
@@ -82,18 +86,14 @@ export class GoogleMapZoomable extends React.PureComponent {
           gridSize={45}
           minimumClusterSize={4}
         >
-          {markers.map(marker => {
-            const isSelected = selectedMarkerId === marker.id
-
-            return (
-              <Marker
-                key={marker.id}
-                position={marker.pin}
-                onClick={() => onMarkerClick(marker.id)}
-                icon={iconUrlFactory(marker, isSelected)}
-              />
-            )
-          })}
+          {markers.map(marker => (
+            <Marker
+              key={marker.id}
+              position={marker.pin}
+              onClick={() => onMarkerClick(marker.id)}
+              icon={iconUrlFactory(marker, selectedMarkerId === marker.id)}
+            />
+          ))}
           {!!userLocation &&
             <Marker
               key='current-location'

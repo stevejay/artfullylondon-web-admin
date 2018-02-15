@@ -82,9 +82,9 @@ export function createTimeKey (obj) {
     dayOrDate = obj.day
   }
 
-  const time = obj.from ? obj.from + '-' + obj.to : obj.at
+  const time = obj.from ? obj.from + '-' + obj.to : obj.at ? obj.at : null
   const timesRange = obj.timesRangeId ? '-' + obj.timesRangeId : ''
-  return dayOrDate + '-' + time + timesRange
+  return `${dayOrDate}${time ? '-' + time : ''}${timesRange}`
 }
 
 export function formatTime (time) {
@@ -112,8 +112,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-      ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
-      : formatStringDateForDisplay(dateFrom)
+        ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
+        : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 

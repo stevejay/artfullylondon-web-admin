@@ -54,11 +54,17 @@ export function createEntityEditPreviewImageUrl (imageId) {
   return _createImageUrl(imageId, '120x120')
 }
 
-export function createPathsForImageCarousel ({ id, ratio, copyright }) {
+export function createItemsForImageCarousel ({
+  id,
+  ratio,
+  copyright,
+  dominantColor
+}) {
   return {
     original: _createImageUrl(id, '750x'),
     ratio,
-    copyright
+    copyright,
+    dominantColor
   }
 }
 

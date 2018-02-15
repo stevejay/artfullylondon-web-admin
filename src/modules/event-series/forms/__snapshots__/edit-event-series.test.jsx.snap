@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when creating a group 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <Divider
+    type="basic"
+  />
+  <FormRow>
+    <Field
+      autofocus={true}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Name"
+      maxLength={200}
+      name="name"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Event Series Type"
+      name="eventSeriesType"
+      options={
+        Array [
+          Object {
+            "label": "Season",
+            "value": "Season",
+          },
+          Object {
+            "label": "Occasional",
+            "value": "Occasional",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Occurrence"
+      maxLength={200}
+      name="occurrence"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Summary"
+      maxLength={140}
+      name="summary"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Full Description"
+      maxLength={5000}
+      name="description"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      forceSingleLine={true}
+      label="Full Description Credit"
+      maxLength={200}
+      name="descriptionCredit"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="We Say"
+      maxLength={300}
+      name="weSay"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Links"
+      name="links"
+      onAddLink={[Function]}
+      onDeleteLink={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="event-series"
+      label="Images"
+      name="images"
+      onAddImage={[Function]}
+      onDeleteImage={[Function]}
+      onSetMainImage={[Function]}
+      onUpdateImage={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={null}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;
+
+exports[`should render correctly when editing an individual 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <Divider
+    type="basic"
+  />
+  <FormRow>
+    <Field
+      autofocus={true}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Name"
+      maxLength={200}
+      name="name"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Event Series Type"
+      name="eventSeriesType"
+      options={
+        Array [
+          Object {
+            "label": "Season",
+            "value": "Season",
+          },
+          Object {
+            "label": "Occasional",
+            "value": "Occasional",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+    <Field
+      component={[Function]}
+      label="Status"
+      name="status"
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Occurrence"
+      maxLength={200}
+      name="occurrence"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Summary"
+      maxLength={140}
+      name="summary"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Full Description"
+      maxLength={5000}
+      name="description"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      forceSingleLine={true}
+      label="Full Description Credit"
+      maxLength={200}
+      name="descriptionCredit"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="We Say"
+      maxLength={300}
+      name="weSay"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Links"
+      name="links"
+      onAddLink={[Function]}
+      onDeleteLink={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="event-series"
+      label="Images"
+      name="images"
+      onAddImage={[Function]}
+      onDeleteImage={[Function]}
+      onSetMainImage={[Function]}
+      onUpdateImage={[Function]}
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={[Function]}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

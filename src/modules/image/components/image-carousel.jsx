@@ -2,26 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
+import { withState } from 'recompose'
 
 import ImageCredit from '_src/modules/image/components/image-credit'
 import * as imageLib from '_src/lib/image'
 import './image-carousel.scss'
 
-// TODO remove the extra render methods.
-
-class ImageCarousel extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { currentIndex: 0 }
-  }
-  shouldComponentUpdate (nextProps, nextState) {
-    return (
-      nextProps.images !== this.props.images ||
-      nextState.currentIndex !== this.state.currentIndex
-    )
-  }
+export class ImageCarousel extends React.PureComponent {
   handleSlide = index => {
-    this.setState({ currentIndex: index })
+    this.props.setCurrentIndex(index)
   }
   _renderLeftNav (onClick, _disabled) {
     return (
@@ -57,16 +46,18 @@ class ImageCarousel extends React.Component {
     )
   }
   render () {
-    const { images } = this.props
-    const imagePaths = images.map(image =>
-      imageLib.createPathsForImageCarousel(image)
+    const { images, currentIndex } = this.props
+    const copyright = images[currentIndex].copyright
+
+    // TODO rendering trigger issue
+    const carouselItems = images.map(image =>
+      imageLib.createItemsForImageCarousel(image)
     )
-    const copyright = images[this.state.currentIndex].copyright
 
     return (
       <div>
         <ImageGallery
-          items={imagePaths}
+          items={carouselItems}
           lazyLoad
           showThumbnails={false}
           showFullscreenButton={false}
@@ -90,7 +81,9 @@ ImageCarousel.propTypes = {
       copyright: PropTypes.string,
       dominantColor: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  setCurrentIndex: PropTypes.func.isRequired
 }
 
-export default ImageCarousel
+export default withState('currentIndex', 'setCurrentIndex', 0)(ImageCarousel)
