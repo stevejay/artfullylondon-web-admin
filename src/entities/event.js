@@ -13,13 +13,8 @@ import * as eventLib from '_src/lib/event'
 
 export class SummaryEvent {
   constructor (entity) {
-    /* istanbul ignore if */
-    if (!entity) {
-      throw new Error('null or undefined entity')
-    }
-
-    this.entity = entity
-    this.postcodeDistrict = venueLib.getPostcodeDistrict(entity.postcode)
+    this.entity = entity || {}
+    this.postcodeDistrict = venueLib.getPostcodeDistrict(this.entity.postcode)
     this.groupedDates = eventLib.groupTimesByDate(this.entity.dates)
   }
 
@@ -160,22 +155,22 @@ export class FullEvent extends SummaryEvent {
   constructor (entity) {
     super(entity)
 
-    this.links = new LinkCollection(entity.links)
+    this.links = new LinkCollection(this.entity.links)
 
-    this.venue = new SummaryVenue(entity.venue)
+    this.venue = new SummaryVenue(this.entity.venue)
 
-    this.talents = (entity.talents || [])
+    this.talents = (this.entity.talents || [])
       .map(talent => new SummaryTalent(talent))
 
-    this.eventSeries = entity.eventSeries
-      ? new SummaryEventSeries(entity.eventSeries)
+    this.eventSeries = this.entity.eventSeries
+      ? new SummaryEventSeries(this.entity.eventSeries)
       : null
 
     this.tags = [
-      ..._addTagType(entity.mediumTags, tagConstants.TAG_TYPE_MEDIUM),
-      ..._addTagType(entity.styleTags, tagConstants.TAG_TYPE_STYLE),
-      ..._addTagType(entity.geoTags, tagConstants.TAG_TYPE_GEO),
-      ..._addTagType(entity.audienceTags, tagConstants.TAG_TYPE_AUDIENCE)
+      ..._addTagType(this.entity.mediumTags, tagConstants.TAG_TYPE_MEDIUM),
+      ..._addTagType(this.entity.styleTags, tagConstants.TAG_TYPE_STYLE),
+      ..._addTagType(this.entity.geoTags, tagConstants.TAG_TYPE_GEO),
+      ..._addTagType(this.entity.audienceTags, tagConstants.TAG_TYPE_AUDIENCE)
     ]
   }
 

@@ -30,7 +30,7 @@ export function getInitialValues (venue) {
       namedClosures: '',
       notes: '',
       description: entityMapper.getRichTextInitialValue(),
-      descriptionCredit: null,
+      descriptionCredit: '',
       links: [],
       images: [],
       weSay: '',
@@ -72,6 +72,7 @@ export function getInitialValues (venue) {
       venue.namedClosures
     ),
     description: entityMapper.getRichTextInitialValue(venue.description),
+    descriptionCredit: venue.descriptionCredit || '',
     links: entityMapper.getLinksInitialValue(venue.links.links),
     images: entityMapper.getImagesInitialValue(venue.images),
     weSay: venue.weSay || '',
@@ -85,11 +86,10 @@ export function mapSubmittedValues (values) {
   // TODO this should be driven by the db:
   const dbDate = dateLib.getDateNowForDatabase()
 
-  console.log('mapSubmitted Vaoues', values)
-
   return {
     name: values.name.trim(),
     description: entityMapper.mapSubmittedDescription(values.description),
+    descriptionCredit: values.descriptionCredit.trim(),
     status: values.status,
     venueType: values.venueType,
     address: values.address.trim(),

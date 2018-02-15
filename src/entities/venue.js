@@ -8,13 +8,8 @@ import * as imageLib from '_src/lib/image'
 
 export class SummaryVenue {
   constructor (entity) {
-    /* istanbul ignore if */
-    if (!entity) {
-      throw new Error('null or undefined entity')
-    }
-
-    this.entity = entity
-    this.postcodeDistrict = venueLib.getPostcodeDistrict(entity.postcode)
+    this.entity = entity || {}
+    this.postcodeDistrict = venueLib.getPostcodeDistrict(this.entity.postcode)
   }
 
   get entityType () {
@@ -129,7 +124,7 @@ export class SummaryVenue {
 export class FullVenue extends SummaryVenue {
   constructor (entity) {
     super(entity)
-    this._links = new LinkCollection(entity.links)
+    this._links = new LinkCollection(this.entity.links)
   }
 
   get version () {
@@ -138,6 +133,10 @@ export class FullVenue extends SummaryVenue {
 
   get createdDate () {
     return this.entity.createdDate
+  }
+
+  get isNew () {
+    return !this.entity.id
   }
 
   createTimesDescriptionForDate (dateStr, timeStr, namedClosuresLookup) {

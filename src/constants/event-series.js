@@ -1,11 +1,6 @@
 export const EVENT_SERIES_TYPE_SEASON = 'Season'
 export const EVENT_SERIES_TYPE_OCCASIONAL = 'Occasional'
 
-export const EVENT_SERIES_TYPE_DROPDOWN_OPTIONS = [
-  { value: EVENT_SERIES_TYPE_SEASON, label: 'Season' },
-  { value: EVENT_SERIES_TYPE_OCCASIONAL, label: 'Occasional' }
-]
-
 export const ALLOWED_EVENT_SERIES_TYPES = [
   EVENT_SERIES_TYPE_SEASON,
   EVENT_SERIES_TYPE_OCCASIONAL

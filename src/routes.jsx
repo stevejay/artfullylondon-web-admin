@@ -25,6 +25,10 @@ import { ResultsPage, Quicksearch } from '_src/modules/search'
 import { EntityPage } from '_src/modules/entity'
 import { TalentEditOrCreate, TalentDetail } from '_src/modules/talent'
 import { VenueEditOrCreate, VenueDetail } from '_src/modules/venue'
+import {
+  EventSeriesEditOrCreate,
+  EventSeriesDetail
+} from '_src/modules/event-series'
 import * as entityConstants from '_src/constants/entity'
 
 export class Routes extends React.Component {
@@ -143,6 +147,36 @@ export class Routes extends React.Component {
                     <EntityPage
                       entityType={entityConstants.ENTITY_TYPE_VENUE}
                       component={VenueDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event-series'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      component={EventSeriesEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event-series/edit/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      component={EventSeriesEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event-series/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      component={EventSeriesDetail}
                     />
                   )}
                 />

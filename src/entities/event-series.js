@@ -5,12 +5,7 @@ import * as entityLib from '_src/lib/entity'
 
 export class SummaryEventSeries {
   constructor (entity) {
-    /* istanbul ignore if */
-    if (!entity) {
-      throw new Error('null or undefined entity')
-    }
-
-    this.entity = entity
+    this.entity = entity || {}
   }
 
   get entityType () {
@@ -83,26 +78,24 @@ export class SummaryEventSeries {
   get isFullEntity () {
     return false
   }
-
-  isBeingWatched (watches) {
-    return !!watches[this.id]
-  }
-
-  createWatchLabel () {
-    return this.name
-  }
-
-  createWatchChangeInstruction (isBeingWatched) {
-    const prefix = isBeingWatched ? 'Unwatch' : 'Watch'
-    return prefix + ' this event series'
-  }
 }
 
 export class FullEventSeries extends SummaryEventSeries {
   constructor (entity) {
     super(entity)
+    this._links = new LinkCollection(this.entity.links)
+  }
 
-    this.links = new LinkCollection(entity.links)
+  get version () {
+    return this.entity.version
+  }
+
+  get createdDate () {
+    return this.entity.createdDate
+  }
+
+  get isNew () {
+    return !this.entity.id
   }
 
   get images () {
@@ -119,6 +112,10 @@ export class FullEventSeries extends SummaryEventSeries {
 
   get weSay () {
     return this.entity.weSay
+  }
+
+  get links () {
+    return this._links
   }
 
   get isFullEntity () {

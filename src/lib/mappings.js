@@ -272,49 +272,6 @@ export function mapEventSeriesFromServerForEvent (payload) {
   return result
 }
 
-export function mapEventSeriesToServer (values) {
-  const dbDate = dateLib.getDateNowForDatabase()
-
-  const result = {
-    name: values.name.trim(),
-    status: values.status,
-    eventSeriesType: values.eventSeriesType,
-    occurrence: values.occurrence.trim(),
-    summary: values.summary.trim(),
-    description: _mapDescriptionToServer(values.description),
-    descriptionCredit: values.descriptionCredit.trim(),
-    links: _mapLinksToServer(values.links),
-    images: _mapImagesToServer(values.images),
-    weSay: values.weSay.trim(),
-    version: values.version + 1,
-    createdDate: values.createdDate || dbDate,
-    updatedDate: dbDate
-  }
-
-  return result
-}
-
-export function mapEventSeriesFromServer (payload) {
-  const result = {
-    id: payload.id,
-    name: payload.name,
-    status: payload.status,
-    validStatuses: entityLib.getValidStatuses(payload.status),
-    eventSeriesType: payload.eventSeriesType,
-    occurrence: payload.occurrence,
-    summary: payload.summary,
-    description: _mapDescriptionFromServer(payload.description),
-    descriptionCredit: payload.descriptionCredit || '',
-    links: _mapLinksFromServer(payload.links),
-    images: _mapImagesFromServer(payload.images),
-    weSay: payload.weSay || '',
-    version: payload.version,
-    createdDate: payload.createdDate
-  }
-
-  return result
-}
-
 function _filterTimeEntries (entry, dateFrom, dateTo) {
   return entry.date >= dateFrom && entry.date <= dateTo
 }

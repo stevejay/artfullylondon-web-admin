@@ -1,4 +1,3 @@
-export const EDIT_EVENT_SERIES_FORM_NAME = 'EditEventSeries'
 export const EDIT_EVENT_BASICS_FORM_NAME = 'EditEventBasics'
 export const EDIT_EVENT_IMAGES_FORM_NAME = 'EditEventImages'
 export const EDIT_EVENT_TAGS_FORM_NAME = 'EditEventTags'

@@ -160,24 +160,24 @@ function getEntityDefaultValues (entityType) {
         version: 0,
         createdDate: null
       }
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-      return {
-        id: null,
-        status: entityConstants.ACTIVE_STATUS,
-        validStatuses: [entityConstants.ACTIVE_STATUS],
-        name: '',
-        eventSeriesType: '',
-        occurrence: '',
-        summary: '',
-        description: RichTextEditor.createEmptyValue(),
-        images: [],
-        links: [],
-        descriptionCredit: '',
-        weSay: '',
-        version: 0,
-        createdDate: null
-      }
-    default:
-      throw new Error(`entityType ${entityType} not supported`)
+    // case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+    //   return {
+    //     id: null,
+    //     status: entityConstants.ACTIVE_STATUS,
+    //     validStatuses: [entityConstants.ACTIVE_STATUS],
+    //     name: '',
+    //     eventSeriesType: '',
+    //     occurrence: '',
+    //     summary: '',
+    //     description: RichTextEditor.createEmptyValue(),
+    //     images: [],
+    //     links: [],
+    //     descriptionCredit: '',
+    //     weSay: '',
+    //     version: 0,
+    //     createdDate: null
+    //   }
+    // default:
+    //   throw new Error(`entityType ${entityType} not supported`)
   }
 }
