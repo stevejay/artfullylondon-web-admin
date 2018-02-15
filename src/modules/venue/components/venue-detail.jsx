@@ -119,9 +119,12 @@ VenueDetail.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  venueMonitor: venueSelectors.venueMonitor(state),
-  gettingVenueMonitor: venueSelectors.gettingVenueMonitor(state),
-  venueEventMonitors: venueSelectors.venueEventMonitors(state),
-  gettingVenueEventMonitors: venueSelectors.gettingVenueEventMonitors(state)
-}))(VenueDetail)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    venueMonitor: venueSelectors.venueMonitor(state),
+    gettingVenueMonitor: venueSelectors.gettingVenueMonitor(state),
+    venueEventMonitors: venueSelectors.venueEventMonitors(state),
+    gettingVenueEventMonitors: venueSelectors.gettingVenueEventMonitors(state)
+  })
+)(VenueDetail)

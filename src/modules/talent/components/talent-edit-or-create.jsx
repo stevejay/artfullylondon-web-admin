@@ -9,13 +9,13 @@ import EntityDetailsContainer
   from '_src/modules/entity/components/details-container'
 import EntityHeading from '_src/modules/entity/components/heading'
 import EditTalentForm from '_src/modules/talent/forms/edit-talent'
-import * as entityConstants from '_src/constants/entity'
 import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 import * as talentConstants from '_src/modules/talent/constants'
 import * as talentMapper from '_src/modules/talent/lib/mapper'
+import * as entityConstants from '_src/constants/entity'
 import { FullTalent } from '_src/entities/talent'
 
 export class TalentEditOrCreate extends React.Component {
@@ -90,9 +90,13 @@ TalentEditOrCreate.propTypes = {
 }
 
 export default withRouter(
-  /* istanbul ignore next */
-  connect(state => ({
-    imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(state),
-    linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
-  }))(TalentEditOrCreate)
+  connect(
+    /* istanbul ignore next */
+    state => ({
+      imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(
+        state
+      ),
+      linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
+    })
+  )(TalentEditOrCreate)
 )

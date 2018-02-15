@@ -109,9 +109,7 @@ export function mapSubmittedValues (values) {
     openingTimesClosures: entityMapper.mapSubmittedOpeningTimesClosures(
       values.openingTimesClosures
     ),
-    namedClosures: values.namedClosures
-      ? values.namedClosures.split(',')
-      : null,
+    namedClosures: entityMapper.mapSubmittedNamedClosures(values.namedClosures),
     links: entityMapper.mapSubmittedLinks(values.links),
     images: entityMapper.mapSubmittedImages(values.images),
     weSay: values.weSay.trim(),

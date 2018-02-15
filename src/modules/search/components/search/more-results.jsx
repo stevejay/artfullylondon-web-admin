@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/components/base-class/should-never-update'
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
 import * as entityConstants from '_src/constants/entity'
 // TODO fix this:
 import * as searchLib from '_src/modules/search/lib/search'
 
-class SearchMoreResults extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class SearchMoreResults extends ShouldNeverUpdateComponent {
   render () {
     const { items, take, onClick } = this.props
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when editing a monitor 1`] = `
 <div
   className="src-modules-venue-components-monitor-collection__container"
 >
@@ -12,16 +12,70 @@ exports[`should render correctly 1`] = `
   >
     <Grid>
       <gridRowComponent
-        key="some-key"
+        key="key-2"
         monitor={
           Object {
-            "key": "some-key",
+            "isIgnored": false,
+            "key": "key-2",
           }
         }
         onEdit={[Function]}
         venueHomepageUrl={null}
       />
     </Grid>
+  </div>
+  <div
+    className="src-modules-venue-components-monitor-collection__buttons-container"
+  >
+    <Button
+      onClick={[Function]}
+      type="button"
+    >
+      Show ignored monitors
+    </Button>
+  </div>
+  <Modal
+    aria-label="Edit Monitor"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={true}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="Edit Monitor"
+      type="wide"
+    >
+      <ReduxForm
+        initialValues={
+          Object {
+            "isIgnored": false,
+            "key": "key-2",
+          }
+        }
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</div>
+`;
+
+exports[`should render correctly when get in not in progress and there are no monitors 1`] = `
+<div
+  className="src-modules-venue-components-monitor-collection__container"
+>
+  <EntitySectionHeading>
+    The Title
+  </EntitySectionHeading>
+  <div
+    className="src-modules-venue-components-monitor-collection__monitors-container"
+  >
+    <p
+      className="src-modules-venue-components-monitor-collection__no-monitors"
+    >
+      No Monitors Found
+    </p>
   </div>
   <Modal
     aria-label="Edit Monitor"
@@ -37,6 +91,167 @@ exports[`should render correctly 1`] = `
       type="wide"
     >
       <ReduxForm
+        initialValues={null}
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</div>
+`;
+
+exports[`should render correctly when get is in progress 1`] = `
+<div
+  className="src-modules-venue-components-monitor-collection__container"
+>
+  <EntitySectionHeading>
+    The Title
+  </EntitySectionHeading>
+  <div
+    className="src-modules-venue-components-monitor-collection__monitors-container"
+  >
+    <Loader
+      size="large"
+      type="default"
+    />
+  </div>
+  <Modal
+    aria-label="Edit Monitor"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={false}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="Edit Monitor"
+      type="wide"
+    >
+      <ReduxForm
+        initialValues={null}
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</div>
+`;
+
+exports[`should render correctly when not showing ignored monitors 1`] = `
+<div
+  className="src-modules-venue-components-monitor-collection__container"
+>
+  <EntitySectionHeading>
+    The Title
+  </EntitySectionHeading>
+  <div
+    className="src-modules-venue-components-monitor-collection__monitors-container"
+  >
+    <Grid>
+      <gridRowComponent
+        key="key-2"
+        monitor={
+          Object {
+            "isIgnored": false,
+            "key": "key-2",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl={null}
+      />
+    </Grid>
+  </div>
+  <div
+    className="src-modules-venue-components-monitor-collection__buttons-container"
+  >
+    <Button
+      onClick={[Function]}
+      type="button"
+    >
+      Show ignored monitors
+    </Button>
+  </div>
+  <Modal
+    aria-label="Edit Monitor"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={false}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="Edit Monitor"
+      type="wide"
+    >
+      <ReduxForm
+        initialValues={null}
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</div>
+`;
+
+exports[`should render correctly when showing ignored monitors 1`] = `
+<div
+  className="src-modules-venue-components-monitor-collection__container"
+>
+  <EntitySectionHeading>
+    The Title
+  </EntitySectionHeading>
+  <div
+    className="src-modules-venue-components-monitor-collection__monitors-container"
+  >
+    <Grid>
+      <gridRowComponent
+        key="key-1"
+        monitor={
+          Object {
+            "isIgnored": true,
+            "key": "key-1",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl={null}
+      />
+      <gridRowComponent
+        key="key-2"
+        monitor={
+          Object {
+            "isIgnored": false,
+            "key": "key-2",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl={null}
+      />
+    </Grid>
+  </div>
+  <div
+    className="src-modules-venue-components-monitor-collection__buttons-container"
+  >
+    <Button
+      onClick={[Function]}
+      type="button"
+    >
+      Hide ignored monitors
+    </Button>
+  </div>
+  <Modal
+    aria-label="Edit Monitor"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={false}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="Edit Monitor"
+      type="wide"
+    >
+      <ReduxForm
+        initialValues={null}
         onSubmit={[Function]}
       />
     </ModalContainer>

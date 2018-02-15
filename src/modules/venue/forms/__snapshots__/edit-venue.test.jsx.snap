@@ -1,0 +1,789 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when creating 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      autofocus={true}
+      autos={false}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Name"
+      maxLength={200}
+      name="name"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Venue Type"
+      name="venueType"
+      options={
+        Array [
+          Object {
+            "label": "Theatre",
+            "value": "Theatre",
+          },
+          Object {
+            "label": "Art Gallery",
+            "value": "Art Gallery",
+          },
+          Object {
+            "label": "Concert Hall",
+            "value": "Concert Hall",
+          },
+          Object {
+            "label": "Exhibition Space",
+            "value": "Exhibition Hall",
+          },
+          Object {
+            "label": "Arts Centre",
+            "value": "Performing Arts Centre",
+          },
+          Object {
+            "label": "Museum",
+            "value": "Museum",
+          },
+          Object {
+            "label": "Church",
+            "value": "Church",
+          },
+          Object {
+            "label": "Cinema",
+            "value": "Cinema",
+          },
+          Object {
+            "label": "Other",
+            "value": "Other",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      checkboxLabel="Has a permanent collection"
+      component={[Function]}
+      label="Permanent Collection"
+      name="hasPermanentCollection"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Links"
+      name="links"
+      onAddLink={[Function]}
+      onDeleteLink={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Wheelchair Access"
+      name="wheelchairAccessType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Access to all spaces",
+            "value": "FullAccess",
+          },
+          Object {
+            "label": "Access to some spaces",
+            "value": "PartialAccess",
+          },
+          Object {
+            "label": "No access",
+            "value": "NoAccess",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Disabled Bathroom"
+      name="disabledBathroomType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Present",
+            "value": "Present",
+          },
+          Object {
+            "label": "Not present",
+            "value": "NotPresent",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Hearing Facilities"
+      name="hearingFacilitiesType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Hearing loops in all spaces",
+            "value": "HearingLoops",
+          },
+          Object {
+            "label": "Hearing loops in some spaces",
+            "value": "PartialHearingLoops",
+          },
+          Object {
+            "label": "No hearing loops",
+            "value": "NoHearingLoops",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Description"
+      maxLength={5000}
+      name="description"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="We Say"
+      maxLength={300}
+      name="weSay"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Address"
+      maxLength={400}
+      name="address"
+      required={true}
+    />
+  </FormRow>
+  <FormRow
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Postcode"
+      maxLength={9}
+      name="postcode"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Location on Map"
+      name="pin"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Email"
+      maxLength={100}
+      name="email"
+    />
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Telephone"
+      maxLength={20}
+      name="telephone"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="venue"
+      label="Images"
+      name="images"
+      onAddImage={[Function]}
+      onDeleteImage={[Function]}
+      onSetMainImage={[Function]}
+      onUpdateImage={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "day": Object {
+            "format": /\\^\\[0123456\\]\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Opening Times"
+      name="openingTimes"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Additional Opening Times"
+      name="additionalOpeningTimes"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Closures"
+      minDate="2018/02/15"
+      name="openingTimesClosures"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Named Closures"
+      multi={true}
+      name="namedClosures"
+      options={Array []}
+      searchable={true}
+      simpleValue={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Notes"
+      maxLength={400}
+      name="notes"
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={null}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;
+
+exports[`should render correctly when editing 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Field
+      autofocus={true}
+      autos={false}
+      component={[Function]}
+      forceSingleLine={true}
+      label="Name"
+      maxLength={200}
+      name="name"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Venue Type"
+      name="venueType"
+      options={
+        Array [
+          Object {
+            "label": "Theatre",
+            "value": "Theatre",
+          },
+          Object {
+            "label": "Art Gallery",
+            "value": "Art Gallery",
+          },
+          Object {
+            "label": "Concert Hall",
+            "value": "Concert Hall",
+          },
+          Object {
+            "label": "Exhibition Space",
+            "value": "Exhibition Hall",
+          },
+          Object {
+            "label": "Arts Centre",
+            "value": "Performing Arts Centre",
+          },
+          Object {
+            "label": "Museum",
+            "value": "Museum",
+          },
+          Object {
+            "label": "Church",
+            "value": "Church",
+          },
+          Object {
+            "label": "Cinema",
+            "value": "Cinema",
+          },
+          Object {
+            "label": "Other",
+            "value": "Other",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+    <Field
+      component={[Function]}
+      label="Status"
+      name="status"
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      checkboxLabel="Has a permanent collection"
+      component={[Function]}
+      label="Permanent Collection"
+      name="hasPermanentCollection"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Links"
+      name="links"
+      onAddLink={[Function]}
+      onDeleteLink={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Wheelchair Access"
+      name="wheelchairAccessType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Access to all spaces",
+            "value": "FullAccess",
+          },
+          Object {
+            "label": "Access to some spaces",
+            "value": "PartialAccess",
+          },
+          Object {
+            "label": "No access",
+            "value": "NoAccess",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Disabled Bathroom"
+      name="disabledBathroomType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Present",
+            "value": "Present",
+          },
+          Object {
+            "label": "Not present",
+            "value": "NotPresent",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Hearing Facilities"
+      name="hearingFacilitiesType"
+      options={
+        Array [
+          Object {
+            "label": "Not applicable",
+            "value": "NotApplicable",
+          },
+          Object {
+            "label": "Hearing loops in all spaces",
+            "value": "HearingLoops",
+          },
+          Object {
+            "label": "Hearing loops in some spaces",
+            "value": "PartialHearingLoops",
+          },
+          Object {
+            "label": "No hearing loops",
+            "value": "NoHearingLoops",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "Unknown",
+          },
+        ]
+      }
+      required={true}
+      searchable={false}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Description"
+      maxLength={5000}
+      name="description"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="We Say"
+      maxLength={300}
+      name="weSay"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Address"
+      maxLength={400}
+      name="address"
+      required={true}
+    />
+  </FormRow>
+  <FormRow
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  >
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Postcode"
+      maxLength={9}
+      name="postcode"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Location on Map"
+      name="pin"
+      required={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Email"
+      maxLength={100}
+      name="email"
+    />
+    <Field
+      autos={false}
+      component={[Function]}
+      label="Telephone"
+      maxLength={20}
+      name="telephone"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      entityType="venue"
+      label="Images"
+      name="images"
+      onAddImage={[Function]}
+      onDeleteImage={[Function]}
+      onSetMainImage={[Function]}
+      onUpdateImage={[Function]}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "day": Object {
+            "format": /\\^\\[0123456\\]\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Opening Times"
+      name="openingTimes"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Additional Opening Times"
+      name="additionalOpeningTimes"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      constraint={
+        Object {
+          "date": Object {
+            "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
+            "presence": Object {
+              "disallowEmpty": true,
+            },
+          },
+          "from": Object {
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+          "to": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time is not greater than From time",
+            },
+            "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
+          },
+        }
+      }
+      formComponent={[Function]}
+      itemComponent={[Function]}
+      label="Closures"
+      minDate="2018/02/15"
+      name="openingTimesClosures"
+      onSubmit={[Function]}
+      parentFormName="EditVenue"
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Named Closures"
+      multi={true}
+      name="namedClosures"
+      options={Array []}
+      searchable={true}
+      simpleValue={true}
+    />
+  </FormRow>
+  <FormRow>
+    <Field
+      component={[Function]}
+      label="Notes"
+      maxLength={400}
+      name="notes"
+    />
+  </FormRow>
+  <Divider
+    type="basic"
+  />
+  <FormButtons
+    onCancel={[Function]}
+    submitLabel="Submit"
+    submitting={false}
+  />
+</Form>
+`;

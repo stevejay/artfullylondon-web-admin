@@ -16,22 +16,18 @@ import EntitySectionHeading
 import './collection.scss'
 
 export class MonitorCollection extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.state = { show: false }
-  }
   componentDidMount () {
     const { onMounted } = this.props
     onMounted && onMounted()
   }
-  handleShowIgnoredMonitorsClick = () => {
-    this.props.setShowIgnoredMonitors(!this.props.showIgnoredMonitors)
+  handleShowIgnoredClick = () => {
+    this.props.setShowIgnored(!this.props.showIgnored)
   }
   handleEdit = monitor => {
-    this.setState({ show: true, editingMonitor: monitor })
+    this.props.setEditingMonitor(monitor)
   }
   handleHide = () => {
-    this.setState({ show: false, editingMonitor: null })
+    this.props.setEditingMonitor(null)
   }
   handleSubmit = values => {
     this.props.onSubmit(values).then(() => this.handleHide())
@@ -43,26 +39,25 @@ export class MonitorCollection extends React.PureComponent {
       monitors: monitorsProp,
       getInProgress,
       gridRowComponent,
-      showIgnoredMonitors
+      showIgnored,
+      editingMonitor
     } = this.props
 
     // TODO clean all this logic up as selectors!
-
-    const { show, editingMonitor } = this.state
 
     const monitors = _.isArray(monitorsProp)
       ? monitorsProp
       : _.isNil(monitorsProp) ? [] : [monitorsProp]
 
     const hasIgnoredMonitors = monitors.some(x => x.isIgnored)
-    const showAll = showIgnoredMonitors || !hasIgnoredMonitors
+    const showAll = showIgnored || !hasIgnoredMonitors
 
     const visibleMonitors = showAll
       ? monitors
       : monitors.filter(
-        monitor =>
-          !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-      )
+          monitor =>
+            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+        )
 
     const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
     const venueHomepageUrl = venue.getHomepageUrl()
@@ -90,14 +85,15 @@ export class MonitorCollection extends React.PureComponent {
               )}
             </Grid>}
         </div>
-        {hasIgnoredMonitors &&
+        {!getInProgress &&
+          hasIgnoredMonitors &&
           <div styleName='buttons-container'>
-            <Button onClick={this.handleShowIgnoredMonitorsClick}>
-              {`${showIgnoredMonitors ? 'Hide' : 'Show'} ignored monitors`}
+            <Button onClick={this.handleShowIgnoredClick}>
+              {`${showIgnored ? 'Hide' : 'Show'} ignored monitors`}
             </Button>
           </div>}
         <Modal
-          show={show}
+          show={!!editingMonitor}
           transition={FadeTransition}
           onHide={this.handleHide}
           aria-label='Edit Monitor'
@@ -126,15 +122,15 @@ MonitorCollection.propTypes = {
     PropTypes.shape({ key: PropTypes.string.isRequired })
   ]),
   getInProgress: PropTypes.bool.isRequired,
-  showIgnoredMonitors: PropTypes.bool.isRequired,
   gridRowComponent: PropTypes.func.isRequired,
+  showIgnored: PropTypes.bool.isRequired,
+  editingMonitor: PropTypes.object,
   onMounted: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  setShowIgnoredMonitors: PropTypes.func.isRequired
+  setShowIgnored: PropTypes.func.isRequired,
+  setEditingMonitor: PropTypes.func.isRequired
 }
 
-export default withState(
-  'showIgnoredMonitors',
-  'setShowIgnoredMonitors',
-  false
-)(MonitorCollection)
+export default withState('showIgnored', 'setShowIgnored', false)(
+  withState('editingMonitor', 'setEditingMonitor', null)(MonitorCollection)
+)

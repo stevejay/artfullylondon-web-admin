@@ -10,6 +10,10 @@ import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import * as dateConstants from '_src/constants/date'
 import * as timeConstants from '_src/modules/time/constants'
+import {
+  selectors as tagSelectors,
+  constants as tagConstants
+} from '_src/modules/tag'
 
 export const AddSpecialPerformanceForm = ({
   pristine,
@@ -19,7 +23,7 @@ export const AddSpecialPerformanceForm = ({
   minDate,
   maxDate,
   reset,
-  audienceTags
+  audienceTagsOptions
 }) => (
   <div>
     <FormRow>
@@ -47,7 +51,7 @@ export const AddSpecialPerformanceForm = ({
         label='Audience Tags'
         name='audienceTags'
         component={SelectField}
-        options={audienceTags}
+        options={audienceTagsOptions}
         required
         searchable={false}
         multi
@@ -73,7 +77,7 @@ AddSpecialPerformanceForm.propTypes = {
   error: PropTypes.any,
   minDate: PropTypes.string,
   maxDate: PropTypes.string,
-  audienceTags: PropTypes.arrayOf(
+  audienceTagsOptions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired
@@ -81,10 +85,15 @@ AddSpecialPerformanceForm.propTypes = {
   ).isRequired
 }
 
-// TODO audienceTagsOptions
-export default connect(state => ({
-  audienceTagsOptions: state.data.audienceTagsOptions
-}))(
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    audienceTagsOptions: tagSelectors.getTagsForType(
+      state,
+      tagConstants.TAG_TYPE_AUDIENCE
+    )
+  })
+)(
   reduxForm({
     form: timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME,
     initialValues: {

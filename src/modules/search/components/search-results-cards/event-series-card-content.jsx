@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ContentContainer from '_src/modules/entity/components/entity-card/content-container'
+import ContentContainer
+  from '_src/modules/entity/components/entity-card/content-container'
 import Heading from '_src/modules/entity/components/entity-card/heading'
 import { SummaryEventSeries } from '_src/entities/event-series'
 
-class EventSeriesCardContent extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class EventSeriesCardContent extends React.PureComponent {
   render () {
     const { entity } = this.props
 

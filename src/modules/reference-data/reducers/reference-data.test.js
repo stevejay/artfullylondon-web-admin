@@ -1,6 +1,9 @@
 import deepFreeze from 'deep-freeze'
 
-import { reducer } from '_src/modules/reference-data/reducers/reference-data'
+import {
+  reducer,
+  selectors
+} from '_src/modules/reference-data/reducers/reference-data'
 import * as referenceDataLib
   from '_src/modules/reference-data/lib/reference-data'
 import * as referenceActions from '_src/modules/reference-data/actions'
@@ -37,5 +40,15 @@ it('should handle a fetch server constants succeeded action', () => {
   expect(actual).toEqual({
     loading: false,
     heroImage: { name: 'new name' }
+  })
+})
+
+describe('selectors', () => {
+  describe('namedClosuresDropdownOptions', () => {
+    it('should select the data', () => {
+      const state = { namedClosuresDropdownOptions: [{ value: 1, label: 'A' }] }
+      const actual = selectors.namedClosuresDropdownOptions(state)
+      expect(actual).toEqual([{ value: 1, label: 'A' }])
+    })
   })
 })

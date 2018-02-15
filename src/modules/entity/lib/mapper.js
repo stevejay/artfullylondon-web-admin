@@ -315,3 +315,7 @@ export function mapSubmittedPerformancesClosures (performancesClosures) {
 function mapSubmittedAudienceTags (audienceTags) {
   return (audienceTags || []).map(tag => ({ id: tag.id, label: tag.label }))
 }
+
+export function mapSubmittedNamedClosures (namedClosures) {
+  return namedClosures ? namedClosures.split(',') : null
+}

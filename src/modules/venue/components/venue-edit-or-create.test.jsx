@@ -1,23 +1,22 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { EventSeriesEditOrCreate } from './event-series-edit-or-create'
-import { FullEventSeries } from '_src/entities/event-series'
-import EditEventSeriesForm
-  from '_src/modules/event-series/forms/edit-event-series'
+import { VenueEditOrCreate } from './venue-edit-or-create'
+import { FullVenue } from '_src/entities/venue'
+import EditVenueForm from '_src/modules/venue/forms/edit-venue'
 import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
-import * as eventSeriesMapper from '_src/modules/event-series/lib/mapper'
+import * as venueConstants from '_src/modules/venue/constants'
+import * as venueMapper from '_src/modules/venue/lib/mapper'
 import * as entityConstants from '_src/constants/entity'
 
-it('should render correctly when creating an event series', () => {
-  eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+it('should render correctly when creating a venue', () => {
+  venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
 
-  const entity = new FullEventSeries()
+  const entity = new FullVenue()
 
   const wrapper = shallow(
-    <EventSeriesEditOrCreate
+    <VenueEditOrCreate
       entity={entity}
       isEdit={false}
       history={{}}
@@ -30,17 +29,17 @@ it('should render correctly when creating an event series', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly when editing an event series', () => {
-  eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+it('should render correctly when editing a venue', () => {
+  venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
 
-  const entity = new FullEventSeries({
+  const entity = new FullVenue({
     firstNames: 'First',
     lastName: 'Last',
     images: []
   })
 
   const wrapper = shallow(
-    <EventSeriesEditOrCreate
+    <VenueEditOrCreate
       entity={entity}
       isEdit
       history={{}}
@@ -55,10 +54,10 @@ it('should render correctly when editing an event series', () => {
 
 describe('shouldComponentUpdate', () => {
   it('should not update when props have not changed', () => {
-    const entity = new FullEventSeries()
+    const entity = new FullVenue()
 
     const wrapper = shallow(
-      <EventSeriesEditOrCreate
+      <VenueEditOrCreate
         entity={entity}
         isEdit={false}
         history={{}}
@@ -73,10 +72,10 @@ describe('shouldComponentUpdate', () => {
   })
 
   it('should update when props have changed', () => {
-    const entity = new FullEventSeries()
+    const entity = new FullVenue()
 
     const wrapper = shallow(
-      <EventSeriesEditOrCreate
+      <VenueEditOrCreate
         entity={entity}
         isEdit={false}
         history={{}}
@@ -88,20 +87,20 @@ describe('shouldComponentUpdate', () => {
 
     const actual = wrapper
       .instance()
-      .shouldComponentUpdate({ entity: new FullEventSeries({}) })
+      .shouldComponentUpdate({ entity: new FullVenue({}) })
 
     expect(actual).toEqual(true)
   })
 })
 
 it('should handle a cancel click', () => {
-  eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
-  const entity = new FullEventSeries({ id: 'some-id' })
+  venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+  const entity = new FullVenue({ id: 'some-id' })
   const event = { preventDefault: jest.fn() }
   const history = { push: jest.fn() }
 
   const wrapper = shallow(
-    <EventSeriesEditOrCreate
+    <VenueEditOrCreate
       entity={entity}
       isEdit={false}
       history={history}
@@ -111,20 +110,20 @@ it('should handle a cancel click', () => {
     />
   )
 
-  wrapper.find(EditEventSeriesForm).prop('onCancel')(event)
+  wrapper.find(EditVenueForm).prop('onCancel')(event)
 
   expect(event.preventDefault).toHaveBeenCalled()
-  expect(history.push).toHaveBeenCalledWith('/event-series/some-id')
+  expect(history.push).toHaveBeenCalledWith('/venue/some-id')
 })
 
 describe('handleSubmit', () => {
   it('should not submit when the sub editors are not pristine', () => {
-    eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
-    const entity = new FullEventSeries()
+    venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+    const entity = new FullVenue()
     const dispatch = jest.fn()
 
     const wrapper = shallow(
-      <EventSeriesEditOrCreate
+      <VenueEditOrCreate
         entity={entity}
         isEdit={false}
         history={{}}
@@ -134,7 +133,7 @@ describe('handleSubmit', () => {
       />
     )
 
-    wrapper.find(EditEventSeriesForm).prop('onSubmit')({ name: 'New name' })
+    wrapper.find(EditVenueForm).prop('onSubmit')({ name: 'New name' })
 
     expect(dispatch).toHaveBeenCalledWith(
       notificationActions.addErrorNotification(
@@ -145,12 +144,12 @@ describe('handleSubmit', () => {
   })
 
   it('should submit when the sub editors are pristine', () => {
-    eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
-    const entity = new FullEventSeries()
+    venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+    const entity = new FullVenue()
     const dispatch = jest.fn()
 
     const wrapper = shallow(
-      <EventSeriesEditOrCreate
+      <VenueEditOrCreate
         entity={entity}
         isEdit={false}
         history={{}}
@@ -160,17 +159,17 @@ describe('handleSubmit', () => {
       />
     )
 
-    wrapper.find(EditEventSeriesForm).prop('onSubmit')({ name: 'New name' })
+    wrapper.find(EditVenueForm).prop('onSubmit')({ name: 'New name' })
 
     expect(dispatch).toHaveBeenCalledWith(
       entityActions.saveEntity(
-        entityConstants.ENTITY_TYPE_EVENT_SERIES,
+        entityConstants.ENTITY_TYPE_VENUE,
         { name: 'New name' },
         false,
-        eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME,
-        eventSeriesConstants.EVENT_SERIES_NORMALISER,
-        eventSeriesConstants.EVENT_SERIES_CONSTRAINT,
-        eventSeriesMapper.mapSubmittedValues
+        venueConstants.EDIT_VENUE_FORM_NAME,
+        venueConstants.VENUE_NORMALISER,
+        venueConstants.VENUE_CONSTRAINT,
+        venueMapper.mapSubmittedValues
       )
     )
   })

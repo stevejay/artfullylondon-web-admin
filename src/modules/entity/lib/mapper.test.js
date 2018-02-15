@@ -217,6 +217,19 @@ describe('getValidStatuses', () => {
   })
 })
 
+describe('mapSubmittedNamedClosures', () => {
+  it('should handle a populated input', () => {
+    const input = 'BoxingDay,NewYearsDay'
+    const actual = entityMapper.mapSubmittedNamedClosures(input)
+    expect(actual).toEqual(['BoxingDay', 'NewYearsDay'])
+  })
+
+  it('should handle no input', () => {
+    const actual = entityMapper.mapSubmittedNamedClosures(null)
+    expect(actual).toEqual(null)
+  })
+})
+
 describe('mapSubmittedPerformancesClosures', () => {
   it('should handle a populated input', () => {
     const input = [

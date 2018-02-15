@@ -25,25 +25,9 @@ export function * getVenueEventMonitors (action) {
     yield put(venueActions.getVenueEventMonitorsSucceeded(json.items))
   } catch (err) {
     yield call(log.error, err)
-    yield put(venueActions.getVenueEventMonitorsFailed)
+    yield put(venueActions.getVenueEventMonitorsFailed())
   }
 }
-
-// export function * getVenueEventMonitor (action) {
-//   try {
-//     const { venueId, externalEventId } = action.payload
-//     yield put(venueActions.getVenueEventMonitorStarted())
-
-//     const token = yield call(getAuthTokenForCurrentUser)
-//     const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}/event/${encodeURIComponent(externalEventId)}`
-//     const json = yield call(get, url, token)
-
-//     yield put(venueActions.getVenueEventMonitorSucceeded(json))
-//   } catch (err) {
-//     yield call(log.error, err)
-//     yield put(venueActions.getVenueEventMonitorFailed())
-//   }
-// }
 
 export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
   try {
@@ -137,7 +121,6 @@ export default [
     venueActions.types.GET_VENUE_EVENT_MONITORS,
     getVenueEventMonitors
   ),
-  // takeLatest(venueActions.types.GET_VENUE_EVENT_MONITOR, getVenueEventMonitor),
   takeEvery(
     venueActions.types.UPDATE_VENUE_EVENT_MONITOR,
     updateVenueEventMonitor

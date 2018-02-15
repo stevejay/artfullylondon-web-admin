@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions'
-import RichTextEditor from 'react-rte'
 
 import { FullEvent } from '_src/entities/event'
 import { FullEventSeries } from '_src/entities/event-series'

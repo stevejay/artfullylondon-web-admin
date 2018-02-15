@@ -13,6 +13,8 @@ class VenueMonitorGridRow extends React.Component {
   render () {
     const { monitor: { isIgnored, hasChanged }, venueHomepageUrl } = this.props
 
+    // TODO use a button for the edit option:
+
     return (
       <div styleName='container'>
         <div styleName='content'>

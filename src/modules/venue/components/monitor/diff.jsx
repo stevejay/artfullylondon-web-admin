@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 
 import './diff.scss'
 
-class Diff extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class Diff extends React.PureComponent {
   render () {
     const { changeDiff } = this.props
 
@@ -14,7 +11,7 @@ class Diff extends React.Component {
       ? <div
         styleName='container'
         dangerouslySetInnerHTML={{ __html: changeDiff }}
-      />
+        />
       : null
   }
 }

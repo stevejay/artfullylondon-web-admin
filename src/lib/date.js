@@ -112,8 +112,8 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
   const fromStr = monthInCommon
     ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-        ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
-        : formatStringDateForDisplay(dateFrom)
+      ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
+      : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)
 

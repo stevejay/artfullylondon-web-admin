@@ -1,9 +1,14 @@
 import React from 'react'
 import _ from 'lodash'
 
+import EditTalentForm from '_src/modules/talent/forms/edit-talent'
 import { TalentEditOrCreate } from './talent-edit-or-create'
 import { FullTalent } from '_src/entities/talent'
+import { actions as entityActions } from '_src/modules/entity'
+import { actions as notificationActions } from '_src/modules/notification'
 import * as talentMapper from '_src/modules/talent/lib/mapper'
+import * as talentConstants from '_src/modules/talent/constants'
+import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly when creating a talent', () => {
   talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
@@ -85,5 +90,87 @@ describe('shouldComponentUpdate', () => {
       .shouldComponentUpdate({ entity: new FullTalent({}) })
 
     expect(actual).toEqual(true)
+  })
+})
+
+it('should handle a cancel click', () => {
+  talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+  const entity = new FullTalent({ id: 'some-id' })
+  const event = { preventDefault: jest.fn() }
+  const history = { push: jest.fn() }
+
+  const wrapper = shallow(
+    <TalentEditOrCreate
+      entity={entity}
+      isEdit={false}
+      history={history}
+      dispatch={_.noop}
+      imageEditorIsPristine
+      linkEditorIsPristine
+    />
+  )
+
+  wrapper.find(EditTalentForm).prop('onCancel')(event)
+
+  expect(event.preventDefault).toHaveBeenCalled()
+  expect(history.push).toHaveBeenCalledWith('/talent/some-id')
+})
+
+describe('handleSubmit', () => {
+  it('should not submit when the sub editors are not pristine', () => {
+    talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+    const entity = new FullTalent()
+    const dispatch = jest.fn()
+
+    const wrapper = shallow(
+      <TalentEditOrCreate
+        entity={entity}
+        isEdit={false}
+        history={{}}
+        dispatch={dispatch}
+        imageEditorIsPristine
+        linkEditorIsPristine={false}
+      />
+    )
+
+    wrapper.find(EditTalentForm).prop('onSubmit')({ name: 'New name' })
+
+    expect(dispatch).toHaveBeenCalledWith(
+      notificationActions.addErrorNotification(
+        'Submit Cancelled',
+        'There are unsaved changes in the sub editors.'
+      )
+    )
+  })
+
+  it('should submit when the sub editors are pristine', () => {
+    talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
+    const entity = new FullTalent()
+    const dispatch = jest.fn()
+
+    const wrapper = shallow(
+      <TalentEditOrCreate
+        entity={entity}
+        isEdit={false}
+        history={{}}
+        dispatch={dispatch}
+        imageEditorIsPristine
+        linkEditorIsPristine
+      />
+    )
+
+    wrapper.find(EditTalentForm).prop('onSubmit')({ name: 'New name' })
+
+    expect(dispatch).toHaveBeenCalledWith(
+      entityActions.saveEntity(
+        entityConstants.ENTITY_TYPE_TALENT,
+        { name: 'New name' },
+        false,
+        talentConstants.EDIT_TALENT_FORM_NAME,
+        talentConstants.TALENT_NORMALISER,
+        talentConstants.TALENT_CONSTRAINT,
+        talentMapper.mapSubmittedValues
+      )
+    )
   })
 })

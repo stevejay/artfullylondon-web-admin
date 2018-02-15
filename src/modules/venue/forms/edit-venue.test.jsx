@@ -1,15 +1,21 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { EditEventSeriesForm } from './edit-event-series'
+import { EditVenueForm } from './edit-venue'
 import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
 import * as entityConstants from '_src/constants/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
+import * as venueConstants from '_src/modules/venue/constants'
+
+const timeActions = {
+  addOpeningTime: _.noop,
+  addAdditionalOpeningTime: _.noop,
+  addOpeningTimeClosure: _.noop
+}
 
 it('should render correctly when editing', () => {
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -18,6 +24,8 @@ it('should render correctly when editing', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={_.noop}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -26,7 +34,7 @@ it('should render correctly when editing', () => {
 
 it('should render correctly when creating', () => {
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit={false}
       onSubmit={_.noop}
@@ -35,6 +43,8 @@ it('should render correctly when creating', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={_.noop}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -45,7 +55,7 @@ it('should handle deleting an image', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -54,6 +64,8 @@ it('should handle deleting an image', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -62,7 +74,7 @@ it('should handle deleting an image', () => {
   expect(dispatch).toHaveBeenCalledWith(
     imageActions.deleteImage(
       'some-image-id',
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
+      venueConstants.EDIT_VENUE_FORM_NAME
     )
   )
 })
@@ -71,7 +83,7 @@ it('should handle setting the main image', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -80,6 +92,8 @@ it('should handle setting the main image', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -88,7 +102,7 @@ it('should handle setting the main image', () => {
   expect(dispatch).toHaveBeenCalledWith(
     imageActions.setMainImage(
       'some-image-id',
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
+      venueConstants.EDIT_VENUE_FORM_NAME
     )
   )
 })
@@ -97,7 +111,7 @@ it('should handle updating an image', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -106,6 +120,8 @@ it('should handle updating an image', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -118,7 +134,7 @@ it('should handle updating an image', () => {
     imageActions.updateImage(
       { name: 'foo' },
       'some-image-id',
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
+      venueConstants.EDIT_VENUE_FORM_NAME
     )
   )
 })
@@ -127,7 +143,7 @@ it('should handle adding an image', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -136,6 +152,8 @@ it('should handle adding an image', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
@@ -144,8 +162,8 @@ it('should handle adding an image', () => {
   expect(dispatch).toHaveBeenCalledWith(
     imageActions.addImage(
       { name: 'foo' },
-      entityConstants.ENTITY_TYPE_EVENT_SERIES,
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
+      entityConstants.ENTITY_TYPE_VENUE,
+      venueConstants.EDIT_VENUE_FORM_NAME
     )
   )
 })
@@ -154,7 +172,7 @@ it('should handle deleting a link', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -163,16 +181,15 @@ it('should handle deleting a link', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
   wrapper.find('[name="links"]').prop('onDeleteLink')('some-link-id')
 
   expect(dispatch).toHaveBeenCalledWith(
-    linkActions.deleteLink(
-      'some-link-id',
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
-    )
+    linkActions.deleteLink('some-link-id', venueConstants.EDIT_VENUE_FORM_NAME)
   )
 })
 
@@ -180,7 +197,7 @@ it('should handle adding a link', () => {
   const dispatch = jest.fn()
 
   const wrapper = shallow(
-    <EditEventSeriesForm
+    <EditVenueForm
       initialValues={{}}
       isEdit
       onSubmit={_.noop}
@@ -189,15 +206,14 @@ it('should handle adding a link', () => {
       handleSubmit={_.noop}
       change={_.noop}
       dispatch={dispatch}
+      timeActions={timeActions}
+      namedClosuresDropdownOptions={[]}
     />
   )
 
   wrapper.find('[name="links"]').prop('onAddLink')({ foo: 'bar' })
 
   expect(dispatch).toHaveBeenCalledWith(
-    linkActions.addLink(
-      { foo: 'bar' },
-      eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
-    )
+    linkActions.addLink({ foo: 'bar' }, venueConstants.EDIT_VENUE_FORM_NAME)
   )
 })

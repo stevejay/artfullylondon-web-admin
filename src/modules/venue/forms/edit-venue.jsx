@@ -313,11 +313,13 @@ EditVenueForm.propTypes = {
 }
 
 export default connect(
+  /* istanbul ignore next */
   state => ({
     namedClosuresDropdownOptions: referenceDataSelectors.namedClosuresDropdownOptions(
       state
     )
   }),
+  /* istanbul ignore next */
   dispatch => ({
     // TODO remove this bind.
     timeActions: bindActionCreators(timeActions, dispatch)

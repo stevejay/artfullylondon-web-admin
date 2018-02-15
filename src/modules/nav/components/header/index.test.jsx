@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import _ from 'lodash'
 import log from 'loglevel'
 
+import Dropdown from '_src/components/dropdown'
 import { Header } from './index'
 import Button from '_src/components/button'
 import { actions as userActions } from '_src/modules/user'
@@ -102,4 +103,25 @@ it('should handle a logout button click', () => {
   wrapper.find(Button).at(0).simulate('click')
 
   expect(dispatch).toHaveBeenCalledWith(userActions.logOut())
+})
+
+it('should handle selecting a menu item', () => {
+  const history = { push: jest.fn() }
+
+  const wrapper = shallow(
+    <Header
+      hasError={false}
+      loggedIn
+      showingSidenav={false}
+      history={history}
+      onShowSidenav={_.noop}
+      onShowQuicksearch={_.noop}
+      dispatch={_.noop}
+      setHasError={_.noop}
+    />
+  )
+
+  wrapper.find(Dropdown).at(0).prop('onChange')('/some/path')
+
+  expect(history.push).toHaveBeenCalledWith('/some/path')
 })

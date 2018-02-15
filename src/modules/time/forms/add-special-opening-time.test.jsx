@@ -13,7 +13,7 @@ it('should render correctly', () => {
       onSubmit={_.noop}
       minDate='2018/01/01'
       maxDate='2018/02/01'
-      audienceTags={[{ id: 'audience/family', label: 'family' }]}
+      audienceTagsOptions={[{ id: 'audience/family', label: 'family' }]}
     />
   )
 

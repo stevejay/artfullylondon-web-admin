@@ -1,16 +1,14 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { AddPerformanceForm } from './add-performance'
+import { UpdateMonitorForm } from './update-monitor'
 
-it('should render correctly', () => {
+it('should render correctly when has not changed', () => {
   const wrapper = shallow(
-    <AddPerformanceForm
-      pristine
+    <UpdateMonitorForm
+      initialValues={{ hasChanged: false, changeDiff: 'diff' }}
       submitting={false}
-      timesRangesOptions={[]}
       handleSubmit={_.noop}
-      reset={_.noop}
       onSubmit={_.noop}
     />
   )
@@ -18,14 +16,12 @@ it('should render correctly', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly with times ranges', () => {
+it('should render correctly when has changed', () => {
   const wrapper = shallow(
-    <AddPerformanceForm
-      pristine
+    <UpdateMonitorForm
+      initialValues={{ hasChanged: true, changeDiff: 'diff' }}
       submitting={false}
-      timesRangesOptions={[{ value: 1, label: 'A' }]}
       handleSubmit={_.noop}
-      reset={_.noop}
       onSubmit={_.noop}
     />
   )

@@ -92,9 +92,13 @@ VenueEditOrCreate.propTypes = {
 }
 
 export default withRouter(
-  /* istanbul ignore next */
-  connect(state => ({
-    imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(state),
-    linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
-  }))(VenueEditOrCreate)
+  connect(
+    /* istanbul ignore next */
+    state => ({
+      imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(
+        state
+      ),
+      linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
+    })
+  )(VenueEditOrCreate)
 )

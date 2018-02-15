@@ -17,14 +17,7 @@ import { selectors, actions as userActions } from '_src/modules/user'
 import * as navConstants from '_src/modules/nav/constants'
 import './index.scss'
 
-export class Header extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.loggedIn !== this.props.loggedIn ||
-      nextProps.showingSidenav !== this.props.showingSidenav ||
-      nextProps.hasError !== this.props.hasError
-    )
-  }
+export class Header extends React.PureComponent {
   componentDidCatch (error, info) {
     this.props.setHasError(true)
     log.error(error, info.componentStack)

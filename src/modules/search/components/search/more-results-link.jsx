@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/components/base-class/should-never-update'
 import * as entityConstants from '_src/constants/entity'
 import './more-results-link.scss'
 
-class MoreResultsLink extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class MoreResultsLink extends ShouldNeverUpdateComponent {
   handleClick = () => {
     this.props.onClick({ entityType: this.props.entityType })
   }

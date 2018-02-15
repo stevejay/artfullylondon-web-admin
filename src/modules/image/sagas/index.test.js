@@ -1,14 +1,7 @@
 import { cloneableGenerator } from 'redux-saga/utils'
 import { delay } from 'redux-saga'
-import { call, takeLatest, race, put, select } from 'redux-saga/effects'
-import {
-  startSubmit,
-  stopSubmit,
-  reset,
-  arrayPush,
-  getFormValues,
-  change
-} from 'redux-form'
+import { call, race, put } from 'redux-saga/effects'
+import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
 import log from 'loglevel'
 
 import { put as httpPut } from '_src/lib/fetch'

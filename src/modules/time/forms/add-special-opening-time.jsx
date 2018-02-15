@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
@@ -9,6 +10,10 @@ import SelectField from '_src/components/select/field'
 import DatepickerField from '_src/components/datepicker/field'
 import * as dateConstants from '_src/constants/date'
 import * as timeConstants from '_src/modules/time/constants'
+import {
+  selectors as tagSelectors,
+  constants as tagConstants
+} from '_src/modules/tag'
 
 export const AddSpecialOpeningTimeForm = ({
   pristine,
@@ -18,7 +23,7 @@ export const AddSpecialOpeningTimeForm = ({
   minDate,
   maxDate,
   reset,
-  audienceTags
+  audienceTagsOptions
 }) => (
   <div>
     <FormRow>
@@ -53,7 +58,7 @@ export const AddSpecialOpeningTimeForm = ({
         label='Audience Tags'
         name='audienceTags'
         component={SelectField}
-        options={audienceTags}
+        options={audienceTagsOptions}
         required
         searchable={false}
         multi
@@ -79,7 +84,7 @@ AddSpecialOpeningTimeForm.propTypes = {
   error: PropTypes.any,
   minDate: PropTypes.string,
   maxDate: PropTypes.string,
-  audienceTags: PropTypes.arrayOf(
+  audienceTagsOptions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired
@@ -87,12 +92,22 @@ AddSpecialOpeningTimeForm.propTypes = {
   ).isRequired
 }
 
-export default reduxForm({
-  form: timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME,
-  initialValues: {
-    date: '',
-    from: '',
-    to: '',
-    audienceTags: ''
-  }
-})(AddSpecialOpeningTimeForm)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    audienceTagsOptions: tagSelectors.getTagsForType(
+      state,
+      tagConstants.TAG_TYPE_AUDIENCE
+    )
+  })
+)(
+  reduxForm({
+    form: timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME,
+    initialValues: {
+      date: '',
+      from: '',
+      to: '',
+      audienceTags: ''
+    }
+  })(AddSpecialOpeningTimeForm)
+)

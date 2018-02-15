@@ -16,8 +16,7 @@ class TimesField extends React.Component {
       nextProps.timesRangesOptions !== this.props.timesRangesOptions
     )
   }
-  handleMounted = ref => {
-    /* istanbul ignore next */
+  handleMounted = /* istanbul ignore next */ ref => {
     this._form = ref
   }
   handleSubmit = values => {

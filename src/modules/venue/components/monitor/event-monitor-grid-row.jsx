@@ -25,6 +25,8 @@ class EventMonitorGridRow extends React.Component {
 
     const url = currentUrl || venueHomepageUrl
 
+    // TODO use a button for the edit option:
+
     return (
       <div styleName='container'>
         <div styleName='content'>
