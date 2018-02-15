@@ -41,7 +41,7 @@ it('should handle starting to get an entity', () => {
 
   const actual = reducer(
     state,
-    entityActions.getEntityStarted('talent', 'some-talent-id')
+    entityActions.getEntityStarted('some-talent-id')
   )
 
   expect(actual).toEqual({
@@ -84,7 +84,7 @@ it('should handle failing to get an entity', () => {
     getFailed: false
   })
 
-  const actual = reducer(state, entityActions.getEntityFailed('talent'))
+  const actual = reducer(state, entityActions.getEntityFailed())
 
   expect(actual).toEqual({
     entityId: null,

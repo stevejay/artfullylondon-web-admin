@@ -25,9 +25,11 @@ describe('getEntity', () => {
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put(entityActions.getEntityStarted('talent', 'some-id'))
-    )
+    expect(result.value).toEqual(put(entityActions.clearEntity()))
+
+    result = generator.next()
+
+    expect(result.value).toEqual(put(entityActions.getEntityStarted('some-id')))
 
     result = generator.next()
 
@@ -61,9 +63,11 @@ describe('getEntity', () => {
 
     let result = generator.next()
 
-    expect(result.value).toEqual(
-      put(entityActions.getEntityStarted('talent', 'some-id'))
-    )
+    expect(result.value).toEqual(put(entityActions.clearEntity()))
+
+    result = generator.next()
+
+    expect(result.value).toEqual(put(entityActions.getEntityStarted('some-id')))
 
     const error = new Error('deliberately thrown')
     result = generator.throw(error)
@@ -72,7 +76,7 @@ describe('getEntity', () => {
 
     result = generator.next()
 
-    expect(result.value).toEqual(put(entityActions.getEntityFailed('talent')))
+    expect(result.value).toEqual(put(entityActions.getEntityFailed()))
 
     result = generator.next()
 

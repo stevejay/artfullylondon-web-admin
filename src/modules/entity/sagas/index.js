@@ -18,7 +18,8 @@ export function * getEntity (action) {
   const { entityType, id } = action.payload
 
   try {
-    yield put(entityActions.getEntityStarted(entityType, id))
+    yield put(entityActions.clearEntity())
+    yield put(entityActions.getEntityStarted(id))
 
     const token = yield call(getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
@@ -27,7 +28,7 @@ export function * getEntity (action) {
     yield put(entityActions.getEntitySucceeded(entityType, json.entity))
   } catch (err) {
     yield call(log.error, err)
-    yield put(entityActions.getEntityFailed(entityType))
+    yield put(entityActions.getEntityFailed())
   }
 }
 

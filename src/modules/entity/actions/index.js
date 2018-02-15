@@ -25,19 +25,20 @@ export const getEntity = (entityType, id) => ({
   payload: { entityType, id }
 })
 
-export const getEntityStarted = (entityType, id) => ({
+export const getEntityStarted = id => ({
   type: types.GET_ENTITY_STARTED,
-  payload: { entityType, id }
+  payload: { id }
 })
 
+// TODO get entityType from entity!
 export const getEntitySucceeded = (entityType, entity) => ({
   type: types.GET_ENTITY_SUCCEEDED,
   payload: { entityType, entity }
 })
 
-export const getEntityFailed = (entityType, statusCode) => ({
+export const getEntityFailed = statusCode => ({
   type: types.GET_ENTITY_FAILED,
-  payload: { entityType, statusCode: statusCode || 500 }
+  payload: { statusCode: statusCode || 500 }
 })
 
 export const saveEntity = (
@@ -66,7 +67,6 @@ export const resetEntityForCreate = entityType => ({
   payload: { entityType }
 })
 
-export const clearEntity = entityType => ({
-  type: types.CLEAR_ENTITY,
-  payload: { entityType }
+export const clearEntity = () => ({
+  type: types.CLEAR_ENTITY
 })

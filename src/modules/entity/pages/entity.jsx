@@ -31,6 +31,7 @@ export class EntityPage extends React.Component {
   render () {
     const {
       entityId,
+      entityType,
       entity,
       getInProgress,
       getFailed,
@@ -41,7 +42,7 @@ export class EntityPage extends React.Component {
       return <BasicSection><Error /></BasicSection>
     }
 
-    if (getInProgress || !entity) {
+    if (getInProgress || !entity || entity.entityType !== entityType) {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 

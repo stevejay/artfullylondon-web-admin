@@ -453,7 +453,21 @@ autoprefixer@^8.0.0:
     postcss "^6.0.17"
     postcss-value-parser "^3.2.3"
 
-aws-sdk@^2.167.0, aws-sdk@^2.6.0:
+aws-sdk@^2.195.0:
+  version "2.195.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.195.0.tgz#8feb922277455b7ddb608831ef4572b9097048cf"
+  dependencies:
+    buffer "4.9.1"
+    events "^1.1.1"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.1.0"
+    xml2js "0.4.17"
+    xmlbuilder "4.2.1"
+
+aws-sdk@^2.6.0:
   version "2.176.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.176.0.tgz#2723c14e1c623ac45c5b890a3fc736eee8085f67"
   dependencies:
@@ -711,9 +725,9 @@ babel-plugin-module-resolver@^3.1.0:
     reselect "^3.0.1"
     resolve "^1.4.0"
 
-babel-plugin-react-css-modules@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-css-modules/-/babel-plugin-react-css-modules-3.3.2.tgz#a6a95c50edfd09893fec9ae60a381284db234195"
+babel-plugin-react-css-modules@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-css-modules/-/babel-plugin-react-css-modules-3.3.3.tgz#5db2b17d4f79f12a7017d74307d5c7999b5bbf4a"
   dependencies:
     ajv "^5.0.0"
     ajv-keywords "^2.1.0"
@@ -3424,11 +3438,11 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
-fetch-ponyfill@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/fetch-ponyfill/-/fetch-ponyfill-4.1.0.tgz#ae3ce5f732c645eab87e4ae8793414709b239893"
+fetch-ponyfill@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/fetch-ponyfill/-/fetch-ponyfill-5.0.0.tgz#e3866f9d7eb8334dd7e046654f683f3567829de0"
   dependencies:
-    node-fetch "~1.7.1"
+    node-fetch "~2.0.0"
 
 figures@^2.0.0:
   version "2.0.0"
@@ -5574,6 +5588,10 @@ lodash@^3.10.1, lodash@^3.2.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
+lodash@^4.17.5:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+
 lodash@~2.4.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
@@ -5981,12 +5999,16 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-fetch@^1.0.1, node-fetch@~1.7.1:
+node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+node-fetch@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.0.0.tgz#982bba43ecd4f2922a29cc186a6bbb0bb73fcba6"
 
 node-gyp@^3.3.1:
   version "3.6.2"
