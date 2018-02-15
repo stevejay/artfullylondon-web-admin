@@ -1,9 +1,9 @@
 import { call, put } from 'redux-saga/effects'
 import log from 'loglevel'
 
+import * as dashboardSagas from './index'
+import * as dashboardActions from '../actions'
 import * as fetchLib from '_src/lib/fetch'
-import * as dashboardActions from '_src/modules/dashboard/actions'
-import * as dashboardSagas from '_src/modules/dashboard/sagas'
 
 describe('getEntityCounts', () => {
   it('should get the entity counts', () => {

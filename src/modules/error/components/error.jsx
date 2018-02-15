@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ThumbsDownIcon from 'react-icons/lib/fa/thumbs-o-down'
 
 import BasicSection from '_src/components/section/basic'
-import * as errorConstants from '_src/modules/error/constants'
+import * as errorConstants from '../constants'
 import './error.scss'
 
 const Error = ({ type }) => {

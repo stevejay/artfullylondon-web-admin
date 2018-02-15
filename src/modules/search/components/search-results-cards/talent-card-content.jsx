@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ContentContainer
-  from '_src/modules/entity/components/entity-card/content-container'
-import Heading from '_src/modules/entity/components/entity-card/heading'
-import SubHeading from '_src/modules/entity/components/entity-card/sub-heading'
+import {
+  EntityCardContentContainer,
+  EntityCardHeading,
+  EntityCardSubHeading
+} from '_src/modules/entity'
 import { SummaryTalent } from '_src/entities/talent'
 
 class TalentCardContent extends React.PureComponent {
@@ -12,10 +13,10 @@ class TalentCardContent extends React.PureComponent {
     const { entity } = this.props
 
     return (
-      <ContentContainer>
-        <Heading id={entity.id}>{entity.name}</Heading>
-        <SubHeading>{entity.commonRole}</SubHeading>
-      </ContentContainer>
+      <EntityCardContentContainer>
+        <EntityCardHeading id={entity.id}>{entity.name}</EntityCardHeading>
+        <EntityCardSubHeading>{entity.commonRole}</EntityCardSubHeading>
+      </EntityCardContentContainer>
     )
   }
 }

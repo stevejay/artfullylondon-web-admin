@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import FadeTransition from '_src/components/transition/fade'
-import Statistic from '_src/modules/dashboard/components/statistic'
+import Statistic from './index'
 import * as entityConstants from '_src/constants/entity'
 import './collection.scss'
 

@@ -5,7 +5,7 @@ import { withState } from 'recompose'
 
 import FadeTransition from '_src/components/transition/fade'
 import Button from '_src/components/button'
-import * as appUpdaterActions from '_src/modules/app-updater/actions'
+import * as appUpdaterActions from '../actions'
 import './app-updater.scss'
 
 export class AppUpdater extends React.Component {

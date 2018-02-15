@@ -5,8 +5,7 @@ import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 import Message from '_src/components/message'
 import { Tag } from '_src/modules/tag'
-import AdditionalDetailHeading
-  from '_src/modules/entity/components/additional-detail-heading'
+import AdditionalDetailHeading from '../additional-detail-heading'
 import OpeningTimeEntry from './entry'
 import './index.scss'
 

@@ -4,7 +4,7 @@ import { FullEvent } from '_src/entities/event'
 import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
-import { types } from '_src/modules/entity/actions'
+import { types } from '../actions'
 import * as entityConstants from '_src/constants/entity'
 
 const initialState = {

@@ -5,9 +5,9 @@ import window from 'global/window'
 import store from 'store2'
 import log from 'loglevel'
 
+import * as appUpdaterConstants from '../constants'
+import * as appUpdaterActions from '../actions'
 import * as fetchLib from '_src/lib/fetch'
-import * as appUpdaterConstants from '_src/modules/app-updater/constants'
-import * as appUpdaterActions from '_src/modules/app-updater/actions'
 import * as sagaLib from '_src/lib/saga'
 import { actions as notificationActions } from '_src/modules/notification'
 

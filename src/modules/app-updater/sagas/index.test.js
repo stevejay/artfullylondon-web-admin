@@ -7,7 +7,7 @@ import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
 import { actions as notificationActions } from '_src/modules/notification'
-import * as appUpdaterConstants from '_src/modules/app-updater/constants'
+import * as appUpdaterConstants from '../constants'
 import * as appUpdaterSagas from './index'
 import * as sagaLib from '_src/lib/saga'
 

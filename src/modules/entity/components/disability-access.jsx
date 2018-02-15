@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import AdditionalDetailHeading
-  from '_src/modules/entity/components/additional-detail-heading'
-import AdditionalDetailContent
-  from '_src/modules/entity/components/additional-detail-content'
+import AdditionalDetailHeading from './additional-detail-heading'
+import AdditionalDetailContent from './additional-detail-content'
 import * as linkConstants from '_src/constants/link'
 import * as accessLib from '_src/lib/access'
 import { FullVenue } from '_src/entities/venue'

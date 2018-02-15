@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Statistic from '_src/modules/dashboard/components/statistic'
+import Statistic from './index'
 
 it('should render correctly', () => {
   const wrapper = shallow(<Statistic entityType='venue' count={300} />)

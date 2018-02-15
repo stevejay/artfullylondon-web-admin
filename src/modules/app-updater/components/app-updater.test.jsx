@@ -1,8 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { AppUpdater } from '_src/modules/app-updater/components/app-updater'
-import * as appUpdaterActions from '_src/modules/app-updater/actions'
+import { AppUpdater } from './app-updater'
+import * as appUpdaterActions from '../actions'
 import Button from '_src/components/button'
 
 it('should trigger app update state checks on construction', () => {

@@ -1,9 +1,9 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { DashboardPage } from '_src/modules/dashboard/pages/dashboard'
+import { DashboardPage } from './dashboard'
+import * as dashboardActions from '../actions'
 import * as entityConstants from '_src/constants/entity'
-import * as dashboardActions from '_src/modules/dashboard/actions'
 
 it('should render correctly while the entity counts are being fetched', () => {
   const wrapper = shallow(

@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
-import { reducer, selectors } from '_src/modules/dashboard/reducers/dashboard'
-import * as dashboardActions from '_src/modules/dashboard/actions'
+import { reducer, selectors } from './dashboard'
+import * as dashboardActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

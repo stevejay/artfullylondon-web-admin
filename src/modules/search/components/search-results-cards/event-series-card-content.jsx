@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ContentContainer
-  from '_src/modules/entity/components/entity-card/content-container'
-import Heading from '_src/modules/entity/components/entity-card/heading'
+import {
+  EntityCardContentContainer,
+  EntityCardHeading
+} from '_src/modules/entity'
 import { SummaryEventSeries } from '_src/entities/event-series'
 
 class EventSeriesCardContent extends React.PureComponent {
@@ -11,9 +12,9 @@ class EventSeriesCardContent extends React.PureComponent {
     const { entity } = this.props
 
     return (
-      <ContentContainer>
-        <Heading id={entity.id}>{entity.name}</Heading>
-      </ContentContainer>
+      <EntityCardContentContainer>
+        <EntityCardHeading id={entity.id}>{entity.name}</EntityCardHeading>
+      </EntityCardContentContainer>
     )
   }
 }

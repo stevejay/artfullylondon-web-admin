@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import { Link } from 'react-router-dom'
 
-import EntityCardShell from '_src/modules/entity/components/entity-card/shell'
+import EntityCardShell from './shell'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './index.scss'
 

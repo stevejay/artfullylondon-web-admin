@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './entity'
-import * as entityActions from '_src/modules/entity/actions'
+import * as entityActions from '../actions'
 import { FullEvent } from '_src/entities/event'
 import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'

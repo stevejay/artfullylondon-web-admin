@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Error from '_src/modules/error/components/error'
-import * as errorConstants from '_src/modules/error/constants'
+import Error from './error'
+import * as errorConstants from '../constants'
 
 it('should render a 500 error correctly', () => {
   const wrapper = shallow(<Error />)

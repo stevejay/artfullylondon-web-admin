@@ -1,7 +1,6 @@
 import React from 'react'
 
-import StatisticCollection
-  from '_src/modules/dashboard/components/statistic/collection'
+import StatisticCollection from './collection'
 import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly', () => {

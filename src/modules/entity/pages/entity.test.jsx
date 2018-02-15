@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 
 import { FullTalent } from '_src/entities/talent'
-import { EntityPage } from '_src/modules/entity/pages/entity'
-import * as entityActions from '_src/modules/entity/actions'
+import { EntityPage } from './entity'
+import * as entityActions from '../actions'
 
 class SomeComponent extends React.Component {
   render () {

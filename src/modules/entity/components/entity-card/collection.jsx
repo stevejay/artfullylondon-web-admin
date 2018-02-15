@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import EntityCard from '_src/modules/entity/components/entity-card'
+import EntityCard from './index'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './collection.scss'
 

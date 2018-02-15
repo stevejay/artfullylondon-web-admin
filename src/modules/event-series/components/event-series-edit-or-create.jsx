@@ -5,9 +5,7 @@ import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
 import Image from '_src/modules/image/components/image'
-import EntityDetailsContainer
-  from '_src/modules/entity/components/details-container'
-import EntityHeading from '_src/modules/entity/components/heading'
+import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
 import EditEventSeriesForm
   from '_src/modules/event-series/forms/edit-event-series'
 import { actions as entityActions } from '_src/modules/entity'

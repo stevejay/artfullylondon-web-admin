@@ -9,8 +9,8 @@ import BoxesLoader from '_src/components/loader/boxes'
 import BasicSection from '_src/components/section/basic'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityConstants from '_src/constants/entity'
-import * as entityActions from '_src/modules/entity/actions'
-import { selectors as entitySelectors } from '_src/modules/entity/reducers'
+import * as entityActions from '../actions'
+import { selectors as entitySelectors } from '../reducers'
 
 export class EntityPage extends React.Component {
   componentWillMount () {

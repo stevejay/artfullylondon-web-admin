@@ -10,7 +10,7 @@ import normalise from '_src/lib/normalise'
 import history from '_src/history'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as entityActions from '_src/modules/entity/actions'
+import * as entityActions from '../actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import { actions as notificationActions } from '_src/modules/notification'
 

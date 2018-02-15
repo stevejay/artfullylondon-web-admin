@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FeaturedDetail from '_src/modules/entity/components/featured-detail'
+import EntityFeaturedDetail from '../featured-detail'
 import * as timeLib from '_src/lib/time'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
@@ -36,12 +36,12 @@ class CurrentTimes extends React.Component {
 
     return (
       <div styleName='summary-container'>
-        <FeaturedDetail heading='Today'>
+        <EntityFeaturedDetail heading='Today'>
           {timesTodayStr}
-        </FeaturedDetail>
-        <FeaturedDetail heading='Tomorrow'>
+        </EntityFeaturedDetail>
+        <EntityFeaturedDetail heading='Tomorrow'>
           {timesTomorrowStr}
-        </FeaturedDetail>
+        </EntityFeaturedDetail>
       </div>
     )
   }

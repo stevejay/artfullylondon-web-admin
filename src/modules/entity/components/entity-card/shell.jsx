@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as entityConstants from '_src/constants/entity'
-import EntityTypeLabel from '_src/modules/entity/components/entity-card/entity-type-label'
-import Image from '_src/modules/entity/components/entity-card/image'
+import EntityTypeLabel from './entity-type-label'
+import Image from './image'
 import './shell.scss'
 
 class EntityCardShell extends React.Component {

@@ -6,12 +6,9 @@ import { Error } from '_src/modules/error'
 import BoxesLoader from '_src/components/loader/boxes'
 import SectionHeading from '_src/components/section/heading'
 import BasicSection from '_src/components/section/basic'
-import StatisticCollection
-  from '_src/modules/dashboard/components/statistic/collection'
-import {
-  selectors as dashboardSelectors
-} from '_src/modules/dashboard/reducers'
-import * as dashboardActions from '_src/modules/dashboard/actions'
+import StatisticCollection from '../components/statistic/collection'
+import { selectors as dashboardSelectors } from '../reducers'
+import * as dashboardActions from '../actions'
 
 export class DashboardPage extends React.Component {
   componentWillMount () {

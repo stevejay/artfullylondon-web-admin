@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ContentContainer
-  from '_src/modules/entity/components/entity-card/content-container'
-import Heading from '_src/modules/entity/components/entity-card/heading'
-import Summary from '_src/modules/entity/components/entity-card/summary'
+import {
+  EntityCardContentContainer,
+  EntityCardHeading,
+  EntityCardSummary
+} from '_src/modules/entity'
 import { SummaryVenue } from '_src/entities/venue'
 
 class VenueCardContent extends React.PureComponent {
@@ -12,12 +13,12 @@ class VenueCardContent extends React.PureComponent {
     const { entity } = this.props
 
     return (
-      <ContentContainer>
-        <Heading id={entity.id}>{entity.name}</Heading>
-        <Summary>
+      <EntityCardContentContainer>
+        <EntityCardHeading id={entity.id}>{entity.name}</EntityCardHeading>
+        <EntityCardSummary>
           {entity.createFullAddress()}
-        </Summary>
-      </ContentContainer>
+        </EntityCardSummary>
+      </EntityCardContentContainer>
     )
   }
 }

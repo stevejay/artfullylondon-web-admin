@@ -2,7 +2,7 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import log from 'loglevel'
 
 import * as fetchLib from '_src/lib/fetch'
-import * as dashboardActions from '_src/modules/dashboard/actions'
+import * as dashboardActions from '../actions'
 
 export function * getEntityCounts () {
   try {

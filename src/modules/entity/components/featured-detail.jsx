@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FeaturedDetailHeading
-  from '_src/modules/entity/components/featured-detail-heading'
-import FeaturedDetailContent
-  from '_src/modules/entity/components/featured-detail-content'
+import FeaturedDetailHeading from './featured-detail-heading'
+import FeaturedDetailContent from './featured-detail-content'
 import './featured-detail.scss'
 
 const EntityFeaturedDetail = ({ heading, children }) => (

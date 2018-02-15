@@ -11,8 +11,7 @@ import Loader from '_src/components/loader'
 import Button from '_src/components/button'
 import Grid from '_src/components/grid'
 import { FullVenue } from '_src/entities/venue'
-import EntitySectionHeading
-  from '_src/modules/entity/components/section-heading'
+import { EntitySectionHeading } from '_src/modules/entity'
 import './collection.scss'
 
 export class MonitorCollection extends React.PureComponent {

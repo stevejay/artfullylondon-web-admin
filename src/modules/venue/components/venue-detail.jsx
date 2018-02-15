@@ -4,21 +4,21 @@ import LazyLoad from 'react-lazyload'
 import { connect } from 'react-redux'
 
 import BasicSection from '_src/components/section/basic'
-import EntityDescription from '_src/modules/entity/components/description'
-import EntityDetailsContainer
-  from '_src/modules/entity/components/details-container'
+import {
+  EntityDescription,
+  EntityDetailsContainer,
+  EntityHeading,
+  EntityWeSay,
+  EntityInfoBar,
+  EntityColumnLayout,
+  EntityColumn,
+  EntityAddress,
+  EntityDisabilityAccess,
+  OpeningTimes
+} from '_src/modules/entity'
 import { Image } from '_src/modules/image'
 import { ExternalLinks } from '_src/modules/link'
-import EntityHeading from '_src/modules/entity/components/heading'
-import EntityWeSay from '_src/modules/entity/components/we-say'
-import EntityInfoBar from '_src/modules/entity/components/info-bar'
-import EntityColumnLayout from '_src/modules/entity/components/column-layout'
-import EntityColumn from '_src/modules/entity/components/column'
-import EntityAddress from '_src/modules/entity/components/address'
-import EntityDisabilityAccess
-  from '_src/modules/entity/components/disability-access'
 import { EntityPageMap } from '_src/modules/location'
-import OpeningTimes from '_src/modules/entity/components/opening-times'
 import MonitorCollection from '_src/modules/venue/components/monitor/collection'
 import VenueMonitorGridRow
   from '_src/modules/venue/components/monitor/venue-monitor-grid-row'

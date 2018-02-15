@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import FeaturedDetail from '_src/modules/entity/components/featured-detail'
+import { EntityFeaturedDetail } from '_src/modules/entity'
 import { FullEvent } from '_src/entities/event'
 import './main-details.scss'
 
@@ -18,22 +18,22 @@ class EventMainDetails extends React.Component {
 
     return (
       <div styleName='container'>
-        <FeaturedDetail heading='When'>
+        <EntityFeaturedDetail heading='When'>
           {event.createEventOccurrenceDescriptionOn(dateStr)}
-        </FeaturedDetail>
-        <FeaturedDetail heading='Where'>
+        </EntityFeaturedDetail>
+        <EntityFeaturedDetail heading='Where'>
           <Link to={event.venue.url}>{event.venue.name}</Link>
-        </FeaturedDetail>
-        <FeaturedDetail heading='Cost'>
+        </EntityFeaturedDetail>
+        <EntityFeaturedDetail heading='Cost'>
           {event.createCostDescription()}
-        </FeaturedDetail>
-        <FeaturedDetail heading='Booking'>
+        </EntityFeaturedDetail>
+        <EntityFeaturedDetail heading='Booking'>
           {event.createBookingDescriptionOn(dateStr)}
-        </FeaturedDetail>
+        </EntityFeaturedDetail>
         {!!ageDescription &&
-          <FeaturedDetail heading='Age'>
+          <EntityFeaturedDetail heading='Age'>
             {ageDescription}
-          </FeaturedDetail>}
+          </EntityFeaturedDetail>}
       </div>
     )
   }

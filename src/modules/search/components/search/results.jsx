@@ -2,20 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Pagination from '_src/components/pagination'
-import EntityCardCollection from '_src/modules/entity/components/entity-card/collection'
+import { EntityCardCollection } from '_src/modules/entity'
 // import MoreResults from '_src/modules/search/components/search/more-results'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as cardContentFactory
   from '_src/modules/search/components/search-results-cards/card-content-factory'
 
-class SearchResults extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return (
-      nextProps.items !== this.props.items ||
-      nextProps.dateStr !== this.props.dateStr ||
-      nextProps.className !== this.props.className
-    )
-  }
+class SearchResults extends React.PureComponent {
   render () {
     const {
       items,
