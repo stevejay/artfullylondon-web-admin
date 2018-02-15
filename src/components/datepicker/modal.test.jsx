@@ -122,9 +122,9 @@ it('should handle a day being clicked', () => {
     />
   )
 
-  wrapper.find(DayPicker).prop('onDayClick')(null, new Date(2018, 1, 5))
+  wrapper.find(DayPicker).prop('onDayClick')(new Date(2018, 1, 5))
 
-  expect(handleChange).toHaveBeenCalledWith({ date: '2018/02/05' })
+  expect(handleChange).toHaveBeenCalledWith('2018/02/05')
   expect(handleHide).toHaveBeenCalled()
 })
 

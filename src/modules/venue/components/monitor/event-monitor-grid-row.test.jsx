@@ -124,6 +124,11 @@ it('should handle an edit click', () => {
   wrapper.find(PencilIcon).simulate('click')
 
   expect(handleEdit).toHaveBeenCalledWith({
-    externalEventId: 'some-external-event-id'
+    combinedEvents: false,
+    currentUrl: 'http://some/url',
+    externalEventId: 'some-external-event-id',
+    hasChanged: false,
+    inArtfully: true,
+    isIgnored: false
   })
 })

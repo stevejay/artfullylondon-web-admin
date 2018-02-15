@@ -31,6 +31,7 @@ exports[`should render correctly when creating a group 1`] = `
   </FormRow>
   <FormRow>
     <Field
+      autos={false}
       component={[Function]}
       disabled={true}
       forceSingleLine={true}
@@ -39,6 +40,7 @@ exports[`should render correctly when creating a group 1`] = `
       name="firstNames"
     />
     <Field
+      autos={false}
       component={[Function]}
       forceSingleLine={true}
       label="Last Name / Group Name"
@@ -92,7 +94,6 @@ exports[`should render correctly when creating a group 1`] = `
       onDeleteImage={[Function]}
       onSetMainImage={[Function]}
       onUpdateImage={[Function]}
-      showModal={[Function]}
     />
   </FormRow>
   <Divider
@@ -143,6 +144,7 @@ exports[`should render correctly when editing an individual 1`] = `
   </FormRow>
   <FormRow>
     <Field
+      autos={false}
       component={[Function]}
       disabled={false}
       forceSingleLine={true}
@@ -151,6 +153,7 @@ exports[`should render correctly when editing an individual 1`] = `
       name="firstNames"
     />
     <Field
+      autos={false}
       component={[Function]}
       forceSingleLine={true}
       label="Last Name / Group Name"
@@ -204,7 +207,6 @@ exports[`should render correctly when editing an individual 1`] = `
       onDeleteImage={[Function]}
       onSetMainImage={[Function]}
       onUpdateImage={[Function]}
-      showModal={[Function]}
     />
   </FormRow>
   <Divider

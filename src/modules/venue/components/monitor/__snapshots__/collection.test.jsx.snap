@@ -2,10 +2,13 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-monitor-collection__container"
+  className="src-modules-venue-components-monitor-collection__container"
 >
+  <EntitySectionHeading>
+    The Title
+  </EntitySectionHeading>
   <div
-    className="src-components-monitor-collection__monitors-container"
+    className="src-modules-venue-components-monitor-collection__monitors-container"
   >
     <Grid>
       <gridRowComponent
@@ -20,5 +23,23 @@ exports[`should render correctly 1`] = `
       />
     </Grid>
   </div>
+  <Modal
+    aria-label="Edit Monitor"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={false}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="Edit Monitor"
+      type="wide"
+    >
+      <ReduxForm
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
 </div>
 `;

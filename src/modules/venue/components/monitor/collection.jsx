@@ -15,7 +15,7 @@ import EntitySectionHeading
   from '_src/modules/entity/components/section-heading'
 import './collection.scss'
 
-class MonitorCollection extends React.PureComponent {
+export class MonitorCollection extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { show: false }
@@ -60,9 +60,9 @@ class MonitorCollection extends React.PureComponent {
     const visibleMonitors = showAll
       ? monitors
       : monitors.filter(
-        monitor =>
-          !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-      )
+          monitor =>
+            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+        )
 
     const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
     const venueHomepageUrl = venue.getHomepageUrl()

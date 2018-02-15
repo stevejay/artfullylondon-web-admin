@@ -169,8 +169,8 @@ export class EditEventSeriesForm extends React.Component {
             label='Links'
             name='links'
             component={LinksField}
-            parentFormName={eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME}
-            linkActions={linkActions}
+            onAddLink={this.handleAddLink}
+            onDeleteLink={this.handleDeleteLink}
           />
         </FormRow>
         <FormRow>
@@ -179,8 +179,10 @@ export class EditEventSeriesForm extends React.Component {
             entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
             name='images'
             component={ImagesField}
-            parentFormName={eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME}
-            imageActions={imageActions}
+            onAddImage={this.handleAddImage}
+            onUpdateImage={this.handleUpdateImage}
+            onSetMainImage={this.handleSetMainImage}
+            onDeleteImage={this.handleDeleteImage}
           />
         </FormRow>
         <Divider />

@@ -2,7 +2,7 @@
 
 exports[`should render correctly when there is a diff 1`] = `
 <div
-  className="src-components-monitor-diff__container"
+  className="src-modules-venue-components-monitor-diff__container"
   dangerouslySetInnerHTML={
     Object {
       "__html": "The Diff",

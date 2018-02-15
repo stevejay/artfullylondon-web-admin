@@ -2,7 +2,7 @@
 
 exports[`should render correctly with an icon 1`] = `
 <FaClose
-  styleName="icon"
+  className="text-icon"
 />
 `;
 

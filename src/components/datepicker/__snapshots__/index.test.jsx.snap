@@ -22,7 +22,7 @@ exports[`should handle being clicked to show the datepicker modal 1`] = `
     minDate="2016-01-01"
     onChange={[Function]}
     onHide={[Function]}
-    show={false}
+    show={true}
     title="Choose a date"
     value="2017-01-01"
   />

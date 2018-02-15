@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 import Button from '_src/components/button'
 import './buttons.scss'
 
-class FormButtons extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.submitting !== this.props.submitting
-  }
+class FormButtons extends React.PureComponent {
   render () {
     const {
       submitLabel,

@@ -14,14 +14,15 @@ import { FullEvent } from '_src/entities/event'
 
 class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
   render () {
+    const { entity } = this.props
+
     const {
       wheelchairAccessType,
       disabledBathroomType,
-      hearingFacilitiesType,
-      links
-    } = this.props.entity
+      hearingFacilitiesType
+    } = entity
 
-    const accessLink = links.getLinkByType(linkConstants.LINK_TYPE_ACCESS)
+    const accessLink = entity.getLinkByType(linkConstants.LINK_TYPE_ACCESS)
     const hasAccessLink = !!accessLink
 
     const accessText = accessLib.getAccessText(

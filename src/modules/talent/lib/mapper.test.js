@@ -49,10 +49,9 @@ describe('getInitialValues', () => {
       talentType: 'Individual',
       commonRole: 'Some common role',
       description: 'Rich Text Description',
+      descriptionCredit: '',
       links: [{ type: 'Wikipedia', url: 'mapped' }],
       images: [{ key: '1111' }],
-      currentEvents: [],
-      futureEvents: [],
       weSay: 'Something',
       version: 9,
       createdDate: '2018/01/01'
@@ -96,7 +95,7 @@ describe('getInitialValues', () => {
       talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
       commonRole: '',
       description: 'Description',
-      descriptionCredit: null,
+      descriptionCredit: '',
       links: [],
       images: [],
       weSay: '',
@@ -132,6 +131,7 @@ describe('mapSubmittedValues', () => {
       commonRole: 'The common role',
       talentType: 'Individual',
       description: 'Description',
+      descriptionCredit: '',
       images: [{ key: '1111' }],
       links: [{ key: '2222' }]
     }
@@ -142,6 +142,7 @@ describe('mapSubmittedValues', () => {
       firstNames: 'First',
       lastName: 'Last',
       description: 'Mapped description',
+      descriptionCredit: '',
       talentType: 'Individual',
       commonRole: 'The common role',
       status: 'Active',

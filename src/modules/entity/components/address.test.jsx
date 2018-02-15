@@ -2,14 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import EntityAddress from './address'
+import { SummaryVenue } from '_src/entities/venue'
 
 it('should render correctly', () => {
-  const wrapper = shallow(<EntityAddress fullAddress='26 Foo Street, Bar' />)
-  expect(wrapper).toMatchSnapshot()
-})
+  const venue = new SummaryVenue()
+  venue.createFullAddress = jest.fn().mockReturnValue('26 Foo Street, Bar')
 
-it('should not update', () => {
-  const wrapper = shallow(<EntityAddress fullAddress='26 Foo Street, Bar' />)
-  const result = wrapper.instance().shouldComponentUpdate()
-  expect(result).toEqual(false)
+  const wrapper = shallow(<EntityAddress venue={venue} />)
+
+  expect(wrapper).toMatchSnapshot()
 })
