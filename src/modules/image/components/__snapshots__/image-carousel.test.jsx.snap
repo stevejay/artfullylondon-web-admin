@@ -42,6 +42,7 @@ exports[`should render correctly 1`] = `
     swipingTransitionDuration={0}
     thumbnailPosition="bottom"
     useBrowserFullscreen={true}
+    useTranslate3D={true}
   />
   <ImageCredit
     credit="The Copyright"
