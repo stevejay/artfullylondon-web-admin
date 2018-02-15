@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import Checkmark from 'react-icons/lib/fa/check'
 
 import SectionHeading from '_src/components/section/heading'

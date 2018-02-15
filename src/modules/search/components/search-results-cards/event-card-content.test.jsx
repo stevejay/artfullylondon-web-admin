@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import { SummaryEvent } from '_src/entities/event'
 import EventCardContent

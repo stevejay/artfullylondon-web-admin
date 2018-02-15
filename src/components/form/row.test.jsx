@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import FormRow from '_src/components/form/row'
 

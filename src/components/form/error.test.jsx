@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import FormError from '_src/components/form/error'
 import { GENERIC_ERROR_MESSAGE } from '_src/constants/validation'

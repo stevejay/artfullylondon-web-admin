@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import OpeningTimesEntry from './entry'
 import * as timeLib from '_src/lib/time'

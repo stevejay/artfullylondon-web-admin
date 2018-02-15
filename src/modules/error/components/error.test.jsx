@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import Error from '_src/modules/error/components/error'
 import * as errorConstants from '_src/modules/error/constants'

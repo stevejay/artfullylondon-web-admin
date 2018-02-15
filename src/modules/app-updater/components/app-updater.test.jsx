@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { AppUpdater } from '_src/modules/app-updater/components/app-updater'

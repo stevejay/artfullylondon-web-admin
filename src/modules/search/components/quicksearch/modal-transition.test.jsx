@@ -1,5 +1,4 @@
 import React from 'react'
-import { mount } from 'enzyme'
 
 import ModalTransition
   from '_src/modules/search/components/quicksearch/modal-transition'

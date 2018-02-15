@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import { FullVenue } from '_src/entities/venue'
 import EntityDescription from './description'

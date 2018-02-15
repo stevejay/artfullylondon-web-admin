@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import DayPicker from 'react-day-picker'
 import _ from 'lodash'
 

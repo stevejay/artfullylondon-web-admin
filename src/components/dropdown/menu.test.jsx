@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import DropdownMenu from '_src/components/dropdown/menu'

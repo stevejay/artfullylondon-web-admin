@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import LoaderPanel from '_src/components/loader/panel'
 

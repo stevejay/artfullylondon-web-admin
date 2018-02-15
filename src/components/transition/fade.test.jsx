@@ -1,5 +1,4 @@
 import React from 'react'
-import { mount } from 'enzyme'
 
 import FadeTransition from '_src/components/transition/fade'
 

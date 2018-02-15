@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import EventTalent from '_src/components/event/talent'
 import { SummaryTalent } from '_src/entities/talent'

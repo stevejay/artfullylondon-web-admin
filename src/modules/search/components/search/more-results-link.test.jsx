@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import SearchMoreResultsLink from '_src/modules/search/components/search/more-results-link'

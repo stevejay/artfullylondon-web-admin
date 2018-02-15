@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { DashboardPage } from '_src/modules/dashboard/pages/dashboard'

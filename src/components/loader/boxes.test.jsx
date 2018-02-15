@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import BoxesLoader from '_src/components/loader/boxes'
 

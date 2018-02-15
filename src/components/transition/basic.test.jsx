@@ -1,5 +1,4 @@
 import React from 'react'
-import { mount } from 'enzyme'
 
 import BasicTransition from '_src/components/transition/basic'
 

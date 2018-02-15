@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import FieldRemainingChars from '_src/components/field/remaining-chars'
 

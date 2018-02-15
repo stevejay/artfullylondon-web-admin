@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import CloseIcon from 'react-icons/lib/fa/close'
 
 import TextIcon from '_src/components/text/icon'

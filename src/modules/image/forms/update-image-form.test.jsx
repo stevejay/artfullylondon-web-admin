@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import { UpdateImageForm } from '_src/modules/image/forms/update-image-form'

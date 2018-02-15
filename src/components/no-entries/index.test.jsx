@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import NoEntries from '_src/components/no-entries'
 

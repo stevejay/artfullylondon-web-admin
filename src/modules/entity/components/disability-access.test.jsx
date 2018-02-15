@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import EntityDisabilityAccess from './disability-access'
 import * as accessConstants from '_src/constants/access'

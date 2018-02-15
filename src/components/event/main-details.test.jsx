@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import EventMainDetails from '_src/components/event/main-details'
 import { FullEvent } from '_src/entities/event'

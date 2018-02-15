@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import window from 'global/window'
 
 import EntityPageMap from './entity-page-map'

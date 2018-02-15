@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import Statistic from '_src/modules/dashboard/components/statistic'
 

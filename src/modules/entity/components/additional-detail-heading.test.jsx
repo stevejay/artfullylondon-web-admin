@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import EntityAdditionalDetailHeading
   from './additional-detail-heading'

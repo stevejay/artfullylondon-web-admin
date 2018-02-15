@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly when creating a group 1`] = `
+exports[`should render correctly when creating 1`] = `
 <Form
   onSubmit={[Function]}
 >
@@ -115,7 +115,7 @@ exports[`should render correctly when creating a group 1`] = `
 </Form>
 `;
 
-exports[`should render correctly when editing an individual 1`] = `
+exports[`should render correctly when editing 1`] = `
 <Form
   onSubmit={[Function]}
 >

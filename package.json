@@ -38,7 +38,8 @@
       "!src/lib/browser.js",
       "!src/lib/fetch-impl.js",
       "!src/lib/normalise.js",
-      "!src/lib/saga.js"
+      "!src/lib/saga.js",
+      "!src/debug/*"
     ]
   },
   "standard": {

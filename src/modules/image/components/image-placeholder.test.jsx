@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import ImagePlaceholder from '_src/modules/image/components/image-placeholder'
 import * as entityConstants from '_src/constants/entity'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import { SummaryEventSeries } from '_src/entities/event-series'
 import EventSeriesCardContent

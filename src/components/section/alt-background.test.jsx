@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import AltBackgroundSection from '_src/components/section/alt-background'
 

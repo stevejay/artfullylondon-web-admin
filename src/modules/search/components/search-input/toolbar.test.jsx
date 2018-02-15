@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import SearchInputToolbar from '_src/modules/search/components/search-input/toolbar'
 

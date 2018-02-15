@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import { Overlay } from 'react-overlays'
 
 import FieldLabel from '_src/components/field/label'

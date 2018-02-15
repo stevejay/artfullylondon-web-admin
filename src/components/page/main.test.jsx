@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import log from 'loglevel'
 
 import PageMain from '_src/components/page/main'

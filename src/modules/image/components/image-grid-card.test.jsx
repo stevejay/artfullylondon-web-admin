@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 
 import ImageGridCard from '_src/modules/image/components/image-grid-card'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import EventSeriesLink from '_src/components/event/event-series-link'
 import { SummaryEventSeries } from '_src/entities/event-series'

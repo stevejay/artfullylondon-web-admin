@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import { SummaryTalent } from '_src/entities/talent'
 import TalentCardContent

@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import { SummaryVenue } from '_src/entities/venue'
 import VenueCardContent

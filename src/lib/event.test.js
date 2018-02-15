@@ -1,5 +1,3 @@
-import { shallow } from 'enzyme'
-
 import * as eventLib from '_src/lib/event'
 import { LinkCollection } from '_src/entities/link-collection'
 import * as eventConstants from '_src/constants/event'

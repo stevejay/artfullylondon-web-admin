@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import SearchInputAutocompleteHeaderItem
   from '_src/modules/search/components/search-input/autocomplete-header-item'

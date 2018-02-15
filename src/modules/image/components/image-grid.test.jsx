@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import ImageGrid from '_src/modules/image/components/image-grid'
 

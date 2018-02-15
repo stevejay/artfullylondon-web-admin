@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import _ from 'lodash'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 

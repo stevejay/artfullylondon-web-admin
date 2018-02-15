@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import MinimalLogo from '_src/components/logo/minimal'
 

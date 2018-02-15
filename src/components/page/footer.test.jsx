@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import PageFooter from '_src/components/page/footer'
 

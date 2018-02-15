@@ -1,5 +1,4 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 
 import OpeningTimesCurrentTimes from './current-times'
 import { FullVenue } from '_src/entities/venue'
