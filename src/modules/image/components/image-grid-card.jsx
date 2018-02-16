@@ -4,11 +4,10 @@ import Trash from 'react-icons/lib/fa/trash-o'
 import Heart from 'react-icons/lib/fa/heart'
 import Pencil from 'react-icons/lib/fa/pencil'
 
+import IconButton from '_src/components/button/icon'
 import ImageGridImage from './image-grid-image'
 import * as entityConstants from '_src/constants/entity'
 import './image-grid-card.scss'
-
-// TODO turn the links into buttons?
 
 class ImageGridCard extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -28,8 +27,6 @@ class ImageGridCard extends React.Component {
   render () {
     const { value: { id, copyright, ratio, isMain }, entityType } = this.props
 
-    // TODO replace with button
-
     return (
       <div styleName='card'>
         <ImageGridImage
@@ -45,15 +42,21 @@ class ImageGridCard extends React.Component {
           <div styleName='toolbar'>
             {isMain
               ? <Heart styleName='icon-main' />
-              : <a styleName='link' onClick={this.handleSetMain}>
-                <Heart styleName='icon' />
-              </a>}
-            <a styleName='link' onClick={this.handleDelete}>
-              <Trash styleName='icon' />
-            </a>
-            <a styleName='link' onClick={this.handleEditImage}>
-              <Pencil styleName='icon' />
-            </a>
+              : <IconButton
+                icon={Heart}
+                onClick={this.handleSetMain}
+                aria-label='Set as main'
+                />}
+            <IconButton
+              icon={Trash}
+              onClick={this.handleDelete}
+              aria-label='Delete'
+            />
+            <IconButton
+              icon={Pencil}
+              onClick={this.handleEditImage}
+              aria-label='Edit'
+            />
           </div>
         </div>
       </div>

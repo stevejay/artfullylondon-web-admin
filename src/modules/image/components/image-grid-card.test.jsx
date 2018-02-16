@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
+import IconButton from '_src/components/button/icon'
 import ImageGridCard from './image-grid-card'
 
 it('should render correctly when the image has a copyright', () => {
@@ -113,7 +114,7 @@ it('should handle the edit option being clicked', () => {
     />
   )
 
-  wrapper.find('a').at(2).simulate('click')
+  wrapper.find(IconButton).at(2).simulate('click')
 
   expect(handleUpdate).toHaveBeenCalledWith(value)
 })
@@ -132,7 +133,7 @@ it('should handle the delete option being clicked', () => {
     />
   )
 
-  wrapper.find('a').at(1).simulate('click', { preventDefault })
+  wrapper.find(IconButton).at(1).simulate('click', { preventDefault })
 
   expect(preventDefault).toHaveBeenCalled()
   expect(handleDelete).toHaveBeenCalledWith('id1')
@@ -152,7 +153,7 @@ it('should handle the set as main option being clicked', () => {
     />
   )
 
-  wrapper.find('a').at(0).simulate('click', { preventDefault })
+  wrapper.find(IconButton).at(0).simulate('click', { preventDefault })
 
   expect(preventDefault).toHaveBeenCalled()
   expect(handleSetMain).toHaveBeenCalledWith('id1')

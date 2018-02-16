@@ -40,24 +40,6 @@
     justify-content: flex-end;
 }
 
-.link {
-    cursor: pointer;
-    color: $half-black;
-    transition: color, .2s, ease-in;
-    display: inline-block;
-    margin-right: .5rem;
-    border-bottom: none;
-
-    &:hover {
-        color: $three-quarter-black;
-        border-bottom: none;
-    }
-
-    &:last-of-type {
-        margin-right: 0;
-    }
-}
-
 .icon {
     width: 3.5rem;
     height: 3.5rem;

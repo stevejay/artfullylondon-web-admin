@@ -9,7 +9,7 @@ class Collection extends React.PureComponent {
     const { currentPage, onStepClick, steps } = this.props
 
     return (
-      <div styleName='container'>
+      <ol styleName='container' role='presentation'>
         {steps.map(x => (
           <Step
             key={x.page}
@@ -19,7 +19,7 @@ class Collection extends React.PureComponent {
             onClick={onStepClick}
           />
         ))}
-      </div>
+      </ol>
     )
   }
 }

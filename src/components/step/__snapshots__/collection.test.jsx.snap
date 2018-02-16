@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div
+<ol
   className="src-components-step-collection__container"
+  role="presentation"
 >
   <Step
     currentPage={2}
@@ -25,5 +26,5 @@ exports[`should render correctly 1`] = `
     page={3}
     title="Page 3 Title"
   />
-</div>
+</ol>
 `;

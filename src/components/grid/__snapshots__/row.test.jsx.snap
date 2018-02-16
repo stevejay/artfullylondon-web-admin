@@ -11,11 +11,12 @@ exports[`should render correctly when can delete 1`] = `
       id="child"
     />
   </div>
-  <FaClose
-    className="src-components-grid-row__icon"
+  <IconButton
+    aria-label="Delete row"
+    className="src-components-grid-row__button"
+    icon={[Function]}
     onClick={[Function]}
-    onKeyPress={[Function]}
-    tabIndex="0"
+    type="default"
   />
 </div>
 `;

@@ -47,6 +47,7 @@ export function * saveEntity ({
     yield put(startSubmit(formName))
     const values = yield call(normalise, payloadValues, normaliser)
     yield call(validationLib.validate, values, constraint)
+
     const token = yield call(getAuthTokenForCurrentUser)
     let json = null
 
@@ -74,6 +75,8 @@ export function * saveEntity ({
     yield call(sagaLib.submitErrorHandler, err, formName)
   }
 }
+
+// TODO delete all the below when I can.
 
 // function _getConstraintForEntityType (entityType) {
 //   switch (entityType) {

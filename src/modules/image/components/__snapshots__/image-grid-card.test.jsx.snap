@@ -23,30 +23,24 @@ exports[`should render correctly when the image has a copyright 1`] = `
     <div
       className="src-modules-image-components-image-grid-card__toolbar"
     >
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+      <IconButton
+        aria-label="Set as main"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaHeart
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+        type="default"
+      />
+      <IconButton
+        aria-label="Delete"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaTrashO
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+        type="default"
+      />
+      <IconButton
+        aria-label="Edit"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaPencil
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
+        type="default"
+      />
     </div>
   </div>
 </div>
@@ -73,30 +67,24 @@ exports[`should render correctly when the image is not the main image 1`] = `
     <div
       className="src-modules-image-components-image-grid-card__toolbar"
     >
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+      <IconButton
+        aria-label="Set as main"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaHeart
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+        type="default"
+      />
+      <IconButton
+        aria-label="Delete"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaTrashO
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+        type="default"
+      />
+      <IconButton
+        aria-label="Edit"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaPencil
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
+        type="default"
+      />
     </div>
   </div>
 </div>
@@ -126,22 +114,18 @@ exports[`should render correctly when the image is the main image 1`] = `
       <FaHeart
         className="src-modules-image-components-image-grid-card__icon-main src-modules-image-components-image-grid-card__icon"
       />
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+      <IconButton
+        aria-label="Delete"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaTrashO
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
-      <a
-        className="src-modules-image-components-image-grid-card__link"
+        type="default"
+      />
+      <IconButton
+        aria-label="Edit"
+        icon={[Function]}
         onClick={[Function]}
-      >
-        <FaPencil
-          className="src-modules-image-components-image-grid-card__icon"
-        />
-      </a>
+        type="default"
+      />
     </div>
   </div>
 </div>

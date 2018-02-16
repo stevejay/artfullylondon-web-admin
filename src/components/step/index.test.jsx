@@ -50,7 +50,7 @@ it('should handle a step being clicked', () => {
     <Step title='The Title' page={1} currentPage={5} onClick={handleClick} />
   )
 
-  wrapper.find('a').simulate('click')
+  wrapper.find('li').simulate('click')
 
   expect(handleClick).toHaveBeenCalledWith(1)
 })

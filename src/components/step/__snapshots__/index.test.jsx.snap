@@ -1,89 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly when showing current step 1`] = `
-<div
+<li
   className="src-components-step-index__step-active src-components-step-index__step"
+  onClick={null}
+  tabIndex={-1}
 >
-  <div
+  <span
     className="src-components-step-index__number"
   >
     2
-  </div>
-  <div
+  </span>
+  <span
     className="src-components-step-index__title"
   >
     The Title
-  </div>
-</div>
+  </span>
+</li>
 `;
 
 exports[`should render correctly when showing step after current step 1`] = `
-<a
+<li
   className="src-components-step-index__step-next src-components-step-index__step"
   onClick={[Function]}
+  tabIndex={0}
 >
-  <div
+  <span
     className="src-components-step-index__number"
   >
     3
-  </div>
-  <div
+  </span>
+  <span
     className="src-components-step-index__title"
   >
     The Title
-  </div>
-</a>
+  </span>
+</li>
 `;
 
 exports[`should render correctly when showing step before current step 1`] = `
-<a
+<li
   className="src-components-step-index__step-completed src-components-step-index__step"
   onClick={[Function]}
+  tabIndex={0}
 >
-  <div
+  <span
     className="src-components-step-index__number"
   >
     1
-  </div>
-  <div
+  </span>
+  <span
     className="src-components-step-index__title"
   >
     The Title
-  </div>
-</a>
+  </span>
+</li>
 `;
 
 exports[`should render correctly when showing step way after current step 1`] = `
-<div
+<li
   className="src-components-step-index__step-disabled src-components-step-index__step"
+  onClick={null}
+  tabIndex={-1}
 >
-  <div
+  <span
     className="src-components-step-index__number"
   >
     6
-  </div>
-  <div
+  </span>
+  <span
     className="src-components-step-index__title"
   >
     The Title
-  </div>
-</div>
+  </span>
+</li>
 `;
 
 exports[`should render correctly when showing step way before current step 1`] = `
-<a
+<li
   className="src-components-step-index__step-completed src-components-step-index__step"
   onClick={[Function]}
+  tabIndex={0}
 >
-  <div
+  <span
     className="src-components-step-index__number"
   >
     1
-  </div>
-  <div
+  </span>
+  <span
     className="src-components-step-index__title"
   >
     The Title
-  </div>
-</a>
+  </span>
+</li>
 `;

@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-import Close from 'react-icons/lib/fa/close'
 
+import IconButton from '_src/components/button/icon'
 import GridRow from '_src/components/grid/row'
 import * as browserConstants from '_src/constants/browser'
 
@@ -18,34 +18,6 @@ it('should render correctly when cannot delete', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should handle an Enter key press to delete the row', () => {
-  const handleDelete = jest.fn()
-
-  const wrapper = shallow(
-    <GridRow id='some-id' onDelete={handleDelete}><div id='child' /></GridRow>
-  )
-
-  wrapper
-    .find(Close)
-    .simulate('keyPress', { charCode: browserConstants.ENTER_CHARCODE })
-
-  expect(handleDelete).toHaveBeenCalledWith('some-id')
-})
-
-it('should ignore an non-Enter key press to delete the row', () => {
-  const handleDelete = jest.fn()
-
-  const wrapper = shallow(
-    <GridRow id='some-id' onDelete={handleDelete}><div id='child' /></GridRow>
-  )
-
-  wrapper
-    .find(Close)
-    .simulate('keyPress', { charCode: browserConstants.ENTER_CHARCODE + 1 })
-
-  expect(handleDelete).not.toHaveBeenCalled()
-})
-
 it('should handle a click on the close icon to delete the row', () => {
   const handleDelete = jest.fn()
 
@@ -53,7 +25,7 @@ it('should handle a click on the close icon to delete the row', () => {
     <GridRow id='some-id' onDelete={handleDelete}><div id='child' /></GridRow>
   )
 
-  wrapper.find(Close).simulate('click')
+  wrapper.find(IconButton).simulate('click')
 
   expect(handleDelete).toHaveBeenCalledWith('some-id')
 })
