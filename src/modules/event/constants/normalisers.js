@@ -1,4 +1,4 @@
-export const basicNormaliser = {
+export const BASIC_NORMALISER = {
   name: {
     trim: true
   },

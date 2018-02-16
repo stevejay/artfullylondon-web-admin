@@ -168,7 +168,7 @@ export const BASIC_CONSTRAINT = {
   }
 }
 
-export const tagConstraint = {
+export const TAG_CONSTRAINT = {
   mediumTags: { presence: true }
 }
 
@@ -205,10 +205,10 @@ export const TIMES_CONSTRAINT = {
   /// / if there are no times ranges, all opening times/performances must have
 }
 
-export const talentConstraint = {
+export const TALENT_CONSTRAINT = {
   // TODO All talents must have non-null roles
 }
 
-export const imageConstraint = {
+export const IMAGE_CONSTRAINT = {
   // no-op
 }

@@ -27,7 +27,7 @@ import * as dateLib from '_src/lib/date'
 import { selectors as eventSelectors } from '../reducers'
 import * as eventActions from '../actions'
 
-class EventDetail extends React.Component {
+export class EventDetail extends React.Component {
   handleClickCopy = () => {
     console.log('handleClickCopy')
     // this.props.getEventAsCopy({ id: this.props.entity.id })
@@ -37,7 +37,6 @@ class EventDetail extends React.Component {
   }
   render () {
     const { entity, selectedTalentId } = this.props
-
     const dateStr = dateLib.getTodayDateAsString()
     const eventIsExpired = entity.isExpiredOn(dateStr)
 
@@ -89,6 +88,9 @@ EventDetail.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  selectedTalentId: eventSelectors.selectedTalentId(state)
-}))(EventDetail)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    selectedTalentId: eventSelectors.selectedTalentId(state)
+  })
+)(EventDetail)
