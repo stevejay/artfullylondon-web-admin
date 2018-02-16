@@ -70,21 +70,6 @@ export class SummaryEvent {
     return this.entity.postcode
   }
 
-  get latitude () {
-    return this.entity.latitude
-  }
-
-  get longitude () {
-    return this.entity.longitude
-  }
-
-  get pin () {
-    return {
-      lat: this.latitude,
-      lng: this.longitude
-    }
-  }
-
   get hasDates () {
     return !!this.entity.dates && this.entity.dates.length > 0
   }
@@ -255,6 +240,10 @@ export class FullEvent extends SummaryEvent {
 
   createAgeDescription () {
     return this.entity.minAge ? `${this.entity.minAge}+` : null
+  }
+
+  get pin () {
+    return this.venue.pin
   }
 
   get hasVenueGuidance () {

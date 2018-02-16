@@ -53,35 +53,3 @@ it('should render additional only times details correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
-
-describe('shouldComponentUpdate', () => {
-  it('should not update when props have not changed', () => {
-    const entity = new FullVenue({})
-    entity.createTimesDetailsOn = jest.fn().mockReturnValue(null)
-
-    const wrapper = shallow(
-      <OpeningTimes dateStr='2017/01/20' entity={entity} />
-    )
-
-    const result = wrapper.instance().shouldComponentUpdate({
-      dateStr: '2017/01/20'
-    })
-
-    expect(result).toEqual(false)
-  })
-
-  it('should update when props have changed', () => {
-    const entity = new FullVenue({})
-    entity.createTimesDetailsOn = jest.fn().mockReturnValue(null)
-
-    const wrapper = shallow(
-      <OpeningTimes dateStr='2017/01/20' entity={entity} />
-    )
-
-    const result = wrapper.instance().shouldComponentUpdate({
-      dateStr: '2018/12/12'
-    })
-
-    expect(result).toEqual(true)
-  })
-})

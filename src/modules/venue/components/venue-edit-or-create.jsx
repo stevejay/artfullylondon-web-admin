@@ -4,13 +4,15 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
-import { Image } from '_src/modules/image'
-import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
+import { Image, IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
+import {
+  EntityDetailsContainer,
+  EntityHeading,
+  actions as entityActions
+} from '_src/modules/entity'
 import EditVenueForm from '../forms/edit-venue'
-import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
-import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 import * as entityConstants from '_src/constants/entity'
 import * as venueConstants from '../constants'
 import * as venueMapper from '../lib/mapper'

@@ -17,6 +17,7 @@ import * as image from '_src/modules/image'
 import * as link from '_src/modules/link'
 import * as time from '_src/modules/time'
 import * as venue from '_src/modules/venue'
+import * as event from '_src/modules/event'
 
 const reducer = combineReducers({
   form: formReducer,
@@ -27,7 +28,8 @@ const reducer = combineReducers({
   [search.moduleName]: search.reducer,
   [entity.moduleName]: entity.reducer,
   [referenceData.moduleName]: referenceData.reducer,
-  [venue.moduleName]: venue.reducer
+  [venue.moduleName]: venue.reducer,
+  [event.moduleName]: event.reducer
 })
 
 const sagas = function * () {

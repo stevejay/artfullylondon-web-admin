@@ -1,5 +1,5 @@
 import { cloneableGenerator } from 'redux-saga/utils'
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 

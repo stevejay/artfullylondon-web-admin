@@ -46,7 +46,7 @@ class Message extends React.PureComponent {
     const iconElement =
       (showIcon || icon) &&
       !!chosenIcon &&
-      React.createElement(chosenIcon, { styleName: 'icon' })
+      React.createElement(chosenIcon, { className: 'message-icon' })
 
     const content = (
       <div styleName='text'>

@@ -9,10 +9,7 @@ import AdditionalDetailHeading from '../additional-detail-heading'
 import OpeningTimeEntry from './entry'
 import './index.scss'
 
-class OpeningTimes extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.dateStr !== this.props.dateStr
-  }
+class OpeningTimes extends React.PureComponent {
   render () {
     const { dateStr, entity } = this.props
     const timesDetails = entity.createTimesDetailsOn(dateStr)

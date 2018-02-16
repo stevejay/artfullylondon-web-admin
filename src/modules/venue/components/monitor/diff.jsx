@@ -11,7 +11,7 @@ class Diff extends React.PureComponent {
       ? <div
         styleName='container'
         dangerouslySetInnerHTML={{ __html: changeDiff }}
-        />
+      />
       : null
   }
 }
