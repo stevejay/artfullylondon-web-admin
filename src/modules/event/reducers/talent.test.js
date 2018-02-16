@@ -20,3 +20,13 @@ it('should handle adding a notification', () => {
 
   expect(actual).toEqual({ talentId: 'some-talent-id' })
 })
+
+describe('selectors', () => {
+  describe('selectedTalentId', () => {
+    it('should get the value', () => {
+      const state = { talentId: 2 }
+      const actual = selectors.selectedTalentId(state)
+      expect(actual).toEqual(2)
+    })
+  })
+})

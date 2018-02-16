@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import StepCollection from '_src/components/step/collection'
+import StepCollection from './collection'
 
 it('should render correctly', () => {
   const wrapper = shallow(

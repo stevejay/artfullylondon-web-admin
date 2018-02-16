@@ -3,8 +3,14 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { submit as submitReduxForm } from 'redux-form'
+import { withState } from 'recompose'
 
+import { Image } from '_src/modules/image'
+import Divider from '_src/components/divider'
+import StepCollection from '_src/components/step/collection'
 import { FullEvent } from '_src/entities/event'
+import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
+import * as entityConstants from '_src/constants/entity'
 import * as eventConstants from '../constants'
 import * as eventConstraints from '../constants/constraints'
 import BasicsForm from '../forms/basics'
@@ -41,7 +47,7 @@ export class EventEditOrCreate extends React.Component {
     this.props.history.push(`/event/${this.props.entity.id}`)
   }
   handleStepClick = nextStepIndex => {
-    const { submit, stepIndex } = this.props
+    const { stepIndex } = this.props
 
     if (nextStepIndex > stepIndex) {
       switch (stepIndex) {
@@ -72,7 +78,7 @@ export class EventEditOrCreate extends React.Component {
   handleSubmitTalent = values => {}
   handleSubmit = values => {}
   render () {
-    const { entity, isEdit, stepIndex } = this.props
+    const { entity, stepIndex } = this.props
 
     return (
       <React.Fragment>
