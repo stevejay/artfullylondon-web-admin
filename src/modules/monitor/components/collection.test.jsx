@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { MonitorCollection } from './collection'
 import { FullVenue } from '_src/entities/venue'
-import UpdateMonitorForm from '../../forms/update-monitor'
+import UpdateMonitorForm from '../forms/update-monitor'
 import Button from '_src/components/button'
 import Modal from '_src/components/modal'
 

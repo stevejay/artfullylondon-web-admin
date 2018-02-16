@@ -7,7 +7,7 @@ it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
 
   expect(actual).toEqual({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: false,
     getFailed: false
   })
@@ -15,7 +15,7 @@ it('should have the correct initial state', () => {
 
 it('should handle starting to get a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: false,
     getFailed: false
   })
@@ -23,7 +23,7 @@ it('should handle starting to get a venue monitor', () => {
   const actual = reducer(state, venueActions.getVenueMonitorsStarted())
 
   expect(actual).toEqual({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: true,
     getFailed: false
   })
@@ -31,7 +31,7 @@ it('should handle starting to get a venue monitor', () => {
 
 it('should handle successfully getting a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: true,
     getFailed: false
   })
@@ -42,7 +42,7 @@ it('should handle successfully getting a venue monitor', () => {
   )
 
   expect(actual).toEqual({
-    venueMonitors: [{ key: 'some-key' }],
+    monitors: [{ key: 'some-key' }],
     getInProgress: false,
     getFailed: false
   })
@@ -50,7 +50,7 @@ it('should handle successfully getting a venue monitor', () => {
 
 it('should handle failing to get a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: true,
     getFailed: false
   })
@@ -58,7 +58,7 @@ it('should handle failing to get a venue monitor', () => {
   const actual = reducer(state, venueActions.getVenueMonitorsFailed())
 
   expect(actual).toEqual({
-    venueMonitors: null,
+    monitors: null,
     getInProgress: false,
     getFailed: true
   })
@@ -66,7 +66,7 @@ it('should handle failing to get a venue monitor', () => {
 
 it('should handle successfully updating a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitors: [{ key: 'some-key', isIgnored: false }],
+    monitors: [{ key: 'some-key', isIgnored: false }],
     getInProgress: false,
     getFailed: false
   })
@@ -80,7 +80,7 @@ it('should handle successfully updating a venue monitor', () => {
   )
 
   expect(actual).toEqual({
-    venueMonitors: [{ key: 'some-key', isIgnored: true }],
+    monitors: [{ key: 'some-key', isIgnored: true }],
     getInProgress: false,
     getFailed: false
   })
@@ -88,7 +88,7 @@ it('should handle successfully updating a venue monitor', () => {
 
 it('should ignore updating a non-existent venue monitor', () => {
   const state = deepFreeze({
-    venueMonitors: [{ key: 'some-key', isIgnored: false }],
+    monitors: [{ key: 'some-key', isIgnored: false }],
     getInProgress: false,
     getFailed: false
   })
@@ -102,7 +102,7 @@ it('should ignore updating a non-existent venue monitor', () => {
   )
 
   expect(actual).toEqual({
-    venueMonitors: [{ key: 'some-key', isIgnored: false }],
+    monitors: [{ key: 'some-key', isIgnored: false }],
     getInProgress: false,
     getFailed: false
   })
@@ -111,7 +111,7 @@ it('should ignore updating a non-existent venue monitor', () => {
 describe('selectors', () => {
   describe('venueMonitors', () => {
     it('should get the value', () => {
-      const state = { venueMonitors: { key: 'some-key' } }
+      const state = { monitors: { key: 'some-key' } }
       const actual = selectors.venueMonitors(state)
       expect(actual).toEqual({ key: 'some-key' })
     })

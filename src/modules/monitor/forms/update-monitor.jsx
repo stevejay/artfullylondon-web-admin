@@ -7,8 +7,8 @@ import FormButtons from '_src/components/form/buttons'
 import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import CheckboxField from '_src/components/checkbox/field'
-import Diff from '../components/monitor/diff'
-import * as venueConstants from '../constants'
+import Diff from '../components/diff'
+import * as monitorConstants from '../constants'
 import './update-monitor.scss'
 
 export const UpdateMonitorForm = ({
@@ -48,5 +48,5 @@ UpdateMonitorForm.propTypes = {
 }
 
 export default reduxForm({
-  form: venueConstants.UPDATE_MONITOR_FORM_NAME
+  form: monitorConstants.UPDATE_MONITOR_FORM_NAME
 })(UpdateMonitorForm)

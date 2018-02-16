@@ -6,7 +6,7 @@ import { types } from '../actions'
 export const moduleName = 'venueMonitors'
 
 const initialState = {
-  venueMonitors: null,
+  monitors: null,
   getInProgress: false,
   getFailed: false
 }
@@ -20,7 +20,7 @@ export const reducer = handleActions(
     [types.GET_VENUE_MONITORS_SUCCEEDED]: (state, action) => ({
       ...initialState,
       getInProgress: false,
-      venueMonitors: action.payload
+      monitors: action.payload
     }),
     [types.GET_VENUE_MONITORS_FAILED]: () => ({
       ...initialState,
@@ -28,8 +28,8 @@ export const reducer = handleActions(
     }),
     [types.UPDATE_VENUE_MONITOR_SUCCEEDED]: (state, action) => ({
       ...state,
-      venueMonitors: arrayLib.updateElementByKey(
-        state.venueMonitors,
+      monitors: arrayLib.updateElementByKey(
+        state.monitors,
         action.payload.key,
         action.payload
       )
@@ -39,7 +39,7 @@ export const reducer = handleActions(
 )
 
 export const selectors = {
-  venueMonitors: state => state.venueMonitors,
+  venueMonitors: state => state.monitors,
   gettingVenueMonitors: state => state.getInProgress,
   failedToGetVenueMonitors: state => state.getFailed
 }

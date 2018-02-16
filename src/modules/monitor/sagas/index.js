@@ -6,13 +6,13 @@ import { get, put as httpPut } from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
-import * as venueConstants from '../constants'
-import * as venueActions from '../actions'
+import * as monitorConstants from '../constants'
+import * as monitorActions from '../actions'
 
 export function * getVenueEventMonitors (action) {
   try {
     const { venueId } = action.payload
-    yield put(venueActions.getVenueEventMonitorsStarted())
+    yield put(monitorActions.getVenueEventMonitorsStarted())
 
     const token = yield call(getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}/event/`
@@ -22,21 +22,21 @@ export function * getVenueEventMonitors (action) {
       element.key = element.externalEventId
     })
 
-    yield put(venueActions.getVenueEventMonitorsSucceeded(json.items))
+    yield put(monitorActions.getVenueEventMonitorsSucceeded(json.items))
   } catch (err) {
     yield call(log.error, err)
-    yield put(venueActions.getVenueEventMonitorsFailed())
+    yield put(monitorActions.getVenueEventMonitorsFailed())
   }
 }
 
 export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
   try {
-    yield put(startSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+    yield put(startSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
 
     yield call(
       validationLib.validate,
       values,
-      venueConstants.MONITOR_CONSTRAINT
+      monitorConstants.MONITOR_CONSTRAINT
     )
 
     const token = yield call(getAuthTokenForCurrentUser)
@@ -48,8 +48,8 @@ export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
     }
 
     yield call(httpPut, url, body, token)
-    yield put(venueActions.updateVenueEventMonitorSucceeded(values))
-    yield put(stopSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+    yield put(monitorActions.updateVenueEventMonitorSucceeded(values))
+    yield put(stopSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
@@ -57,7 +57,7 @@ export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      venueConstants.UPDATE_MONITOR_FORM_NAME
+      monitorConstants.UPDATE_MONITOR_FORM_NAME
     )
   }
 }
@@ -65,7 +65,7 @@ export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
 export function * getVenueMonitors (action) {
   try {
     const { venueId } = action.payload
-    yield put(venueActions.getVenueMonitorsStarted())
+    yield put(monitorActions.getVenueMonitorsStarted())
 
     const token = yield call(getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}`
@@ -74,24 +74,24 @@ export function * getVenueMonitors (action) {
     const entity = json.entity
     entity.key = entity.venueId
 
-    yield put(venueActions.getVenueMonitorsSucceeded([entity]))
+    yield put(monitorActions.getVenueMonitorsSucceeded([entity]))
   } catch (err) {
     if (err.statusCode !== 404) {
       yield call(log.error, err)
     }
 
-    yield put(venueActions.getVenueMonitorsFailed())
+    yield put(monitorActions.getVenueMonitorsFailed())
   }
 }
 
 export function * updateVenueMonitor ({ payload: { values }, meta }) {
   try {
-    yield put(startSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+    yield put(startSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
 
     yield call(
       validationLib.validate,
       values,
-      venueConstants.MONITOR_CONSTRAINT
+      monitorConstants.MONITOR_CONSTRAINT
     )
 
     const token = yield call(getAuthTokenForCurrentUser)
@@ -103,8 +103,8 @@ export function * updateVenueMonitor ({ payload: { values }, meta }) {
     }
 
     yield call(httpPut, url, body, token)
-    yield put(venueActions.updateVenueMonitorSucceeded(values))
-    yield put(stopSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+    yield put(monitorActions.updateVenueMonitorSucceeded(values))
+    yield put(stopSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
@@ -112,20 +112,20 @@ export function * updateVenueMonitor ({ payload: { values }, meta }) {
     yield call(
       sagaLib.submitErrorHandler,
       err,
-      venueConstants.UPDATE_MONITOR_FORM_NAME
+      monitorConstants.UPDATE_MONITOR_FORM_NAME
     )
   }
 }
 
 export default [
   takeLatest(
-    venueActions.types.GET_VENUE_EVENT_MONITORS,
+    monitorActions.types.GET_VENUE_EVENT_MONITORS,
     getVenueEventMonitors
   ),
   takeEvery(
-    venueActions.types.UPDATE_VENUE_EVENT_MONITOR,
+    monitorActions.types.UPDATE_VENUE_EVENT_MONITOR,
     updateVenueEventMonitor
   ),
-  takeLatest(venueActions.types.GET_VENUE_MONITORS, getVenueMonitors),
-  takeEvery(venueActions.types.UPDATE_VENUE_MONITOR, updateVenueMonitor)
+  takeLatest(monitorActions.types.GET_VENUE_MONITORS, getVenueMonitors),
+  takeEvery(monitorActions.types.UPDATE_VENUE_MONITOR, updateVenueMonitor)
 ]

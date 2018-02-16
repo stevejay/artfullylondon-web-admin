@@ -5,22 +5,22 @@ import log from 'loglevel'
 
 import * as sagas from './index'
 import * as sagaLib from '_src/lib/saga'
-import * as venueActions from '../actions'
+import * as monitorActions from '../actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import { get, put as httpPut } from '_src/lib/fetch'
-import * as venueConstants from '../constants'
+import * as monitorConstants from '../constants'
 import * as validationLib from '_src/lib/validation'
 
 describe('getVenueEventMonitors', () => {
   const generator = cloneableGenerator(sagas.getVenueEventMonitors)(
-    venueActions.getVenueEventMonitors('venue-id')
+    monitorActions.getVenueEventMonitors('venue-id')
   )
 
   it('should prepare to get venue event monitors', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(venueActions.getVenueEventMonitorsStarted())
+      put(monitorActions.getVenueEventMonitorsStarted())
     )
 
     result = generator.next()
@@ -47,7 +47,7 @@ describe('getVenueEventMonitors', () => {
 
     expect(result.value).toEqual(
       put(
-        venueActions.getVenueEventMonitorsSucceeded([
+        monitorActions.getVenueEventMonitorsSucceeded([
           { externalEventId: 'some-id', key: 'some-id' }
         ])
       )
@@ -70,7 +70,7 @@ describe('getVenueEventMonitors', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(venueActions.getVenueEventMonitorsFailed())
+      put(monitorActions.getVenueEventMonitorsFailed())
     )
 
     result = generatorClone.next()
@@ -81,13 +81,13 @@ describe('getVenueEventMonitors', () => {
 
 describe('getVenueMonitors', () => {
   const generator = cloneableGenerator(sagas.getVenueMonitors)(
-    venueActions.getVenueMonitors('venue-id')
+    monitorActions.getVenueMonitors('venue-id')
   )
 
   it('should prepare to get venue monitor', () => {
     let result = generator.next()
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorsStarted()))
+    expect(result.value).toEqual(put(monitorActions.getVenueMonitorsStarted()))
 
     result = generator.next()
 
@@ -113,7 +113,7 @@ describe('getVenueMonitors', () => {
 
     expect(result.value).toEqual(
       put(
-        venueActions.getVenueMonitorsSucceeded([
+        monitorActions.getVenueMonitorsSucceeded([
           {
             venueId: 'some-id',
             key: 'some-id'
@@ -138,7 +138,7 @@ describe('getVenueMonitors', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorsFailed()))
+    expect(result.value).toEqual(put(monitorActions.getVenueMonitorsFailed()))
 
     result = generatorClone.next()
 
@@ -153,7 +153,7 @@ describe('getVenueMonitors', () => {
 
     let result = generatorClone.throw(error)
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorsFailed()))
+    expect(result.value).toEqual(put(monitorActions.getVenueMonitorsFailed()))
 
     result = generatorClone.next()
 
@@ -163,7 +163,7 @@ describe('getVenueMonitors', () => {
 
 describe('updateVenueMonitor', () => {
   const generator = cloneableGenerator(sagas.updateVenueMonitor)({
-    type: venueActions.types.UPDATE_VENUE_MONITOR,
+    type: monitorActions.types.UPDATE_VENUE_MONITOR,
     payload: {
       values: {
         venueId: 'some-id',
@@ -178,7 +178,7 @@ describe('updateVenueMonitor', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(startSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+      put(startSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     )
 
     result = generator.next()
@@ -191,7 +191,7 @@ describe('updateVenueMonitor', () => {
           hasChanged: false,
           isIgnored: true
         },
-        venueConstants.MONITOR_CONSTRAINT
+        monitorConstants.MONITOR_CONSTRAINT
       )
     )
   })
@@ -221,7 +221,7 @@ describe('updateVenueMonitor', () => {
 
     expect(result.value).toEqual(
       put(
-        venueActions.updateVenueMonitorSucceeded({
+        monitorActions.updateVenueMonitorSucceeded({
           venueId: 'some-id',
           hasChanged: false,
           isIgnored: true
@@ -232,7 +232,7 @@ describe('updateVenueMonitor', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(stopSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+      put(stopSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
@@ -261,7 +261,7 @@ describe('updateVenueMonitor', () => {
       call(
         sagaLib.submitErrorHandler,
         error,
-        venueConstants.UPDATE_MONITOR_FORM_NAME
+        monitorConstants.UPDATE_MONITOR_FORM_NAME
       )
     )
 
@@ -273,7 +273,7 @@ describe('updateVenueMonitor', () => {
 
 describe('updateVenueEventMonitor', () => {
   const generator = cloneableGenerator(sagas.updateVenueEventMonitor)({
-    type: venueActions.types.UPDATE_VENUE_EVENT_MONITOR,
+    type: monitorActions.types.UPDATE_VENUE_EVENT_MONITOR,
     payload: {
       values: {
         venueId: 'some-id',
@@ -289,7 +289,7 @@ describe('updateVenueEventMonitor', () => {
     let result = generator.next()
 
     expect(result.value).toEqual(
-      put(startSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+      put(startSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     )
 
     result = generator.next()
@@ -303,7 +303,7 @@ describe('updateVenueEventMonitor', () => {
           hasChanged: false,
           isIgnored: true
         },
-        venueConstants.MONITOR_CONSTRAINT
+        monitorConstants.MONITOR_CONSTRAINT
       )
     )
   })
@@ -333,7 +333,7 @@ describe('updateVenueEventMonitor', () => {
 
     expect(result.value).toEqual(
       put(
-        venueActions.updateVenueEventMonitorSucceeded({
+        monitorActions.updateVenueEventMonitorSucceeded({
           venueId: 'some-id',
           externalEventId: 'some-external-id',
           hasChanged: false,
@@ -345,7 +345,7 @@ describe('updateVenueEventMonitor', () => {
     result = generatorClone.next()
 
     expect(result.value).toEqual(
-      put(stopSubmit(venueConstants.UPDATE_MONITOR_FORM_NAME))
+      put(stopSubmit(monitorConstants.UPDATE_MONITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
@@ -374,7 +374,7 @@ describe('updateVenueEventMonitor', () => {
       call(
         sagaLib.submitErrorHandler,
         error,
-        venueConstants.UPDATE_MONITOR_FORM_NAME
+        monitorConstants.UPDATE_MONITOR_FORM_NAME
       )
     )
 
