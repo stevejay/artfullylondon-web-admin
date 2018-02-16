@@ -55,7 +55,9 @@ export class VenueEditOrCreate extends React.Component {
   }
   handleCancel = event => {
     event.preventDefault()
-    this.props.history.push(`/venue/${this.props.entity.id}`)
+    console.log('going back')
+    this.props.history.goBack()
+    // this.props.history.push(`/venue/${this.props.entity.id}`)
   }
   render () {
     const { entity, isEdit } = this.props

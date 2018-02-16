@@ -42,7 +42,12 @@ export class EntityPage extends React.Component {
       return <BasicSection><Error /></BasicSection>
     }
 
-    if (getInProgress || !entity || entity.entityType !== entityType) {
+    if (
+      getInProgress ||
+      !entity ||
+      entity.entityType !== entityType ||
+      (entityId && entity.id !== entityId)
+    ) {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 

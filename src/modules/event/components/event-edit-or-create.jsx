@@ -44,7 +44,9 @@ export class EventEditOrCreate extends React.Component {
   }
   handleCancel = event => {
     event.preventDefault()
-    this.props.history.push(`/event/${this.props.entity.id}`)
+    console.log('going back')
+    this.props.history.goBack()
+    // this.props.history.push(`/event/${this.props.entity.id}`)
   }
   handleStepClick = nextStepIndex => {
     const { stepIndex } = this.props

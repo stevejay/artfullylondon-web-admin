@@ -83,6 +83,24 @@ it('should render correctly when has an entity', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
+it('should render correctly when has an entity but it has the wrong id', () => {
+  const wrapper = shallow(
+    <EntityPage
+      entityType='talent'
+      entityId='some-id'
+      entity={new FullTalent({ id: 'some-other-id' })}
+      getInProgress={false}
+      getFailed={false}
+      component={SomeComponent}
+      dispatch={_.noop}
+      match={{}}
+      location={{}}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
 it('should trigger getting the entity on construction when editing an entity', () => {
   const dispatch = jest.fn()
 

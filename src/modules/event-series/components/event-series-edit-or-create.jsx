@@ -53,7 +53,9 @@ export class EventSeriesEditOrCreate extends React.Component {
   }
   handleCancel = event => {
     event.preventDefault()
-    this.props.history.push(`/event-series/${this.props.entity.id}`)
+    console.log('going back')
+    this.props.history.goBack()
+    // this.props.history.push(`/event-series/${this.props.entity.id}`)
   }
   render () {
     const { entity, isEdit } = this.props
