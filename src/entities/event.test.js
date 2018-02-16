@@ -488,7 +488,7 @@ describe('FullEvent', () => {
   })
 
   it('should have correct pin', () => {
-    const subject = new FullEvent({ venue: { latitude: 2, longitude: 3  }})
+    const subject = new FullEvent({ venue: { latitude: 2, longitude: 3 } })
     expect(subject.pin).toEqual({ lat: 2, lng: 3 })
   })
 

@@ -22,27 +22,27 @@ import { EntityPageMap } from '_src/modules/location'
 import {
   MonitorCollection,
   VenueMonitorGridRow,
-  EventMonitorGridRow
+  EventMonitorGridRow,
+  selectors as monitorSelectors,
+  actions as monitorActions
 } from '_src/modules/monitor'
-import { selectors as venueSelectors } from '../reducers'
-import * as venueActions from '../actions'
 import { FullVenue } from '_src/entities/venue'
 import * as dateLib from '_src/lib/date'
 
 export class VenueDetail extends React.Component {
   handleVenueMonitorMounted = () => {
-    this.props.dispatch(venueActions.getVenueMonitors(this.props.entity.id))
+    this.props.dispatch(monitorActions.getVenueMonitors(this.props.entity.id))
   }
   handleVenueEventMonitorsMounted = () => {
     this.props.dispatch(
-      venueActions.getVenueEventMonitors(this.props.entity.id)
+      monitorActions.getVenueEventMonitors(this.props.entity.id)
     )
   }
   handleSubmitVenueMonitor = values => {
-    return this.props.dispatch(venueActions.updateVenueMonitor(values))
+    return this.props.dispatch(monitorActions.updateVenueMonitor(values))
   }
   handleSubmitVenueEventMonitor = values => {
-    return this.props.dispatch(venueActions.updateVenueEventMonitor(values))
+    return this.props.dispatch(monitorActions.updateVenueEventMonitor(values))
   }
   render () {
     const {
@@ -54,6 +54,7 @@ export class VenueDetail extends React.Component {
     } = this.props
 
     const dateStr = dateLib.getTodayDateAsString()
+    const venueHomepageUrl = entity.getHomepageUrl()
 
     return (
       <React.Fragment>
@@ -83,7 +84,7 @@ export class VenueDetail extends React.Component {
           <LazyLoad height={100} once>
             <MonitorCollection
               title='Pending Venue Monitors'
-              venue={entity}
+              venueHomepageUrl={venueHomepageUrl}
               monitors={venueMonitors}
               getInProgress={gettingVenueMonitors}
               onMounted={this.handleVenueMonitorMounted}
@@ -96,7 +97,7 @@ export class VenueDetail extends React.Component {
           <LazyLoad height={100} once>
             <MonitorCollection
               title='Pending Event Monitors'
-              venue={entity}
+              venueHomepageUrl={venueHomepageUrl}
               monitors={venueEventMonitors}
               getInProgress={gettingVenueEventMonitors}
               onMounted={this.handleVenueEventMonitorsMounted}
@@ -122,9 +123,11 @@ VenueDetail.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({
-    venueMonitors: venueSelectors.venueMonitors(state),
-    gettingVenueMonitors: venueSelectors.gettingVenueMonitors(state),
-    venueEventMonitors: venueSelectors.venueEventMonitors(state),
-    gettingVenueEventMonitors: venueSelectors.gettingVenueEventMonitors(state)
+    venueMonitors: monitorSelectors.venueMonitors(state),
+    gettingVenueMonitors: monitorSelectors.gettingVenueMonitors(state),
+    venueEventMonitors: monitorSelectors.venueEventMonitors(state),
+    gettingVenueEventMonitors: monitorSelectors.gettingVenueEventMonitors(
+      state
+    )
   })
 )(VenueDetail)

@@ -3,8 +3,10 @@ import _ from 'lodash'
 
 import { VenueDetail } from './venue-detail'
 import { FullVenue } from '_src/entities/venue'
-import * as venueActions from '../actions'
-import { MonitorCollection } from '_src/modules/monitor'
+import {
+  MonitorCollection,
+  actions as monitorActions
+} from '_src/modules/monitor'
 import * as dateLib from '_src/lib/date'
 
 it('should render correctly', () => {
@@ -58,7 +60,7 @@ it('should handle lazy load of the venue monitor', () => {
   wrapper.find(MonitorCollection).at(0).prop('onMounted')()
 
   expect(dispatch).toHaveBeenCalledWith(
-    venueActions.getVenueMonitors('some-id')
+    monitorActions.getVenueMonitors('some-id')
   )
 })
 
@@ -89,7 +91,7 @@ it('should handle lazy load of the venue event monitors', () => {
   wrapper.find(MonitorCollection).at(1).prop('onMounted')()
 
   expect(dispatch).toHaveBeenCalledWith(
-    venueActions.getVenueEventMonitors('some-id')
+    monitorActions.getVenueEventMonitors('some-id')
   )
 })
 
@@ -120,7 +122,7 @@ it('should handle submitting a venue monitor', () => {
   wrapper.find(MonitorCollection).at(0).prop('onSubmit')({ ignore: true })
 
   expect(dispatch).toHaveBeenCalledWith(
-    venueActions.updateVenueMonitor({ ignore: true })
+    monitorActions.updateVenueMonitor({ ignore: true })
   )
 })
 
@@ -151,6 +153,6 @@ it('should handle submitting a venue event monitor', () => {
   wrapper.find(MonitorCollection).at(1).prop('onSubmit')({ ignore: true })
 
   expect(dispatch).toHaveBeenCalledWith(
-    venueActions.updateVenueEventMonitor({ ignore: true })
+    monitorActions.updateVenueEventMonitor({ ignore: true })
   )
 })

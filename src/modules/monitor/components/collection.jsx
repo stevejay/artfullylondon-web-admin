@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStateHandlers } from 'recompose'
-import _ from 'lodash'
 
 import Modal from '_src/components/modal'
 import ModalContainer from '_src/components/modal/container'
@@ -10,7 +9,6 @@ import UpdateMonitorForm from '../forms/update-monitor'
 import Loader from '_src/components/loader'
 import Button from '_src/components/button'
 import Grid from '_src/components/grid'
-import { FullVenue } from '_src/entities/venue'
 import { EntitySectionHeading } from '_src/modules/entity'
 import './collection.scss'
 
@@ -34,29 +32,22 @@ export class MonitorCollection extends React.PureComponent {
   render () {
     const {
       title,
-      venue,
-      monitors: monitorsProp,
+      venueHomepageUrl,
+      monitors,
       getInProgress,
       gridRowComponent,
       showIgnored,
       editingMonitor
     } = this.props
 
-    // TODO clean all this logic up as selectors!
+    const withoutIgnored = monitors.filter(
+      monitor =>
+        !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+    )
 
-    const monitors = monitorsProp || []
-    const hasIgnoredMonitors = monitors.some(x => x.isIgnored)
-    const showAll = showIgnored || !hasIgnoredMonitors
-
-    const visibleMonitors = showAll
-      ? monitors
-      : monitors.filter(
-          monitor =>
-            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-        )
-
-    const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
-    const venueHomepageUrl = venue.getHomepageUrl()
+    const visibleMonitors = showIgnored ? monitors : withoutIgnored
+    const hasVisibleMonitors = !!visibleMonitors.length
+    const hasIgnoredMonitors = withoutIgnored.length < monitors.length
 
     return (
       <div styleName='container'>
@@ -112,7 +103,7 @@ export class MonitorCollection extends React.PureComponent {
 
 MonitorCollection.propTypes = {
   title: PropTypes.string.isRequired,
-  venue: PropTypes.instanceOf(FullVenue),
+  venueHomepageUrl: PropTypes.string,
   monitors: PropTypes.arrayOf(
     PropTypes.shape({ key: PropTypes.string.isRequired })
   ),

@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions'
-import _ from 'lodash'
 
 import * as arrayLib from '_src/lib/array'
 import { types } from '../actions'
@@ -7,7 +6,7 @@ import { types } from '../actions'
 export const moduleName = 'venueEventMonitors'
 
 const initialState = {
-  monitors: null,
+  monitors: [],
   getInProgress: false,
   getFailed: false
 }
@@ -42,9 +41,5 @@ export const reducer = handleActions(
 export const selectors = {
   venueEventMonitors: state => state.monitors,
   gettingVenueEventMonitors: state => state.getInProgress,
-  failedToGetVenueEventMonitors: state => state.getFailed,
-  hasIgnoredVenueEventMonitors: state =>
-    (state.monitors
-      ? state.monitors.some(monitor => monitor.isIgnored)
-      : false)
+  failedToGetVenueEventMonitors: state => state.getFailed
 }

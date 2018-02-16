@@ -2,7 +2,7 @@
 
 exports[`should render correctly when has changed 1`] = `
 <Form
-  className="src-modules-venue-forms-update-monitor__container"
+  className="src-modules-monitor-forms-update-monitor__container"
   onSubmit={[Function]}
 >
   <FormRow>
@@ -36,7 +36,7 @@ exports[`should render correctly when has changed 1`] = `
 
 exports[`should render correctly when has not changed 1`] = `
 <Form
-  className="src-modules-venue-forms-update-monitor__container"
+  className="src-modules-monitor-forms-update-monitor__container"
   onSubmit={[Function]}
 >
   <FormRow>

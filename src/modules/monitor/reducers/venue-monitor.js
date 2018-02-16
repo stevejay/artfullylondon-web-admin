@@ -6,7 +6,7 @@ import { types } from '../actions'
 export const moduleName = 'venueMonitors'
 
 const initialState = {
-  monitors: null,
+  monitors: [],
   getInProgress: false,
   getFailed: false
 }

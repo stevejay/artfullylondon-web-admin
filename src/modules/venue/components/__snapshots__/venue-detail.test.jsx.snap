@@ -171,20 +171,7 @@ exports[`should render correctly 1`] = `
         onMounted={[Function]}
         onSubmit={[Function]}
         title="Pending Venue Monitors"
-        venue={
-          FullVenue {
-            "_links": LinkCollection {
-              "_links": undefined,
-            },
-            "entity": Object {
-              "images": Array [],
-              "latitude": 1,
-              "longitude": 2,
-              "name": "The Name",
-            },
-            "postcodeDistrict": null,
-          }
-        }
+        venueHomepageUrl={null}
       />
     </LazyLoad>
   </BasicSection>
@@ -205,20 +192,7 @@ exports[`should render correctly 1`] = `
         onMounted={[Function]}
         onSubmit={[Function]}
         title="Pending Event Monitors"
-        venue={
-          FullVenue {
-            "_links": LinkCollection {
-              "_links": undefined,
-            },
-            "entity": Object {
-              "images": Array [],
-              "latitude": 1,
-              "longitude": 2,
-              "name": "The Name",
-            },
-            "postcodeDistrict": null,
-          }
-        }
+        venueHomepageUrl={null}
       />
     </LazyLoad>
   </BasicSection>

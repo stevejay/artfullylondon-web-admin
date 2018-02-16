@@ -1,13 +1,13 @@
 import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './venue-monitor'
-import * as venueActions from '../actions'
+import * as monitorActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
 
   expect(actual).toEqual({
-    monitors: null,
+    monitors: [],
     getInProgress: false,
     getFailed: false
   })
@@ -15,15 +15,15 @@ it('should have the correct initial state', () => {
 
 it('should handle starting to get a venue monitor', () => {
   const state = deepFreeze({
-    monitors: null,
+    monitors: [],
     getInProgress: false,
     getFailed: false
   })
 
-  const actual = reducer(state, venueActions.getVenueMonitorsStarted())
+  const actual = reducer(state, monitorActions.getVenueMonitorsStarted())
 
   expect(actual).toEqual({
-    monitors: null,
+    monitors: [],
     getInProgress: true,
     getFailed: false
   })
@@ -31,14 +31,14 @@ it('should handle starting to get a venue monitor', () => {
 
 it('should handle successfully getting a venue monitor', () => {
   const state = deepFreeze({
-    monitors: null,
+    monitors: [],
     getInProgress: true,
     getFailed: false
   })
 
   const actual = reducer(
     state,
-    venueActions.getVenueMonitorsSucceeded([{ key: 'some-key' }])
+    monitorActions.getVenueMonitorsSucceeded([{ key: 'some-key' }])
   )
 
   expect(actual).toEqual({
@@ -50,15 +50,15 @@ it('should handle successfully getting a venue monitor', () => {
 
 it('should handle failing to get a venue monitor', () => {
   const state = deepFreeze({
-    monitors: null,
+    monitors: [],
     getInProgress: true,
     getFailed: false
   })
 
-  const actual = reducer(state, venueActions.getVenueMonitorsFailed())
+  const actual = reducer(state, monitorActions.getVenueMonitorsFailed())
 
   expect(actual).toEqual({
-    monitors: null,
+    monitors: [],
     getInProgress: false,
     getFailed: true
   })
@@ -73,7 +73,7 @@ it('should handle successfully updating a venue monitor', () => {
 
   const actual = reducer(
     state,
-    venueActions.updateVenueMonitorSucceeded({
+    monitorActions.updateVenueMonitorSucceeded({
       key: 'some-key',
       isIgnored: true
     })
@@ -95,7 +95,7 @@ it('should ignore updating a non-existent venue monitor', () => {
 
   const actual = reducer(
     state,
-    venueActions.updateVenueMonitorSucceeded({
+    monitorActions.updateVenueMonitorSucceeded({
       key: 'some-nonexistent-key',
       isIgnored: true
     })

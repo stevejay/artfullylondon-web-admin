@@ -2,7 +2,6 @@ import React from 'react'
 import _ from 'lodash'
 
 import { MonitorCollection } from './collection'
-import { FullVenue } from '_src/entities/venue'
 import UpdateMonitorForm from '../forms/update-monitor'
 import Button from '_src/components/button'
 import Modal from '_src/components/modal'
@@ -11,7 +10,7 @@ it('should render correctly when get is in progress', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[]}
       getInProgress
       gridRowComponent={() => 'div'}
@@ -31,7 +30,7 @@ it('should render correctly when get in not in progress and there are no monitor
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[]}
       getInProgress={false}
       gridRowComponent={() => 'div'}
@@ -51,7 +50,7 @@ it('should render correctly when not showing ignored monitors', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -74,7 +73,7 @@ it('should render correctly when showing ignored monitors', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -97,7 +96,7 @@ it('should render correctly when editing a monitor', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -122,7 +121,7 @@ it('should handle showing the hidden monitors', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -149,7 +148,7 @@ it('should handle editing a monitor', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -176,7 +175,7 @@ it('should handle hiding editing a monitor', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }
@@ -204,7 +203,7 @@ it('should handle submitting a edited monitor', () => {
   const wrapper = shallow(
     <MonitorCollection
       title='The Title'
-      venue={new FullVenue({})}
+      venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
         { key: 'key-2', isIgnored: false }

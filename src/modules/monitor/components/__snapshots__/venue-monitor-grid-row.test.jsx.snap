@@ -2,13 +2,13 @@
 
 exports[`should render correctly when has changed 1`] = `
 <div
-  className="src-modules-venue-components-monitor-venue-monitor-grid-row__container"
+  className="src-modules-monitor-components-venue-monitor-grid-row__container"
 >
   <div
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__content"
+    className="src-modules-monitor-components-venue-monitor-grid-row__content"
   >
     <h2
-      className="src-modules-venue-components-monitor-venue-monitor-grid-row__title"
+      className="src-modules-monitor-components-venue-monitor-grid-row__title"
     >
       <a
         href="http://some/venue/homepage/url"
@@ -20,14 +20,14 @@ exports[`should render correctly when has changed 1`] = `
     </h2>
     <div>
       <span
-        className="src-modules-venue-components-monitor-venue-monitor-grid-row__tag-changed src-modules-venue-components-monitor-venue-monitor-grid-row__tag"
+        className="src-modules-monitor-components-venue-monitor-grid-row__tag-changed src-modules-monitor-components-venue-monitor-grid-row__tag"
       >
         changed
       </span>
     </div>
   </div>
   <FaPencil
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__icon"
+    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
     onClick={[Function]}
     tabIndex="0"
   />
@@ -36,13 +36,13 @@ exports[`should render correctly when has changed 1`] = `
 
 exports[`should render correctly when has no url 1`] = `
 <div
-  className="src-modules-venue-components-monitor-venue-monitor-grid-row__container"
+  className="src-modules-monitor-components-venue-monitor-grid-row__container"
 >
   <div
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__content"
+    className="src-modules-monitor-components-venue-monitor-grid-row__content"
   >
     <h2
-      className="src-modules-venue-components-monitor-venue-monitor-grid-row__title"
+      className="src-modules-monitor-components-venue-monitor-grid-row__title"
     >
       <span>
         Venue Openings
@@ -51,7 +51,7 @@ exports[`should render correctly when has no url 1`] = `
     <div />
   </div>
   <FaPencil
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__icon"
+    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
     onClick={[Function]}
     tabIndex="0"
   />
@@ -60,13 +60,13 @@ exports[`should render correctly when has no url 1`] = `
 
 exports[`should render correctly when has not changed 1`] = `
 <div
-  className="src-modules-venue-components-monitor-venue-monitor-grid-row__container"
+  className="src-modules-monitor-components-venue-monitor-grid-row__container"
 >
   <div
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__content"
+    className="src-modules-monitor-components-venue-monitor-grid-row__content"
   >
     <h2
-      className="src-modules-venue-components-monitor-venue-monitor-grid-row__title"
+      className="src-modules-monitor-components-venue-monitor-grid-row__title"
     >
       <a
         href="http://some/venue/homepage/url"
@@ -79,7 +79,7 @@ exports[`should render correctly when has not changed 1`] = `
     <div />
   </div>
   <FaPencil
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__icon"
+    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
     onClick={[Function]}
     tabIndex="0"
   />
@@ -88,13 +88,13 @@ exports[`should render correctly when has not changed 1`] = `
 
 exports[`should render correctly when is ignored 1`] = `
 <div
-  className="src-modules-venue-components-monitor-venue-monitor-grid-row__container"
+  className="src-modules-monitor-components-venue-monitor-grid-row__container"
 >
   <div
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__content"
+    className="src-modules-monitor-components-venue-monitor-grid-row__content"
   >
     <h2
-      className="src-modules-venue-components-monitor-venue-monitor-grid-row__title"
+      className="src-modules-monitor-components-venue-monitor-grid-row__title"
     >
       <a
         href="http://some/venue/homepage/url"
@@ -106,14 +106,14 @@ exports[`should render correctly when is ignored 1`] = `
     </h2>
     <div>
       <span
-        className="src-modules-venue-components-monitor-venue-monitor-grid-row__tag"
+        className="src-modules-monitor-components-venue-monitor-grid-row__tag"
       >
         ignored
       </span>
     </div>
   </div>
   <FaPencil
-    className="src-modules-venue-components-monitor-venue-monitor-grid-row__icon"
+    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
     onClick={[Function]}
     tabIndex="0"
   />

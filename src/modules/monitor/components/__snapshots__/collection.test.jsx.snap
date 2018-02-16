@@ -2,13 +2,13 @@
 
 exports[`should render correctly when editing a monitor 1`] = `
 <div
-  className="src-modules-venue-components-monitor-collection__container"
+  className="src-modules-monitor-components-collection__container"
 >
   <EntitySectionHeading>
     The Title
   </EntitySectionHeading>
   <div
-    className="src-modules-venue-components-monitor-collection__monitors-container"
+    className="src-modules-monitor-components-collection__monitors-container"
   >
     <Grid>
       <gridRowComponent
@@ -20,12 +20,12 @@ exports[`should render correctly when editing a monitor 1`] = `
           }
         }
         onEdit={[Function]}
-        venueHomepageUrl={null}
+        venueHomepageUrl="/some/url"
       />
     </Grid>
   </div>
   <div
-    className="src-modules-venue-components-monitor-collection__buttons-container"
+    className="src-modules-monitor-components-collection__buttons-container"
   >
     <Button
       onClick={[Function]}
@@ -63,16 +63,16 @@ exports[`should render correctly when editing a monitor 1`] = `
 
 exports[`should render correctly when get in not in progress and there are no monitors 1`] = `
 <div
-  className="src-modules-venue-components-monitor-collection__container"
+  className="src-modules-monitor-components-collection__container"
 >
   <EntitySectionHeading>
     The Title
   </EntitySectionHeading>
   <div
-    className="src-modules-venue-components-monitor-collection__monitors-container"
+    className="src-modules-monitor-components-collection__monitors-container"
   >
     <p
-      className="src-modules-venue-components-monitor-collection__no-monitors"
+      className="src-modules-monitor-components-collection__no-monitors"
     >
       No Monitors Found
     </p>
@@ -101,13 +101,13 @@ exports[`should render correctly when get in not in progress and there are no mo
 
 exports[`should render correctly when get is in progress 1`] = `
 <div
-  className="src-modules-venue-components-monitor-collection__container"
+  className="src-modules-monitor-components-collection__container"
 >
   <EntitySectionHeading>
     The Title
   </EntitySectionHeading>
   <div
-    className="src-modules-venue-components-monitor-collection__monitors-container"
+    className="src-modules-monitor-components-collection__monitors-container"
   >
     <Loader
       size="large"
@@ -138,13 +138,13 @@ exports[`should render correctly when get is in progress 1`] = `
 
 exports[`should render correctly when not showing ignored monitors 1`] = `
 <div
-  className="src-modules-venue-components-monitor-collection__container"
+  className="src-modules-monitor-components-collection__container"
 >
   <EntitySectionHeading>
     The Title
   </EntitySectionHeading>
   <div
-    className="src-modules-venue-components-monitor-collection__monitors-container"
+    className="src-modules-monitor-components-collection__monitors-container"
   >
     <Grid>
       <gridRowComponent
@@ -156,12 +156,12 @@ exports[`should render correctly when not showing ignored monitors 1`] = `
           }
         }
         onEdit={[Function]}
-        venueHomepageUrl={null}
+        venueHomepageUrl="/some/url"
       />
     </Grid>
   </div>
   <div
-    className="src-modules-venue-components-monitor-collection__buttons-container"
+    className="src-modules-monitor-components-collection__buttons-container"
   >
     <Button
       onClick={[Function]}
@@ -194,13 +194,13 @@ exports[`should render correctly when not showing ignored monitors 1`] = `
 
 exports[`should render correctly when showing ignored monitors 1`] = `
 <div
-  className="src-modules-venue-components-monitor-collection__container"
+  className="src-modules-monitor-components-collection__container"
 >
   <EntitySectionHeading>
     The Title
   </EntitySectionHeading>
   <div
-    className="src-modules-venue-components-monitor-collection__monitors-container"
+    className="src-modules-monitor-components-collection__monitors-container"
   >
     <Grid>
       <gridRowComponent
@@ -212,7 +212,7 @@ exports[`should render correctly when showing ignored monitors 1`] = `
           }
         }
         onEdit={[Function]}
-        venueHomepageUrl={null}
+        venueHomepageUrl="/some/url"
       />
       <gridRowComponent
         key="key-2"
@@ -223,12 +223,12 @@ exports[`should render correctly when showing ignored monitors 1`] = `
           }
         }
         onEdit={[Function]}
-        venueHomepageUrl={null}
+        venueHomepageUrl="/some/url"
       />
     </Grid>
   </div>
   <div
-    className="src-modules-venue-components-monitor-collection__buttons-container"
+    className="src-modules-monitor-components-collection__buttons-container"
   >
     <Button
       onClick={[Function]}
