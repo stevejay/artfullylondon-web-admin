@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<section
+  className="src-modules-dashboard-components-statistic__container-venue src-modules-dashboard-components-statistic__container"
+>
+  <h2>
+    The Label
+  </h2>
+  <p>
+    300
+  </p>
+</section>
+`;

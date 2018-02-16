@@ -1,10 +1,10 @@
 import { handleActions } from 'redux-actions'
+import _ from 'lodash'
 
-import * as entityLib from '_src/lib/entity'
 import { types } from '../actions'
 
 const initialState = {
-  entityCounts: [],
+  entityCounts: {},
   getEntityCountsInProgress: false,
   getEntityCountsFailed: false
 }
@@ -16,20 +16,12 @@ export const reducer = handleActions(
       getEntityCountsInProgress: true,
       getEntityCountsFailed: false
     }),
-    [types.GET_ENTITY_COUNTS_SUCCEEDED]: (state, action) => {
-      const entityCounts = action.payload.items.map(item => {
-        item.label = entityLib.getLabelForEntityType(item.entityType)
-        item.value = item.count
-        return item
-      })
-
-      return {
-        ...state,
-        getEntityCountsInProgress: false,
-        getEntityCountsFailed: false,
-        entityCounts
-      }
-    },
+    [types.GET_ENTITY_COUNTS_SUCCEEDED]: (state, action) => ({
+      ...state,
+      getEntityCountsInProgress: false,
+      getEntityCountsFailed: false,
+      entityCounts: _.keyBy(action.payload.items, item => item.entityType)
+    }),
     [types.GET_ENTITY_COUNTS_FAILED]: state => ({
       ...state,
       getEntityCountsInProgress: false,

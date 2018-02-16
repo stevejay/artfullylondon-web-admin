@@ -139,7 +139,7 @@ describe('mapSubmittedImages', () => {
   })
 })
 
-describe('getValidStatuses', () => {
+describe('getValidStatusesInitialValue', () => {
   const tests = [
     {
       it: 'should handle pending status',

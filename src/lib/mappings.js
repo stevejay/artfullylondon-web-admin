@@ -200,7 +200,7 @@ export function mapEventFromServer (payload) {
     id: payload.id,
     name: payload.name,
     status: payload.status,
-    validStatuses: entityLib.getValidStatuses(payload.status),
+    validStatuses: [], // entityLib.getValidStatuses(payload.status),
     eventType: payload.eventType,
     costType: payload.costType,
     costFrom: isPaid ? payload.costFrom.toFixed(2) : '',

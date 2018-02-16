@@ -24,24 +24,12 @@ exports[`should render correctly when the entity counts have been fetched 1`] = 
   </SectionHeading>
   <StatisticCollection
     entityCounts={
-      Array [
-        Object {
+      Object {
+        "venue": Object {
           "count": 100,
           "entityType": "venue",
         },
-        Object {
-          "count": 200,
-          "entityType": "talent",
-        },
-        Object {
-          "count": 300,
-          "entityType": "event-series",
-        },
-        Object {
-          "count": 400,
-          "entityType": "event",
-        },
-      ]
+      }
     }
   />
 </BasicSection>

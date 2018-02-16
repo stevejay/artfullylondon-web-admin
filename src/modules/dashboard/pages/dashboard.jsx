@@ -6,11 +6,11 @@ import { Error } from '_src/modules/error'
 import BoxesLoader from '_src/components/loader/boxes'
 import SectionHeading from '_src/components/section/heading'
 import BasicSection from '_src/components/section/basic'
-import StatisticCollection from '../components/statistic/collection'
+import StatisticCollection from '../components/statistic-collection'
 import { selectors as dashboardSelectors } from '../reducers'
 import * as dashboardActions from '../actions'
 
-export class DashboardPage extends React.Component {
+export class DashboardPage extends React.PureComponent {
   componentWillMount () {
     this.props.dispatch(dashboardActions.getEntityCounts())
   }
@@ -33,7 +33,7 @@ export class DashboardPage extends React.Component {
 }
 
 DashboardPage.propTypes = {
-  entityCounts: PropTypes.array,
+  entityCounts: PropTypes.object.isRequired,
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired

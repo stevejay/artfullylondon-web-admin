@@ -7,7 +7,7 @@ it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
 
   expect(actual).toEqual({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: false,
     getEntityCountsFailed: false
   })
@@ -15,7 +15,7 @@ it('should have the correct initial state', () => {
 
 it('should handle a started message', () => {
   const state = deepFreeze({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: false,
     getEntityCountsFailed: false
   })
@@ -23,7 +23,7 @@ it('should handle a started message', () => {
   const actual = reducer(state, dashboardActions.getEntityCountsStarted())
 
   expect(actual).toEqual({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: true,
     getEntityCountsFailed: false
   })
@@ -31,7 +31,7 @@ it('should handle a started message', () => {
 
 it('should handle a succeeded message', () => {
   const state = deepFreeze({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: true,
     getEntityCountsFailed: false
   })
@@ -44,9 +44,9 @@ it('should handle a succeeded message', () => {
   )
 
   expect(actual).toEqual({
-    entityCounts: [
-      { entityType: 'venue', count: 100, value: 100, label: 'Venue' }
-    ],
+    entityCounts: {
+      venue: { entityType: 'venue', count: 100 }
+    },
     getEntityCountsInProgress: false,
     getEntityCountsFailed: false
   })
@@ -54,7 +54,7 @@ it('should handle a succeeded message', () => {
 
 it('should handle a failed message', () => {
   const state = deepFreeze({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: true,
     getEntityCountsFailed: false
   })
@@ -62,7 +62,7 @@ it('should handle a failed message', () => {
   const actual = reducer(state, dashboardActions.getEntityCountsFailed())
 
   expect(actual).toEqual({
-    entityCounts: [],
+    entityCounts: {},
     getEntityCountsInProgress: false,
     getEntityCountsFailed: true
   })
@@ -71,9 +71,13 @@ it('should handle a failed message', () => {
 describe('selectors', () => {
   describe('entityCounts', () => {
     it('should return the current value', () => {
-      const state = { entityCounts: [{ count: 2 }] }
+      const state = {
+        entityCounts: { venue: { entityType: 'venue', count: 100 } }
+      }
+
       const result = selectors.entityCounts(state)
-      expect(result).toEqual([{ count: 2 }])
+
+      expect(result).toEqual({ venue: { entityType: 'venue', count: 100 } })
     })
   })
 

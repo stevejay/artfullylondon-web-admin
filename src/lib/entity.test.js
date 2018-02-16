@@ -79,62 +79,6 @@ describe('getEntityCardImageDataForEntityType', () => {
   })
 })
 
-describe('getLabelForEntityType', () => {
-  const tests = [
-    {
-      arg: entityConstants.ENTITY_TYPE_EVENT,
-      expected: 'Event'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_EVENT_SERIES,
-      expected: 'Event Series'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_TALENT,
-      expected: 'Talent'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_VENUE,
-      expected: 'Venue'
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = entityLib.getLabelForEntityType(test.arg)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('getColorForEntityType', () => {
-  const tests = [
-    {
-      arg: entityConstants.ENTITY_TYPE_EVENT,
-      expected: '#75CA18'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_EVENT_SERIES,
-      expected: '#4990E2'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_TALENT,
-      expected: '#FF632A'
-    },
-    {
-      arg: entityConstants.ENTITY_TYPE_VENUE,
-      expected: '#DB3b9C'
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.arg)}`, () => {
-      const actual = entityLib.getColorForEntityType({ entityType: test.arg })
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
 describe('createEntityUrl', () => {
   const tests = [
     {

@@ -7,7 +7,7 @@ exports[`should render correctly 1`] = `
   mountOnEnter={true}
   unmountOnExit={true}
 >
-  <section
+  <article
     className="src-modules-dashboard-components-statistic-collection__container"
   >
     <Statistic
@@ -30,7 +30,7 @@ exports[`should render correctly 1`] = `
       entityType="venue"
       key="venue"
     />
-  </section>
+  </article>
 </FadeTransition>
 `;
 
@@ -41,7 +41,7 @@ exports[`should render correctly when some entity counts are missing 1`] = `
   mountOnEnter={true}
   unmountOnExit={true}
 >
-  <section
+  <article
     className="src-modules-dashboard-components-statistic-collection__container"
   >
     <Statistic
@@ -64,6 +64,6 @@ exports[`should render correctly when some entity counts are missing 1`] = `
       entityType="venue"
       key="venue"
     />
-  </section>
+  </article>
 </FadeTransition>
 `;

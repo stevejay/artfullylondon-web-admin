@@ -8,12 +8,12 @@ import Button from '_src/components/button'
 import * as appUpdaterActions from '../actions'
 import './app-updater.scss'
 
-export class AppUpdater extends React.Component {
-  constructor (props) {
-    super(props)
-    this.props.dispatch(appUpdaterActions.checkIfAppWasUpdated())
-    this.props.dispatch(appUpdaterActions.checkForNewAppVersion()).then(() => {
-      this.props.setShouldUpdate(true)
+export class AppUpdater extends React.PureComponent {
+  componentWillMount () {
+    const { dispatch, setShouldUpdate } = this.props
+    dispatch(appUpdaterActions.checkIfAppWasUpdated())
+    dispatch(appUpdaterActions.checkForNewAppVersion()).then(() => {
+      setShouldUpdate(true)
     })
   }
   handleClick = () => {
