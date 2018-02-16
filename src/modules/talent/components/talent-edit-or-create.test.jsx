@@ -19,7 +19,7 @@ it('should render correctly when creating a talent', () => {
     <TalentEditOrCreate
       entity={talent}
       isEdit={false}
-      history={{}}
+      onCancel={_.noop}
       dispatch={_.noop}
       imageEditorIsPristine
       linkEditorIsPristine
@@ -42,7 +42,7 @@ it('should render correctly when editing a talent', () => {
     <TalentEditOrCreate
       entity={talent}
       isEdit
-      history={{}}
+      onCancel={_.noop}
       dispatch={_.noop}
       imageEditorIsPristine
       linkEditorIsPristine
@@ -60,7 +60,7 @@ describe('shouldComponentUpdate', () => {
       <TalentEditOrCreate
         entity={talent}
         isEdit={false}
-        history={{}}
+        onCancel={_.noop}
         dispatch={_.noop}
         imageEditorIsPristine
         linkEditorIsPristine
@@ -78,7 +78,7 @@ describe('shouldComponentUpdate', () => {
       <TalentEditOrCreate
         entity={talent}
         isEdit={false}
-        history={{}}
+        onCancel={_.noop}
         dispatch={_.noop}
         imageEditorIsPristine
         linkEditorIsPristine
@@ -96,24 +96,22 @@ describe('shouldComponentUpdate', () => {
 it('should handle a cancel click', () => {
   talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
   const entity = new FullTalent({ id: 'some-id' })
-  const event = { preventDefault: jest.fn() }
-  const history = { goBack: jest.fn() }
+  const onCancel = jest.fn()
 
   const wrapper = shallow(
     <TalentEditOrCreate
       entity={entity}
       isEdit={false}
-      history={history}
+      onCancel={onCancel}
       dispatch={_.noop}
       imageEditorIsPristine
       linkEditorIsPristine
     />
   )
 
-  wrapper.find(EditTalentForm).prop('onCancel')(event)
+  wrapper.find(EditTalentForm).prop('onCancel')()
 
-  expect(event.preventDefault).toHaveBeenCalled()
-  expect(history.goBack).toHaveBeenCalled()
+  expect(onCancel).toHaveBeenCalled()
 })
 
 describe('handleSubmit', () => {
@@ -126,7 +124,7 @@ describe('handleSubmit', () => {
       <TalentEditOrCreate
         entity={entity}
         isEdit={false}
-        history={{}}
+        onCancel={_.noop}
         dispatch={dispatch}
         imageEditorIsPristine
         linkEditorIsPristine={false}
@@ -152,7 +150,7 @@ describe('handleSubmit', () => {
       <TalentEditOrCreate
         entity={entity}
         isEdit={false}
-        history={{}}
+        onCancel={_.noop}
         dispatch={dispatch}
         imageEditorIsPristine
         linkEditorIsPristine

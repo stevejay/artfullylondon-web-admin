@@ -21,6 +21,10 @@ export class EntityPage extends React.Component {
       this._getOrResetEntity(nextProps)
     }
   }
+  handleCancel = event => {
+    event.preventDefault()
+    this.props.history.goBack()
+  }
   _getOrResetEntity ({ entityType, entityId }) {
     this.props.dispatch(
       entityId
@@ -54,7 +58,11 @@ export class EntityPage extends React.Component {
     return (
       <FadeTransition in appear mountOnEnter unmountOnExit>
         <BasicSection>
-          <Component entity={entity} isEdit={!!entityId} />
+          <Component
+            entity={entity}
+            isEdit={!!entityId}
+            onCancel={this.handleCancel}
+          />
         </BasicSection>
       </FadeTransition>
     )
@@ -70,7 +78,8 @@ EntityPage.propTypes = {
   component: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default withRouter(

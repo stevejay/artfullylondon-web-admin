@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { submit as submitReduxForm } from 'redux-form'
 import { withState } from 'recompose'
@@ -42,10 +41,6 @@ export class EventEditOrCreate extends React.Component {
     const { stepIndex, updateStepIndex } = this.props
     stepIndex > 0 && updateStepIndex(stepIndex - 1)
   }
-  handleCancel = event => {
-    event.preventDefault()
-    this.props.history.goBack()
-  }
   handleStepClick = nextStepIndex => {
     const { stepIndex } = this.props
 
@@ -78,7 +73,7 @@ export class EventEditOrCreate extends React.Component {
   handleSubmitTalent = values => {}
   handleSubmit = values => {}
   render () {
-    const { entity, stepIndex } = this.props
+    const { entity, stepIndex, onCancel } = this.props
 
     return (
       <React.Fragment>
@@ -99,32 +94,32 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 0 &&
             <BasicsForm
               onSubmit={this.handleSubmitBasics}
-              onCancel={this.handleCancel}
+              onCancel={onCancel}
               constraint={eventConstraints.BASIC_CONSTRAINT}
             />}
           {stepIndex === 1 &&
             <TagsForm
               onSubmit={this.handleSubmitTags}
               previousPage={this.previousPage}
-              onCancel={this.handleCancel}
+              onCancel={onCancel}
             />}
           {stepIndex === 2 &&
             <TimesForm
               onSubmit={this.handleSubmitTimes}
               previousPage={this.previousPage}
-              onCancel={this.handleCancel}
+              onCancel={onCancel}
             />}
           {stepIndex === 3 &&
             <TalentsForm
               onSubmit={this.handleSubmitTalent}
               previousPage={this.previousPage}
-              onCancel={this.handleCancel}
+              onCancel={onCancel}
             />}
           {stepIndex === 4 &&
             <ImagesForm
               onSubmit={this.handleSubmit}
               previousPage={this.previousPage}
-              onCancel={this.handleCancel}
+              onCancel={onCancel}
             />}
         </EntityDetailsContainer>
       </React.Fragment>
@@ -135,12 +130,12 @@ export class EventEditOrCreate extends React.Component {
 EventEditOrCreate.propTypes = {
   entity: PropTypes.instanceOf(FullEvent).isRequired,
   isEdit: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired,
+  onCancel: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   stepIndex: PropTypes.number.isRequired,
   updateStepIndex: PropTypes.func.isRequired
 }
 
-export default withRouter(
-  connect()(withState('stepIndex', 'updateStepIndex', 0)(EventEditOrCreate))
+export default connect()(
+  withState('stepIndex', 'updateStepIndex', 0)(EventEditOrCreate)
 )

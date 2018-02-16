@@ -37,6 +37,7 @@ exports[`should render correctly when has an entity 1`] = `
         }
       }
       isEdit={true}
+      onCancel={[Function]}
     />
   </BasicSection>
 </FadeTransition>

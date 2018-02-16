@@ -23,6 +23,7 @@ it('should render correctly when get entity failed', () => {
       dispatch={_.noop}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -41,6 +42,7 @@ it('should render correctly when get is in progress', () => {
       dispatch={_.noop}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -59,6 +61,7 @@ it('should render correctly when has no entity', () => {
       dispatch={_.noop}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -77,6 +80,7 @@ it('should render correctly when has an entity', () => {
       dispatch={_.noop}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -95,6 +99,7 @@ it('should render correctly when has an entity but it has the wrong id', () => {
       dispatch={_.noop}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -115,6 +120,7 @@ it('should trigger getting the entity on construction when editing an entity', (
       dispatch={dispatch}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -137,6 +143,7 @@ it('should trigger getting the entity on construction when creating an entity', 
       dispatch={dispatch}
       match={{}}
       location={{}}
+      history={{}}
     />
   )
 
@@ -160,6 +167,7 @@ it('should not trigger getting the entity when props change but the same entity 
       dispatch={dispatch}
       match={{}}
       location={location}
+      history={{}}
     />
   )
 
@@ -182,6 +190,7 @@ it('should trigger getting the entity when props change and a different entity i
       dispatch={dispatch}
       match={{}}
       location={{ path: '/first' }}
+      history={{}}
     />
   )
 
@@ -196,4 +205,29 @@ it('should trigger getting the entity when props change and a different entity i
   expect(dispatch).toHaveBeenCalledWith(
     entityActions.getEntity('talent', 'some-other-id')
   )
+})
+
+it('should handle cancelling the entity edit', () => {
+  const history = { goBack: jest.fn() }
+  const event = { preventDefault: jest.fn() }
+
+  const wrapper = shallow(
+    <EntityPage
+      entityType='talent'
+      entityId='some-id'
+      entity={new FullTalent({ id: 'some-id' })}
+      getInProgress={false}
+      getFailed={false}
+      component={SomeComponent}
+      dispatch={_.noop}
+      match={{}}
+      location={{}}
+      history={history}
+    />
+  )
+
+  wrapper.find(SomeComponent).prop('onCancel')(event)
+
+  expect(event.preventDefault).toHaveBeenCalled()
+  expect(history.goBack).toHaveBeenCalled()
 })

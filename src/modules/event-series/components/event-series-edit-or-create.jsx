@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
@@ -51,12 +50,8 @@ export class EventSeriesEditOrCreate extends React.Component {
       )
     }
   }
-  handleCancel = event => {
-    event.preventDefault()
-    this.props.history.goBack()
-  }
   render () {
-    const { entity, isEdit } = this.props
+    const { entity, isEdit, onCancel } = this.props
 
     return (
       <React.Fragment>
@@ -72,7 +67,7 @@ export class EventSeriesEditOrCreate extends React.Component {
             isEdit={isEdit}
             initialValues={eventSeriesMapper.getInitialValues(entity)}
             onSubmit={this.handleSubmit}
-            onCancel={this.handleCancel}
+            onCancel={onCancel}
           />
         </EntityDetailsContainer>
       </React.Fragment>
@@ -83,20 +78,16 @@ export class EventSeriesEditOrCreate extends React.Component {
 EventSeriesEditOrCreate.propTypes = {
   entity: PropTypes.instanceOf(FullEventSeries).isRequired,
   isEdit: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired,
+  onCancel: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   imageEditorIsPristine: PropTypes.bool.isRequired,
   linkEditorIsPristine: PropTypes.bool.isRequired
 }
 
-export default withRouter(
-  connect(
-    /* istanbul ignore next */
-    state => ({
-      imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(
-        state
-      ),
-      linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
-    })
-  )(EventSeriesEditOrCreate)
-)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    imageEditorIsPristine: reduxForm.isPristine(IMAGE_EDITOR_FORM_NAME)(state),
+    linkEditorIsPristine: reduxForm.isPristine(LINK_EDITOR_FORM_NAME)(state)
+  })
+)(EventSeriesEditOrCreate)
