@@ -184,7 +184,13 @@ if (PRODUCTION) {
     ]),
     new UnusedWebpackPlugin({
       directories: [SRC_DIR],
-      exclude: ['.DS_Store']
+      exclude: [
+        '.DS_Store',
+        '*.test.js',
+        '*.test.jsx',
+        '*.snap',
+        'debug/dev-tools.prod.js'
+      ]
     })
   ])
 }
