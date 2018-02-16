@@ -8,7 +8,7 @@ exports[`should render a message with an icon 1`] = `
   to="/link/to"
 >
   <FaInfoCircle
-    styleName="icon"
+    className="message-icon"
   />
   <div
     className="src-components-message-index__text"

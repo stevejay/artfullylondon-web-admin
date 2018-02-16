@@ -38,11 +38,11 @@ it('should handle successfully getting the venue event monitors', () => {
 
   const actual = reducer(
     state,
-    venueActions.getVenueEventMonitorsSucceeded([{ id: 'some-id' }])
+    venueActions.getVenueEventMonitorsSucceeded([{ key: 'some-key' }])
   )
 
   expect(actual).toEqual({
-    venueEventMonitors: [{ id: 'some-id' }],
+    venueEventMonitors: [{ key: 'some-key' }],
     getInProgress: false,
     getFailed: false
   })
@@ -67,8 +67,8 @@ it('should handle failing to get the venue event monitors', () => {
 it('should handle successfully updating a venue event monitor', () => {
   const state = deepFreeze({
     venueEventMonitors: [
-      { externalEventId: 'some-external-id' },
-      { externalEventId: 'some-other-external-id' }
+      { key: 'some-external-key' },
+      { key: 'some-other-external-key' }
     ],
     getInProgress: false,
     getFailed: false
@@ -77,7 +77,7 @@ it('should handle successfully updating a venue event monitor', () => {
   const actual = reducer(
     state,
     venueActions.updateVenueEventMonitorSucceeded({
-      externalEventId: 'some-external-id',
+      key: 'some-external-key',
       isIgnored: false,
       hasChanged: true
     })
@@ -86,11 +86,11 @@ it('should handle successfully updating a venue event monitor', () => {
   expect(actual).toEqual({
     venueEventMonitors: [
       {
-        externalEventId: 'some-external-id',
+        key: 'some-external-key',
         isIgnored: false,
         hasChanged: true
       },
-      { externalEventId: 'some-other-external-id' }
+      { key: 'some-other-external-key' }
     ],
     getInProgress: false,
     getFailed: false
@@ -99,7 +99,7 @@ it('should handle successfully updating a venue event monitor', () => {
 
 it('should handle updating a venue event monitor when that monitor does not exist', () => {
   const state = deepFreeze({
-    venueEventMonitors: [{ externalEventId: 'some-other-external-id' }],
+    venueEventMonitors: [{ key: 'some-other-external-key' }],
     getInProgress: false,
     getFailed: false
   })
@@ -107,14 +107,14 @@ it('should handle updating a venue event monitor when that monitor does not exis
   const actual = reducer(
     state,
     venueActions.updateVenueEventMonitorSucceeded({
-      externalEventId: 'some-external-id',
+      key: 'some-external-key',
       isIgnored: false,
       hasChanged: true
     })
   )
 
   expect(actual).toEqual({
-    venueEventMonitors: [{ externalEventId: 'some-other-external-id' }],
+    venueEventMonitors: [{ key: 'some-other-external-key' }],
     getInProgress: false,
     getFailed: false
   })
@@ -123,9 +123,9 @@ it('should handle updating a venue event monitor when that monitor does not exis
 describe('selectors', () => {
   describe('venueEventMonitors', () => {
     it('should get the value', () => {
-      const state = { venueEventMonitors: [{ id: 'some-id' }] }
+      const state = { venueEventMonitors: [{ key: 'some-key' }] }
       const actual = selectors.venueEventMonitors(state)
-      expect(actual).toEqual([{ id: 'some-id' }])
+      expect(actual).toEqual([{ key: 'some-key' }])
     })
   })
 
@@ -147,14 +147,16 @@ describe('selectors', () => {
 
   describe('hasIgnoredVenueEventMonitors', () => {
     it('should get the value when there are ignored monitors', () => {
-      const state = { venueEventMonitors: [{ id: 'some-id', isIgnored: true }] }
+      const state = {
+        venueEventMonitors: [{ key: 'some-key', isIgnored: true }]
+      }
       const actual = selectors.hasIgnoredVenueEventMonitors(state)
       expect(actual).toEqual(true)
     })
 
     it('should get the value when there are no ignored monitors', () => {
       const state = {
-        venueEventMonitors: [{ id: 'some-id', isIgnored: false }]
+        venueEventMonitors: [{ key: 'some-key', isIgnored: false }]
       }
 
       const actual = selectors.hasIgnoredVenueEventMonitors(state)

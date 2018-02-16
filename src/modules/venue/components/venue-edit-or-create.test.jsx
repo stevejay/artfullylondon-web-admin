@@ -97,7 +97,7 @@ it('should handle a cancel click', () => {
   venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
   const entity = new FullVenue({ id: 'some-id' })
   const event = { preventDefault: jest.fn() }
-  const history = { push: jest.fn() }
+  const history = { goBack: jest.fn() }
 
   const wrapper = shallow(
     <VenueEditOrCreate
@@ -113,7 +113,7 @@ it('should handle a cancel click', () => {
   wrapper.find(EditVenueForm).prop('onCancel')(event)
 
   expect(event.preventDefault).toHaveBeenCalled()
-  expect(history.push).toHaveBeenCalledWith('/venue/some-id')
+  expect(history.goBack).toHaveBeenCalled()
 })
 
 describe('handleSubmit', () => {

@@ -29,7 +29,7 @@ import * as dateLib from '_src/lib/date'
 
 export class VenueDetail extends React.Component {
   handleVenueMonitorMounted = () => {
-    this.props.dispatch(venueActions.getVenueMonitor(this.props.entity.id))
+    this.props.dispatch(venueActions.getVenueMonitors(this.props.entity.id))
   }
   handleVenueEventMonitorsMounted = () => {
     this.props.dispatch(
@@ -45,8 +45,8 @@ export class VenueDetail extends React.Component {
   render () {
     const {
       entity,
-      venueMonitor,
-      gettingVenueMonitor,
+      venueMonitors,
+      gettingVenueMonitors,
       venueEventMonitors,
       gettingVenueEventMonitors
     } = this.props
@@ -82,8 +82,8 @@ export class VenueDetail extends React.Component {
             <MonitorCollection
               title='Pending Venue Monitors'
               venue={entity}
-              monitors={venueMonitor}
-              getInProgress={gettingVenueMonitor}
+              monitors={venueMonitors}
+              getInProgress={gettingVenueMonitors}
               onMounted={this.handleVenueMonitorMounted}
               onSubmit={this.handleSubmitVenueMonitor}
               gridRowComponent={VenueMonitorGridRow}
@@ -110,9 +110,9 @@ export class VenueDetail extends React.Component {
 
 VenueDetail.propTypes = {
   entity: PropTypes.instanceOf(FullVenue).isRequired,
-  venueMonitor: PropTypes.object,
+  venueMonitors: PropTypes.array,
   venueEventMonitors: PropTypes.array,
-  gettingVenueMonitor: PropTypes.bool.isRequired,
+  gettingVenueMonitors: PropTypes.bool.isRequired,
   gettingVenueEventMonitors: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
@@ -120,8 +120,8 @@ VenueDetail.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({
-    venueMonitor: venueSelectors.venueMonitor(state),
-    gettingVenueMonitor: venueSelectors.gettingVenueMonitor(state),
+    venueMonitors: venueSelectors.venueMonitors(state),
+    gettingVenueMonitors: venueSelectors.gettingVenueMonitors(state),
     venueEventMonitors: venueSelectors.venueEventMonitors(state),
     gettingVenueEventMonitors: venueSelectors.gettingVenueEventMonitors(state)
   })

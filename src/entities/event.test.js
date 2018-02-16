@@ -82,21 +82,6 @@ describe('SummaryEvent', () => {
     expect(subject.postcode).toBe('N5 2WW')
   })
 
-  it('should have correct latitude', () => {
-    const subject = new SummaryEvent({ latitude: 2 })
-    expect(subject.latitude).toBe(2)
-  })
-
-  it('should have correct longitude', () => {
-    const subject = new SummaryEvent({ longitude: 3 })
-    expect(subject.longitude).toBe(3)
-  })
-
-  it('should have correct pin', () => {
-    const subject = new SummaryEvent({ latitude: 2, longitude: 3 })
-    expect(subject.pin).toEqual({ lat: 2, lng: 3 })
-  })
-
   it('should have correct hasDates when has dates', () => {
     const subject = new SummaryEvent({ dates: [{}, {}] })
     expect(subject.hasDates).toEqual(true)
@@ -500,6 +485,11 @@ describe('FullEvent', () => {
   it('should get the homepage URL when there is none', () => {
     const subject = new FullEvent({ links: [], venue: {} })
     expect(subject.getHomepageUrl()).toEqual(null)
+  })
+
+  it('should have correct pin', () => {
+    const subject = new FullEvent({ venue: { latitude: 2, longitude: 3  }})
+    expect(subject.pin).toEqual({ lat: 2, lng: 3 })
   })
 
   it('should clone correctly', () => {

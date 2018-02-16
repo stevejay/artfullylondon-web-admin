@@ -79,15 +79,15 @@ describe('getVenueEventMonitors', () => {
   })
 })
 
-describe('getVenueMonitor', () => {
-  const generator = cloneableGenerator(sagas.getVenueMonitor)(
-    venueActions.getVenueMonitor('venue-id')
+describe('getVenueMonitors', () => {
+  const generator = cloneableGenerator(sagas.getVenueMonitors)(
+    venueActions.getVenueMonitors('venue-id')
   )
 
   it('should prepare to get venue monitor', () => {
     let result = generator.next()
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorStarted()))
+    expect(result.value).toEqual(put(venueActions.getVenueMonitorsStarted()))
 
     result = generator.next()
 
@@ -113,10 +113,12 @@ describe('getVenueMonitor', () => {
 
     expect(result.value).toEqual(
       put(
-        venueActions.getVenueMonitorSucceeded({
-          venueId: 'some-id',
-          key: 'some-id'
-        })
+        venueActions.getVenueMonitorsSucceeded([
+          {
+            venueId: 'some-id',
+            key: 'some-id'
+          }
+        ])
       )
     )
 
@@ -136,7 +138,7 @@ describe('getVenueMonitor', () => {
 
     result = generatorClone.next()
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorFailed()))
+    expect(result.value).toEqual(put(venueActions.getVenueMonitorsFailed()))
 
     result = generatorClone.next()
 
@@ -151,7 +153,7 @@ describe('getVenueMonitor', () => {
 
     let result = generatorClone.throw(error)
 
-    expect(result.value).toEqual(put(venueActions.getVenueMonitorFailed()))
+    expect(result.value).toEqual(put(venueActions.getVenueMonitorsFailed()))
 
     result = generatorClone.next()
 

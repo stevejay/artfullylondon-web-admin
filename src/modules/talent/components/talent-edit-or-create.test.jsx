@@ -97,7 +97,7 @@ it('should handle a cancel click', () => {
   talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
   const entity = new FullTalent({ id: 'some-id' })
   const event = { preventDefault: jest.fn() }
-  const history = { push: jest.fn() }
+  const history = { goBack: jest.fn() }
 
   const wrapper = shallow(
     <TalentEditOrCreate
@@ -113,7 +113,7 @@ it('should handle a cancel click', () => {
   wrapper.find(EditTalentForm).prop('onCancel')(event)
 
   expect(event.preventDefault).toHaveBeenCalled()
-  expect(history.push).toHaveBeenCalledWith('/talent/some-id')
+  expect(history.goBack).toHaveBeenCalled()
 })
 
 describe('handleSubmit', () => {

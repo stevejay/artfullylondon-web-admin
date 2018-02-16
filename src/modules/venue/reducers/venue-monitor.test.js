@@ -7,7 +7,7 @@ it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
 
   expect(actual).toEqual({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: false,
     getFailed: false
   })
@@ -15,15 +15,15 @@ it('should have the correct initial state', () => {
 
 it('should handle starting to get a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: false,
     getFailed: false
   })
 
-  const actual = reducer(state, venueActions.getVenueMonitorStarted())
+  const actual = reducer(state, venueActions.getVenueMonitorsStarted())
 
   expect(actual).toEqual({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: true,
     getFailed: false
   })
@@ -31,18 +31,18 @@ it('should handle starting to get a venue monitor', () => {
 
 it('should handle successfully getting a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: true,
     getFailed: false
   })
 
   const actual = reducer(
     state,
-    venueActions.getVenueMonitorSucceeded({ id: 'some-id' })
+    venueActions.getVenueMonitorsSucceeded([{ key: 'some-key' }])
   )
 
   expect(actual).toEqual({
-    venueMonitor: { id: 'some-id' },
+    venueMonitors: [{ key: 'some-key' }],
     getInProgress: false,
     getFailed: false
   })
@@ -50,15 +50,15 @@ it('should handle successfully getting a venue monitor', () => {
 
 it('should handle failing to get a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: true,
     getFailed: false
   })
 
-  const actual = reducer(state, venueActions.getVenueMonitorFailed())
+  const actual = reducer(state, venueActions.getVenueMonitorsFailed())
 
   expect(actual).toEqual({
-    venueMonitor: null,
+    venueMonitors: null,
     getInProgress: false,
     getFailed: true
   })
@@ -66,44 +66,69 @@ it('should handle failing to get a venue monitor', () => {
 
 it('should handle successfully updating a venue monitor', () => {
   const state = deepFreeze({
-    venueMonitor: { id: 'some-id' },
+    venueMonitors: [{ key: 'some-key', isIgnored: false }],
     getInProgress: false,
     getFailed: false
   })
 
   const actual = reducer(
     state,
-    venueActions.updateVenueMonitorSucceeded({ id: 'some-other-id' })
+    venueActions.updateVenueMonitorSucceeded({
+      key: 'some-key',
+      isIgnored: true
+    })
   )
 
   expect(actual).toEqual({
-    venueMonitor: { id: 'some-other-id' },
+    venueMonitors: [{ key: 'some-key', isIgnored: true }],
+    getInProgress: false,
+    getFailed: false
+  })
+})
+
+it('should ignore updating a non-existent venue monitor', () => {
+  const state = deepFreeze({
+    venueMonitors: [{ key: 'some-key', isIgnored: false }],
+    getInProgress: false,
+    getFailed: false
+  })
+
+  const actual = reducer(
+    state,
+    venueActions.updateVenueMonitorSucceeded({
+      key: 'some-nonexistent-key',
+      isIgnored: true
+    })
+  )
+
+  expect(actual).toEqual({
+    venueMonitors: [{ key: 'some-key', isIgnored: false }],
     getInProgress: false,
     getFailed: false
   })
 })
 
 describe('selectors', () => {
-  describe('venueMonitor', () => {
+  describe('venueMonitors', () => {
     it('should get the value', () => {
-      const state = { venueMonitor: { id: 'some-id' } }
-      const actual = selectors.venueMonitor(state)
-      expect(actual).toEqual({ id: 'some-id' })
+      const state = { venueMonitors: { key: 'some-key' } }
+      const actual = selectors.venueMonitors(state)
+      expect(actual).toEqual({ key: 'some-key' })
     })
   })
 
-  describe('gettingVenueMonitor', () => {
+  describe('gettingVenueMonitors', () => {
     it('should get the value', () => {
       const state = { getInProgress: true }
-      const actual = selectors.gettingVenueMonitor(state)
+      const actual = selectors.gettingVenueMonitors(state)
       expect(actual).toEqual(true)
     })
   })
 
-  describe('failedToGetVenueMonitor', () => {
+  describe('failedToGetVenueMonitors', () => {
     it('should get the value', () => {
       const state = { getFailed: true }
-      const actual = selectors.failedToGetVenueMonitor(state)
+      const actual = selectors.failedToGetVenueMonitors(state)
       expect(actual).toEqual(true)
     })
   })

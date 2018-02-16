@@ -1,40 +1,45 @@
 import { handleActions } from 'redux-actions'
 
+import * as arrayLib from '_src/lib/array'
 import { types } from '../actions'
 
-export const moduleName = 'venueMonitor'
+export const moduleName = 'venueMonitors'
 
 const initialState = {
-  venueMonitor: null,
+  venueMonitors: null,
   getInProgress: false,
   getFailed: false
 }
 
 export const reducer = handleActions(
   {
-    [types.GET_VENUE_MONITOR_STARTED]: () => ({
+    [types.GET_VENUE_MONITORS_STARTED]: () => ({
       ...initialState,
       getInProgress: true
     }),
-    [types.GET_VENUE_MONITOR_SUCCEEDED]: (state, action) => ({
+    [types.GET_VENUE_MONITORS_SUCCEEDED]: (state, action) => ({
       ...initialState,
       getInProgress: false,
-      venueMonitor: action.payload
+      venueMonitors: action.payload
     }),
-    [types.GET_VENUE_MONITOR_FAILED]: () => ({
+    [types.GET_VENUE_MONITORS_FAILED]: () => ({
       ...initialState,
       getFailed: true
     }),
     [types.UPDATE_VENUE_MONITOR_SUCCEEDED]: (state, action) => ({
       ...state,
-      venueMonitor: action.payload
+      venueMonitors: arrayLib.updateElementByKey(
+        state.venueMonitors,
+        action.payload.key,
+        action.payload
+      )
     })
   },
   initialState
 )
 
 export const selectors = {
-  venueMonitor: state => state.venueMonitor,
-  gettingVenueMonitor: state => state.getInProgress,
-  failedToGetVenueMonitor: state => state.getFailed
+  venueMonitors: state => state.venueMonitors,
+  gettingVenueMonitors: state => state.getInProgress,
+  failedToGetVenueMonitors: state => state.getFailed
 }

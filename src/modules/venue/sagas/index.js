@@ -62,10 +62,10 @@ export function * updateVenueEventMonitor ({ payload: { values }, meta }) {
   }
 }
 
-export function * getVenueMonitor (action) {
+export function * getVenueMonitors (action) {
   try {
     const { venueId } = action.payload
-    yield put(venueActions.getVenueMonitorStarted())
+    yield put(venueActions.getVenueMonitorsStarted())
 
     const token = yield call(getAuthTokenForCurrentUser)
     const url = `${process.env.WEBSITE_API_HOST_URL}/monitor-service/monitor/venue/${venueId}`
@@ -73,13 +73,14 @@ export function * getVenueMonitor (action) {
 
     const entity = json.entity
     entity.key = entity.venueId
-    yield put(venueActions.getVenueMonitorSucceeded(entity))
+
+    yield put(venueActions.getVenueMonitorsSucceeded([entity]))
   } catch (err) {
     if (err.statusCode !== 404) {
       yield call(log.error, err)
     }
 
-    yield put(venueActions.getVenueMonitorFailed())
+    yield put(venueActions.getVenueMonitorsFailed())
   }
 }
 
@@ -125,6 +126,6 @@ export default [
     venueActions.types.UPDATE_VENUE_EVENT_MONITOR,
     updateVenueEventMonitor
   ),
-  takeLatest(venueActions.types.GET_VENUE_MONITOR, getVenueMonitor),
+  takeLatest(venueActions.types.GET_VENUE_MONITORS, getVenueMonitors),
   takeEvery(venueActions.types.UPDATE_VENUE_MONITOR, updateVenueMonitor)
 ]

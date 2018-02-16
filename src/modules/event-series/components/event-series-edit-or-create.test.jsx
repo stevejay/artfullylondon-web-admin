@@ -97,7 +97,7 @@ it('should handle a cancel click', () => {
   eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
   const entity = new FullEventSeries({ id: 'some-id' })
   const event = { preventDefault: jest.fn() }
-  const history = { push: jest.fn() }
+  const history = { goBack: jest.fn() }
 
   const wrapper = shallow(
     <EventSeriesEditOrCreate
@@ -113,7 +113,7 @@ it('should handle a cancel click', () => {
   wrapper.find(EditEventSeriesForm).prop('onCancel')(event)
 
   expect(event.preventDefault).toHaveBeenCalled()
-  expect(history.push).toHaveBeenCalledWith('/event-series/some-id')
+  expect(history.goBack).toHaveBeenCalled()
 })
 
 describe('handleSubmit', () => {

@@ -164,7 +164,7 @@ exports[`should render correctly 1`] = `
       scroll={true}
       unmountIfInvisible={false}
     >
-      <withState(withState(MonitorCollection))
+      <withStateHandlers(MonitorCollection)
         getInProgress={false}
         gridRowComponent={[Function]}
         monitors={null}
@@ -198,7 +198,7 @@ exports[`should render correctly 1`] = `
       scroll={true}
       unmountIfInvisible={false}
     >
-      <withState(withState(MonitorCollection))
+      <withStateHandlers(MonitorCollection)
         getInProgress={false}
         gridRowComponent={[Function]}
         monitors={null}

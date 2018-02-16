@@ -5,10 +5,10 @@ export const types = {
   GET_VENUE_EVENT_MONITORS_FAILED: 'venue/GET_VENUE_EVENT_MONITORS_FAILED',
   UPDATE_VENUE_EVENT_MONITOR: 'venue/UPDATE_VENUE_EVENT_MONITOR',
   UPDATE_VENUE_EVENT_MONITOR_SUCCEEDED: 'venue/UPDATE_VENUE_EVENT_MONITOR_SUCCEEDED',
-  GET_VENUE_MONITOR: 'venue/GET_VENUE_MONITOR',
-  GET_VENUE_MONITOR_STARTED: 'venue/GET_VENUE_MONITOR_STARTED',
-  GET_VENUE_MONITOR_SUCCEEDED: 'venue/GET_VENUE_MONITOR_SUCCEEDED',
-  GET_VENUE_MONITOR_FAILED: 'venue/GET_VENUE_MONITOR_FAILED',
+  GET_VENUE_MONITORS: 'venue/GET_VENUE_MONITORS',
+  GET_VENUE_MONITORS_STARTED: 'venue/GET_VENUE_MONITORS_STARTED',
+  GET_VENUE_MONITORS_SUCCEEDED: 'venue/GET_VENUE_MONITORS_SUCCEEDED',
+  GET_VENUE_MONITORS_FAILED: 'venue/GET_VENUE_MONITORS_FAILED',
   UPDATE_VENUE_MONITOR: 'venue/UPDATE_VENUE_MONITOR',
   UPDATE_VENUE_MONITOR_SUCCEEDED: 'venue/UPDATE_VENUE_MONITOR_SUCCEEDED'
 }
@@ -22,9 +22,9 @@ export const getVenueEventMonitorsStarted = () => ({
   type: types.GET_VENUE_EVENT_MONITORS_STARTED
 })
 
-export const getVenueEventMonitorsSucceeded = json => ({
+export const getVenueEventMonitorsSucceeded = monitors => ({
   type: types.GET_VENUE_EVENT_MONITORS_SUCCEEDED,
-  payload: json
+  payload: monitors
 })
 
 export const getVenueEventMonitorsFailed = () => ({
@@ -42,22 +42,22 @@ export const updateVenueEventMonitorSucceeded = values => ({
   payload: values
 })
 
-export const getVenueMonitor = venueId => ({
-  type: types.GET_VENUE_MONITOR,
+export const getVenueMonitors = venueId => ({
+  type: types.GET_VENUE_MONITORS,
   payload: { venueId }
 })
 
-export const getVenueMonitorStarted = () => ({
-  type: types.GET_VENUE_MONITOR_STARTED
+export const getVenueMonitorsStarted = () => ({
+  type: types.GET_VENUE_MONITORS_STARTED
 })
 
-export const getVenueMonitorSucceeded = json => ({
-  type: types.GET_VENUE_MONITOR_SUCCEEDED,
-  payload: json
+export const getVenueMonitorsSucceeded = monitors => ({
+  type: types.GET_VENUE_MONITORS_SUCCEEDED,
+  payload: monitors
 })
 
-export const getVenueMonitorFailed = () => ({
-  type: types.GET_VENUE_MONITOR_FAILED
+export const getVenueMonitorsFailed = () => ({
+  type: types.GET_VENUE_MONITORS_FAILED
 })
 
 export const updateVenueMonitor = values => ({

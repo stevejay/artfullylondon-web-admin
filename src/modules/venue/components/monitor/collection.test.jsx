@@ -19,8 +19,8 @@ it('should render correctly when get is in progress', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={_.noop}
     />
   )
 
@@ -39,8 +39,8 @@ it('should render correctly when get in not in progress and there are no monitor
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={_.noop}
     />
   )
 
@@ -62,8 +62,8 @@ it('should render correctly when not showing ignored monitors', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={_.noop}
     />
   )
 
@@ -85,8 +85,8 @@ it('should render correctly when showing ignored monitors', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={_.noop}
     />
   )
 
@@ -108,8 +108,8 @@ it('should render correctly when editing a monitor', () => {
       editingMonitor={{ key: 'key-2', isIgnored: false }}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={_.noop}
     />
   )
 
@@ -117,7 +117,7 @@ it('should render correctly when editing a monitor', () => {
 })
 
 it('should handle showing the hidden monitors', () => {
-  const setShowIgnored = jest.fn()
+  const toggleShowIgnored = jest.fn()
 
   const wrapper = shallow(
     <MonitorCollection
@@ -133,18 +133,18 @@ it('should handle showing the hidden monitors', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={setShowIgnored}
-      setEditingMonitor={_.noop}
+      toggleShowIgnored={toggleShowIgnored}
+      setEditingMonitorTo={_.noop}
     />
   )
 
   wrapper.find(Button).simulate('click')
 
-  expect(setShowIgnored).toHaveBeenCalledWith(true)
+  expect(toggleShowIgnored).toHaveBeenCalled()
 })
 
 it('should handle editing a monitor', () => {
-  const setEditingMonitor = jest.fn()
+  const setEditingMonitorTo = jest.fn()
 
   const wrapper = shallow(
     <MonitorCollection
@@ -160,18 +160,18 @@ it('should handle editing a monitor', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={setEditingMonitor}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={setEditingMonitorTo}
     />
   )
 
   wrapper.find('gridRowComponent').prop('onEdit')({ id: 'some-monitor' })
 
-  expect(setEditingMonitor).toHaveBeenCalledWith({ id: 'some-monitor' })
+  expect(setEditingMonitorTo).toHaveBeenCalledWith({ id: 'some-monitor' })
 })
 
 it('should handle hiding editing a monitor', () => {
-  const setEditingMonitor = jest.fn()
+  const setEditingMonitorTo = jest.fn()
 
   const wrapper = shallow(
     <MonitorCollection
@@ -187,19 +187,19 @@ it('should handle hiding editing a monitor', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={_.noop}
-      setShowIgnored={_.noop}
-      setEditingMonitor={setEditingMonitor}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={setEditingMonitorTo}
     />
   )
 
   wrapper.find(Modal).prop('onHide')({ id: 'some-monitor' })
 
-  expect(setEditingMonitor).toHaveBeenCalledWith(null)
+  expect(setEditingMonitorTo).toHaveBeenCalledWith(null)
 })
 
 it('should handle submitting a edited monitor', () => {
   const onSubmit = jest.fn().mockReturnValue({ then: func => func() })
-  const setEditingMonitor = jest.fn()
+  const setEditingMonitorTo = jest.fn()
 
   const wrapper = shallow(
     <MonitorCollection
@@ -215,13 +215,13 @@ it('should handle submitting a edited monitor', () => {
       editingMonitor={null}
       onMounted={_.noop}
       onSubmit={onSubmit}
-      setShowIgnored={_.noop}
-      setEditingMonitor={setEditingMonitor}
+      toggleShowIgnored={_.noop}
+      setEditingMonitorTo={setEditingMonitorTo}
     />
   )
 
   wrapper.find(UpdateMonitorForm).prop('onSubmit')({ id: 'some-monitor' })
 
   expect(onSubmit).toHaveBeenCalledWith({ id: 'some-monitor' })
-  expect(setEditingMonitor).toHaveBeenCalledWith(null)
+  expect(setEditingMonitorTo).toHaveBeenCalledWith(null)
 })

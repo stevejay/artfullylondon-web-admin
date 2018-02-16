@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withState } from 'recompose'
+import { withStateHandlers } from 'recompose'
 import _ from 'lodash'
 
 import Modal from '_src/components/modal'
@@ -20,13 +20,13 @@ export class MonitorCollection extends React.PureComponent {
     onMounted && onMounted()
   }
   handleShowIgnoredClick = () => {
-    this.props.setShowIgnored(!this.props.showIgnored)
+    this.props.toggleShowIgnored()
   }
   handleEdit = monitor => {
-    this.props.setEditingMonitor(monitor)
+    this.props.setEditingMonitorTo(monitor)
   }
   handleHide = () => {
-    this.props.setEditingMonitor(null)
+    this.props.setEditingMonitorTo(null)
   }
   handleSubmit = values => {
     this.props.onSubmit(values).then(() => this.handleHide())
@@ -44,19 +44,16 @@ export class MonitorCollection extends React.PureComponent {
 
     // TODO clean all this logic up as selectors!
 
-    const monitors = _.isArray(monitorsProp)
-      ? monitorsProp
-      : _.isNil(monitorsProp) ? [] : [monitorsProp]
-
+    const monitors = monitorsProp || []
     const hasIgnoredMonitors = monitors.some(x => x.isIgnored)
     const showAll = showIgnored || !hasIgnoredMonitors
 
     const visibleMonitors = showAll
       ? monitors
       : monitors.filter(
-        monitor =>
-          !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
-      )
+          monitor =>
+            !monitor.isIgnored && (!monitor.inArtfully || monitor.hasChanged)
+        )
 
     const hasVisibleMonitors = !!visibleMonitors && visibleMonitors.length > 0
     const venueHomepageUrl = venue.getHomepageUrl()
@@ -116,20 +113,25 @@ export class MonitorCollection extends React.PureComponent {
 MonitorCollection.propTypes = {
   title: PropTypes.string.isRequired,
   venue: PropTypes.instanceOf(FullVenue),
-  monitors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.string.isRequired })),
+  monitors: PropTypes.arrayOf(
     PropTypes.shape({ key: PropTypes.string.isRequired })
-  ]),
+  ),
   getInProgress: PropTypes.bool.isRequired,
   gridRowComponent: PropTypes.func.isRequired,
   showIgnored: PropTypes.bool.isRequired,
   editingMonitor: PropTypes.object,
   onMounted: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  setShowIgnored: PropTypes.func.isRequired,
-  setEditingMonitor: PropTypes.func.isRequired
+  toggleShowIgnored: PropTypes.func.isRequired,
+  setEditingMonitorTo: PropTypes.func.isRequired
 }
 
-export default withState('showIgnored', 'setShowIgnored', false)(
-  withState('editingMonitor', 'setEditingMonitor', null)(MonitorCollection)
-)
+export default withStateHandlers(
+  { showIgnored: false, editingMonitor: null },
+  {
+    toggleShowIgnored: ({ showIgnored }) => () => ({
+      showIgnored: !showIgnored
+    }),
+    setEditingMonitorTo: () => value => ({ editingMonitor: value })
+  }
+)(MonitorCollection)

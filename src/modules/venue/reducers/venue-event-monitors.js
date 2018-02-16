@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions'
 import _ from 'lodash'
 
+import * as arrayLib from '_src/lib/array'
 import { types } from '../actions'
 
 export const moduleName = 'venueEventMonitors'
@@ -26,33 +27,14 @@ export const reducer = handleActions(
       ...initialState,
       getFailed: true
     }),
-    [types.UPDATE_VENUE_EVENT_MONITOR_SUCCEEDED]: (state, action) => {
-      const { externalEventId, isIgnored, hasChanged } = action.payload
-
-      const monitorIndex = _.findIndex(
+    [types.UPDATE_VENUE_EVENT_MONITOR_SUCCEEDED]: (state, action) => ({
+      ...state,
+      venueEventMonitors: arrayLib.updateElementByKey(
         state.venueEventMonitors,
-        monitor => monitor.externalEventId === externalEventId
+        action.payload.key,
+        action.payload
       )
-
-      if (monitorIndex === -1) {
-        return state
-      }
-
-      const newMonitors = state.venueEventMonitors.slice()
-
-      const newMonitor = {
-        ...state.venueEventMonitors[monitorIndex],
-        isIgnored,
-        hasChanged
-      }
-
-      newMonitors.splice(monitorIndex, 1, newMonitor)
-
-      return {
-        ...state,
-        venueEventMonitors: newMonitors
-      }
-    }
+    })
   },
   initialState
 )

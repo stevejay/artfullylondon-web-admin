@@ -20,9 +20,9 @@ it('should render correctly', () => {
   const wrapper = shallow(
     <VenueDetail
       entity={entity}
-      venueMonitor={null}
+      venueMonitors={null}
       venueEventMonitors={null}
-      gettingVenueMonitor={false}
+      gettingVenueMonitors={false}
       gettingVenueEventMonitors={false}
       dispatch={_.noop}
     />
@@ -47,9 +47,9 @@ it('should handle lazy load of the venue monitor', () => {
           longitude: 2
         })
       }
-      venueMonitor={null}
+      venueMonitors={null}
       venueEventMonitors={null}
-      gettingVenueMonitor={false}
+      gettingVenueMonitors={false}
       gettingVenueEventMonitors={false}
       dispatch={dispatch}
     />
@@ -57,7 +57,9 @@ it('should handle lazy load of the venue monitor', () => {
 
   wrapper.find(MonitorCollection).at(0).prop('onMounted')()
 
-  expect(dispatch).toHaveBeenCalledWith(venueActions.getVenueMonitor('some-id'))
+  expect(dispatch).toHaveBeenCalledWith(
+    venueActions.getVenueMonitors('some-id')
+  )
 })
 
 it('should handle lazy load of the venue event monitors', () => {
@@ -76,9 +78,9 @@ it('should handle lazy load of the venue event monitors', () => {
           longitude: 2
         })
       }
-      venueMonitor={null}
+      venueMonitors={null}
       venueEventMonitors={null}
-      gettingVenueMonitor={false}
+      gettingVenueMonitors={false}
       gettingVenueEventMonitors={false}
       dispatch={dispatch}
     />
@@ -107,9 +109,9 @@ it('should handle submitting a venue monitor', () => {
           longitude: 2
         })
       }
-      venueMonitor={null}
+      venueMonitors={null}
       venueEventMonitors={null}
-      gettingVenueMonitor={false}
+      gettingVenueMonitors={false}
       gettingVenueEventMonitors={false}
       dispatch={dispatch}
     />
@@ -138,9 +140,9 @@ it('should handle submitting a venue event monitor', () => {
           longitude: 2
         })
       }
-      venueMonitor={null}
+      venueMonitors={null}
       venueEventMonitors={null}
-      gettingVenueMonitor={false}
+      gettingVenueMonitors={false}
       gettingVenueEventMonitors={false}
       dispatch={dispatch}
     />
