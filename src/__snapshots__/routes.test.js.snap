@@ -81,6 +81,21 @@ exports[`should render correctly when logged in 1`] = `
           path="/event-series/(.*)"
           render={[Function]}
         />
+        <Route
+          exact={true}
+          path="/event"
+          render={[Function]}
+        />
+        <Route
+          exact={true}
+          path="/event/edit/(.*)"
+          render={[Function]}
+        />
+        <Route
+          exact={true}
+          path="/event/(.*)"
+          render={[Function]}
+        />
         <Redirect
           from="/login"
           push={false}

@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import EventTalentCarousel from '_src/components/event/talent-carousel'
+import EventTalentCarousel from './talent-carousel'
 import { SummaryTalent } from '_src/entities/talent'
 import IconButton from '_src/components/button/icon'
 

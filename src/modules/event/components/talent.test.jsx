@@ -1,6 +1,6 @@
 import React from 'react'
 
-import EventTalent from '_src/components/event/talent'
+import EventTalent from './talent'
 import { SummaryTalent } from '_src/entities/talent'
 
 it('should render correctly', () => {

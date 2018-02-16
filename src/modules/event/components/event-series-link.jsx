@@ -5,10 +5,7 @@ import { Link } from 'react-router-dom'
 import Message from '_src/components/message'
 import { SummaryEventSeries } from '_src/entities/event-series'
 
-class EventSeriesLink extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class EventSeriesLink extends React.PureComponent {
   render () {
     const { eventSeries } = this.props
 

@@ -2,22 +2,22 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-event-talent__container"
+  className="src-modules-event-components-talent__container"
 >
   <img
-    className="src-components-event-talent__img"
+    className="src-modules-event-components-talent__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
   />
   <div
-    className="src-components-event-talent__details"
+    className="src-modules-event-components-talent__details"
   >
     <p
-      className="src-components-event-talent__roles"
+      className="src-modules-event-components-talent__roles"
     >
       Roles string
     </p>
     <p
-      className="src-components-event-talent__characters"
+      className="src-modules-event-components-talent__characters"
     >
       Characters string
     </p>
@@ -33,17 +33,17 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when there are no characters 1`] = `
 <div
-  className="src-components-event-talent__container"
+  className="src-modules-event-components-talent__container"
 >
   <img
-    className="src-components-event-talent__img"
+    className="src-modules-event-components-talent__img"
     src="https://images.test.com/12/34/12345678/120x120.jpg"
   />
   <div
-    className="src-components-event-talent__details"
+    className="src-modules-event-components-talent__details"
   >
     <p
-      className="src-components-event-talent__roles"
+      className="src-modules-event-components-talent__roles"
     >
       Roles string
     </p>
@@ -59,23 +59,23 @@ exports[`should render correctly when there are no characters 1`] = `
 
 exports[`should render correctly when there is no image 1`] = `
 <div
-  className="src-components-event-talent__container"
+  className="src-modules-event-components-talent__container"
 >
   <ImagePlaceholder
-    className="src-components-event-talent__placeholder"
+    className="src-modules-event-components-talent__placeholder"
     size="very-small"
     type="talent"
   />
   <div
-    className="src-components-event-talent__details"
+    className="src-modules-event-components-talent__details"
   >
     <p
-      className="src-components-event-talent__roles"
+      className="src-modules-event-components-talent__roles"
     >
       Roles string
     </p>
     <p
-      className="src-components-event-talent__characters"
+      className="src-modules-event-components-talent__characters"
     >
       Characters string
     </p>

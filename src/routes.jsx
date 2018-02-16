@@ -29,6 +29,7 @@ import {
   EventSeriesEditOrCreate,
   EventSeriesDetail
 } from '_src/modules/event-series'
+import { EventEditOrCreate, EventDetail } from '_src/modules/event'
 import * as entityConstants from '_src/constants/entity'
 
 export class Routes extends React.Component {
@@ -177,6 +178,36 @@ export class Routes extends React.Component {
                     <EntityPage
                       entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
                       component={EventSeriesDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      component={EventEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event/edit/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      component={EventEditOrCreate}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event/(.*)'
+                  exact
+                  render={() => (
+                    <EntityPage
+                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      component={EventDetail}
                     />
                   )}
                 />

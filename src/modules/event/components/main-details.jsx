@@ -6,10 +6,7 @@ import { EntityFeaturedDetail } from '_src/modules/entity'
 import { FullEvent } from '_src/entities/event'
 import './main-details.scss'
 
-class EventMainDetails extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class EventMainDetails extends React.PureComponent {
   render () {
     const { event, dateStr } = this.props
     const ageDescription = event.createAgeDescription()

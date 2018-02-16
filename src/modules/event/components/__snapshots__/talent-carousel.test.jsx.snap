@@ -2,10 +2,10 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-event-talent-carousel__container"
+  className="src-modules-event-components-talent-carousel__container"
 >
   <EventTalentComponent
-    className="src-components-event-talent-carousel__event-talent"
+    className="src-modules-event-components-talent-carousel__event-talent"
     talent={
       SummaryTalent {
         "entity": Object {
@@ -15,7 +15,7 @@ exports[`should render correctly 1`] = `
     }
   />
   <div
-    className="src-components-event-talent-carousel__buttons-container"
+    className="src-modules-event-components-talent-carousel__buttons-container"
   >
     <IconButton
       aria-label="Next talent"
@@ -35,10 +35,10 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when the selected talent id is null 1`] = `
 <div
-  className="src-components-event-talent-carousel__container"
+  className="src-modules-event-components-talent-carousel__container"
 >
   <EventTalentComponent
-    className="src-components-event-talent-carousel__event-talent"
+    className="src-modules-event-components-talent-carousel__event-talent"
     talent={
       SummaryTalent {
         "entity": Object {
@@ -48,7 +48,7 @@ exports[`should render correctly when the selected talent id is null 1`] = `
     }
   />
   <div
-    className="src-components-event-talent-carousel__buttons-container"
+    className="src-modules-event-components-talent-carousel__buttons-container"
   >
     <IconButton
       aria-label="Next talent"

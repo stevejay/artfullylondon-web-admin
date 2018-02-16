@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-components-event-main-details__container"
+  className="src-modules-event-components-main-details__container"
 >
   <EntityFeaturedDetail
     heading="When"
