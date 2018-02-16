@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OpeningTimesEntry from './entry'
+import OpeningTimesEntry from './opening-times-entry'
 import * as timeLib from '_src/lib/time'
 
 beforeEach(() => {

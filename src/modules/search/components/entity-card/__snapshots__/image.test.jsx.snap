@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <Link
-  className="src-modules-entity-components-entity-card-image__lazy-load-container"
+  className="src-modules-search-components-entity-card-image__lazy-load-container"
   replace={false}
   to="http://some/url"
 >
@@ -37,7 +37,7 @@ exports[`should render correctly 1`] = `
 
 exports[`should render correctly when card image is loaded 1`] = `
 <Link
-  className="src-modules-entity-components-entity-card-image__lazy-load-container"
+  className="src-modules-search-components-entity-card-image__lazy-load-container"
   replace={false}
   to="http://some/url"
 >
@@ -50,7 +50,7 @@ exports[`should render correctly when card image is loaded 1`] = `
 
 exports[`should render correctly when there is no image 1`] = `
 <Link
-  className="src-modules-entity-components-entity-card-image__lazy-load-container"
+  className="src-modules-search-components-entity-card-image__lazy-load-container"
   replace={false}
   to="http://some/url"
 >

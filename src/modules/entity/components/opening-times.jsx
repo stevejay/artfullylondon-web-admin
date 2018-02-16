@@ -5,9 +5,9 @@ import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 import Message from '_src/components/message'
 import { Tag } from '_src/modules/tag'
-import AdditionalDetailHeading from '../additional-detail-heading'
-import OpeningTimeEntry from './entry'
-import './index.scss'
+import AdditionalDetailHeading from './additional-detail-heading'
+import OpeningTimeEntry from './opening-times-entry'
+import './opening-times.scss'
 
 class OpeningTimes extends React.PureComponent {
   render () {
@@ -23,7 +23,6 @@ class OpeningTimes extends React.PureComponent {
     const hasAdditionalTimes = times.additionalTimes.length > 0
     const hasSpecialTimes = times.specialTimes.length > 0
     const hasClosures = times.closures.length > 0
-    // const hasAnyTimes = hasRegularTimes || hasAdditionalTimes
     const showAdditionalTimesHeader = hasRegularTimes && hasAdditionalTimes
 
     return (

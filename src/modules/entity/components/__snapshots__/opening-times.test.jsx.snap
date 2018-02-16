@@ -6,13 +6,13 @@ exports[`should render additional only times details correctly 1`] = `
     Regular Times Header
   </EntityAdditionalDetailHeading>
   <div
-    className="src-modules-entity-components-opening-times-index__details-container"
+    className="src-modules-entity-components-opening-times__details-container"
   >
     <div
-      className="src-modules-entity-components-opening-times-index__details-column"
+      className="src-modules-entity-components-opening-times__details-column"
     >
       <div
-        className="src-modules-entity-components-opening-times-index__times-container"
+        className="src-modules-entity-components-opening-times__times-container"
       >
         <OpeningTimesEntry
           key="Additional 1"
@@ -28,7 +28,7 @@ exports[`should render additional only times details correctly 1`] = `
     type="basic"
   >
     <span
-      className="src-modules-entity-components-opening-times-index__small"
+      className="src-modules-entity-components-opening-times__small"
     >
       Please contact the venue to confirm these times before making a special trip, especially during holidays.
     </span>
@@ -44,13 +44,13 @@ exports[`should render non-empty times details correctly 1`] = `
     Regular Times Header
   </EntityAdditionalDetailHeading>
   <div
-    className="src-modules-entity-components-opening-times-index__details-container"
+    className="src-modules-entity-components-opening-times__details-container"
   >
     <div
-      className="src-modules-entity-components-opening-times-index__details-column"
+      className="src-modules-entity-components-opening-times__details-column"
     >
       <div
-        className="src-modules-entity-components-opening-times-index__times-container"
+        className="src-modules-entity-components-opening-times__times-container"
       >
         <OpeningTimesEntry
           key="Regular 1"
@@ -61,13 +61,13 @@ exports[`should render non-empty times details correctly 1`] = `
       </div>
     </div>
     <div
-      className="src-modules-entity-components-opening-times-index__details-column"
+      className="src-modules-entity-components-opening-times__details-column"
     >
       <EntityAdditionalDetailHeading>
         Additional Times Header
       </EntityAdditionalDetailHeading>
       <div
-        className="src-modules-entity-components-opening-times-index__times-container"
+        className="src-modules-entity-components-opening-times__times-container"
       >
         <OpeningTimesEntry
           key="Additional 1"
@@ -78,7 +78,7 @@ exports[`should render non-empty times details correctly 1`] = `
       </div>
     </div>
     <div
-      className="src-modules-entity-components-opening-times-index__details-column"
+      className="src-modules-entity-components-opening-times__details-column"
     >
       <EntityAdditionalDetailHeading>
         Special Times Header
@@ -87,7 +87,7 @@ exports[`should render non-empty times details correctly 1`] = `
         key="Special tag"
       >
         <Tag
-          className="src-modules-entity-components-opening-times-index__tag"
+          className="src-modules-entity-components-opening-times__tag"
           tag={
             Object {
               "label": "Special tag",
@@ -95,7 +95,7 @@ exports[`should render non-empty times details correctly 1`] = `
           }
         />
         <div
-          className="src-modules-entity-components-opening-times-index__times-container"
+          className="src-modules-entity-components-opening-times__times-container"
         >
           <OpeningTimesEntry
             key="Special 1 "
@@ -113,13 +113,13 @@ exports[`should render non-empty times details correctly 1`] = `
       </div>
     </div>
     <div
-      className="src-modules-entity-components-opening-times-index__details-column"
+      className="src-modules-entity-components-opening-times__details-column"
     >
       <EntityAdditionalDetailHeading>
         Closures
       </EntityAdditionalDetailHeading>
       <div
-        className="src-modules-entity-components-opening-times-index__times-container"
+        className="src-modules-entity-components-opening-times__times-container"
       >
         <OpeningTimesEntry
           key="Closure 1"
@@ -135,7 +135,7 @@ exports[`should render non-empty times details correctly 1`] = `
     type="basic"
   >
     <span
-      className="src-modules-entity-components-opening-times-index__small"
+      className="src-modules-entity-components-opening-times__small"
     >
       Please contact the venue to confirm these times before making a special trip, especially during holidays.
     </span>

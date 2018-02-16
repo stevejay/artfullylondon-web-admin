@@ -2,7 +2,7 @@
 
 exports[`should render correctly when get is in progress 1`] = `
 <div
-  className="src-modules-entity-components-entity-card-collection__cards-container"
+  className="src-modules-search-components-entity-card-collection__cards-container"
 >
   <EntityCard
     cardContentFactory={[Function]}
@@ -22,7 +22,7 @@ exports[`should render correctly when get is in progress 1`] = `
 
 exports[`should render correctly when there are entities 1`] = `
 <div
-  className="src-modules-entity-components-entity-card-collection__cards-container"
+  className="src-modules-search-components-entity-card-collection__cards-container"
 >
   <EntityCard
     cardContentFactory={[Function]}
@@ -42,6 +42,6 @@ exports[`should render correctly when there are entities 1`] = `
 
 exports[`should render correctly when there are no entities 1`] = `
 <div
-  className="src-modules-entity-components-entity-card-collection__cards-container"
+  className="src-modules-search-components-entity-card-collection__cards-container"
 />
 `;

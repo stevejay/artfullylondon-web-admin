@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-import PencilIcon from 'react-icons/lib/fa/pencil'
 
+import IconButton from '_src/components/button/icon'
 import VenueMonitorGridRow from './venue-monitor-grid-row'
 
 it('should render correctly when has not changed', () => {
@@ -78,7 +78,7 @@ it('should handle an edit click', () => {
     />
   )
 
-  wrapper.find(PencilIcon).simulate('click')
+  wrapper.find(IconButton).simulate('click')
 
   expect(onEdit).toHaveBeenCalledWith({
     hasChanged: false,

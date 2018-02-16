@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  EntityCardContentContainer,
-  EntityCardHeading
-} from '_src/modules/entity'
+import EntityCardContentContainer from '../entity-card/content-container'
+import EntityCardHeading from '../entity-card/heading'
 import { SummaryEventSeries } from '_src/entities/event-series'
 
 class EventSeriesCardContent extends React.PureComponent {

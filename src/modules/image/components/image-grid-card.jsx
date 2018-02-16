@@ -28,6 +28,8 @@ class ImageGridCard extends React.Component {
   render () {
     const { value: { id, copyright, ratio, isMain }, entityType } = this.props
 
+    // TODO replace with button
+
     return (
       <div styleName='card'>
         <ImageGridImage

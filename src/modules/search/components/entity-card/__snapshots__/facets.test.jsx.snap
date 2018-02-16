@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<h3
-  className="src-modules-entity-components-entity-card-heading__heading"
-  id="some-id"
+<div
+  className="src-modules-search-components-entity-card-facets__facets"
 >
   <div
     id="child"
   />
-</h3>
+</div>
 `;

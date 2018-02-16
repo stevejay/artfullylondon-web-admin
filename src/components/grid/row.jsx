@@ -17,6 +17,8 @@ class GridRow extends React.Component {
   render () {
     const { onDelete, children } = this.props
 
+    // TODO replace with button
+
     return (
       <div styleName='container'>
         <div styleName='content'>

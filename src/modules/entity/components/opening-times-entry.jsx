@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import * as timeLib from '_src/lib/time'
-import './entry.scss'
+import './opening-times-entry.scss'
 
 class OpeningTimesEntry extends ShouldNeverUpdateComponent {
   render () {

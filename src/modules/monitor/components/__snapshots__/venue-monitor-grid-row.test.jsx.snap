@@ -26,10 +26,11 @@ exports[`should render correctly when has changed 1`] = `
       </span>
     </div>
   </div>
-  <FaPencil
-    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
+  <IconButton
+    aria-label="Edit"
+    icon={[Function]}
     onClick={[Function]}
-    tabIndex="0"
+    type="default"
   />
 </div>
 `;
@@ -50,10 +51,11 @@ exports[`should render correctly when has no url 1`] = `
     </h2>
     <div />
   </div>
-  <FaPencil
-    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
+  <IconButton
+    aria-label="Edit"
+    icon={[Function]}
     onClick={[Function]}
-    tabIndex="0"
+    type="default"
   />
 </div>
 `;
@@ -78,10 +80,11 @@ exports[`should render correctly when has not changed 1`] = `
     </h2>
     <div />
   </div>
-  <FaPencil
-    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
+  <IconButton
+    aria-label="Edit"
+    icon={[Function]}
     onClick={[Function]}
-    tabIndex="0"
+    type="default"
   />
 </div>
 `;
@@ -112,10 +115,11 @@ exports[`should render correctly when is ignored 1`] = `
       </span>
     </div>
   </div>
-  <FaPencil
-    className="src-modules-monitor-components-venue-monitor-grid-row__icon"
+  <IconButton
+    aria-label="Edit"
+    icon={[Function]}
     onClick={[Function]}
-    tabIndex="0"
+    type="default"
   />
 </div>
 `;

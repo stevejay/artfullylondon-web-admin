@@ -45,10 +45,16 @@ describe('getEntity', () => {
       )
     )
 
-    result = generator.next({ entity: { name: 'Some Name' } })
+    result = generator.next({
+      entity: { name: 'Some Name' }
+    })
 
     expect(result.value).toEqual(
-      put(entityActions.getEntitySucceeded('talent', { name: 'Some Name' }))
+      put(
+        entityActions.getEntitySucceeded('talent', {
+          name: 'Some Name'
+        })
+      )
     )
 
     result = generator.next()

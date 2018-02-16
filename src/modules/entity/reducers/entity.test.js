@@ -84,14 +84,13 @@ it('should handle successfully getting a talent', () => {
   const actual = reducer(
     state,
     entityActions.getEntitySucceeded('talent', {
-      id: 'server-id',
-      entityType: 'talent'
+      id: 'server-id'
     })
   )
 
   expect(actual).toEqual({
     entityId: 'some-talent-id',
-    entity: new FullTalent({ id: 'server-id', entityType: 'talent' }),
+    entity: new FullTalent({ id: 'server-id' }),
     getInProgress: false,
     getFailed: false
   })
@@ -108,14 +107,13 @@ it('should handle successfully getting a venue', () => {
   const actual = reducer(
     state,
     entityActions.getEntitySucceeded('venue', {
-      id: 'server-id',
-      entityType: 'venue'
+      id: 'server-id'
     })
   )
 
   expect(actual).toEqual({
     entityId: 'some-venue-id',
-    entity: new FullVenue({ id: 'server-id', entityType: 'venue' }),
+    entity: new FullVenue({ id: 'server-id' }),
     getInProgress: false,
     getFailed: false
   })
@@ -132,17 +130,13 @@ it('should handle successfully getting an event series', () => {
   const actual = reducer(
     state,
     entityActions.getEntitySucceeded('event-series', {
-      id: 'server-id',
-      entityType: 'event-series'
+      id: 'server-id'
     })
   )
 
   expect(actual).toEqual({
     entityId: 'some-event-series-id',
-    entity: new FullEventSeries({
-      id: 'server-id',
-      entityType: 'event-series'
-    }),
+    entity: new FullEventSeries({ id: 'server-id' }),
     getInProgress: false,
     getFailed: false
   })
@@ -159,14 +153,13 @@ it('should handle successfully getting an event', () => {
   const actual = reducer(
     state,
     entityActions.getEntitySucceeded('event', {
-      id: 'server-id',
-      entityType: 'event'
+      id: 'server-id'
     })
   )
 
   expect(actual).toEqual({
     entityId: 'some-event-id',
-    entity: new FullEvent({ id: 'server-id', entityType: 'event' }),
+    entity: new FullEvent({ id: 'server-id' }),
     getInProgress: false,
     getFailed: false
   })

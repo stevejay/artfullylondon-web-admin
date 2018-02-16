@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 
+import IconButton from '_src/components/button/icon'
 import './event-monitor-grid-row.scss'
 
 class EventMonitorGridRow extends React.Component {
@@ -25,8 +26,6 @@ class EventMonitorGridRow extends React.Component {
 
     const url = currentUrl || venueHomepageUrl
 
-    // TODO use a button for the edit option:
-
     return (
       <div styleName='container'>
         <div styleName='content'>
@@ -46,7 +45,11 @@ class EventMonitorGridRow extends React.Component {
             {hasChanged && <span styleName='tag-changed'>changed</span>}
           </div>
         </div>
-        <PencilIcon tabIndex='0' styleName='icon' onClick={this.handleEdit} />
+        <IconButton
+          icon={PencilIcon}
+          onClick={this.handleEdit}
+          aria-label='Edit'
+        />
       </div>
     )
   }

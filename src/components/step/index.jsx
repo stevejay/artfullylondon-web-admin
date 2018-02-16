@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import './index.scss'
 
+// TODO replace with button
+
 class Step extends React.PureComponent {
   handleClick = () => {
     this.props.onClick(this.props.page)
@@ -16,8 +18,8 @@ class Step extends React.PureComponent {
     const stepStyle = showAsCompleted
       ? 'step-completed'
       : showAsNextPage
-        ? 'step-next'
-        : showAsCurrentPage ? 'step-active' : 'step-disabled'
+          ? 'step-next'
+          : showAsCurrentPage ? 'step-active' : 'step-disabled'
 
     if (showAsCompleted || showAsNextPage) {
       return (

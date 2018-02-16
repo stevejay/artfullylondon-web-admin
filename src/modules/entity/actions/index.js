@@ -6,18 +6,6 @@ export const types = {
   SAVE_ENTITY: 'entity/SAVE_ENTITY',
   RESET_ENTITY_FOR_CREATE: 'entity/RESET_ENTITY_FOR_CREATE',
   CLEAR_ENTITY: 'entity/CLEAR_ENTITY'
-  // UPDATE_ENTITY: 'entity/UPDATE_ENTITY',
-  // AUTOCOMPLETE_SEARCH: 'entity/AUTOCOMPLETE_SEARCH',
-  // AUTOCOMPLETE_SEARCH_SUCCEEDED: 'entity/AUTOCOMPLETE_SEARCH_SUCCEEDED',
-  // GET_SUB_ENTITY: 'entity/GET_SUB_ENTITY',
-  // GET_SUB_ENTITY_STARTED: 'entity/GET_SUB_ENTITY_STARTED',
-  // GET_SUB_ENTITY_FINISHED: 'entity/GET_SUB_ENTITY_FINISHED',
-  // CREATE_TALENT_FOR_EVENT: 'entity/CREATE_TALENT_FOR_EVENT',
-  // GET_EVENT_AS_COPY: 'entity/GET_EVENT_AS_COPY',
-  // GET_EVENT_AS_COPY_STARTED: 'entity/GET_EVENT_AS_COPY_STARTED',
-  // GET_EVENT_AS_COPY_SUCCEEDED: 'entity/GET_EVENT_AS_COPY_SUCCEEDED',
-  // GET_EVENT_AS_COPY_FAILED: 'entity/GET_EVENT_AS_COPY_FAILED',
-  // TALENT_SELECTED: 'entity/TALENT_SELECTED'
 }
 
 export const getEntity = (entityType, id) => ({
@@ -30,7 +18,6 @@ export const getEntityStarted = id => ({
   payload: { id }
 })
 
-// TODO get entityType from entity!
 export const getEntitySucceeded = (entityType, entity) => ({
   type: types.GET_ENTITY_SUCCEEDED,
   payload: { entityType, entity }

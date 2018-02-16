@@ -1,7 +1,7 @@
 import React from 'react'
-import PencilIcon from 'react-icons/lib/fa/pencil'
 import _ from 'lodash'
 
+import IconButton from '_src/components/button/icon'
 import EventMonitorGridRow from './event-monitor-grid-row'
 
 it('should render correctly when has a url', () => {
@@ -120,7 +120,7 @@ it('should handle an edit click', () => {
     />
   )
 
-  wrapper.find(PencilIcon).simulate('click')
+  wrapper.find(IconButton).simulate('click')
 
   expect(handleEdit).toHaveBeenCalledWith({
     combinedEvents: false,
