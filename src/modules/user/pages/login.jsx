@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 
 import FormSection from '_src/components/form/section'
 import FormBorder from '_src/components/form/border'
-import LoginForm from '_src/modules/user/forms/login'
-import * as userConstants from '_src/modules/user/constants'
-import * as userActions from '_src/modules/user/actions'
-import { selectors } from '_src/modules/user/reducers'
+import LoginForm from '../forms/login'
+import * as userConstants from '../constants'
+import * as userActions from '../actions'
+import { selectors } from '../reducers'
 import './login.scss'
 
 export class LoginPage extends React.Component {

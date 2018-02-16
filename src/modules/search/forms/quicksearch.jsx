@@ -6,13 +6,11 @@ import SearchIcon from 'react-icons/lib/fa/search'
 import IconButton from '_src/components/button/icon'
 import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
-import SearchInputFieldBasic
-  from '_src/modules/search/components/search-input/field-basic'
-import SearchInputToolbar
-  from '_src/modules/search/components/search-input/toolbar'
+import SearchInputFieldBasic from '../components/search-input/field-basic'
+import SearchInputToolbar from '../components/search-input/toolbar'
 import * as entityConstants from '_src/constants/entity'
 import * as browserConstants from '_src/constants/browser'
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {

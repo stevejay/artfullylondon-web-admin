@@ -5,7 +5,7 @@ import { EditTalentForm } from './edit-talent'
 import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
 import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/modules/talent/constants'
+import * as talentConstants from '../constants'
 import * as talentDomainConstants from '_src/constants/talent'
 
 it('should render correctly when editing an individual', () => {

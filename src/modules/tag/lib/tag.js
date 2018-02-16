@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import * as tagConstants from '_src/modules/tag/constants'
+import * as tagConstants from '../constants'
 
 export function getTagTypeFromTagId (id) {
   if (_.startsWith(id, 'geo/')) {

@@ -2,8 +2,8 @@ import React from 'react'
 import window from 'global/window'
 
 import EntityPageMap from './entity-page-map'
-import GoogleMapStatic from '_src/modules/location/components/google-map-static'
-import * as locationLib from '_src/modules/location/lib/location'
+import GoogleMapStatic from './google-map-static'
+import * as locationLib from '../lib/location'
 
 it('should render correctly', () => {
   const wrapper = shallow(

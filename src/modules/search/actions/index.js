@@ -1,4 +1,4 @@
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 
 export const types = {
   PUSH_BASIC_SEARCH_TO_URL: 'search/PUSH_BASIC_SEARCH_TO_URL',

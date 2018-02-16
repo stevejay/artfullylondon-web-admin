@@ -8,10 +8,9 @@ import ToolbarItem from '_src/components/toolbar/item'
 import Modal from '_src/components/modal'
 import Logo from '_src/components/logo'
 import IconButton from '_src/components/button/icon'
-import QuicksearchForm from '_src/modules/search/forms/quicksearch'
-import ModalTransition
-  from '_src/modules/search/components/quicksearch/modal-transition'
-import * as searchActions from '_src/modules/search/actions'
+import QuicksearchForm from '../../forms/quicksearch'
+import ModalTransition from './modal-transition'
+import * as searchActions from '../../actions'
 import * as entityConstants from '_src/constants/entity'
 import './index.scss'
 

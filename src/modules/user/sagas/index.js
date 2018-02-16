@@ -4,10 +4,10 @@ import log from 'loglevel'
 
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as authLib from '_src/modules/user/lib/auth'
-import * as userConstants from '_src/modules/user/constants'
-import * as userActions from '_src/modules/user/actions'
-import { selectors } from '_src/modules/user/reducers'
+import * as authLib from '../lib/auth'
+import * as userConstants from '../constants'
+import * as userActions from '../actions'
+import { selectors } from '../reducers'
 import history from '_src/history'
 
 export function * attemptAutoLogIn () {

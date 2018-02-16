@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import SearchInputFieldBasic from '_src/modules/search/components/search-input/field-basic'
+import SearchInputFieldBasic from './field-basic'
 
 it('should render correctly', () => {
   const wrapper = shallow(

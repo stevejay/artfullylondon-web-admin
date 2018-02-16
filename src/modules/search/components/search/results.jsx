@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import Pagination from '_src/components/pagination'
 import { EntityCardCollection } from '_src/modules/entity'
-// import MoreResults from '_src/modules/search/components/search/more-results'
+// import MoreResults from './more-results'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as cardContentFactory
-  from '_src/modules/search/components/search-results-cards/card-content-factory'
+  from '../search-results-cards/card-content-factory'
 
 class SearchResults extends React.PureComponent {
   render () {

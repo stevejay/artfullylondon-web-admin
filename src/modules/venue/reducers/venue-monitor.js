@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import { types } from '_src/modules/venue/actions'
+import { types } from '../actions'
 
 export const moduleName = 'venueMonitor'
 

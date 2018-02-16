@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import ImagePlaceholder from '_src/modules/image/components/image-placeholder'
+import ImagePlaceholder from './image-placeholder'
 import * as image from '_src/lib/image'
 import * as entityConstants from '_src/constants/entity'
 import './image-grid-image.scss'

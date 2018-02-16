@@ -8,7 +8,7 @@ import SelectField from '_src/components/select/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import * as dateConstants from '_src/constants/date'
-import * as timeConstants from '_src/modules/time/constants'
+import * as timeConstants from '../constants'
 
 export const AddAdditionalPerformanceForm = ({
   pristine,

@@ -1,5 +1,5 @@
-import * as notificationActions from '_src/modules/notification/actions'
-import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationActions from './index'
+import * as notificationConstants from '../constants'
 
 describe('addSuccessNotification', () => {
   it('should create a success notification action', () => {

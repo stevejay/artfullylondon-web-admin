@@ -3,12 +3,11 @@ import _ from 'lodash'
 
 import { EventSeriesEditOrCreate } from './event-series-edit-or-create'
 import { FullEventSeries } from '_src/entities/event-series'
-import EditEventSeriesForm
-  from '_src/modules/event-series/forms/edit-event-series'
+import EditEventSeriesForm from '../forms/edit-event-series'
 import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
-import * as eventSeriesMapper from '_src/modules/event-series/lib/mapper'
+import * as eventSeriesConstants from '../constants'
+import * as eventSeriesMapper from '../lib/mapper'
 import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly when creating an event series', () => {

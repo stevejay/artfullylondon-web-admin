@@ -6,7 +6,7 @@ import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import TextField from '_src/components/text/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
-import * as imageConstants from '_src/modules/image/constants'
+import * as imageConstants from '../constants'
 
 export const AddImageForm = ({
   pristine,

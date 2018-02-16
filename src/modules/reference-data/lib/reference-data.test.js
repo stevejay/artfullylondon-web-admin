@@ -1,5 +1,4 @@
-import * as referenceDataLib
-  from '_src/modules/reference-data/lib/reference-data'
+import * as referenceDataLib from './reference-data'
 import * as imageLib from '_src/lib/image'
 
 describe('mapReferenceData', () => {

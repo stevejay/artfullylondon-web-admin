@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { SummaryTalent } from '_src/entities/talent'
-import TalentCardContent
-  from '_src/modules/search/components/search-results-cards/talent-card-content'
+import TalentCardContent from './talent-card-content'
 
 it('should render correctly', () => {
   const entity = new SummaryTalent({

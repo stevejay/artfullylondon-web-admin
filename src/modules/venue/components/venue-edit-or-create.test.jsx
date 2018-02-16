@@ -3,11 +3,11 @@ import _ from 'lodash'
 
 import { VenueEditOrCreate } from './venue-edit-or-create'
 import { FullVenue } from '_src/entities/venue'
-import EditVenueForm from '_src/modules/venue/forms/edit-venue'
+import EditVenueForm from '../forms/edit-venue'
 import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
-import * as venueConstants from '_src/modules/venue/constants'
-import * as venueMapper from '_src/modules/venue/lib/mapper'
+import * as venueConstants from '../constants'
+import * as venueMapper from '../lib/mapper'
 import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly when creating a venue', () => {

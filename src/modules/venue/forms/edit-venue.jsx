@@ -29,7 +29,7 @@ import {
   constraints
 } from '_src/modules/time'
 import * as entityConstants from '_src/constants/entity'
-import * as venueConstants from '_src/modules/venue/constants'
+import * as venueConstants from '../constants'
 import * as dateLib from '_src/lib/date'
 
 export class EditVenueForm extends React.Component {

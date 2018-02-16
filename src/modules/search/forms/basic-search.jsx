@@ -8,15 +8,13 @@ import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import IconButton from '_src/components/button/icon'
-import SearchInputFieldBasic
-  from '_src/modules/search/components/search-input/field-basic'
-import SearchInputToolbar
-  from '_src/modules/search/components/search-input/toolbar'
+import SearchInputFieldBasic from '../components/search-input/field-basic'
+import SearchInputToolbar from '../components/search-input/toolbar'
 import DropdownField from '_src/components/dropdown/field'
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 import * as browserConstants from '_src/constants/browser'
-import * as searchActions from '_src/modules/search/actions'
-import { selectors as searchSelectors } from '_src/modules/search/reducers'
+import * as searchActions from '../actions'
+import { selectors as searchSelectors } from '../reducers'
 import './basic-search.scss'
 
 export class BasicSearchForm extends React.Component {

@@ -6,8 +6,8 @@ import { get, put as httpPut } from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
-import * as venueConstants from '_src/modules/venue/constants'
-import * as venueActions from '_src/modules/venue/actions'
+import * as venueConstants from '../constants'
+import * as venueActions from '../actions'
 
 export function * getVenueEventMonitors (action) {
   try {

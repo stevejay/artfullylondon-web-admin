@@ -5,9 +5,9 @@ import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
-import LinksGridRow from '_src/modules/link/components/grid-row'
-import LinksEditorForm from '_src/modules/link/components/editor-form'
-import * as linkLib from '_src/modules/link/lib/link'
+import LinksGridRow from './grid-row'
+import LinksEditorForm from './editor-form'
+import * as linkLib from '../lib/link'
 
 class LinksField extends React.Component {
   shouldComponentUpdate (nextProps) {

@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditableTagCollection } from './editable-tag-collection'
-import EditableTag from '_src/modules/tag/components/editable-tag'
+import EditableTag from './editable-tag'
 
 it('should render correctly when loading', () => {
   const wrapper = shallow(

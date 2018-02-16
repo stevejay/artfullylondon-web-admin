@@ -1,8 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
 
-import * as notificationConstants from '_src/modules/notification/constants'
-import Notification from '_src/modules/notification/components/notification'
+import * as notificationConstants from '../constants'
+import Notification from './notification'
 
 it('should render a success notification with no message correctly', () => {
   const wrapper = shallow(

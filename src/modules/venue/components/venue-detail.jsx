@@ -19,13 +19,11 @@ import {
 import { Image } from '_src/modules/image'
 import { ExternalLinks } from '_src/modules/link'
 import { EntityPageMap } from '_src/modules/location'
-import MonitorCollection from '_src/modules/venue/components/monitor/collection'
-import VenueMonitorGridRow
-  from '_src/modules/venue/components/monitor/venue-monitor-grid-row'
-import EventMonitorGridRow
-  from '_src/modules/venue/components/monitor/event-monitor-grid-row'
-import { selectors as venueSelectors } from '_src/modules/venue/reducers'
-import * as venueActions from '_src/modules/venue/actions'
+import MonitorCollection from './monitor/collection'
+import VenueMonitorGridRow from './monitor/venue-monitor-grid-row'
+import EventMonitorGridRow from './monitor/event-monitor-grid-row'
+import { selectors as venueSelectors } from '../reducers'
+import * as venueActions from '../actions'
 import { FullVenue } from '_src/entities/venue'
 import * as dateLib from '_src/lib/date'
 

@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './venue-event-monitors'
-import * as venueActions from '_src/modules/venue/actions'
+import * as venueActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

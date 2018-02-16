@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 
-import * as userConstants from '_src/modules/user/constants'
-import { types } from '_src/modules/user/actions'
+import * as userConstants from '../constants'
+import { types } from '../actions'
 
 export const module = 'auth'
 

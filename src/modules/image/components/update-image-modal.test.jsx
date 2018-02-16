@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import UpdateImageModal from '_src/modules/image/components/update-image-modal'
+import UpdateImageModal from './update-image-modal'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -5,11 +5,11 @@ import { change, startSubmit, stopSubmit, reset } from 'redux-form'
 
 import normalise from '_src/lib/normalise'
 import * as validationLib from '_src/lib/validation'
-import * as linkLib from '_src/modules/link/lib/link'
 import * as sagaLib from '_src/lib/saga'
 import * as sagas from './index'
-import * as linkActions from '_src/modules/link/actions'
-import * as linkConstants from '_src/modules/link/constants'
+import * as linkActions from '../actions'
+import * as linkConstants from '../constants'
+import * as linkLib from '../lib/link'
 
 describe('deleteLink', () => {
   const generator = cloneableGenerator(sagas.deleteLink)(

@@ -13,7 +13,7 @@ import HtmlTextField from '_src/components/html-text/field'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentDomainConstants from '_src/constants/talent'
-import * as talentConstants from '_src/modules/talent/constants'
+import * as talentConstants from '../constants'
 import { actions as imageActions, ImagesField } from '_src/modules/image'
 import { actions as linkActions, LinksField } from '_src/modules/link'
 

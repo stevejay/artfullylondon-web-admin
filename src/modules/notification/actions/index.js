@@ -1,4 +1,4 @@
-import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationConstants from '../constants'
 
 export const types = {
   ADD_NOTIFICATION: 'notification/ADD_NOTIFICATION',

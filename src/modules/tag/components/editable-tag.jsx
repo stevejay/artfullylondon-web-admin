@@ -4,7 +4,7 @@ import CloseIcon from 'react-icons/lib/fa/close'
 
 import IconButton from '_src/components/button/icon'
 import Loader from '_src/components/loader'
-import * as tagConstants from '_src/modules/tag/constants'
+import * as tagConstants from '../constants'
 import './editable-tag.scss'
 
 class EditableTag extends React.PureComponent {

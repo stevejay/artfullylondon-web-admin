@@ -2,10 +2,9 @@ import React from 'react'
 import _ from 'lodash'
 
 import { TagsTypePage } from './tags-type'
-import * as tagActions from '_src/modules/tag/actions'
-import EditableTagCollection
-  from '_src/modules/tag/components/editable-tag-collection'
-import AddTagForm from '_src/modules/tag/forms/add-tag'
+import * as tagActions from '../actions'
+import EditableTagCollection from '../components/editable-tag-collection'
+import AddTagForm from '../forms/add-tag'
 
 it('should render correctly when get tags succeeded', () => {
   const wrapper = shallow(

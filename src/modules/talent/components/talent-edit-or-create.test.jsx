@@ -1,13 +1,13 @@
 import React from 'react'
 import _ from 'lodash'
 
-import EditTalentForm from '_src/modules/talent/forms/edit-talent'
+import EditTalentForm from '../forms/edit-talent'
 import { TalentEditOrCreate } from './talent-edit-or-create'
 import { FullTalent } from '_src/entities/talent'
 import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
-import * as talentMapper from '_src/modules/talent/lib/mapper'
-import * as talentConstants from '_src/modules/talent/constants'
+import * as talentMapper from '../lib/mapper'
+import * as talentConstants from '../constants'
 import * as entityConstants from '_src/constants/entity'
 
 it('should render correctly when creating a talent', () => {

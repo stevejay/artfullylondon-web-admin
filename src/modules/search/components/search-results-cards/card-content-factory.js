@@ -1,12 +1,8 @@
 import * as constants from '_src/constants/entity'
-import EventCardContent
-  from '_src/modules/search/components/search-results-cards/event-card-content'
-import EventSeriesCardContent
-  from '_src/modules/search/components/search-results-cards/event-series-card-content'
-import TalentCardContent
-  from '_src/modules/search/components/search-results-cards/talent-card-content'
-import VenueCardContent
-  from '_src/modules/search/components/search-results-cards/venue-card-content'
+import EventCardContent from './event-card-content'
+import EventSeriesCardContent from './event-series-card-content'
+import TalentCardContent from './talent-card-content'
+import VenueCardContent from './venue-card-content'
 
 export function createCard (entityType) {
   switch (entityType) {

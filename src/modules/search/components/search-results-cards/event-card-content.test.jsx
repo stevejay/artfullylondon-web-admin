@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { SummaryEvent } from '_src/entities/event'
-import EventCardContent
-  from '_src/modules/search/components/search-results-cards/event-card-content'
+import EventCardContent from './event-card-content'
 
 it('should render correctly', () => {
   const entity = new SummaryEvent({

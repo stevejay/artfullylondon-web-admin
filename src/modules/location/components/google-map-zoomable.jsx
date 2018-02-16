@@ -11,8 +11,8 @@ import {
 import MarkerClusterer
   from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
-import * as locationConstants from '_src/modules/location/constants'
-import * as locationLib from '_src/modules/location/lib/location'
+import * as locationConstants from '../constants'
+import * as locationLib from '../lib/location'
 
 export class GoogleMapZoomable extends React.PureComponent {
   componentWillUpdate (nextProps) {

@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
-import { reducer, selectors } from '_src/modules/tag/reducers/tag'
-import * as tagActions from '_src/modules/tag/actions'
+import { reducer, selectors } from './tag'
+import * as tagActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

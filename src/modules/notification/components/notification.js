@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import CloseButton from '_src/components/button/close'
-import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationConstants from '../constants'
 import './notification.scss'
 
 class Notification extends ShouldNeverUpdateComponent {

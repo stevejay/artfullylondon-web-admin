@@ -1,4 +1,4 @@
-import * as locationConstants from '_src/modules/location/constants'
+import * as locationConstants from '../constants'
 
 const LONDON_BOUNDS = {
   north: locationConstants.MAX_LONDON_LAT,

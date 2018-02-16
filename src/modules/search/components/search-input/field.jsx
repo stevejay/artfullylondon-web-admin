@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SearchInput from '_src/modules/search/components/search-input'
+import SearchInput from './index'
 import './field.scss'
 
 const SearchInputField = ({ input: { value, onChange }, ...rest }) => (

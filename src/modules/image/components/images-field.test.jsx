@@ -1,10 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
 
-import ImagesField from '_src/modules/image/components/images-field'
-import AddImageForm from '_src/modules/image/forms/add-image-form'
-import ImageGridCard from '_src/modules/image/components/image-grid-card'
-import UpdateImageModal from '_src/modules/image/components/update-image-modal'
+import ImagesField from './images-field'
+import ImageGridCard from './image-grid-card'
+import UpdateImageModal from './update-image-modal'
+import AddImageForm from '../forms/add-image-form'
 
 it('should render correctly', () => {
   const wrapper = shallow(

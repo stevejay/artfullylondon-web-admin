@@ -1,8 +1,7 @@
 import { handleActions } from 'redux-actions'
 
-import { types } from '_src/modules/reference-data/actions'
-import * as referenceDataLib
-  from '_src/modules/reference-data/lib/reference-data'
+import { types } from '../actions'
+import * as referenceDataLib from '../lib/reference-data'
 import referenceData from './reference-data.json'
 
 const initialState = {

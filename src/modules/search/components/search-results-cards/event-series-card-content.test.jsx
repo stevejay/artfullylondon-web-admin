@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { SummaryEventSeries } from '_src/entities/event-series'
-import EventSeriesCardContent
-  from '_src/modules/search/components/search-results-cards/event-series-card-content'
+import EventSeriesCardContent from './event-series-card-content'
 
 it('should render correctly', () => {
   const entity = new SummaryEventSeries({

@@ -9,11 +9,11 @@ import {
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import * as tagConstants from '_src/modules/tag/constants'
+import * as tagConstants from '../constants'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
-import * as tagActions from '_src/modules/tag/actions'
+import * as tagActions from '../actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 // function * getAllTags () {

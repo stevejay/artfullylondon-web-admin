@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import TimeGridRow from './grid-row'
-import * as timeLib from '_src/modules/time/lib/time'
+import * as timeLib from '../lib/time'
 
 class DayAndTimePeriodEntry extends ShouldNeverUpdateComponent {
   render () {

@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import SearchMoreResultsLink from '_src/modules/search/components/search/more-results-link'
+import SearchMoreResultsLink from './more-results-link'
 
 it('should render correctly', () => {
   const wrapper = shallow(

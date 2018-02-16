@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { SummaryVenue } from '_src/entities/venue'
-import SearchResults from '_src/modules/search/components/search/results'
+import SearchResults from './results'
 
 it('should render correctly', () => {
   const wrapper = shallow(

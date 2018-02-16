@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ImageGrid from '_src/modules/image/components/image-grid'
+import ImageGrid from './image-grid'
 
 it('should render correctly when has children', () => {
   const wrapper = shallow(<ImageGrid><div id='child' /></ImageGrid>)

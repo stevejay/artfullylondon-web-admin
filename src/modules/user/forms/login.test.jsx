@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { LoginForm } from '_src/modules/user/forms/login'
+import { LoginForm } from './login'
 
 it('should render correctly', () => {
   const wrapper = shallow(

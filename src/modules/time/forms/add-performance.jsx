@@ -6,7 +6,7 @@ import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import SelectField from '_src/components/select/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
-import * as timeConstants from '_src/modules/time/constants'
+import * as timeConstants from '../constants'
 
 export const AddPerformanceForm = ({
   pristine,

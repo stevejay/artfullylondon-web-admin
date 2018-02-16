@@ -8,9 +8,9 @@ import normalise from '_src/lib/normalise'
 import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as searchLib from '_src/modules/search/lib/search'
-import * as searchConstants from '_src/modules/search/constants'
-import * as searchActions from '_src/modules/search/actions'
+import * as searchLib from '../lib/search'
+import * as searchConstants from '../constants'
+import * as searchActions from '../actions'
 
 export function * pushBasicSearchToUrl ({ payload }) {
   try {

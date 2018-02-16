@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import _ from 'lodash'
 
-import { types } from '_src/modules/venue/actions'
+import { types } from '../actions'
 
 export const moduleName = 'venueEventMonitors'
 

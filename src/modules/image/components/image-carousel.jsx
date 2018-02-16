@@ -4,7 +4,7 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
 import { withState } from 'recompose'
 
-import ImageCredit from '_src/modules/image/components/image-credit'
+import ImageCredit from './image-credit'
 import * as imageLib from '_src/lib/image'
 import './image-carousel.scss'
 

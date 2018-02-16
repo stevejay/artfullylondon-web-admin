@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { SummaryVenue } from '_src/entities/venue'
-import VenueCardContent
-  from '_src/modules/search/components/search-results-cards/venue-card-content'
+import VenueCardContent from './venue-card-content'
 
 it('should render correctly', () => {
   const entity = new SummaryVenue({

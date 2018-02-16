@@ -14,7 +14,7 @@ import Toolbar from '_src/components/toolbar'
 import ToolbarItem from '_src/components/toolbar/item'
 import Dropdown from '_src/components/dropdown'
 import { selectors, actions as userActions } from '_src/modules/user'
-import * as navConstants from '_src/modules/nav/constants'
+import * as navConstants from '../../constants'
 import './index.scss'
 
 export class Header extends React.PureComponent {

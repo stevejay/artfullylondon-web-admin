@@ -2,9 +2,9 @@ import { delay } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
 import _ from 'lodash'
 
-import * as sagas from '_src/modules/notification/sagas'
-import * as notificationConstants from '_src/modules/notification/constants'
-import * as notificationActions from '_src/modules/notification/actions'
+import * as sagas from './index'
+import * as notificationConstants from '../constants'
+import * as notificationActions from '../actions'
 
 describe('addNotification', () => {
   it('should handle adding a notification', () => {

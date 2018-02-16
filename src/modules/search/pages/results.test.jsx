@@ -3,12 +3,12 @@ import _ from 'lodash'
 
 import { SearchResultsPage } from './results'
 import { SummaryVenue } from '_src/entities/venue'
-import SearchResults from '_src/modules/search/components/search/results'
-import BasicSearchForm from '_src/modules/search/forms/basic-search'
-import NoResults from '_src/modules/search/components/search/no-results'
+import SearchResults from '../components/search/results'
+import BasicSearchForm from '../forms/basic-search'
+import NoResults from '../components/search/no-results'
 import * as dateLib from '_src/lib/date'
-import * as searchConstants from '_src/modules/search/constants'
-import * as searchActions from '_src/modules/search/actions'
+import * as searchConstants from '../constants'
+import * as searchActions from '../actions'
 import * as entityConstants from '_src/constants/entity'
 
 dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')

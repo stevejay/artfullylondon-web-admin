@@ -7,7 +7,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import TextField from '_src/components/text/field'
 import SelectField from '_src/components/select/field'
-import * as linkConstants from '_src/modules/link/constants'
+import * as linkConstants from '../constants'
 
 export const LinksEditorForm = ({
   pristine,

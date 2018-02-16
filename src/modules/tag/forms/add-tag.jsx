@@ -7,7 +7,7 @@ import FormRow from '_src/components/form/row'
 import FormError from '_src/components/form/error'
 import TextField from '_src/components/text/field'
 import ButtonField from '_src/components/button/field'
-import * as tagConstants from '_src/modules/tag/constants'
+import * as tagConstants from '../constants'
 
 export const AddTagForm = ({
   canAddTag,

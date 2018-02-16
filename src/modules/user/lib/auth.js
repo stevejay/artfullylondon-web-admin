@@ -1,6 +1,6 @@
 import { AuthenticationDetails } from 'amazon-cognito-identity-js'
 
-import * as cognitoUserLib from '_src/modules/user/lib/cognito-user'
+import * as cognitoUserLib from './cognito-user'
 
 export function attemptAutoLogIn () {
   return new Promise(resolve => {

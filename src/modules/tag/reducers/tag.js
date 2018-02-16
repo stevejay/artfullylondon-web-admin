@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions'
 import _ from 'lodash'
 
-import { types } from '_src/modules/tag/actions'
-import * as tagLib from '_src/modules/tag/lib/tag'
+import { types } from '../actions'
+import * as tagLib from '../lib/tag'
 
 const initialState = {
   getInProgress: false,

@@ -5,9 +5,9 @@ import window from 'global/window'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import Loader from '_src/components/loader'
-import GoogleMapStatic from '_src/modules/location/components/google-map-static'
-import * as locationLib from '_src/modules/location/lib/location'
-import * as locationConstants from '_src/modules/location/constants'
+import GoogleMapStatic from './google-map-static'
+import * as locationLib from '../lib/location'
+import * as locationConstants from '../constants'
 import './entity-page-map.scss'
 
 const CONTAINER_ELEMENT_STYLE = { height: '100%' }

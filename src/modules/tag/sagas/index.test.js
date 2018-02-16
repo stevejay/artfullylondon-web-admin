@@ -6,10 +6,10 @@ import { startSubmit, stopSubmit, reset } from 'redux-form'
 import normalise from '_src/lib/normalise'
 import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
-import * as tagSagas from '_src/modules/tag/sagas'
+import * as tagSagas from './index'
 import * as validationLib from '_src/lib/validation'
-import * as tagConstants from '_src/modules/tag/constants'
-import * as tagActions from '_src/modules/tag/actions'
+import * as tagConstants from '../constants'
+import * as tagActions from '../actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 describe('getTags', () => {

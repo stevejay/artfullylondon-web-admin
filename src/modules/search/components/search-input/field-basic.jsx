@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SearchInput from '_src/modules/search/components/search-input'
+import SearchInput from './index'
 
 const SearchInputFieldBasic = ({ input: { value, onChange }, ...rest }) => (
   <SearchInput {...rest} value={value} onChange={onChange} />

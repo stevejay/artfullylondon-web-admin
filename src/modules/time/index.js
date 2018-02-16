@@ -1,31 +1,23 @@
-import AddAdditionalOpeningTimeForm
-  from '_src/modules/time/forms/add-additional-opening-time'
-import AddAdditionalPerformanceForm
-  from '_src/modules/time/forms/add-additional-performance'
-import AddOpeningTimeClosureForm
-  from '_src/modules/time/forms/add-opening-time-closure'
-import AddOpeningTimeForm from '_src/modules/time/forms/add-opening-time'
-import AddPerformanceClosureForm
-  from '_src/modules/time/forms/add-performance-closure'
-import AddPerformanceForm from '_src/modules/time/forms/add-performance'
-import AddSpecialOpeningTimeForm
-  from '_src/modules/time/forms/add-special-opening-time'
-import AddSpecialPerformanceForm
-  from '_src/modules/time/forms/add-special-performance'
-import AddTimesRangeForm from '_src/modules/time/forms/add-times-range'
+import AddAdditionalOpeningTimeForm from './forms/add-additional-opening-time'
+import AddAdditionalPerformanceForm from './forms/add-additional-performance'
+import AddOpeningTimeClosureForm from './forms/add-opening-time-closure'
+import AddOpeningTimeForm from './forms/add-opening-time'
+import AddPerformanceClosureForm from './forms/add-performance-closure'
+import AddPerformanceForm from './forms/add-performance'
+import AddSpecialOpeningTimeForm from './forms/add-special-opening-time'
+import AddSpecialPerformanceForm from './forms/add-special-performance'
+import AddTimesRangeForm from './forms/add-times-range'
 
-import DateAndTimeEntry from '_src/modules/time/components/date-and-time-entry'
-import DateAndTimePeriodEntry
-  from '_src/modules/time/components/date-and-time-period-entry'
-import DayAndTimeEntry from '_src/modules/time/components/day-and-time-entry'
-import DayAndTimePeriodEntry
-  from '_src/modules/time/components/day-and-time-period-entry'
-import TimesField from '_src/modules/time/components/times-field'
-import TimesRangeEntry from '_src/modules/time/components/times-range-entry'
+import DateAndTimeEntry from './components/date-and-time-entry'
+import DateAndTimePeriodEntry from './components/date-and-time-period-entry'
+import DayAndTimeEntry from './components/day-and-time-entry'
+import DayAndTimePeriodEntry from './components/day-and-time-period-entry'
+import TimesField from './components/times-field'
+import TimesRangeEntry from './components/times-range-entry'
 
-import sagas from '_src/modules/time/sagas'
-import * as actions from '_src/modules/time/actions'
-import * as constraints from '_src/modules/time/constants/constraints'
+import sagas from './sagas'
+import * as actions from './actions'
+import * as constraints from './constants/constraints'
 
 // TODO export constraints
 

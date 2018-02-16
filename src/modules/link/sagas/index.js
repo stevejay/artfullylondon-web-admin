@@ -11,9 +11,9 @@ import log from 'loglevel'
 import normalise from '_src/lib/normalise'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as linkLib from '_src/modules/link/lib/link'
-import * as linkActions from '_src/modules/link/actions'
-import * as linkConstants from '_src/modules/link/constants'
+import * as linkLib from '../lib/link'
+import * as linkActions from '../actions'
+import * as linkConstants from '../constants'
 
 export function * addLink (action) {
   try {

@@ -5,7 +5,7 @@ import { EditEventSeriesForm } from './edit-event-series'
 import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
 import * as entityConstants from '_src/constants/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
+import * as eventSeriesConstants from '../constants'
 
 it('should render correctly when editing', () => {
   const wrapper = shallow(

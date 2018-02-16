@@ -1,7 +1,7 @@
-import LoginPage from '_src/modules/user/pages/login'
-import { moduleName, reducer, selectors } from '_src/modules/user/reducers'
-import sagas, { getAuthTokenForCurrentUser } from '_src/modules/user/sagas'
-import * as actions from '_src/modules/user/actions'
+import LoginPage from './pages/login'
+import { moduleName, reducer, selectors } from './reducers'
+import sagas, { getAuthTokenForCurrentUser } from './sagas'
+import * as actions from './actions'
 
 export {
   LoginPage,

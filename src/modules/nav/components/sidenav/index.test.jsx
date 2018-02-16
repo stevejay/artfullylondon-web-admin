@@ -3,7 +3,7 @@ import _ from 'lodash'
 import log from 'loglevel'
 
 import { actions as userActions } from '_src/modules/user'
-import * as navConstants from '_src/modules/nav/constants'
+import * as navConstants from '../../constants'
 import { Sidenav } from './index'
 
 const MENU_ID = navConstants.MENUS[0].label

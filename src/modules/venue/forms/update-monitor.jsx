@@ -7,8 +7,8 @@ import FormButtons from '_src/components/form/buttons'
 import Form from '_src/components/form'
 import Divider from '_src/components/divider'
 import CheckboxField from '_src/components/checkbox/field'
-import Diff from '_src/modules/venue/components/monitor/diff'
-import * as venueConstants from '_src/modules/venue/constants'
+import Diff from '../components/monitor/diff'
+import * as venueConstants from '../constants'
 import './update-monitor.scss'
 
 export const UpdateMonitorForm = ({

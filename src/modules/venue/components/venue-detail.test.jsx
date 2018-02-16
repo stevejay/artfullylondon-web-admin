@@ -3,8 +3,8 @@ import _ from 'lodash'
 
 import { VenueDetail } from './venue-detail'
 import { FullVenue } from '_src/entities/venue'
-import * as venueActions from '_src/modules/venue/actions'
-import MonitorCollection from '_src/modules/venue/components/monitor/collection'
+import * as venueActions from '../actions'
+import MonitorCollection from './monitor/collection'
 import * as dateLib from '_src/lib/date'
 
 it('should render correctly', () => {

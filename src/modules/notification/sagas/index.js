@@ -2,8 +2,8 @@ import { delay } from 'redux-saga'
 import { put, call, takeEvery } from 'redux-saga/effects'
 import _ from 'lodash'
 
-import * as notificationActions from '_src/modules/notification/actions'
-import * as notificationConstants from '_src/modules/notification/constants'
+import * as notificationActions from '../actions'
+import * as notificationConstants from '../constants'
 
 export function * addNotification (action) {
   const id = _.uniqueId('notification_')

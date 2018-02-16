@@ -1,4 +1,4 @@
-import * as timeLib from '_src/modules/time/lib/time'
+import * as timeLib from './time'
 
 it('should perform formatDayNumberForDisplay on all days', () => {
   expect(timeLib.formatDayNumberForDisplay('0')).toEqual('Monday')

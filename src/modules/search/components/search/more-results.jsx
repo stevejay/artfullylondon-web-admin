@@ -7,7 +7,7 @@ import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
 import * as entityConstants from '_src/constants/entity'
 // TODO fix this:
-import * as searchLib from '_src/modules/search/lib/search'
+import * as searchLib from '../../lib/search'
 
 class SearchMoreResults extends ShouldNeverUpdateComponent {
   render () {

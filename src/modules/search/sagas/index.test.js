@@ -10,9 +10,9 @@ import * as sagaLib from '_src/lib/saga'
 import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
 import * as sagas from './index'
-import * as searchActions from '_src/modules/search/actions'
-import * as searchConstants from '_src/modules/search/constants'
-import * as searchLib from '_src/modules/search/lib/search'
+import * as searchActions from '../actions'
+import * as searchConstants from '../constants'
+import * as searchLib from '../lib/search'
 
 describe('pushBasicSearchToUrl', () => {
   it('should create the url and push it', () => {

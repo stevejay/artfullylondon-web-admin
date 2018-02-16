@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 import * as dateLib from '_src/lib/date'
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
   const threshold = Math.floor(take / 4)

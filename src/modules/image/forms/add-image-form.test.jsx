@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { AddImageForm } from '_src/modules/image/forms/add-image-form'
+import { AddImageForm } from './add-image-form'
 
 it('should render correctly', () => {
   const wrapper = shallow(

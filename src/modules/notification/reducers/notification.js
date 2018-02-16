@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import { types } from '_src/modules/notification/actions'
+import { types } from '../actions'
 
 const initialState = { items: [] }
 

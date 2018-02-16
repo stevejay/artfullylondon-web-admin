@@ -17,8 +17,8 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import * as uuidLib from '_src/lib/uuid'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as imageActions from '_src/modules/image/actions'
-import * as imageConstants from '_src/modules/image/constants'
+import * as imageActions from '../actions'
+import * as imageConstants from '../constants'
 
 export function * getImages (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))

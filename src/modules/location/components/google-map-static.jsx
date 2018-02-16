@@ -7,7 +7,7 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import * as locationConstants from '_src/modules/location/constants'
+import * as locationConstants from '../constants'
 
 export class GoogleMapStatic extends React.PureComponent {
   render () {

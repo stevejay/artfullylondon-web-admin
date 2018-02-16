@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ImagePlaceholder from '_src/modules/image/components/image-placeholder'
-import ImageCarousel from '_src/modules/image/components/image-carousel'
-import ImageCredit from '_src/modules/image/components/image-credit'
+import ImagePlaceholder from './image-placeholder'
+import ImageCarousel from './image-carousel'
+import ImageCredit from './image-credit'
 import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 import './image.scss'

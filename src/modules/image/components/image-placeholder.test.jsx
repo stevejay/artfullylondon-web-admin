@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ImagePlaceholder from '_src/modules/image/components/image-placeholder'
+import ImagePlaceholder from './image-placeholder'
 import * as entityConstants from '_src/constants/entity'
 
 it('should render a venue placeholder image correctly', () => {

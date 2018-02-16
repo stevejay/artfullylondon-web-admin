@@ -1,8 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import SearchInputAutocompleteItem
-  from '_src/modules/search/components/search-input/autocomplete-item'
+import SearchInputAutocompleteItem from './autocomplete-item'
 import * as searchConstants from '_src/constants/search-temp'
 
 it('should render correctly an autocomplete entity that is not currently selected', () => {

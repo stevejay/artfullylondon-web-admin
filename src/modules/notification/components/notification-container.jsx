@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import Notification from '_src/modules/notification/components/notification'
-import * as notificationConstants from '_src/modules/notification/constants'
-import * as notificationActions from '_src/modules/notification/actions'
-import { selectors } from '_src/modules/notification/reducers'
+import Notification from './notification'
+import * as notificationConstants from '../constants'
+import * as notificationActions from '../actions'
+import { selectors } from '../reducers'
 import './notification-container.scss'
 
 export class NotificationContainer extends React.Component {

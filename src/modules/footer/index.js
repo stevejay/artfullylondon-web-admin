@@ -1,2 +1,2 @@
-import Footer from '_src/modules/footer/components/footer'
+import Footer from './components/footer'
 export { Footer }

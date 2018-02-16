@@ -1,10 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { Quicksearch } from '_src/modules/search/components/quicksearch'
-import * as searchActions from '_src/modules/search/actions'
+import { Quicksearch } from './index'
+import * as searchActions from '../../actions'
 import * as entityConstants from '_src/constants/entity'
-import QuicksearchForm from '_src/modules/search/forms/quicksearch'
+import QuicksearchForm from '../../forms/quicksearch'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -4,10 +4,10 @@ import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
-import * as searchActions from '_src/modules/search/actions'
+import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
 import * as entityConstants from '_src/constants/entity'
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 
 const initialState = {
   searchInProgress: false,

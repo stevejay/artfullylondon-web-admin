@@ -9,7 +9,7 @@ import FormRow from '_src/components/form/row'
 import FormButtons from '_src/components/form/buttons'
 import TextField from '_src/components/text/field'
 import FormError from '_src/components/form/error'
-import * as userConstants from '_src/modules/user/constants'
+import * as userConstants from '../constants'
 
 export const LoginForm = ({ submitting, handleSubmit, constraint, error }) => (
   <Form onSubmit={handleSubmit}>

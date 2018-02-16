@@ -7,7 +7,7 @@ import FormRow from '_src/components/form/row'
 import TextField from '_src/components/text/field'
 import FormButtons from '_src/components/form/buttons'
 import Divider from '_src/components/divider'
-import * as imageConstants from '_src/modules/image/constants'
+import * as imageConstants from '../constants'
 import './update-image-form.scss'
 
 const FIELD_CONTAINER_STYLE = { flexBasis: 'auto' }

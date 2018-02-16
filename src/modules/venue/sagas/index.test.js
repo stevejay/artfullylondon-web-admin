@@ -5,10 +5,10 @@ import log from 'loglevel'
 
 import * as sagas from './index'
 import * as sagaLib from '_src/lib/saga'
-import * as venueActions from '_src/modules/venue/actions'
+import * as venueActions from '../actions'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import { get, put as httpPut } from '_src/lib/fetch'
-import * as venueConstants from '_src/modules/venue/constants'
+import * as venueConstants from '../constants'
 import * as validationLib from '_src/lib/validation'
 
 describe('getVenueEventMonitors', () => {

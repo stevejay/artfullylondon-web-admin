@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import UpdateImageModal from '_src/modules/image/components/update-image-modal'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
-import ImageGrid from '_src/modules/image/components/image-grid'
-import ImageGridCard from '_src/modules/image/components/image-grid-card'
-import AddImageForm from '_src/modules/image/forms/add-image-form'
+import UpdateImageModal from './update-image-modal'
+import ImageGrid from './image-grid'
+import ImageGridCard from './image-grid-card'
+import AddImageForm from '../forms/add-image-form'
 import * as entityConstants from '_src/constants/entity'
 
 class ImagesField extends React.Component {

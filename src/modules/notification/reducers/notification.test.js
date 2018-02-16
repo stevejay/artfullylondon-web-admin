@@ -1,10 +1,7 @@
 import deepFreeze from 'deep-freeze'
 
-import {
-  reducer,
-  selectors
-} from '_src/modules/notification/reducers/notification'
-import * as notificationActions from '_src/modules/notification/actions'
+import { reducer, selectors } from './notification'
+import * as notificationActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

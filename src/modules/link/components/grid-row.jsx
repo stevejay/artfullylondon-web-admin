@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import GridRow from '_src/components/grid/row'
-import * as linkConstants from '_src/modules/link/constants'
+import * as linkConstants from '../constants'
 
 const LinksGridRow = ({ value: { type, url }, onDelete }) => (
   <GridRow id={type} onDelete={onDelete}>

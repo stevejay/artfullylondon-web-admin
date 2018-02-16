@@ -1,12 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
 
-import * as notificationConstants from '_src/modules/notification/constants'
-import * as notificationActions from '_src/modules/notification/actions'
-import {
-  NotificationContainer
-} from '_src/modules/notification/components/notification-container'
-import Notification from '_src/modules/notification/components/notification'
+import * as notificationConstants from '../constants'
+import * as notificationActions from '../actions'
+import { NotificationContainer } from './notification-container'
+import Notification from './notification'
 
 it('should render correctly', () => {
   const wrapper = shallow(

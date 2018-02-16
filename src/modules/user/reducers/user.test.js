@@ -1,8 +1,8 @@
 import deepFreeze from 'deep-freeze'
 
-import * as userConstants from '_src/modules/user/constants'
-import * as userActions from '_src/modules/user/actions'
-import { reducer, selectors } from '_src/modules/user/reducers/user'
+import * as userConstants from '../constants'
+import * as userActions from '../actions'
+import { reducer, selectors } from './user'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

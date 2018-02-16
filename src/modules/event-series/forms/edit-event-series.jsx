@@ -11,7 +11,7 @@ import Divider from '_src/components/divider'
 import SelectField from '_src/components/select/field'
 import HtmlTextField from '_src/components/html-text/field'
 import * as entityConstants from '_src/constants/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
+import * as eventSeriesConstants from '../constants'
 import { actions as imageActions, ImagesField } from '_src/modules/image'
 import { actions as linkActions, LinksField } from '_src/modules/link'
 

@@ -6,8 +6,8 @@ import _ from 'lodash'
 import FadeTransition from '_src/components/transition/fade'
 import BoxesLoader from '_src/components/loader/boxes'
 import NoEntries from '_src/components/no-entries'
-import EditableTag from '_src/modules/tag/components/editable-tag'
-import * as tagConstants from '_src/modules/tag/constants'
+import EditableTag from './editable-tag'
+import * as tagConstants from '../constants'
 import './editable-tag-collection.scss'
 
 export class EditableTagCollection extends React.PureComponent {

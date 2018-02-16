@@ -1,9 +1,9 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { LoginPage } from '_src/modules/user/pages/login'
-import LoginForm from '_src/modules/user/forms/login'
-import * as userActions from '_src/modules/user/actions'
+import { LoginPage } from './login'
+import LoginForm from '../forms/login'
+import * as userActions from '../actions'
 
 it('should render correctly', () => {
   const wrapper = shallow(

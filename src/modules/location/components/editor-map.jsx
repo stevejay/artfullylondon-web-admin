@@ -7,8 +7,8 @@ import {
   withScriptjs
 } from 'react-google-maps'
 
-import * as locationConstants from '_src/modules/location/constants'
-import * as locationLib from '_src/modules/location/lib/location'
+import * as locationConstants from '../constants'
+import * as locationLib from '../lib/location'
 import './editor-map.scss'
 
 const EditorGoogleMap = withScriptjs(

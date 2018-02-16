@@ -4,17 +4,16 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import * as reduxForm from 'redux-form'
 
-import Image from '_src/modules/image/components/image'
+import { Image } from '_src/modules/image'
 import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
-import EditEventSeriesForm
-  from '_src/modules/event-series/forms/edit-event-series'
+import EditEventSeriesForm from '../forms/edit-event-series'
 import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import { IMAGE_EDITOR_FORM_NAME } from '_src/modules/image'
 import * as entityConstants from '_src/constants/entity'
-import * as eventSeriesConstants from '_src/modules/event-series/constants'
-import * as eventSeriesMapper from '_src/modules/event-series/lib/mapper'
+import * as eventSeriesConstants from '../constants'
+import * as eventSeriesMapper from '../lib/mapper'
 import { FullEventSeries } from '_src/entities/event-series'
 
 export class EventSeriesEditOrCreate extends React.Component {

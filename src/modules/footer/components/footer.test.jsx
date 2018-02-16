@@ -3,7 +3,7 @@ import log from 'loglevel'
 import _ from 'lodash'
 
 import * as dateLib from '_src/lib/date'
-import { Footer } from '_src/modules/footer/components/footer'
+import { Footer } from './footer'
 
 dateLib.getYearNow = jest.fn().mockReturnValue('2015')
 

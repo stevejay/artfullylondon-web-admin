@@ -1,12 +1,8 @@
 import deepFreeze from 'deep-freeze'
 
-import {
-  reducer,
-  selectors
-} from '_src/modules/reference-data/reducers/reference-data'
-import * as referenceDataLib
-  from '_src/modules/reference-data/lib/reference-data'
-import * as referenceActions from '_src/modules/reference-data/actions'
+import { reducer, selectors } from './reference-data'
+import * as referenceDataLib from '../lib/reference-data'
+import * as referenceActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

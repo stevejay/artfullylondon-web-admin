@@ -1,9 +1,9 @@
 import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './search'
-import * as searchActions from '_src/modules/search/actions'
+import * as searchActions from '../actions'
 import * as entityConstants from '_src/constants/entity'
-import * as searchConstants from '_src/modules/search/constants'
+import * as searchConstants from '../constants'
 import { actions as userActions } from '_src/modules/user'
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'

@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import { BasicSearchForm } from './basic-search'
 import Form from '_src/components/form'
-import * as searchActions from '_src/modules/search/actions'
+import * as searchActions from '../actions'
 import * as browserConstants from '_src/constants/browser'
 
 it('should render correctly', () => {

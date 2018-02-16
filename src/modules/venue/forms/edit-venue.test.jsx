@@ -5,7 +5,8 @@ import { EditVenueForm } from './edit-venue'
 import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
 import * as entityConstants from '_src/constants/entity'
-import * as venueConstants from '_src/modules/venue/constants'
+import * as venueConstants from '../constants'
+import * as dateLib from '_src/lib/date'
 
 const timeActions = {
   addOpeningTime: _.noop,
@@ -14,6 +15,8 @@ const timeActions = {
 }
 
 it('should render correctly when editing', () => {
+  dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
+
   const wrapper = shallow(
     <EditVenueForm
       initialValues={{}}
@@ -33,6 +36,8 @@ it('should render correctly when editing', () => {
 })
 
 it('should render correctly when creating', () => {
+  dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
+
   const wrapper = shallow(
     <EditVenueForm
       initialValues={{}}

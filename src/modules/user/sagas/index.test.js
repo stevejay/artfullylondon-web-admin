@@ -3,13 +3,13 @@ import { cloneableGenerator } from 'redux-saga/utils'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
-import * as userSagas from '_src/modules/user/sagas'
-import * as authLib from '_src/modules/user/lib/auth'
+import * as userSagas from './index'
+import * as authLib from '../lib/auth'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
-import * as userConstants from '_src/modules/user/constants'
-import * as userActions from '_src/modules/user/actions'
-import { selectors } from '_src/modules/user/reducers'
+import * as userConstants from '../constants'
+import * as userActions from '../actions'
+import { selectors } from '../reducers'
 import history from '_src/history'
 
 describe('getAuthTokenForCurrentUser', () => {

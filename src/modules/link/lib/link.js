@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 import * as linkConstants from '_src/constants/link'
-import { LINK_TYPE_DROPDOWN_OPTIONS } from '_src/modules/link/constants'
+import { LINK_TYPE_DROPDOWN_OPTIONS } from '../constants'
 
 export function getAvailableLinkTypeDropdownOptions (value) {
   return LINK_TYPE_DROPDOWN_OPTIONS.filter(
