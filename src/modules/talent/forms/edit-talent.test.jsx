@@ -2,9 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditTalentForm } from './edit-talent'
-import { actions as imageActions } from '_src/modules/image'
 import { actions as linkActions } from '_src/modules/link'
-import * as entityConstants from '_src/constants/entity'
 import * as talentConstants from '../constants'
 import * as talentDomainConstants from '_src/constants/talent'
 
@@ -42,119 +40,6 @@ it('should render correctly when creating a group', () => {
   )
 
   expect(wrapper).toMatchSnapshot()
-})
-
-it('should handle deleting an image', () => {
-  const dispatch = jest.fn()
-
-  const wrapper = shallow(
-    <EditTalentForm
-      initialValues={{}}
-      isEdit
-      onSubmit={_.noop}
-      onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
-      submitting={false}
-      handleSubmit={_.noop}
-      change={_.noop}
-      dispatch={dispatch}
-    />
-  )
-
-  wrapper.find('[name="images"]').prop('onDeleteImage')('some-image-id')
-
-  expect(dispatch).toHaveBeenCalledWith(
-    imageActions.deleteImage(
-      'some-image-id',
-      talentConstants.EDIT_TALENT_FORM_NAME
-    )
-  )
-})
-
-it('should handle setting the main image', () => {
-  const dispatch = jest.fn()
-
-  const wrapper = shallow(
-    <EditTalentForm
-      initialValues={{}}
-      isEdit
-      onSubmit={_.noop}
-      onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
-      submitting={false}
-      handleSubmit={_.noop}
-      change={_.noop}
-      dispatch={dispatch}
-    />
-  )
-
-  wrapper.find('[name="images"]').prop('onSetMainImage')('some-image-id')
-
-  expect(dispatch).toHaveBeenCalledWith(
-    imageActions.setMainImage(
-      'some-image-id',
-      talentConstants.EDIT_TALENT_FORM_NAME
-    )
-  )
-})
-
-it('should handle updating an image', () => {
-  const dispatch = jest.fn()
-
-  const wrapper = shallow(
-    <EditTalentForm
-      initialValues={{}}
-      isEdit
-      onSubmit={_.noop}
-      onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
-      submitting={false}
-      handleSubmit={_.noop}
-      change={_.noop}
-      dispatch={dispatch}
-    />
-  )
-
-  wrapper.find('[name="images"]').prop('onUpdateImage')({
-    id: 'some-image-id',
-    values: { name: 'foo' }
-  })
-
-  expect(dispatch).toHaveBeenCalledWith(
-    imageActions.updateImage(
-      { name: 'foo' },
-      'some-image-id',
-      talentConstants.EDIT_TALENT_FORM_NAME
-    )
-  )
-})
-
-it('should handle adding an image', () => {
-  const dispatch = jest.fn()
-
-  const wrapper = shallow(
-    <EditTalentForm
-      initialValues={{}}
-      isEdit
-      onSubmit={_.noop}
-      onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
-      submitting={false}
-      handleSubmit={_.noop}
-      change={_.noop}
-      dispatch={dispatch}
-    />
-  )
-
-  wrapper.find('[name="images"]').prop('onAddImage')({ name: 'foo' })
-
-  expect(dispatch).toHaveBeenCalledWith(
-    imageActions.addImage(
-      { name: 'foo' },
-      entityConstants.ENTITY_TYPE_TALENT,
-      talentConstants.EDIT_TALENT_FORM_NAME
-    )
-  )
 })
 
 it('should handle deleting a link', () => {

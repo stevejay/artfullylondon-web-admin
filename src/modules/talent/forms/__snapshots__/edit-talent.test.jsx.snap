@@ -90,10 +90,7 @@ exports[`should render correctly when creating a group 1`] = `
       entityType="talent"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditTalent"
     />
   </FormRow>
   <Divider
@@ -203,10 +200,7 @@ exports[`should render correctly when editing an individual 1`] = `
       entityType="talent"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditTalent"
     />
   </FormRow>
   <Divider

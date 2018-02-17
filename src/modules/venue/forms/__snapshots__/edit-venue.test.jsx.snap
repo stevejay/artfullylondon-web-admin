@@ -249,10 +249,7 @@ exports[`should render correctly when creating 1`] = `
       entityType="venue"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditVenue"
     />
   </FormRow>
   <FormRow>
@@ -646,10 +643,7 @@ exports[`should render correctly when editing 1`] = `
       entityType="venue"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditVenue"
     />
   </FormRow>
   <FormRow>

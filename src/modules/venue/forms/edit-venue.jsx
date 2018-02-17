@@ -13,7 +13,7 @@ import SelectField from '_src/components/select/field'
 import CheckboxField from '_src/components/checkbox/field'
 import HtmlTextField from '_src/components/html-text/field'
 import { EditorMapField } from '_src/modules/location'
-import { actions as imageActions, ImagesField } from '_src/modules/image'
+import { ImagesField } from '_src/modules/image'
 import { actions as linkActions, LinksField } from '_src/modules/link'
 import {
   selectors as referenceDataSelectors
@@ -42,30 +42,6 @@ export class EditVenueForm extends React.Component {
   handleDeleteLink = id => {
     this.props.dispatch(
       linkActions.deleteLink(id, venueConstants.EDIT_VENUE_FORM_NAME)
-    )
-  }
-  handleAddImage = values => {
-    this.props.dispatch(
-      imageActions.addImage(
-        values,
-        entityConstants.ENTITY_TYPE_VENUE,
-        venueConstants.EDIT_VENUE_FORM_NAME
-      )
-    )
-  }
-  handleUpdateImage = ({ values, id }) => {
-    return this.props.dispatch(
-      imageActions.updateImage(values, id, venueConstants.EDIT_VENUE_FORM_NAME)
-    )
-  }
-  handleSetMainImage = id => {
-    this.props.dispatch(
-      imageActions.setMainImage(id, venueConstants.EDIT_VENUE_FORM_NAME)
-    )
-  }
-  handleDeleteImage = id => {
-    this.props.dispatch(
-      imageActions.deleteImage(id, venueConstants.EDIT_VENUE_FORM_NAME)
     )
   }
   render () {
@@ -224,13 +200,10 @@ export class EditVenueForm extends React.Component {
         <FormRow>
           <Field
             label='Images'
+            parentFormName={venueConstants.EDIT_VENUE_FORM_NAME}
             entityType={entityConstants.ENTITY_TYPE_VENUE}
             name='images'
             component={ImagesField}
-            onAddImage={this.handleAddImage}
-            onUpdateImage={this.handleUpdateImage}
-            onSetMainImage={this.handleSetMainImage}
-            onDeleteImage={this.handleDeleteImage}
           />
         </FormRow>
         <FormRow>

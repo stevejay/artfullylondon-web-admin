@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`should render correctly when not showign the update image modal 1`] = `
 <Container
   error={null}
   htmlFor="The Label"
@@ -34,6 +34,49 @@ exports[`should render correctly 1`] = `
     onHide={[Function]}
     onSubmit={[Function]}
     show={false}
+  />
+</Container>
+`;
+
+exports[`should render correctly when showing the update image modal 1`] = `
+<Container
+  error={null}
+  htmlFor="The Label"
+  label="The Label"
+  touched={false}
+>
+  <FieldBorder>
+    <ReduxForm
+      onSubmit={[Function]}
+    />
+    <Component />
+    <ImageGrid>
+      <ImageGridCard
+        entityType="venue"
+        key="some-id"
+        onDelete={[Function]}
+        onSetMain={[Function]}
+        onUpdate={[Function]}
+        value={
+          Object {
+            "id": "some-id",
+            "isMain": true,
+            "key": "some-key",
+          }
+        }
+      />
+    </ImageGrid>
+  </FieldBorder>
+  <UpdateImageModal
+    initialValues={
+      Object {
+        "copyright": "foo",
+        "id": "some-id",
+      }
+    }
+    onHide={[Function]}
+    onSubmit={[Function]}
+    show={true}
   />
 </Container>
 `;

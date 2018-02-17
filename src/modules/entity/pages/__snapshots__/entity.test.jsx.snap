@@ -42,21 +42,3 @@ exports[`should render correctly when has an entity 1`] = `
   </BasicSection>
 </FadeTransition>
 `;
-
-exports[`should render correctly when has an entity but it has the wrong id 1`] = `
-<BasicSection>
-  <BoxesLoader
-    size="large"
-    type="default"
-  />
-</BasicSection>
-`;
-
-exports[`should render correctly when has no entity 1`] = `
-<BasicSection>
-  <BoxesLoader
-    size="large"
-    type="default"
-  />
-</BasicSection>
-`;

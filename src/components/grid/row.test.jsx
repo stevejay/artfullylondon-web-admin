@@ -3,7 +3,6 @@ import _ from 'lodash'
 
 import IconButton from '_src/components/button/icon'
 import GridRow from '_src/components/grid/row'
-import * as browserConstants from '_src/constants/browser'
 
 it('should render correctly when can delete', () => {
   const wrapper = shallow(

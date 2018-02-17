@@ -46,7 +46,7 @@ class ImageGridCard extends React.Component {
                 icon={Heart}
                 onClick={this.handleSetMain}
                 aria-label='Set as main'
-                />}
+              />}
             <IconButton
               icon={Trash}
               onClick={this.handleDelete}

@@ -98,10 +98,7 @@ exports[`should render correctly when creating 1`] = `
       entityType="event-series"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditEventSeries"
     />
   </FormRow>
   <Divider
@@ -219,10 +216,7 @@ exports[`should render correctly when editing 1`] = `
       entityType="event-series"
       label="Images"
       name="images"
-      onAddImage={[Function]}
-      onDeleteImage={[Function]}
-      onSetMainImage={[Function]}
-      onUpdateImage={[Function]}
+      parentFormName="EditEventSeries"
     />
   </FormRow>
   <Divider

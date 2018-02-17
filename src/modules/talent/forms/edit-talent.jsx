@@ -14,7 +14,7 @@ import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
 import * as talentDomainConstants from '_src/constants/talent'
 import * as talentConstants from '../constants'
-import { actions as imageActions, ImagesField } from '_src/modules/image'
+import { ImagesField } from '_src/modules/image'
 import { actions as linkActions, LinksField } from '_src/modules/link'
 
 export class EditTalentForm extends React.Component {
@@ -31,34 +31,6 @@ export class EditTalentForm extends React.Component {
   handleDeleteLink = id => {
     this.props.dispatch(
       linkActions.deleteLink(id, talentConstants.EDIT_TALENT_FORM_NAME)
-    )
-  }
-  handleAddImage = values => {
-    this.props.dispatch(
-      imageActions.addImage(
-        values,
-        entityConstants.ENTITY_TYPE_TALENT,
-        talentConstants.EDIT_TALENT_FORM_NAME
-      )
-    )
-  }
-  handleUpdateImage = ({ values, id }) => {
-    return this.props.dispatch(
-      imageActions.updateImage(
-        values,
-        id,
-        talentConstants.EDIT_TALENT_FORM_NAME
-      )
-    )
-  }
-  handleSetMainImage = id => {
-    this.props.dispatch(
-      imageActions.setMainImage(id, talentConstants.EDIT_TALENT_FORM_NAME)
-    )
-  }
-  handleDeleteImage = id => {
-    this.props.dispatch(
-      imageActions.deleteImage(id, talentConstants.EDIT_TALENT_FORM_NAME)
     )
   }
   render () {
@@ -159,13 +131,10 @@ export class EditTalentForm extends React.Component {
         <FormRow>
           <Field
             label='Images'
+            parentFormName={talentConstants.EDIT_TALENT_FORM_NAME}
             entityType={entityConstants.ENTITY_TYPE_TALENT}
             name='images'
             component={ImagesField}
-            onAddImage={this.handleAddImage}
-            onUpdateImage={this.handleUpdateImage}
-            onSetMainImage={this.handleSetMainImage}
-            onDeleteImage={this.handleDeleteImage}
           />
         </FormRow>
         <Divider />

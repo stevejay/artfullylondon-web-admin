@@ -49,50 +49,12 @@ it('should render correctly when get is in progress', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should render correctly when has no entity', () => {
-  const wrapper = shallow(
-    <EntityPage
-      entityType='talent'
-      entityId='some-id'
-      entity={null}
-      getInProgress={false}
-      getFailed={false}
-      component={SomeComponent}
-      dispatch={_.noop}
-      match={{}}
-      location={{}}
-      history={{}}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
 it('should render correctly when has an entity', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
       entityId='some-id'
       entity={new FullTalent({ id: 'some-id' })}
-      getInProgress={false}
-      getFailed={false}
-      component={SomeComponent}
-      dispatch={_.noop}
-      match={{}}
-      location={{}}
-      history={{}}
-    />
-  )
-
-  expect(wrapper).toMatchSnapshot()
-})
-
-it('should render correctly when has an entity but it has the wrong id', () => {
-  const wrapper = shallow(
-    <EntityPage
-      entityType='talent'
-      entityId='some-id'
-      entity={new FullTalent({ id: 'some-other-id' })}
       getInProgress={false}
       getFailed={false}
       component={SomeComponent}

@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { withState } from 'recompose'
 import _ from 'lodash'
 
+import * as entityConstants from '_src/constants/entity'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
@@ -9,40 +12,47 @@ import UpdateImageModal from './update-image-modal'
 import ImageGrid from './image-grid'
 import ImageGridCard from './image-grid-card'
 import AddImageForm from '../forms/add-image-form'
-import * as entityConstants from '_src/constants/entity'
+import * as imageActions from '../actions'
 
-class ImagesField extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { showModal: false, initialValues: null }
-    this.mounted = true
-  }
-  /* istanbul ignore next */
-  componentWillUnmount () {
-    this.mounted = false
-  }
-  handleAddImage = values => {
-    this.props.onAddImage({
-      values,
-      isMain: _.isEmpty(this.props.input.value)
-    })
-  }
-  handleUpdateImage = initialValues => {
-    this.setState({ showModal: true, initialValues })
-  }
-  handleSubmitModal = values => {
-    return this.props
-      .onUpdateImage({
-        // TODO change this?
-        values: { copyright: values.copyright },
-        id: values.id
-      })
-      .then(() => {
-        this.mounted && this.handleHideModal()
-      })
+export class ImagesField extends React.PureComponent {
+  handleShowModal = initialValues => {
+    this.props.setInitialValues(initialValues)
   }
   handleHideModal = () => {
-    this.setState({ showModal: false, initialValues: null })
+    this.props.setInitialValues(null)
+  }
+  handleAddImage = values => {
+    const { dispatch, entityType, parentFormName, input } = this.props
+
+    dispatch(
+      imageActions.addImage(
+        {
+          values,
+          isMain: _.isEmpty(input.value)
+        },
+        entityType,
+        parentFormName
+      )
+    )
+  }
+  handleSubmitUpdate = values => {
+    const { dispatch, parentFormName } = this.props
+
+    return dispatch(
+      imageActions.updateImage(
+        { copyright: values.copyright },
+        values.id,
+        parentFormName
+      )
+    ).then(this.handleHideModal)
+  }
+  handleSetMainImage = id => {
+    this.props.dispatch(
+      imageActions.setMainImage(id, this.props.parentFormName)
+    )
+  }
+  handleDeleteImage = id => {
+    this.props.dispatch(imageActions.deleteImage(id, this.props.parentFormName))
   }
   render () {
     const {
@@ -50,11 +60,8 @@ class ImagesField extends React.Component {
       entityType,
       input: { value },
       meta: { touched, error },
-      onSetMainImage,
-      onDeleteImage
+      initialValues
     } = this.props
-
-    const { showModal, initialValues } = this.state
 
     return (
       <FieldContainer
@@ -72,17 +79,17 @@ class ImagesField extends React.Component {
                 key={element.id}
                 value={element}
                 entityType={entityType}
-                onDelete={onDeleteImage}
-                onUpdate={this.handleUpdateImage}
-                onSetMain={onSetMainImage}
+                onDelete={this.handleDeleteImage}
+                onUpdate={this.handleShowModal}
+                onSetMain={this.handleSetMainImage}
               />
             ))}
           </ImageGrid>
         </FieldBorder>
         <UpdateImageModal
-          show={showModal}
+          show={!!initialValues}
           initialValues={initialValues}
-          onSubmit={this.handleSubmitModal}
+          onSubmit={this.handleSubmitUpdate}
           onHide={this.handleHideModal}
         />
       </FieldContainer>
@@ -92,6 +99,7 @@ class ImagesField extends React.Component {
 
 ImagesField.propTypes = {
   label: PropTypes.string.isRequired,
+  parentFormName: PropTypes.string.isRequired,
   entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
@@ -106,10 +114,11 @@ ImagesField.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.any
   }),
-  onAddImage: PropTypes.func.isRequired,
-  onUpdateImage: PropTypes.func.isRequired,
-  onSetMainImage: PropTypes.func.isRequired,
-  onDeleteImage: PropTypes.func.isRequired
+  initialValues: PropTypes.object,
+  setInitialValues: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
-export default ImagesField
+export default connect()(
+  withState('initialValues', 'setInitialValues', null)(ImagesField)
+)

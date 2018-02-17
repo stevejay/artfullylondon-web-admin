@@ -37,7 +37,6 @@ export class EntityPage extends React.Component {
   render () {
     const {
       entityId,
-      entityType,
       entity,
       getInProgress,
       getFailed,
