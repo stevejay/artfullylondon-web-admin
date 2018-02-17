@@ -12,6 +12,8 @@ import * as entityConstants from '_src/constants/entity'
 import * as entityActions from '../actions'
 import { selectors as entitySelectors } from '../reducers'
 
+// TODO split into EntityDetailPage and EntityEditOrCreatePage?
+
 export class EntityPage extends React.Component {
   componentWillMount () {
     this._getOrResetEntity(this.props)
@@ -46,12 +48,7 @@ export class EntityPage extends React.Component {
       return <BasicSection><Error /></BasicSection>
     }
 
-    if (
-      getInProgress ||
-      !entity ||
-      entity.entityType !== entityType ||
-      (entityId && entity.id !== entityId)
-    ) {
+    if (getInProgress) {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 
@@ -86,10 +83,9 @@ export default withRouter(
   connect(
     /* istanbul ignore next */
     (state, ownProps) => ({
-      // TODO create selector for match param
       entityId: ownProps.match.params[0],
       entity: entitySelectors.entity(state),
-      getInProgress: entitySelectors.gettingEntity(state),
+      getInProgress: entitySelectors.gettingEntity(state, ownProps.entityType),
       getFailed: entitySelectors.failedToGetEntity(state)
     })
   )(EntityPage)

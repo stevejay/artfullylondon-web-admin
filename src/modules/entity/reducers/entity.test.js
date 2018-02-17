@@ -201,10 +201,46 @@ describe('selectors', () => {
   })
 
   describe('gettingEntity', () => {
-    it('should get the value', () => {
+    it('should get the value when get is in progress', () => {
       const state = { getInProgress: true }
       const actual = selectors.gettingEntity(state)
       expect(actual).toEqual(true)
+    })
+
+    it('should get the value when there is no entity', () => {
+      const state = { getInProgress: false, entity: null }
+      const actual = selectors.gettingEntity(state)
+      expect(actual).toEqual(true)
+    })
+
+    it('should get the value when entity is for wrong entity type', () => {
+      const state = { getInProgress: false, entity: { entityType: 'talent' } }
+      const actual = selectors.gettingEntity(state, 'venue')
+      expect(actual).toEqual(true)
+    })
+
+    it('should get the value when entity has wrong id', () => {
+      const state = {
+        getInProgress: false,
+        entityId: 'some-other-id',
+        entity: { entityType: 'talent', id: 'some-id' }
+      }
+
+      const actual = selectors.gettingEntity(state, 'talent')
+
+      expect(actual).toEqual(true)
+    })
+
+    it('should get the value when entity is good and is not being loaded', () => {
+      const state = {
+        getInProgress: false,
+        entityId: 'some-id',
+        entity: { entityType: 'talent', id: 'some-id' }
+      }
+
+      const actual = selectors.gettingEntity(state, 'talent')
+
+      expect(actual).toEqual(false)
     })
   })
 

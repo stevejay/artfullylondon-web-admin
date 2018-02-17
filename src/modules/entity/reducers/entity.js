@@ -44,7 +44,11 @@ export const reducer = handleActions(
 export const selectors = {
   entity: state => state.entity,
   entityId: state => state.entityId,
-  gettingEntity: state => state.getInProgress,
+  gettingEntity: (state, expectedEntityType) =>
+    state.getInProgress ||
+    !state.entity ||
+    state.entity.entityType !== expectedEntityType ||
+    (state.entityId && state.entityId !== state.entity.id),
   failedToGetEntity: state => state.getFailed
 }
 
@@ -63,6 +67,8 @@ function createEntity (entityType, entity = null) {
       throw new Error(`entityType ${entityType} not supported`)
   }
 }
+
+// TODO delete the following when I can:
 
 // case entityConstants.ENTITY_TYPE_EVENT:
 //   return {
