@@ -1,8 +1,8 @@
 import * as talentMapper from './mapper'
-import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
 import * as dateLib from '_src/lib/date'
 import * as talentLib from '_src/lib/talent'
+import talentType from '_src/entities/talent-type'
+import statusType from '_src/entities/status-type'
 import { entityMapper } from '_src/modules/entity'
 
 describe('getInitialValues', () => {
@@ -88,11 +88,11 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: null,
-      status: entityConstants.ACTIVE_STATUS,
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       firstNames: '',
       lastName: '',
-      talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
+      talentType: talentType.INDIVIDUAL,
       commonRole: '',
       description: 'Description',
       descriptionCredit: '',

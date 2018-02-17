@@ -1,6 +1,6 @@
 import { LinkCollection } from '_src/entities/link-collection'
 import * as entityConstants from '_src/constants/entity'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as venueLib from '_src/lib/venue'
 import * as entityLib from '_src/lib/entity'
 import * as timeLib from '_src/lib/time'
@@ -245,7 +245,7 @@ export class FullVenue extends SummaryVenue {
   }
 
   getHomepageUrl () {
-    const homepage = this.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
+    const homepage = this.getLinkByType(linkType.HOMEPAGE)
     return homepage ? homepage.url : null
   }
 }

@@ -1,13 +1,13 @@
-import * as entityConstants from '_src/constants/entity'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
+import statusType from '_src/entities/status-type'
 
 export function getInitialValues (venue) {
   if (venue.isNew) {
     return {
       id: null,
-      status: entityConstants.ACTIVE_STATUS,
+      status: statusType.ACTIVE,
       validStatuses: entityMapper.getValidStatusesInitialValue(),
       name: '',
       venueType: '',

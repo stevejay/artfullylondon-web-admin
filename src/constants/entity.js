@@ -29,10 +29,3 @@ export const WATCHABLE_ENTITY_TYPES = [
   ENTITY_TYPE_VENUE,
   ENTITY_TYPE_TAG
 ]
-
-export const DEFAULT_ENTITY_CARD_HEIGHT = 175
-
-export const PENDING_STATUS = 'Pending'
-export const ACTIVE_STATUS = 'Active'
-export const DELETED_STATUS = 'Deleted'
-export const MERGED_STATUS = 'Merged'

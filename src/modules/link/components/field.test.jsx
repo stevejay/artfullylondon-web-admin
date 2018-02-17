@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { LinksField } from './field'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as linkActions from '../actions'
 import AddLinkForm from '../forms/add-link'
 import LinksGridRow from './grid-row'
@@ -16,7 +16,7 @@ it('should render correctly', () => {
         value: [
           {
             key: 'some-key',
-            type: linkConstants.LINK_TYPE_FACEBOOK,
+            type: linkType.FACEBOOK,
             url: 'http://some/url'
           }
         ],
@@ -42,7 +42,7 @@ it('should handle adding a link', () => {
           {
             key: 'some-id',
             id: 'some-id',
-            type: linkConstants.LINK_TYPE_FACEBOOK,
+            type: linkType.FACEBOOK,
             url: 'http://some/url'
           }
         ],
@@ -72,7 +72,7 @@ it('should handle deleting a link', () => {
           {
             key: 'some-id',
             id: 'some-id',
-            type: linkConstants.LINK_TYPE_FACEBOOK,
+            type: linkType.FACEBOOK,
             url: 'http://some/url'
           }
         ],
@@ -95,7 +95,7 @@ describe('shouldComponentUpdate', () => {
     const value = [
       {
         key: 'key',
-        type: linkConstants.LINK_TYPE_FACEBOOK,
+        type: linkType.FACEBOOK,
         url: 'http://some/url'
       }
     ]
@@ -125,7 +125,7 @@ describe('shouldComponentUpdate', () => {
     const value = [
       {
         key: 'key',
-        type: linkConstants.LINK_TYPE_FACEBOOK,
+        type: linkType.FACEBOOK,
         url: 'http://some/url'
       }
     ]

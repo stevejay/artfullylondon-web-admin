@@ -1,7 +1,10 @@
 import { SummaryEvent, FullEvent } from '_src/entities/event'
-import * as eventConstants from '_src/constants/event'
+import eventType from '_src/entities/event-type'
+import costType from '_src/entities/cost-type'
+import bookingType from '_src/entities/booking-type'
+import occurrenceType from '_src/entities/occurrence-type'
 import * as entityConstants from '_src/constants/entity'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as eventLib from '_src/lib/event'
 import * as timeLib from '_src/lib/time'
 import * as entityLib from '_src/lib/entity'
@@ -373,8 +376,8 @@ describe('FullEvent', () => {
       .mockReturnValue('Full description')
 
     const subject = new FullEvent({
-      occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
-      eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
+      occurrenceType: occurrenceType.BOUNDED,
+      eventType: eventType.PERFORMANCE,
       dateFrom: '2017/01/01',
       dateTo: '2017/02/01',
       additionalPerformances: [],
@@ -386,8 +389,8 @@ describe('FullEvent', () => {
     )
 
     expect(eventLib.formatEventOccurrenceForDisplay).toBeCalledWith(
-      eventConstants.OCCURRENCE_TYPE_BOUNDED,
-      eventConstants.EVENT_TYPE_PERFORMANCE,
+      occurrenceType.BOUNDED,
+      eventType.PERFORMANCE,
       '2017/01/01',
       '2017/02/01',
       [],
@@ -401,7 +404,7 @@ describe('FullEvent', () => {
       .mockReturnValue('Cost description')
 
     const subject = new FullEvent({
-      costType: eventConstants.COST_TYPE_PAID,
+      costType: costType.PAID,
       costFrom: 1,
       costTo: 2,
       venue: {}
@@ -410,7 +413,7 @@ describe('FullEvent', () => {
     expect(subject.createCostDescription()).toBe('Cost description')
 
     expect(eventLib.formatCostForDisplay).toBeCalledWith(
-      eventConstants.COST_TYPE_PAID,
+      costType.PAID,
       1,
       2
     )
@@ -422,7 +425,7 @@ describe('FullEvent', () => {
       .mockReturnValue('Booking description')
 
     const subject = new FullEvent({
-      bookingType: eventConstants.BOOKING_TYPE_REQUIRED,
+      bookingType: bookingType.REQUIRED,
       bookingOpens: '2017/01/20',
       links: [],
       venue: {}
@@ -433,7 +436,7 @@ describe('FullEvent', () => {
     )
 
     expect(eventLib.formatBookingInfoForDisplay).toBeCalledWith(
-      eventConstants.BOOKING_TYPE_REQUIRED,
+      bookingType.REQUIRED,
       '2017/01/20',
       { _links: [] },
       '2017/01/21'
@@ -475,7 +478,7 @@ describe('FullEvent', () => {
 
   it('should get the homepage URL', () => {
     const subject = new FullEvent({
-      links: [{ type: linkConstants.LINK_TYPE_HOMEPAGE, url: '/some/url' }],
+      links: [{ type: linkType.HOMEPAGE, url: '/some/url' }],
       venue: {}
     })
 

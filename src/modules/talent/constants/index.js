@@ -1,15 +1,15 @@
-import * as talentConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
 
 export const EDIT_TALENT_FORM_NAME = 'EditTalent'
 
 export const TALENT_TYPES_DROPDOWN_OPTIONS = [
   {
-    value: talentConstants.TALENT_TYPE_INDIVIDUAL,
-    label: talentConstants.TALENT_TYPE_INDIVIDUAL
+    value: talentType.INDIVIDUAL,
+    label: talentType.INDIVIDUAL
   },
   {
-    value: talentConstants.TALENT_TYPE_GROUP,
-    label: talentConstants.TALENT_TYPE_GROUP
+    value: talentType.GROUP,
+    label: talentType.GROUP
   }
 ]
 

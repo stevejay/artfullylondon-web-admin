@@ -1,5 +1,5 @@
 import * as talentLib from '_src/lib/talent'
-import * as talentConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
 
 describe('formatTalentName', () => {
   const tests = [
@@ -32,12 +32,12 @@ describe('isIndividualTalent', () => {
   const tests = [
     {
       it: 'should handle an individual',
-      arg: talentConstants.TALENT_TYPE_INDIVIDUAL,
+      arg: talentType.INDIVIDUAL,
       expected: true
     },
     {
       it: 'should handle an individual',
-      arg: talentConstants.TALENT_TYPE_GROUP,
+      arg: talentType.GROUP,
       expected: false
     }
   ]

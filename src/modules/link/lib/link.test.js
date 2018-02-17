@@ -1,32 +1,32 @@
 import * as linkLib from './link'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 
 describe('getAvailableLinkTypeDropdownOptions', () => {
   it('should filter out link types in value', () => {
     const value = [
-      { type: linkConstants.LINK_TYPE_WIKIPEDIA },
-      { type: linkConstants.LINK_TYPE_TWITTER },
-      { type: linkConstants.LINK_TYPE_ACCESS }
+      { type: linkType.WIKIPEDIA },
+      { type: linkType.TWITTER },
+      { type: linkType.ACCESS }
     ]
 
     const actual = linkLib.getAvailableLinkTypeDropdownOptions(value)
 
     expect(actual).toEqual([
       {
-        value: linkConstants.LINK_TYPE_HOMEPAGE,
-        label: linkConstants.LINK_TYPE_HOMEPAGE
+        value: linkType.HOMEPAGE,
+        label: linkType.HOMEPAGE
       },
       {
-        value: linkConstants.LINK_TYPE_FACEBOOK,
-        label: linkConstants.LINK_TYPE_FACEBOOK
+        value: linkType.FACEBOOK,
+        label: linkType.FACEBOOK
       },
       {
-        value: linkConstants.LINK_TYPE_INSTAGRAM,
-        label: linkConstants.LINK_TYPE_INSTAGRAM
+        value: linkType.INSTAGRAM,
+        label: linkType.INSTAGRAM
       },
       {
-        value: linkConstants.LINK_TYPE_BOOKING,
-        label: linkConstants.LINK_TYPE_BOOKING
+        value: linkType.BOOKING,
+        label: linkType.BOOKING
       }
     ])
   })

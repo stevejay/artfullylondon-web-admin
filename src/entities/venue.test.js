@@ -1,5 +1,5 @@
 import { SummaryVenue, FullVenue } from '_src/entities/venue'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 import * as timeLib from '_src/lib/time'
@@ -191,7 +191,7 @@ describe('FullVenue', () => {
 
   it('should get the homepage URL', () => {
     const subject = new FullVenue({
-      links: [{ type: linkConstants.LINK_TYPE_HOMEPAGE, url: '/some/url' }]
+      links: [{ type: linkType.HOMEPAGE, url: '/some/url' }]
     })
 
     expect(subject.getHomepageUrl()).toEqual('/some/url')

@@ -1,5 +1,5 @@
 import { SummaryEventSeries, FullEventSeries } from '_src/entities/event-series'
-import { LINK_TYPE_WIKIPEDIA } from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 
 describe('SummaryEventSeries', () => {
   it('should have correct entityType', () => {
@@ -148,12 +148,12 @@ describe('FullEventSeries', () => {
   })
 
   it('should get a link by type', () => {
-    const wikipediaLink = { type: LINK_TYPE_WIKIPEDIA }
+    const wikipediaLink = { type: linkType.WIKIPEDIA }
 
     const subject = new FullEventSeries({
       links: [wikipediaLink]
     })
 
-    expect(subject.getLinkByType(LINK_TYPE_WIKIPEDIA)).toBe(wikipediaLink)
+    expect(subject.getLinkByType(linkType.WIKIPEDIA)).toBe(wikipediaLink)
   })
 })

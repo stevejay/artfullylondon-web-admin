@@ -1,11 +1,11 @@
 import * as venueMapper from './mapper'
-import * as entityConstants from '_src/constants/entity'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import wheelchairAccessType from '_src/entities/wheelchair-access-type'
 import disabledBathroomType from '_src/entities/disabled-bathroom-type'
 import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
+import statusType from '_src/entities/status-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing venue', () => {
@@ -133,7 +133,7 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: null,
-      status: entityConstants.ACTIVE_STATUS,
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       name: '',
       venueType: '',

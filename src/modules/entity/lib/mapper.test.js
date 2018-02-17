@@ -1,7 +1,7 @@
 import RichTextEditor from 'react-rte'
 
 import * as entityMapper from './mapper'
-import * as entityConstants from '_src/constants/entity'
+import statusType from '_src/entities/status-type'
 
 describe('getRichTextInitialValue', () => {
   it('should handle an empty initial value', () => {
@@ -143,57 +143,57 @@ describe('getValidStatusesInitialValue', () => {
   const tests = [
     {
       it: 'should handle pending status',
-      arg: entityConstants.PENDING_STATUS,
+      arg: statusType.PENDING,
       expected: [
         {
-          value: entityConstants.PENDING_STATUS,
-          label: entityConstants.PENDING_STATUS
+          value: statusType.PENDING,
+          label: statusType.PENDING
         },
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
     },
     {
       it: 'should handle active status',
-      arg: entityConstants.ACTIVE_STATUS,
+      arg: statusType.ACTIVE,
       expected: [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
     },
     {
       it: 'should handle deleted status',
-      arg: entityConstants.DELETED_STATUS,
+      arg: statusType.DELETED,
       expected: [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
     },
     {
       it: 'should handle merged status',
-      arg: entityConstants.MERGED_STATUS,
+      arg: statusType.MERGED,
       expected: [
         {
-          value: entityConstants.MERGED_STATUS,
-          label: entityConstants.MERGED_STATUS
+          value: statusType.MERGED,
+          label: statusType.MERGED
         }
       ]
     },
@@ -202,8 +202,8 @@ describe('getValidStatusesInitialValue', () => {
       arg: null,
       expected: [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         }
       ]
     }

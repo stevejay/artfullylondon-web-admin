@@ -3,7 +3,7 @@ import RichTextEditor from 'react-rte'
 import * as imageLib from '_src/lib/image'
 import * as entityLib from '_src/lib/entity'
 import * as dateLib from '_src/lib/date'
-import * as entityConstants from '_src/constants/entity'
+import statusType from '_src/entities/status-type'
 
 // TODO maybe make part of domain
 const IMAGE_STATUS_PROCESSING = 'Processing'
@@ -64,55 +64,55 @@ export function mapSubmittedImages (images) {
 
 export function getValidStatusesInitialValue (status) {
   switch (status) {
-    case entityConstants.PENDING_STATUS:
+    case statusType.PENDING:
       return [
         {
-          value: entityConstants.PENDING_STATUS,
-          label: entityConstants.PENDING_STATUS
+          value: statusType.PENDING,
+          label: statusType.PENDING
         },
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
-    case entityConstants.ACTIVE_STATUS:
+    case statusType.ACTIVE:
       return [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
-    case entityConstants.DELETED_STATUS:
+    case statusType.DELETED:
       return [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         },
         {
-          value: entityConstants.DELETED_STATUS,
-          label: entityConstants.DELETED_STATUS
+          value: statusType.DELETED,
+          label: statusType.DELETED
         }
       ]
-    case entityConstants.MERGED_STATUS:
+    case statusType.MERGED:
       return [
         {
-          value: entityConstants.MERGED_STATUS,
-          label: entityConstants.MERGED_STATUS
+          value: statusType.MERGED,
+          label: statusType.MERGED
         }
       ]
     default:
       return [
         {
-          value: entityConstants.ACTIVE_STATUS,
-          label: entityConstants.ACTIVE_STATUS
+          value: statusType.ACTIVE,
+          label: statusType.ACTIVE
         }
       ]
   }

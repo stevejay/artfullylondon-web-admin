@@ -1,7 +1,7 @@
 import * as eventSeriesMapper from './mapper'
-import * as entityConstants from '_src/constants/entity'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
+import statusType from '_src/entities/status-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing event series', () => {
@@ -85,7 +85,7 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: null,
-      status: entityConstants.ACTIVE_STATUS,
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       name: '',
       eventSeriesType: '',

@@ -12,14 +12,14 @@ import SelectField from '_src/components/select/field'
 import HtmlTextField from '_src/components/html-text/field'
 import * as talentLib from '_src/lib/talent'
 import * as entityConstants from '_src/constants/entity'
-import * as talentDomainConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
 import * as talentConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
 import { LinksField } from '_src/modules/link'
 
 export class EditTalentForm extends React.PureComponent {
   handleChangeTalentType = (_, newValue) => {
-    if (newValue === talentDomainConstants.TALENT_TYPE_GROUP) {
+    if (newValue === talentType.GROUP) {
       this.props.change('firstNames', '')
     }
   }

@@ -1,6 +1,6 @@
 import { SummaryTalent, FullTalent } from '_src/entities/talent'
 import * as entityLib from '_src/lib/entity'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 
 describe('SummaryTalent', () => {
   it('should have correct entityType', () => {
@@ -181,6 +181,6 @@ describe('FullTalent', () => {
       links: []
     })
 
-    expect(subject.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)).toBe(null)
+    expect(subject.getLinkByType(linkType.HOMEPAGE)).toBe(null)
   })
 })

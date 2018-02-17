@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import GridRow from '_src/components/grid/row'
-import * as linkConstants from '../constants'
 
 const LinksGridRow = ({ value: { type, url }, onDelete }) => (
   <GridRow id={type} onDelete={onDelete}>
@@ -14,7 +13,7 @@ const LinksGridRow = ({ value: { type, url }, onDelete }) => (
 
 LinksGridRow.propTypes = {
   value: PropTypes.shape({
-    type: PropTypes.oneOf(linkConstants.ALLOWED_LINK_TYPES).isRequired,
+    type: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired
   }).isRequired,
   onDelete: PropTypes.func

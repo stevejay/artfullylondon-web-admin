@@ -1,7 +1,7 @@
-import * as talentConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
 
-export function isIndividualTalent (talentType) {
-  return talentType === talentConstants.TALENT_TYPE_INDIVIDUAL
+export function isIndividualTalent (type) {
+  return type === talentType.INDIVIDUAL
 }
 
 export function formatTalentName (talent) {

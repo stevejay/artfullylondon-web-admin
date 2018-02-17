@@ -2,8 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditTalentForm } from './edit-talent'
-import * as talentConstants from '../constants'
-import * as talentDomainConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
 
 it('should render correctly when editing an individual', () => {
   const wrapper = shallow(
@@ -12,7 +11,7 @@ it('should render correctly when editing an individual', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentType.INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -29,7 +28,7 @@ it('should render correctly when creating a group', () => {
       isEdit={false}
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_GROUP}
+      talentTypeValue={talentType.GROUP}
       submitting={false}
       handleSubmit={_.noop}
       change={_.noop}
@@ -48,17 +47,14 @@ it('should handle changing the talent type from individual to group', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_INDIVIDUAL}
+      talentTypeValue={talentType.INDIVIDUAL}
       submitting={false}
       handleSubmit={_.noop}
       change={change}
     />
   )
 
-  wrapper.find('[name="talentType"]').prop('onChange')(
-    _.noop,
-    talentDomainConstants.TALENT_TYPE_GROUP
-  )
+  wrapper.find('[name="talentType"]').prop('onChange')(_.noop, talentType.GROUP)
 
   expect(change).toHaveBeenCalledWith('firstNames', '')
 })
@@ -72,7 +68,7 @@ it('should handle changing the talent type from group to individual', () => {
       isEdit
       onSubmit={_.noop}
       onCancel={_.noop}
-      talentTypeValue={talentDomainConstants.TALENT_TYPE_GROUP}
+      talentTypeValue={talentType.GROUP}
       submitting={false}
       handleSubmit={_.noop}
       change={change}
@@ -81,7 +77,7 @@ it('should handle changing the talent type from group to individual', () => {
 
   wrapper.find('[name="talentType"]').prop('onChange')(
     _.noop,
-    talentConstants.TALENT_TYPE_INDIVIDUAL
+    talentType.INDIVIDUAL
   )
 
   expect(change).not.toHaveBeenCalled()

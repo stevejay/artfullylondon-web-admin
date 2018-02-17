@@ -1,50 +1,42 @@
-import * as linkConstants from '_src/constants/link'
+import _ from 'lodash'
 
-export const ALLOWED_LINK_TYPES = [
-  linkConstants.LINK_TYPE_FACEBOOK,
-  linkConstants.LINK_TYPE_HOMEPAGE,
-  linkConstants.LINK_TYPE_TWITTER,
-  linkConstants.LINK_TYPE_WIKIPEDIA,
-  linkConstants.LINK_TYPE_ACCESS,
-  linkConstants.LINK_TYPE_INSTAGRAM,
-  linkConstants.LINK_TYPE_BOOKING
-]
+import linkType from '_src/entities/link-type'
 
 export const LINK_TYPE_DROPDOWN_OPTIONS = [
   {
-    value: linkConstants.LINK_TYPE_HOMEPAGE,
-    label: linkConstants.LINK_TYPE_HOMEPAGE
+    value: linkType.HOMEPAGE,
+    label: linkType.HOMEPAGE
   },
   {
-    value: linkConstants.LINK_TYPE_FACEBOOK,
-    label: linkConstants.LINK_TYPE_FACEBOOK
+    value: linkType.FACEBOOK,
+    label: linkType.FACEBOOK
   },
   {
-    value: linkConstants.LINK_TYPE_TWITTER,
-    label: linkConstants.LINK_TYPE_TWITTER
+    value: linkType.TWITTER,
+    label: linkType.TWITTER
   },
   {
-    value: linkConstants.LINK_TYPE_INSTAGRAM,
-    label: linkConstants.LINK_TYPE_INSTAGRAM
+    value: linkType.INSTAGRAM,
+    label: linkType.INSTAGRAM
   },
   {
-    value: linkConstants.LINK_TYPE_WIKIPEDIA,
-    label: linkConstants.LINK_TYPE_WIKIPEDIA
+    value: linkType.WIKIPEDIA,
+    label: linkType.WIKIPEDIA
   },
   {
-    value: linkConstants.LINK_TYPE_ACCESS,
-    label: linkConstants.LINK_TYPE_ACCESS
+    value: linkType.ACCESS,
+    label: linkType.ACCESS
   },
   {
-    value: linkConstants.LINK_TYPE_BOOKING,
-    label: linkConstants.LINK_TYPE_BOOKING
+    value: linkType.BOOKING,
+    label: linkType.BOOKING
   }
 ]
 
 export const LINK_CONSTRAINT = {
   linkType: {
     presence: { disallowEmpty: true },
-    inclusion: ALLOWED_LINK_TYPES
+    inclusion: _.values(linkType)
   },
   linkUrl: {
     presence: { disallowEmpty: true },

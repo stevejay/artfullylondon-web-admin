@@ -1,5 +1,75 @@
+import eventType from '_src/entities/event-type'
+import bookingType from '_src/entities/booking-type'
+import costType from '_src/entities/cost-type'
+import occurrenceType from '_src/entities/occurrence-type'
+
 export const EDIT_EVENT_BASICS_FORM_NAME = 'EditEventBasics'
 export const EDIT_EVENT_IMAGES_FORM_NAME = 'EditEventImages'
 export const EDIT_EVENT_TAGS_FORM_NAME = 'EditEventTags'
 export const EDIT_EVENT_TALENTS_FORM_NAME = 'EditEventTalents'
 export const EDIT_EVENT_TIMES_FORM_NAME = 'EditEventTimes'
+
+export const CREATE_TALENT_FORM_NAME = 'CreateTalent'
+export const TALENT_MATCHES_FOUND_FORM_NAME = 'TalentMatchesFound'
+
+export const EVENT_TYPE_DROPDOWN_OPTIONS = [
+  { value: eventType.PERFORMANCE, label: eventType.PERFORMANCE },
+  { value: eventType.EXHIBITION, label: eventType.EXHIBITION }
+]
+
+export const COST_TYPE_DROPDOWN_OPTIONS = [
+  { value: costType.FREE, label: costType.FREE },
+  { value: costType.PAID, label: costType.PAID },
+  { value: costType.UNKNOWN, label: costType.UNKNOWN }
+]
+
+export const BOOKING_TYPE_DROPDOWN_OPTIONS = [
+  { value: bookingType.NOT_REQUIRED, label: 'Not Required' },
+  { value: bookingType.REQUIRED, label: 'Required' },
+  {
+    value: bookingType.REQUIRED_FOR_NON_MEMBERS,
+    label: 'Required for Non-Members'
+  }
+]
+
+export const PERFORMANCE_OCCURRENCE_TYPE_DROPDOWN_OPTIONS = [
+  { value: occurrenceType.BOUNDED, label: occurrenceType.BOUNDED },
+  { value: occurrenceType.CONTINUOUS, label: occurrenceType.CONTINUOUS },
+  { value: occurrenceType.ONETIME, label: 'One-time' }
+]
+
+export const EXHIBITION_OCCURRENCE_TYPE_DROPDOWN_OPTIONS = [
+  { value: occurrenceType.BOUNDED, label: occurrenceType.BOUNDED },
+  { value: occurrenceType.CONTINUOUS, label: occurrenceType.CONTINUOUS }
+]
+
+export const RATING_DROPDOWN_OPTIONS = [
+  { value: '1', label: 'One star' },
+  { value: '2', label: 'Two stars' },
+  { value: '3', label: 'Three stars' },
+  { value: '4', label: 'Four stars' },
+  { value: '5', label: 'Five stars' }
+]
+
+export const MIN_AGE_DROPDOWN_OPTIONS = [
+  { value: '', label: 'None' },
+  { value: '1', label: '1+' },
+  { value: '2', label: '2+' },
+  { value: '3', label: '3+' },
+  { value: '4', label: '4+' },
+  { value: '5', label: '5+' },
+  { value: '6', label: '6+' },
+  { value: '7', label: '7+' },
+  { value: '8', label: '8+' },
+  { value: '9', label: '9+' },
+  { value: '10', label: '10+' },
+  { value: '11', label: '11+' },
+  { value: '12', label: '12+' },
+  { value: '13', label: '13+' },
+  { value: '14', label: '14+' },
+  { value: '15', label: '15+' },
+  { value: '16', label: '16+' },
+  { value: '17', label: '17+' },
+  { value: '18', label: '18+' },
+  { value: '21', label: '21+' }
+]

@@ -15,7 +15,7 @@ export function normaliseEventValues (values) {
   const isOneTimePerformance =
     isPerformance && eventLib.eventIsOneTime(values.occurrenceType)
 
-  const hasRange = eventLib.occurrenceTypeHasDateRange(values.occurrenceType)
+  const hasRange = eventLib.occurrenceHasDateRange(values.occurrenceType)
 
   if (hasRange) {
     if (values.dateFrom > values.dateTo) {
@@ -126,7 +126,7 @@ export function mapEventToServer (values) {
 
   const bookingNotRequired = !eventLib.bookingRequired(values.bookingType)
   const bookingOpens = bookingNotRequired ? null : values.bookingOpens
-  const hasOccurrenceRange = eventLib.occurrenceTypeHasDateRange(
+  const hasOccurrenceRange = eventLib.occurrenceHasDateRange(
     values.occurrenceType
   )
 
@@ -192,7 +192,7 @@ export function mapEventToServer (values) {
 export function mapEventFromServer (payload) {
   const isPaid = eventLib.eventIsPaid(payload.costType)
   const bookingIsRequired = eventLib.bookingRequired(payload.bookingType)
-  const hasOccurrenceRange = eventLib.occurrenceTypeHasDateRange(
+  const hasOccurrenceRange = eventLib.occurrenceHasDateRange(
     payload.occurrenceType
   )
 

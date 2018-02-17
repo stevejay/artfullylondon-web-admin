@@ -5,8 +5,8 @@ import _ from 'lodash'
 import * as eventLib from '_src/lib/event'
 import * as dateLib from '_src/lib/date'
 import * as dateConstants from '_src/constants/date'
-import * as eventConstants from '_src/constants/event'
 import * as entityConstants from '_src/constants/entity'
+import occurrenceType from '_src/entities//occurrence-type'
 
 const DAYS_OF_WEEK_MAPPING = [
   { value: 0, label: 'Monday' },
@@ -223,7 +223,7 @@ function _removeClosureTimes (hasOpeningTimes, times, closureTimes) {
 
 function _getTimesOnGivenDateForPerformanceEvent (dateStr, timeStr, event) {
   if (
-    event.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED &&
+    event.occurrenceType === occurrenceType.BOUNDED &&
     _dateNotInRange(dateStr, event.dateFrom, event.dateTo)
   ) {
     return null
@@ -270,7 +270,7 @@ function _getTimesOnGivenDateForExhibitionEvent (
   namedClosuresLookup
 ) {
   if (
-    event.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED &&
+    event.occurrenceType === occurrenceType.BOUNDED &&
     _dateNotInRange(dateStr, event.dateFrom, event.dateTo)
   ) {
     return null
@@ -752,12 +752,12 @@ function _formatTimesForDayDisplay (times) {
 
 //   const isExhibition = !isPerformance
 
-//   const hasRange = eventLib.occurrenceTypeHasDateRange(occurrenceType)
+//   const hasRange = eventLib.occurrenceHasDateRange(occurrenceType)
 //   const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
 
 //   const isLongerThanWeek =
 //     (hasRange && dateLib.periodIsLongerThanWeek(dateFrom, dateTo)) ||
-//     eventLib.occurrenceTypeIsContinuous(occurrenceType)
+//     eventLib.occurrenceIsContinuous(occurrenceType)
 
 //   const venueHasOpeningTimes =
 //     isExhibition &&

@@ -3,8 +3,8 @@ import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import * as entityConstants from '_src/constants/entity'
-import * as linkConstants from '_src/constants/link'
-import * as eventConstants from '_src/constants/event'
+import linkType from '_src/entities/link-type'
+import costType from '_src/entities/cost-type'
 import { constants as tagConstants } from '_src/modules/tag'
 import * as entityLib from '_src/lib/entity'
 import * as venueLib from '_src/lib/venue'
@@ -43,7 +43,7 @@ export class SummaryEvent {
   }
 
   get isFreeEvent () {
-    return this.entity.costType === eventConstants.COST_TYPE_FREE
+    return this.entity.costType === costType.FREE
   }
 
   get url () {
@@ -292,7 +292,7 @@ export class FullEvent extends SummaryEvent {
   }
 
   getHomepageUrl () {
-    const homepage = this.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
+    const homepage = this.getLinkByType(linkType.HOMEPAGE)
     return homepage ? homepage.url : null
   }
 }

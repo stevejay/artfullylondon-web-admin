@@ -2,11 +2,7 @@ import React from 'react'
 
 import EntityExternalLinks from './external-links'
 import { FullVenue } from '_src/entities/venue'
-import {
-  LINK_TYPE_FACEBOOK,
-  LINK_TYPE_TWITTER,
-  LINK_TYPE_INSTAGRAM
-} from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 
 it('should render correctly when there are no links', () => {
   const entity = new FullVenue({ links: [] })
@@ -22,7 +18,7 @@ it('should render correctly when there is an email', () => {
 
 it('should render correctly when there is a facebook link', () => {
   const entity = new FullVenue({
-    links: [{ type: LINK_TYPE_FACEBOOK, url: 'http://facebook/link' }]
+    links: [{ type: linkType.FACEBOOK, url: 'http://facebook/link' }]
   })
 
   const wrapper = shallow(<EntityExternalLinks entity={entity} />)
@@ -32,7 +28,7 @@ it('should render correctly when there is a facebook link', () => {
 
 it('should render correctly when there is a twitter link', () => {
   const entity = new FullVenue({
-    links: [{ type: LINK_TYPE_TWITTER, url: 'http://twitter/link' }]
+    links: [{ type: linkType.TWITTER, url: 'http://twitter/link' }]
   })
 
   const wrapper = shallow(<EntityExternalLinks entity={entity} />)
@@ -42,7 +38,7 @@ it('should render correctly when there is a twitter link', () => {
 
 it('should render correctly when there is an instagram link', () => {
   const entity = new FullVenue({
-    links: [{ type: LINK_TYPE_INSTAGRAM, url: 'http://instagram/link' }]
+    links: [{ type: linkType.INSTAGRAM, url: 'http://instagram/link' }]
   })
 
   const wrapper = shallow(<EntityExternalLinks entity={entity} />)

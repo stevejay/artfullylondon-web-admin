@@ -8,7 +8,7 @@ import TagsIcon from 'react-icons/lib/fa/tags'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as entityConstants from '_src/constants/entity'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './info-bar.scss'
@@ -17,7 +17,7 @@ class EntityInfoBar extends ShouldNeverUpdateComponent {
   render () {
     const { entity, onClickCopy } = this.props
     const tagsLabel = entity.createInfoBarLabel()
-    const homepage = entity.getLinkByType(linkConstants.LINK_TYPE_HOMEPAGE)
+    const homepage = entity.getLinkByType(linkType.HOMEPAGE)
 
     return (
       <ul styleName='container'>

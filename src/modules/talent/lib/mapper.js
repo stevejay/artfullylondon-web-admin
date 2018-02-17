@@ -1,5 +1,5 @@
-import * as entityConstants from '_src/constants/entity'
-import * as talentConstants from '_src/constants/talent'
+import talentType from '_src/entities/talent-type'
+import statusType from '_src/entities/status-type'
 import * as dateLib from '_src/lib/date'
 import * as talentLib from '_src/lib/talent'
 import { entityMapper } from '_src/modules/entity'
@@ -8,11 +8,11 @@ export function getInitialValues (talent) {
   if (talent.isNew) {
     return {
       id: null,
-      status: entityConstants.ACTIVE_STATUS,
+      status: statusType.ACTIVE,
       validStatuses: entityMapper.getValidStatusesInitialValue(),
       firstNames: '',
       lastName: '',
-      talentType: talentConstants.TALENT_TYPE_INDIVIDUAL,
+      talentType: talentType.INDIVIDUAL,
       commonRole: '',
       description: entityMapper.getRichTextInitialValue(),
       descriptionCredit: '',

@@ -3,6 +3,8 @@ import _ from 'lodash'
 import * as entityConstants from '_src/constants/entity'
 import * as imageLib from '_src/lib/image'
 
+export const DEFAULT_ENTITY_CARD_HEIGHT = 175
+
 export function getEntityTypeUrlParameter (match) {
   return match.params.entityType.toLowerCase()
 }
@@ -22,7 +24,7 @@ export function getEntityCardImageDataForEntityType (entityType, image) {
     case entityConstants.ENTITY_TYPE_TALENT:
     case entityConstants.ENTITY_TYPE_VENUE:
       return {
-        height: entityConstants.DEFAULT_ENTITY_CARD_HEIGHT,
+        height: DEFAULT_ENTITY_CARD_HEIGHT,
         url: imageLib.createEntityCardImageUrl(image)
       }
     default:

@@ -2,18 +2,14 @@ import React from 'react'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './description.scss'
 
 class EntityDescription extends ShouldNeverUpdateComponent {
   render () {
     const { entity } = this.props
-
-    const wikipediaLink = entity.getLinkByType(
-      linkConstants.LINK_TYPE_WIKIPEDIA
-    )
-
+    const wikipediaLink = entity.getLinkByType(linkType.WIKIPEDIA)
     const resultHtml = entity.createFormattedDescription()
 
     return (

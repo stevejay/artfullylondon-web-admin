@@ -5,7 +5,7 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import AdditionalDetailHeading from './additional-detail-heading'
 import AdditionalDetailContent from './additional-detail-content'
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as accessLib from '_src/lib/access'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
@@ -20,7 +20,7 @@ class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
       hearingFacilitiesType
     } = entity
 
-    const accessLink = entity.getLinkByType(linkConstants.LINK_TYPE_ACCESS)
+    const accessLink = entity.getLinkByType(linkType.ACCESS)
     const hasAccessLink = !!accessLink
 
     const accessText = accessLib.getAccessText(

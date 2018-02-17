@@ -4,7 +4,7 @@ import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
 
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import EntityExternalLink from './external-link'
 import './external-links.scss'
@@ -13,9 +13,9 @@ class EntityExternalLinks extends React.PureComponent {
   render () {
     const { email, links } = this.props.entity
 
-    const facebook = links.getLinkByType(linkConstants.LINK_TYPE_FACEBOOK)
-    const twitter = links.getLinkByType(linkConstants.LINK_TYPE_TWITTER)
-    const instagram = links.getLinkByType(linkConstants.LINK_TYPE_INSTAGRAM)
+    const facebook = links.getLinkByType(linkType.FACEBOOK)
+    const twitter = links.getLinkByType(linkType.TWITTER)
+    const instagram = links.getLinkByType(linkType.INSTAGRAM)
     const hasNoLinks = !email && !facebook && !twitter && !instagram
 
     if (hasNoLinks) {

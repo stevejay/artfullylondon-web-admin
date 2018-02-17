@@ -1,5 +1,6 @@
 import * as entityConstants from '_src/constants/entity'
-import * as eventConstants from '_src/constants/event'
+import eventType from '_src/entities/event-type'
+import occurrenceType from '_src/entities/occurrence-type'
 import * as timeLib from '_src/lib/time'
 
 const yesterday = '2016/01/01' // 1st Jan 2016
@@ -1068,8 +1069,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           performances: [],
@@ -1086,8 +1087,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           performances: [
@@ -1107,8 +1108,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           performances: [
@@ -1131,8 +1132,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           performances: [
@@ -1158,8 +1159,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           performances: [
@@ -1179,8 +1180,8 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_PERFORMANCE,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+          eventType: eventType.PERFORMANCE,
+          occurrenceType: occurrenceType.BOUNDED,
           dateFrom: today,
           dateTo: today,
           performances: [
@@ -1228,8 +1229,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: false,
@@ -1254,8 +1255,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1280,8 +1281,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: false,
@@ -1308,8 +1309,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: false,
@@ -1336,8 +1337,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: false,
@@ -1366,8 +1367,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: false,
@@ -1394,8 +1395,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1426,8 +1427,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1456,8 +1457,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1488,8 +1489,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1516,8 +1517,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1544,8 +1545,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1572,8 +1573,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
           dateTo: null,
           useVenueOpeningTimes: true,
@@ -1600,8 +1601,8 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       args: {
         entity: {
           entityType: entityConstants.ENTITY_TYPE_EVENT,
-          eventType: eventConstants.EVENT_TYPE_EXHIBITION,
-          occurrenceType: eventConstants.OCCURRENCE_TYPE_BOUNDED,
+          eventType: eventType.EXHIBITION,
+          occurrenceType: occurrenceType.BOUNDED,
           dateFrom: today,
           dateTo: today,
           useVenueOpeningTimes: false,

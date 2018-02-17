@@ -1,5 +1,8 @@
 import _ from 'lodash'
-import * as eventConstants from '_src/constants/event'
+import eventType from '_src/entities/event-type'
+import costType from '_src/entities/cost-type'
+import bookingType from '_src/entities/booking-type'
+import occurrenceType from '_src/entities/occurrence-type'
 
 const DATE_REGEX = /^[12]\d\d\d\/[01]\d\/[0123]\d$|^$/
 const MONEY_REGEX = /^[0-9]+(?:\.[0-9]{1,2})?$|^$/
@@ -12,29 +15,11 @@ export const BASIC_CONSTRAINT = {
   },
   eventType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: eventConstants.ALLOWED_EVENT_TYPES }
+    inclusion: { within: _.values(eventType) }
   },
   occurrenceType: {
     presence: { disallowEmpty: true },
-    dependency: [
-      {
-        test: (_, attrs) =>
-          attrs.eventType === eventConstants.EVENT_TYPE_PERFORMANCE,
-        ensure: value =>
-          _.includes(
-            eventConstants.ALLOWED_PERFORMANCE_OCCURRENCE_TYPES,
-            value
-          ),
-        message: 'Occurrence Type is not valid for the event type'
-      },
-      {
-        test: (_, attrs) =>
-          attrs.eventType === eventConstants.EVENT_TYPE_EXHIBITION,
-        ensure: value =>
-          _.includes(eventConstants.ALLOWED_EXHIBITION_OCCURRENCE_TYPES, value),
-        message: 'Occurrence Type is not valid for the event type'
-      }
-    ]
+    inclusion: { within: _.values(occurrenceType) }
   },
   dateFrom: {
     string: true,
@@ -42,14 +27,13 @@ export const BASIC_CONSTRAINT = {
     dependency: [
       {
         test: (_, attrs) =>
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_ONETIME ||
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED,
+          attrs.occurrenceType === occurrenceType.ONETIME ||
+          attrs.occurrenceType === occurrenceType.BOUNDED,
         ensure: value => !!value,
         message: 'From date is required'
       },
       {
-        test: (_, attrs) =>
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+        test: (_, attrs) => attrs.occurrenceType === occurrenceType.CONTINUOUS,
         ensure: value => !value,
         message: 'From date is not allowed here'
       }
@@ -61,28 +45,27 @@ export const BASIC_CONSTRAINT = {
     dependency: [
       {
         test: (_, attrs) =>
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_ONETIME ||
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED,
+          attrs.occurrenceType === occurrenceType.ONETIME ||
+          attrs.occurrenceType === occurrenceType.BOUNDED,
         ensure: value => !!value,
         message: 'To date is required'
       },
       {
-        test: (_, attrs) =>
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_CONTINUOUS,
+        test: (_, attrs) => attrs.occurrenceType === occurrenceType.CONTINUOUS,
         ensure: value => !value,
         message: 'To date is not allowed here'
       },
       {
         test: (_, attrs) =>
           attrs.dateFrom !== '' &&
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_ONETIME,
+          attrs.occurrenceType === occurrenceType.ONETIME,
         ensure: (value, attrs) => value === attrs.dateFrom,
         message: 'To date must equal From date'
       },
       {
         test: (_, attrs) =>
           attrs.dateFrom !== '' &&
-          attrs.occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED,
+          attrs.occurrenceType === occurrenceType.BOUNDED,
         ensure: (value, attrs) => value >= attrs.dateFrom,
         message: 'To date must be greater than or equal to From date'
       }
@@ -90,21 +73,21 @@ export const BASIC_CONSTRAINT = {
   },
   costType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: eventConstants.ALLOWED_COST_TYPES }
+    inclusion: { within: _.values(costType) }
   },
   costFrom: {
     length: { maximum: 6 },
     format: { pattern: MONEY_REGEX },
     dependency: [
       {
-        test: (_, attrs) => attrs.costType === eventConstants.COST_TYPE_PAID,
+        test: (_, attrs) => attrs.costType === costType.PAID,
         ensure: value => value >= 0,
         message: 'Cost From is required'
       },
       {
         test: (_, attrs) =>
-          attrs.costType === eventConstants.COST_TYPE_FREE ||
-          attrs.costType === eventConstants.COST_TYPE_UNKNOWN,
+          attrs.costType === costType.FREE ||
+          attrs.costType === costType.UNKNOWN,
         ensure: value => !value,
         message: 'Cost From is not allowed here'
       }
@@ -115,21 +98,20 @@ export const BASIC_CONSTRAINT = {
     format: { pattern: MONEY_REGEX },
     dependency: [
       {
-        test: (_, attrs) => attrs.costType === eventConstants.COST_TYPE_PAID,
+        test: (_, attrs) => attrs.costType === costType.PAID,
         ensure: value => value >= 0,
         message: 'Cost To is required'
       },
       {
         test: (_, attrs) =>
-          attrs.costType === eventConstants.COST_TYPE_FREE ||
-          attrs.costType === eventConstants.COST_TYPE_UNKNOWN,
+          attrs.costType === costType.FREE ||
+          attrs.costType === costType.UNKNOWN,
         ensure: value => !value,
         message: 'Cost To is not allowed here'
       },
       {
         test: (_, attrs) =>
-          attrs.costFrom !== '' &&
-          attrs.costType === eventConstants.COST_TYPE_PAID,
+          attrs.costFrom !== '' && attrs.costType === costType.PAID,
         ensure: (value, attrs) => Number(value) >= Number(attrs.costFrom),
         message: 'Cost To must be equal to or greater than Cost From'
       }
@@ -150,7 +132,7 @@ export const BASIC_CONSTRAINT = {
   },
   bookingType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: eventConstants.ALLOWED_BOOKING_TYPES }
+    inclusion: { within: _.values(bookingType) }
   },
   bookingOpens: {
     format: { pattern: DATE_REGEX }

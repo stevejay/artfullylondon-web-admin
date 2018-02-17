@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import * as linkConstants from '_src/constants/link'
+import linkType from '_src/entities/link-type'
 import { LINK_TYPE_DROPDOWN_OPTIONS } from '../constants'
 
 export function getAvailableLinkTypeDropdownOptions (value) {
@@ -17,13 +17,13 @@ export function validateLink (values, errors) {
 
 function isValidUrlForLinkType (url, type) {
   switch (type) {
-    case linkConstants.LINK_TYPE_TWITTER:
+    case linkType.TWITTER:
       return /https:\/\/twitter\.com\//.test(url)
-    case linkConstants.LINK_TYPE_WIKIPEDIA:
+    case linkType.WIKIPEDIA:
       return /https:\/\/en\.wikipedia\.org\//.test(url)
-    case linkConstants.LINK_TYPE_FACEBOOK:
+    case linkType.FACEBOOK:
       return /https:\/\/www\.facebook\.com\//.test(url)
-    case linkConstants.LINK_TYPE_INSTAGRAM:
+    case linkType.INSTAGRAM:
       return /https:\/\/www\.instagram\.com\//.test(url)
   }
 

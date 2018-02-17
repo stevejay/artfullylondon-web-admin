@@ -1,27 +1,30 @@
 import React from 'react' // required
 
-import * as eventConstants from '_src/constants/event'
-import * as linkConstants from '_src/constants/link'
+import eventType from '_src/entities/event-type'
+import linkType from '_src/entities/link-type'
+import costType from '_src/entities/cost-type'
+import bookingType from '_src/entities/booking-type'
+import occurrenceType from '_src/entities/occurrence-type'
 import * as dateLib from '_src/lib/date'
 
-export function eventIsPerformance (eventType) {
-  return eventType === eventConstants.EVENT_TYPE_PERFORMANCE
+export function eventIsPerformance (type) {
+  return type === eventType.PERFORMANCE
 }
 
-export function eventIsOneTime (occurrenceType) {
-  return occurrenceType === eventConstants.OCCURRENCE_TYPE_ONETIME
+export function eventIsOneTime (type) {
+  return type === occurrenceType.ONETIME
 }
 
-export function eventIsPaid (costType) {
-  return costType === eventConstants.COST_TYPE_PAID
+export function eventIsPaid (type) {
+  return type === costType.PAID
 }
 
-export function formatCostForDisplay (costType, costFrom, costTo) {
-  if (costType === eventConstants.COST_TYPE_FREE) {
+export function formatCostForDisplay (type, costFrom, costTo) {
+  if (type === costType.FREE) {
     return 'Free'
   }
 
-  if (costType === eventConstants.COST_TYPE_UNKNOWN) {
+  if (type === costType.UNKNOWN) {
     return 'To Be Announced'
   }
 
@@ -58,21 +61,21 @@ export function groupTimesByDate (dates) {
 }
 
 export function formatEventOccurrenceForDisplay (
-  occurrenceType,
+  occurrence,
   eventType,
   dateFrom,
   dateTo,
   additionalPerformances,
   dateStr
 ) {
-  switch (occurrenceType) {
-    case eventConstants.OCCURRENCE_TYPE_BOUNDED:
+  switch (occurrence) {
+    case occurrenceType.BOUNDED:
       return dateLib.formatDateRangeForDisplay(dateFrom, dateTo)
-    case eventConstants.OCCURRENCE_TYPE_CONTINUOUS:
+    case occurrenceType.CONTINUOUS:
       return eventIsPerformance(eventType)
         ? 'Regularly showing'
         : 'Regularly open'
-    case eventConstants.OCCURRENCE_TYPE_ONETIME: {
+    case occurrenceType.ONETIME: {
       // only for performances
       if (!additionalPerformances || additionalPerformances.length !== 1) {
         return 'Unknown'
@@ -97,27 +100,27 @@ export function formatEventOccurrenceForDisplay (
     }
     /* istanbul ignore next */
     default:
-      throw new Error(`occurrenceType out of range: ${occurrenceType}`)
+      throw new Error(`occurrence out of range: ${occurrence}`)
   }
 }
 
 export function formatBookingInfoForDisplay (
-  bookingType,
+  booking,
   bookingOpens,
   links,
   today
 ) {
-  const bookingLink = links.getLinkByType(linkConstants.LINK_TYPE_BOOKING)
+  const bookingLink = links.getLinkByType(linkType.BOOKING)
 
-  switch (bookingType) {
-    case eventConstants.BOOKING_TYPE_REQUIRED:
+  switch (booking) {
+    case bookingType.REQUIRED:
       return (
         <span>
           Required
           {_formatBookingOpensDateForDisplay(bookingOpens, bookingLink, today)}
         </span>
       )
-    case eventConstants.BOOKING_TYPE_REQUIRED_FOR_NON_MEMBERS:
+    case bookingType.REQUIRED_FOR_NON_MEMBERS:
       return (
         <span>
           Required for Non-members
@@ -167,20 +170,17 @@ function _formatAsMoney (cost) {
   return '£' + (cost % 1 === 0 ? cost : cost.toFixed(2))
 }
 
-export function bookingRequired (bookingType) {
+export function bookingRequired (type) {
   return (
-    bookingType === eventConstants.BOOKING_TYPE_REQUIRED ||
-    bookingType === eventConstants.BOOKING_TYPE_REQUIRED_FOR_NON_MEMBERS
+    type === bookingType.REQUIRED ||
+    type === bookingType.REQUIRED_FOR_NON_MEMBERS
   )
 }
 
-export function occurrenceTypeHasDateRange (occurrenceType) {
-  return (
-    occurrenceType === eventConstants.OCCURRENCE_TYPE_BOUNDED ||
-    occurrenceType === eventConstants.OCCURRENCE_TYPE_ONETIME
-  )
+export function occurrenceHasDateRange (type) {
+  return type === occurrenceType.BOUNDED || type === occurrenceType.ONETIME
 }
 
-export function occurrenceTypeIsContinuous (occurrenceType) {
-  return occurrenceType === eventConstants.OCCURRENCE_TYPE_CONTINUOUS
+export function occurrenceIsContinuous (type) {
+  return type === occurrenceType.CONTINUOUS
 }
