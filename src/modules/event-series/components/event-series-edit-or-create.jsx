@@ -12,10 +12,10 @@ import {
 import EditEventSeriesForm from '../forms/edit-event-series'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
-import * as entityConstants from '_src/constants/entity'
 import * as eventSeriesConstants from '../constants'
 import * as eventSeriesMapper from '../lib/mapper'
 import { FullEventSeries } from '_src/entities/event-series'
+import entityType from '_src/entities/entity-type'
 
 export class EventSeriesEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -32,7 +32,7 @@ export class EventSeriesEditOrCreate extends React.Component {
     if (imageEditorIsPristine && linkEditorIsPristine) {
       dispatch(
         entityActions.saveEntity(
-          entityConstants.ENTITY_TYPE_EVENT_SERIES,
+          entityType.EVENT_SERIES,
           values,
           isEdit,
           eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME,
@@ -55,10 +55,7 @@ export class EventSeriesEditOrCreate extends React.Component {
 
     return (
       <React.Fragment>
-        <Image
-          entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
-          images={entity.images}
-        />
+        <Image entityType={entityType.EVENT_SERIES} images={entity.images} />
         <EntityHeading>
           {entity.name || 'New Event Series'}
         </EntityHeading>

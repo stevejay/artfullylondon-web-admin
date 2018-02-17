@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withState } from 'recompose'
 import _ from 'lodash'
 
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
@@ -108,7 +108,7 @@ export class ImagesField extends React.Component {
 ImagesField.propTypes = {
   label: PropTypes.string.isRequired,
   parentFormName: PropTypes.string.isRequired,
-  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
+  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
       PropTypes.shape({

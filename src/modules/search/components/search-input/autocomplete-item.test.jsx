@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchInputAutocompleteItem from './autocomplete-item'
-import * as searchConstants from '_src/constants/search-temp'
+import * as searchConstants from '../../constants'
 
 it('should render correctly an autocomplete entity that is not currently selected', () => {
   const wrapper = shallow(

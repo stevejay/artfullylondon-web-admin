@@ -8,7 +8,7 @@ import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
 import * as eventSeriesConstants from '../constants'
 import * as eventSeriesMapper from '../lib/mapper'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 it('should render correctly when creating an event series', () => {
   eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
@@ -161,7 +161,7 @@ describe('handleSubmit', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       entityActions.saveEntity(
-        entityConstants.ENTITY_TYPE_EVENT_SERIES,
+        entityType.EVENT_SERIES,
         { name: 'New name' },
         false,
         eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME,

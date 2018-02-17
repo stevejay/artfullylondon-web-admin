@@ -1,31 +1,5 @@
 import * as arrayLib from '_src/lib/array'
 
-describe('addElement', () => {
-  it('should return null when element is already in the array by key', () => {
-    const actual = arrayLib.addElement([{ key: 'a' }, { key: 'b' }], {
-      key: 'b'
-    })
-    expect(actual).toEqual(null)
-  })
-
-  it('should return null when element is already in the array by value', () => {
-    const actual = arrayLib.addElement(['a', 'b'], 'b')
-    expect(actual).toEqual(null)
-  })
-
-  it('should return a new array when element is not already in the array by key', () => {
-    const actual = arrayLib.addElement([{ key: 'a' }, { key: 'b' }], {
-      key: 'c'
-    })
-    expect(actual).toEqual([{ key: 'a' }, { key: 'b' }, { key: 'c' }])
-  })
-
-  it('should return a new array when element is not already in the array by value', () => {
-    const actual = arrayLib.addElement(['a', 'b'], 'c')
-    expect(actual).toEqual(['a', 'b', 'c'])
-  })
-})
-
 describe('removeElementByKey', () => {
   it('should remove an element that exists by key', () => {
     const actual = arrayLib.removeElementByKey(

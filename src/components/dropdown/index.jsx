@@ -7,7 +7,7 @@ import document from 'global/document'
 import DropdownTransition from '_src/components/dropdown/transition'
 import DropdownButton from '_src/components/dropdown/button'
 import DropdownMenu from '_src/components/dropdown/menu'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import './index.scss'
 
 class Dropdown extends React.Component {
@@ -36,7 +36,7 @@ class Dropdown extends React.Component {
     }
   }
   handleKeyPress = event => {
-    if (event.charCode !== browserConstants.ENTER_CHARCODE) {
+    if (event.charCode !== globalConstants.ENTER_CHARCODE) {
       return
     }
 
@@ -54,8 +54,8 @@ class Dropdown extends React.Component {
     const { keyCode } = event
 
     if (
-      !(keyCode === browserConstants.ARROW_UP_KEYCODE ||
-        keyCode === browserConstants.ARROW_DOWN_KEYCODE)
+      !(keyCode === globalConstants.ARROW_UP_KEYCODE ||
+        keyCode === globalConstants.ARROW_DOWN_KEYCODE)
     ) {
       return
     }
@@ -65,13 +65,13 @@ class Dropdown extends React.Component {
     const { items } = this.props
     const { isOpen, selectedIndex } = this.state
 
-    if (keyCode === browserConstants.ARROW_UP_KEYCODE) {
+    if (keyCode === globalConstants.ARROW_UP_KEYCODE) {
       if (selectedIndex > 0) {
         this.setState({ selectedIndex: selectedIndex - 1 })
       } else if (selectedIndex === 0) {
         this.setState({ selectedIndex: null })
       }
-    } else if (keyCode === browserConstants.ARROW_DOWN_KEYCODE) {
+    } else if (keyCode === globalConstants.ARROW_DOWN_KEYCODE) {
       if (selectedIndex === null) {
         if (!isOpen) {
           this._openMenu(0)

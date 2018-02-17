@@ -3,7 +3,7 @@ import eventType from '_src/entities/event-type'
 import costType from '_src/entities/cost-type'
 import bookingType from '_src/entities/booking-type'
 import occurrenceType from '_src/entities/occurrence-type'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import linkType from '_src/entities/link-type'
 import * as eventLib from '_src/lib/event'
 import * as timeLib from '_src/lib/time'
@@ -471,7 +471,7 @@ describe('FullEvent', () => {
 
     expect(timeLib.getTimesDetails).toBeCalledWith(
       { venue: {} },
-      entityConstants.ENTITY_TYPE_EVENT,
+      entityType.EVENT,
       '2017/01/20'
     )
   })

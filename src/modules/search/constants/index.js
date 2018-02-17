@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types'
 
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
+import entityType from '_src/entities/entity-type'
 
 export const BASIC_SEARCH_FORM_NAME = 'BasicSearch'
 export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'
 
 export const SEARCH_ENTITY_DROPDOWN_OPTIONS = [
-  { label: 'All', value: entityConstants.ENTITY_TYPE_ALL },
-  { label: 'Venues', value: entityConstants.ENTITY_TYPE_VENUE },
-  { label: 'Events', value: entityConstants.ENTITY_TYPE_EVENT },
-  { label: 'Talent', value: entityConstants.ENTITY_TYPE_TALENT }
+  { label: 'All', value: entityType.ALL },
+  { label: 'Venues', value: entityType.VENUE },
+  { label: 'Events', value: entityType.EVENT },
+  { label: 'Talent', value: entityType.TALENT }
 ]
 
 export const SEARCH_TYPE_BASIC = 'SEARCH_TYPE_BASIC'
@@ -30,8 +31,7 @@ export const AUTOCOMPLETE_ITEM_PROPTYPES = PropTypes.oneOfType([
     autocompleteItemType: PropTypes.oneOf(ALLOWED_AUTOCOMPLETE_ITEM_TYPES),
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
-      .isRequired
+    entityType: entitiesPropTypes.ENTITY_TYPE.isRequired
   }),
   PropTypes.shape({
     autocompleteItemType: PropTypes.oneOf(ALLOWED_AUTOCOMPLETE_ITEM_TYPES),
@@ -46,17 +46,17 @@ export const AUTOCOMPLETE_ITEMS_PROPTYPES = PropTypes.arrayOf(
 export const DEFAULT_TAKE = 12
 
 export const ENTITY_TYPE_OPTIONS = [
-  { id: entityConstants.ENTITY_TYPE_EVENT, label: 'Events' },
-  { id: entityConstants.ENTITY_TYPE_VENUE, label: 'Venues' },
-  { id: entityConstants.ENTITY_TYPE_TALENT, label: 'Talents' },
-  { id: entityConstants.ENTITY_TYPE_ALL, label: 'All' }
+  { id: entityType.EVENT, label: 'Events' },
+  { id: entityType.VENUE, label: 'Venues' },
+  { id: entityType.TALENT, label: 'Talents' },
+  { id: entityType.ALL, label: 'All' }
 ]
 
 export const ALLOWED_BASIC_SEARCH_ENTITY_TYPES = [
-  entityConstants.ENTITY_TYPE_EVENT,
-  entityConstants.ENTITY_TYPE_TALENT,
-  entityConstants.ENTITY_TYPE_VENUE,
-  entityConstants.ENTITY_TYPE_ALL
+  entityType.EVENT,
+  entityType.TALENT,
+  entityType.VENUE,
+  entityType.ALL
 ]
 
 const SKIP_NORMALISER = {
@@ -110,11 +110,11 @@ const TERM_CONSTRAINT = {
 const ENTITY_TYPE_CONSTRAINT = {
   presence: true,
   inclusion: [
-    entityConstants.ENTITY_TYPE_EVENT,
-    entityConstants.ENTITY_TYPE_EVENT_SERIES,
-    entityConstants.ENTITY_TYPE_TALENT,
-    entityConstants.ENTITY_TYPE_VENUE,
-    entityConstants.ENTITY_TYPE_ALL
+    entityType.EVENT,
+    entityType.EVENT_SERIES,
+    entityType.TALENT,
+    entityType.VENUE,
+    entityType.ALL
   ]
 }
 

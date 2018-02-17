@@ -8,7 +8,7 @@ import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
 import * as venueConstants from '../constants'
 import * as venueMapper from '../lib/mapper'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 it('should render correctly when creating a venue', () => {
   venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
@@ -161,7 +161,7 @@ describe('handleSubmit', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       entityActions.saveEntity(
-        entityConstants.ENTITY_TYPE_VENUE,
+        entityType.VENUE,
         { name: 'New name' },
         false,
         venueConstants.EDIT_VENUE_FORM_NAME,

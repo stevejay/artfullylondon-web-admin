@@ -12,7 +12,7 @@ import SearchInputFieldBasic from '../components/search-input/field-basic'
 import SearchInputToolbar from '../components/search-input/toolbar'
 import DropdownField from '_src/components/dropdown/field'
 import * as searchConstants from '../constants'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import * as searchActions from '../actions'
 import { selectors as searchSelectors } from '../reducers'
 import './basic-search.scss'
@@ -28,7 +28,7 @@ export class BasicSearchForm extends React.Component {
   }
   // TODO can I change the Form component somehow so this handle is unnecessary?
   handleKeyPress = event => {
-    if (event.charCode === browserConstants.ENTER_CHARCODE) {
+    if (event.charCode === globalConstants.ENTER_CHARCODE) {
       event.preventDefault()
       this.props.handleSubmit()
     }

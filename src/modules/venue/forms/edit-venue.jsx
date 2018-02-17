@@ -28,9 +28,9 @@ import {
   AddOpeningTimeClosureForm,
   constraints
 } from '_src/modules/time'
-import * as entityConstants from '_src/constants/entity'
 import * as venueConstants from '../constants'
 import * as dateLib from '_src/lib/date'
+import entityType from '_src/entities/entity-type'
 
 export class EditVenueForm extends React.PureComponent {
   render () {
@@ -189,7 +189,7 @@ export class EditVenueForm extends React.PureComponent {
           <Field
             label='Images'
             parentFormName={venueConstants.EDIT_VENUE_FORM_NAME}
-            entityType={entityConstants.ENTITY_TYPE_VENUE}
+            entityType={entityType.VENUE}
             name='images'
             component={ImagesField}
           />

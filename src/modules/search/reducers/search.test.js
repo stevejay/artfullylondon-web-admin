@@ -2,8 +2,8 @@ import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './search'
 import * as searchActions from '../actions'
-import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '../constants'
+import entityType from '_src/entities/entity-type'
 import { actions as userActions } from '_src/modules/user'
 import { SummaryEvent } from '_src/entities/event'
 import { SummaryEventSeries } from '_src/entities/event-series'
@@ -16,7 +16,7 @@ it('should have the correct initial state', () => {
   expect(actual).toEqual({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -31,7 +31,7 @@ it('should handle a set basic search params message', () => {
   const state = deepFreeze({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -59,7 +59,7 @@ it('should handle starting a basic search', () => {
   const state = deepFreeze({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -74,7 +74,7 @@ it('should handle starting a basic search', () => {
   expect(actual).toEqual({
     searchInProgress: true,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -89,7 +89,7 @@ it('should handle a basic search succeeding', () => {
   const state = deepFreeze({
     searchInProgress: true,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -104,10 +104,10 @@ it('should handle a basic search succeeding', () => {
     searchActions.basicSearchSucceeded({
       total: 100,
       items: [
-        { entityType: entityConstants.ENTITY_TYPE_EVENT },
-        { entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES },
-        { entityType: entityConstants.ENTITY_TYPE_VENUE },
-        { entityType: entityConstants.ENTITY_TYPE_TALENT }
+        { entityType: entityType.EVENT },
+        { entityType: entityType.EVENT_SERIES },
+        { entityType: entityType.VENUE },
+        { entityType: entityType.TALENT }
       ],
       params: { the: 'params' }
     })
@@ -116,7 +116,7 @@ it('should handle a basic search succeeding', () => {
   expect(actual).toEqual({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -124,12 +124,12 @@ it('should handle a basic search succeeding', () => {
     basicSearchResultParams: { the: 'params' },
     total: 100,
     items: [
-      new SummaryEvent({ entityType: entityConstants.ENTITY_TYPE_EVENT }),
+      new SummaryEvent({ entityType: entityType.EVENT }),
       new SummaryEventSeries({
-        entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES
+        entityType: entityType.EVENT_SERIES
       }),
-      new SummaryVenue({ entityType: entityConstants.ENTITY_TYPE_VENUE }),
-      new SummaryTalent({ entityType: entityConstants.ENTITY_TYPE_TALENT })
+      new SummaryVenue({ entityType: entityType.VENUE }),
+      new SummaryTalent({ entityType: entityType.TALENT })
     ]
   })
 })
@@ -138,7 +138,7 @@ it('should handle a basic search failing', () => {
   const state = deepFreeze({
     searchInProgress: true,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -153,7 +153,7 @@ it('should handle a basic search failing', () => {
   expect(actual).toEqual({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE
@@ -178,7 +178,7 @@ it('should handle a log out message', () => {
   expect(actual).toEqual({
     searchInProgress: false,
     basicSearchParams: {
-      entityType: entityConstants.ENTITY_TYPE_ALL,
+      entityType: entityType.ALL,
       term: '',
       skip: 0,
       take: searchConstants.DEFAULT_TAKE

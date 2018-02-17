@@ -1,21 +1,21 @@
-import * as constants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import EventCardContent from './event-card-content'
 import EventSeriesCardContent from './event-series-card-content'
 import TalentCardContent from './talent-card-content'
 import VenueCardContent from './venue-card-content'
 
-export function createCard (entityType) {
-  switch (entityType) {
-    case constants.ENTITY_TYPE_EVENT:
+export function createCard (type) {
+  switch (type) {
+    case entityType.EVENT:
       return EventCardContent
-    case constants.ENTITY_TYPE_EVENT_SERIES:
+    case entityType.EVENT_SERIES:
       return EventSeriesCardContent
-    case constants.ENTITY_TYPE_TALENT:
+    case entityType.TALENT:
       return TalentCardContent
-    case constants.ENTITY_TYPE_VENUE:
+    case entityType.VENUE:
       return VenueCardContent
     /* istanbul ignore next */
     default:
-      throw new Error(`entityType is out of range: ${entityType}`)
+      throw new Error(`entityType is out of range: ${type}`)
   }
 }

@@ -7,7 +7,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import SelectField from '_src/components/select/field'
-import * as dateConstants from '_src/constants/date'
+import * as globalConstants from '_src/constants'
 import * as timeConstants from '../constants'
 
 export const AddOpeningTimeClosureForm = ({
@@ -24,7 +24,7 @@ export const AddOpeningTimeClosureForm = ({
       <Field
         label='Date'
         name='date'
-        dateFormat={dateConstants.DATE_FORMAT}
+        dateFormat={globalConstants.DATE_FORMAT}
         htmlId='date'
         component={DatepickerField}
         minDate={minDate}

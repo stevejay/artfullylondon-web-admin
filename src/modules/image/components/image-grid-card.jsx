@@ -6,7 +6,7 @@ import Pencil from 'react-icons/lib/fa/pencil'
 
 import IconButton from '_src/components/button/icon'
 import ImageGridImage from './image-grid-image'
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './image-grid-card.scss'
 
 class ImageGridCard extends React.Component {
@@ -72,7 +72,7 @@ ImageGridCard.propTypes = {
     copyright: PropTypes.string,
     ratio: PropTypes.number
   }).isRequired,
-  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
+  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
   onDelete: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onSetMain: PropTypes.func.isRequired

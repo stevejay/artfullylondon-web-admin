@@ -1,4 +1,4 @@
-import * as accessLib from '_src/lib/access'
+import * as accessLib from './access'
 import wheelchairAccessType from '_src/entities/wheelchair-access-type'
 import disabledBathroomType from '_src/entities/disabled-bathroom-type'
 import hearingFacilitiesType from '_src/entities/hearing-facilities-type'

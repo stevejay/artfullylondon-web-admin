@@ -8,23 +8,24 @@ import Cogs from 'react-icons/lib/fa/cogs'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
+import entityType from '_src/entities/entity-type'
 import './image-placeholder.scss'
 
 class ImagePlaceholder extends ShouldNeverUpdateComponent {
   getIcon (type) {
     switch (type) {
-      case entityConstants.ENTITY_TYPE_EVENT:
+      case entityType.EVENT:
         return <Star styleName='icon' />
-      case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+      case entityType.EVENT_SERIES:
         return <Star styleName='icon' />
-      case entityConstants.ENTITY_TYPE_TALENT:
+      case entityType.TALENT:
         return <User styleName='icon' />
-      case entityConstants.ENTITY_TYPE_VENUE:
+      case entityType.VENUE:
         return <Bank styleName='icon' />
-      case entityConstants.ENTITY_TYPE_TAG:
+      case entityType.TAG:
         return <Tags styleName='icon' />
-      case entityConstants.ENTITY_TYPE_USER:
+      case entityType.USER:
         return <Cogs styleName='icon' />
       /* istanbul ignore next */
       default:
@@ -43,7 +44,7 @@ class ImagePlaceholder extends ShouldNeverUpdateComponent {
 }
 
 ImagePlaceholder.propTypes = {
-  type: PropTypes.oneOf(entityConstants.ALL_ENTITY_TYPES).isRequired,
+  type: entitiesPropTypes.ENTITY_TYPE.isRequired,
   size: PropTypes.oneOf([
     'tiny',
     'very-small',

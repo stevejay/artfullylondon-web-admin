@@ -9,7 +9,7 @@ import NoResults from '../components/search/no-results'
 import * as dateLib from '_src/lib/date'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
 
@@ -287,7 +287,7 @@ it('should handle a try all click', () => {
     searchActions.pushBasicSearchToUrl({
       query: {
         take: 20,
-        entityType: entityConstants.ENTITY_TYPE_ALL,
+        entityType: entityType.ALL,
         skip: 0
       }
     })

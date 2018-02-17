@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { DashboardPage } from './dashboard'
 import * as dashboardActions from '../actions'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 it('should render correctly while the entity counts are being fetched', () => {
   const wrapper = shallow(
@@ -22,8 +22,8 @@ it('should render correctly when the entity counts have been fetched', () => {
   const wrapper = shallow(
     <DashboardPage
       entityCounts={{
-        [entityConstants.ENTITY_TYPE_VENUE]: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+        [entityType.VENUE]: {
+          entityType: entityType.VENUE,
           count: 100
         }
       }}

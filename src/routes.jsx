@@ -30,7 +30,7 @@ import {
   EventSeriesDetail
 } from '_src/modules/event-series'
 import { EventEditOrCreate, EventDetail } from '_src/modules/event'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 export class Routes extends React.Component {
   constructor (props) {
@@ -96,7 +96,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      entityType={entityType.TALENT}
                       component={TalentEditOrCreate}
                     />
                   )}
@@ -106,7 +106,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      entityType={entityType.TALENT}
                       component={TalentEditOrCreate}
                     />
                   )}
@@ -116,7 +116,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_TALENT}
+                      entityType={entityType.TALENT}
                       component={TalentDetail}
                     />
                   )}
@@ -126,7 +126,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      entityType={entityType.VENUE}
                       component={VenueEditOrCreate}
                     />
                   )}
@@ -136,7 +136,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      entityType={entityType.VENUE}
                       component={VenueEditOrCreate}
                     />
                   )}
@@ -146,7 +146,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_VENUE}
+                      entityType={entityType.VENUE}
                       component={VenueDetail}
                     />
                   )}
@@ -156,7 +156,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      entityType={entityType.EVENT_SERIES}
                       component={EventSeriesEditOrCreate}
                     />
                   )}
@@ -166,7 +166,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      entityType={entityType.EVENT_SERIES}
                       component={EventSeriesEditOrCreate}
                     />
                   )}
@@ -176,7 +176,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+                      entityType={entityType.EVENT_SERIES}
                       component={EventSeriesDetail}
                     />
                   )}
@@ -186,7 +186,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      entityType={entityType.EVENT}
                       component={EventEditOrCreate}
                     />
                   )}
@@ -196,7 +196,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      entityType={entityType.EVENT}
                       component={EventEditOrCreate}
                     />
                   )}
@@ -206,7 +206,7 @@ export class Routes extends React.Component {
                   exact
                   render={() => (
                     <EntityPage
-                      entityType={entityConstants.ENTITY_TYPE_EVENT}
+                      entityType={entityType.EVENT}
                       component={EventDetail}
                     />
                   )}

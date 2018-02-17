@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import EntityTypeLabel from './entity-type-label'
 import Image from './image'
 import './shell.scss'
@@ -32,8 +32,7 @@ class EntityCardShell extends React.Component {
 EntityCardShell.propTypes = {
   entity: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
-      .isRequired,
+    entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
     entityTypeLabel: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     image: PropTypes.string,

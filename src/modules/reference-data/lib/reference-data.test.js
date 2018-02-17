@@ -1,5 +1,4 @@
 import * as referenceDataLib from './reference-data'
-import * as imageLib from '_src/lib/image'
 
 describe('mapReferenceData', () => {
   it('should create a server constants structure from the input', () => {
@@ -26,16 +25,12 @@ describe('mapReferenceData', () => {
       }
     }
 
-    imageLib.createHeroImageUrl = jest
-      .fn()
-      .mockImplementation((a, b) => `${a} ${b}`)
-
     const actual = referenceDataLib.mapReferenceData(contentJson)
 
     expect(actual).toEqual({
       heroImage: {
-        desktopUrl: 'shoreditch-graffiti false',
-        mobileUrl: 'shoreditch-graffiti true',
+        desktopUrl: 'https://siteimages.test.com/hero-image/shoreditch-graffiti.jpg',
+        mobileUrl: 'https://siteimages.test.com/hero-image/shoreditch-graffiti.mobile.jpg',
         dominantColor: '#2e2d27'
       },
       namedClosuresDropdownOptions: [

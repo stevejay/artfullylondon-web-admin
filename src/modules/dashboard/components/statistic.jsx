@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import * as entityLib from '../lib/entity'
 import './statistic.scss'
 
@@ -13,7 +13,7 @@ const Statistic = ({ entityType, count }) => (
 )
 
 Statistic.propTypes = {
-  entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES).isRequired,
+  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
   count: PropTypes.number.isRequired
 }
 

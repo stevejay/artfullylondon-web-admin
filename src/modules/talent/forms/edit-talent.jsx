@@ -11,11 +11,11 @@ import Divider from '_src/components/divider'
 import SelectField from '_src/components/select/field'
 import HtmlTextField from '_src/components/html-text/field'
 import * as talentLib from '_src/lib/talent'
-import * as entityConstants from '_src/constants/entity'
 import talentType from '_src/entities/talent-type'
 import * as talentConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
 import { LinksField } from '_src/modules/link'
+import entityType from '_src/entities/entity-type'
 
 export class EditTalentForm extends React.PureComponent {
   handleChangeTalentType = (_, newValue) => {
@@ -121,7 +121,7 @@ export class EditTalentForm extends React.PureComponent {
           <Field
             label='Images'
             parentFormName={talentConstants.EDIT_TALENT_FORM_NAME}
-            entityType={entityConstants.ENTITY_TYPE_TALENT}
+            entityType={entityType.TALENT}
             name='images'
             component={ImagesField}
           />

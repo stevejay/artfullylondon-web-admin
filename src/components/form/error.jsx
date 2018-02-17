@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Message from '_src/components/message'
-import * as validationConstants from '_src/constants/validation'
+import * as globalConstants from '_src/constants'
 
 class FormError extends React.PureComponent {
   render () {
@@ -13,7 +13,7 @@ class FormError extends React.PureComponent {
     }
 
     if (
-      error === validationConstants.GENERIC_ERROR_MESSAGE &&
+      error === globalConstants.GENERIC_ERROR_MESSAGE &&
       hideGenericErrorMessages
     ) {
       return null

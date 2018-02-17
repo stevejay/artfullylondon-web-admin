@@ -1,57 +1,22 @@
-import venueType from '_src/entities/venue-type'
-
-// TODO this is more of a set of URL helpers.
-
-export function createPngIconUrl (name, isSelected) {
-  return (
-    process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
-    `/${name}${isSelected ? '-selected' : ''}.png`
-  )
-}
-
-export function createVenueTypePngIconUrl (type, isSelected) {
-  let imageName = 'townhouse'
-
-  switch (type) {
-    case venueType.THEATRE:
-      imageName = 'theater'
-      break
-    case venueType.ART_GALLERY:
-      imageName = 'artgallery'
-      break
-    case venueType.MUSEUM:
-      imageName = 'museum'
-      break
-  }
-
-  return createPngIconUrl(imageName, isSelected)
-}
-
-export function createHeroImageUrl (name, forMobile) {
-  return (
-    process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
-    `/hero-image/${name}${forMobile ? '.mobile' : ''}.jpg`
-  )
-}
-
-export function createEntityCardImageUrl (imageId) {
+export function createImageUrl (imageId, resizedSize) {
   if (!imageId) {
     return null
   }
 
-  return _createImageUrl(imageId, '500x350')
+  const root = process.env.WEBSITE_ENTITY_IMAGES_ROOT_URL
+  return `${root}/${imageId.substring(0, 2)}/${imageId.substring(2, 4)}/${imageId}/${resizedSize}.jpg`
 }
 
 export function createEventTalentImageUrl (imageId) {
-  return _createImageUrl(imageId, '120x120')
+  return createImageUrl(imageId, '120x120')
 }
 
 export function createEntityPageImageUrl (imageId) {
-  return _createImageUrl(imageId, '500x500')
+  return createImageUrl(imageId, '500x500')
 }
 
 export function createEntityEditPreviewImageUrl (imageId) {
-  return _createImageUrl(imageId, '120x120')
+  return createImageUrl(imageId, '120x120')
 }
 
 export function createItemsForImageCarousel ({
@@ -61,14 +26,9 @@ export function createItemsForImageCarousel ({
   dominantColor
 }) {
   return {
-    original: _createImageUrl(id, '750x'),
+    original: createImageUrl(id, '750x'),
     ratio,
     copyright,
     dominantColor
   }
-}
-
-function _createImageUrl (imageId, resizedSize) {
-  const root = process.env.WEBSITE_ENTITY_IMAGES_ROOT_URL
-  return `${root}/${imageId.substring(0, 2)}/${imageId.substring(2, 4)}/${imageId}/${resizedSize}.jpg`
 }

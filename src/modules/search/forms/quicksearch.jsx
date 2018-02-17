@@ -8,13 +8,13 @@ import Form from '_src/components/form'
 import FormRow from '_src/components/form/row'
 import SearchInputFieldBasic from '../components/search-input/field-basic'
 import SearchInputToolbar from '../components/search-input/toolbar'
-import * as entityConstants from '_src/constants/entity'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import * as searchConstants from '../constants'
+import entityType from '_src/entities/entity-type'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {
-    if (event.charCode === browserConstants.ENTER_CHARCODE) {
+    if (event.charCode === globalConstants.ENTER_CHARCODE) {
       event.preventDefault()
       this.props.handleSubmit()
     }
@@ -79,6 +79,6 @@ export default reduxForm({
   form: searchConstants.HEADER_SEARCH_FORM_NAME,
   initialValues: {
     term: '',
-    entityType: entityConstants.ENTITY_TYPE_ALL
+    entityType: entityType.ALL
   }
 })(QuicksearchForm)

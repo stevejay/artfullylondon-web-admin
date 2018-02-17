@@ -1,22 +1,22 @@
 import * as entityLib from './entity'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 describe('getLabelForEntityType', () => {
   const tests = [
     {
-      arg: entityConstants.ENTITY_TYPE_EVENT,
+      arg: entityType.EVENT,
       expected: 'Event'
     },
     {
-      arg: entityConstants.ENTITY_TYPE_EVENT_SERIES,
+      arg: entityType.EVENT_SERIES,
       expected: 'Event Series'
     },
     {
-      arg: entityConstants.ENTITY_TYPE_TALENT,
+      arg: entityType.TALENT,
       expected: 'Talent'
     },
     {
-      arg: entityConstants.ENTITY_TYPE_VENUE,
+      arg: entityType.VENUE,
       expected: 'Venue'
     }
   ]

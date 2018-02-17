@@ -3,7 +3,7 @@ import _ from 'lodash'
 import CloseIcon from 'react-icons/lib/fa/close'
 
 import IconButton from '_src/components/button/icon'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 
 it('should render a default icon button correctly', () => {
   const wrapper = shallow(<IconButton icon={CloseIcon} onClick={_.noop} />)
@@ -43,7 +43,7 @@ it('should handle the Enter key being pressed', () => {
   const wrapper = shallow(<IconButton icon={CloseIcon} onClick={handleClick} />)
 
   wrapper.find('button').simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE
+    charCode: globalConstants.ENTER_CHARCODE
   })
 
   expect(handleClick).toHaveBeenCalled()
@@ -55,7 +55,7 @@ it('should handle a non-Enter key being pressed', () => {
   const wrapper = shallow(<IconButton icon={CloseIcon} onClick={handleClick} />)
 
   wrapper.find('button').simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE + 1
+    charCode: globalConstants.ENTER_CHARCODE + 1
   })
 
   expect(handleClick).not.toHaveBeenCalled()

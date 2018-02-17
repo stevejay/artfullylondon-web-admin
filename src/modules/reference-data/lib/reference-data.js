@@ -1,14 +1,12 @@
 import _ from 'lodash'
 
-import * as imageLib from '_src/lib/image'
-
 export function mapReferenceData (contentJson) {
   const { heroImage, namedClosures } = contentJson
 
   return {
     heroImage: {
-      desktopUrl: imageLib.createHeroImageUrl(heroImage.name, false),
-      mobileUrl: imageLib.createHeroImageUrl(heroImage.name, true),
+      desktopUrl: createHeroImageUrl(heroImage.name, false),
+      mobileUrl: createHeroImageUrl(heroImage.name, true),
       dominantColor: heroImage.dominantColor
     },
     namedClosuresDropdownOptions: Object.keys(namedClosures).map(key => ({
@@ -21,4 +19,11 @@ export function mapReferenceData (contentJson) {
       (_objValue_, srcValue) => srcValue.dates
     )
   }
+}
+
+function createHeroImageUrl (name, forMobile) {
+  return (
+    process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
+    `/hero-image/${name}${forMobile ? '.mobile' : ''}.jpg`
+  )
 }

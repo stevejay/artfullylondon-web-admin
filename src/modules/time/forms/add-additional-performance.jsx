@@ -7,7 +7,7 @@ import FormError from '_src/components/form/error'
 import SelectField from '_src/components/select/field'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
-import * as dateConstants from '_src/constants/date'
+import * as globalConstants from '_src/constants'
 import * as timeConstants from '../constants'
 
 export const AddAdditionalPerformanceForm = ({
@@ -25,7 +25,7 @@ export const AddAdditionalPerformanceForm = ({
         label='Date'
         name='date'
         htmlId='date'
-        dateFormat={dateConstants.DATE_FORMAT}
+        dateFormat={globalConstants.DATE_FORMAT}
         component={DatepickerField}
         minDate={minDate}
         maxDate={maxDate}

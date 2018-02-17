@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import FadeTransition from '_src/components/transition/fade'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import Statistic from './statistic'
 import './statistic-collection.scss'
 
 const ENTITY_TYPES = [
-  entityConstants.ENTITY_TYPE_EVENT,
-  entityConstants.ENTITY_TYPE_EVENT_SERIES,
-  entityConstants.ENTITY_TYPE_TALENT,
-  entityConstants.ENTITY_TYPE_VENUE
+  entityType.EVENT,
+  entityType.EVENT_SERIES,
+  entityType.TALENT,
+  entityType.VENUE
 ]
 
 class StatisticCollection extends React.PureComponent {

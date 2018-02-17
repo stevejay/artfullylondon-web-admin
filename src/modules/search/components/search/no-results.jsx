@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ThumbsDown from 'react-icons/lib/fa/thumbs-o-down'
 
-import * as entityConstants from '_src/constants/entity'
-import * as searchConstants from '_src/constants/search-temp'
+import entityType from '_src/entities/entity-type'
+import * as searchConstants from '../../constants'
 import './no-results.scss'
 
-const SearchNoResults = ({ onTryAllClick, className, entityType }) => (
+const SearchNoResults = ({ onTryAllClick, className, entityType: type }) => (
   <div styleName='container' className={className}>
     <ThumbsDown styleName='icon' />
     <p styleName='message'>Nothing found</p>
     {!!onTryAllClick &&
-      entityType !== entityConstants.ENTITY_TYPE_ALL &&
+      type !== entityType.ALL &&
       <p styleName='action'>
         <a onClick={onTryAllClick}>Click here</a> to try searching everything.
       </p>}

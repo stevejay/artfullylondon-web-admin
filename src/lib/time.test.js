@@ -1,6 +1,6 @@
-import * as entityConstants from '_src/constants/entity'
 import eventType from '_src/entities/event-type'
 import occurrenceType from '_src/entities/occurrence-type'
+import entityType from '_src/entities/entity-type'
 import * as timeLib from '_src/lib/time'
 
 const yesterday = '2016/01/01' // 1st Jan 2016
@@ -930,7 +930,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [],
           additionalOpeningTimes: [],
           openingTimesClosures: [],
@@ -945,7 +945,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [
             { day: dateAfterTodayOneDayNumber, from: '15:00', to: '18:00' },
             { day: dateAfterTodayOneDayNumber, from: '12:00', to: '13:00' }
@@ -963,7 +963,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [
             { day: dateAfterTodayOneDayNumber, from: '12:00', to: '13:00' },
             { day: dateAfterTodayOneDayNumber, from: '15:00', to: '18:00' }
@@ -984,7 +984,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [
             { day: dateAfterTodayOneDayNumber, from: '12:00', to: '13:00' },
             { day: dateAfterTodayOneDayNumber, from: '15:00', to: '18:00' }
@@ -1008,7 +1008,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [
             { day: dateAfterTodayOneDayNumber, from: '15:00', to: '18:00' },
             { day: dateAfterTodayOneDayNumber, from: '12:00', to: '13:00' }
@@ -1026,7 +1026,7 @@ describe('formatTimesStringForGivenDate with a venue', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_VENUE,
+          entityType: entityType.VENUE,
           openingTimes: [
             { day: dateAfterTodayOneDayNumber, from: '15:00', to: '18:00' },
             { day: dateAfterTodayOneDayNumber, from: '12:00', to: '13:00' }
@@ -1068,7 +1068,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1086,7 +1086,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1107,7 +1107,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1131,7 +1131,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1158,7 +1158,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1179,7 +1179,7 @@ describe('formatTimesStringForGivenDate with a performance event', () => {
     {
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.PERFORMANCE,
           occurrenceType: occurrenceType.BOUNDED,
           dateFrom: today,
@@ -1228,7 +1228,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when venue is not used and there are no opening times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1254,7 +1254,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when venue is used and there are no opening times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1280,7 +1280,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return event opening times when there are event opening times and they are used',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1308,7 +1308,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when there are event opening times and they are used but they do not apply',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1336,7 +1336,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should include event opening override times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1366,7 +1366,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when has event closure on the day',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1394,7 +1394,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should include event opening time override when has override and venue times are to be used',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1426,7 +1426,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should include venue opening override times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1456,7 +1456,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should only use venue opening override times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1488,7 +1488,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when venue opening times exist but is closed on day at event level',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1516,7 +1516,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when venue opening times exist but is closed on day at venue level',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1544,7 +1544,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return venue opening times',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1572,7 +1572,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return closed when has venue opening times but has venue named closure on day',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.CONTINUOUS,
           dateFrom: null,
@@ -1600,7 +1600,7 @@ describe('formatTimesStringForGivenDate with an exhibition event', () => {
       it: 'should return null when date is later than event date range',
       args: {
         entity: {
-          entityType: entityConstants.ENTITY_TYPE_EVENT,
+          entityType: entityType.EVENT,
           eventType: eventType.EXHIBITION,
           occurrenceType: occurrenceType.BOUNDED,
           dateFrom: today,

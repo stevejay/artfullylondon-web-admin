@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import DownIcon from 'react-icons/lib/fa/angle-down'
 import CircleIcon from 'react-icons/lib/fa/circle'
 
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import './index.scss'
 
 class Expander extends React.Component {
@@ -16,8 +16,8 @@ class Expander extends React.Component {
     const { keyCode } = event
     const { open } = this.props
 
-    const isArrowUp = keyCode === browserConstants.ARROW_UP_KEYCODE
-    const isArrowDown = keyCode === browserConstants.ARROW_DOWN_KEYCODE
+    const isArrowUp = keyCode === globalConstants.ARROW_UP_KEYCODE
+    const isArrowDown = keyCode === globalConstants.ARROW_DOWN_KEYCODE
 
     if (!(isArrowUp || isArrowDown)) {
       return

@@ -8,7 +8,7 @@ import { actions as entityActions } from '_src/modules/entity'
 import { actions as notificationActions } from '_src/modules/notification'
 import * as talentMapper from '../lib/mapper'
 import * as talentConstants from '../constants'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 it('should render correctly when creating a talent', () => {
   talentMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })
@@ -161,7 +161,7 @@ describe('handleSubmit', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       entityActions.saveEntity(
-        entityConstants.ENTITY_TYPE_TALENT,
+        entityType.TALENT,
         { name: 'New name' },
         false,
         talentConstants.EDIT_TALENT_FORM_NAME,

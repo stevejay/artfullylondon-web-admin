@@ -1,7 +1,7 @@
 import moment from 'moment'
 import 'moment-timezone'
 
-import * as dateConstants from '_src/constants/date'
+import * as globalConstants from '_src/constants'
 
 export function getYearNow () {
   return new Date().getFullYear()
@@ -9,7 +9,7 @@ export function getYearNow () {
 
 // TODO backend should be taking care of this
 export function getDateNowForDatabase () {
-  return moment.utc().format(dateConstants.DATE_FORMAT)
+  return moment.utc().format(globalConstants.DATE_FORMAT)
 }
 
 export function mapJsDateToStringDate (date) {
@@ -25,7 +25,7 @@ export function mapMomentDateToStringDate (date) {
     return null
   }
 
-  return date.format(dateConstants.DATE_FORMAT)
+  return date.format(globalConstants.DATE_FORMAT)
 }
 
 export function mapStringDateToJsDate (stringDate) {
@@ -66,8 +66,8 @@ export function periodIsLongerThanWeek (dateFrom, dateTo) {
 }
 
 export function getCountOfDaysBetweenStringDates (dateFrom, dateTo) {
-  const from = moment(dateFrom, dateConstants.DATE_FORMAT)
-  const to = moment(dateTo, dateConstants.DATE_FORMAT)
+  const from = moment(dateFrom, globalConstants.DATE_FORMAT)
+  const to = moment(dateTo, globalConstants.DATE_FORMAT)
   return to.diff(from, 'days')
 }
 
@@ -77,7 +77,7 @@ export function createTimeKey (obj) {
   if (obj.date) {
     dayOrDate = typeof obj.date === 'string'
       ? obj.date
-      : moment(obj.date).format(dateConstants.DATE_FORMAT)
+      : moment(obj.date).format(globalConstants.DATE_FORMAT)
   } else {
     dayOrDate = obj.day
   }
@@ -95,7 +95,7 @@ export function formatTime (time) {
 }
 
 export function formatStringDateForDisplay (date, includeDayName) {
-  return moment(date, dateConstants.DATE_FORMAT).format(
+  return moment(date, globalConstants.DATE_FORMAT).format(
     includeDayName ? 'dddd, Do MMM YYYY' : 'Do MMM YYYY'
   )
 }
@@ -110,9 +110,9 @@ export function formatDateRangeForDisplay (dateFrom, dateTo) {
     yearInCommon && dateFrom.substring(5, 7) === dateTo.substring(5, 7)
 
   const fromStr = monthInCommon
-    ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do')
+    ? moment(dateFrom, globalConstants.DATE_FORMAT).format('Do')
     : yearInCommon
-      ? moment(dateFrom, dateConstants.DATE_FORMAT).format('Do MMM')
+      ? moment(dateFrom, globalConstants.DATE_FORMAT).format('Do MMM')
       : formatStringDateForDisplay(dateFrom)
 
   const toStr = formatStringDateForDisplay(dateTo)

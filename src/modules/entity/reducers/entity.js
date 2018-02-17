@@ -5,7 +5,7 @@ import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { types } from '../actions'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 const initialState = {
   entityId: null,
@@ -52,25 +52,25 @@ export const selectors = {
   failedToGetEntity: state => state.getFailed
 }
 
-function createEntity (entityType, entity = null) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_EVENT:
+function createEntity (type, entity = null) {
+  switch (type) {
+    case entityType.EVENT:
       return new FullEvent(entity)
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+    case entityType.EVENT_SERIES:
       return new FullEventSeries(entity)
-    case entityConstants.ENTITY_TYPE_TALENT:
+    case entityType.TALENT:
       return new FullTalent(entity)
-    case entityConstants.ENTITY_TYPE_VENUE:
+    case entityType.VENUE:
       return new FullVenue(entity)
     /* istanbul ignore next */
     default:
-      throw new Error(`entityType ${entityType} not supported`)
+      throw new Error(`entityType ${type} not supported`)
   }
 }
 
 // TODO delete the following when I can:
 
-// case entityConstants.ENTITY_TYPE_EVENT:
+// case entityType.EVENT:
 //   return {
 //     id: null,
 //     status: entityConstants.ACTIVE_STATUS,

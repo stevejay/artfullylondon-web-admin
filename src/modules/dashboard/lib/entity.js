@@ -1,17 +1,17 @@
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
-export function getLabelForEntityType (entityType) {
-  switch (entityType) {
-    case entityConstants.ENTITY_TYPE_EVENT:
+export function getLabelForEntityType (type) {
+  switch (type) {
+    case entityType.EVENT:
       return 'Event'
-    case entityConstants.ENTITY_TYPE_EVENT_SERIES:
+    case entityType.EVENT_SERIES:
       return 'Event Series'
-    case entityConstants.ENTITY_TYPE_TALENT:
+    case entityType.TALENT:
       return 'Talent'
-    case entityConstants.ENTITY_TYPE_VENUE:
+    case entityType.VENUE:
       return 'Venue'
     /* istanbul ignore next */
     default:
-      throw new Error(`entityType is out of range: ${entityType}`)
+      throw new Error(`entityType is out of range: ${type}`)
   }
 }

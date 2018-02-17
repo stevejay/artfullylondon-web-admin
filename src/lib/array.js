@@ -1,15 +1,5 @@
 import _ from 'lodash'
 
-export function addElement (array, newElement) {
-  if (_.find(array, x => (x.key || x) === (newElement.key || newElement))) {
-    return null
-  }
-
-  const newArray = array.slice()
-  newArray.push(newElement)
-  return newArray
-}
-
 export function updateElementByKey (array, key, newValues) {
   const index = _.findIndex(array, x => x.key === key)
 

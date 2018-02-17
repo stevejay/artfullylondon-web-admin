@@ -1,10 +1,10 @@
 import { LinkCollection } from '_src/entities/link-collection'
-import * as entityConstants from '_src/constants/entity'
 import linkType from '_src/entities/link-type'
 import * as venueLib from '_src/lib/venue'
 import * as entityLib from '_src/lib/entity'
 import * as timeLib from '_src/lib/time'
-import * as imageLib from '_src/lib/image'
+import entityType from '_src/entities/entity-type'
+import venueType from '_src/entities/venue-type'
 
 export class SummaryVenue {
   constructor (entity) {
@@ -13,7 +13,7 @@ export class SummaryVenue {
   }
 
   get entityType () {
-    return entityConstants.ENTITY_TYPE_VENUE
+    return entityType.VENUE
   }
 
   get entityTypeLabel () {
@@ -112,7 +112,24 @@ export class SummaryVenue {
   }
 
   createVenuesMapIconUrl (isSelected) {
-    return imageLib.createVenueTypePngIconUrl(this.venueType, isSelected)
+    let imageName = 'townhouse'
+
+    switch (this.venueType) {
+      case venueType.THEATRE:
+        imageName = 'theater'
+        break
+      case venueType.ART_GALLERY:
+        imageName = 'artgallery'
+        break
+      case venueType.MUSEUM:
+        imageName = 'museum'
+        break
+    }
+
+    return (
+      process.env.WEBSITE_SITE_IMAGES_ROOT_URL +
+      `/${imageName}${isSelected ? '-selected' : ''}.png`
+    )
   }
 
   shallowClone (newProps) {

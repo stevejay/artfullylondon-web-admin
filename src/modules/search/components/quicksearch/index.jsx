@@ -11,7 +11,7 @@ import IconButton from '_src/components/button/icon'
 import QuicksearchForm from '../../forms/quicksearch'
 import ModalTransition from './modal-transition'
 import * as searchActions from '../../actions'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import './index.scss'
 
 export class Quicksearch extends React.Component {
@@ -27,7 +27,7 @@ export class Quicksearch extends React.Component {
   }
   handleAutocompleteSearch = ({ term }) => {
     return this.props.dispatch(
-      searchActions.autocompleteSearch(term, entityConstants.ENTITY_TYPE_ALL)
+      searchActions.autocompleteSearch(term, entityType.ALL)
     )
   }
   handleAutocompleteSelect = entity => {

@@ -3,26 +3,26 @@ import EventCardContent from './event-card-content'
 import EventSeriesCardContent from './event-series-card-content'
 import TalentCardContent from './talent-card-content'
 import VenueCardContent from './venue-card-content'
-import * as constants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 describe('createCard', () => {
   it('should create a card for an event', () => {
-    const actual = createCard(constants.ENTITY_TYPE_EVENT)
+    const actual = createCard(entityType.EVENT)
     expect(actual).toEqual(EventCardContent)
   })
 
   it('should create a card for an event series', () => {
-    const actual = createCard(constants.ENTITY_TYPE_EVENT_SERIES)
+    const actual = createCard(entityType.EVENT_SERIES)
     expect(actual).toEqual(EventSeriesCardContent)
   })
 
   it('should create a card for a talent', () => {
-    const actual = createCard(constants.ENTITY_TYPE_TALENT)
+    const actual = createCard(entityType.TALENT)
     expect(actual).toEqual(TalentCardContent)
   })
 
   it('should create a card for a venue', () => {
-    const actual = createCard(constants.ENTITY_TYPE_VENUE)
+    const actual = createCard(entityType.VENUE)
     expect(actual).toEqual(VenueCardContent)
   })
 })

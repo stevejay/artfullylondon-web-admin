@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { BasicSearchForm } from './basic-search'
 import Form from '_src/components/form'
 import * as searchActions from '../actions'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -104,7 +104,7 @@ it('should handle an Enter key press', () => {
   )
 
   wrapper.find(Form).simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE,
+    charCode: globalConstants.ENTER_CHARCODE,
     preventDefault
   })
 
@@ -134,7 +134,7 @@ it('should ignore a non-Enter key press', () => {
   )
 
   wrapper.find(Form).simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE + 1,
+    charCode: globalConstants.ENTER_CHARCODE + 1,
     preventDefault
   })
 

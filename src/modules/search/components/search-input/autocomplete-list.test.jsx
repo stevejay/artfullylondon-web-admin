@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchInputAutocompleteList from './autocomplete-list'
-import * as searchConstants from '_src/constants/search-temp'
+import * as searchConstants from '../../constants'
 
 it('should render an autocomplete list with a single entity entry correctly', () => {
   const wrapper = shallow(

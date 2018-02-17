@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import { QuicksearchForm } from './quicksearch'
 
 it('should render correctly', () => {
@@ -56,7 +56,7 @@ it('should submit on a return key press', () => {
   )
 
   wrapper.find('Form').prop('onKeyPress')({
-    charCode: browserConstants.ENTER_CHARCODE,
+    charCode: globalConstants.ENTER_CHARCODE,
     preventDefault: _.noop
   })
 

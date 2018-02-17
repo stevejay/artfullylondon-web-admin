@@ -1,110 +1,32 @@
 import * as entityLib from '_src/lib/entity'
-import * as entityConstants from '_src/constants/entity'
-import * as image from '_src/lib/image'
-
-describe('getEntityTypeUrlParameter', () => {
-  it('should get the parameter', () => {
-    const match = { params: { entityType: 'Event' } }
-    const result = entityLib.getEntityTypeUrlParameter(match)
-    expect(result).toEqual('event')
-  })
-})
-
-describe('getEntityCardImageDataForEntityType', () => {
-  const tests = [
-    {
-      args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT,
-        image: '1234'
-      },
-      expected: {
-        height: 175,
-        url: '/1234'
-      }
-    },
-    {
-      args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES,
-        image: '1234'
-      },
-      expected: {
-        height: 175,
-        url: '/1234'
-      }
-    },
-    {
-      args: {
-        entityType: entityConstants.ENTITY_TYPE_TALENT,
-        image: '1234'
-      },
-      expected: {
-        height: 175,
-        url: '/1234'
-      }
-    },
-    {
-      args: {
-        entityType: entityConstants.ENTITY_TYPE_VENUE,
-        image: '1234'
-      },
-      expected: {
-        height: 175,
-        url: '/1234'
-      }
-    }
-  ]
-
-  tests.map(test => {
-    it(`should return ${JSON.stringify(test.expected)} when passed ${JSON.stringify(test.args)}`, () => {
-      image.createEntityCardImageUrl = jest
-        .fn()
-        .mockImplementation(id => `/${id}`)
-
-      const actual = entityLib.getEntityCardImageDataForEntityType(
-        test.args.entityType,
-        test.args.image
-      )
-
-      expect(actual).toEqual(test.expected)
-    })
-  })
-
-  it('should throw an error when getting data for an unknown entity type', () => {
-    expect(() => {
-      entityLib.getEntityCardImageDataForEntityType(
-        'unknown-entity-type',
-        '1234'
-      )
-    }).toThrow()
-  })
-})
+import entityType from '_src/entities/entity-type'
 
 describe('createEntityUrl', () => {
   const tests = [
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT,
+        entityType: entityType.EVENT,
         id: 'foo/2016/bar'
       },
       expected: '/event/foo/2016/bar'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES,
+        entityType: entityType.EVENT_SERIES,
         id: 'foo'
       },
       expected: '/event-series/foo'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_TALENT,
+        entityType: entityType.TALENT,
         id: 'foo'
       },
       expected: '/talent/foo'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_VENUE,
+        entityType: entityType.VENUE,
         id: 'foo'
       },
       expected: '/venue/foo'
@@ -126,28 +48,28 @@ describe('createEntityEditUrl', () => {
   const tests = [
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT,
+        entityType: entityType.EVENT,
         id: 'foo/2016/bar'
       },
       expected: '/event/edit/foo/2016/bar'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_EVENT_SERIES,
+        entityType: entityType.EVENT_SERIES,
         id: 'foo'
       },
       expected: '/event-series/edit/foo'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_TALENT,
+        entityType: entityType.TALENT,
         id: 'foo'
       },
       expected: '/talent/edit/foo'
     },
     {
       args: {
-        entityType: entityConstants.ENTITY_TYPE_VENUE,
+        entityType: entityType.VENUE,
         id: 'foo'
       },
       expected: '/venue/edit/foo'

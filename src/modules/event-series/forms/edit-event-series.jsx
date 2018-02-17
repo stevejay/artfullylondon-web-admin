@@ -9,10 +9,10 @@ import FormButtons from '_src/components/form/buttons'
 import Divider from '_src/components/divider'
 import SelectField from '_src/components/select/field'
 import HtmlTextField from '_src/components/html-text/field'
-import * as entityConstants from '_src/constants/entity'
 import * as eventSeriesConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
 import { LinksField } from '_src/modules/link'
+import entityType from '_src/entities/entity-type'
 
 export class EditEventSeriesForm extends React.PureComponent {
   render () {
@@ -125,7 +125,7 @@ export class EditEventSeriesForm extends React.PureComponent {
           <Field
             label='Images'
             parentFormName={eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME}
-            entityType={entityConstants.ENTITY_TYPE_EVENT_SERIES}
+            entityType={entityType.EVENT_SERIES}
             name='images'
             component={ImagesField}
           />

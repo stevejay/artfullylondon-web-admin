@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as searchConstants from '_src/constants/search-temp'
+import * as searchConstants from '../../constants'
 import './autocomplete-item.scss'
 
 // TODO there's confusion here about item.output being used for the label,

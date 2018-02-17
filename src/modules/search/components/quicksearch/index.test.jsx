@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { Quicksearch } from './index'
 import * as searchActions from '../../actions'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import QuicksearchForm from '../../forms/quicksearch'
 
 it('should render correctly', () => {
@@ -83,7 +83,7 @@ it('should handle an autocomplete search event', () => {
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.autocompleteSearch(
       'some term',
-      entityConstants.ENTITY_TYPE_ALL
+      entityType.ALL
     )
   )
 })

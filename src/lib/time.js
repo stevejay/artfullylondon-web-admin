@@ -4,9 +4,9 @@ import _ from 'lodash'
 
 import * as eventLib from '_src/lib/event'
 import * as dateLib from '_src/lib/date'
-import * as dateConstants from '_src/constants/date'
-import * as entityConstants from '_src/constants/entity'
+import * as globalConstants from '_src/constants'
 import occurrenceType from '_src/entities//occurrence-type'
+import entityType from '_src/entities/entity-type'
 
 const DAYS_OF_WEEK_MAPPING = [
   { value: 0, label: 'Monday' },
@@ -81,8 +81,8 @@ export function createDateRangeLabel (dateStr, dateFrom, dateTo) {
 
 // opening-times component
 export function addDaysToStringDate (dateStr, days) {
-  const date = moment(dateStr, dateConstants.DATE_FORMAT)
-  return date.add(days, 'days').format(dateConstants.DATE_FORMAT)
+  const date = moment(dateStr, globalConstants.DATE_FORMAT)
+  return date.add(days, 'days').format(globalConstants.DATE_FORMAT)
 }
 
 // domain
@@ -92,7 +92,7 @@ export function formatTimesStringForGivenDate (
   timeStr,
   namedClosuresLookup
 ) {
-  const isVenue = entity.entityType === entityConstants.ENTITY_TYPE_VENUE
+  const isVenue = entity.entityType === entityType.VENUE
   const isPerformance = eventLib.eventIsPerformance(entity.eventType)
   let times = null
 
@@ -326,7 +326,7 @@ function _getTimesOnGivenDateForExhibitionEvent (
 // domain
 export function getTimesDetails (entity, entityType, fromStr) {
   const toStr = getYearFromTodayAsString()
-  const isVenue = entityType === entityConstants.ENTITY_TYPE_VENUE
+  const isVenue = entityType === entityType.VENUE
   const isPerformance = eventLib.eventIsPerformance(entity.eventType)
   let timesDetails = null
 
@@ -722,7 +722,7 @@ function _createMergedDateTimesForDate (
 function _mapStringDateToMoment (
   stringDate,
   useLondonTimezone,
-  dateFormat = dateConstants.DATE_FORMAT
+  dateFormat = globalConstants.DATE_FORMAT
 ) {
   if (!stringDate) {
     return null

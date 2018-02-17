@@ -1,9 +1,9 @@
 import { SummaryVenue, FullVenue } from '_src/entities/venue'
 import linkType from '_src/entities/link-type'
-import * as entityConstants from '_src/constants/entity'
-import * as imageLib from '_src/lib/image'
 import * as timeLib from '_src/lib/time'
 import * as entityLib from '_src/lib/entity'
+import entityType from '_src/entities/entity-type'
+import venueType from '_src/entities/venue-type'
 
 describe('SummaryVenue', () => {
   it('should have correct entityType', () => {
@@ -237,7 +237,7 @@ describe('FullVenue', () => {
 
     expect(timeLib.getTimesDetails).toBeCalledWith(
       { name: 'The name' },
-      entityConstants.ENTITY_TYPE_VENUE,
+      entityType.VENUE,
       '2017/01/20'
     )
   })
@@ -261,12 +261,80 @@ describe('FullVenue', () => {
     )
   })
 
-  it('should create a venue map icon url', () => {
-    imageLib.createVenueTypePngIconUrl = jest.fn().mockReturnValue('/some/url')
+  describe('createVenuesMapIconUrl', () => {
+    const tests = [
+      {
+        it: 'should create url for selected theatre',
+        args: {
+          venueType: venueType.THEATRE,
+          isSelected: true
+        },
+        expected: 'https://siteimages.test.com/theater-selected.png'
+      },
+      {
+        it: 'should create url for unselected theatre',
+        args: {
+          venueType: venueType.THEATRE,
+          isSelected: false
+        },
+        expected: 'https://siteimages.test.com/theater.png'
+      },
+      {
+        it: 'should create url for selected museum',
+        args: {
+          venueType: venueType.MUSEUM,
+          isSelected: true
+        },
+        expected: 'https://siteimages.test.com/museum-selected.png'
+      },
+      {
+        it: 'should create url for unselected museum',
+        args: {
+          venueType: venueType.MUSEUM,
+          isSelected: false
+        },
+        expected: 'https://siteimages.test.com/museum.png'
+      },
+      {
+        it: 'should create url for selected art gallery',
+        args: {
+          venueType: venueType.ART_GALLERY,
+          isSelected: true
+        },
+        expected: 'https://siteimages.test.com/artgallery-selected.png'
+      },
+      {
+        it: 'should create url for unselected art gallery',
+        args: {
+          venueType: venueType.ART_GALLERY,
+          isSelected: false
+        },
+        expected: 'https://siteimages.test.com/artgallery.png'
+      },
+      {
+        it: 'should create url for selected other',
+        args: {
+          venueType: venueType.OTHER,
+          isSelected: true
+        },
+        expected: 'https://siteimages.test.com/townhouse-selected.png'
+      },
+      {
+        it: 'should create url for unselected other',
+        args: {
+          venueType: venueType.OTHER,
+          isSelected: false
+        },
+        expected: 'https://siteimages.test.com/townhouse.png'
+      }
+    ]
 
-    const subject = new FullVenue({ venueType: 'Theatre' })
-
-    expect(subject.createVenuesMapIconUrl(true)).toBe('/some/url')
-    expect(imageLib.createVenueTypePngIconUrl).toBeCalledWith('Theatre', true)
+    tests.map(test => {
+      it(test.it, () => {
+        const subject = new FullVenue({ venueType: test.args.venueType })
+        const actual = subject.createVenuesMapIconUrl(test.args.isSelected)
+        expect(actual).toEqual(test.expected)
+      })
+    })
   })
 })

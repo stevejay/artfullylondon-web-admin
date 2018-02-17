@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { ImagePlaceholder } from '_src/modules/image'
-import * as entityConstants from '_src/constants/entity'
-import * as image from '_src/lib/image'
+import * as imageLib from '_src/lib/image'
 import { SummaryTalent } from '_src/entities/talent'
+import entityType from '_src/entities/entity-type'
 import './talent.scss'
 
 class EventTalentComponent extends React.PureComponent {
@@ -17,13 +17,13 @@ class EventTalentComponent extends React.PureComponent {
         {talent.hasImage &&
           <img
             styleName='img'
-            src={image.createEventTalentImageUrl(talent.image)}
+            src={imageLib.createImageUrl(imatalent.imagegeId, '120x120')}
           />}
         {!talent.hasImage &&
           <ImagePlaceholder
             styleName='placeholder'
             size='very-small'
-            type={entityConstants.ENTITY_TYPE_TALENT}
+            type={entityType.TALENT}
           />}
         <div styleName='details'>
           <p styleName='roles'>{talent.createRolesString()}</p>

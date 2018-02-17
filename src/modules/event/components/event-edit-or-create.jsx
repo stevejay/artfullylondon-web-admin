@@ -9,9 +9,9 @@ import Divider from '_src/components/divider'
 import StepCollection from '_src/components/step/collection'
 import { FullEvent } from '_src/entities/event'
 import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
-import * as entityConstants from '_src/constants/entity'
 import * as eventConstants from '../constants'
 import * as eventConstraints from '../constants/constraints'
+import entityType from '_src/entities/entity-type'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
 import ImagesForm from '../forms/images'
@@ -78,7 +78,7 @@ export class EventEditOrCreate extends React.Component {
     return (
       <React.Fragment>
         <Image
-          entityType={entityConstants.ENTITY_TYPE_EVENT}
+          entityType={entityType.EVENT}
           images={entity.images}
         />
         <EntityHeading>

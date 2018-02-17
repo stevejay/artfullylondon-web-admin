@@ -5,7 +5,7 @@ import document from 'global/document'
 
 import AutocompleteList from './autocomplete-list'
 import FadeTransition from '_src/components/transition/fade'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import './index.scss'
 
 const AUTOCOMPLETE_MIN_SEARCH_TERM_LENGTH = 2
@@ -78,8 +78,8 @@ class SearchInput extends React.PureComponent {
     } = this.state
 
     if (
-      !(keyCode === browserConstants.ARROW_UP_KEYCODE ||
-        keyCode === browserConstants.ARROW_DOWN_KEYCODE) ||
+      !(keyCode === globalConstants.ARROW_UP_KEYCODE ||
+        keyCode === globalConstants.ARROW_DOWN_KEYCODE) ||
       !showAutocomplete
     ) {
       return
@@ -88,7 +88,7 @@ class SearchInput extends React.PureComponent {
     event.preventDefault()
     let nextSelectIndex = currentSelectIndex
 
-    if (keyCode === browserConstants.ARROW_UP_KEYCODE) {
+    if (keyCode === globalConstants.ARROW_UP_KEYCODE) {
       if (currentSelectIndex > 0) {
         while (true) {
           nextSelectIndex -= 1
@@ -102,7 +102,7 @@ class SearchInput extends React.PureComponent {
           }
         }
       }
-    } else if (keyCode === browserConstants.ARROW_DOWN_KEYCODE) {
+    } else if (keyCode === globalConstants.ARROW_DOWN_KEYCODE) {
       if (currentSelectIndex < autocompleteItems.length - 1) {
         while (true) {
           nextSelectIndex += 1
@@ -126,7 +126,7 @@ class SearchInput extends React.PureComponent {
   handleSearchKeyPress = event => {
     const { currentSelectIndex, autocompleteItems } = this.state
 
-    if (event.charCode !== browserConstants.ENTER_CHARCODE) {
+    if (event.charCode !== globalConstants.ENTER_CHARCODE) {
       return
     }
 

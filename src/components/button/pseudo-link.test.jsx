@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import PseudoLinkButton from '_src/components/button/pseudo-link'
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -41,7 +41,7 @@ it('should handle the Enter key being pressed', () => {
   )
 
   wrapper.find('button').simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE
+    charCode: globalConstants.ENTER_CHARCODE
   })
 
   expect(handleClick).toHaveBeenCalled()
@@ -57,7 +57,7 @@ it('should handle a non-Enter key being pressed', () => {
   )
 
   wrapper.find('button').simulate('keyPress', {
-    charCode: browserConstants.ENTER_CHARCODE + 1
+    charCode: globalConstants.ENTER_CHARCODE + 1
   })
 
   expect(handleClick).not.toHaveBeenCalled()

@@ -5,7 +5,8 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
-import * as entityConstants from '_src/constants/entity'
+import * as entitiesPropTypes from '_src/entities/prop-types'
+import entityType from '_src/entities/entity-type'
 // TODO fix this:
 import * as searchLib from '../../lib/search'
 
@@ -14,17 +15,17 @@ class SearchMoreResults extends ShouldNeverUpdateComponent {
     const { items, take, onClick } = this.props
 
     const maybeMoreVenues = searchLib.maybeHasMoreSearchResults(
-      entityConstants.ENTITY_TYPE_VENUE,
+      entityType.VENUE,
       items,
       take
     )
     const maybeMoreTalents = searchLib.maybeHasMoreSearchResults(
-      entityConstants.ENTITY_TYPE_TALENT,
+      entityType.TALENT,
       items,
       take
     )
     const maybeMoreEvents = searchLib.maybeHasMoreSearchResults(
-      entityConstants.ENTITY_TYPE_EVENT,
+      entityType.EVENT,
       items,
       take
     )
@@ -36,20 +37,14 @@ class SearchMoreResults extends ShouldNeverUpdateComponent {
         <div>
           <Divider />
           {maybeMoreVenues &&
-            <MoreResultsLink
-              entityType={entityConstants.ENTITY_TYPE_VENUE}
-              onClick={onClick}
-            />}
+            <MoreResultsLink entityType={entityType.VENUE} onClick={onClick} />}
           {maybeMoreTalents &&
             <MoreResultsLink
-              entityType={entityConstants.ENTITY_TYPE_TALENT}
+              entityType={entityType.TALENT}
               onClick={onClick}
             />}
           {maybeMoreEvents &&
-            <MoreResultsLink
-              entityType={entityConstants.ENTITY_TYPE_EVENT}
-              onClick={onClick}
-            />}
+            <MoreResultsLink entityType={entityType.EVENT} onClick={onClick} />}
         </div>
       )
     }
@@ -59,8 +54,7 @@ class SearchMoreResults extends ShouldNeverUpdateComponent {
 SearchMoreResults.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
-        .isRequired
+      entityType: entitiesPropTypes.ENTITY_TYPE.isRequired
     })
   ).isRequired,
   take: PropTypes.number.isRequired,

@@ -6,13 +6,13 @@ import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
-import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '../constants'
+import entityType from '_src/entities/entity-type'
 
 const initialState = {
   searchInProgress: false,
   basicSearchParams: {
-    entityType: entityConstants.ENTITY_TYPE_ALL,
+    entityType: entityType.ALL,
     term: '',
     skip: 0,
     take: searchConstants.DEFAULT_TAKE
@@ -36,21 +36,19 @@ export const reducer = handleActions(
       const { total, items, params } = action.payload
 
       const events = items
-        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_EVENT)
+        .filter(item => item.entityType === entityType.EVENT)
         .map(item => new SummaryEvent(item))
 
       const eventSeries = items
-        .filter(
-          item => item.entityType === entityConstants.ENTITY_TYPE_EVENT_SERIES
-        )
+        .filter(item => item.entityType === entityType.EVENT_SERIES)
         .map(item => new SummaryEventSeries(item))
 
       const venues = items
-        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_VENUE)
+        .filter(item => item.entityType === entityType.VENUE)
         .map(item => new SummaryVenue(item))
 
       const talents = items
-        .filter(item => item.entityType === entityConstants.ENTITY_TYPE_TALENT)
+        .filter(item => item.entityType === entityType.TALENT)
         .map(item => new SummaryTalent(item))
 
       return {

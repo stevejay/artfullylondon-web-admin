@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import './more-results-link.scss'
 
 class MoreResultsLink extends ShouldNeverUpdateComponent {
@@ -22,9 +22,9 @@ class MoreResultsLink extends ShouldNeverUpdateComponent {
 
 MoreResultsLink.propTypes = {
   entityType: PropTypes.oneOf([
-    entityConstants.ENTITY_TYPE_VENUE,
-    entityConstants.ENTITY_TYPE_TALENT,
-    entityConstants.ENTITY_TYPE_EVENT
+    entityType.VENUE,
+    entityType.TALENT,
+    entityType.EVENT
   ]).isRequired,
   onClick: PropTypes.func.isRequired
 }

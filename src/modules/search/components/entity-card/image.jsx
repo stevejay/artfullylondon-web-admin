@@ -7,8 +7,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import { ImagePlaceholder } from '_src/modules/image'
-import * as entityLib from '_src/lib/entity'
-import * as entityConstants from '_src/constants/entity'
+import * as entityCardLib from '../../lib/entity-card'
+import * as entitiesPropTypes from '_src/entities/prop-types'
 import './image.scss'
 
 class Image extends ShouldNeverUpdateComponent {
@@ -17,9 +17,7 @@ class Image extends ShouldNeverUpdateComponent {
     onImageLoad && onImageLoad({ entityType, id })
   }
   render () {
-    const {
-      entity: { id, entityType, image, imageRatio, cardImageLoaded }
-    } = this.props
+    const { entity: { id, entityType, image, cardImageLoaded } } = this.props
 
     const hasImage = !!image
     const entityUrl = this.props.entity.url
@@ -32,11 +30,7 @@ class Image extends ShouldNeverUpdateComponent {
       )
     }
 
-    const imageData = entityLib.getEntityCardImageDataForEntityType(
-      entityType,
-      image,
-      imageRatio
-    )
+    const imageData = entityCardLib.getEntityCardImageData(image)
 
     if (cardImageLoaded) {
       return (
@@ -67,11 +61,9 @@ class Image extends ShouldNeverUpdateComponent {
 Image.propTypes = {
   entity: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    entityType: PropTypes.oneOf(entityConstants.EDITABLE_ENTITY_TYPES)
-      .isRequired,
+    entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
     url: PropTypes.string.isRequired,
     image: PropTypes.string,
-    imageRatio: PropTypes.number,
     cardImageLoaded: PropTypes.bool
   }).isRequired,
   onImageLoad: PropTypes.func

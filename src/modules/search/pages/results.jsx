@@ -14,10 +14,10 @@ import SectionHeading from '_src/components/section/heading'
 import BasicSearchForm from '../forms/basic-search'
 import { selectors as searchSelectors } from '../reducers'
 import * as dateLib from '_src/lib/date'
-import * as entityConstants from '_src/constants/entity'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
 import * as entitiesPropTypes from '_src/entities/prop-types'
+import entityType from '_src/entities/entity-type'
 import './results.scss'
 
 export class SearchResultsPage extends React.Component {
@@ -56,7 +56,7 @@ export class SearchResultsPage extends React.Component {
     this._pushBasicSearchToUrl({
       query: {
         ...this.props.resultParams,
-        entityType: entityConstants.ENTITY_TYPE_ALL,
+        entityType: entityType.ALL,
         skip: 0
       }
     })
@@ -84,7 +84,7 @@ export class SearchResultsPage extends React.Component {
     const noResults = !searchInProgress && !hasResults && !_.isNil(items)
 
     const isAllSearch =
-      hasResults && resultParams.entityType === entityConstants.ENTITY_TYPE_ALL
+      hasResults && resultParams.entityType === entityType.ALL
 
     return (
       <BasicSection>

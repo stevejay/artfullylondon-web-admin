@@ -1,4 +1,4 @@
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 
 export class Tag {
   constructor (entity) {
@@ -11,7 +11,7 @@ export class Tag {
   }
 
   get entityType () {
-    return entityConstants.ENTITY_TYPE_TAG
+    return entityType.TAG
   }
 
   get id () {

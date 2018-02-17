@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import './icon.scss'
 
 const BUTTON_TYPE_INVERSE = 'inverse'
@@ -16,7 +16,7 @@ class IconButton extends React.Component {
     this.props.onClick(event)
   }
   handleKeyPress = event => {
-    if (event.charCode === browserConstants.ENTER_CHARCODE) {
+    if (event.charCode === globalConstants.ENTER_CHARCODE) {
       this.props.onClick()
     }
   }

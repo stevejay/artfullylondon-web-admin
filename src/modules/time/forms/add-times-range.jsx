@@ -7,7 +7,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import DatepickerField from '_src/components/datepicker/field'
 import TextField from '_src/components/text/field'
-import * as dateConstants from '_src/constants/date'
+import * as globalConstants from '_src/constants'
 import * as timeConstants from '../constants'
 
 export const AddTimesRangeForm = ({
@@ -24,7 +24,7 @@ export const AddTimesRangeForm = ({
       <Field
         label='Date From'
         name='dateFrom'
-        dateFormat={dateConstants.DATE_FORMAT}
+        dateFormat={globalConstants.DATE_FORMAT}
         htmlId='dateFrom'
         component={DatepickerField}
         minDate={minDate}
@@ -35,7 +35,7 @@ export const AddTimesRangeForm = ({
       <Field
         label='Date To'
         name='dateTo'
-        dateFormat={dateConstants.DATE_FORMAT}
+        dateFormat={globalConstants.DATE_FORMAT}
         htmlId='dateTo'
         component={DatepickerField}
         minDate={minDate}

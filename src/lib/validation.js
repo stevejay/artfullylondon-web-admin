@@ -1,7 +1,7 @@
 import { ensure } from 'ensure-request'
 import { SubmissionError } from 'redux-form'
 
-import * as validationConstants from '_src/constants/validation'
+import * as globalConstants from '_src/constants'
 
 export function validate (
   values,
@@ -27,7 +27,7 @@ export function validate (
 
 function _throwValidationErrorIfInvalid (errors) {
   if (_hasErrors(errors)) {
-    errors._error = errors._error || validationConstants.GENERIC_ERROR_MESSAGE
+    errors._error = errors._error || globalConstants.GENERIC_ERROR_MESSAGE
     throw new SubmissionError(errors)
   }
 }

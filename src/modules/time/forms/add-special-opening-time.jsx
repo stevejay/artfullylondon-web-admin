@@ -8,7 +8,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import SelectField from '_src/components/select/field'
 import DatepickerField from '_src/components/datepicker/field'
-import * as dateConstants from '_src/constants/date'
+import * as globalConstants from '_src/constants'
 import * as timeConstants from '../constants'
 import {
   selectors as tagSelectors,
@@ -31,7 +31,7 @@ export const AddSpecialOpeningTimeForm = ({
         label='Date'
         name='date'
         component={DatepickerField}
-        dateFormat={dateConstants.DATE_FORMAT}
+        dateFormat={globalConstants.DATE_FORMAT}
         htmlId='date'
         minDate={minDate}
         maxDate={maxDate}

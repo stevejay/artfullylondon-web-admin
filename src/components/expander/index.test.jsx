@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import Expander from '_src/components/expander'
 
 it('should render correctly when closed', () => {
@@ -122,7 +122,7 @@ it('should handle an arrow down press on a closed expander', () => {
   )
 
   wrapper.find('button').prop('onKeyDown')({
-    keyCode: browserConstants.ARROW_DOWN_KEYCODE,
+    keyCode: globalConstants.ARROW_DOWN_KEYCODE,
     preventDefault: _.noop
   })
 
@@ -145,7 +145,7 @@ it('should ignore an arrow down press on an open expander', () => {
   )
 
   wrapper.find('button').prop('onKeyDown')({
-    keyCode: browserConstants.ARROW_DOWN_KEYCODE
+    keyCode: globalConstants.ARROW_DOWN_KEYCODE
   })
 
   expect(onExpanderChange).not.toHaveBeenCalled()
@@ -166,7 +166,7 @@ it('should handle an arrow up press on an open expander', () => {
   )
 
   wrapper.find('button').prop('onKeyDown')({
-    keyCode: browserConstants.ARROW_UP_KEYCODE,
+    keyCode: globalConstants.ARROW_UP_KEYCODE,
     preventDefault: _.noop
   })
 
@@ -189,7 +189,7 @@ it('should ignore an arrow up press on a closed expander', () => {
   )
 
   wrapper.find('button').prop('onKeyDown')({
-    keyCode: browserConstants.ARROW_UP_KEYCODE
+    keyCode: globalConstants.ARROW_UP_KEYCODE
   })
 
   expect(onExpanderChange).not.toHaveBeenCalled()

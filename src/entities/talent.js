@@ -1,9 +1,9 @@
 import _ from 'lodash'
 
 import { LinkCollection } from '_src/entities/link-collection'
-import * as entityConstants from '_src/constants/entity'
 import * as entityLib from '_src/lib/entity'
 import * as talentLib from '_src/lib/talent'
+import entityType from '_src/entities/entity-type'
 
 export class SummaryTalent {
   constructor (entity) {
@@ -11,7 +11,7 @@ export class SummaryTalent {
   }
 
   get entityType () {
-    return entityConstants.ENTITY_TYPE_TALENT
+    return entityType.TALENT
   }
 
   get entityTypeLabel () {

@@ -6,7 +6,7 @@ import ShouldNeverUpdateComponent
 import AdditionalDetailHeading from './additional-detail-heading'
 import AdditionalDetailContent from './additional-detail-content'
 import linkType from '_src/entities/link-type'
-import * as accessLib from '_src/lib/access'
+import * as accessLib from '../lib/access'
 import { FullVenue } from '_src/entities/venue'
 import { FullEvent } from '_src/entities/event'
 

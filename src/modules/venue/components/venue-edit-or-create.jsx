@@ -12,10 +12,10 @@ import {
 import EditVenueForm from '../forms/edit-venue'
 import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
-import * as entityConstants from '_src/constants/entity'
 import * as venueConstants from '../constants'
 import * as venueMapper from '../lib/mapper'
 import { FullVenue } from '_src/entities/venue'
+import entityType from '_src/entities/entity-type'
 
 export class VenueEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -34,7 +34,7 @@ export class VenueEditOrCreate extends React.Component {
     if (imageEditorIsPristine && linkEditorIsPristine) {
       dispatch(
         entityActions.saveEntity(
-          entityConstants.ENTITY_TYPE_VENUE,
+          entityType.VENUE,
           values,
           isEdit,
           venueConstants.EDIT_VENUE_FORM_NAME,
@@ -58,7 +58,7 @@ export class VenueEditOrCreate extends React.Component {
     return (
       <React.Fragment>
         <Image
-          entityType={entityConstants.ENTITY_TYPE_VENUE}
+          entityType={entityType.VENUE}
           images={entity.images}
         />
         <EntityHeading>

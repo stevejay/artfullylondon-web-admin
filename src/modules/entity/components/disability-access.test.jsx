@@ -1,7 +1,7 @@
 import React from 'react'
 
 import EntityDisabilityAccess from './disability-access'
-import * as accessLib from '_src/lib/access'
+import * as accessLib from '../lib/access'
 import wheelchairAccessType from '_src/entities/wheelchair-access-type'
 import disabledBathroomType from '_src/entities/disabled-bathroom-type'
 import hearingFacilitiesType from '_src/entities/hearing-facilities-type'

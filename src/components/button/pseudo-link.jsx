@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as browserConstants from '_src/constants/browser'
+import * as globalConstants from '_src/constants'
 import './pseudo-link.scss'
 
 class PseudoLink extends React.Component {
@@ -14,7 +14,7 @@ class PseudoLink extends React.Component {
     this.props.onClick()
   }
   handleKeyPress = event => {
-    if (event.charCode === browserConstants.ENTER_CHARCODE) {
+    if (event.charCode === globalConstants.ENTER_CHARCODE) {
       this.props.onClick()
     }
   }

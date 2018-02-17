@@ -14,8 +14,8 @@ import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import * as talentConstants from '../constants'
 import * as talentMapper from '../lib/mapper'
-import * as entityConstants from '_src/constants/entity'
 import { FullTalent } from '_src/entities/talent'
+import entityType from '_src/entities/entity-type'
 
 export class TalentEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -32,7 +32,7 @@ export class TalentEditOrCreate extends React.Component {
     if (imageEditorIsPristine && linkEditorIsPristine) {
       dispatch(
         entityActions.saveEntity(
-          entityConstants.ENTITY_TYPE_TALENT,
+          entityType.TALENT,
           values,
           isEdit,
           talentConstants.EDIT_TALENT_FORM_NAME,
@@ -55,10 +55,7 @@ export class TalentEditOrCreate extends React.Component {
 
     return (
       <React.Fragment>
-        <Image
-          entityType={entityConstants.ENTITY_TYPE_TALENT}
-          images={entity.images}
-        />
+        <Image entityType={entityType.TALENT} images={entity.images} />
         <EntityHeading>
           {entity.name || 'New Talent'}
         </EntityHeading>

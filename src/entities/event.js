@@ -2,7 +2,7 @@ import { LinkCollection } from '_src/entities/link-collection'
 import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { SummaryEventSeries } from '_src/entities/event-series'
-import * as entityConstants from '_src/constants/entity'
+import entityType from '_src/entities/entity-type'
 import linkType from '_src/entities/link-type'
 import costType from '_src/entities/cost-type'
 import { constants as tagConstants } from '_src/modules/tag'
@@ -19,7 +19,7 @@ export class SummaryEvent {
   }
 
   get entityType () {
-    return entityConstants.ENTITY_TYPE_EVENT
+    return entityType.EVENT
   }
 
   get entityTypeLabel () {

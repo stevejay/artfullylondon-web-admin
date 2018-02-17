@@ -1,5 +1,3 @@
-import * as entityConstants from '_src/constants/entity'
-
 export const types = {
   ADD_IMAGE: 'image/ADD_IMAGE',
   SET_MAIN_IMAGE: 'image/SET_MAIN_IMAGE',
@@ -11,7 +9,7 @@ export const addImage = (values, entityType, parentFormName) => ({
   type: types.ADD_IMAGE,
   payload: {
     ...values,
-    entityType: entityConstants.ENTITY_TYPE_TALENT,
+    entityType,
     parentFormName
   }
 })
