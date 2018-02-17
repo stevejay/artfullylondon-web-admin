@@ -1,4 +1,4 @@
-import * as venueConstants from '_src/constants/venue'
+import venueType from '_src/entities/venue-type'
 
 // TODO this is more of a set of URL helpers.
 
@@ -9,17 +9,17 @@ export function createPngIconUrl (name, isSelected) {
   )
 }
 
-export function createVenueTypePngIconUrl (venueType, isSelected) {
+export function createVenueTypePngIconUrl (type, isSelected) {
   let imageName = 'townhouse'
 
-  switch (venueType) {
-    case venueConstants.VENUE_TYPE_THEATRE:
+  switch (type) {
+    case venueType.THEATRE:
       imageName = 'theater'
       break
-    case venueConstants.VENUE_TYPE_ART_GALLERY:
+    case venueType.ART_GALLERY:
       imageName = 'artgallery'
       break
-    case venueConstants.VENUE_TYPE_MUSEUM:
+    case venueType.MUSEUM:
       imageName = 'museum'
       break
   }

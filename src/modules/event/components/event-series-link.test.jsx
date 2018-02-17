@@ -2,7 +2,7 @@ import React from 'react'
 
 import EventSeriesLink from './event-series-link'
 import { SummaryEventSeries } from '_src/entities/event-series'
-import { EVENT_SERIES_TYPE_SEASON } from '_src/constants/event-series'
+import eventSeriesType from '_src/entities/event-series-type'
 
 it('should render correctly', () => {
   const wrapper = shallow(
@@ -11,7 +11,7 @@ it('should render correctly', () => {
         new SummaryEventSeries({
           id: 'some-id',
           name: 'Some Name',
-          eventSeriesType: EVENT_SERIES_TYPE_SEASON
+          eventSeriesType: eventSeriesType.SEASON
         })
       }
     />

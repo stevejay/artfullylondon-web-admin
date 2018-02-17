@@ -1,5 +1,5 @@
 import * as imageLib from '_src/lib/image'
-import * as venueConstants from '_src/constants/venue'
+import venueType from '_src/entities/venue-type'
 
 describe('createPngIconUrl', () => {
   it('should create a url for a selected icon', () => {
@@ -18,7 +18,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for selected theatre',
       args: {
-        venueType: venueConstants.VENUE_TYPE_THEATRE,
+        venueType: venueType.THEATRE,
         isSelected: true
       },
       expected: 'https://siteimages.test.com/theater-selected.png'
@@ -26,7 +26,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for unselected theatre',
       args: {
-        venueType: venueConstants.VENUE_TYPE_THEATRE,
+        venueType: venueType.THEATRE,
         isSelected: false
       },
       expected: 'https://siteimages.test.com/theater.png'
@@ -34,7 +34,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for selected museum',
       args: {
-        venueType: venueConstants.VENUE_TYPE_MUSEUM,
+        venueType: venueType.MUSEUM,
         isSelected: true
       },
       expected: 'https://siteimages.test.com/museum-selected.png'
@@ -42,7 +42,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for unselected museum',
       args: {
-        venueType: venueConstants.VENUE_TYPE_MUSEUM,
+        venueType: venueType.MUSEUM,
         isSelected: false
       },
       expected: 'https://siteimages.test.com/museum.png'
@@ -50,7 +50,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for selected art gallery',
       args: {
-        venueType: venueConstants.VENUE_TYPE_ART_GALLERY,
+        venueType: venueType.ART_GALLERY,
         isSelected: true
       },
       expected: 'https://siteimages.test.com/artgallery-selected.png'
@@ -58,7 +58,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for unselected art gallery',
       args: {
-        venueType: venueConstants.VENUE_TYPE_ART_GALLERY,
+        venueType: venueType.ART_GALLERY,
         isSelected: false
       },
       expected: 'https://siteimages.test.com/artgallery.png'
@@ -66,7 +66,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for selected other',
       args: {
-        venueType: venueConstants.VENUE_TYPE_OTHER,
+        venueType: venueType.OTHER,
         isSelected: true
       },
       expected: 'https://siteimages.test.com/townhouse-selected.png'
@@ -74,7 +74,7 @@ describe('createVenueTypePngIconUrl', () => {
     {
       it: 'should create url for unselected other',
       args: {
-        venueType: venueConstants.VENUE_TYPE_OTHER,
+        venueType: venueType.OTHER,
         isSelected: false
       },
       expected: 'https://siteimages.test.com/townhouse.png'

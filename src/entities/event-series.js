@@ -1,7 +1,7 @@
 import { LinkCollection } from '_src/entities/link-collection'
 import * as entityConstants from '_src/constants/entity'
-import * as eventSeriesConstants from '_src/constants/event-series'
 import * as entityLib from '_src/lib/entity'
+import eventSeriesType from '_src/entities/event-series-type'
 
 export class SummaryEventSeries {
   constructor (entity) {
@@ -37,10 +37,7 @@ export class SummaryEventSeries {
   }
 
   get eventSeriesTypeLabel () {
-    return this.eventSeriesType ===
-      eventSeriesConstants.EVENT_SERIES_TYPE_SEASON
-      ? 'season'
-      : 'series'
+    return this.eventSeriesType === eventSeriesType.SEASON ? 'season' : 'series'
   }
 
   get occurrence () {

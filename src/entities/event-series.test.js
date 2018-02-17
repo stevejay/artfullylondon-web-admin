@@ -37,7 +37,7 @@ describe('SummaryEventSeries', () => {
     expect(subject.eventSeriesType).toBe('Series')
   })
 
-  it('should have correct eventSeriesTypeLabel for a occasional series', () => {
+  it('should have correct eventSeriesTypeLabel for an occasional series', () => {
     const subject = new SummaryEventSeries({ eventSeriesType: 'Occasional' })
     expect(subject.eventSeriesTypeLabel).toBe('series')
   })

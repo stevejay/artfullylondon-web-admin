@@ -1,13 +1,12 @@
-import * as eventSeriesConstants from '_src/constants/event-series'
+import _ from 'lodash'
+
+import eventSeriesType from '_src/entities/event-series-type'
 
 export const EDIT_EVENT_SERIES_FORM_NAME = 'EditEventSeries'
 
 export const EVENT_SERIES_TYPE_DROPDOWN_OPTIONS = [
-  { value: eventSeriesConstants.EVENT_SERIES_TYPE_SEASON, label: 'Season' },
-  {
-    value: eventSeriesConstants.EVENT_SERIES_TYPE_OCCASIONAL,
-    label: 'Occasional'
-  }
+  { value: eventSeriesType.SEASON, label: 'Season' },
+  { value: eventSeriesType.OCCASIONAL, label: 'Occasional' }
 ]
 
 export const EVENT_SERIES_CONSTRAINT = {
@@ -17,7 +16,7 @@ export const EVENT_SERIES_CONSTRAINT = {
   },
   eventSeriesType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: eventSeriesConstants.ALLOWED_EVENT_SERIES_TYPES }
+    inclusion: { within: _.values(eventSeriesType) }
   },
   occurrence: {
     presence: { disallowEmpty: true },

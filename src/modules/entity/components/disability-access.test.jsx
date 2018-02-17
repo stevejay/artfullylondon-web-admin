@@ -1,15 +1,17 @@
 import React from 'react'
 
 import EntityDisabilityAccess from './disability-access'
-import * as accessConstants from '_src/constants/access'
 import * as accessLib from '_src/lib/access'
+import wheelchairAccessType from '_src/entities/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
 import { FullVenue } from '_src/entities/venue'
 
 it('should render correctly', () => {
   const entity = new FullVenue({
-    wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-    disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-    hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS
+    wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+    disabledBathroomType: disabledBathroomType.PRESENT,
+    hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS
   })
 
   entity.getLinkByType = jest.fn().mockReturnValue({ url: 'http://some/link' })
@@ -22,9 +24,9 @@ it('should render correctly', () => {
 
 it('should render correctly when there is no disability link', () => {
   const entity = new FullVenue({
-    wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-    disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-    hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS
+    wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+    disabledBathroomType: disabledBathroomType.PRESENT,
+    hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS
   })
 
   entity.getLinkByType = jest.fn().mockReturnValue(null)

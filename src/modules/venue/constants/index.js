@@ -1,97 +1,101 @@
-import * as accessConstants from '_src/constants/access'
-import * as venueConstants from '_src/constants/venue'
+import _ from 'lodash'
+
+import wheelchairAccessType from '_src/entities/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
+import venueType from '_src/entities/venue-type'
 
 export const EDIT_VENUE_FORM_NAME = 'EditVenue'
 
 export const HEARING_FACILITIES_TYPE_DROPDOWN_OPTIONS = [
   {
-    value: accessConstants.HEARING_FACILITIES_TYPE_NOT_APPLICABLE,
+    value: hearingFacilitiesType.NOT_APPLICABLE,
     label: 'Not applicable'
   },
   {
-    value: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
+    value: hearingFacilitiesType.HEARING_LOOPS,
     label: 'Hearing loops in all spaces'
   },
   {
-    value: accessConstants.HEARING_FACILITIES_TYPE_PARTIAL_HEARING_LOOPS,
+    value: hearingFacilitiesType.PARTIAL_HEARING_LOOPS,
     label: 'Hearing loops in some spaces'
   },
   {
-    value: accessConstants.HEARING_FACILITIES_TYPE_NO_HEARING_LOOPS,
+    value: hearingFacilitiesType.NO_HEARING_LOOPS,
     label: 'No hearing loops'
   },
-  { value: accessConstants.HEARING_FACILITIES_TYPE_UNKNOWN, label: 'Unknown' }
+  { value: hearingFacilitiesType.UNKNOWN, label: 'Unknown' }
 ]
 
 export const DISABLED_BATHROOM_TYPE_DROPDOWN_OPTIONS = [
   {
-    value: accessConstants.DISABLED_BATHROOM_TYPE_NOT_APPLICABLE,
+    value: disabledBathroomType.NOT_APPLICABLE,
     label: 'Not applicable'
   },
-  { value: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT, label: 'Present' },
+  { value: disabledBathroomType.PRESENT, label: 'Present' },
   {
-    value: accessConstants.DISABLED_BATHROOM_TYPE_NOT_PRESENT,
+    value: disabledBathroomType.NOT_PRESENT,
     label: 'Not present'
   },
-  { value: accessConstants.DISABLED_BATHROOM_TYPE_UNKNOWN, label: 'Unknown' }
+  { value: disabledBathroomType.UNKNOWN, label: 'Unknown' }
 ]
 
 export const WHEELCHAIR_ACCESS_TYPE_DROPDOWN_OPTIONS = [
   {
-    value: accessConstants.WHEELCHAIR_ACCESS_TYPE_NOT_APPLICABLE,
+    value: wheelchairAccessType.NOT_APPLICABLE,
     label: 'Not applicable'
   },
   {
-    value: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
+    value: wheelchairAccessType.FULL_ACCESS,
     label: 'Access to all spaces'
   },
   {
-    value: accessConstants.WHEELCHAIR_ACCESS_TYPE_PARTIAL_ACCESS,
+    value: wheelchairAccessType.PARTIAL_ACCESS,
     label: 'Access to some spaces'
   },
   {
-    value: accessConstants.WHEELCHAIR_ACCESS_TYPE_NO_ACCESS,
+    value: wheelchairAccessType.NO_ACCESS,
     label: 'No access'
   },
-  { value: accessConstants.WHEELCHAIR_ACCESS_TYPE_UNKNOWN, label: 'Unknown' }
+  { value: wheelchairAccessType.UNKNOWN, label: 'Unknown' }
 ]
 
 export const VENUE_TYPE_DROPDOWN_OPTIONS = [
   {
-    value: venueConstants.VENUE_TYPE_THEATRE,
-    label: venueConstants.VENUE_TYPE_THEATRE
+    value: venueType.THEATRE,
+    label: venueType.THEATRE
   },
   {
-    value: venueConstants.VENUE_TYPE_ART_GALLERY,
-    label: venueConstants.VENUE_TYPE_ART_GALLERY
+    value: venueType.ART_GALLERY,
+    label: venueType.ART_GALLERY
   },
   {
-    value: venueConstants.VENUE_TYPE_CONCERT_HALL,
-    label: venueConstants.VENUE_TYPE_CONCERT_HALL
+    value: venueType.CONCERT_HALL,
+    label: venueType.CONCERT_HALL
   },
   {
-    value: venueConstants.VENUE_TYPE_EXHIBITION_HALL,
+    value: venueType.EXHIBITION_HALL,
     label: 'Exhibition Space'
   },
   {
-    value: venueConstants.VENUE_TYPE_PERFORMING_ARTS_CENTRE,
+    value: venueType.PERFORMING_ARTS_CENTRE,
     label: 'Arts Centre'
   },
   {
-    value: venueConstants.VENUE_TYPE_MUSEUM,
-    label: venueConstants.VENUE_TYPE_MUSEUM
+    value: venueType.MUSEUM,
+    label: venueType.MUSEUM
   },
   {
-    value: venueConstants.VENUE_TYPE_CHURCH,
-    label: venueConstants.VENUE_TYPE_CHURCH
+    value: venueType.CHURCH,
+    label: venueType.CHURCH
   },
   {
-    value: venueConstants.VENUE_TYPE_CINEMA,
-    label: venueConstants.VENUE_TYPE_CINEMA
+    value: venueType.CINEMA,
+    label: venueType.CINEMA
   },
   {
-    value: venueConstants.VENUE_TYPE_OTHER,
-    label: venueConstants.VENUE_TYPE_OTHER
+    value: venueType.OTHER,
+    label: venueType.OTHER
   }
 ]
 
@@ -102,7 +106,7 @@ export const VENUE_CONSTRAINT = {
   },
   venueType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: venueConstants.ALLOWED_VENUE_TYPES }
+    inclusion: { within: _.values(venueType) }
   },
   address: {
     presence: { disallowEmpty: true },
@@ -123,15 +127,15 @@ export const VENUE_CONSTRAINT = {
   },
   wheelchairAccessType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: accessConstants.ALLOWED_WHEELCHAIR_ACCESS_TYPES }
+    inclusion: { within: _.values(wheelchairAccessType) }
   },
   disabledBathroomType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: accessConstants.ALLOWED_DISABLED_BATHROOM_TYPES }
+    inclusion: { within: _.values(disabledBathroomType) }
   },
   hearingFacilitiesType: {
     presence: { disallowEmpty: true },
-    inclusion: { within: accessConstants.ALLOWED_HEARING_FACILITIES_TYPES }
+    inclusion: { within: _.values(hearingFacilitiesType) }
   },
   images: {
     length: { maximum: 10, tooLong: 'has too many elements' }

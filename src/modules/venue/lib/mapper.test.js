@@ -3,7 +3,9 @@ import * as entityConstants from '_src/constants/entity'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
-import * as accessConstants from '_src/constants/access'
+import wheelchairAccessType from '_src/entities/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing venue', () => {
@@ -46,9 +48,9 @@ describe('getInitialValues', () => {
       postcode: 'N4 2RR',
       email: 'some@email.com',
       telephone: '123456789',
-      wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-      disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-      hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
+      wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+      disabledBathroomType: disabledBathroomType.PRESENT,
+      hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
       hasPermanentCollection: true,
       openingTimes: [],
       additionalOpeningTimes: [],
@@ -82,9 +84,9 @@ describe('getInitialValues', () => {
       postcode: 'N4 2RR',
       email: 'some@email.com',
       telephone: '123456789',
-      wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-      disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-      hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
+      wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+      disabledBathroomType: disabledBathroomType.PRESENT,
+      hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
       hasPermanentCollection: true,
       openingTimes: [],
       additionalOpeningTimes: [],
@@ -201,9 +203,9 @@ describe('mapSubmittedValues', () => {
       address: 'Some address ',
       postcode: 'n4 2RR ',
       pin: { lat: 1.1, lng: 2.2 },
-      wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-      disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-      hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
+      wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+      disabledBathroomType: disabledBathroomType.PRESENT,
+      hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
       hasPermanentCollection: true,
       email: 'some@email.com',
       telephone: '123456789',
@@ -230,9 +232,9 @@ describe('mapSubmittedValues', () => {
       postcode: 'N4 2RR',
       latitude: 1.1,
       longitude: 2.2,
-      wheelchairAccessType: accessConstants.WHEELCHAIR_ACCESS_TYPE_FULL_ACCESS,
-      disabledBathroomType: accessConstants.DISABLED_BATHROOM_TYPE_PRESENT,
-      hearingFacilitiesType: accessConstants.HEARING_FACILITIES_TYPE_HEARING_LOOPS,
+      wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+      disabledBathroomType: disabledBathroomType.PRESENT,
+      hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
       hasPermanentCollection: true,
       email: 'some@email.com',
       telephone: '123456789',
