@@ -3,8 +3,10 @@ import _ from 'lodash'
 import log from 'loglevel'
 
 import { actions as userActions } from '_src/modules/user'
-import * as navConstants from '../../constants'
-import { Sidenav } from './index'
+import * as navConstants from '../constants'
+import { Sidenav } from './sidenav'
+import SidenavButton from './sidenav-button'
+import SidenavMenu from './sidenav-menu'
 
 const MENU_ID = navConstants.MENUS[0].label
 
@@ -144,7 +146,7 @@ it('should handle logging the user out', () => {
     />
   )
 
-  wrapper.find('SidenavButton').prop('onClick')()
+  wrapper.find(SidenavButton).prop('onClick')()
 
   expect(onHide).toHaveBeenCalled()
   expect(dispatch).toHaveBeenCalledWith(userActions.logOut())
@@ -164,7 +166,7 @@ it('should handle a menu link click', () => {
     />
   )
 
-  wrapper.find('Menu').first().prop('onLinkClick')()
+  wrapper.find(SidenavMenu).first().prop('onLinkClick')()
 
   expect(onHide).toHaveBeenCalled()
 })
@@ -181,7 +183,7 @@ it('should handle a menu header click', () => {
     />
   )
 
-  wrapper.find('Menu').first().prop('onExpanderChange')(MENU_ID)
+  wrapper.find(SidenavMenu).first().prop('onExpanderChange')(MENU_ID)
 
   expect(wrapper.state().idOfOpenMenu).toEqual(MENU_ID)
 })
@@ -198,8 +200,8 @@ it('should handle two menu header clicks', () => {
     />
   )
 
-  wrapper.find('Menu').first().prop('onExpanderChange')(MENU_ID)
-  wrapper.find('Menu').first().prop('onExpanderChange')(MENU_ID)
+  wrapper.find(SidenavMenu).first().prop('onExpanderChange')(MENU_ID)
+  wrapper.find(SidenavMenu).first().prop('onExpanderChange')(MENU_ID)
 
   expect(wrapper.state().idOfOpenMenu).toEqual(null)
 })

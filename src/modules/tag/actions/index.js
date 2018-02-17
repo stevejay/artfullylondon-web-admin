@@ -1,5 +1,4 @@
 export const types = {
-  // GET_ALL_TAGS: 'tag/GET_ALL_TAGS',
   GET_TAGS: 'tag/GET_TAGS',
   GET_TAGS_STARTED: 'tag/GET_TAGS_STARTED',
   GET_TAGS_SUCCEEDED: 'tag/GET_TAGS_SUCCEEDED',
@@ -12,12 +11,7 @@ export const types = {
   DELETE_TAG_STARTED: 'tag/DELETE_TAG_STARTED',
   DELETE_TAG_SUCCEEDED: 'tag/DELETE_TAG_SUCCEEDED',
   DELETE_TAG_FAILED: 'tag/DELETE_TAG_FAILED'
-  // TAG_DELETED: 'tag/TAG_DELETED'
 }
-
-// export const getAllTags = () => ({
-//   type: types.GET_ALL_TAGS
-// })
 
 export const getTags = tagType => ({
   type: types.GET_TAGS,
@@ -73,7 +67,3 @@ export const deleteTagSucceeded = id => ({
 export const deleteTagFailed = () => ({
   type: types.DELETE_TAG_FAILED
 })
-
-// export const tagDeleted = () => ({
-//   type: types.TAG_DELETED
-// })

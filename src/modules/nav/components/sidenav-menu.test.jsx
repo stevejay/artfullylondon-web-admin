@@ -1,11 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
 
-import Menu from './menu'
+import SidenavMenu from './sidenav-menu'
 
 it('should render correctly when closed', () => {
   const wrapper = shallow(
-    <Menu
+    <SidenavMenu
       id='some-id'
       label='The Label'
       onExpanderChange={_.noop}
@@ -25,7 +25,7 @@ it('should render correctly when closed', () => {
 
 it('should render correctly when open', () => {
   const wrapper = shallow(
-    <Menu
+    <SidenavMenu
       id='some-id'
       label='The Label'
       onExpanderChange={_.noop}
@@ -45,7 +45,7 @@ it('should render correctly when open', () => {
 
 it('should not update when props have not changed', () => {
   const wrapper = shallow(
-    <Menu
+    <SidenavMenu
       id='some-id'
       label='The Label'
       onExpanderChange={_.noop}
@@ -69,7 +69,7 @@ it('should not update when props have not changed', () => {
 
 it('should update when props have changed', () => {
   const wrapper = shallow(
-    <Menu
+    <SidenavMenu
       id='some-id'
       label='The Label'
       onExpanderChange={_.noop}

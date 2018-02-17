@@ -5,17 +5,17 @@ export const POINT_SHAPE = PropTypes.shape({
   lng: PropTypes.number.isRequired
 })
 
-const londonLatRange = 0.3
+const LONDON_LAT_RANGE = 0.3
 
 export const LONDON_LAT = 51.507398
-export const MIN_LONDON_LAT = LONDON_LAT - londonLatRange
-export const MAX_LONDON_LAT = LONDON_LAT + londonLatRange
+export const MIN_LONDON_LAT = LONDON_LAT - LONDON_LAT_RANGE
+export const MAX_LONDON_LAT = LONDON_LAT + LONDON_LAT_RANGE
 
-const londonLngRange = 0.6
+const LONDON_LNG_RANGE = 0.6
 
 export const LONDON_LNG = -0.127675
-export const MIN_LONDON_LNG = LONDON_LNG - londonLngRange
-export const MAX_LONDON_LNG = LONDON_LNG + londonLngRange
+export const MIN_LONDON_LNG = LONDON_LNG - LONDON_LNG_RANGE
+export const MAX_LONDON_LNG = LONDON_LNG + LONDON_LNG_RANGE
 
 // TODO deep freeze this?
 export const DEFAULT_MAP_CENTER = {

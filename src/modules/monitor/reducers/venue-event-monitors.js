@@ -11,6 +11,8 @@ const initialState = {
   getFailed: false
 }
 
+// TODO find a way to need only one monitor reducer
+
 export const reducer = handleActions(
   {
     [types.GET_VENUE_EVENT_MONITORS_STARTED]: () => ({

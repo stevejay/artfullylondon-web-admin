@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Expander from '_src/components/expander'
-import MenuLink from './menu-link'
-import './menu.scss'
+import SidenavMenuLink from './sidenav-menu-link'
+import './sidenav-menu.scss'
 
-class Menu extends React.Component {
+class SidenavMenu extends React.Component {
   shouldComponentUpdate (nextProps) {
     return nextProps.idOfOpenMenu !== this.props.idOfOpenMenu
   }
@@ -31,7 +31,7 @@ class Menu extends React.Component {
         <ul styleName='menu' role='group'>
           {items.map(item => (
             <li key={item.label} styleName='link' role='treeitem'>
-              <MenuLink
+              <SidenavMenuLink
                 path={item.path}
                 label={item.label}
                 onClick={onLinkClick}
@@ -44,7 +44,7 @@ class Menu extends React.Component {
   }
 }
 
-Menu.propTypes = {
+SidenavMenu.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onExpanderChange: PropTypes.func.isRequired,
@@ -58,4 +58,4 @@ Menu.propTypes = {
   idOfOpenMenu: PropTypes.string
 }
 
-export default Menu
+export default SidenavMenu

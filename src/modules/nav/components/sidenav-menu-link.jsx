@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import './menu-link.scss'
+import './sidenav-menu-link.scss'
 
-class MenuLink extends React.Component {
+class SidenavMenuLink extends React.Component {
   shouldComponentUpdate () {
     return false
   }
@@ -14,10 +14,10 @@ class MenuLink extends React.Component {
   }
 }
 
-MenuLink.propTypes = {
+SidenavMenuLink.propTypes = {
   path: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 }
 
-export default MenuLink
+export default SidenavMenuLink

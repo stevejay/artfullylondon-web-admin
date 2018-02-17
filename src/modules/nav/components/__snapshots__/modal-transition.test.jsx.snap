@@ -3,7 +3,7 @@
 exports[`should render correctly 1`] = `
 <BasicTransition
   appear={false}
-  className="src-modules-nav-components-sidenav-modal-transition__modal-transition"
+  className="src-modules-nav-components-modal-transition__modal-transition"
   in={false}
   mountOnEnter={false}
   timeoutMs={200}

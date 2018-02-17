@@ -5,18 +5,18 @@ exports[`should render correctly when has an error 1`] = `""`;
 exports[`should render correctly when logged in 1`] = `
 <React.Fragment>
   <HeaderLogo
-    className="src-modules-nav-components-header-index__logo"
+    className="src-modules-nav-components-header__logo"
     size="medium"
   />
   <Toolbar
-    className="src-modules-nav-components-header-index__wide-toolbar"
+    className="src-modules-nav-components-header__wide-toolbar"
   >
     <ToolbarItem
-      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      className="src-modules-nav-components-header__dropdown-toolbar-item"
       key="Entities"
     >
       <Dropdown
-        className="src-modules-nav-components-header-index__dropdown"
+        className="src-modules-nav-components-header__dropdown"
         items={
           Array [
             Object {
@@ -50,11 +50,11 @@ exports[`should render correctly when logged in 1`] = `
       />
     </ToolbarItem>
     <ToolbarItem
-      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      className="src-modules-nav-components-header__dropdown-toolbar-item"
       key="Tags"
     >
       <Dropdown
-        className="src-modules-nav-components-header-index__dropdown"
+        className="src-modules-nav-components-header__dropdown"
         items={
           Array [
             Object {
@@ -106,7 +106,7 @@ exports[`should render correctly when logged in 1`] = `
     </ToolbarItem>
   </Toolbar>
   <Toolbar
-    className="src-modules-nav-components-header-index__narrow-toolbar"
+    className="src-modules-nav-components-header__narrow-toolbar"
   >
     <ToolbarItem>
       <IconButton
@@ -133,18 +133,18 @@ exports[`should render correctly when logged in 1`] = `
 exports[`should render correctly when showing the sidenav 1`] = `
 <React.Fragment>
   <HeaderLogo
-    className="src-modules-nav-components-header-index__logo"
+    className="src-modules-nav-components-header__logo"
     size="medium"
   />
   <Toolbar
-    className="src-modules-nav-components-header-index__wide-toolbar"
+    className="src-modules-nav-components-header__wide-toolbar"
   >
     <ToolbarItem
-      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      className="src-modules-nav-components-header__dropdown-toolbar-item"
       key="Entities"
     >
       <Dropdown
-        className="src-modules-nav-components-header-index__dropdown"
+        className="src-modules-nav-components-header__dropdown"
         items={
           Array [
             Object {
@@ -178,11 +178,11 @@ exports[`should render correctly when showing the sidenav 1`] = `
       />
     </ToolbarItem>
     <ToolbarItem
-      className="src-modules-nav-components-header-index__dropdown-toolbar-item"
+      className="src-modules-nav-components-header__dropdown-toolbar-item"
       key="Tags"
     >
       <Dropdown
-        className="src-modules-nav-components-header-index__dropdown"
+        className="src-modules-nav-components-header__dropdown"
         items={
           Array [
             Object {
@@ -234,7 +234,7 @@ exports[`should render correctly when showing the sidenav 1`] = `
     </ToolbarItem>
   </Toolbar>
   <Toolbar
-    className="src-modules-nav-components-header-index__narrow-toolbar"
+    className="src-modules-nav-components-header__narrow-toolbar"
   >
     <ToolbarItem>
       <IconButton

@@ -9,10 +9,7 @@ import * as notificationActions from '../actions'
 import { selectors } from '../reducers'
 import './notification-container.scss'
 
-export class NotificationContainer extends React.Component {
-  shouldComponentUpdate (nextProps) {
-    return nextProps.notifications !== this.props.notifications
-  }
+export class NotificationContainer extends React.PureComponent {
   handleClose = ({ id }) => {
     this.props.dispatch(notificationActions.removeNotification(id))
   }

@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
 import CloseButton from '_src/components/button/close'
 import * as notificationConstants from '../constants'
 import './notification.scss'
 
-class Notification extends ShouldNeverUpdateComponent {
+class Notification extends React.PureComponent {
   handleCloseClick = () => {
     this.props.onClose({ id: this.props.notification.id })
   }

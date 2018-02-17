@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 import log from 'loglevel'
 
+import { Header } from './header'
 import Dropdown from '_src/components/dropdown'
-import { Header } from './index'
 import Button from '_src/components/button'
 import { actions as userActions } from '_src/modules/user'
 

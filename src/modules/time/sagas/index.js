@@ -27,7 +27,6 @@ function * addOpeningTime (action) {
 
     const formValues = yield select(getFormValues(parentFormName))
     const openingTimes = formValues.openingTimes
-    // const timesRanges = formValues.timesRanges;
 
     const newOpeningTime = {
       key: dateLib.createTimeKey(values),
