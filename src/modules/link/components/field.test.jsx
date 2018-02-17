@@ -1,13 +1,17 @@
 import React from 'react'
 import _ from 'lodash'
 
-import LinksField from './field'
+import { LinksField } from './field'
 import * as linkConstants from '_src/constants/link'
+import * as linkActions from '../actions'
+import AddLinkForm from '../forms/add-link'
+import LinksGridRow from './grid-row'
 
 it('should render correctly', () => {
   const wrapper = shallow(
     <LinksField
       label='The Label'
+      parentFormName='TheParentFormName'
       input={{
         value: [
           {
@@ -19,13 +23,71 @@ it('should render correctly', () => {
         onChange: _.noop
       }}
       meta={{ touched: false, error: null }}
-      parentFormName='TheParentFormName'
-      onAddLink={_.noop}
-      onDeleteLink={_.noop}
+      dispatch={_.noop}
     />
   )
 
   expect(wrapper).toMatchSnapshot()
+})
+
+it('should handle adding a link', () => {
+  const dispatch = jest.fn()
+
+  const wrapper = shallow(
+    <LinksField
+      label='The Label'
+      parentFormName='TheParentFormName'
+      input={{
+        value: [
+          {
+            key: 'some-id',
+            id: 'some-id',
+            type: linkConstants.LINK_TYPE_FACEBOOK,
+            url: 'http://some/url'
+          }
+        ],
+        onChange: _.noop
+      }}
+      meta={{ touched: false, error: null }}
+      dispatch={dispatch}
+    />
+  )
+
+  wrapper.find(AddLinkForm).prop('onSubmit')({ url: '/new/url' })
+
+  expect(dispatch).toHaveBeenCalledWith(
+    linkActions.addLink({ url: '/new/url' }, 'TheParentFormName')
+  )
+})
+
+it('should handle deleting a link', () => {
+  const dispatch = jest.fn()
+
+  const wrapper = shallow(
+    <LinksField
+      label='The Label'
+      parentFormName='TheParentFormName'
+      input={{
+        value: [
+          {
+            key: 'some-id',
+            id: 'some-id',
+            type: linkConstants.LINK_TYPE_FACEBOOK,
+            url: 'http://some/url'
+          }
+        ],
+        onChange: _.noop
+      }}
+      meta={{ touched: false, error: null }}
+      dispatch={dispatch}
+    />
+  )
+
+  wrapper.find(LinksGridRow).at(0).prop('onDelete')('some-id')
+
+  expect(dispatch).toHaveBeenCalledWith(
+    linkActions.deleteLink('some-id', 'TheParentFormName')
+  )
 })
 
 describe('shouldComponentUpdate', () => {
@@ -41,14 +103,13 @@ describe('shouldComponentUpdate', () => {
     const wrapper = shallow(
       <LinksField
         label='The Label'
+        parentFormName='TheParentFormName'
         input={{
           value,
           onChange: _.noop
         }}
         meta={{ touched: false, error: null }}
-        parentFormName='TheParentFormName'
-        onAddLink={_.noop}
-        onDeleteLink={_.noop}
+        dispatch={_.noop}
       />
     )
 
@@ -72,14 +133,13 @@ describe('shouldComponentUpdate', () => {
     const wrapper = shallow(
       <LinksField
         label='The Label'
+        parentFormName='TheParentFormName'
         input={{
           value,
           onChange: _.noop
         }}
         meta={{ touched: false, error: null }}
-        parentFormName='TheParentFormName'
-        onAddLink={_.noop}
-        onDeleteLink={_.noop}
+        dispatch={_.noop}
       />
     )
 

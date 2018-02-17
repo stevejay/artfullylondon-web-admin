@@ -80,8 +80,7 @@ exports[`should render correctly when creating a group 1`] = `
       component={[Function]}
       label="Links"
       name="links"
-      onAddLink={[Function]}
-      onDeleteLink={[Function]}
+      parentFormName="EditTalent"
     />
   </FormRow>
   <FormRow>
@@ -190,8 +189,7 @@ exports[`should render correctly when editing an individual 1`] = `
       component={[Function]}
       label="Links"
       name="links"
-      onAddLink={[Function]}
-      onDeleteLink={[Function]}
+      parentFormName="EditTalent"
     />
   </FormRow>
   <FormRow>

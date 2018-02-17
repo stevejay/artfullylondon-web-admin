@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+import log from 'loglevel'
 
 import { FullTalent } from '_src/entities/talent'
 import { EntityPage } from './entity'
@@ -10,6 +11,54 @@ class SomeComponent extends React.Component {
     return <div id='component' />
   }
 }
+
+it('should render correctly when an error was raised', () => {
+  const wrapper = shallow(
+    <EntityPage
+      entityType='talent'
+      entityId='some-id'
+      entity={null}
+      getInProgress={false}
+      getFailed
+      component={SomeComponent}
+      dispatch={_.noop}
+      match={{}}
+      location={{}}
+      history={{}}
+      hasError
+      setHasError={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should render correctly when an error was raised', () => {
+  const setHasError = jest.fn()
+  log.error = jest.fn()
+
+  const wrapper = shallow(
+    <EntityPage
+      entityType='talent'
+      entityId='some-id'
+      entity={null}
+      getInProgress={false}
+      getFailed
+      component={SomeComponent}
+      dispatch={_.noop}
+      match={{}}
+      location={{}}
+      history={{}}
+      hasError={false}
+      setHasError={setHasError}
+    />
+  )
+
+  wrapper.instance().componentDidCatch(new Error('deliberately thrown'), {})
+
+  expect(setHasError).toHaveBeenCalledWith(true)
+  expect(log.error).toHaveBeenCalled()
+})
 
 it('should render correctly when get entity failed', () => {
   const wrapper = shallow(
@@ -24,6 +73,8 @@ it('should render correctly when get entity failed', () => {
       match={{}}
       location={{}}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -43,6 +94,8 @@ it('should render correctly when get is in progress', () => {
       match={{}}
       location={{}}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -62,6 +115,8 @@ it('should render correctly when has an entity', () => {
       match={{}}
       location={{}}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -83,6 +138,8 @@ it('should trigger getting the entity on construction when editing an entity', (
       match={{}}
       location={{}}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -106,6 +163,8 @@ it('should trigger getting the entity on construction when creating an entity', 
       match={{}}
       location={{}}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -130,6 +189,8 @@ it('should not trigger getting the entity when props change but the same entity 
       match={{}}
       location={location}
       history={{}}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 
@@ -140,6 +201,7 @@ it('should not trigger getting the entity when props change but the same entity 
 
 it('should trigger getting the entity when props change and a different entity is specified', () => {
   const dispatch = jest.fn()
+  const setHasError = jest.fn()
 
   const wrapper = shallow(
     <EntityPage
@@ -153,6 +215,8 @@ it('should trigger getting the entity when props change and a different entity i
       match={{}}
       location={{ path: '/first' }}
       history={{}}
+      hasError={false}
+      setHasError={setHasError}
     />
   )
 
@@ -167,6 +231,8 @@ it('should trigger getting the entity when props change and a different entity i
   expect(dispatch).toHaveBeenCalledWith(
     entityActions.getEntity('talent', 'some-other-id')
   )
+
+  expect(setHasError).toHaveBeenCalledWith(false)
 })
 
 it('should handle cancelling the entity edit', () => {
@@ -185,6 +251,8 @@ it('should handle cancelling the entity edit', () => {
       match={{}}
       location={{}}
       history={history}
+      hasError={false}
+      setHasError={_.noop}
     />
   )
 

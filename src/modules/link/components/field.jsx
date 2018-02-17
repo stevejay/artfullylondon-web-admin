@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'
 import Grid from '_src/components/grid'
 import LinksGridRow from './grid-row'
-import LinksEditorForm from './editor-form'
+import AddLinkForm from '../forms/add-link'
 import * as linkLib from '../lib/link'
+import * as linkActions from '../actions'
 
-class LinksField extends React.Component {
+export class LinksField extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.input.value !== this.props.input.value ||
@@ -17,15 +19,14 @@ class LinksField extends React.Component {
       nextProps.meta.error !== this.props.meta.error
     )
   }
+  handleAddLink = values => {
+    this.props.dispatch(linkActions.addLink(values, this.props.parentFormName))
+  }
+  handleDeleteLink = id => {
+    this.props.dispatch(linkActions.deleteLink(id, this.props.parentFormName))
+  }
   render () {
-    const {
-      label,
-      input: { value },
-      meta: { touched, error },
-      onAddLink,
-      onDeleteLink
-    } = this.props
-
+    const { label, input: { value }, meta: { touched, error } } = this.props
     const linkTypeOptions = linkLib.getAvailableLinkTypeDropdownOptions(value)
 
     return (
@@ -36,8 +37,8 @@ class LinksField extends React.Component {
         touched={touched}
       >
         <FieldBorder>
-          <LinksEditorForm
-            onSubmit={onAddLink}
+          <AddLinkForm
+            onSubmit={this.handleAddLink}
             linkTypeOptions={linkTypeOptions}
           />
           <FieldDivider />
@@ -46,7 +47,7 @@ class LinksField extends React.Component {
               <LinksGridRow
                 key={element.key}
                 value={element}
-                onDelete={onDeleteLink}
+                onDelete={this.handleDeleteLink}
               />
             ))}
           </Grid>
@@ -58,6 +59,7 @@ class LinksField extends React.Component {
 
 LinksField.propTypes = {
   label: PropTypes.string.isRequired,
+  parentFormName: PropTypes.string.isRequired,
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
       PropTypes.shape({
@@ -70,8 +72,7 @@ LinksField.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.any
   }),
-  onAddLink: PropTypes.func.isRequired,
-  onDeleteLink: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
-export default LinksField
+export default connect()(LinksField)

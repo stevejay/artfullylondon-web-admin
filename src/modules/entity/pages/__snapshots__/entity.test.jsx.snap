@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render correctly when an error was raised 1`] = `
+<BasicSection>
+  <Error
+    type="DEFAULT"
+  />
+</BasicSection>
+`;
+
 exports[`should render correctly when get entity failed 1`] = `
 <BasicSection>
   <Error

@@ -15,7 +15,7 @@ exports[`should render correctly 1`] = `
         Object {
           "copyright": "The Copyright",
           "dominantColor": "AAAAAA",
-          "original": "https://images.test.com/so/me/some-id/750x.jpg",
+          "original": "some-id",
           "ratio": 2,
         },
       ]
@@ -59,18 +59,18 @@ exports[`should render correctly when mounted 1`] = `
       Object {
         "copyright": "The Copyright",
         "dominantColor": "AAAAAA",
-        "id": "image-0",
+        "original": "image-0",
         "ratio": 1,
       },
       Object {
         "copyright": "The Copyright",
         "dominantColor": "AAAAAA",
-        "id": "image-1",
+        "original": "image-1",
         "ratio": 2,
       },
       Object {
         "copyright": "The Copyright",
-        "id": "image-2",
+        "original": "image-2",
         "ratio": 3,
       },
     ]
@@ -91,19 +91,18 @@ exports[`should render correctly when mounted 1`] = `
           Object {
             "copyright": "The Copyright",
             "dominantColor": "AAAAAA",
-            "original": "https://images.test.com/im/ag/image-0/750x.jpg",
+            "original": "image-0",
             "ratio": 1,
           },
           Object {
             "copyright": "The Copyright",
             "dominantColor": "AAAAAA",
-            "original": "https://images.test.com/im/ag/image-1/750x.jpg",
+            "original": "image-1",
             "ratio": 2,
           },
           Object {
             "copyright": "The Copyright",
-            "dominantColor": undefined,
-            "original": "https://images.test.com/im/ag/image-2/750x.jpg",
+            "original": "image-2",
             "ratio": 3,
           },
         ]
@@ -220,7 +219,7 @@ exports[`should render correctly when mounted 1`] = `
                       className="image-gallery-image"
                     >
                       <img
-                        src="https://images.test.com/im/ag/image-0/750x.jpg"
+                        src="image-0"
                         style={
                           Object {
                             "backgroundColor": "#AAAAAA",
@@ -248,7 +247,7 @@ exports[`should render correctly when mounted 1`] = `
                       className="image-gallery-image"
                     >
                       <img
-                        src="https://images.test.com/im/ag/image-1/750x.jpg"
+                        src="image-1"
                         style={
                           Object {
                             "backgroundColor": "#AAAAAA",
@@ -276,7 +275,7 @@ exports[`should render correctly when mounted 1`] = `
                       className="image-gallery-image"
                     >
                       <img
-                        src="https://images.test.com/im/ag/image-2/750x.jpg"
+                        src="image-2"
                         style={
                           Object {
                             "maxWidth": "133px",

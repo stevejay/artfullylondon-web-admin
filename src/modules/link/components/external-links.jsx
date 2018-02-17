@@ -4,20 +4,12 @@ import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
 
-import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
 import * as linkConstants from '_src/constants/link'
 import * as entitiesPropTypes from '_src/entities/prop-types'
+import EntityExternalLink from './external-link'
 import './external-links.scss'
 
-class EntityExternalLinks extends ShouldNeverUpdateComponent {
-  _createSocialLink (url, icon) {
-    return (
-      <a href={url} target='_blank' rel='noopener' styleName='link'>
-        {React.createElement(icon, { className: 'icon' })}
-      </a>
-    )
-  }
+class EntityExternalLinks extends React.PureComponent {
   render () {
     const { email, links } = this.props.entity
 
@@ -31,12 +23,15 @@ class EntityExternalLinks extends ShouldNeverUpdateComponent {
     }
 
     return (
-      <div styleName='links-container'>
-        {!!email && this._createSocialLink('mailto:' + email, Envelope)}
-        {!!facebook && this._createSocialLink(facebook.url, Facebook)}
-        {!!twitter && this._createSocialLink(twitter.url, Twitter)}
-        {!!instagram && this._createSocialLink(instagram.url, Instagram)}
-      </div>
+      <section styleName='links-container'>
+        {!!email &&
+          <EntityExternalLink url={`mailto:${email}`} icon={Envelope} />}
+        {!!facebook &&
+          <EntityExternalLink url={facebook.url} icon={Facebook} />}
+        {!!twitter && <EntityExternalLink url={twitter.url} icon={Twitter} />}
+        {!!instagram &&
+          <EntityExternalLink url={instagram.url} icon={Instagram} />}
+      </section>
     )
   }
 }

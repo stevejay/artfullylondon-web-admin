@@ -14,7 +14,7 @@ import CheckboxField from '_src/components/checkbox/field'
 import HtmlTextField from '_src/components/html-text/field'
 import { EditorMapField } from '_src/modules/location'
 import { ImagesField } from '_src/modules/image'
-import { actions as linkActions, LinksField } from '_src/modules/link'
+import { LinksField } from '_src/modules/link'
 import {
   selectors as referenceDataSelectors
 } from '_src/modules/reference-data'
@@ -32,18 +32,7 @@ import * as entityConstants from '_src/constants/entity'
 import * as venueConstants from '../constants'
 import * as dateLib from '_src/lib/date'
 
-export class EditVenueForm extends React.Component {
-  // TODO remove the repetition in image and link handlers in entity edit forms.
-  handleAddLink = values => {
-    this.props.dispatch(
-      linkActions.addLink(values, venueConstants.EDIT_VENUE_FORM_NAME)
-    )
-  }
-  handleDeleteLink = id => {
-    this.props.dispatch(
-      linkActions.deleteLink(id, venueConstants.EDIT_VENUE_FORM_NAME)
-    )
-  }
+export class EditVenueForm extends React.PureComponent {
   render () {
     const {
       isEdit,
@@ -100,10 +89,9 @@ export class EditVenueForm extends React.Component {
         <FormRow>
           <Field
             label='Links'
+            parentFormName={venueConstants.EDIT_VENUE_FORM_NAME}
             name='links'
             component={LinksField}
-            onAddLink={this.handleAddLink}
-            onDeleteLink={this.handleDeleteLink}
           />
         </FormRow>
         <FormRow>

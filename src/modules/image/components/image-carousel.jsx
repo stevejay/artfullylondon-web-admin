@@ -5,7 +5,6 @@ import 'react-image-gallery/styles/scss/image-gallery-no-icon.scss'
 import { withState } from 'recompose'
 
 import ImageCredit from './image-credit'
-import * as imageLib from '_src/lib/image'
 import './image-carousel.scss'
 
 export class ImageCarousel extends React.PureComponent {
@@ -49,15 +48,10 @@ export class ImageCarousel extends React.PureComponent {
     const { images, currentIndex } = this.props
     const copyright = images[currentIndex].copyright
 
-    // TODO rendering trigger issue
-    const carouselItems = images.map(image =>
-      imageLib.createItemsForImageCarousel(image)
-    )
-
     return (
       <div>
         <ImageGallery
-          items={carouselItems}
+          items={images}
           lazyLoad
           showThumbnails={false}
           showFullscreenButton={false}
@@ -76,7 +70,7 @@ export class ImageCarousel extends React.PureComponent {
 ImageCarousel.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      original: PropTypes.string.isRequired,
       ratio: PropTypes.number.isRequired,
       copyright: PropTypes.string,
       dominantColor: PropTypes.string

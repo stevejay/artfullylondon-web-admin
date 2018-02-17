@@ -26,7 +26,11 @@ class Image extends React.PureComponent {
     }
 
     if (showCarousel) {
-      return <ImageCarousel images={images} />
+      const carouselItems = images.map(image =>
+        imageLib.createItemsForImageCarousel(image)
+      )
+
+      return <ImageCarousel images={carouselItems} />
     }
 
     return (

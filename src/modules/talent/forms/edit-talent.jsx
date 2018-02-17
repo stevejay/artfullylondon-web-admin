@@ -15,23 +15,13 @@ import * as entityConstants from '_src/constants/entity'
 import * as talentDomainConstants from '_src/constants/talent'
 import * as talentConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
-import { actions as linkActions, LinksField } from '_src/modules/link'
+import { LinksField } from '_src/modules/link'
 
-export class EditTalentForm extends React.Component {
+export class EditTalentForm extends React.PureComponent {
   handleChangeTalentType = (_, newValue) => {
     if (newValue === talentDomainConstants.TALENT_TYPE_GROUP) {
       this.props.change('firstNames', '')
     }
-  }
-  handleAddLink = values => {
-    this.props.dispatch(
-      linkActions.addLink(values, talentConstants.EDIT_TALENT_FORM_NAME)
-    )
-  }
-  handleDeleteLink = id => {
-    this.props.dispatch(
-      linkActions.deleteLink(id, talentConstants.EDIT_TALENT_FORM_NAME)
-    )
   }
   render () {
     const {
@@ -122,10 +112,9 @@ export class EditTalentForm extends React.Component {
         <FormRow>
           <Field
             label='Links'
+            parentFormName={talentConstants.EDIT_TALENT_FORM_NAME}
             name='links'
             component={LinksField}
-            onAddLink={this.handleAddLink}
-            onDeleteLink={this.handleDeleteLink}
           />
         </FormRow>
         <FormRow>
@@ -156,8 +145,7 @@ EditTalentForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
-  change: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  change: PropTypes.func.isRequired
 }
 
 const WrappedEditTalentForm = reduxForm({
@@ -169,7 +157,5 @@ const selector = formValueSelector(talentConstants.EDIT_TALENT_FORM_NAME)
 
 export default connect(
   /* istanbul ignore next */
-  state => ({
-    talentTypeValue: selector(state, 'talentType')
-  })
+  state => ({ talentTypeValue: selector(state, 'talentType') })
 )(WrappedEditTalentForm)

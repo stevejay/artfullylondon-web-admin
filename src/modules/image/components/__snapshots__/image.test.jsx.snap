@@ -19,7 +19,9 @@ exports[`should render correctly when showing the carousel 1`] = `
   images={
     Array [
       Object {
-        "id": "some-id",
+        "copyright": "Some copyright",
+        "dominantColor": "AAAAAA",
+        "original": "https://images.test.com/so/me/some-id/750x.jpg",
         "ratio": 2,
       },
     ]

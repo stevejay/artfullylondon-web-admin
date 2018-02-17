@@ -6,7 +6,14 @@ it('should render correctly when showing the carousel', () => {
   const wrapper = shallow(
     <EntityImage
       entityType='venue'
-      images={[{ id: 'some-id', ratio: 2 }]}
+      images={[
+        {
+          id: 'some-id',
+          ratio: 2,
+          copyright: 'Some copyright',
+          dominantColor: 'AAAAAA'
+        }
+      ]}
       showCarousel
     />
   )

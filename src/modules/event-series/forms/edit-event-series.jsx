@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
 import Form from '_src/components/form'
@@ -13,25 +12,9 @@ import HtmlTextField from '_src/components/html-text/field'
 import * as entityConstants from '_src/constants/entity'
 import * as eventSeriesConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
-import { actions as linkActions, LinksField } from '_src/modules/link'
+import { LinksField } from '_src/modules/link'
 
-export class EditEventSeriesForm extends React.Component {
-  handleAddLink = values => {
-    this.props.dispatch(
-      linkActions.addLink(
-        values,
-        eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
-      )
-    )
-  }
-  handleDeleteLink = id => {
-    this.props.dispatch(
-      linkActions.deleteLink(
-        id,
-        eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME
-      )
-    )
-  }
+export class EditEventSeriesForm extends React.PureComponent {
   render () {
     const {
       isEdit,
@@ -133,10 +116,9 @@ export class EditEventSeriesForm extends React.Component {
         <FormRow>
           <Field
             label='Links'
+            parentFormName={eventSeriesConstants.EDIT_EVENT_SERIES_FORM_NAME}
             name='links'
             component={LinksField}
-            onAddLink={this.handleAddLink}
-            onDeleteLink={this.handleDeleteLink}
           />
         </FormRow>
         <FormRow>
@@ -166,8 +148,7 @@ EditEventSeriesForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
-  change: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  change: PropTypes.func.isRequired
 }
 
 const WrappedEditEventSeriesForm = reduxForm({
@@ -175,4 +156,4 @@ const WrappedEditEventSeriesForm = reduxForm({
   enableReinitialize: true
 })(EditEventSeriesForm)
 
-export default connect()(WrappedEditEventSeriesForm)
+export default WrappedEditEventSeriesForm

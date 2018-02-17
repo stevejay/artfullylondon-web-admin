@@ -9,7 +9,7 @@ it('should render correctly', () => {
     <ImageCarousel
       images={[
         {
-          id: 'some-id',
+          original: 'some-id',
           ratio: 2,
           copyright: 'The Copyright',
           dominantColor: 'AAAAAA'
@@ -28,19 +28,19 @@ it('should render correctly when mounted', () => {
     <ImageCarousel
       images={[
         {
-          id: 'image-0',
+          original: 'image-0',
           ratio: 1,
           copyright: 'The Copyright',
           dominantColor: 'AAAAAA'
         },
         {
-          id: 'image-1',
+          original: 'image-1',
           ratio: 2,
           copyright: 'The Copyright',
           dominantColor: 'AAAAAA'
         },
         {
-          id: 'image-2',
+          original: 'image-2',
           ratio: 3,
           copyright: 'The Copyright'
         }
@@ -60,7 +60,7 @@ it('should handle a slide event', () => {
     <ImageCarousel
       images={[
         {
-          id: 'some-id',
+          original: 'some-id',
           ratio: 2,
           copyright: 'The Copyright',
           dominantColor: 'AAAAAA'

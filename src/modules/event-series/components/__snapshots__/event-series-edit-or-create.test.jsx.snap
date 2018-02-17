@@ -12,7 +12,7 @@ exports[`should render correctly when creating an event series 1`] = `
   <EntityDetailsContainer
     type="default"
   >
-    <Connect(ReduxForm)
+    <ReduxForm
       initialValues={
         Object {
           "id": 1,
@@ -39,7 +39,7 @@ exports[`should render correctly when editing an event series 1`] = `
   <EntityDetailsContainer
     type="default"
   >
-    <Connect(ReduxForm)
+    <ReduxForm
       initialValues={
         Object {
           "id": 1,

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { withState } from 'recompose'
+import log from 'loglevel'
 
 import { Error } from '_src/modules/error'
 import FadeTransition from '_src/components/transition/fade'
@@ -12,7 +14,7 @@ import * as entityConstants from '_src/constants/entity'
 import * as entityActions from '../actions'
 import { selectors as entitySelectors } from '../reducers'
 
-// TODO split into EntityDetailPage and EntityEditOrCreatePage?
+// TODO could split into EntityDetailPage and EntityEditOrCreatePage?
 
 export class EntityPage extends React.Component {
   componentWillMount () {
@@ -20,8 +22,13 @@ export class EntityPage extends React.Component {
   }
   componentWillReceiveProps (nextProps) {
     if (nextProps.location !== this.props.location) {
+      this.props.setHasError(false)
       this._getOrResetEntity(nextProps)
     }
+  }
+  componentDidCatch (error, info) {
+    this.props.setHasError(true)
+    log.error(error, info.componentStack)
   }
   handleCancel = event => {
     event.preventDefault()
@@ -40,10 +47,11 @@ export class EntityPage extends React.Component {
       entity,
       getInProgress,
       getFailed,
-      component: Component
+      component: Component,
+      hasError
     } = this.props
 
-    if (getFailed) {
+    if (hasError || getFailed) {
       return <BasicSection><Error /></BasicSection>
     }
 
@@ -75,7 +83,9 @@ EntityPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
+  setHasError: PropTypes.func.isRequired
 }
 
 export default withRouter(
@@ -87,5 +97,5 @@ export default withRouter(
       getInProgress: entitySelectors.gettingEntity(state, ownProps.entityType),
       getFailed: entitySelectors.failedToGetEntity(state)
     })
-  )(EntityPage)
+  )(withState('hasError', 'setHasError', false)(EntityPage))
 )

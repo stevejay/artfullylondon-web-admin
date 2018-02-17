@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { FullVenue } from '_src/entities/venue'
 import EntityExternalLinks from './external-links'
+import { FullVenue } from '_src/entities/venue'
 import {
   LINK_TYPE_FACEBOOK,
   LINK_TYPE_TWITTER,
@@ -48,11 +48,4 @@ it('should render correctly when there is an instagram link', () => {
   const wrapper = shallow(<EntityExternalLinks entity={entity} />)
 
   expect(wrapper).toMatchSnapshot()
-})
-
-it('should not update', () => {
-  const entity = new FullVenue({ links: [] })
-  const wrapper = shallow(<EntityExternalLinks entity={entity} />)
-  const result = wrapper.instance().shouldComponentUpdate()
-  expect(result).toEqual(false)
 })

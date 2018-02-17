@@ -253,3 +253,55 @@ it('should handle setting an image as main', () => {
     imageActions.setMainImage('some-id', 'ParentFormName')
   )
 })
+
+describe('shouldComponentUpdate', () => {
+  it('should not update when props have not changed', () => {
+    const value = [{ key: 'some-key', id: 'some-id', isMain: true }]
+
+    const wrapper = shallow(
+      <ImagesField
+        label='The Label'
+        parentFormName='ParentFormName'
+        entityType='venue'
+        input={{ value, onChange: _.noop }}
+        meta={{ touched: false, error: null }}
+        initialValues={null}
+        setInitialValues={_.noop}
+        dispatch={_.noop}
+      />
+    )
+
+    const result = wrapper.instance().shouldComponentUpdate({
+      input: { value },
+      meta: { touched: false, error: null },
+      initialValues: null
+    })
+
+    expect(result).toEqual(false)
+  })
+
+  it('should update when props have changed', () => {
+    const value = [{ key: 'some-key', id: 'some-id', isMain: true }]
+
+    const wrapper = shallow(
+      <ImagesField
+        label='The Label'
+        parentFormName='ParentFormName'
+        entityType='venue'
+        input={{ value, onChange: _.noop }}
+        meta={{ touched: false, error: null }}
+        initialValues={null}
+        setInitialValues={_.noop}
+        dispatch={_.noop}
+      />
+    )
+
+    const result = wrapper.instance().shouldComponentUpdate({
+      input: { value },
+      meta: { touched: true, error: null },
+      initialValues: null
+    })
+
+    expect(result).toEqual(true)
+  })
+})

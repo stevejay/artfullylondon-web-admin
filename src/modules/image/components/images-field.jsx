@@ -14,7 +14,15 @@ import ImageGridCard from './image-grid-card'
 import AddImageForm from '../forms/add-image-form'
 import * as imageActions from '../actions'
 
-export class ImagesField extends React.PureComponent {
+export class ImagesField extends React.Component {
+  shouldComponentUpdate (nextProps) {
+    return (
+      nextProps.input.value !== this.props.input.value ||
+      nextProps.meta.touched !== this.props.meta.touched ||
+      nextProps.meta.error !== this.props.meta.error ||
+      nextProps.initialValues !== this.props.initialValues
+    )
+  }
   handleShowModal = initialValues => {
     this.props.setInitialValues(initialValues)
   }

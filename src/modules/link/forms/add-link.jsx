@@ -9,7 +9,7 @@ import TextField from '_src/components/text/field'
 import SelectField from '_src/components/select/field'
 import * as linkConstants from '../constants'
 
-export const LinksEditorForm = ({
+export const AddLinkForm = ({
   pristine,
   submitting,
   handleSubmit,
@@ -49,7 +49,7 @@ export const LinksEditorForm = ({
   </div>
 )
 
-LinksEditorForm.propTypes = {
+AddLinkForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -60,5 +60,5 @@ LinksEditorForm.propTypes = {
 }
 
 export default reduxForm({ form: linkConstants.LINK_EDITOR_FORM_NAME })(
-  LinksEditorForm
+  AddLinkForm
 )

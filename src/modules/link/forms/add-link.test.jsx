@@ -1,11 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { LinksEditorForm } from './editor-form'
+import { AddLinkForm } from './add-link'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <LinksEditorForm
+    <AddLinkForm
       pristine
       submitting={false}
       handleSubmit={_.noop}
