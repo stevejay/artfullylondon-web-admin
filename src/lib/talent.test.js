@@ -1,5 +1,4 @@
 import * as talentLib from '_src/lib/talent'
-import talentType from '_src/entities/talent-type'
 
 describe('formatTalentName', () => {
   const tests = [
@@ -23,28 +22,6 @@ describe('formatTalentName', () => {
   tests.map(test => {
     it(test.it, () => {
       const actual = talentLib.formatTalentName(test.arg)
-      expect(actual).toEqual(test.expected)
-    })
-  })
-})
-
-describe('isIndividualTalent', () => {
-  const tests = [
-    {
-      it: 'should handle an individual',
-      arg: talentType.INDIVIDUAL,
-      expected: true
-    },
-    {
-      it: 'should handle an individual',
-      arg: talentType.GROUP,
-      expected: false
-    }
-  ]
-
-  tests.map(test => {
-    it(test.it, () => {
-      const actual = talentLib.isIndividualTalent(test.arg)
       expect(actual).toEqual(test.expected)
     })
   })

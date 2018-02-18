@@ -17,7 +17,7 @@ class EventTalentComponent extends React.PureComponent {
         {talent.hasImage &&
           <img
             styleName='img'
-            src={imageLib.createImageUrl(imatalent.imagegeId, '120x120')}
+            src={imageLib.createImageUrl(talent.image, '120x120')}
           />}
         {!talent.hasImage &&
           <ImagePlaceholder

@@ -7,6 +7,7 @@ import SearchResults from '../components/search/results'
 import BasicSearchForm from '../forms/basic-search'
 import NoResults from '../components/search/no-results'
 import * as dateLib from '_src/lib/date'
+import * as globalConstants from '_src/constants'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
 import entityType from '_src/entities/entity-type'
@@ -203,8 +204,8 @@ it('should handle a pagination click', () => {
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.pushBasicSearchToUrl({
       query: { entityType: 'venue', skip: 10, take: 20 },
-      skip: 5 * searchConstants.DEFAULT_TAKE,
-      take: searchConstants.DEFAULT_TAKE
+      skip: 5 * globalConstants.DEFAULT_TAKE,
+      take: globalConstants.DEFAULT_TAKE
     })
   )
 })
@@ -229,7 +230,7 @@ it('should handle submitting a search', () => {
     searchActions.pushBasicSearchToUrl({
       query: { term: 'bat' },
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     })
   )
 })

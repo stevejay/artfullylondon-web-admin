@@ -5,12 +5,12 @@ import log from 'loglevel'
 
 import history from '_src/history'
 import normalise from '_src/lib/normalise'
-import * as fetchLib from '_src/lib/fetch'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as searchLib from '../lib/search'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
+import { searchService } from '_src/modules/api/index'
 
 export function * pushBasicSearchToUrl ({ payload }) {
   try {
@@ -60,18 +60,14 @@ export function * autocompleteSearch ({ payload, meta }) {
       null
     )
 
-    const requestUrl = yield call(
-      searchLib.createAutocompleteSearchRequestUrl,
+    const queryStringParams = yield call(
+      searchLib.createAutocompleteQueryStringParams,
       query
     )
 
-    const json = yield call(fetchLib.get, requestUrl)
-    const items = json.items
-
-    items.forEach(
-      item =>
-        (item.autocompleteItemType =
-          searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY)
+    const items = yield call(
+      searchService.autocompleteSearch,
+      queryStringParams
     )
 
     yield put(sagaLib.returnAsPromise(items, meta))
@@ -102,11 +98,16 @@ export function * basicSearch ({ payload }) {
       return
     }
 
-    const requestUrl = yield call(searchLib.createBasicSearchRequestUrl, query)
     yield put(searchActions.startingBasicSearch())
     yield put(searchActions.setBasicSearchParams(query))
     yield put(initialize(searchConstants.BASIC_SEARCH_FORM_NAME, query))
-    const json = yield call(fetchLib.get, requestUrl)
+
+    const queryStringParams = yield call(
+      searchLib.createBasicSearchQueryStringParams,
+      query
+    )
+
+    const json = yield call(searchService.basicSearch, queryStringParams)
     yield put(searchActions.basicSearchSucceeded(json))
   } catch (err) {
     yield call(log.error, err)

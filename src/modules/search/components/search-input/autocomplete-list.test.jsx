@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchInputAutocompleteList from './autocomplete-list'
-import * as searchConstants from '../../constants'
+import autocompleteItemType from '_src/entities/autocomplete-item-type'
 
 it('should render an autocomplete list with a single entity entry correctly', () => {
   const wrapper = shallow(
@@ -10,7 +10,7 @@ it('should render an autocomplete list with a single entity entry correctly', ()
       currentIndex={0}
       items={[
         {
-          autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY,
+          autocompleteItemType: autocompleteItemType.ENTITY,
           id: 'some-id',
           name: 'Some Name',
           entityType: 'event',
@@ -30,7 +30,7 @@ it('should render an autocomplete list with a single label entry correctly', () 
       currentIndex={0}
       items={[
         {
-          autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_LABEL,
+          autocompleteItemType: autocompleteItemType.LABEL,
           label: 'Some label'
         }
       ]}

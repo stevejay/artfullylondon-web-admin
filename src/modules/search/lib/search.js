@@ -1,7 +1,6 @@
-import moment from 'moment'
+import queryString from 'query-string'
 
-import * as dateLib from '_src/lib/date'
-import * as searchConstants from '../constants'
+import * as globalConstants from '_src/constants'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
   const threshold = Math.floor(take / 4)
@@ -10,13 +9,13 @@ export function maybeHasMoreSearchResults (entityType, items, take) {
 }
 
 export function createSearchPageUrl (baseUrl, query, skip, take) {
-  const params = Object.assign({}, query)
-  _addSkipToParams(params, query.skip, skip)
-  _addTakeToParams(params, query.take, take)
-  return baseUrl + '?' + _createQueryString(params)
+  const params = { ...query }
+  addSkipToParams(params, query.skip, skip)
+  addTakeToParams(params, query.take, take)
+  return baseUrl + '?' + queryString.stringify(params)
 }
 
-export function createAutocompleteSearchRequestUrl (query) {
+export function createAutocompleteQueryStringParams (query) {
   const params = {}
 
   if (query.term) {
@@ -27,12 +26,10 @@ export function createAutocompleteSearchRequestUrl (query) {
     params.entityType = query.entityType
   }
 
-  const queryString = _createQueryString(params)
-
-  return `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/auto?${queryString}`
+  return params
 }
 
-export function createBasicSearchRequestUrl (query, skip, take) {
+export function createBasicSearchQueryStringParams (query, skip, take) {
   const params = {}
 
   if (query.term) {
@@ -43,33 +40,13 @@ export function createBasicSearchRequestUrl (query, skip, take) {
     params.entityType = query.entityType
   }
 
-  _addSkipToParams(params, query.skip, skip)
-  _addTakeToParams(params, query.take, take)
-  const queryString = _createQueryString(params)
+  addSkipToParams(params, query.skip, skip)
+  addTakeToParams(params, query.take, take)
 
-  return `${process.env.WEBSITE_API_HOST_URL}/search-service/admin/search/basic?${queryString}`
+  return params
 }
 
-function _createQueryString (params) {
-  const keyValuePairs = []
-
-  Object.keys(params).forEach(key => {
-    let value = params[key]
-
-    if (moment.isMoment(value)) {
-      value = dateLib.mapMomentDateToStringDate(value)
-    } else if (value instanceof Date) {
-      value = dateLib.mapJsDateToStringDate(value)
-    }
-
-    const keyValuePair = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-    keyValuePairs.push(keyValuePair)
-  })
-
-  return keyValuePairs.join('&')
-}
-
-function _addSkipToParams (params, querySkip, skip) {
+function addSkipToParams (params, querySkip, skip) {
   if (skip != null) {
     params.skip = skip
   } else if (querySkip != null) {
@@ -77,12 +54,12 @@ function _addSkipToParams (params, querySkip, skip) {
   }
 }
 
-function _addTakeToParams (params, queryTake, take) {
+function addTakeToParams (params, queryTake, take) {
   if (take != null) {
     params.take = take
   } else if (queryTake != null) {
     params.take = queryTake
   } else {
-    params.take = searchConstants.DEFAULT_TAKE
+    params.take = globalConstants.DEFAULT_TAKE
   }
 }

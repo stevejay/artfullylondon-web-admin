@@ -6,6 +6,8 @@ import * as timeLib from '_src/lib/time'
 import entityType from '_src/entities/entity-type'
 import venueType from '_src/entities/venue-type'
 
+const NEWLINES_REGEX = /\n/g
+
 export class SummaryVenue {
   constructor (entity) {
     this.entity = entity || {}
@@ -105,8 +107,9 @@ export class SummaryVenue {
   }
 
   createFullAddress () {
-    return venueLib.formatAddressForDisplay(
-      this.entity.address,
+    return (
+      this.entity.address.replace(NEWLINES_REGEX, ', ') +
+      ', ' +
       this.entity.postcode
     )
   }

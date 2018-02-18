@@ -6,7 +6,7 @@ import { SummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
-import * as searchConstants from '../constants'
+import * as globalConstants from '_src/constants'
 import entityType from '_src/entities/entity-type'
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
     entityType: entityType.ALL,
     term: '',
     skip: 0,
-    take: searchConstants.DEFAULT_TAKE
+    take: globalConstants.DEFAULT_TAKE
   },
   basicSearchResultParams: null,
   total: 0,

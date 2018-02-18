@@ -11,10 +11,9 @@ import log from 'loglevel'
 import normalise from '_src/lib/normalise'
 import * as tagConstants from '../constants'
 import * as sagaLib from '_src/lib/saga'
-import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
 import * as tagActions from '../actions'
-import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import { tagService } from '_src/modules/api'
 
 // function * getAllTags () {
 //   try {
@@ -38,13 +37,8 @@ export function * getTags (action) {
   try {
     const tagType = action.payload.tagType
     yield put(tagActions.getTagsStarted(tagType))
-
-    const url =
-      process.env.WEBSITE_API_HOST_URL + '/tag-service/tags/' + tagType
-    const token = yield call(getAuthTokenForCurrentUser)
-    const json = yield call(fetchLib.get, url, token)
-
-    yield put(tagActions.getTagsSucceeded(json.tags[tagType] || []))
+    const tags = yield call(tagService.getTags, tagType)
+    yield put(tagActions.getTagsSucceeded(tags))
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.getTagsFailed())
@@ -63,13 +57,10 @@ export function * addTag (action) {
     )
 
     yield call(validationLib.validate, values, tagConstants.constraint)
+    const tag = yield call(tagService.addTag, values)
+    yield put(tagActions.addTagSucceeded(tag))
 
-    const { tagType, label } = values
-    const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${tagType}`
-    const token = yield call(getAuthTokenForCurrentUser)
-    const json = yield call(fetchLib.post, url, { label }, token)
-
-    yield put(tagActions.addTagSucceeded(json.tag))
+    // TODO delete this if not used by event editor:
 
     // if (action.payload.addTagForEvent) {
     //   const propertyName = getEventTagsPropertyName(tagType)
@@ -111,15 +102,9 @@ export function * addTag (action) {
 export function * deleteTag (action) {
   try {
     const { id } = action.payload
-
     yield put(tagActions.deleteTagStarted())
-
-    const url = `${process.env.WEBSITE_API_HOST_URL}/tag-service/tag/${id}`
-    const token = yield call(getAuthTokenForCurrentUser)
-    yield call(fetchLib.httpDelete, url, token)
-
+    yield call(tagService.deleteTag, id)
     yield put(tagActions.deleteTagSucceeded(id))
-
     // yield put({ type: tagActionTypes.TAG_DELETED })
   } catch (err) {
     yield call(log.error, err)

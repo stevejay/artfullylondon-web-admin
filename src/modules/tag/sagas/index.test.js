@@ -5,12 +5,11 @@ import { startSubmit, stopSubmit, reset } from 'redux-form'
 
 import normalise from '_src/lib/normalise'
 import * as sagaLib from '_src/lib/saga'
-import * as fetchLib from '_src/lib/fetch'
 import * as tagSagas from './index'
 import * as validationLib from '_src/lib/validation'
 import * as tagConstants from '../constants'
 import * as tagActions from '../actions'
-import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import { tagService } from '_src/modules/api'
 
 describe('getTags', () => {
   const generator = cloneableGenerator(tagSagas.getTags)({
@@ -19,43 +18,29 @@ describe('getTags', () => {
 
   it('should prepare to get the tags for a tag type', () => {
     let result = generator.next()
-
     expect(result.value).toEqual(put(tagActions.getTagsStarted('medium')))
 
     result = generator.next()
-
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generator.next({ the: 'token' })
-
-    expect(result.value).toEqual(
-      call(fetchLib.get, 'https://api.test.com/tag-service/tags/medium', {
-        the: 'token'
-      })
-    )
+    expect(result.value).toEqual(call(tagService.getTags, 'medium'))
   })
 
   it('should handle a response with tags', () => {
     const generatorClone = generator.clone()
 
-    let result = generatorClone.next({ tags: { medium: [{ id: 1 }] } })
-
+    let result = generatorClone.next([{ id: 1 }])
     expect(result.value).toEqual(put(tagActions.getTagsSucceeded([{ id: 1 }])))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle a response with no tags', () => {
     const generatorClone = generator.clone()
 
-    let result = generatorClone.next({ tags: { audience: [{ id: 1 }] } })
-
+    let result = generatorClone.next([])
     expect(result.value).toEqual(put(tagActions.getTagsSucceeded([])))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -64,15 +49,12 @@ describe('getTags', () => {
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(tagActions.getTagsFailed()))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -84,17 +66,14 @@ describe('addTag', () => {
 
   it('should prepare to add the tag', () => {
     let result = generator.next()
-
     expect(result.value).toEqual(
       put(startSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     )
 
     result = generator.next()
-
     expect(result.value).toEqual(put(tagActions.addTagStarted()))
 
     result = generator.next()
-
     expect(result.value).toEqual(
       call(
         normalise,
@@ -104,7 +83,6 @@ describe('addTag', () => {
     )
 
     result = generator.next({ label: 'sculpture', tagType: 'medium' })
-
     expect(result.value).toEqual(
       call(
         validationLib.validate,
@@ -114,18 +92,8 @@ describe('addTag', () => {
     )
 
     result = generator.next()
-
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generator.next({ the: 'token' })
-
     expect(result.value).toEqual(
-      call(
-        fetchLib.post,
-        'https://api.test.com/tag-service/tag/medium',
-        { label: 'sculpture' },
-        { the: 'token' }
-      )
+      call(tagService.addTag, { label: 'sculpture', tagType: 'medium' })
     )
   })
 
@@ -133,9 +101,9 @@ describe('addTag', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next({
-      tag: { id: 'medium/sculpture', label: 'sculpture' }
+      id: 'medium/sculpture',
+      label: 'sculpture'
     })
-
     expect(result.value).toEqual(
       put(
         tagActions.addTagSucceeded({
@@ -146,17 +114,14 @@ describe('addTag', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(stopSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(reset(tagConstants.TAG_EDITOR_FORM_NAME)))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -165,21 +130,17 @@ describe('addTag', () => {
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(tagActions.addTagFailed()))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       call(sagaLib.submitErrorHandler, error, tagConstants.TAG_EDITOR_FORM_NAME)
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -188,15 +149,12 @@ describe('addTag', () => {
     const error = new Error('[400] Stale Data')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(tagActions.addTagFailed()))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       call(
         sagaLib.submitErrorHandler,
@@ -206,7 +164,6 @@ describe('addTag', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -218,35 +175,21 @@ describe('deleteTag', () => {
 
   it('should prepare to delete the tag', () => {
     let result = generator.next()
-
     expect(result.value).toEqual(put(tagActions.deleteTagStarted()))
 
     result = generator.next()
-
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generator.next({ the: 'token' })
-
-    expect(result.value).toEqual(
-      call(
-        fetchLib.httpDelete,
-        'https://api.test.com/tag-service/tag/medium/sculpture',
-        { the: 'token' }
-      )
-    )
+    expect(result.value).toEqual(call(tagService.deleteTag, 'medium/sculpture'))
   })
 
   it('should handle a successful deletion of the tag', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(tagActions.deleteTagSucceeded('medium/sculpture'))
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -255,15 +198,12 @@ describe('deleteTag', () => {
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(tagActions.deleteTagFailed()))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })

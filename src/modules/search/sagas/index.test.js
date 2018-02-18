@@ -7,12 +7,13 @@ import { cloneableGenerator } from 'redux-saga/utils'
 import normalise from '_src/lib/normalise'
 import history from '_src/history'
 import * as sagaLib from '_src/lib/saga'
-import * as fetchLib from '_src/lib/fetch'
 import * as validationLib from '_src/lib/validation'
 import * as sagas from './index'
 import * as searchActions from '../actions'
 import * as searchConstants from '../constants'
 import * as searchLib from '../lib/search'
+import autocompleteItemType from '_src/entities/autocomplete-item-type'
+import { searchService } from '_src/modules/api/index'
 
 describe('pushBasicSearchToUrl', () => {
   it('should create the url and push it', () => {
@@ -25,7 +26,6 @@ describe('pushBasicSearchToUrl', () => {
     )
 
     let result = generator.next()
-
     expect(result.value).toEqual(
       call(
         normalise,
@@ -35,7 +35,6 @@ describe('pushBasicSearchToUrl', () => {
     )
 
     result = generator.next({ term: 'normalised foo' })
-
     expect(result.value).toEqual(
       call(
         validationLib.validate,
@@ -46,7 +45,6 @@ describe('pushBasicSearchToUrl', () => {
     )
 
     result = generator.next()
-
     expect(result.value).toEqual(
       call(
         searchLib.createSearchPageUrl,
@@ -58,11 +56,9 @@ describe('pushBasicSearchToUrl', () => {
     )
 
     result = generator.next('/some/request/url')
-
     expect(result.value).toEqual(call(history.push, '/some/request/url'))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -76,7 +72,6 @@ describe('pushBasicSearchToUrl', () => {
     )
 
     let result = generator.next()
-
     expect(result.value).toEqual(
       call(
         normalise,
@@ -87,11 +82,9 @@ describe('pushBasicSearchToUrl', () => {
 
     const error = new Error('deliberately thrown')
     result = generator.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -106,11 +99,9 @@ describe('navigateToEntity', () => {
     )
 
     let result = generator.next()
-
     expect(result.value).toEqual(call(history.push, '/event/some-event-id'))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -121,11 +112,9 @@ describe('search', () => {
     const generator = sagas.search(action)
 
     let result = generator.next()
-
     expect(result.value).toEqual(call(sagas.autocompleteSearch, action))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -138,11 +127,9 @@ describe('search', () => {
     const generator = sagas.search(action)
 
     let result = generator.next()
-
     expect(result.value).toEqual(call(sagas.basicSearch, action))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -151,16 +138,13 @@ describe('search', () => {
     const generator = sagas.search(action)
 
     let result = generator.next()
-
     expect(result.value).toEqual(call(sagas.autocompleteSearch, action))
 
     const error = new Error('deliberately thrown')
     result = generator.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generator.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -201,23 +185,14 @@ describe('basicSearch', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next(null)
-
-    expect(result.value).toEqual(
-      call(searchLib.createBasicSearchRequestUrl, { term: 'normalised term' })
-    )
-
-    result = generatorClone.next('https://some/request/url')
-
     expect(result.value).toEqual(put(searchActions.startingBasicSearch()))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(searchActions.setBasicSearchParams({ term: 'normalised term' }))
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(
         initialize(searchConstants.BASIC_SEARCH_FORM_NAME, {
@@ -227,45 +202,47 @@ describe('basicSearch', () => {
     )
 
     result = generatorClone.next()
+    expect(result.value).toEqual(
+      call(searchLib.createBasicSearchQueryStringParams, {
+        term: 'normalised term'
+      })
+    )
 
-    expect(result.value).toEqual(call(fetchLib.get, 'https://some/request/url'))
+    result = generatorClone.next({ term: 'query string term' })
+    expect(result.value).toEqual(
+      call(searchService.basicSearch, { term: 'query string term' })
+    )
 
     result = generatorClone.next({ the: 'json' })
-
     expect(result.value).toEqual(
       put(searchActions.basicSearchSucceeded({ the: 'json' }))
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle a query that fails validation', () => {
     const generatorClone = generator.clone()
-
     const errors = ['some error']
-    let result = generatorClone.next(errors)
 
+    let result = generatorClone.next(errors)
     expect(result.value).toEqual(
       call(log.error, 'basicSearch validation errors', errors)
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle an error being raised', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
-    let result = generatorClone.throw(error)
 
+    let result = generatorClone.throw(error)
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       call(
         sagaLib.submitErrorHandler,
@@ -275,11 +252,9 @@ describe('basicSearch', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(searchActions.basicSearchFailed()))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -295,11 +270,9 @@ describe('autocompleteSearch', () => {
 
   it('should handle normalising and validating the query', () => {
     let result = generator.next()
-
     expect(result.value).toEqual(call(delay, 300))
 
     result = generator.next()
-
     expect(result.value).toEqual(
       call(
         normalise,
@@ -309,7 +282,6 @@ describe('autocompleteSearch', () => {
     )
 
     result = generator.next({ term: 'normalised term' })
-
     expect(result.value).toEqual(
       call(
         validationLib.validate,
@@ -324,52 +296,36 @@ describe('autocompleteSearch', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next()
-
     expect(result.value).toEqual(
-      call(searchLib.createAutocompleteSearchRequestUrl, {
+      call(searchLib.createAutocompleteQueryStringParams, {
         term: 'normalised term'
       })
     )
 
-    result = generatorClone.next('https://some/request/url')
-
-    expect(result.value).toEqual(call(fetchLib.get, 'https://some/request/url'))
-
-    result = generatorClone.next({ items: [{ id: 1 }] })
-
+    result = generatorClone.next({ term: 'query string term' })
     expect(result.value).toEqual(
-      put(
-        sagaLib.returnAsPromise(
-          [
-            {
-              id: 1,
-              autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY
-            }
-          ],
-          meta
-        )
-      )
+      call(searchService.autocompleteSearch, { term: 'query string term' })
     )
 
-    result = generatorClone.next()
+    const items = [{ id: 1, autocompleteItemType: autocompleteItemType.ENTITY }]
+    result = generatorClone.next(items)
+    expect(result.value).toEqual(put(sagaLib.returnAsPromise(items, meta)))
 
+    result = generatorClone.next()
     expect(result.done).toEqual(true)
   })
 
   it('should handle a query that fails validation', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
-    let result = generatorClone.throw(error)
 
+    let result = generatorClone.throw(error)
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(put(sagaLib.returnAsPromise([], meta)))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })

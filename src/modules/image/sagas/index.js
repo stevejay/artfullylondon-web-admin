@@ -11,14 +11,13 @@ import {
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import { put as httpPut } from '_src/lib/fetch'
 import { actions as notificationActions } from '_src/modules/notification'
-import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import * as uuidLib from '_src/lib/uuid'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as imageActions from '../actions'
 import * as imageConstants from '../constants'
+import { imageService } from '_src/modules/api'
 
 export function * getImages (parentFormName) {
   const formValues = yield select(getFormValues(parentFormName))
@@ -144,16 +143,8 @@ export function * addImage (action) {
   }
 
   try {
-    const token = yield call(getAuthTokenForCurrentUser)
-    const putUrl = `${process.env.WEBSITE_API_HOST_URL}/image-service/image/${id}`
-
-    const { json, timeout } = yield race({
-      json: call(
-        httpPut,
-        putUrl,
-        { url: values.imageUrl, type: entityType },
-        token
-      ),
+    const { image, timeout } = yield race({
+      image: call(imageService.addImage, entityType, id, values.imageUrl),
       timeout: call(delay, 30000)
     })
 
@@ -166,8 +157,8 @@ export function * addImage (action) {
       id: id,
       copyright: values.copyright,
       isMain,
-      ratio: json.image.ratio,
-      dominantColor: json.image.dominantColor
+      ratio: image.ratio,
+      dominantColor: image.dominantColor
     }
 
     yield put(arrayPush(parentFormName, 'images', newImage))

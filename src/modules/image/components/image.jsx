@@ -26,9 +26,12 @@ class Image extends React.PureComponent {
     }
 
     if (showCarousel) {
-      const carouselItems = images.map(image =>
-        imageLib.createItemsForImageCarousel(image)
-      )
+      const carouselItems = images.map(image => ({
+        original: imageLib.createImageUrl(image.id, '750x'),
+        ratio: image.ratio,
+        copyright: image.copyright,
+        dominantColor: image.dominantColor
+      }))
 
       return <ImageCarousel images={carouselItems} />
     }
@@ -38,7 +41,7 @@ class Image extends React.PureComponent {
         <div styleName='container'>
           <img
             styleName='img'
-            src={imageLib.createEntityPageImageUrl(images[0].id)}
+            src={imageLib.createImageUrl(images[0].id, '500x500')}
           />
         </div>
         <ImageCredit credit={images[0].copyright} />

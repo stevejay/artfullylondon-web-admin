@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
+import * as globalConstants from '_src/constants'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import entityType from '_src/entities/entity-type'
+import autocompleteItemType from '_src/entities/autocomplete-item-type'
 
 export const BASIC_SEARCH_FORM_NAME = 'BasicSearch'
 export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'
@@ -18,23 +21,15 @@ export const SEARCH_TYPE_EVENT = 'SEARCH_TYPE_EVENT'
 export const SEARCH_TYPE_AUTOCOMPLETE = 'SEARCH_TYPE_AUTOCOMPLETE'
 export const SEARCH_TYPE_MAP_SCROLLED = 'SEARCH_TYPE_MAP_SCROLLED'
 
-export const AUTOCOMPLETE_ITEM_TYPE_ENTITY = 'entity'
-export const AUTOCOMPLETE_ITEM_TYPE_LABEL = 'label'
-
-export const ALLOWED_AUTOCOMPLETE_ITEM_TYPES = [
-  AUTOCOMPLETE_ITEM_TYPE_ENTITY,
-  AUTOCOMPLETE_ITEM_TYPE_LABEL
-]
-
 export const AUTOCOMPLETE_ITEM_PROPTYPES = PropTypes.oneOfType([
   PropTypes.shape({
-    autocompleteItemType: PropTypes.oneOf(ALLOWED_AUTOCOMPLETE_ITEM_TYPES),
+    autocompleteItemType: PropTypes.oneOf(_.values(autocompleteItemType)),
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     entityType: entitiesPropTypes.ENTITY_TYPE.isRequired
   }),
   PropTypes.shape({
-    autocompleteItemType: PropTypes.oneOf(ALLOWED_AUTOCOMPLETE_ITEM_TYPES),
+    autocompleteItemType: PropTypes.oneOf(_.values(autocompleteItemType)),
     label: PropTypes.string.isRequired
   })
 ])
@@ -42,15 +37,6 @@ export const AUTOCOMPLETE_ITEM_PROPTYPES = PropTypes.oneOfType([
 export const AUTOCOMPLETE_ITEMS_PROPTYPES = PropTypes.arrayOf(
   AUTOCOMPLETE_ITEM_PROPTYPES.isRequired
 )
-
-export const DEFAULT_TAKE = 12
-
-export const ENTITY_TYPE_OPTIONS = [
-  { id: entityType.EVENT, label: 'Events' },
-  { id: entityType.VENUE, label: 'Venues' },
-  { id: entityType.TALENT, label: 'Talents' },
-  { id: entityType.ALL, label: 'All' }
-]
 
 export const ALLOWED_BASIC_SEARCH_ENTITY_TYPES = [
   entityType.EVENT,
@@ -66,7 +52,7 @@ const SKIP_NORMALISER = {
 
 const TAKE_NORMALISER = {
   toInt: true,
-  default: DEFAULT_TAKE
+  default: globalConstants.DEFAULT_TAKE
 }
 
 const TERM_NORMALISER = {

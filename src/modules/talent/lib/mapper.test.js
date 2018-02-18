@@ -1,6 +1,5 @@
 import * as talentMapper from './mapper'
 import * as dateLib from '_src/lib/date'
-import * as talentLib from '_src/lib/talent'
 import talentType from '_src/entities/talent-type'
 import statusType from '_src/entities/status-type'
 import { entityMapper } from '_src/modules/entity'
@@ -107,7 +106,6 @@ describe('getInitialValues', () => {
 
 describe('mapSubmittedValues', () => {
   it('should map the values', () => {
-    talentLib.isIndividualTalent = jest.fn().mockReturnValue(true)
     dateLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')
 
     entityMapper.mapSubmittedImages = jest

@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import AutocompleteHeaderItem from './autocomplete-header-item'
 import AutocompleteItem from './autocomplete-item'
 import * as searchConstants from '../../constants'
+import autocompleteItemType from '_src/entities/autocomplete-item-type'
 import './autocomplete-list.scss'
 
 const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (
   <ul styleName='container' className={className}>
     {items.map(
       (item, index) =>
-        (item.autocompleteItemType ===
-          searchConstants.AUTOCOMPLETE_ITEM_TYPE_LABEL
+        (item.autocompleteItemType === autocompleteItemType.LABEL
           ? <AutocompleteHeaderItem key={item.label} label={item.label} />
           : <AutocompleteItem
             key={item.id}

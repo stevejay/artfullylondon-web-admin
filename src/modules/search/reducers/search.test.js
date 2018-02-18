@@ -2,7 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './search'
 import * as searchActions from '../actions'
-import * as searchConstants from '../constants'
+import * as globalConstants from '_src/constants'
 import entityType from '_src/entities/entity-type'
 import { actions as userActions } from '_src/modules/user'
 import { SummaryEvent } from '_src/entities/event'
@@ -19,7 +19,7 @@ it('should have the correct initial state', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -34,7 +34,7 @@ it('should handle a set basic search params message', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -62,7 +62,7 @@ it('should handle starting a basic search', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -77,7 +77,7 @@ it('should handle starting a basic search', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -92,7 +92,7 @@ it('should handle a basic search succeeding', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -119,7 +119,7 @@ it('should handle a basic search succeeding', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: { the: 'params' },
     total: 100,
@@ -141,7 +141,7 @@ it('should handle a basic search failing', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -156,7 +156,7 @@ it('should handle a basic search failing', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,
@@ -181,7 +181,7 @@ it('should handle a log out message', () => {
       entityType: entityType.ALL,
       term: '',
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     },
     basicSearchResultParams: null,
     total: 0,

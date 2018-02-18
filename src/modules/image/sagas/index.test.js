@@ -4,7 +4,6 @@ import { call, race, put } from 'redux-saga/effects'
 import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
 import log from 'loglevel'
 
-import { put as httpPut } from '_src/lib/fetch'
 import * as uuidLib from '_src/lib/uuid'
 import * as sagas from './index'
 import * as imageConstants from '../constants'
@@ -12,7 +11,7 @@ import normalise from '_src/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
 import * as validationLib from '_src/lib/validation'
 import * as sagaLib from '_src/lib/saga'
-import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import { imageService } from '_src/modules/api'
 
 describe('getImages', () => {
   it('should get the images', () => {
@@ -320,27 +319,21 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generatorClone.next('some-token')
-
     expect(result.value).toEqual(
       race({
-        json: call(
-          httpPut,
-          'https://api.test.com/image-service/image/some-uuid',
-          { url: '/some/normalised/url', type: 'talent' },
-          'some-token'
+        image: call(
+          imageService.addImage,
+          'talent',
+          'some-uuid',
+          '/some/normalised/url'
         ),
         timeout: call(delay, 30000)
       })
     )
 
     result = generatorClone.next({
-      json: { image: { ratio: 3, dominantColor: 'AAAAAA' } }
+      image: { ratio: 3, dominantColor: 'AAAAAA' }
     })
-
     expect(result.value).toEqual(
       put(
         arrayPush('ParentFormName', 'images', {
@@ -354,19 +347,16 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(reset(imageConstants.IMAGE_EDITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(stopSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
@@ -387,31 +377,23 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generatorClone.next('some-token')
-
     expect(result.value).toEqual(
       race({
-        json: call(
-          httpPut,
-          'https://api.test.com/image-service/image/some-uuid',
-          { url: '/some/normalised/url', type: 'talent' },
-          'some-token'
+        image: call(
+          imageService.addImage,
+          'talent',
+          'some-uuid',
+          '/some/normalised/url'
         ),
         timeout: call(delay, 30000)
       })
     )
 
-    result = generatorClone.next({ timeout: true })
-
     const error = new Error('The server took too long to process the image')
-
+    result = generatorClone.next({ timeout: true })
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(
         notificationActions.addErrorNotification(
@@ -422,7 +404,6 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       call(
         sagaLib.submitErrorHandler,
@@ -432,17 +413,14 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle normalisation failing', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(
       call(
         sagaLib.submitErrorHandler,
@@ -452,7 +430,6 @@ describe('addImage', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })

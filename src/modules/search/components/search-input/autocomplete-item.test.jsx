@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchInputAutocompleteItem from './autocomplete-item'
-import * as searchConstants from '../../constants'
+import autocompleteItemType from '_src/entities/autocomplete-item-type'
 
 it('should render correctly an autocomplete entity that is not currently selected', () => {
   const wrapper = shallow(
@@ -10,7 +10,7 @@ it('should render correctly an autocomplete entity that is not currently selecte
       index={1}
       currentIndex={2}
       item={{
-        autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY,
+        autocompleteItemType: autocompleteItemType.ENTITY,
         id: 'some-id',
         name: 'Some Name',
         entityType: 'event',
@@ -29,7 +29,7 @@ it('should render correctly an autocomplete entity that is currently selected', 
       index={1}
       currentIndex={1}
       item={{
-        autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY,
+        autocompleteItemType: autocompleteItemType.ENTITY,
         id: 'some-id',
         name: 'Some Name',
         entityType: 'event',
@@ -48,7 +48,7 @@ it('should handle a click on an item', () => {
   const stopPropagation = jest.fn()
 
   const item = {
-    autocompleteItemType: searchConstants.AUTOCOMPLETE_ITEM_TYPE_ENTITY,
+    autocompleteItemType: autocompleteItemType.ENTITY,
     id: 'some-id',
     name: 'Some Name',
     entityType: 'event'

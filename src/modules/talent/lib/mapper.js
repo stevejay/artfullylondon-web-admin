@@ -1,7 +1,6 @@
 import talentType from '_src/entities/talent-type'
 import statusType from '_src/entities/status-type'
 import * as dateLib from '_src/lib/date'
-import * as talentLib from '_src/lib/talent'
 import { entityMapper } from '_src/modules/entity'
 
 export function getInitialValues (talent) {
@@ -43,7 +42,7 @@ export function getInitialValues (talent) {
 }
 
 export function mapSubmittedValues (values) {
-  const isIndividual = talentLib.isIndividualTalent(values.talentType)
+  const isIndividual = values.talentType === talentType.INDIVIDUAL
   const firstNames = isIndividual ? (values.firstNames || '').trim() : ''
   // TODO this should be driven by the db:
   const dbDate = dateLib.getDateNowForDatabase()

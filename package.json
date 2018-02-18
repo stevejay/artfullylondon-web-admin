@@ -148,7 +148,7 @@
     "moment-timezone": "~0.5.13",
     "normalise-request": "^1.4.4",
     "prop-types": "^15.5.10",
-    "query-string": "^5.0.1",
+    "query-string": "^5.1.0",
     "react": "^16.2.0",
     "react-day-picker": "^7.0.5",
     "react-dom": "^16.2.0",

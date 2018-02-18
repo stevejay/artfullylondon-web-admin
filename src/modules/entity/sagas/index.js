@@ -3,15 +3,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 // import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
 import { startSubmit, stopSubmit } from 'redux-form'
-import { get, put as httpPut, post } from '_src/lib/fetch'
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
 import history from '_src/history'
+import { eventService } from '_src/modules/api'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as entityActions from '../actions'
-import { getAuthTokenForCurrentUser } from '_src/modules/user'
 import { actions as notificationActions } from '_src/modules/notification'
 
 export function * getEntity (action) {
@@ -20,12 +19,8 @@ export function * getEntity (action) {
   try {
     yield put(entityActions.clearEntity())
     yield put(entityActions.getEntityStarted(id))
-
-    const token = yield call(getAuthTokenForCurrentUser)
-    const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/${entityType}/${id}`
-    const json = yield call(get, url, token)
-
-    yield put(entityActions.getEntitySucceeded(entityType, json.entity))
+    const entity = yield call(eventService.getEntity, entityType, id)
+    yield put(entityActions.getEntitySucceeded(entityType, entity))
   } catch (err) {
     yield call(log.error, err)
     yield put(entityActions.getEntityFailed())
@@ -36,7 +31,7 @@ export function * saveEntity ({
   payload: {
     entityType,
     values: payloadValues,
-    isEdit,
+    isEdit, // TODO infer from having no id in payload.values?
     formName,
     normaliser,
     constraint,
@@ -48,30 +43,21 @@ export function * saveEntity ({
     const values = yield call(normalise, payloadValues, normaliser)
     yield call(validationLib.validate, values, constraint)
 
-    const token = yield call(getAuthTokenForCurrentUser)
-    let json = null
-
-    if (isEdit) {
-      const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}/${values.id}`
-      json = yield call(httpPut, url, mapper(values), token)
-    } else {
-      const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/${entityType}`
-      json = yield call(post, url, mapper(values), token)
-    }
-
-    yield put(stopSubmit(formName))
-    yield call(history.push, `/${entityType}/${json.entity.id}`)
-  } catch (err) {
-    yield call(log.error, err)
-
-    yield put(
-      notificationActions.addErrorNotification(
-        'Save Failed',
-        // message: 'This form has errors. Please correct them and try again.'
-        err.message
-      )
+    const entity = yield call(
+      eventService.saveEntity,
+      entityType,
+      values,
+      mapper,
+      isEdit
     )
 
+    yield put(stopSubmit(formName))
+    yield call(history.push, `/${entityType}/${entity.id}`)
+  } catch (err) {
+    yield call(log.error, err)
+    yield put(
+      notificationActions.addErrorNotification('Save Failed', err.message)
+    )
     yield call(sagaLib.submitErrorHandler, err, formName)
   }
 }

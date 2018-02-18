@@ -13,6 +13,7 @@ import SearchResults from '../components/search/results'
 import SectionHeading from '_src/components/section/heading'
 import BasicSearchForm from '../forms/basic-search'
 import { selectors as searchSelectors } from '../reducers'
+import * as globalConstants from '_src/constants'
 import * as dateLib from '_src/lib/date'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
@@ -33,15 +34,15 @@ export class SearchResultsPage extends React.Component {
   handlePageClick = pageNumber => {
     this._pushBasicSearchToUrl({
       query: this.props.resultParams,
-      skip: (pageNumber - 1) * searchConstants.DEFAULT_TAKE,
-      take: searchConstants.DEFAULT_TAKE
+      skip: (pageNumber - 1) * globalConstants.DEFAULT_TAKE,
+      take: globalConstants.DEFAULT_TAKE
     })
   }
   handleSubmit = params => {
     this._pushBasicSearchToUrl({
       query: params,
       skip: 0,
-      take: searchConstants.DEFAULT_TAKE
+      take: globalConstants.DEFAULT_TAKE
     })
   }
   handleMoreResultsClick = ({ entityType }) => {
