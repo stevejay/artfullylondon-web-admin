@@ -8,7 +8,7 @@ const TAG_SERVICE_URL = `${process.env.WEBSITE_API_HOST_URL}/tag-service`
 export function * getTags (tagType) {
   const token = yield call(getAuthTokenForCurrentUser)
   const url = `${TAG_SERVICE_URL}/tags/${tagType}`
-  const json = call(fetchLib.get, url, token)
+  const json = yield call(fetchLib.get, url, token)
   return json.tags[tagType] || []
 }
 
@@ -16,7 +16,7 @@ export function * addTag (values) {
   const { tagType, label } = values
   const token = yield call(getAuthTokenForCurrentUser)
   const url = `${TAG_SERVICE_URL}/tag/${tagType}`
-  const json = call(fetchLib.post, url, { label }, token)
+  const json = yield call(fetchLib.post, url, { label }, token)
   return json.tag
 }
 

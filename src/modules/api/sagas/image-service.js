@@ -9,7 +9,7 @@ export function * addImage (entityType, id, imageUrl, copyright, isMain) {
   const token = yield call(getAuthTokenForCurrentUser)
   const url = `${IMAGE_SERVICE_URL}/image/${id}`
 
-  const json = call(
+  const json = yield call(
     fetchLib.put,
     url,
     { url: imageUrl, type: entityType },

@@ -10,8 +10,8 @@ export function * getVenueEventMonitors (venueId) {
   const url = `${MONITOR_SERVICE_URL}/monitor/venue/${venueId}/event/`
   const json = yield call(fetchLib.get, url, token)
 
-  json.items.forEach(element => {
-    element.key = element.externalEventId
+  json.items.forEach(item => {
+    item.key = item.externalEventId
   })
 
   return json.items
@@ -34,10 +34,8 @@ export function * getVenueMonitors (venueId) {
   const url = `${MONITOR_SERVICE_URL}/monitor/venue/${venueId}`
   const json = yield call(fetchLib.get, url, token)
 
-  console.log('json', JSON.stringify(json))
-
-  json.items.forEach(element => {
-    element.key = element.venueId
+  json.items.forEach(item => {
+    item.key = item.venueId
   })
 
   return json.items
