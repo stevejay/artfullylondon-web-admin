@@ -1,5 +1,8 @@
 # Artfully London Admin App
 
+Live site is [here](https://www.artfully-admin.site).
+For readonly access, use the username `readonly` and the password `Readonly1`.
+
 ## Prerequisites
 
 1. Install `yarn` and `standard` globally.

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rimraf ./build && NODE_ENV=production webpack -p --bail",
     "serve": "firebase serve --project artfullylondon-prod-admin",
-    "deploy": "firebase deploy",
+    "deploy": "firebase deploy --project artfullylondon-prod-admin",
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
     "lint": "standard --fix",
     "test": "jest --no-cache",
