@@ -1,7 +1,7 @@
 import * as accessLib from './access'
-import wheelchairAccessType from '_src/entities/wheelchair-access-type'
-import disabledBathroomType from '_src/entities/disabled-bathroom-type'
-import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
+import wheelchairAccessType from '_src/entities/types/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/types/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/types/hearing-facilities-type'
 
 describe('getAccessText', () => {
   it('should return correct text when has all types known and no access link', () => {

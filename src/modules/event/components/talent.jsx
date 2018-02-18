@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { ImagePlaceholder } from '_src/modules/image'
 import * as imageLib from '_src/lib/image'
 import { EventSummaryTalent } from '_src/entities/talent'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 import './talent.scss'
 
 class EventTalentComponent extends React.PureComponent {

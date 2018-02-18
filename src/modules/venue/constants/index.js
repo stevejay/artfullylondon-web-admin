@@ -1,9 +1,9 @@
 import _ from 'lodash'
 
-import wheelchairAccessType from '_src/entities/wheelchair-access-type'
-import disabledBathroomType from '_src/entities/disabled-bathroom-type'
-import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
-import venueType from '_src/entities/venue-type'
+import wheelchairAccessType from '_src/entities/types/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/types/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/types/hearing-facilities-type'
+import venueType from '_src/entities/types/venue-type'
 
 export const EDIT_VENUE_FORM_NAME = 'EditVenue'
 

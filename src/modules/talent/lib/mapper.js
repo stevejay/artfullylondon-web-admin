@@ -1,5 +1,5 @@
-import talentType from '_src/entities/talent-type'
-import statusType from '_src/entities/status-type'
+import talentType from '_src/entities/types/talent-type'
+import statusType from '_src/entities/types/status-type'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 

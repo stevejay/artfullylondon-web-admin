@@ -16,52 +16,32 @@ exports[`should render correctly 1`] = `
     <EntityInfoBar
       entity={
         FullEventSeries {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "images": Array [],
-            "name": "The Name",
-          },
+          "images": Array [],
+          "name": "The Name",
         }
       }
     />
     <EntityDescription
       entity={
         FullEventSeries {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "images": Array [],
-            "name": "The Name",
-          },
+          "images": Array [],
+          "name": "The Name",
         }
       }
     />
     <EntityWeSay
       entity={
         FullEventSeries {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "images": Array [],
-            "name": "The Name",
-          },
+          "images": Array [],
+          "name": "The Name",
         }
       }
     />
     <EntityExternalLinks
       entity={
         FullEventSeries {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "images": Array [],
-            "name": "The Name",
-          },
+          "images": Array [],
+          "name": "The Name",
         }
       }
     />

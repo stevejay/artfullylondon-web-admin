@@ -1,13 +1,9 @@
 import _ from 'lodash'
 
 import { Entity } from '_src/entities/entity'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 export class FullTalent extends Entity {
-  constructor (entity) {
-    super(entity)
-  }
-
   get entityType () {
     return entityType.TALENT
   }
@@ -61,10 +57,6 @@ export class SummaryTalent {
 // talent.characters = (talent.characters || []).join(', ')
 
 export class EventSummaryTalent extends SummaryTalent {
-  constructor (entity) {
-    super(entity)
-  }
-
   createRolesString () {
     return (this.roles || []).join(' / ')
   }

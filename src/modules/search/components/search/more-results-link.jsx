@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 import './more-results-link.scss'
 
 class MoreResultsLink extends ShouldNeverUpdateComponent {

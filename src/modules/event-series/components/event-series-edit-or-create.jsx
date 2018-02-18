@@ -15,7 +15,7 @@ import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import * as eventSeriesConstants from '../constants'
 import * as eventSeriesMapper from '../lib/mapper'
 import { FullEventSeries } from '_src/entities/event-series'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 export class EventSeriesEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {

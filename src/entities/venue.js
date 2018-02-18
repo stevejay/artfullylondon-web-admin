@@ -1,10 +1,10 @@
 import { LinkCollection } from '_src/entities/link-collection'
-import linkType from '_src/entities/link-type'
+import linkType from '_src/entities/types/link-type'
 import * as venueLib from '_src/lib/venue'
 import * as entityLib from '_src/lib/entity'
 import * as timeLib from '_src/lib/time'
-import entityType from '_src/entities/entity-type'
-import venueType from '_src/entities/venue-type'
+import entityType from '_src/entities/types/entity-type'
+import venueType from '_src/entities/types/venue-type'
 
 const NEWLINES_REGEX = /\n/g
 

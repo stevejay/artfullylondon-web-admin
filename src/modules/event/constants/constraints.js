@@ -1,8 +1,8 @@
 import _ from 'lodash'
-import eventType from '_src/entities/event-type'
-import costType from '_src/entities/cost-type'
-import bookingType from '_src/entities/booking-type'
-import occurrenceType from '_src/entities/occurrence-type'
+import eventType from '_src/entities/types/event-type'
+import costType from '_src/entities/types/cost-type'
+import bookingType from '_src/entities/types/booking-type'
+import occurrenceType from '_src/entities/types/occurrence-type'
 
 const DATE_REGEX = /^[12]\d\d\d\/[01]\d\/[0123]\d$|^$/
 const MONEY_REGEX = /^[0-9]+(?:\.[0-9]{1,2})?$|^$/

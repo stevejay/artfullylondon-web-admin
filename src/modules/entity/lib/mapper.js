@@ -3,7 +3,7 @@ import RichTextEditor from 'react-rte'
 import * as imageLib from '_src/lib/image'
 import * as entityLib from '_src/lib/entity'
 import * as dateLib from '_src/lib/date'
-import statusType from '_src/entities/status-type'
+import statusType from '_src/entities/types/status-type'
 
 // TODO maybe make part of domain
 const IMAGE_STATUS_PROCESSING = 'Processing'

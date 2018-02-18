@@ -1,149 +1,87 @@
 import { SummaryEventSeries, FullEventSeries } from '_src/entities/event-series'
-import linkType from '_src/entities/link-type'
 
 describe('SummaryEventSeries', () => {
-  it('should have correct entityType', () => {
-    const subject = new SummaryEventSeries({})
-    expect(subject.entityType).toBe('event-series')
+  it('should construct an occasional event series', () => {
+    const subject = new SummaryEventSeries({
+      entityType: 'event-series',
+      id: 'event-series-id',
+      status: 'Active',
+      name: 'Bang Said The Gun',
+      eventSeriesType: 'Occasional',
+      occurrence: 'Third Thursday of each month',
+      summary: 'A poetry riot',
+      image: 'abcd1234abcd1234abcd1234abcd1234',
+      imageCopyright: 'Foo',
+      imageRatio: 1.2
+    })
+
+    expect(subject.entityType).toEqual('event-series')
+    expect(subject.id).toEqual('event-series-id')
+    expect(subject.key).toEqual('event-series-id')
+    expect(subject.name).toEqual('Bang Said The Gun')
+    expect(subject.status).toEqual('Active')
+    expect(subject.eventSeriesType).toEqual('Occasional')
+    expect(subject.image).toEqual('abcd1234abcd1234abcd1234abcd1234')
+    expect(subject.imageCopyright).toEqual('Foo')
+    expect(subject.imageRatio).toEqual(1.2)
+    expect(subject.hasImage).toEqual(true)
+    expect(subject.entityTypeLabel).toEqual('Event Series')
+    expect(subject.url).toEqual('/event-series/event-series-id')
+    expect(subject.eventSeriesTypeLabel).toEqual('series')
   })
 
-  it('should have correct entityTypeLabel', () => {
-    const subject = new SummaryEventSeries({})
-    expect(subject.entityTypeLabel).toBe('Event Series')
-  })
+  it('should construct an season event series with no image', () => {
+    const subject = new SummaryEventSeries({
+      entityType: 'event-series',
+      id: 'event-series-id',
+      status: 'Active',
+      name: 'Bang Said The Gun',
+      eventSeriesType: 'Season',
+      occurrence: 'Third Thursday of each month',
+      summary: 'A poetry riot'
+    })
 
-  it('should have correct id', () => {
-    const subject = new SummaryEventSeries({ id: 'some-id' })
-    expect(subject.id).toBe('some-id')
-  })
-
-  it('should have correct key', () => {
-    const subject = new SummaryEventSeries({ id: 'some-id' })
-    expect(subject.key).toBe('some-id')
-  })
-
-  it('should have correct status', () => {
-    const subject = new SummaryEventSeries({ status: 'Active' })
-    expect(subject.status).toBe('Active')
-  })
-
-  it('should have correct name', () => {
-    const subject = new SummaryEventSeries({ name: 'The Event Series' })
-    expect(subject.name).toBe('The Event Series')
-  })
-
-  it('should have correct eventSeriesType', () => {
-    const subject = new SummaryEventSeries({ eventSeriesType: 'Series' })
-    expect(subject.eventSeriesType).toBe('Series')
-  })
-
-  it('should have correct eventSeriesTypeLabel for an occasional series', () => {
-    const subject = new SummaryEventSeries({ eventSeriesType: 'Occasional' })
-    expect(subject.eventSeriesTypeLabel).toBe('series')
-  })
-
-  it('should have correct eventSeriesTypeLabel for a season series', () => {
-    const subject = new SummaryEventSeries({ eventSeriesType: 'Season' })
-    expect(subject.eventSeriesTypeLabel).toBe('season')
-  })
-
-  it('should have correct occurrence', () => {
-    const subject = new SummaryEventSeries({ occurrence: 'Some occurrence' })
-    expect(subject.occurrence).toBe('Some occurrence')
-  })
-
-  it('should have correct summary', () => {
-    const subject = new SummaryEventSeries({ summary: 'Summary' })
-    expect(subject.summary).toBe('Summary')
-  })
-
-  it('should have correct url', () => {
-    const subject = new SummaryEventSeries({ id: 'some-series' })
-    expect(subject.url).toBe('/event-series/some-series')
-  })
-
-  it('should have correct editUrl', () => {
-    const subject = new SummaryEventSeries({ id: 'some-series' })
-    expect(subject.editUrl).toBe('/event-series/edit/some-series')
-  })
-
-  it('should have correct image', () => {
-    const subject = new SummaryEventSeries({ image: '123456' })
-    expect(subject.image).toBe('123456')
-  })
-
-  it('should have correct imageCopyright', () => {
-    const subject = new SummaryEventSeries({ imageCopyright: 'The copyright' })
-    expect(subject.imageCopyright).toBe('The copyright')
-  })
-
-  it('should have correct imageRatio', () => {
-    const subject = new SummaryEventSeries({ imageRatio: 2 })
-    expect(subject.imageRatio).toBe(2)
-  })
-
-  it('should have correct hasImage when has image', () => {
-    const subject = new SummaryEventSeries({ image: '123456' })
-    expect(subject.hasImage).toBe(true)
-  })
-
-  it('should have correct hasImage when has no image', () => {
-    const subject = new SummaryEventSeries({ image: null })
-    expect(subject.hasImage).toBe(false)
+    expect(subject.entityType).toEqual('event-series')
+    expect(subject.id).toEqual('event-series-id')
+    expect(subject.key).toEqual('event-series-id')
+    expect(subject.name).toEqual('Bang Said The Gun')
+    expect(subject.status).toEqual('Active')
+    expect(subject.eventSeriesType).toEqual('Season')
+    expect(subject.hasImage).toEqual(false)
+    expect(subject.entityTypeLabel).toEqual('Event Series')
+    expect(subject.url).toEqual('/event-series/event-series-id')
+    expect(subject.eventSeriesTypeLabel).toEqual('season')
   })
 })
 
 describe('FullEventSeries', () => {
-  it('should have correct images', () => {
-    const subject = new FullEventSeries({ images: [{ id: 'some-id' }] })
-    expect(subject.images).toEqual([{ id: 'some-id' }])
-  })
-
-  it('should have correct description', () => {
-    const subject = new FullEventSeries({ description: 'Some description' })
-    expect(subject.description).toBe('Some description')
-  })
-
-  it('should have correct descriptionCredit', () => {
+  it('should construct a full event series', () => {
     const subject = new FullEventSeries({
-      descriptionCredit: 'Some description credit'
-    })
-    expect(subject.descriptionCredit).toBe('Some description credit')
-  })
-
-  it('should have correct weSay', () => {
-    const subject = new FullEventSeries({ weSay: 'We say' })
-    expect(subject.weSay).toBe('We say')
-  })
-
-  it('should have correct getInfoBarLabel for an occasional series', () => {
-    const subject = new FullEventSeries({ eventSeriesType: 'Occasional' })
-    expect(subject.getInfoBarLabel()).toBe('Occasional Series')
-  })
-
-  it('should have correct getInfoBarLabel for a season series', () => {
-    const subject = new FullEventSeries({ eventSeriesType: 'Season' })
-    expect(subject.getInfoBarLabel()).toBe('Season Series')
-  })
-
-  it('should create a formatted description', () => {
-    const subject = new FullEventSeries({
-      description: 'The Description',
-      descriptionCredit: 'The Credit'
+      id: 'event-series-id',
+      status: 'Active',
+      name: 'Bang Said The Gun',
+      eventSeriesType: 'Occasional',
+      occurrence: 'Third Thursday of each month',
+      summary: 'A poetry riot',
+      description: 'Poetry for people who dont like poetry.',
+      descriptionCredit: 'Some description credit',
+      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
+      images: [
+        {
+          id: 'abcd1234abcd1234abcd1234abcd1234',
+          ratio: 1.2,
+          copyright: 'Foo'
+        }
+      ],
+      weSay: 'something',
+      version: 1,
+      schemeVersion: 3,
+      createdDate: '2016/01/10',
+      updatedDate: '2016/01/11'
     })
 
-    expect(subject.createFormattedDescription()).toBe(
-      'The Description<p><em>(Description by The Credit.)</em></p>'
-    )
-  })
-
-  it('should get a link by type', () => {
-    const wikipediaLink = { type: linkType.WIKIPEDIA }
-
-    const subject = new FullEventSeries({
-      links: [wikipediaLink]
-    })
-
-    expect(subject.getLinkByType(linkType.WIKIPEDIA)).toBe(wikipediaLink)
+    expect(subject.name).toEqual('Bang Said The Gun')
+    expect(subject.getInfoBarLabel()).toEqual('Occasional Series')
+    expect(subject.editUrl).toEqual('/event-series/edit/event-series-id')
   })
 })

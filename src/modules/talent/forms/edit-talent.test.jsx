@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditTalentForm } from './edit-talent'
-import talentType from '_src/entities/talent-type'
+import talentType from '_src/entities/types/talent-type'
 
 it('should render correctly when editing an individual', () => {
   const wrapper = shallow(

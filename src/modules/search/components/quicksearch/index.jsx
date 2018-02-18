@@ -11,7 +11,7 @@ import IconButton from '_src/components/button/icon'
 import QuicksearchForm from '../../forms/quicksearch'
 import ModalTransition from './modal-transition'
 import * as searchActions from '../../actions'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 import './index.scss'
 
 export class Quicksearch extends React.Component {

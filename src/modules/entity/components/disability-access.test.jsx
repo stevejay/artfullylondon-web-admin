@@ -2,9 +2,9 @@ import React from 'react'
 
 import EntityDisabilityAccess from './disability-access'
 import * as accessLib from '../lib/access'
-import wheelchairAccessType from '_src/entities/wheelchair-access-type'
-import disabledBathroomType from '_src/entities/disabled-bathroom-type'
-import hearingFacilitiesType from '_src/entities/hearing-facilities-type'
+import wheelchairAccessType from '_src/entities/types/wheelchair-access-type'
+import disabledBathroomType from '_src/entities/types/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/entities/types/hearing-facilities-type'
 import { FullVenue } from '_src/entities/venue'
 
 it('should render correctly', () => {

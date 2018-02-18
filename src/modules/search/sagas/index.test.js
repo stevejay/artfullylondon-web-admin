@@ -12,7 +12,7 @@ import * as sagas from './index'
 import * as searchActions from '../actions'
 import * as searchConstants from '../constants'
 import * as searchLib from '../lib/search'
-import autocompleteItemType from '_src/entities/autocomplete-item-type'
+import autocompleteItemType from '_src/entities/types/autocomplete-item-type'
 import { searchService } from '_src/modules/api/index'
 
 describe('pushBasicSearchToUrl', () => {

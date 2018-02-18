@@ -7,7 +7,7 @@ import { SummaryVenue } from '_src/entities/venue'
 import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
 import * as globalConstants from '_src/constants'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 const initialState = {
   searchInProgress: false,

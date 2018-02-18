@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import LinksGridRow from './grid-row'
-import linkType from '_src/entities/link-type'
+import linkType from '_src/entities/types/link-type'
 
 it('should render correctly', () => {
   const wrapper = shallow(

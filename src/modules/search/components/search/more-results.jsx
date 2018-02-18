@@ -6,7 +6,7 @@ import ShouldNeverUpdateComponent
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/components/divider'
 import * as entitiesPropTypes from '_src/entities/prop-types'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 // TODO fix this:
 import * as searchLib from '../../lib/search'
 

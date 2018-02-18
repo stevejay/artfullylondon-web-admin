@@ -2,7 +2,7 @@ import React from 'react'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import linkType from '_src/entities/link-type'
+import linkType from '_src/entities/types/link-type'
 import * as entitiesPropTypes from '_src/entities/prop-types'
 import './description.scss'
 

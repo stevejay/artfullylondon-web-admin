@@ -1,4 +1,4 @@
-import talentType from '_src/entities/talent-type'
+import talentType from '_src/entities/types/talent-type'
 
 export const EDIT_TALENT_FORM_NAME = 'EditTalent'
 

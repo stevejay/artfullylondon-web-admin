@@ -8,9 +8,9 @@ import TagsIcon from 'react-icons/lib/fa/tags'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import linkType from '_src/entities/link-type'
+import linkType from '_src/entities/types/link-type'
 import * as entitiesPropTypes from '_src/entities/prop-types'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 import './info-bar.scss'
 
 class EntityInfoBar extends ShouldNeverUpdateComponent {

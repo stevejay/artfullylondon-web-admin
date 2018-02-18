@@ -15,7 +15,7 @@ import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import * as talentConstants from '../constants'
 import * as talentMapper from '../lib/mapper'
 import { FullTalent } from '_src/entities/talent'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 export class TalentEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {

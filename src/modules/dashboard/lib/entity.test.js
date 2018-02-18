@@ -1,5 +1,5 @@
 import * as entityLib from './entity'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 describe('getLabelForEntityType', () => {
   const tests = [

@@ -10,7 +10,7 @@ import * as dateLib from '_src/lib/date'
 import * as globalConstants from '_src/constants'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')
 

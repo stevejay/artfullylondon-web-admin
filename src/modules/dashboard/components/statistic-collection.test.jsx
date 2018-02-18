@@ -1,7 +1,7 @@
 import React from 'react'
 
 import StatisticCollection from './statistic-collection'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 it('should render correctly', () => {
   const entityCounts = {

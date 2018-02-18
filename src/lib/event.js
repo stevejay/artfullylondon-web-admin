@@ -1,10 +1,10 @@
 import React from 'react' // required
 
-import eventType from '_src/entities/event-type'
-import linkType from '_src/entities/link-type'
-import costType from '_src/entities/cost-type'
-import bookingType from '_src/entities/booking-type'
-import occurrenceType from '_src/entities/occurrence-type'
+import eventType from '_src/entities/types/event-type'
+import linkType from '_src/entities/types/link-type'
+import costType from '_src/entities/types/cost-type'
+import bookingType from '_src/entities/types/booking-type'
+import occurrenceType from '_src/entities/types/occurrence-type'
 import * as dateLib from '_src/lib/date'
 
 export function eventIsPerformance (type) {

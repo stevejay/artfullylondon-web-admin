@@ -297,9 +297,7 @@ exports[`should render a current event correctly that has full details 1`] = `
               "longitude": 2,
             },
           },
-          "eventSeries": SummaryEventSeries {
-            "entity": Object {},
-          },
+          "eventSeries": SummaryEventSeries {},
           "groupedDates": null,
           "isExpiredOn": [MockFunction] {
             "calls": Array [
@@ -355,9 +353,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   "longitude": 2,
                 },
               },
-              "eventSeries": SummaryEventSeries {
-                "entity": Object {},
-              },
+              "eventSeries": SummaryEventSeries {},
               "groupedDates": null,
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
@@ -409,9 +405,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   "longitude": 2,
                 },
               },
-              "eventSeries": SummaryEventSeries {
-                "entity": Object {},
-              },
+              "eventSeries": SummaryEventSeries {},
               "groupedDates": null,
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
@@ -463,9 +457,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   "longitude": 2,
                 },
               },
-              "eventSeries": SummaryEventSeries {
-                "entity": Object {},
-              },
+              "eventSeries": SummaryEventSeries {},
               "groupedDates": null,
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
@@ -495,11 +487,7 @@ exports[`should render a current event correctly that has full details 1`] = `
           }
         />
         <EventSeriesLink
-          eventSeries={
-            SummaryEventSeries {
-              "entity": Object {},
-            }
-          }
+          eventSeries={SummaryEventSeries {}}
         />
         <EntityExternalLinks
           entity={
@@ -524,9 +512,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   "longitude": 2,
                 },
               },
-              "eventSeries": SummaryEventSeries {
-                "entity": Object {},
-              },
+              "eventSeries": SummaryEventSeries {},
               "groupedDates": null,
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
@@ -598,9 +584,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   "longitude": 2,
                 },
               },
-              "eventSeries": SummaryEventSeries {
-                "entity": Object {},
-              },
+              "eventSeries": SummaryEventSeries {},
               "groupedDates": null,
               "isExpiredOn": [MockFunction] {
                 "calls": Array [

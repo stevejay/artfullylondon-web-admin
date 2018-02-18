@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ImagePlaceholder from './image-placeholder'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 it('should render a venue placeholder image correctly', () => {
   const wrapper = shallow(

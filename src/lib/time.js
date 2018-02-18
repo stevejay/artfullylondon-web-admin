@@ -5,8 +5,8 @@ import _ from 'lodash'
 import * as eventLib from '_src/lib/event'
 import * as dateLib from '_src/lib/date'
 import * as globalConstants from '_src/constants'
-import occurrenceType from '_src/entities//occurrence-type'
-import entityType from '_src/entities/entity-type'
+import occurrenceType from '_src/entities/types/occurrence-type'
+import entityType from '_src/entities/types/entity-type'
 
 const DAYS_OF_WEEK_MAPPING = [
   { value: 0, label: 'Monday' },

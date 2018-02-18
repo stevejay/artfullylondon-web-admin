@@ -2,7 +2,7 @@ import { call } from 'redux-saga/effects'
 import queryString from 'query-string'
 
 import * as fetchLib from '_src/lib/fetch'
-import autocompleteItemType from '_src/entities/autocomplete-item-type'
+import autocompleteItemType from '_src/entities/types/autocomplete-item-type'
 
 const SEARCH_SERVICE_URL = `${process.env.WEBSITE_API_HOST_URL}/search-service`
 

@@ -1,4 +1,4 @@
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 export class Tag {
   constructor (entity) {

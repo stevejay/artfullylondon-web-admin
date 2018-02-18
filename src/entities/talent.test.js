@@ -3,8 +3,6 @@ import {
   SummaryTalent,
   EventSummaryTalent
 } from '_src/entities/talent'
-import * as entityLib from '_src/lib/entity'
-import linkType from '_src/entities/link-type'
 
 describe('SummaryTalent', () => {
   it('should construct an individual with an image', () => {
@@ -152,5 +150,8 @@ describe('FullTalent', () => {
     })
 
     expect(subject.lastName).toEqual('Cracknell')
+    expect(subject.name).toEqual('Carrie Cracknell')
+    expect(subject.getInfoBarLabel()).toEqual('Actor')
+    expect(subject.editUrl).toEqual('/talent/edit/talent-id')
   })
 })

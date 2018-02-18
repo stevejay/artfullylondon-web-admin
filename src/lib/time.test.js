@@ -1,6 +1,6 @@
-import eventType from '_src/entities/event-type'
-import occurrenceType from '_src/entities/occurrence-type'
-import entityType from '_src/entities/entity-type'
+import eventType from '_src/entities/types/event-type'
+import occurrenceType from '_src/entities/types/occurrence-type'
+import entityType from '_src/entities/types/entity-type'
 import * as timeLib from '_src/lib/time'
 
 const yesterday = '2016/01/01' // 1st Jan 2016

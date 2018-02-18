@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { LinksField } from './field'
-import linkType from '_src/entities/link-type'
+import linkType from '_src/entities/types/link-type'
 import * as linkActions from '../actions'
 import AddLinkForm from '../forms/add-link'
 import LinksGridRow from './grid-row'

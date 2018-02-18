@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { DashboardPage } from './dashboard'
 import * as dashboardActions from '../actions'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 it('should render correctly while the entity counts are being fetched', () => {
   const wrapper = shallow(

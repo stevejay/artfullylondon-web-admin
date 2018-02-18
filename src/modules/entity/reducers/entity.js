@@ -5,7 +5,7 @@ import { FullEventSeries } from '_src/entities/event-series'
 import { FullTalent } from '_src/entities/talent'
 import { FullVenue } from '_src/entities/venue'
 import { types } from '../actions'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 const initialState = {
   entityId: null,

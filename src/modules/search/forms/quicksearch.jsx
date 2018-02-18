@@ -10,7 +10,7 @@ import SearchInputFieldBasic from '../components/search-input/field-basic'
 import SearchInputToolbar from '../components/search-input/toolbar'
 import * as globalConstants from '_src/constants'
 import * as searchConstants from '../constants'
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 
 export class QuicksearchForm extends React.Component {
   handleKeyPress = event => {

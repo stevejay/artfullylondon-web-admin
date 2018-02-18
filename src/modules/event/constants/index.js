@@ -1,7 +1,7 @@
-import eventType from '_src/entities/event-type'
-import bookingType from '_src/entities/booking-type'
-import costType from '_src/entities/cost-type'
-import occurrenceType from '_src/entities/occurrence-type'
+import eventType from '_src/entities/types/event-type'
+import bookingType from '_src/entities/types/booking-type'
+import costType from '_src/entities/types/cost-type'
+import occurrenceType from '_src/entities/types/occurrence-type'
 
 export const EDIT_EVENT_BASICS_FORM_NAME = 'EditEventBasics'
 export const EDIT_EVENT_IMAGES_FORM_NAME = 'EditEventImages'

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import entityType from '_src/entities/entity-type'
+import entityType from '_src/entities/types/entity-type'
 import { SummaryVenue, FullVenue } from '_src/entities/venue'
 import { SummaryTalent, FullTalent } from '_src/entities/talent'
 import { SummaryEvent, FullEvent } from '_src/entities/event'
