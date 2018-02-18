@@ -101,11 +101,6 @@ describe('SummaryVenue', () => {
     expect(subject.editUrl).toBe('/venue/edit/almeida-theatre')
   })
 
-  it('should have correct isFullEntity', () => {
-    const subject = new SummaryVenue({})
-    expect(subject.isFullEntity).toBe(false)
-  })
-
   it('should have correct createFullAddress', () => {
     const subject = new SummaryVenue({
       address: '50 Foo Street',
@@ -149,14 +144,9 @@ describe('FullVenue', () => {
     expect(subject.weSay).toBe('We say')
   })
 
-  it('should have correct isFullEntity', () => {
-    const subject = new FullVenue({})
-    expect(subject.isFullEntity).toBe(true)
-  })
-
-  it('should have correct createInfoBarLabel', () => {
+  it('should have correct getInfoBarLabel', () => {
     const subject = new FullVenue({ venueType: 'Theatre' })
-    expect(subject.createInfoBarLabel()).toBe('Theatre')
+    expect(subject.getInfoBarLabel()).toBe('Theatre')
   })
 
   it('should have correct email', () => {

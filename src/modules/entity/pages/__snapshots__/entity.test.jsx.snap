@@ -36,12 +36,7 @@ exports[`should render correctly when has an entity 1`] = `
     <SomeComponent
       entity={
         FullTalent {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "id": "some-id",
-          },
+          "id": "some-id",
         }
       }
       isEdit={true}

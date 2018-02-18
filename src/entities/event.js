@@ -1,5 +1,5 @@
 import { LinkCollection } from '_src/entities/link-collection'
-import { SummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { SummaryEventSeries } from '_src/entities/event-series'
 import entityType from '_src/entities/entity-type'
@@ -94,10 +94,6 @@ export class SummaryEvent {
     return !!this.entity.cardImageLoaded
   }
 
-  get isFullEntity () {
-    return false
-  }
-
   isBeingWatched (watches) {
     return !!watches[this.id]
   }
@@ -145,7 +141,7 @@ export class FullEvent extends SummaryEvent {
     this.venue = new SummaryVenue(this.entity.venue)
 
     this.talents = (this.entity.talents || [])
-      .map(talent => new SummaryTalent(talent))
+      .map(talent => new EventSummaryTalent(talent))
 
     this.eventSeries = this.entity.eventSeries
       ? new SummaryEventSeries(this.entity.eventSeries)
@@ -159,7 +155,7 @@ export class FullEvent extends SummaryEvent {
     ]
   }
 
-  createInfoBarLabel () {
+  getInfoBarLabel () {
     return this.createEventMediumDescription()
   }
 
@@ -276,10 +272,6 @@ export class FullEvent extends SummaryEvent {
 
   get weSay () {
     return this.entity.weSay
-  }
-
-  get isFullEntity () {
-    return true
   }
 
   shallowClone (newProps) {

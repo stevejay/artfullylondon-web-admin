@@ -16,56 +16,36 @@ exports[`should render correctly 1`] = `
     <EntityInfoBar
       entity={
         FullTalent {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "firstNames": "First",
-            "images": Array [],
-            "lastName": "Last",
-          },
+          "firstNames": "First",
+          "images": Array [],
+          "lastName": "Last",
         }
       }
     />
     <EntityDescription
       entity={
         FullTalent {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "firstNames": "First",
-            "images": Array [],
-            "lastName": "Last",
-          },
+          "firstNames": "First",
+          "images": Array [],
+          "lastName": "Last",
         }
       }
     />
     <EntityWeSay
       entity={
         FullTalent {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "firstNames": "First",
-            "images": Array [],
-            "lastName": "Last",
-          },
+          "firstNames": "First",
+          "images": Array [],
+          "lastName": "Last",
         }
       }
     />
     <EntityExternalLinks
       entity={
         FullTalent {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "firstNames": "First",
-            "images": Array [],
-            "lastName": "Last",
-          },
+          "firstNames": "First",
+          "images": Array [],
+          "lastName": "Last",
         }
       }
     />

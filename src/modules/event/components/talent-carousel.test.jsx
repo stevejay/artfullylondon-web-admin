@@ -2,15 +2,15 @@ import React from 'react'
 import _ from 'lodash'
 
 import EventTalentCarousel from './talent-carousel'
-import { SummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/entities/talent'
 import IconButton from '_src/components/button/icon'
 
 it('should render correctly', () => {
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId='talent-1'
       onTalentSelected={_.noop}
@@ -24,8 +24,8 @@ it('should render correctly when the selected talent id is null', () => {
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId={null}
       onTalentSelected={_.noop}
@@ -38,7 +38,7 @@ it('should render correctly when the selected talent id is null', () => {
 it('should render correctly when there is only one talent', () => {
   const wrapper = shallow(
     <EventTalentCarousel
-      talents={[new SummaryTalent({ id: 'talent-1' })]}
+      talents={[new EventSummaryTalent({ id: 'talent-1' })]}
       selectedTalentId='talent-1'
       onTalentSelected={_.noop}
     />
@@ -61,8 +61,8 @@ it('should handle a left arrow click when there is an image to the left', () => 
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId='talent-2'
       onTalentSelected={handleTalentSelected}
@@ -80,8 +80,8 @@ it('should handle a left arrow click when it should wrap around', () => {
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId='talent-1'
       onTalentSelected={handleTalentSelected}
@@ -99,8 +99,8 @@ it('should handle a right arrow click when there is an image to the right', () =
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId='talent-1'
       onTalentSelected={handleTalentSelected}
@@ -118,8 +118,8 @@ it('should handle a right arrow click when it should wrap around', () => {
   const wrapper = shallow(
     <EventTalentCarousel
       talents={[
-        new SummaryTalent({ id: 'talent-1' }),
-        new SummaryTalent({ id: 'talent-2' })
+        new EventSummaryTalent({ id: 'talent-1' }),
+        new EventSummaryTalent({ id: 'talent-2' })
       ]}
       selectedTalentId='talent-2'
       onTalentSelected={handleTalentSelected}

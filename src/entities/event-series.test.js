@@ -91,11 +91,6 @@ describe('SummaryEventSeries', () => {
     const subject = new SummaryEventSeries({ image: null })
     expect(subject.hasImage).toBe(false)
   })
-
-  it('should have correct isFullEntity', () => {
-    const subject = new SummaryEventSeries({})
-    expect(subject.isFullEntity).toBe(false)
-  })
 })
 
 describe('FullEventSeries', () => {
@@ -121,19 +116,14 @@ describe('FullEventSeries', () => {
     expect(subject.weSay).toBe('We say')
   })
 
-  it('should have correct isFullEntity', () => {
-    const subject = new FullEventSeries({})
-    expect(subject.isFullEntity).toBe(true)
-  })
-
-  it('should have correct createInfoBarLabel for an occasional series', () => {
+  it('should have correct getInfoBarLabel for an occasional series', () => {
     const subject = new FullEventSeries({ eventSeriesType: 'Occasional' })
-    expect(subject.createInfoBarLabel()).toBe('Occasional Series')
+    expect(subject.getInfoBarLabel()).toBe('Occasional Series')
   })
 
-  it('should have correct createInfoBarLabel for a season series', () => {
+  it('should have correct getInfoBarLabel for a season series', () => {
     const subject = new FullEventSeries({ eventSeriesType: 'Season' })
-    expect(subject.createInfoBarLabel()).toBe('Season Series')
+    expect(subject.getInfoBarLabel()).toBe('Season Series')
   })
 
   it('should create a formatted description', () => {

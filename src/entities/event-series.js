@@ -71,10 +71,6 @@ export class SummaryEventSeries {
   get hasImage () {
     return !!this.image
   }
-
-  get isFullEntity () {
-    return false
-  }
 }
 
 export class FullEventSeries extends SummaryEventSeries {
@@ -115,10 +111,6 @@ export class FullEventSeries extends SummaryEventSeries {
     return this._links
   }
 
-  get isFullEntity () {
-    return true
-  }
-
   createFormattedDescription () {
     return entityLib.processDescription(
       this.entity.description,
@@ -126,7 +118,7 @@ export class FullEventSeries extends SummaryEventSeries {
     )
   }
 
-  createInfoBarLabel () {
+  getInfoBarLabel () {
     return this.entity.eventSeriesType + ' Series'
   }
 

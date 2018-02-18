@@ -314,10 +314,8 @@ exports[`should render a current event correctly that has full details 1`] = `
           "postcodeDistrict": null,
           "tags": Array [],
           "talents": Array [
-            SummaryTalent {
-              "entity": Object {
-                "lastName": "Last",
-              },
+            EventSummaryTalent {
+              "lastName": "Last",
             },
           ],
           "venue": SummaryVenue {
@@ -374,10 +372,8 @@ exports[`should render a current event correctly that has full details 1`] = `
               "postcodeDistrict": null,
               "tags": Array [],
               "talents": Array [
-                SummaryTalent {
-                  "entity": Object {
-                    "lastName": "Last",
-                  },
+                EventSummaryTalent {
+                  "lastName": "Last",
                 },
               ],
               "venue": SummaryVenue {
@@ -430,10 +426,8 @@ exports[`should render a current event correctly that has full details 1`] = `
               "postcodeDistrict": null,
               "tags": Array [],
               "talents": Array [
-                SummaryTalent {
-                  "entity": Object {
-                    "lastName": "Last",
-                  },
+                EventSummaryTalent {
+                  "lastName": "Last",
                 },
               ],
               "venue": SummaryVenue {
@@ -486,10 +480,8 @@ exports[`should render a current event correctly that has full details 1`] = `
               "postcodeDistrict": null,
               "tags": Array [],
               "talents": Array [
-                SummaryTalent {
-                  "entity": Object {
-                    "lastName": "Last",
-                  },
+                EventSummaryTalent {
+                  "lastName": "Last",
                 },
               ],
               "venue": SummaryVenue {
@@ -549,10 +541,8 @@ exports[`should render a current event correctly that has full details 1`] = `
               "postcodeDistrict": null,
               "tags": Array [],
               "talents": Array [
-                SummaryTalent {
-                  "entity": Object {
-                    "lastName": "Last",
-                  },
+                EventSummaryTalent {
+                  "lastName": "Last",
                 },
               ],
               "venue": SummaryVenue {
@@ -576,10 +566,8 @@ exports[`should render a current event correctly that has full details 1`] = `
           selectedTalentId={null}
           talents={
             Array [
-              SummaryTalent {
-                "entity": Object {
-                  "lastName": "Last",
-                },
+              EventSummaryTalent {
+                "lastName": "Last",
               },
             ]
           }
@@ -627,10 +615,8 @@ exports[`should render a current event correctly that has full details 1`] = `
               "postcodeDistrict": null,
               "tags": Array [],
               "talents": Array [
-                SummaryTalent {
-                  "entity": Object {
-                    "lastName": "Last",
-                  },
+                EventSummaryTalent {
+                  "lastName": "Last",
                 },
               ],
               "venue": SummaryVenue {

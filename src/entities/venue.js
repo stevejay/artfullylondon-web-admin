@@ -89,10 +89,6 @@ export class SummaryVenue {
     return !!this.entity.cardImageLoaded
   }
 
-  get isFullEntity () {
-    return false
-  }
-
   isBeingWatched (watches) {
     return !!watches[this.id]
   }
@@ -172,7 +168,7 @@ export class FullVenue extends SummaryVenue {
     return timeLib.getTimesDetails(this.entity, this.entityType, dateStr)
   }
 
-  createInfoBarLabel () {
+  getInfoBarLabel () {
     return this.venueType
   }
 
@@ -233,10 +229,6 @@ export class FullVenue extends SummaryVenue {
 
   get hasPermanentCollection () {
     return this.entity.hasPermanentCollection
-  }
-
-  get isFullEntity () {
-    return true
   }
 
   get openingTimes () {

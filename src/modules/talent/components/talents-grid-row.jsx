@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Text from '_src/components/text'
 import GridRow from '_src/components/grid/row'
-import * as talentLib from '_src/lib/talent'
 import './talents-grid-row.scss'
 
 class TalentsGridRow extends React.PureComponent {
@@ -16,11 +15,13 @@ class TalentsGridRow extends React.PureComponent {
   render () {
     const { value, onDelete } = this.props
 
+    // TODO value.roles and value.characters will likely be wrong.
+
     return (
       <GridRow id={value.key} onDelete={onDelete}>
         <div styleName='first-row'>
           <a href={`/talent/${value.id}`} target='_blank' rel='noopener'>
-            {value.name || talentLib.formatTalentName(value)}
+            {value.name || 'TODO!!!'}
           </a>
         </div>
         <Text

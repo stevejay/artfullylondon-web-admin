@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { ImagePlaceholder } from '_src/modules/image'
 import * as imageLib from '_src/lib/image'
-import { SummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/entities/talent'
 import entityType from '_src/entities/entity-type'
 import './talent.scss'
 
@@ -42,7 +42,7 @@ class EventTalentComponent extends React.PureComponent {
 
 EventTalentComponent.propTypes = {
   className: PropTypes.string,
-  talent: PropTypes.instanceOf(SummaryTalent).isRequired
+  talent: PropTypes.instanceOf(EventSummaryTalent).isRequired
 }
 
 export default EventTalentComponent

@@ -54,6 +54,8 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- scroll position restoration on back button
+- put shared code into a shared directory.
 - extend: https://stackoverflow.com/questions/15054678/how-to-add-methods-to-a-json-objects-prototype
 - replace divs with fragments where possible
 - switch to netlify hosting?

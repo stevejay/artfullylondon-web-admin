@@ -11,11 +11,12 @@ import './external-links.scss'
 
 class EntityExternalLinks extends React.PureComponent {
   render () {
-    const { email, links } = this.props.entity
+    const { entity } = this.props
+    const { email } = entity
 
-    const facebook = links.getLinkByType(linkType.FACEBOOK)
-    const twitter = links.getLinkByType(linkType.TWITTER)
-    const instagram = links.getLinkByType(linkType.INSTAGRAM)
+    const facebook = entity.getLinkByType(linkType.FACEBOOK)
+    const twitter = entity.getLinkByType(linkType.TWITTER)
+    const instagram = entity.getLinkByType(linkType.INSTAGRAM)
     const hasNoLinks = !email && !facebook && !twitter && !instagram
 
     if (hasNoLinks) {

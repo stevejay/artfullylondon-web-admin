@@ -4,9 +4,9 @@ import ArrowCircleLeft from 'react-icons/lib/fa/arrow-circle-left'
 import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import _ from 'lodash'
 
-import EventTalentComponent from './talent'
+import EventTalent from './talent'
 import IconButton from '_src/components/button/icon'
-import { SummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/entities/talent'
 import './talent-carousel.scss'
 
 class EventTalentCarousel extends React.PureComponent {
@@ -48,17 +48,14 @@ class EventTalentCarousel extends React.PureComponent {
     }
 
     if (talents.length === 1) {
-      return <EventTalentComponent talent={talents[0]} />
+      return <EventTalent talent={talents[0]} />
     }
 
     const talentIndex = this._getSelectedTalentIndex()
 
     return (
       <div styleName='container'>
-        <EventTalentComponent
-          talent={talents[talentIndex]}
-          styleName='event-talent'
-        />
+        <EventTalent talent={talents[talentIndex]} styleName='event-talent' />
         <div styleName='buttons-container'>
           <IconButton
             type='default'
@@ -79,7 +76,9 @@ class EventTalentCarousel extends React.PureComponent {
 }
 
 EventTalentCarousel.propTypes = {
-  talents: PropTypes.arrayOf(PropTypes.instanceOf(SummaryTalent).isRequired),
+  talents: PropTypes.arrayOf(
+    PropTypes.instanceOf(EventSummaryTalent).isRequired
+  ),
   selectedTalentId: PropTypes.string,
   onTalentSelected: PropTypes.func.isRequired
 }

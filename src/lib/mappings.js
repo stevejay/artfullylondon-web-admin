@@ -243,7 +243,7 @@ export function mapEventFromServer (payload) {
       payload.performancesClosures
     ),
     closures: _mapClosuresFromServer(payload.closures),
-    talents: _mapTalentsFromServer(payload.talents),
+    talents: payload.talents,
     mediumTags: payload.mediumTags || [],
     styleTags: payload.styleTags || [],
     audienceTags: payload.audienceTags || [],
@@ -448,14 +448,14 @@ function _mapPerformancesFromServer (performances) {
   }))
 }
 
-function _mapTalentsFromServer (talents) {
-  return (talents || []).map(talent => {
-    talent.key = talent.id
-    talent.roles = talent.roles.join(', ')
-    talent.characters = (talent.characters || []).join(', ')
-    return talent
-  })
-}
+// function _mapTalentsFromServer (talents) {
+//   return (talents || []).map(talent => {
+//     talent.key = talent.id
+//     talent.roles = talent.roles.join(', ')
+//     talent.characters = (talent.characters || []).join(', ')
+//     return talent
+//   })
+// }
 
 function _mapTimesRangesToServer (timesRanges) {
   return (timesRanges || []).map(timesRange => ({

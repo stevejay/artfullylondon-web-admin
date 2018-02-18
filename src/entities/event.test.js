@@ -125,11 +125,6 @@ describe('SummaryEvent', () => {
     expect(subject.cardImageLoaded).toBe(true)
   })
 
-  it('should have correct isFullEntity', () => {
-    const subject = new SummaryEvent({})
-    expect(subject.isFullEntity).toBe(false)
-  })
-
   it('should have correct isExpiredOn when event is expired', () => {
     const subject = new SummaryEvent({ dateTo: '2017/01/01' })
     expect(subject.isExpiredOn('2017/01/20')).toBe(true)
@@ -196,11 +191,6 @@ describe('FullEvent', () => {
   it('should have correct images', () => {
     const subject = new FullEvent({ images: [{ id: 'some-id' }], venue: {} })
     expect(subject.images).toEqual([{ id: 'some-id' }])
-  })
-
-  it('should have correct isFullEntity', () => {
-    const subject = new FullEvent({ venue: {} })
-    expect(subject.isFullEntity).toBe(true)
   })
 
   it('should have correct formatted description when only summary is available', () => {
@@ -367,7 +357,7 @@ describe('FullEvent', () => {
       venue: {}
     })
 
-    expect(subject.createInfoBarLabel()).toBe('mixed media')
+    expect(subject.getInfoBarLabel()).toBe('mixed media')
   })
 
   it('should create a full description', () => {

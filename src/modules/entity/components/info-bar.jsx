@@ -16,7 +16,7 @@ import './info-bar.scss'
 class EntityInfoBar extends ShouldNeverUpdateComponent {
   render () {
     const { entity, onClickCopy } = this.props
-    const tagsLabel = entity.createInfoBarLabel()
+    const tagsLabel = entity.getInfoBarLabel()
     const homepage = entity.getLinkByType(linkType.HOMEPAGE)
 
     return (

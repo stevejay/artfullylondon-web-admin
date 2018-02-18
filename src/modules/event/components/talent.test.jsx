@@ -1,10 +1,10 @@
 import React from 'react'
 
 import EventTalent from './talent'
-import { SummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/entities/talent'
 
 it('should render correctly', () => {
-  const mockTalent = new SummaryTalent({
+  const mockTalent = new EventSummaryTalent({
     id: 'talent-2',
     image: '12345678',
     url: 'http://some/url',
@@ -24,7 +24,7 @@ it('should render correctly', () => {
 })
 
 it('should render correctly when there is no image', () => {
-  const mockTalent = new SummaryTalent({
+  const mockTalent = new EventSummaryTalent({
     id: 'talent-2',
     url: 'http://some/url',
     name: 'The Talent Name'
@@ -43,7 +43,7 @@ it('should render correctly when there is no image', () => {
 })
 
 it('should render correctly when there are no characters', () => {
-  const mockTalent = new SummaryTalent({
+  const mockTalent = new EventSummaryTalent({
     id: 'talent-2',
     image: '12345678',
     url: 'http://some/url',
