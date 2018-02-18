@@ -8,17 +8,12 @@ describe('get', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.get(SOME_URL).then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json'
-          }
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json'
         }
-      ])
+      })
     })
   })
 
@@ -26,18 +21,13 @@ describe('get', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.get(SOME_URL, 'auth1').then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            Authorization: 'auth1'
-          }
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'auth1'
         }
-      ])
+      })
     })
   })
 
@@ -133,17 +123,12 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.httpDelete(SOME_URL).then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'DELETE',
-          headers: {
-            Accept: 'application/json'
-          }
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json'
         }
-      ])
+      })
     })
   })
 
@@ -151,18 +136,13 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.httpDelete(SOME_URL, 'auth1').then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'DELETE',
-          headers: {
-            Accept: 'application/json',
-            Authorization: 'auth1'
-          }
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'auth1'
         }
-      ])
+      })
     })
   })
 
@@ -170,17 +150,12 @@ describe('httpDelete', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.httpDelete(SOME_URL).then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'DELETE',
-          headers: {
-            Accept: 'application/json'
-          }
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json'
         }
-      ])
+      })
     })
   })
 
@@ -276,19 +251,14 @@ describe('put', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.put(SOME_URL, { key: 'value' }).then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'PUT',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: '{"key":"value"}'
-        }
-      ])
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: '{"key":"value"}'
+      })
     })
   })
 
@@ -296,20 +266,15 @@ describe('put', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.put(SOME_URL, { key: 'value' }, 'auth1').then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'PUT',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: 'auth1'
-          },
-          body: '{"key":"value"}'
-        }
-      ])
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'auth1'
+        },
+        body: '{"key":"value"}'
+      })
     })
   })
 
@@ -405,19 +370,14 @@ describe('post', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.post(SOME_URL, { key: 'value' }).then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: '{"key":"value"}'
-        }
-      ])
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: '{"key":"value"}'
+      })
     })
   })
 
@@ -425,20 +385,15 @@ describe('post', () => {
     fetchImpl.fetch = jest.fn().mockReturnValue(createResponse(200, {}))
 
     return fetchLib.post(SOME_URL, { key: 'value' }, 'auth1').then(() => {
-      expect(fetchImpl.fetch).toHaveBeenCalled()
-
-      expect(fetchImpl.fetch.mock.calls[0]).toEqual([
-        SOME_URL,
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: 'auth1'
-          },
-          body: '{"key":"value"}'
-        }
-      ])
+      expect(fetchImpl.fetch).toHaveBeenCalledWith(SOME_URL, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'auth1'
+        },
+        body: '{"key":"value"}'
+      })
     })
   })
 

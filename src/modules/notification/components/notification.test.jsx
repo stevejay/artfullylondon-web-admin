@@ -51,6 +51,5 @@ it('should invoke the onClose handler with the correct id when the notification 
 
   wrapper.find('CloseButton').simulate('click')
 
-  expect(onCloseHandler).toHaveBeenCalled()
-  expect(onCloseHandler.mock.calls[0]).toEqual([{ id: 'some-id' }])
+  expect(onCloseHandler).toHaveBeenCalledWith({ id: 'some-id' })
 })

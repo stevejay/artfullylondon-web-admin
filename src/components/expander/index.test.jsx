@@ -82,8 +82,7 @@ it('should handle a header click', () => {
 
   wrapper.find('button').prop('onClick')({ preventDefault: _.noop })
 
-  expect(onExpanderChange).toHaveBeenCalled()
-  expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
+  expect(onExpanderChange).toHaveBeenCalledWith('some-id')
 })
 
 it('should ignore a non-recognized key press', () => {
@@ -126,8 +125,7 @@ it('should handle an arrow down press on a closed expander', () => {
     preventDefault: _.noop
   })
 
-  expect(onExpanderChange).toHaveBeenCalled()
-  expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
+  expect(onExpanderChange).toHaveBeenCalledWith('some-id')
 })
 
 it('should ignore an arrow down press on an open expander', () => {
@@ -170,8 +168,7 @@ it('should handle an arrow up press on an open expander', () => {
     preventDefault: _.noop
   })
 
-  expect(onExpanderChange).toHaveBeenCalled()
-  expect(onExpanderChange.mock.calls[0]).toEqual(['some-id'])
+  expect(onExpanderChange).toHaveBeenCalledWith('some-id')
 })
 
 it('should ignore an arrow up press on a closed expander', () => {
