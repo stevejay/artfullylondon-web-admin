@@ -34,10 +34,13 @@ export function * getVenueMonitors (venueId) {
   const url = `${MONITOR_SERVICE_URL}/monitor/venue/${venueId}`
   const json = yield call(fetchLib.get, url, token)
 
-  const entity = json.entity
-  entity.key = entity.venueId
+  console.log('json', JSON.stringify(json))
 
-  return [entity]
+  json.items.forEach(element => {
+    element.key = element.venueId
+  })
+
+  return json.items
 }
 
 export function * updateVenueMonitor (values) {

@@ -18,6 +18,9 @@ import * as timeConstraints from '../constants/constraints'
 import * as timeNormalisers from '../constants/normalisers'
 import * as dateLib from '_src/lib/date'
 
+// TODO extract the form value manipulations into a series of separate sagas.
+// TODO replace the consoles with loglevel.
+
 function * addOpeningTime (action) {
   try {
     yield put.resolve(startSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
