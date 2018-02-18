@@ -1,7 +1,14 @@
 import { cloneableGenerator } from 'redux-saga/utils'
 import { delay } from 'redux-saga'
-import { call, race, put } from 'redux-saga/effects'
-import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
+import { call, race, put, select } from 'redux-saga/effects'
+import {
+  startSubmit,
+  stopSubmit,
+  reset,
+  arrayPush,
+  change,
+  getFormValues
+} from 'redux-form'
 import log from 'loglevel'
 
 import * as uuidLib from '_src/lib/uuid'
@@ -12,22 +19,6 @@ import { actions as notificationActions } from '_src/modules/notification'
 import * as validationLib from '_src/lib/validation'
 import * as sagaLib from '_src/lib/saga'
 import { imageService } from '_src/modules/api'
-
-describe('getImages', () => {
-  it('should get the images', () => {
-    const generator = sagas.getImages('ParentFormName')
-
-    let result = generator.next()
-
-    result = generator.next({ images: [{ id: 1 }] })
-
-    expect(result.value).toEqual([{ id: 1 }])
-
-    result = generator.next()
-
-    expect(result.done).toEqual(true)
-  })
-})
 
 describe('updateImage', () => {
   const generator = cloneableGenerator(sagas.updateImage)({
@@ -41,19 +32,16 @@ describe('updateImage', () => {
 
   it('should prepare to update the image', () => {
     let result = generator.next()
-
     expect(result.value).toEqual(
       put(startSubmit(imageConstants.UPDATE_IMAGE_FORM_NAME))
     )
 
     result = generator.next()
-
     expect(result.value).toEqual(
       call(normalise, { name: 'Name' }, imageConstants.UPDATE_IMAGE_NORMALISER)
     )
 
     result = generator.next({ name: 'Normalised name' })
-
     expect(result.value).toEqual(
       call(
         validationLib.validate,
@@ -67,48 +55,44 @@ describe('updateImage', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next()
-
-    expect(result.value).toEqual(call(sagas.getImages, 'ParentFormName'))
-
-    result = generatorClone.next([{ id: 'image-id' }, { id: 'other-image-id' }])
-
     expect(result.value).toEqual(
-      put(
-        change('ParentFormName', 'images', [
-          { id: 'image-id', name: 'Normalised name' },
-          { id: 'other-image-id' }
-        ])
-      )
+      call(sagas.updateImageFormValue, 'ParentFormName', 'image-id', {
+        name: 'Normalised name'
+      })
+    )
+
+    const images = [
+      { id: 'image-id', name: 'Normalised name' },
+      { id: 'other-image-id' }
+    ]
+
+    result = generatorClone.next(images)
+    expect(result.value).toEqual(
+      put(change('ParentFormName', 'images', images))
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(stopSubmit(imageConstants.UPDATE_IMAGE_FORM_NAME))
     )
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       put(sagaLib.returnAsPromise(null, { id: 12345 }))
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle an error when updating the image', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.value).toEqual(
       call(
         sagaLib.submitErrorHandler,
@@ -118,7 +102,6 @@ describe('updateImage', () => {
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -133,83 +116,32 @@ describe('deleteImage', () => {
 
   it('should prepare to delete the image', () => {
     let result = generator.next()
-
-    expect(result.value).toEqual(call(sagas.getImages, 'ParentFormName'))
-  })
-
-  it('should handle an image that is not found', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([{ id: 'other-image-id' }])
-
-    expect(result.done).toEqual(true)
-  })
-
-  it('should handle deleting a main image when there is another image', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([
-      { id: 'image-id', isMain: true },
-      { id: 'other-image-id' }
-    ])
-
     expect(result.value).toEqual(
-      put(
-        change('ParentFormName', 'images', [
-          { id: 'other-image-id', isMain: true }
-        ])
-      )
+      call(sagas.deleteFromImageFormValue, 'ParentFormName', 'image-id')
+    )
+  })
+
+  it('should successfully delete the image', () => {
+    const generatorClone = generator.clone()
+    const images = [{ id: 'other-image-id' }]
+
+    let result = generatorClone.next(images)
+    expect(result.value).toEqual(
+      put(change('ParentFormName', 'images', images))
     )
 
     result = generatorClone.next()
-
-    expect(result.done).toEqual(true)
-  })
-
-  it('should handle deleting a non-main image', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([
-      { id: 'image-id' },
-      { id: 'other-image-id', isMain: true }
-    ])
-
-    expect(result.value).toEqual(
-      put(
-        change('ParentFormName', 'images', [
-          { id: 'other-image-id', isMain: true }
-        ])
-      )
-    )
-
-    result = generatorClone.next()
-
-    expect(result.done).toEqual(true)
-  })
-
-  it('should handle deleting a main image when there is no other image', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([{ id: 'image-id', isMain: true }])
-
-    expect(result.value).toEqual(put(change('ParentFormName', 'images', [])))
-
-    result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle an error being thrown', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -224,51 +156,32 @@ describe('setMainImage', () => {
 
   it('should prepare to set the image as main', () => {
     let result = generator.next()
-
-    expect(result.value).toEqual(call(sagas.getImages, 'ParentFormName'))
-  })
-
-  it('should handle not finding the image', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([{ id: 'other-image-id' }])
-
-    expect(result.done).toEqual(true)
-  })
-
-  it('should handle setting the image as main', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([
-      { id: 'image-id' },
-      { id: 'other-image-id', isMain: true }
-    ])
-
     expect(result.value).toEqual(
-      put(
-        change('ParentFormName', 'images', [
-          { id: 'image-id', isMain: true },
-          { id: 'other-image-id', isMain: false }
-        ])
-      )
+      call(sagas.setMainImageInImageFormValue, 'ParentFormName', 'image-id')
+    )
+  })
+
+  it('should successfully set the image as main', () => {
+    const generatorClone = generator.clone()
+    const images = [{ id: 'image-id' }, { id: 'other-image-id', isMain: true }]
+
+    let result = generatorClone.next(images)
+    expect(result.value).toEqual(
+      put(change('ParentFormName', 'images', images))
     )
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 
   it('should handle an error being thrown', () => {
     const generatorClone = generator.clone()
-
     const error = new Error('deliberately thrown')
 
     let result = generatorClone.throw(error)
-
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
-
     expect(result.done).toEqual(true)
   })
 })
@@ -278,6 +191,7 @@ describe('addImage', () => {
     payload: {
       parentFormName: 'ParentFormName',
       entityType: 'talent',
+      isMain: true,
       values: { imageUrl: '/some/url' }
     }
   })
@@ -286,13 +200,11 @@ describe('addImage', () => {
     uuidLib.create = jest.fn().mockReturnValue('some-uuid')
 
     let result = generator.next()
-
     expect(result.value).toEqual(
       put(startSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
     )
 
     result = generator.next()
-
     expect(result.value).toEqual(
       call(
         normalise,
@@ -300,16 +212,11 @@ describe('addImage', () => {
         imageConstants.ADD_IMAGE_NORMALISER
       )
     )
-  })
 
-  it('should handle normalisation and resizing succeeding', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next({
+    result = generator.next({
       imageUrl: '/some/normalised/url',
       copyright: 'Some copyright'
     })
-
     expect(result.value).toEqual(
       call(
         validationLib.validate,
@@ -318,32 +225,37 @@ describe('addImage', () => {
       )
     )
 
-    result = generatorClone.next()
+    result = generator.next()
     expect(result.value).toEqual(
       race({
         image: call(
           imageService.addImage,
           'talent',
           'some-uuid',
-          '/some/normalised/url'
+          '/some/normalised/url',
+          'Some copyright',
+          true
         ),
         timeout: call(delay, 30000)
       })
     )
+  })
 
-    result = generatorClone.next({
-      image: { ratio: 3, dominantColor: 'AAAAAA' }
-    })
+  it('should handle resizing succeeding', () => {
+    const generatorClone = generator.clone()
+
+    const image = {
+      key: 'some-uuid',
+      id: 'some-uuid',
+      copyright: 'Some copyright',
+      isMain: true,
+      ratio: 3,
+      dominantColor: 'AAAAAA'
+    }
+
+    let result = generatorClone.next({ image })
     expect(result.value).toEqual(
-      put(
-        arrayPush('ParentFormName', 'images', {
-          key: 'some-uuid',
-          id: 'some-uuid',
-          copyright: 'Some copyright',
-          ratio: 3,
-          dominantColor: 'AAAAAA'
-        })
-      )
+      put(arrayPush('ParentFormName', 'images', image))
     )
 
     result = generatorClone.next()
@@ -360,37 +272,11 @@ describe('addImage', () => {
     expect(result.done).toEqual(true)
   })
 
-  it('should handle normalisation succeeding but resizing failing', () => {
+  it('should handle resizing failing', () => {
     const generatorClone = generator.clone()
-
-    let result = generatorClone.next({
-      imageUrl: '/some/normalised/url',
-      copyright: 'Some copyright'
-    })
-
-    expect(result.value).toEqual(
-      call(
-        validationLib.validate,
-        { imageUrl: '/some/normalised/url', copyright: 'Some copyright' },
-        imageConstants.ADD_IMAGE_CONSTRAINT
-      )
-    )
-
-    result = generatorClone.next()
-    expect(result.value).toEqual(
-      race({
-        image: call(
-          imageService.addImage,
-          'talent',
-          'some-uuid',
-          '/some/normalised/url'
-        ),
-        timeout: call(delay, 30000)
-      })
-    )
-
     const error = new Error('The server took too long to process the image')
-    result = generatorClone.next({ timeout: true })
+
+    let result = generatorClone.next({ timeout: true })
     expect(result.value).toEqual(call(log.error, error))
 
     result = generatorClone.next()
@@ -415,21 +301,147 @@ describe('addImage', () => {
     result = generatorClone.next()
     expect(result.done).toEqual(true)
   })
+})
 
-  it('should handle normalisation failing', () => {
-    const generatorClone = generator.clone()
-    const error = new Error('deliberately thrown')
+describe('updateImageFormValue', () => {
+  it('should handle the image not being found', () => {
+    const generator = sagas.updateImageFormValue('ParentFormName', 'image-id', {
+      copyright: 'Updated copyright'
+    })
 
-    let result = generatorClone.throw(error)
-    expect(result.value).toEqual(
-      call(
-        sagaLib.submitErrorHandler,
-        error,
-        imageConstants.IMAGE_EDITOR_FORM_NAME
-      )
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({ images: [{ id: 'other-image-id' }] })
+    expect(result.value).toEqual([{ id: 'other-image-id' }])
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle updating an image', () => {
+    const generator = sagas.updateImageFormValue('ParentFormName', 'image-id', {
+      copyright: 'Updated copyright'
+    })
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({
+      images: [{ id: 'image-id' }, { id: 'other-image-id' }]
+    })
+    expect(result.value).toEqual([
+      { id: 'image-id', copyright: 'Updated copyright' },
+      { id: 'other-image-id' }
+    ])
+
+    expect(result.done).toEqual(true)
+  })
+})
+
+describe('deleteFromImageFormValue', () => {
+  it('should handle the image not being found', () => {
+    const generator = sagas.deleteFromImageFormValue(
+      'ParentFormName',
+      'image-id'
     )
 
-    result = generatorClone.next()
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({ images: [{ id: 'other-image-id' }] })
+    expect(result.value).toEqual([{ id: 'other-image-id' }])
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle deleting a main image', () => {
+    const generator = sagas.deleteFromImageFormValue(
+      'ParentFormName',
+      'image-id'
+    )
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({
+      images: [{ id: 'image-id', isMain: true }, { id: 'other-image-id' }]
+    })
+    expect(result.value).toEqual([{ id: 'other-image-id', isMain: true }])
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle deleting a non-main image', () => {
+    const generator = sagas.deleteFromImageFormValue(
+      'ParentFormName',
+      'image-id'
+    )
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({
+      images: [{ id: 'image-id' }, { id: 'other-image-id' }]
+    })
+    expect(result.value).toEqual([{ id: 'other-image-id' }])
+
+    expect(result.done).toEqual(true)
+  })
+})
+
+describe('setMainImageInImageFormValue', () => {
+  it('should handle the image not being found', () => {
+    const generator = sagas.setMainImageInImageFormValue(
+      'ParentFormName',
+      'image-id'
+    )
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({ images: [{ id: 'other-image-id' }] })
+    expect(result.value).toEqual([{ id: 'other-image-id' }])
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle setting the main image when there is non already', () => {
+    const generator = sagas.setMainImageInImageFormValue(
+      'ParentFormName',
+      'image-id'
+    )
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({
+      images: [{ id: 'image-id' }, { id: 'other-image-id' }]
+    })
+    expect(result.value).toEqual([
+      { id: 'image-id', isMain: true },
+      { id: 'other-image-id', isMain: false }
+    ])
+
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle setting the main image when there is one already', () => {
+    const generator = sagas.setMainImageInImageFormValue(
+      'ParentFormName',
+      'image-id'
+    )
+
+    let result = generator.next()
+    expect(result.value).toEqual(select(getFormValues, 'ParentFormName'))
+
+    result = generator.next({
+      images: [{ id: 'image-id' }, { id: 'other-image-id', isMain: true }]
+    })
+    expect(result.value).toEqual([
+      { id: 'image-id', isMain: true },
+      { id: 'other-image-id', isMain: false }
+    ])
+
     expect(result.done).toEqual(true)
   })
 })

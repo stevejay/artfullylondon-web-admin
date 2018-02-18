@@ -5,7 +5,7 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 const IMAGE_SERVICE_URL = `${process.env.WEBSITE_API_HOST_URL}/image-service`
 
-export function * addImage (entityType, id, imageUrl) {
+export function * addImage (entityType, id, imageUrl, copyright, isMain) {
   const token = yield call(getAuthTokenForCurrentUser)
   const url = `${IMAGE_SERVICE_URL}/image/${id}`
 
@@ -16,5 +16,12 @@ export function * addImage (entityType, id, imageUrl) {
     token
   )
 
-  return json.image
+  return {
+    key: id,
+    id: id,
+    copyright,
+    isMain,
+    ratio: json.image.ratio,
+    dominantColor: json.image.dominantColor
+  }
 }

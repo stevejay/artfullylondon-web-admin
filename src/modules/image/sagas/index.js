@@ -19,9 +19,52 @@ import * as imageActions from '../actions'
 import * as imageConstants from '../constants'
 import { imageService } from '_src/modules/api'
 
-export function * getImages (parentFormName) {
-  const formValues = yield select(getFormValues(parentFormName))
-  return formValues.images
+export function * updateImageFormValue (parentFormName, id, updateValues) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const newImages = formValues.images.slice()
+  const imageIndex = newImages.findIndex(x => x.id === id)
+
+  if (imageIndex > -1) {
+    const newImage = { ...newImages[imageIndex], ...updateValues }
+    newImages[imageIndex] = newImage
+  }
+
+  return newImages
+}
+
+export function * deleteFromImageFormValue (parentFormName, imageIdToDelete) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const images = formValues.images
+
+  const imageIndex = images.findIndex(x => x.id === imageIdToDelete)
+  if (imageIndex === -1) {
+    return images
+  }
+
+  const newImages = images.filter(x => x.id !== imageIdToDelete)
+  const deletedImageIsMain = images[imageIndex].isMain
+
+  if (deletedImageIsMain && newImages.length > 0) {
+    const newImage = { ...newImages[0], isMain: true }
+    newImages.splice(0, 1, newImage)
+  }
+
+  return newImages
+}
+
+export function * setMainImageInImageFormValue (parentFormName, imageId) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const images = formValues.images
+
+  const imageIndex = images.findIndex(x => x.id === imageId)
+  if (imageIndex === -1) {
+    return images
+  }
+
+  return images.map(image => ({
+    ...image,
+    isMain: image.id === imageId
+  }))
 }
 
 export function * updateImage ({ payload, meta }) {
@@ -41,20 +84,8 @@ export function * updateImage ({ payload, meta }) {
       imageConstants.UPDATE_IMAGE_CONSTRAINT
     )
 
-    // TODO maybe do this manipulation out of the saga?
-
-    const images = yield call(getImages, parentFormName)
-
-    const imageIndex = images.findIndex(x => x.id === id)
-    if (imageIndex === -1) {
-      return
-    }
-
-    const newImages = images.slice()
-    const newImage = Object.assign({}, images[imageIndex], { ...values })
-    newImages[imageIndex] = newImage
-
-    yield put(change(parentFormName, 'images', newImages))
+    const images = yield call(updateImageFormValue, parentFormName, id, values)
+    yield put(change(parentFormName, 'images', images))
     yield put(stopSubmit(imageConstants.UPDATE_IMAGE_FORM_NAME))
     yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
@@ -71,24 +102,8 @@ export function * updateImage ({ payload, meta }) {
 export function * deleteImage (action) {
   try {
     const { id, parentFormName } = action.payload
-    const images = yield call(getImages, parentFormName)
-
-    // TODO maybe do this manipulation out of the saga?
-
-    const imageIndex = images.findIndex(x => x.id === id)
-    if (imageIndex === -1) {
-      return
-    }
-
-    const deletedImageIsMain = images[imageIndex].isMain
-    const newImages = images.filter(x => x.id !== id)
-
-    if (deletedImageIsMain && newImages.length > 0) {
-      const newImage = Object.assign({}, newImages[0], { isMain: true })
-      newImages.splice(0, 1, newImage)
-    }
-
-    yield put(change(parentFormName, 'images', newImages))
+    const images = yield call(deleteFromImageFormValue, parentFormName, id)
+    yield put(change(parentFormName, 'images', images))
   } catch (err) {
     yield call(log.error, err)
   }
@@ -97,21 +112,8 @@ export function * deleteImage (action) {
 export function * setMainImage (action) {
   try {
     const { id, parentFormName } = action.payload
-    const images = yield call(getImages, parentFormName)
-
-    // TODO maybe do this manipulation out of the saga?
-
-    const imageIndex = images.findIndex(x => x.id === id)
-    if (imageIndex === -1) {
-      return
-    }
-
-    const newImages = images.map(image => ({
-      ...image,
-      isMain: image.id === id
-    }))
-
-    yield put(change(parentFormName, 'images', newImages))
+    const images = yield call(setMainImageInImageFormValue, parentFormName, id)
+    yield put(change(parentFormName, 'images', images))
   } catch (err) {
     yield call(log.error, err)
   }
@@ -124,7 +126,6 @@ export function * addImage (action) {
 
   try {
     yield put(startSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
-
     values = yield call(normalise, values, imageConstants.ADD_IMAGE_NORMALISER)
 
     yield call(
@@ -132,19 +133,16 @@ export function * addImage (action) {
       values,
       imageConstants.ADD_IMAGE_CONSTRAINT
     )
-  } catch (err) {
-    yield call(
-      sagaLib.submitErrorHandler,
-      err,
-      imageConstants.IMAGE_EDITOR_FORM_NAME
-    )
 
-    return
-  }
-
-  try {
     const { image, timeout } = yield race({
-      image: call(imageService.addImage, entityType, id, values.imageUrl),
+      image: call(
+        imageService.addImage,
+        entityType,
+        id,
+        values.imageUrl,
+        values.copyright,
+        isMain
+      ),
       timeout: call(delay, 30000)
     })
 
@@ -152,16 +150,7 @@ export function * addImage (action) {
       throw new Error('The server took too long to process the image')
     }
 
-    const newImage = {
-      key: id,
-      id: id,
-      copyright: values.copyright,
-      isMain,
-      ratio: image.ratio,
-      dominantColor: image.dominantColor
-    }
-
-    yield put(arrayPush(parentFormName, 'images', newImage))
+    yield put(arrayPush(parentFormName, 'images', image))
     yield put(reset(imageConstants.IMAGE_EDITOR_FORM_NAME))
     yield put(stopSubmit(imageConstants.IMAGE_EDITOR_FORM_NAME))
   } catch (err) {
