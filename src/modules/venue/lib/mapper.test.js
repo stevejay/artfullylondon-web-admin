@@ -61,7 +61,8 @@ describe('getInitialValues', () => {
       images: [{ id: '1111' }],
       weSay: '',
       version: 9,
-      createdDate: '2018/01/01'
+      createdDate: '2018/01/01',
+      isNew: () => false
     }
 
     const actual = venueMapper.getInitialValues(entity)
@@ -128,7 +129,7 @@ describe('getInitialValues', () => {
       .fn()
       .mockReturnValue('Description')
 
-    const entity = { isNew: true }
+    const entity = { isNew: () => true }
     const actual = venueMapper.getInitialValues(entity)
 
     expect(actual).toEqual({

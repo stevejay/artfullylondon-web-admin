@@ -4,7 +4,7 @@ import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 
 export function getInitialValues (talent) {
-  if (talent.isNew) {
+  if (talent.isNew()) {
     return {
       id: null,
       status: statusType.ACTIVE,

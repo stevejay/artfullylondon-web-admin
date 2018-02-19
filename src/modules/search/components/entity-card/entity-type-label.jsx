@@ -11,7 +11,7 @@ class EntityTypeLabel extends ShouldNeverUpdateComponent {
 
     return (
       <div styleName={entity.entityType}>
-        {entity.entityTypeLabel}
+        {entity.getEntityTypeLabel()}
       </div>
     )
   }
@@ -20,7 +20,7 @@ class EntityTypeLabel extends ShouldNeverUpdateComponent {
 EntityTypeLabel.propTypes = {
   entity: PropTypes.shape({
     entityType: PropTypes.string.isRequired,
-    entityTypeLabel: PropTypes.string.isRequired
+    getEntityTypeLabel: PropTypes.func.isRequired
   }).isRequired
 }
 

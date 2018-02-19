@@ -13,11 +13,11 @@ export class FullEventSeries extends Entity {
     return this.eventSeriesType + ' Series'
   }
 
-  get url () {
+  getUrl () {
     throw new Error('url accessed')
   }
 
-  get editUrl () {
+  getEditUrl () {
     return `/event-series/edit/${this.id}`
   }
 }
@@ -27,23 +27,23 @@ export class SummaryEventSeries {
     _.extend(this, entity)
   }
 
-  get entityTypeLabel () {
-    return 'Event Series'
-  }
-
   get key () {
     return this.id
   }
 
-  get hasImage () {
+  getEntityTypeLabel () {
+    return 'Event Series'
+  }
+
+  hasImage () {
     return !!this.image
   }
 
-  get url () {
+  getUrl () {
     return `/event-series/${this.id}`
   }
 
-  get eventSeriesTypeLabel () {
+  getEventSeriesTypeLabel () {
     return this.eventSeriesType === eventSeriesType.SEASON ? 'season' : 'series'
   }
 }

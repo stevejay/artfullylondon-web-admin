@@ -7,7 +7,7 @@ it('should render correctly', () => {
     <EntityCardEntityTypeLabel
       entity={{
         entityType: 'venue',
-        entityTypeLabel: 'The Label'
+        getEntityTypeLabel: () => 'The Label'
       }}
     />
   )
@@ -20,7 +20,7 @@ it('should not update', () => {
     <EntityCardEntityTypeLabel
       entity={{
         entityType: 'venue',
-        entityTypeLabel: 'The Label'
+        getEntityTypeLabel: () => 'The Label'
       }}
     />
   )

@@ -1,22 +1,22 @@
 import _ from 'lodash'
 
-import * as tagConstants from '../constants'
+import tagType from '_src/domain/types/tag-type'
 
 export function getTagTypeFromTagId (id) {
   if (_.startsWith(id, 'geo/')) {
-    return tagConstants.TAG_TYPE_GEO
+    return tagType.GEO
   }
 
   if (_.startsWith(id, 'medium/')) {
-    return tagConstants.TAG_TYPE_MEDIUM
+    return tagType.MEDIUM
   }
 
   if (_.startsWith(id, 'style/')) {
-    return tagConstants.TAG_TYPE_STYLE
+    return tagType.STYLE
   }
 
   if (_.startsWith(id, 'audience/')) {
-    return tagConstants.TAG_TYPE_AUDIENCE
+    return tagType.AUDIENCE
   }
 
   throw new Error(`id '${id}' does not have a recognized tag type`)

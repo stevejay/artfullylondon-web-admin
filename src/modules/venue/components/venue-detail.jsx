@@ -77,7 +77,7 @@ export class VenueDetail extends React.Component {
         </EntityDetailsContainer>
         <BasicSection>
           <LazyLoad height={300} once>
-            <EntityPageMap zoom={14} pin={entity.pin} />
+            <EntityPageMap zoom={14} pin={entity.getPin()} />
           </LazyLoad>
         </BasicSection>
         <BasicSection>

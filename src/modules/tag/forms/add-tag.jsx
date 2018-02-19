@@ -23,7 +23,7 @@ export const AddTagForm = ({
         name='label'
         component={TextField}
         required
-        maxLength={tagConstants.constraint.label.length.maximum}
+        maxLength={tagConstants.CONSTRAINT.label.length.maximum}
         autos={false}
         forceSingleLine
         containerStyle={{ flexBasis: 'auto' }}
@@ -47,7 +47,7 @@ AddTagForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  tagType: PropTypes.oneOf(tagConstants.ALLOWED_TAG_TYPES).isRequired,
+  tagType: PropTypes.string.isRequired,
   error: PropTypes.any
 }
 

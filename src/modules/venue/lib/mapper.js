@@ -4,7 +4,7 @@ import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import statusType from '_src/domain/types/status-type'
 
 export function getInitialValues (venue) {
-  if (venue.isNew) {
+  if (venue.isNew()) {
     return {
       id: null,
       status: statusType.ACTIVE,

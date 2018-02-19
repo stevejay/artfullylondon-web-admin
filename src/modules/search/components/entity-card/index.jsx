@@ -22,8 +22,8 @@ class EntityCard extends React.PureComponent {
         <div styleName='actions-row'>
           <Link
             styleName='goto-entity'
-            data-url={entity.url}
-            to={entity.url}
+            data-url={entity.getUrl()}
+            to={entity.getUrl()}
             onClick={onClick}
           >
             <ArrowCircleRight styleName='goto-entity-icon' />

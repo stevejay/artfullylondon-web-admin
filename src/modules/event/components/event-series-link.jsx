@@ -12,7 +12,7 @@ class EventSeriesLink extends React.PureComponent {
     return (
       <Message type='basic'>
         This event is part of
-        a {eventSeries.eventSeriesTypeLabel} of events
+        a {eventSeries.getEventSeriesTypeLabel()} of events
         called
         {' '}
         <Link to={`/event-series/${eventSeries.id}`}>{eventSeries.name}</Link>

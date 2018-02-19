@@ -9,20 +9,80 @@ import * as eventLib from '_src/lib/event'
 import * as timeLib from '_src/lib/time'
 import * as entityLib from '_src/lib/entity'
 
+describe('SummaryEvent', () => {
+  it('should construct a summary event', () => {
+    const entity = {
+      entityType: 'event',
+      id: 'event-id',
+      status: 'Active',
+      name: 'Taming of the Shrew',
+      eventType: 'Performance',
+      occurrenceType: 'Bounded',
+      soldOut: true,
+      costType: 'Paid',
+      dateFrom: '2016/02/11',
+      dateTo: '2016/02/13',
+      summary: 'A Shakespearian classic',
+      venueId: 'almeida-theatre',
+      venueName: 'Almeida Theatre',
+      postcode: 'N5 2UA',
+      latitude: 53,
+      longitude: 2,
+      image: '12345678123456781234567812345678',
+      imageCopyright: 'foo',
+      imageRatio: 1.2
+    }
+
+    const actual = new SummaryEvent(entity)
+
+    expect(actual.entityType).toEqual('event')
+    expect(actual.id).toEqual('event-id')
+    expect(actual.status).toEqual('Active')
+    expect(actual.name).toEqual('Taming of the Shrew')
+    expect(actual.eventType).toEqual('Performance')
+    expect(actual.occurrenceType).toEqual('Bounded')
+    expect(actual.soldOut).toEqual(true)
+    expect(actual.costType).toEqual('Paid')
+    expect(actual.dateFrom).toEqual('2016/02/11')
+    expect(actual.dateTo).toEqual('2016/02/13')
+    expect(actual.summary).toEqual('A Shakespearian classic')
+    expect(actual.venueId).toEqual('almeida-theatre')
+    expect(actual.venueName).toEqual('Almeida Theatre')
+    expect(actual.postcode).toEqual('N5 2UA')
+    expect(actual.latitude).toEqual(53)
+    expect(actual.longitude).toEqual(2)
+    expect(actual.image).toEqual('12345678123456781234567812345678')
+    expect(actual.imageCopyright).toEqual('foo')
+    expect(actual.imageRatio).toEqual(1.2)
+    expect(actual.key).toEqual('event-id')
+    expect(actual.isFreeEvent()).toEqual(false)
+    expect(actual.getEntityTypeLabel()).toEqual('Event')
+    expect(actual.hasImage()).toEqual(true)
+    expect(actual.getUrl()).toEqual('/event/event-id')
+    expect(actual.getPostcodeDistrict()).toEqual('N5')
+    expect(actual.cardImageLoaded).toEqual(false)
+    expect(actual.isExpiredOn('2016/02/13')).toEqual(false)
+    expect(actual.isExpiredOn('2016/02/14')).toEqual(true)
+    expect(actual.isCurrent('2016/02/14')).toEqual(false)
+    expect(actual.isCurrent('2016/02/13')).toEqual(true)
+    expect(actual.isCurrent('2016/02/10')).toEqual(false)
+  })
+})
+
 // describe('SummaryEvent', () => {
 //   it('should have correct entityType', () => {
 //     const subject = new SummaryEvent({})
 //     expect(subject.entityType).toBe('event')
 //   })
 
-//   it('should have correct entityTypeLabel', () => {
+//   it('should have correct getEntityTypeLabel', () => {
 //     const subject = new SummaryEvent({})
-//     expect(subject.entityTypeLabel).toBe('Event')
+//     expect(subject.getEntityTypeLabel()).toBe('Event')
 //   })
 
-//   it('should have correct entityTypeLabel for a free event', () => {
+//   it('should have correct getEntityTypeLabel for a free event', () => {
 //     const subject = new SummaryEvent({ costType: 'Free' })
-//     expect(subject.entityTypeLabel).toBe('Free Event')
+//     expect(subject.getEntityTypeLabel()).toBe('Free Event')
 //   })
 
 //   it('should have correct id', () => {
@@ -60,9 +120,9 @@ import * as entityLib from '_src/lib/entity'
 //     expect(subject.url).toBe('/event/almeida-theatre/2017/foo')
 //   })
 
-//   it('should have correct editUrl', () => {
+//   it('should have correct getEditUrl', () => {
 //     const subject = new SummaryEvent({ id: 'almeida-theatre/2017/foo' })
-//     expect(subject.editUrl).toBe('/event/edit/almeida-theatre/2017/foo')
+//     expect(subject.getEditUrl()).toBe('/event/edit/almeida-theatre/2017/foo')
 //   })
 
 //   it('should have correct summary', () => {
@@ -169,7 +229,7 @@ import * as entityLib from '_src/lib/entity'
 
 //   it('should clone correctly', () => {
 //     const source = new SummaryEvent({ name: 'source' })
-//     const copy = source.shallowClone()
+//     const copy = source.createShallowClone()
 
 //     copy.entity.name = 'copy'
 
@@ -461,14 +521,14 @@ import * as entityLib from '_src/lib/entity'
 //     expect(subject.getHomepageUrl()).toEqual(null)
 //   })
 
-//   it('should have correct pin', () => {
+//   it('should have correct getPin', () => {
 //     const subject = new FullEvent({ venue: { latitude: 2, longitude: 3 } })
-//     expect(subject.pin).toEqual({ lat: 2, lng: 3 })
+//     expect(subject.getPin()).toEqual({ lat: 2, lng: 3 })
 //   })
 
 //   it('should clone correctly', () => {
 //     const source = new FullEvent({ name: 'source', venue: {} })
-//     const copy = source.shallowClone()
+//     const copy = source.createShallowClone()
 
 //     copy.entity.name = 'copy'
 

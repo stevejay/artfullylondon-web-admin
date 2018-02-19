@@ -20,12 +20,12 @@ describe('SummaryVenue', () => {
       imageRatio: 1.2
     })
 
-    expect(subject.getPostcodeDistrict()).toEqual('SW1')
-    expect(subject.entityTypeLabel).toEqual('Venue')
     expect(subject.key).toEqual('venue-id')
-    expect(subject.url).toEqual('/venue/venue-id')
-    expect(subject.pin).toEqual({ lat: 51.5398, lng: -0.109 })
-    expect(subject.hasImage).toEqual(true)
+    expect(subject.getPostcodeDistrict()).toEqual('SW1')
+    expect(subject.getEntityTypeLabel()).toEqual('Venue')
+    expect(subject.getUrl()).toEqual('/venue/venue-id')
+    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
+    expect(subject.hasImage()).toEqual(true)
     expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
   })
 
@@ -41,18 +41,18 @@ describe('SummaryVenue', () => {
       longitude: -0.109
     })
 
-    expect(subject.getPostcodeDistrict()).toEqual(null)
-    expect(subject.entityTypeLabel).toEqual('Venue')
     expect(subject.key).toEqual('venue-id')
-    expect(subject.url).toEqual('/venue/venue-id')
-    expect(subject.pin).toEqual({ lat: 51.5398, lng: -0.109 })
-    expect(subject.hasImage).toEqual(false)
+    expect(subject.getPostcodeDistrict()).toEqual(null)
+    expect(subject.getEntityTypeLabel()).toEqual('Venue')
+    expect(subject.getUrl()).toEqual('/venue/venue-id')
+    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
+    expect(subject.hasImage()).toEqual(false)
     expect(subject.createFullAddress()).toEqual('Bankside, London')
   })
 
   it('should clone correctly', () => {
     const source = new SummaryVenue({ name: 'source' })
-    const copy = source.shallowClone()
+    const copy = source.createShallowClone()
 
     copy.name = 'copy'
 
@@ -110,7 +110,7 @@ describe('FullVenue', () => {
     expect(subject.status).toEqual('Active')
     expect(subject.entityType).toEqual('venue')
     expect(subject.getInfoBarLabel()).toEqual('Art Gallery')
-    expect(subject.editUrl).toEqual('/venue/edit/venue-id')
+    expect(subject.getEditUrl()).toEqual('/venue/edit/venue-id')
   })
 
   it('should get the homepage URL', () => {
@@ -128,7 +128,7 @@ describe('FullVenue', () => {
 
   it('should clone correctly', () => {
     const source = new FullVenue({ name: 'source' })
-    const copy = source.shallowClone()
+    const copy = source.createShallowClone()
 
     copy.name = 'copy'
 

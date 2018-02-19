@@ -8,6 +8,7 @@ import FormError from '_src/components/form/error'
 import SubFormButtons from '_src/components/form/sub-form-buttons'
 import SelectField from '_src/components/select/field'
 import DatepickerField from '_src/components/datepicker/field'
+import tagType from '_src/domain/types/tag-type'
 import * as globalConstants from '_src/constants'
 import * as timeConstants from '../constants'
 import {
@@ -95,10 +96,7 @@ AddSpecialOpeningTimeForm.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({
-    audienceTagsOptions: tagSelectors.getTagsForType(
-      state,
-      tagConstants.TAG_TYPE_AUDIENCE
-    )
+    audienceTagsOptions: tagSelectors.getTagsForType(state, tagType.AUDIENCE)
   })
 )(
   reduxForm({

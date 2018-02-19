@@ -3,7 +3,7 @@ import { entityMapper } from '_src/modules/entity'
 import statusType from '_src/domain/types/status-type'
 
 export function getInitialValues (eventSeries) {
-  if (eventSeries.isNew) {
+  if (eventSeries.isNew()) {
     return {
       id: null,
       status: statusType.ACTIVE,

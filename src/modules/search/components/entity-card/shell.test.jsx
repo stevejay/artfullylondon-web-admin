@@ -9,10 +9,9 @@ it('should render correctly', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        entityTypeLabel: 'The Label',
-        url: 'http://some/url',
-        image: '12345678',
-        imageRatio: 2
+        getEntityTypeLabel: _.noop,
+        hasImage: _.noop,
+        getUrl: _.noop
       }}
       onImageLoad={_.noop}
     >
@@ -31,10 +30,9 @@ it('should handle a click on the card', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        entityTypeLabel: 'The Label',
-        url: 'http://some/url',
-        image: '12345678',
-        imageRatio: 2
+        getEntityTypeLabel: _.noop,
+        hasImage: _.noop,
+        getUrl: _.noop
       }}
       onImageLoad={_.noop}
     >
@@ -52,10 +50,9 @@ describe('shouldComponentUpdate', () => {
     const entity = {
       id: 'some-id',
       entityType: 'venue',
-      entityTypeLabel: 'The Label',
-      url: 'http://some/url',
-      image: '12345678',
-      imageRatio: 2
+      getEntityTypeLabel: _.noop,
+      hasImage: _.noop,
+      getUrl: _.noop
     }
 
     const wrapper = shallow(
@@ -75,10 +72,9 @@ describe('shouldComponentUpdate', () => {
         entity={{
           id: 'some-id',
           entityType: 'venue',
-          entityTypeLabel: 'The Label',
-          url: 'http://some/url',
-          image: '12345678',
-          imageRatio: 2
+          getEntityTypeLabel: _.noop,
+          hasImage: _.noop,
+          getUrl: _.noop
         }}
         onImageLoad={_.noop}
       >

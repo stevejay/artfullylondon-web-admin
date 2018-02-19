@@ -78,7 +78,7 @@ describe('addTag', () => {
       call(
         normalise,
         { label: 'Sculpture', tagType: 'medium' },
-        tagConstants.normaliser
+        tagConstants.NORMALISER
       )
     )
 
@@ -87,7 +87,7 @@ describe('addTag', () => {
       call(
         validationLib.validate,
         { label: 'sculpture', tagType: 'medium' },
-        tagConstants.constraint
+        tagConstants.CONSTRAINT
       )
     )
 

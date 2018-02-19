@@ -17,15 +17,15 @@ export class FullVenue extends Entity {
     return this.venueType
   }
 
-  get url () {
+  getUrl () {
     throw new Error('url accessed')
   }
 
-  get editUrl () {
+  getEditUrl () {
     return `/venue/edit/${this.id}`
   }
 
-  get pin () {
+  getPin () {
     return {
       lat: this.latitude,
       lng: this.longitude
@@ -41,7 +41,14 @@ export class FullVenue extends Entity {
     return timeLib.getTimesDetails(this, entityType.VENUE, dateStr)
   }
 
-  shallowClone (newProps) {
+  createFullAddress () {
+    return (
+      this.address.replace(NEWLINES_REGEX, ', ') +
+      (this.postcode ? ', ' + this.postcode : '')
+    )
+  }
+
+  createShallowClone (newProps) {
     return new FullVenue({ ...this, ...newProps })
   }
 }
@@ -51,30 +58,30 @@ export class SummaryVenue {
     _.extend(this, entity)
   }
 
-  getPostcodeDistrict () {
-    return venueLib.getPostcodeDistrict(this.postcode)
-  }
-
-  get entityTypeLabel () {
-    return 'Venue'
-  }
-
   get key () {
     return this.id
   }
 
-  get url () {
+  getPostcodeDistrict () {
+    return venueLib.getPostcodeDistrict(this.postcode)
+  }
+
+  getEntityTypeLabel () {
+    return 'Venue'
+  }
+
+  getUrl () {
     return `/venue/${this.id}`
   }
 
-  get pin () {
+  getPin () {
     return {
       lat: this.latitude,
       lng: this.longitude
     }
   }
 
-  get hasImage () {
+  hasImage () {
     return !!this.image
   }
 
@@ -85,7 +92,7 @@ export class SummaryVenue {
     )
   }
 
-  shallowClone (newProps) {
+  createShallowClone (newProps) {
     return new SummaryVenue({ ...this, ...newProps })
   }
 }

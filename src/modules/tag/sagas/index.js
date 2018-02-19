@@ -53,10 +53,10 @@ export function * addTag (action) {
     const values = yield call(
       normalise,
       action.payload,
-      tagConstants.normaliser
+      tagConstants.NORMALISER
     )
 
-    yield call(validationLib.validate, values, tagConstants.constraint)
+    yield call(validationLib.validate, values, tagConstants.CONSTRAINT)
     const tag = yield call(tagService.addTag, values)
     yield put(tagActions.addTagSucceeded(tag))
 

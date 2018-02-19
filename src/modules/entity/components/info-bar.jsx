@@ -41,7 +41,7 @@ class EntityInfoBar extends ShouldNeverUpdateComponent {
           </li>}
         <li styleName='item'>
           <PencilIcon styleName='icon' />
-          <Link styleName='link' to={entity.editUrl}>
+          <Link styleName='link' to={entity.getEditUrl()}>
             Edit
           </Link>
         </li>

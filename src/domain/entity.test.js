@@ -3,12 +3,12 @@ import { Entity } from './entity'
 describe('isNew', () => {
   it('should return correct value for a new entity', () => {
     const subject = new Entity({})
-    expect(subject.isNew).toEqual(true)
+    expect(subject.isNew()).toEqual(true)
   })
 
   it('should return correct value for an existing entity', () => {
     const subject = new Entity({ id: 'some-id' })
-    expect(subject.isNew).toEqual(false)
+    expect(subject.isNew()).toEqual(false)
   })
 })
 

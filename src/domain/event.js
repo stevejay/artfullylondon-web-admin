@@ -1,10 +1,13 @@
+import _ from 'lodash'
+
+import { Entity } from '_src/domain/entity'
 import { EventSummaryTalent } from '_src/domain/talent'
 import { SummaryVenue } from '_src/domain/venue'
 import { SummaryEventSeries } from '_src/domain/event-series'
 import entityType from '_src/domain/types/entity-type'
 import linkType from '_src/domain/types/link-type'
 import costType from '_src/domain/types/cost-type'
-import { constants as tagConstants } from '_src/modules/tag'
+import tagType from '_src/domain/types/tag-type'
 import * as entityLib from '_src/lib/entity'
 import * as venueLib from '_src/lib/venue'
 import * as timeLib from '_src/lib/time'
@@ -12,148 +15,71 @@ import * as eventLib from '_src/lib/event'
 
 export class SummaryEvent {
   constructor (entity) {
-    this.entity = entity || {}
-    this.groupedDates = eventLib.groupTimesByDate(this.entity.dates)
-  }
-
-  getPostcodeDistrict () {
-    return venueLib.getPostcodeDistrict(this.entity.postcode)
-  }
-
-  get entityType () {
-    return entityType.EVENT
-  }
-
-  get entityTypeLabel () {
-    return this.isFreeEvent ? 'Free Event' : 'Event'
-  }
-
-  get status () {
-    return this.entity.status
-  }
-
-  get id () {
-    return this.entity.id
+    _.extend(this, entity)
+    this.cardImageLoaded = false
   }
 
   get key () {
     return this.id
   }
 
-  get name () {
-    return this.entity.name
+  isFreeEvent () {
+    return this.costType === costType.FREE
   }
 
-  get isFreeEvent () {
-    return this.entity.costType === costType.FREE
+  getEntityTypeLabel () {
+    return this.isFreeEvent() ? 'Free Event' : 'Event'
   }
 
-  get url () {
-    return entityLib.createEntityUrl(this.entityType, this.id)
-  }
-
-  get editUrl () {
-    return entityLib.createEntityEditUrl(this.entityType, this.id)
-  }
-
-  get summary () {
-    return this.entity.summary
-  }
-
-  get venueId () {
-    return this.entity.venueId
-  }
-
-  get venueName () {
-    return this.entity.venueName
-  }
-
-  get postcode () {
-    return this.entity.postcode
-  }
-
-  get hasDates () {
-    return !!this.entity.dates && this.entity.dates.length > 0
-  }
-
-  get image () {
-    return this.entity.image
-  }
-
-  get imageCopyright () {
-    return this.entity.imageCopyright
-  }
-
-  get imageRatio () {
-    return this.entity.imageRatio
-  }
-
-  get hasImage () {
+  hasImage () {
     return !!this.image
   }
 
-  get cardImageLoaded () {
-    return !!this.entity.cardImageLoaded
+  getUrl () {
+    return `/event/${this.id}`
   }
 
-  isBeingWatched (watches) {
-    return !!watches[this.id]
-  }
-
-  createWatchLabel () {
-    return this.name
-  }
-
-  createWatchChangeInstruction (isBeingWatched) {
-    const prefix = isBeingWatched ? 'Unbookmark' : 'Bookmark'
-    return prefix + ' this event'
+  getPostcodeDistrict () {
+    return venueLib.getPostcodeDistrict(this.postcode)
   }
 
   isExpiredOn (dateStr) {
-    return dateStr > this.entity.dateTo
+    return dateStr > this.dateTo
   }
 
   createDateRangeLabel (dateStr) {
-    return timeLib.createDateRangeLabel(
-      dateStr,
-      this.entity.dateFrom,
-      this.entity.dateTo
-    )
+    return timeLib.createDateRangeLabel(dateStr, this.dateFrom, this.dateTo)
   }
 
   isCurrent (dateStr) {
     return (
-      !this.entity.dateFrom ||
-      (this.entity.dateFrom <= dateStr && this.entity.dateTo >= dateStr)
+      !this.dateFrom || (this.dateFrom <= dateStr && this.dateTo >= dateStr)
     )
   }
 
-  shallowClone (newProps) {
-    const clonedEntity = Object.assign({}, this.entity, newProps || {})
-    return new SummaryEvent(clonedEntity)
+  createShallowClone (newProps) {
+    return new SummaryEvent({ ...this, ...newProps })
   }
 }
 
-export class FullEvent extends SummaryEvent {
+export class FullEvent extends Entity {
   constructor (entity) {
     super(entity)
 
-    // this.links = new LinkCollection(this.entity.links)
+    this.venue = new SummaryVenue(this.venue)
 
-    this.venue = new SummaryVenue(this.entity.venue)
-
-    this.talents = (this.entity.talents || [])
+    this.talents = (this.talents || [])
       .map(talent => new EventSummaryTalent(talent))
 
-    this.eventSeries = this.entity.eventSeries
-      ? new SummaryEventSeries(this.entity.eventSeries)
+    this.eventSeries = this.eventSeries
+      ? new SummaryEventSeries(this.eventSeries)
       : null
 
     this.tags = [
-      ..._addTagType(this.entity.mediumTags, tagConstants.TAG_TYPE_MEDIUM),
-      ..._addTagType(this.entity.styleTags, tagConstants.TAG_TYPE_STYLE),
-      ..._addTagType(this.entity.geoTags, tagConstants.TAG_TYPE_GEO),
-      ..._addTagType(this.entity.audienceTags, tagConstants.TAG_TYPE_AUDIENCE)
+      ..._addTagType(this.mediumTags, tagType.MEDIUM),
+      ..._addTagType(this.styleTags, tagType.STYLE),
+      ..._addTagType(this.geoTags, tagType.GEO),
+      ..._addTagType(this.audienceTags, tagType.AUDIENCE)
     ]
   }
 
@@ -231,7 +157,7 @@ export class FullEvent extends SummaryEvent {
     return this.entity.minAge ? `${this.entity.minAge}+` : null
   }
 
-  get pin () {
+  getPin () {
     return this.venue.pin
   }
 
@@ -267,7 +193,7 @@ export class FullEvent extends SummaryEvent {
     return this.entity.weSay
   }
 
-  shallowClone (newProps) {
+  createShallowClone (newProps) {
     const clonedEntity = Object.assign({}, this.entity, newProps || {})
     return new FullEvent(clonedEntity)
   }

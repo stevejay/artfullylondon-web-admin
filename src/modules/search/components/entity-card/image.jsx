@@ -17,12 +17,11 @@ class Image extends ShouldNeverUpdateComponent {
     onImageLoad && onImageLoad({ entityType, id })
   }
   render () {
-    const { entity: { id, entityType, image, cardImageLoaded } } = this.props
+    const { entity } = this.props
+    const { id, entityType, image, cardImageLoaded } = entity
+    const entityUrl = entity.getUrl()
 
-    const hasImage = !!image
-    const entityUrl = this.props.entity.url
-
-    if (!hasImage) {
+    if (!entity.hasImage()) {
       return (
         <Link to={entityUrl} styleName='lazy-load-container'>
           <ImagePlaceholder type={entityType} size='smallmedium' />
@@ -62,9 +61,10 @@ Image.propTypes = {
   entity: PropTypes.shape({
     id: PropTypes.string.isRequired,
     entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
-    url: PropTypes.string.isRequired,
     image: PropTypes.string,
-    cardImageLoaded: PropTypes.bool
+    cardImageLoaded: PropTypes.bool,
+    hasImage: PropTypes.func.isRequired,
+    getUrl: PropTypes.func.isRequired
   }).isRequired,
   onImageLoad: PropTypes.func
 }

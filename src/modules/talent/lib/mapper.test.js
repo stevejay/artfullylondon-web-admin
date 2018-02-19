@@ -34,7 +34,8 @@ describe('getInitialValues', () => {
       createdDate: '2018/01/01',
       description: 'Description',
       links: { links: [{ type: 'Wikipedia' }] },
-      images: [{ id: '1111' }]
+      images: [{ id: '1111' }],
+      isNew: () => false
     }
 
     const actual = talentMapper.getInitialValues(talent)
@@ -82,7 +83,7 @@ describe('getInitialValues', () => {
       .fn()
       .mockReturnValue('Description')
 
-    const talent = { isNew: true }
+    const talent = { isNew: () => true }
     const actual = talentMapper.getInitialValues(talent)
 
     expect(actual).toEqual({

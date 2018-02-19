@@ -9,10 +9,11 @@ it('should render correctly', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        url: 'http://some/url',
         image: '12345678',
         imageRatio: 2,
-        cardImageLoaded: false
+        cardImageLoaded: false,
+        hasImage: () => true,
+        getUrl: () => 'http://some/url'
       }}
       onImageLoad={_.noop}
     />
@@ -27,10 +28,11 @@ it('should render correctly when card image is loaded', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        url: 'http://some/url',
         image: '12345678',
         imageRatio: 2,
-        cardImageLoaded: true
+        cardImageLoaded: true,
+        hasImage: () => true,
+        getUrl: () => 'http://some/url'
       }}
       onImageLoad={_.noop}
     />
@@ -45,7 +47,8 @@ it('should render correctly when there is no image', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        url: 'http://some/url'
+        hasImage: () => false,
+        getUrl: () => 'http://some/url'
       }}
       onImageLoad={_.noop}
     />
@@ -62,10 +65,11 @@ it('should handle the image load event', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        url: 'http://some/url',
         image: '12345678',
         imageRatio: 2,
-        cardImageLoaded: false
+        cardImageLoaded: false,
+        hasImage: () => true,
+        getUrl: () => 'http://some/url'
       }}
       onImageLoad={handleImageLoad}
     />
@@ -85,10 +89,11 @@ it('should not update', () => {
       entity={{
         id: 'some-id',
         entityType: 'venue',
-        url: 'http://some/url',
         image: '12345678',
         imageRatio: 2,
-        cardImageLoaded: false
+        cardImageLoaded: false,
+        hasImage: () => true,
+        getUrl: () => 'http://some/url'
       }}
       onImageLoad={_.noop}
     />

@@ -24,10 +24,10 @@ describe('SummaryEventSeries', () => {
     expect(subject.image).toEqual('abcd1234abcd1234abcd1234abcd1234')
     expect(subject.imageCopyright).toEqual('Foo')
     expect(subject.imageRatio).toEqual(1.2)
-    expect(subject.hasImage).toEqual(true)
-    expect(subject.entityTypeLabel).toEqual('Event Series')
-    expect(subject.url).toEqual('/event-series/event-series-id')
-    expect(subject.eventSeriesTypeLabel).toEqual('series')
+    expect(subject.hasImage()).toEqual(true)
+    expect(subject.getEntityTypeLabel()).toEqual('Event Series')
+    expect(subject.getUrl()).toEqual('/event-series/event-series-id')
+    expect(subject.getEventSeriesTypeLabel()).toEqual('series')
   })
 
   it('should construct an season event series with no image', () => {
@@ -47,10 +47,10 @@ describe('SummaryEventSeries', () => {
     expect(subject.name).toEqual('Bang Said The Gun')
     expect(subject.status).toEqual('Active')
     expect(subject.eventSeriesType).toEqual('Season')
-    expect(subject.hasImage).toEqual(false)
-    expect(subject.entityTypeLabel).toEqual('Event Series')
-    expect(subject.url).toEqual('/event-series/event-series-id')
-    expect(subject.eventSeriesTypeLabel).toEqual('season')
+    expect(subject.hasImage()).toEqual(false)
+    expect(subject.getEntityTypeLabel()).toEqual('Event Series')
+    expect(subject.getUrl()).toEqual('/event-series/event-series-id')
+    expect(subject.getEventSeriesTypeLabel()).toEqual('season')
   })
 })
 
@@ -82,6 +82,6 @@ describe('FullEventSeries', () => {
 
     expect(subject.name).toEqual('Bang Said The Gun')
     expect(subject.getInfoBarLabel()).toEqual('Occasional Series')
-    expect(subject.editUrl).toEqual('/event-series/edit/event-series-id')
+    expect(subject.getEditUrl()).toEqual('/event-series/edit/event-series-id')
   })
 })

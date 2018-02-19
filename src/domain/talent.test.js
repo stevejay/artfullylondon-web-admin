@@ -31,9 +31,9 @@ describe('SummaryTalent', () => {
     expect(subject.image).toEqual('0342826208934d90b801e055152f1d0f')
     expect(subject.imageCopyright).toEqual('Tate Modern')
     expect(subject.imageRatio).toEqual(1.2)
-    expect(subject.hasImage).toEqual(true)
-    expect(subject.entityTypeLabel).toEqual('Talent')
-    expect(subject.url).toEqual('/talent/talent-id')
+    expect(subject.hasImage()).toEqual(true)
+    expect(subject.getEntityTypeLabel()).toEqual('Talent')
+    expect(subject.getUrl()).toEqual('/talent/talent-id')
   })
 
   it('should construct a group with no image', () => {
@@ -54,9 +54,9 @@ describe('SummaryTalent', () => {
     expect(subject.status).toEqual('Active')
     expect(subject.talentType).toEqual('Group')
     expect(subject.commonRole).toEqual('Actor')
-    expect(subject.hasImage).toEqual(false)
-    expect(subject.entityTypeLabel).toEqual('Talent')
-    expect(subject.url).toEqual('/talent/talent-id')
+    expect(subject.hasImage()).toEqual(false)
+    expect(subject.getEntityTypeLabel()).toEqual('Talent')
+    expect(subject.getUrl()).toEqual('/talent/talent-id')
   })
 })
 
@@ -87,9 +87,9 @@ describe('EventSummaryTalent', () => {
     expect(subject.image).toEqual('0342826208934d90b801e055152f1d0f')
     expect(subject.imageCopyright).toEqual('Tate Modern')
     expect(subject.imageRatio).toEqual(1.2)
-    expect(subject.hasImage).toEqual(true)
-    expect(subject.entityTypeLabel).toEqual('Talent')
-    expect(subject.url).toEqual('/talent/talent-id')
+    expect(subject.hasImage()).toEqual(true)
+    expect(subject.getEntityTypeLabel()).toEqual('Talent')
+    expect(subject.getUrl()).toEqual('/talent/talent-id')
   })
 
   it('should have correct createRolesString when has roles', () => {
@@ -152,6 +152,6 @@ describe('FullTalent', () => {
     expect(subject.lastName).toEqual('Cracknell')
     expect(subject.name).toEqual('Carrie Cracknell')
     expect(subject.getInfoBarLabel()).toEqual('Actor')
-    expect(subject.editUrl).toEqual('/talent/edit/talent-id')
+    expect(subject.getEditUrl()).toEqual('/talent/edit/talent-id')
   })
 })

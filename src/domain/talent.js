@@ -16,11 +16,11 @@ export class FullTalent extends Entity {
     return this.commonRole
   }
 
-  get url () {
+  getUrl () {
     throw new Error('url accessed')
   }
 
-  get editUrl () {
+  getEditUrl () {
     return `/talent/edit/${this.id}`
   }
 }
@@ -28,10 +28,6 @@ export class FullTalent extends Entity {
 export class SummaryTalent {
   constructor (entity) {
     _.extend(this, entity)
-  }
-
-  get entityTypeLabel () {
-    return 'Talent'
   }
 
   get key () {
@@ -42,11 +38,15 @@ export class SummaryTalent {
     return `${this.firstNames || ''} ${this.lastName || ''}`.trim()
   }
 
-  get hasImage () {
+  getEntityTypeLabel () {
+    return 'Talent'
+  }
+
+  hasImage () {
     return !!this.image
   }
 
-  get url () {
+  getUrl () {
     return `/talent/${this.id}`
   }
 }

@@ -9,7 +9,7 @@ export class Entity {
     throw new Error('key accessed!')
   }
 
-  get isNew () {
+  isNew () {
     return !this.id
   }
 

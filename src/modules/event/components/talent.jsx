@@ -14,12 +14,12 @@ class EventTalentComponent extends React.PureComponent {
 
     return (
       <div {...rest} className={className} styleName='container'>
-        {talent.hasImage &&
+        {talent.hasImage() &&
           <img
             styleName='img'
             src={imageLib.createImageUrl(talent.image, '120x120')}
           />}
-        {!talent.hasImage &&
+        {!talent.hasImage() &&
           <ImagePlaceholder
             styleName='placeholder'
             size='very-small'
@@ -32,7 +32,7 @@ class EventTalentComponent extends React.PureComponent {
               {talent.createCharactersString()}
             </p>}
           <h4>
-            <Link to={talent.url}>{talent.name}</Link>
+            <Link to={talent.getUrl()}>{talent.name}</Link>
           </h4>
         </div>
       </div>

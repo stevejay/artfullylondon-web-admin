@@ -75,7 +75,7 @@ export class EventDetail extends React.Component {
           </EntityColumnLayout>
         </EntityDetailsContainer>
         <BasicSection>
-          <EntityPageMap zoom={14} pin={entity.pin} />
+          <EntityPageMap zoom={14} pin={entity.getPin()} />
         </BasicSection>
       </React.Fragment>
     )

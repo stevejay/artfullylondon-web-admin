@@ -32,7 +32,8 @@ describe('getInitialValues', () => {
       createdDate: '2018/01/01',
       description: 'Description',
       links: { links: [{ type: 'Wikipedia' }] },
-      images: [{ id: '1111' }]
+      images: [{ id: '1111' }],
+      isNew: () => false
     }
 
     const actual = eventSeriesMapper.getInitialValues(entity)
@@ -80,7 +81,7 @@ describe('getInitialValues', () => {
       .fn()
       .mockReturnValue('Description')
 
-    const entity = { isNew: true }
+    const entity = { isNew: () => true }
     const actual = eventSeriesMapper.getInitialValues(entity)
 
     expect(actual).toEqual({
