@@ -5,63 +5,6 @@ import costType from '_src/domain/types/cost-type'
 import bookingType from '_src/domain/types/booking-type'
 import occurrenceType from '_src/domain/types/occurrence-type'
 
-describe('groupTimesByDate', () => {
-  it('should handle no times', () => {
-    const actual = eventLib.groupTimesByDate([])
-    expect(actual).toEqual(null)
-  })
-
-  it('should correctly group a mix of dates and performance times', () => {
-    const arg = [
-      { date: '2017/01/14', at: '10:00' },
-      { date: '2017/01/14', at: '12:00' },
-      { date: '2017/01/14', at: '18:00' },
-      { date: '2017/01/15', at: '10:00' }
-    ]
-
-    const expected = [
-      {
-        date: '2017/01/14',
-        times: [{ at: '10:00' }, { at: '12:00' }, { at: '18:00' }]
-      },
-      {
-        date: '2017/01/15',
-        times: [{ at: '10:00' }]
-      }
-    ]
-
-    const actual = eventLib.groupTimesByDate(arg)
-    expect(actual).toEqual(expected)
-  })
-
-  it('should correctly group a mix of dates and opening times', () => {
-    const arg = [
-      { date: '2017/01/14', from: '10:00', to: '11:00' },
-      { date: '2017/01/14', from: '12:00', to: '13:00' },
-      { date: '2017/01/14', from: '18:00', to: '19:00' },
-      { date: '2017/01/15', from: '10:00', to: '11:00' }
-    ]
-
-    const expected = [
-      {
-        date: '2017/01/14',
-        times: [
-          { from: '10:00', to: '11:00' },
-          { from: '12:00', to: '13:00' },
-          { from: '18:00', to: '19:00' }
-        ]
-      },
-      {
-        date: '2017/01/15',
-        times: [{ from: '10:00', to: '11:00' }]
-      }
-    ]
-
-    const actual = eventLib.groupTimesByDate(arg)
-    expect(actual).toEqual(expected)
-  })
-})
-
 describe('formatBookingInfoForDisplay', () => {
   const tests = [
     // Required; no booking link

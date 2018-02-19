@@ -12,7 +12,7 @@ import { Header, Sidenav } from '_src/modules/nav'
 import { Footer } from '_src/modules/footer'
 import { NotificationContainer } from '_src/modules/notification'
 import { AppUpdater } from '_src/modules/app-updater'
-import { NotFoundPage } from '_src/modules/error'
+import NotFoundPage from '_src/components/error/not-found-page'
 import { DashboardPage } from '_src/modules/dashboard'
 import {
   LoginPage,

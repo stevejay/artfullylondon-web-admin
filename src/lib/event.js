@@ -7,6 +7,8 @@ import bookingType from '_src/domain/types/booking-type'
 import occurrenceType from '_src/domain/types/occurrence-type'
 import * as dateLib from '_src/lib/date'
 
+// TODO move these all to domain
+
 export function eventIsPerformance (type) {
   return type === eventType.PERFORMANCE
 }
@@ -37,27 +39,6 @@ export function formatCostForDisplay (type, costFrom, costTo) {
   }
 
   return _formatAsMoney(costFrom) + ' to ' + _formatAsMoney(costTo)
-}
-
-// Note: dates must be sorted by date and time
-export function groupTimesByDate (dates) {
-  if (!dates || dates.length === 0) {
-    return null
-  }
-
-  const result = []
-
-  dates.forEach(date => {
-    const time = date.from ? { from: date.from, to: date.to } : { at: date.at }
-
-    if (result.length > 0 && result[result.length - 1].date === date.date) {
-      result[result.length - 1].times.push(time)
-    } else {
-      result.push({ date: date.date, times: [time] })
-    }
-  })
-
-  return result
 }
 
 export function formatEventOccurrenceForDisplay (

@@ -51,12 +51,12 @@ export class EventDetail extends React.Component {
               <EventMainDetails event={entity} dateStr={dateStr} />
               <EntityDescription entity={entity} />
               <EntityWeSay entity={entity} />
-              {entity.hasEventSeries &&
+              {entity.hasEventSeries() &&
                 <EventSeriesLink eventSeries={entity.eventSeries} />}
               <ExternalLinks entity={entity} />
-              {entity.hasTags && <Divider />}
+              {entity.hasTags() && <Divider />}
               <TagCollection tags={entity.tags} />
-              {entity.hasTalents && <Divider />}
+              {entity.hasTalents() && <Divider />}
               <EventTalentCarousel
                 talents={entity.talents}
                 selectedTalentId={selectedTalentId}

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 import { withState } from 'recompose'
 import log from 'loglevel'
 
-import { Error } from '_src/modules/error'
+import Error from '_src/components/error'
 import FadeTransition from '_src/components/transition/fade'
 import BoxesLoader from '_src/components/loader/boxes'
 import BasicSection from '_src/components/section/basic'

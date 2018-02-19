@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Error from './error'
-import * as errorConstants from '../constants'
+import Error from './index'
+import errorType from '_src/domain/types/error-type'
 
 it('should render a 500 error correctly', () => {
   const wrapper = shallow(<Error />)
@@ -9,6 +9,6 @@ it('should render a 500 error correctly', () => {
 })
 
 it('should render a 404 error correctly', () => {
-  const wrapper = shallow(<Error type={errorConstants.NOT_FOUND} />)
+  const wrapper = shallow(<Error type={errorType.NOT_FOUND} />)
   expect(wrapper).toMatchSnapshot()
 })

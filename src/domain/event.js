@@ -83,24 +83,34 @@ export class FullEvent extends Entity {
     ]
   }
 
+  get entityType () {
+    return entityType.EVENT
+  }
+
+  getUrl () {
+    throw new Error('url accessed')
+  }
+
+  getEditUrl () {
+    return `/event/edit/${this.id}`
+  }
+
   getInfoBarLabel () {
     return this.createEventMediumDescription()
   }
 
   createEventMediumDescription () {
     // TODO mixed visual arts, and mixed performing arts
-    const mediumTags = this.entity.mediumTags
-
-    if (!mediumTags || mediumTags.length === 0) {
+    if (!this.mediumTags || this.mediumTags.length === 0) {
       return 'unknown medium'
     }
 
-    if (mediumTags.length === 1) {
+    if (this.mediumTags.length === 1) {
       return mediumTags[0].label
     }
 
-    if (mediumTags.length === 2) {
-      return mediumTags[0].label + ' / ' + mediumTags[1].label
+    if (this.mediumTags.length === 2) {
+      return this.mediumTags[0].label + ' / ' + this.mediumTags[1].label
     }
 
     return 'mixed media'
@@ -108,103 +118,67 @@ export class FullEvent extends Entity {
 
   createEventOccurrenceDescriptionOn (dateStr) {
     return eventLib.formatEventOccurrenceForDisplay(
-      this.entity.occurrenceType,
-      this.entity.eventType,
-      this.entity.dateFrom,
-      this.entity.dateTo,
-      this.entity.additionalPerformances,
+      this.occurrenceType,
+      this.eventType,
+      this.dateFrom,
+      this.dateTo,
+      this.additionalPerformances,
       dateStr
     )
   }
 
   createCostDescription () {
     return eventLib.formatCostForDisplay(
-      this.entity.costType,
-      this.entity.costFrom,
-      this.entity.costTo
+      this.costType,
+      this.costFrom,
+      this.costTo
     )
   }
 
   createBookingDescriptionOn (dateStr) {
     return eventLib.formatBookingInfoForDisplay(
-      this.entity.bookingType,
-      this.entity.bookingOpens,
+      this.bookingType,
+      this.bookingOpens,
       this,
       dateStr
     )
   }
 
   createTimesDetailsOn (dateStr) {
-    return timeLib.getTimesDetails(this.entity, this.entityType, dateStr)
-  }
-
-  createFormattedDescription () {
-    if (this.entity.description) {
-      return entityLib.processDescription(
-        this.entity.description,
-        this.entity.descriptionCredit
-      )
-    } else {
-      return this.entity.summary
-    }
+    return timeLib.getTimesDetails(this, this.entityType, dateStr)
   }
 
   createVenueGuidanceDescription () {
-    return this.entity.venueGuidance
+    return this.venueGuidance
   }
 
   createAgeDescription () {
-    return this.entity.minAge ? `${this.entity.minAge}+` : null
+    return this.minAge ? `${this.minAge}+` : null
   }
 
   getPin () {
-    return this.venue.pin
+    return this.venue.getPin()
   }
 
-  get hasVenueGuidance () {
-    return !!this.entity.venueGuidance
-  }
-
-  get hasEventSeries () {
+  hasEventSeries () {
     return !!this.eventSeries
   }
 
-  get hasTalents () {
+  hasTalents () {
     return !!this.talents && this.talents.length > 0
   }
 
-  get hasTags () {
+  hasTags () {
     return !!this.tags && this.tags.length > 0
-  }
-
-  get images () {
-    return this.entity.images
-  }
-
-  get description () {
-    return this.entity.description
-  }
-
-  get descriptionCredit () {
-    return this.entity.descriptionCredit
-  }
-
-  get weSay () {
-    return this.entity.weSay
-  }
-
-  createShallowClone (newProps) {
-    const clonedEntity = Object.assign({}, this.entity, newProps || {})
-    return new FullEvent(clonedEntity)
-  }
-
-  getLinkByType (linkType) {
-    return this.links.getLinkByType(linkType)
   }
 
   getHomepageUrl () {
     const homepage = this.getLinkByType(linkType.HOMEPAGE)
     return homepage ? homepage.url : null
+  }
+
+  createShallowClone (newProps) {
+    return new FullEvent({ ...this, ...newProps })
   }
 }
 

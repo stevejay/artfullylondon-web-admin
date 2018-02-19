@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import log from 'loglevel'
 
-import { Error } from '_src/modules/error'
+import Error from '_src/components/error'
 import './main.scss'
 
 class PageMain extends React.Component {

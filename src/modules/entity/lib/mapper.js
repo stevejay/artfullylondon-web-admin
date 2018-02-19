@@ -4,9 +4,7 @@ import * as imageLib from '_src/lib/image'
 import * as entityLib from '_src/lib/entity'
 import * as dateLib from '_src/lib/date'
 import statusType from '_src/domain/types/status-type'
-
-// TODO maybe make part of domain
-const IMAGE_STATUS_PROCESSING = 'Processing'
+import imageStatusType from '_src/domain/types/image-status-type'
 
 export function getRichTextInitialValue (text) {
   return RichTextEditor.createValueFromString(text || '', 'html')
@@ -49,7 +47,7 @@ export function getImagesInitialValue (images) {
 
 export function mapSubmittedImages (images) {
   images = (images || [])
-    .filter(image => image.status !== IMAGE_STATUS_PROCESSING)
+    .filter(image => image.status !== imageStatusType.PROCESSING)
 
   images = images
     .filter(image => image.isMain)

@@ -24,7 +24,7 @@ export class Entity {
 
   createFormattedDescription () {
     if (!this.description) {
-      return '<p>We do not have a description.</p>'
+      return this.summary || '<p>We do not have a description.</p>'
     }
 
     let result = this.description

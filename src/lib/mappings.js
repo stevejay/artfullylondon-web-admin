@@ -4,9 +4,7 @@ import * as imageLib from '_src/lib/image'
 import * as dateLib from '_src/lib/date'
 import * as eventLib from '_src/lib/event'
 import * as entityLib from '_src/lib/entity'
-
-// TODO maybe make part of domain
-const IMAGE_STATUS_PROCESSING = 'Processing'
+import imageStatusType from '_src/domain/types/image-status-type'
 
 export function normaliseEventValues (values) {
   const isPerformance = eventLib.eventIsPerformance(values.eventType)
@@ -311,7 +309,7 @@ function _mapImagesToServer (images) {
 
   images = images
     .filter(image => image.isMain)
-    .filter(image => image.status !== IMAGE_STATUS_PROCESSING)
+    .filter(image => image.status !== imageStatusType.PROCESSING)
     .concat(images.filter(image => !image.isMain))
 
   return images.map(image => ({
