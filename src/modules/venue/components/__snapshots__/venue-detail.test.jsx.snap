@@ -16,16 +16,10 @@ exports[`should render correctly 1`] = `
     <EntityInfoBar
       entity={
         FullVenue {
-          "_links": LinkCollection {
-            "_links": undefined,
-          },
-          "entity": Object {
-            "images": Array [],
-            "latitude": 1,
-            "longitude": 2,
-            "name": "The Name",
-          },
-          "postcodeDistrict": null,
+          "images": Array [],
+          "latitude": 1,
+          "longitude": 2,
+          "name": "The Name",
         }
       }
     />
@@ -34,48 +28,30 @@ exports[`should render correctly 1`] = `
         <EntityDescription
           entity={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />
         <EntityWeSay
           entity={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />
         <EntityExternalLinks
           entity={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />
@@ -85,48 +61,30 @@ exports[`should render correctly 1`] = `
           dateStr="2018/01/01"
           entity={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />
         <EntityAddress
           venue={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />
         <EntityDisabilityAccess
           entity={
             FullVenue {
-              "_links": LinkCollection {
-                "_links": undefined,
-              },
-              "entity": Object {
-                "images": Array [],
-                "latitude": 1,
-                "longitude": 2,
-                "name": "The Name",
-              },
-              "postcodeDistrict": null,
+              "images": Array [],
+              "latitude": 1,
+              "longitude": 2,
+              "name": "The Name",
             }
           }
         />

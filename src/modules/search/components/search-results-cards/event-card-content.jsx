@@ -15,7 +15,7 @@ class EventCardContent extends React.PureComponent {
       <EntityCardContentContainer>
         <EntityCardHeading id={entity.id}>{entity.name}</EntityCardHeading>
         <EntityCardSubHeading>
-          {entity.venueName}, {entity.postcodeDistrict}
+          {entity.venueName}, {entity.getPostcodeDistrict()}
         </EntityCardSubHeading>
         <EntityCardSummary>{entity.summary}</EntityCardSummary>
       </EntityCardContentContainer>

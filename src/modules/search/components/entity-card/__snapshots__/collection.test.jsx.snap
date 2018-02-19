@@ -9,10 +9,7 @@ exports[`should render correctly when get is in progress 1`] = `
     dateStr="2017/01/18"
     entity={
       SummaryVenue {
-        "entity": Object {
-          "id": "some-venue-id",
-        },
-        "postcodeDistrict": null,
+        "id": "some-venue-id",
       }
     }
     key="some-venue-id"
@@ -29,10 +26,7 @@ exports[`should render correctly when there are entities 1`] = `
     dateStr="2017/01/18"
     entity={
       SummaryVenue {
-        "entity": Object {
-          "id": "some-venue-id",
-        },
-        "postcodeDistrict": null,
+        "id": "some-venue-id",
       }
     }
     key="some-venue-id"

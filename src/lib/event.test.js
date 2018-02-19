@@ -1,5 +1,4 @@
 import * as eventLib from '_src/lib/event'
-import { LinkCollection } from '_src/entities/link-collection'
 import eventType from '_src/entities/types/event-type'
 import linkType from '_src/entities/types/link-type'
 import costType from '_src/entities/types/cost-type'
@@ -97,7 +96,7 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: bookingType.REQUIRED,
         bookingOpens: '2017/01/19',
-        links: [],
+        links: null,
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (Open now)</span></span>'
@@ -107,7 +106,7 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: bookingType.REQUIRED,
         bookingOpens: '2017/01/22',
-        links: [{ type: linkType.BOOKING, url: 'https://test.com' }],
+        links: { type: linkType.BOOKING, url: 'https://test.com' },
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens 22nd Jan 2017</a>)</span></span>'
@@ -116,7 +115,7 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: bookingType.REQUIRED,
         bookingOpens: '2017/01/21',
-        links: [{ type: linkType.BOOKING, url: 'https://test.com' }],
+        links: { type: linkType.BOOKING, url: 'https://test.com' },
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens tomorrow</a>)</span></span>'
@@ -125,7 +124,7 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: bookingType.REQUIRED,
         bookingOpens: '2017/01/20',
-        links: [{ type: linkType.BOOKING, url: 'https://test.com' }],
+        links: { type: linkType.BOOKING, url: 'https://test.com' },
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Opens today</a>)</span></span>'
@@ -134,7 +133,7 @@ describe('formatBookingInfoForDisplay', () => {
       args: {
         bookingType: bookingType.REQUIRED,
         bookingOpens: '2017/01/19',
-        links: [{ type: linkType.BOOKING, url: 'https://test.com' }],
+        links: { type: linkType.BOOKING, url: 'https://test.com' },
         today: '2017/01/20'
       },
       expected: '<span>Required<span> (<a href="https://test.com" target="_blank" rel="noopener">Open now</a>)</span></span>'
@@ -142,7 +141,7 @@ describe('formatBookingInfoForDisplay', () => {
     {
       args: {
         bookingType: bookingType.REQUIRED_FOR_NON_MEMBERS,
-        links: [{ type: linkType.BOOKING, url: 'https://test.com' }],
+        links: { type: linkType.BOOKING, url: 'https://test.com' },
         today: '2017/01/20'
       },
       expected: '<span>Required for Non-members<span> (Booking date pending)</span></span>'
@@ -160,7 +159,7 @@ describe('formatBookingInfoForDisplay', () => {
       const result = eventLib.formatBookingInfoForDisplay(
         test.args.bookingType,
         test.args.bookingOpens,
-        new LinkCollection(test.args.links),
+        { getLinkByType: () => test.args.links },
         test.args.today
       )
 

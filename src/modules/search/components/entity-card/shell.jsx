@@ -31,12 +31,7 @@ class EntityCardShell extends React.Component {
 
 EntityCardShell.propTypes = {
   entity: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
-    entityTypeLabel: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    imageRatio: PropTypes.number
+    id: PropTypes.string.isRequired
   }).isRequired,
   children: PropTypes.any.isRequired,
   onImageLoad: PropTypes.func

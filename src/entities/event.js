@@ -1,4 +1,3 @@
-import { LinkCollection } from '_src/entities/link-collection'
 import { EventSummaryTalent } from '_src/entities/talent'
 import { SummaryVenue } from '_src/entities/venue'
 import { SummaryEventSeries } from '_src/entities/event-series'
@@ -14,8 +13,11 @@ import * as eventLib from '_src/lib/event'
 export class SummaryEvent {
   constructor (entity) {
     this.entity = entity || {}
-    this.postcodeDistrict = venueLib.getPostcodeDistrict(this.entity.postcode)
     this.groupedDates = eventLib.groupTimesByDate(this.entity.dates)
+  }
+
+  getPostcodeDistrict () {
+    return venueLib.getPostcodeDistrict(this.entity.postcode)
   }
 
   get entityType () {
@@ -136,7 +138,7 @@ export class FullEvent extends SummaryEvent {
   constructor (entity) {
     super(entity)
 
-    this.links = new LinkCollection(this.entity.links)
+    // this.links = new LinkCollection(this.entity.links)
 
     this.venue = new SummaryVenue(this.entity.venue)
 
@@ -201,17 +203,8 @@ export class FullEvent extends SummaryEvent {
     return eventLib.formatBookingInfoForDisplay(
       this.entity.bookingType,
       this.entity.bookingOpens,
-      this.links,
+      this,
       dateStr
-    )
-  }
-
-  createTimesDescriptionForDate (dateStr, timeStr, namedClosuresLookup) {
-    return timeLib.formatTimesStringForGivenDate(
-      this.entity,
-      dateStr,
-      timeStr,
-      namedClosuresLookup
     )
   }
 

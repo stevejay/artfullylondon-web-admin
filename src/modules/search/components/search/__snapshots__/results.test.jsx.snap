@@ -7,10 +7,7 @@ exports[`should render correctly 1`] = `
     dateStr="2017/01/18"
     entities={
       Array [
-        SummaryVenue {
-          "entity": Object {},
-          "postcodeDistrict": null,
-        },
+        SummaryVenue {},
       ]
     }
     getInProgress={false}

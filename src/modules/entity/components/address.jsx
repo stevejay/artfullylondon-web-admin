@@ -5,7 +5,7 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import AdditionalDetailHeading from './additional-detail-heading'
 import AdditionalDetailContent from './additional-detail-content'
-import { SummaryVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/entities/venue'
 
 class EntityAddress extends ShouldNeverUpdateComponent {
   render () {
@@ -23,7 +23,7 @@ class EntityAddress extends ShouldNeverUpdateComponent {
 }
 
 EntityAddress.propTypes = {
-  venue: PropTypes.instanceOf(SummaryVenue).isRequired
+  venue: PropTypes.instanceOf(FullVenue).isRequired
 }
 
 export default EntityAddress

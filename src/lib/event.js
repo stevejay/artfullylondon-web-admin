@@ -107,10 +107,10 @@ export function formatEventOccurrenceForDisplay (
 export function formatBookingInfoForDisplay (
   booking,
   bookingOpens,
-  links,
+  entity,
   today
 ) {
-  const bookingLink = links.getLinkByType(linkType.BOOKING)
+  const bookingLink = entity.getLinkByType(linkType.BOOKING)
 
   switch (booking) {
     case bookingType.REQUIRED:

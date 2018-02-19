@@ -4,10 +4,7 @@ exports[`should render correctly 1`] = `
 <EntityCardShell
   entity={
     SummaryVenue {
-      "entity": Object {
-        "id": "some-venue-id",
-      },
-      "postcodeDistrict": null,
+      "id": "some-venue-id",
     }
   }
 >
@@ -15,10 +12,7 @@ exports[`should render correctly 1`] = `
     dateStr="2017/01/18"
     entity={
       SummaryVenue {
-        "entity": Object {
-          "id": "some-venue-id",
-        },
-        "postcodeDistrict": null,
+        "id": "some-venue-id",
       }
     }
   />
