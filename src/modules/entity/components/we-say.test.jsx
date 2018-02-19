@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 import EntityWeSay from './we-say'
 
 it('should render correctly', () => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import EntityCardContentContainer from '../entity-card/content-container'
 import EntityCardHeading from '../entity-card/heading'
 import EntityCardSubHeading from '../entity-card/sub-heading'
-import { SummaryTalent } from '_src/entities/talent'
+import { SummaryTalent } from '_src/domain/talent'
 
 class TalentCardContent extends React.PureComponent {
   render () {

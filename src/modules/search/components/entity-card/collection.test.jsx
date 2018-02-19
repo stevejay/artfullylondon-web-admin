@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import EntityCardCollection from './collection'
-import { SummaryVenue } from '_src/entities/venue'
+import { SummaryVenue } from '_src/domain/venue'
 
 it('should render correctly when get is in progress', () => {
   const wrapper = shallow(

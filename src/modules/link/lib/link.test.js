@@ -1,5 +1,5 @@
 import * as linkLib from './link'
-import linkType from '_src/entities/types/link-type'
+import linkType from '_src/domain/types/link-type'
 
 describe('getAvailableLinkTypeDropdownOptions', () => {
   it('should filter out link types in value', () => {

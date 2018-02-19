@@ -1,4 +1,4 @@
-import { SummaryEventSeries, FullEventSeries } from '_src/entities/event-series'
+import { SummaryEventSeries, FullEventSeries } from '_src/domain/event-series'
 
 describe('SummaryEventSeries', () => {
   it('should construct an occasional event series', () => {

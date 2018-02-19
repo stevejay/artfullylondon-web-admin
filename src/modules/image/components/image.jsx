@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ImagePlaceholder from './image-placeholder'
 import ImageCarousel from './image-carousel'
 import ImageCredit from './image-credit'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import * as imageLib from '_src/lib/image'
 import './image.scss'
 

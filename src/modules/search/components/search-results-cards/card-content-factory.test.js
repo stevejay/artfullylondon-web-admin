@@ -3,7 +3,7 @@ import EventCardContent from './event-card-content'
 import EventSeriesCardContent from './event-series-card-content'
 import TalentCardContent from './talent-card-content'
 import VenueCardContent from './venue-card-content'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 describe('createCard', () => {
   it('should create a card for an event', () => {

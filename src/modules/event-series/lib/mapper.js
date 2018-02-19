@@ -1,6 +1,6 @@
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
-import statusType from '_src/entities/types/status-type'
+import statusType from '_src/domain/types/status-type'
 
 export function getInitialValues (eventSeries) {
   if (eventSeries.isNew) {

@@ -1,4 +1,4 @@
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 export function getLabelForEntityType (type) {
   switch (type) {

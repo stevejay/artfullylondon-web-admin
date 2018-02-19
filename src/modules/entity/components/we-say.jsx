@@ -2,7 +2,7 @@ import React from 'react'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import './we-say.scss'
 
 class EntityWeSay extends ShouldNeverUpdateComponent {

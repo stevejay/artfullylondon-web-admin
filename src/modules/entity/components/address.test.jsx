@@ -1,7 +1,7 @@
 import React from 'react'
 
 import EntityAddress from './address'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 
 it('should render correctly', () => {
   const venue = new FullVenue()

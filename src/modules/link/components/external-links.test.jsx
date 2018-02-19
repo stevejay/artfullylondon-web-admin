@@ -1,8 +1,8 @@
 import React from 'react'
 
 import EntityExternalLinks from './external-links'
-import { FullVenue } from '_src/entities/venue'
-import linkType from '_src/entities/types/link-type'
+import { FullVenue } from '_src/domain/venue'
+import linkType from '_src/domain/types/link-type'
 
 it('should render correctly when there are no links', () => {
   const entity = new FullVenue({ links: [] })

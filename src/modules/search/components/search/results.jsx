@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Pagination from '_src/components/pagination'
 import EntityCardCollection from '../entity-card/collection'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import * as cardContentFactory
   from '../search-results-cards/card-content-factory'
 

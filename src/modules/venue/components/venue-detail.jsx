@@ -26,7 +26,7 @@ import {
   selectors as monitorSelectors,
   actions as monitorActions
 } from '_src/modules/monitor'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 import * as dateLib from '_src/lib/date'
 
 export class VenueDetail extends React.Component {

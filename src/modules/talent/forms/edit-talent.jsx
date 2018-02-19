@@ -13,8 +13,8 @@ import HtmlTextField from '_src/components/html-text/field'
 import * as talentConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
 import { LinksField } from '_src/modules/link'
-import entityType from '_src/entities/types/entity-type'
-import talentType from '_src/entities/types/talent-type'
+import entityType from '_src/domain/types/entity-type'
+import talentType from '_src/domain/types/talent-type'
 
 export class EditTalentForm extends React.PureComponent {
   handleChangeTalentType = (_, newValue) => {

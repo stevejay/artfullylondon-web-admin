@@ -4,8 +4,8 @@ import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
 
-import linkType from '_src/entities/types/link-type'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import linkType from '_src/domain/types/link-type'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import EntityExternalLink from './external-link'
 import './external-links.scss'
 

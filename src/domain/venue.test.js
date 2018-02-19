@@ -1,9 +1,7 @@
-import { SummaryVenue, FullVenue } from '_src/entities/venue'
-import linkType from '_src/entities/types/link-type'
+import { SummaryVenue, FullVenue } from '_src/domain/venue'
+import linkType from '_src/domain/types/link-type'
 import * as timeLib from '_src/lib/time'
-import * as entityLib from '_src/lib/entity'
-import entityType from '_src/entities/types/entity-type'
-import venueType from '_src/entities/types/venue-type'
+import entityType from '_src/domain/types/entity-type'
 
 describe('SummaryVenue', () => {
   it('should construct a summary venue', () => {

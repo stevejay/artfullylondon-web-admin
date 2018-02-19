@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import EventTalentCarousel from './talent-carousel'
-import { EventSummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/domain/talent'
 import IconButton from '_src/components/button/icon'
 
 it('should render correctly', () => {

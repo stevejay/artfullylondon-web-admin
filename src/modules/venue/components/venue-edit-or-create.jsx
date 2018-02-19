@@ -14,8 +14,8 @@ import { actions as notificationActions } from '_src/modules/notification'
 import { LINK_EDITOR_FORM_NAME } from '_src/modules/link'
 import * as venueConstants from '../constants'
 import * as venueMapper from '../lib/mapper'
-import { FullVenue } from '_src/entities/venue'
-import entityType from '_src/entities/types/entity-type'
+import { FullVenue } from '_src/domain/venue'
+import entityType from '_src/domain/types/entity-type'
 
 export class VenueEditOrCreate extends React.Component {
   shouldComponentUpdate (nextProps) {

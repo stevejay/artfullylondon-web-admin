@@ -1,8 +1,8 @@
 import _ from 'lodash'
 
-import { Entity } from '_src/entities/entity'
-import entityType from '_src/entities/types/entity-type'
-import eventSeriesType from '_src/entities/types/event-series-type'
+import { Entity } from '_src/domain/entity'
+import entityType from '_src/domain/types/entity-type'
+import eventSeriesType from '_src/domain/types/event-series-type'
 
 export class FullEventSeries extends Entity {
   get entityType () {

@@ -2,9 +2,9 @@ import _ from 'lodash'
 
 import * as venueLib from '_src/lib/venue'
 import * as timeLib from '_src/lib/time'
-import { Entity } from '_src/entities/entity'
-import entityType from '_src/entities/types/entity-type'
-import linkType from '_src/entities/types/link-type'
+import { Entity } from '_src/domain/entity'
+import entityType from '_src/domain/types/entity-type'
+import linkType from '_src/domain/types/link-type'
 
 const NEWLINES_REGEX = /\n/g
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import EntityCardContentContainer from '../entity-card/content-container'
 import EntityCardHeading from '../entity-card/heading'
 import EntityCardSummary from '../entity-card/summary'
-import { SummaryVenue } from '_src/entities/venue'
+import { SummaryVenue } from '_src/domain/venue'
 
 class VenueCardContent extends React.PureComponent {
   render () {

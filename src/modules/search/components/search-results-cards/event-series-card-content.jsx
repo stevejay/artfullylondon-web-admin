@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import EntityCardContentContainer from '../entity-card/content-container'
 import EntityCardHeading from '../entity-card/heading'
-import { SummaryEventSeries } from '_src/entities/event-series'
+import { SummaryEventSeries } from '_src/domain/event-series'
 
 class EventSeriesCardContent extends React.PureComponent {
   render () {

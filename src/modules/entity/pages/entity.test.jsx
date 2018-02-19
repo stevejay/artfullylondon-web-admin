@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import log from 'loglevel'
 
-import { FullTalent } from '_src/entities/talent'
+import { FullTalent } from '_src/domain/talent'
 import { EntityPage } from './entity'
 import * as entityActions from '../actions'
 

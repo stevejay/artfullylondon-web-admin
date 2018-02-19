@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SummaryEvent } from '_src/entities/event'
+import { SummaryEvent } from '_src/domain/event'
 import EventCardContent from './event-card-content'
 
 it('should render correctly', () => {

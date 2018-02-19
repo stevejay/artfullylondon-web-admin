@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { FullVenue } from '_src/entities/venue'
-import { FullEvent } from '_src/entities/event'
+import { FullVenue } from '_src/domain/venue'
+import { FullEvent } from '_src/domain/event'
 import Message from '_src/components/message'
 import { Tag } from '_src/modules/tag'
 import AdditionalDetailHeading from './additional-detail-heading'

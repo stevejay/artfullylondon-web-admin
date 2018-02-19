@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { Quicksearch } from './index'
 import * as searchActions from '../../actions'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 import QuicksearchForm from '../../forms/quicksearch'
 
 it('should render correctly', () => {

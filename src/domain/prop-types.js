@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import entityType from '_src/entities/types/entity-type'
-import { SummaryVenue, FullVenue } from '_src/entities/venue'
-import { SummaryTalent, FullTalent } from '_src/entities/talent'
-import { SummaryEvent, FullEvent } from '_src/entities/event'
-import { SummaryEventSeries, FullEventSeries } from '_src/entities/event-series'
+import entityType from '_src/domain/types/entity-type'
+import { SummaryVenue, FullVenue } from '_src/domain/venue'
+import { SummaryTalent, FullTalent } from '_src/domain/talent'
+import { SummaryEvent, FullEvent } from '_src/domain/event'
+import { SummaryEventSeries, FullEventSeries } from '_src/domain/event-series'
 
 export const EDITABLE_ENTITY = PropTypes.oneOfType([
   PropTypes.instanceOf(FullTalent),

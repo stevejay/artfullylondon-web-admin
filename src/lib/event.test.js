@@ -1,9 +1,9 @@
 import * as eventLib from '_src/lib/event'
-import eventType from '_src/entities/types/event-type'
-import linkType from '_src/entities/types/link-type'
-import costType from '_src/entities/types/cost-type'
-import bookingType from '_src/entities/types/booking-type'
-import occurrenceType from '_src/entities/types/occurrence-type'
+import eventType from '_src/domain/types/event-type'
+import linkType from '_src/domain/types/link-type'
+import costType from '_src/domain/types/cost-type'
+import bookingType from '_src/domain/types/booking-type'
+import occurrenceType from '_src/domain/types/occurrence-type'
 
 describe('groupTimesByDate', () => {
   it('should handle no times', () => {

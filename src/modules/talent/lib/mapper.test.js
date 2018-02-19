@@ -1,7 +1,7 @@
 import * as talentMapper from './mapper'
 import * as dateLib from '_src/lib/date'
-import talentType from '_src/entities/types/talent-type'
-import statusType from '_src/entities/types/status-type'
+import talentType from '_src/domain/types/talent-type'
+import statusType from '_src/domain/types/status-type'
 import { entityMapper } from '_src/modules/entity'
 
 describe('getInitialValues', () => {

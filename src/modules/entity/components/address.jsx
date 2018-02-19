@@ -5,7 +5,7 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import AdditionalDetailHeading from './additional-detail-heading'
 import AdditionalDetailContent from './additional-detail-content'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 
 class EntityAddress extends ShouldNeverUpdateComponent {
   render () {

@@ -3,12 +3,12 @@ import deepFreeze from 'deep-freeze'
 import { reducer, selectors } from './search'
 import * as searchActions from '../actions'
 import * as globalConstants from '_src/constants'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 import { actions as userActions } from '_src/modules/user'
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
+import { SummaryEvent } from '_src/domain/event'
+import { SummaryEventSeries } from '_src/domain/event-series'
+import { SummaryTalent } from '_src/domain/talent'
+import { SummaryVenue } from '_src/domain/venue'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

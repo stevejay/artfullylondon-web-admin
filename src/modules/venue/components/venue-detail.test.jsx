@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { VenueDetail } from './venue-detail'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 import {
   MonitorCollection,
   actions as monitorActions

@@ -17,8 +17,8 @@ import * as globalConstants from '_src/constants'
 import * as dateLib from '_src/lib/date'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
-import * as entitiesPropTypes from '_src/entities/prop-types'
-import entityType from '_src/entities/types/entity-type'
+import * as entitiesPropTypes from '_src/domain/prop-types'
+import entityType from '_src/domain/types/entity-type'
 import './results.scss'
 
 export class SearchResultsPage extends React.Component {

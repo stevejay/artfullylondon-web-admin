@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SummaryTalent } from '_src/entities/talent'
+import { SummaryTalent } from '_src/domain/talent'
 import TalentCardContent from './talent-card-content'
 
 it('should render correctly', () => {

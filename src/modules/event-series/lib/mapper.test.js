@@ -1,7 +1,7 @@
 import * as eventSeriesMapper from './mapper'
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
-import statusType from '_src/entities/types/status-type'
+import statusType from '_src/domain/types/status-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing event series', () => {

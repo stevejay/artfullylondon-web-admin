@@ -10,7 +10,7 @@ import {
 } from '_src/modules/entity'
 import { Image } from '_src/modules/image'
 import { ExternalLinks } from '_src/modules/link'
-import { FullEventSeries } from '_src/entities/event-series'
+import { FullEventSeries } from '_src/domain/event-series'
 
 const EventSeriesDetail = ({ entity }) => (
   <React.Fragment>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { EntityFeaturedDetail } from '_src/modules/entity'
-import { FullEvent } from '_src/entities/event'
+import { FullEvent } from '_src/domain/event'
 import './main-details.scss'
 
 class EventMainDetails extends React.PureComponent {

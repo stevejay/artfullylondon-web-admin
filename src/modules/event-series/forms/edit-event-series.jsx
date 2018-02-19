@@ -12,7 +12,7 @@ import HtmlTextField from '_src/components/html-text/field'
 import * as eventSeriesConstants from '../constants'
 import { ImagesField } from '_src/modules/image'
 import { LinksField } from '_src/modules/link'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 export class EditEventSeriesForm extends React.PureComponent {
   render () {

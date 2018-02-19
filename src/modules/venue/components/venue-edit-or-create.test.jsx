@@ -2,13 +2,13 @@ import React from 'react'
 import _ from 'lodash'
 
 import { VenueEditOrCreate } from './venue-edit-or-create'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 import EditVenueForm from '../forms/edit-venue'
 import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
 import * as venueConstants from '../constants'
 import * as venueMapper from '../lib/mapper'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when creating a venue', () => {
   venueMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })

@@ -1,11 +1,11 @@
 import { handleActions } from 'redux-actions'
 
-import { FullEvent } from '_src/entities/event'
-import { FullEventSeries } from '_src/entities/event-series'
-import { FullTalent } from '_src/entities/talent'
-import { FullVenue } from '_src/entities/venue'
+import { FullEvent } from '_src/domain/event'
+import { FullEventSeries } from '_src/domain/event-series'
+import { FullTalent } from '_src/domain/talent'
+import { FullVenue } from '_src/domain/venue'
 import { types } from '../actions'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 const initialState = {
   entityId: null,

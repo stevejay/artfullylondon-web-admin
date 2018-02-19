@@ -2,13 +2,13 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EventSeriesEditOrCreate } from './event-series-edit-or-create'
-import { FullEventSeries } from '_src/entities/event-series'
+import { FullEventSeries } from '_src/domain/event-series'
 import EditEventSeriesForm from '../forms/edit-event-series'
 import { actions as notificationActions } from '_src/modules/notification'
 import { actions as entityActions } from '_src/modules/entity'
 import * as eventSeriesConstants from '../constants'
 import * as eventSeriesMapper from '../lib/mapper'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when creating an event series', () => {
   eventSeriesMapper.getInitialValues = jest.fn().mockReturnValue({ id: 1 })

@@ -30,7 +30,7 @@ import {
 } from '_src/modules/time'
 import * as venueConstants from '../constants'
 import * as dateLib from '_src/lib/date'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 export class EditVenueForm extends React.PureComponent {
   render () {

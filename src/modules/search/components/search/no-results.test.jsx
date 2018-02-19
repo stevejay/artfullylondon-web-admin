@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchNoResults from './no-results'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when should suggest searching all', () => {
   const wrapper = shallow(

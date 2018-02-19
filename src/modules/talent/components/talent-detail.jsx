@@ -10,7 +10,7 @@ import {
 } from '_src/modules/entity'
 import { Image } from '_src/modules/image'
 import { ExternalLinks } from '_src/modules/link'
-import { FullTalent } from '_src/entities/talent'
+import { FullTalent } from '_src/domain/talent'
 
 const TalentDetail = ({ entity }) => (
   <React.Fragment>

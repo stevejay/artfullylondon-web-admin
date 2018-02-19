@@ -1,4 +1,4 @@
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 import EventCardContent from './event-card-content'
 import EventSeriesCardContent from './event-series-card-content'
 import TalentCardContent from './talent-card-content'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TalentDetail from './talent-detail'
-import { FullTalent } from '_src/entities/talent'
+import { FullTalent } from '_src/domain/talent'
 
 it('should render correctly', () => {
   const talent = new FullTalent({

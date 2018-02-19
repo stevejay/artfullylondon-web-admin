@@ -5,7 +5,7 @@ import EntityCardContentContainer from '../entity-card/content-container'
 import EntityCardHeading from '../entity-card/heading'
 import EntityCardSubHeading from '../entity-card/sub-heading'
 import EntityCardSummary from '../entity-card/summary'
-import { SummaryEvent } from '_src/entities/event'
+import { SummaryEvent } from '_src/domain/event'
 
 class EventCardContent extends React.PureComponent {
   render () {

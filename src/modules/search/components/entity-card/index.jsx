@@ -4,7 +4,7 @@ import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import { Link } from 'react-router-dom'
 
 import EntityCardShell from './shell'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import './index.scss'
 
 class EntityCard extends React.PureComponent {

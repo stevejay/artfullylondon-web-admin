@@ -1,7 +1,7 @@
 import RichTextEditor from 'react-rte'
 
 import * as entityMapper from './mapper'
-import statusType from '_src/entities/types/status-type'
+import statusType from '_src/domain/types/status-type'
 
 describe('getRichTextInitialValue', () => {
   it('should handle an empty initial value', () => {

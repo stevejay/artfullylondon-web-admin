@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import SearchInputAutocompleteList from './autocomplete-list'
-import autocompleteItemType from '_src/entities/types/autocomplete-item-type'
+import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
 
 it('should render an autocomplete list with a single entity entry correctly', () => {
   const wrapper = shallow(

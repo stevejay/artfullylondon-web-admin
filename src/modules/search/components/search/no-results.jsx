@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ThumbsDown from 'react-icons/lib/fa/thumbs-o-down'
 
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 import * as searchConstants from '../../constants'
 import './no-results.scss'
 

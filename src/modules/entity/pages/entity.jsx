@@ -9,7 +9,7 @@ import { Error } from '_src/modules/error'
 import FadeTransition from '_src/components/transition/fade'
 import BoxesLoader from '_src/components/loader/boxes'
 import BasicSection from '_src/components/section/basic'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import * as entityActions from '../actions'
 import { selectors as entitySelectors } from '../reducers'
 

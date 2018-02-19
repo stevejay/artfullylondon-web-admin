@@ -1,5 +1,5 @@
 import * as entityLib from '_src/lib/entity'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 describe('createEntityUrl', () => {
   const tests = [

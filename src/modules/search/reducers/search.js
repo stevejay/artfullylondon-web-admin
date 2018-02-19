@@ -1,13 +1,13 @@
 import { handleActions } from 'redux-actions'
 
-import { SummaryEvent } from '_src/entities/event'
-import { SummaryEventSeries } from '_src/entities/event-series'
-import { SummaryTalent } from '_src/entities/talent'
-import { SummaryVenue } from '_src/entities/venue'
+import { SummaryEvent } from '_src/domain/event'
+import { SummaryEventSeries } from '_src/domain/event-series'
+import { SummaryTalent } from '_src/domain/talent'
+import { SummaryVenue } from '_src/domain/venue'
 import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
 import * as globalConstants from '_src/constants'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 const initialState = {
   searchInProgress: false,

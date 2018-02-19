@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import linkType from '_src/entities/types/link-type'
+import linkType from '_src/domain/types/link-type'
 import { LINK_TYPE_DROPDOWN_OPTIONS } from '../constants'
 
 export function getAvailableLinkTypeDropdownOptions (value) {

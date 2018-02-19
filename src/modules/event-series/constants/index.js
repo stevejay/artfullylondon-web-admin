@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import eventSeriesType from '_src/entities/types/event-series-type'
+import eventSeriesType from '_src/domain/types/event-series-type'
 
 export const EDIT_EVENT_SERIES_FORM_NAME = 'EditEventSeries'
 

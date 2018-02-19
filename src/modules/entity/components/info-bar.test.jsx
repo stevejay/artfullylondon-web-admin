@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 
 import EntityInfoBar from './info-bar'
-import { FullVenue } from '_src/entities/venue'
-import { FullEvent } from '_src/entities/event'
+import { FullVenue } from '_src/domain/venue'
+import { FullEvent } from '_src/domain/event'
 
 it('should render an info bar for a venue correctly', () => {
   const mockVenue = new FullVenue({ id: 'some-venue-id' })

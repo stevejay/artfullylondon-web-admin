@@ -2,7 +2,7 @@ import {
   FullTalent,
   SummaryTalent,
   EventSummaryTalent
-} from '_src/entities/talent'
+} from '_src/domain/talent'
 
 describe('SummaryTalent', () => {
   it('should construct an individual with an image', () => {

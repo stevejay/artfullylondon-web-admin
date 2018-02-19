@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Message from '_src/components/message'
-import { SummaryEventSeries } from '_src/entities/event-series'
+import { SummaryEventSeries } from '_src/domain/event-series'
 
 class EventSeriesLink extends React.PureComponent {
   render () {

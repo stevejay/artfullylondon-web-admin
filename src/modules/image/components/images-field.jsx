@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withState } from 'recompose'
 import _ from 'lodash'
 
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import FieldContainer from '_src/components/field/container'
 import FieldBorder from '_src/components/field/border'
 import FieldDivider from '_src/components/field/divider'

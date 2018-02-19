@@ -8,8 +8,8 @@ import Cogs from 'react-icons/lib/fa/cogs'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as entitiesPropTypes from '_src/entities/prop-types'
-import entityType from '_src/entities/types/entity-type'
+import * as entitiesPropTypes from '_src/domain/prop-types'
+import entityType from '_src/domain/types/entity-type'
 import './image-placeholder.scss'
 
 class ImagePlaceholder extends ShouldNeverUpdateComponent {

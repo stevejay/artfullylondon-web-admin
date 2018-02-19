@@ -1,7 +1,7 @@
 import React from 'react'
 
 import EventTalent from './talent'
-import { EventSummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/domain/talent'
 
 it('should render correctly', () => {
   const mockTalent = new EventSummaryTalent({

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import OpeningTimes from './opening-times'
-import { FullVenue } from '_src/entities/venue'
+import { FullVenue } from '_src/domain/venue'
 
 it('should render empty times details correctly', () => {
   const entity = new FullVenue({})

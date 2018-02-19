@@ -8,7 +8,7 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import { ImagePlaceholder } from '_src/modules/image'
 import * as entityCardLib from '../../lib/entity-card'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import './image.scss'
 
 class Image extends ShouldNeverUpdateComponent {

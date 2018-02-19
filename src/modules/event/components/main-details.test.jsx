@@ -1,7 +1,7 @@
 import React from 'react'
 
 import EventMainDetails from './main-details'
-import { FullEvent } from '_src/entities/event'
+import { FullEvent } from '_src/domain/event'
 
 it('should render correctly', () => {
   const event = new FullEvent({

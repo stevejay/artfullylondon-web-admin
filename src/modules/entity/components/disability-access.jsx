@@ -5,10 +5,10 @@ import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import AdditionalDetailHeading from './additional-detail-heading'
 import AdditionalDetailContent from './additional-detail-content'
-import linkType from '_src/entities/types/link-type'
+import linkType from '_src/domain/types/link-type'
 import * as accessLib from '../lib/access'
-import { FullVenue } from '_src/entities/venue'
-import { FullEvent } from '_src/entities/event'
+import { FullVenue } from '_src/domain/venue'
+import { FullEvent } from '_src/domain/event'
 
 class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
   render () {

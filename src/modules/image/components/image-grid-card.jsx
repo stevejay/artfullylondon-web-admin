@@ -6,7 +6,7 @@ import Pencil from 'react-icons/lib/fa/pencil'
 
 import IconButton from '_src/components/button/icon'
 import ImageGridImage from './image-grid-image'
-import * as entitiesPropTypes from '_src/entities/prop-types'
+import * as entitiesPropTypes from '_src/domain/prop-types'
 import './image-grid-card.scss'
 
 class ImageGridCard extends React.Component {

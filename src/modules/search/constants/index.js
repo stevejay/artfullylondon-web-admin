@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import * as globalConstants from '_src/constants'
-import * as entitiesPropTypes from '_src/entities/prop-types'
-import entityType from '_src/entities/types/entity-type'
-import autocompleteItemType from '_src/entities/types/autocomplete-item-type'
+import * as entitiesPropTypes from '_src/domain/prop-types'
+import entityType from '_src/domain/types/entity-type'
+import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
 
 export const BASIC_SEARCH_FORM_NAME = 'BasicSearch'
 export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'

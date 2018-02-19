@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-import { Entity } from '_src/entities/entity'
-import entityType from '_src/entities/types/entity-type'
+import { Entity } from '_src/domain/entity'
+import entityType from '_src/domain/types/entity-type'
 
 export class FullTalent extends Entity {
   get entityType () {

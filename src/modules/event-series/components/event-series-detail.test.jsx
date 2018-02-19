@@ -1,7 +1,7 @@
 import React from 'react'
 
 import EventSeriesDetail from './event-series-detail'
-import { FullEventSeries } from '_src/entities/event-series'
+import { FullEventSeries } from '_src/domain/event-series'
 
 it('should render correctly', () => {
   const entity = new FullEventSeries({

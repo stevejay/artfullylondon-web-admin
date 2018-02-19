@@ -2,10 +2,10 @@ import React from 'react'
 
 import EntityDisabilityAccess from './disability-access'
 import * as accessLib from '../lib/access'
-import wheelchairAccessType from '_src/entities/types/wheelchair-access-type'
-import disabledBathroomType from '_src/entities/types/disabled-bathroom-type'
-import hearingFacilitiesType from '_src/entities/types/hearing-facilities-type'
-import { FullVenue } from '_src/entities/venue'
+import wheelchairAccessType from '_src/domain/types/wheelchair-access-type'
+import disabledBathroomType from '_src/domain/types/disabled-bathroom-type'
+import hearingFacilitiesType from '_src/domain/types/hearing-facilities-type'
+import { FullVenue } from '_src/domain/venue'
 
 it('should render correctly', () => {
   const entity = new FullVenue({

@@ -1,7 +1,7 @@
 import * as dateLib from '_src/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
-import statusType from '_src/entities/types/status-type'
+import statusType from '_src/domain/types/status-type'
 
 export function getInitialValues (venue) {
   if (venue.isNew) {

@@ -30,7 +30,7 @@ import {
   EventSeriesDetail
 } from '_src/modules/event-series'
 import { EventEditOrCreate, EventDetail } from '_src/modules/event'
-import entityType from '_src/entities/types/entity-type'
+import entityType from '_src/domain/types/entity-type'
 
 export class Routes extends React.Component {
   constructor (props) {

@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import EventTalent from './talent'
 import IconButton from '_src/components/button/icon'
-import { EventSummaryTalent } from '_src/entities/talent'
+import { EventSummaryTalent } from '_src/domain/talent'
 import './talent-carousel.scss'
 
 class EventTalentCarousel extends React.PureComponent {

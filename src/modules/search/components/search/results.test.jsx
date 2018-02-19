@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { SummaryVenue } from '_src/entities/venue'
+import { SummaryVenue } from '_src/domain/venue'
 import SearchResults from './results'
 
 it('should render correctly', () => {
