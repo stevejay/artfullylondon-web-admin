@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 
-import Divider from '_src/components/divider'
-import Form from '_src/components/form'
-import FormRow from '_src/components/form/row'
-import FormButtons from '_src/components/form/buttons'
-import TextField from '_src/components/text/field'
-import FormError from '_src/components/form/error'
+import Divider from '_src/shared/components/divider'
+import Form from '_src/shared/components/form'
+import FormRow from '_src/shared/components/form/row'
+import FormButtons from '_src/shared/components/form/buttons'
+import TextField from '_src/shared/components/text/field'
+import FormError from '_src/shared/components/form/error'
 import * as userConstants from '../constants'
 
 export const LoginForm = ({ submitting, handleSubmit, constraint, error }) => (

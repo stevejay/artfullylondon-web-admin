@@ -7,7 +7,7 @@ import {
   MonitorCollection,
   actions as monitorActions
 } from '_src/modules/monitor'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 
 it('should render correctly', () => {
   dateLib.getTodayDateAsString = jest.fn().mockReturnValue('2018/01/01')

@@ -11,13 +11,13 @@ import {
 } from 'redux-form'
 import log from 'loglevel'
 
-import * as uuidLib from '_src/lib/uuid'
+import * as uuidLib from '_src/shared/lib/uuid'
 import * as sagas from './index'
 import * as imageConstants from '../constants'
-import normalise from '_src/lib/normalise'
+import normalise from '_src/shared/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
-import * as validationLib from '_src/lib/validation'
-import * as sagaLib from '_src/lib/saga'
+import * as validationLib from '_src/shared/lib/validation'
+import * as sagaLib from '_src/shared/lib/saga'
 import { imageService } from '_src/modules/api'
 
 describe('updateImage', () => {

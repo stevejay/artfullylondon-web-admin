@@ -5,11 +5,11 @@ import window from 'global/window'
 import store from 'store2'
 import log from 'loglevel'
 
-import * as fetchLib from '_src/lib/fetch'
+import * as fetchLib from '_src/shared/lib/fetch'
 import { actions as notificationActions } from '_src/modules/notification'
 import * as appUpdaterConstants from '../constants'
 import * as appUpdaterSagas from './index'
-import * as sagaLib from '_src/lib/saga'
+import * as sagaLib from '_src/shared/lib/saga'
 
 describe('updateApp', () => {
   it('should handle updating the app', () => {

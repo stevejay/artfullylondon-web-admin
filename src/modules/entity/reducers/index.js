@@ -1,4 +1,4 @@
-import * as reduxLib from '_src/lib/redux'
+import * as reduxLib from '_src/shared/lib/redux'
 import * as entity from './entity'
 
 export const moduleName = 'entity'

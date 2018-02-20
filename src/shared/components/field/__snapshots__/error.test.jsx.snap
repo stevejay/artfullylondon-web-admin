@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when there are multiple errors 1`] = `
+<div
+  className="src-shared-components-field-error__container"
+>
+  Error One. Error Two.
+</div>
+`;
+
+exports[`should render correctly when there is an error 1`] = `
+<div
+  className="src-shared-components-field-error__container"
+>
+  The Error.
+</div>
+`;
+
+exports[`should render correctly when there is no error 1`] = `""`;

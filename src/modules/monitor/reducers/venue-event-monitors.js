@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import * as arrayLib from '_src/lib/array'
+import * as arrayLib from '_src/shared/lib/array'
 import { types } from '../actions'
 
 export const moduleName = 'venueEventMonitors'

@@ -2,13 +2,13 @@ import { put, call, takeLatest, select } from 'redux-saga/effects'
 import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
-import * as sagaLib from '_src/lib/saga'
-import * as validationLib from '_src/lib/validation'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as validationLib from '_src/shared/lib/validation'
 import * as authLib from '../lib/auth'
 import * as userConstants from '../constants'
 import * as userActions from '../actions'
 import { selectors } from '../reducers'
-import history from '_src/lib/history'
+import history from '_src/shared/lib/history'
 
 export function * attemptAutoLogIn () {
   try {

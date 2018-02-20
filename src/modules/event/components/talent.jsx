@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { ImagePlaceholder } from '_src/modules/image'
-import * as imageLib from '_src/lib/image'
+import * as imageLib from '_src/shared/lib/image'
 import { EventSummaryTalent } from '_src/domain/talent'
 import entityType from '_src/domain/types/entity-type'
 import './talent.scss'

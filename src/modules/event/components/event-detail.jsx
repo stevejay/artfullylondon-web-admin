@@ -12,18 +12,18 @@ import {
   EntityColumn,
   OpeningTimes
 } from '_src/modules/entity'
-import BasicSection from '_src/components/section/basic'
+import BasicSection from '_src/shared/components/section/basic'
 import { EntityPageMap } from '_src/modules/location'
 import EventMainDetails from './main-details'
 import EventSeriesLink from './event-series-link'
 import EventTalentCarousel from './talent-carousel'
 import { Image } from '_src/modules/image'
-import Message from '_src/components/message'
-import Divider from '_src/components/divider'
+import Message from '_src/shared/components/message'
+import Divider from '_src/shared/components/divider'
 import { ExternalLinks } from '_src/modules/link'
 import { FullEvent } from '_src/domain/event'
 import { TagCollection } from '_src/modules/tag'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import { selectors as eventSelectors } from '../reducers'
 import * as eventActions from '../actions'
 

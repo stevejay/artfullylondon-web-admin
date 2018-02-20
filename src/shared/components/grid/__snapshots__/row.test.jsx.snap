@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when can delete 1`] = `
+<div
+  className="src-shared-components-grid-row__container"
+>
+  <div
+    className="src-shared-components-grid-row__content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+  <IconButton
+    aria-label="Delete row"
+    className="src-shared-components-grid-row__button"
+    icon={[Function]}
+    onClick={[Function]}
+    type="default"
+  />
+</div>
+`;
+
+exports[`should render correctly when cannot delete 1`] = `
+<div
+  className="src-shared-components-grid-row__container"
+>
+  <div
+    className="src-shared-components-grid-row__content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<h2
+  className="src-shared-components-form-section-header__h2"
+>
+  <div
+    id="child"
+  />
+</h2>
+`;

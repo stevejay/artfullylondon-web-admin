@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Modal from '_src/components/modal'
-import ModalContainer from '_src/components/modal/container'
-import FadeTransition from '_src/components/transition/fade'
+import Modal from '_src/shared/components/modal'
+import ModalContainer from '_src/shared/components/modal/container'
+import FadeTransition from '_src/shared/components/transition/fade'
 import UpdateImageForm from '../forms/update-image-form'
 
 const UpdateImageModal = ({ show, initialValues, onSubmit, onHide }) => (

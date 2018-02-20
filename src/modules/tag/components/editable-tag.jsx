@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CloseIcon from 'react-icons/lib/fa/close'
 
-import IconButton from '_src/components/button/icon'
-import Loader from '_src/components/loader'
+import IconButton from '_src/shared/components/button/icon'
+import Loader from '_src/shared/components/loader'
 import * as tagConstants from '../constants'
 import './editable-tag.scss'
 

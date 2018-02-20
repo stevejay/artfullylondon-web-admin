@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BasicTransition from '_src/components/transition/basic'
+import BasicTransition from '_src/shared/components/transition/basic'
 import './modal-transition.scss'
 
 const ModalTransition = props => (

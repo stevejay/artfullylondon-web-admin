@@ -9,7 +9,7 @@ import { Router, Route } from 'react-router-dom'
 import smartOutline from 'smart-outline'
 import document from 'global/document'
 
-import history from '_src/lib/history'
+import history from '_src/shared/lib/history'
 import store from '_src/store'
 import Routes from '_src/routes'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import * as globalConstants from '_src/constants'
+import * as globalConstants from '_src/shared/constants'
 import { QuicksearchForm } from './quicksearch'
 
 it('should render correctly', () => {

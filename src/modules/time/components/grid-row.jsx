@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
-import GridRow from '_src/components/grid/row'
+  from '_src/shared/components/base-class/should-never-update'
+import GridRow from '_src/shared/components/grid/row'
 import './grid-row.scss'
 
 class TimeGridRow extends ShouldNeverUpdateComponent {

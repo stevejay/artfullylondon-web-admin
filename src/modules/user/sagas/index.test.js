@@ -5,12 +5,12 @@ import log from 'loglevel'
 
 import * as userSagas from './index'
 import * as authLib from '../lib/auth'
-import * as sagaLib from '_src/lib/saga'
-import * as validationLib from '_src/lib/validation'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as validationLib from '_src/shared/lib/validation'
 import * as userConstants from '../constants'
 import * as userActions from '../actions'
 import { selectors } from '../reducers'
-import history from '_src/lib/history'
+import history from '_src/shared/lib/history'
 
 describe('getAuthTokenForCurrentUser', () => {
   describe('user is not logged in', () => {

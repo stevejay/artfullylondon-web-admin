@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<ol
+  className="src-shared-components-step-collection__container"
+  role="presentation"
+>
+  <Step
+    currentPage={2}
+    key="1"
+    onClick={[Function]}
+    page={1}
+    title="Page 1 Title"
+  />
+  <Step
+    currentPage={2}
+    key="2"
+    onClick={[Function]}
+    page={2}
+    title="Page 2 Title"
+  />
+  <Step
+    currentPage={2}
+    key="3"
+    onClick={[Function]}
+    page={3}
+    title="Page 3 Title"
+  />
+</ol>
+`;

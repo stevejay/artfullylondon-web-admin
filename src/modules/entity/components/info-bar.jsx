@@ -7,7 +7,7 @@ import CopyIcon from 'react-icons/lib/fa/copy'
 import TagsIcon from 'react-icons/lib/fa/tags'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import linkType from '_src/domain/types/link-type'
 import * as entityConstants from '../constants'
 import entityType from '_src/domain/types/entity-type'

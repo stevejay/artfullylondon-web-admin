@@ -1,6 +1,6 @@
 import talentType from '_src/domain/types/talent-type'
 import statusType from '_src/domain/types/status-type'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 
 export function getInitialValues (talent) {

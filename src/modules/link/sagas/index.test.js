@@ -9,9 +9,9 @@ import {
   getFormValues
 } from 'redux-form'
 
-import normalise from '_src/lib/normalise'
-import * as validationLib from '_src/lib/validation'
-import * as sagaLib from '_src/lib/saga'
+import normalise from '_src/shared/lib/normalise'
+import * as validationLib from '_src/shared/lib/validation'
+import * as sagaLib from '_src/shared/lib/saga'
 import * as sagas from './index'
 import * as linkActions from '../actions'
 import * as linkConstants from '../constants'

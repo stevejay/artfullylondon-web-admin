@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when the dropdown is closed 1`] = `
+<button
+  aria-haspopup={false}
+  className="src-shared-components-dropdown-button__button src-shared-components-dropdown-button__base-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  type="button"
+>
+  The Label
+   ▾
+</button>
+`;
+
+exports[`should render correctly when the dropdown is compact 1`] = `
+<button
+  aria-haspopup={false}
+  className="src-shared-components-dropdown-button__button-compact src-shared-components-dropdown-button__base-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  type="button"
+>
+  The Label
+   ▾
+</button>
+`;
+
+exports[`should render correctly when the dropdown is open 1`] = `
+<button
+  aria-haspopup={false}
+  className="src-shared-components-dropdown-button__button-open src-shared-components-dropdown-button__button src-shared-components-dropdown-button__base-button"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  type="button"
+>
+  The Label
+   ▾
+</button>
+`;

@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
-import GridRow from '_src/components/grid/row'
-import * as dateLib from '_src/lib/date'
+  from '_src/shared/components/base-class/should-never-update'
+import GridRow from '_src/shared/components/grid/row'
+import * as dateLib from '_src/shared/lib/date'
 
 class TimesRangeEntry extends ShouldNeverUpdateComponent {
   render () {

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-shared-components-form-border__border"
+>
+  <h1
+    className="src-shared-components-form-border__header"
+  >
+    The Title
+  </h1>
+  <div
+    className="src-shared-components-form-border__content"
+  >
+    <div
+      id="child"
+    />
+  </div>
+</div>
+`;

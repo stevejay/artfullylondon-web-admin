@@ -3,8 +3,8 @@ import _ from 'lodash'
 import log from 'loglevel'
 
 import { Header } from './header'
-import Dropdown from '_src/components/dropdown'
-import Button from '_src/components/button'
+import Dropdown from '_src/shared/components/dropdown'
+import Button from '_src/shared/components/button'
 import { actions as userActions } from '_src/modules/user'
 
 it('should render correctly when logged in', () => {

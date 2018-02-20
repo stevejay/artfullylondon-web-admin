@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import FormRow from '_src/components/form/row'
-import FormError from '_src/components/form/error'
-import SubFormButtons from '_src/components/form/sub-form-buttons'
-import DatepickerField from '_src/components/datepicker/field'
-import SelectField from '_src/components/select/field'
-import * as globalConstants from '_src/constants'
+import FormRow from '_src/shared/components/form/row'
+import FormError from '_src/shared/components/form/error'
+import SubFormButtons from '_src/shared/components/form/sub-form-buttons'
+import DatepickerField from '_src/shared/components/datepicker/field'
+import SelectField from '_src/shared/components/select/field'
+import * as globalConstants from '_src/shared/constants'
 import * as timeConstants from '../constants'
 
 export const AddOpeningTimeClosureForm = ({

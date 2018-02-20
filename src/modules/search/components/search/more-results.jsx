@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import MoreResultsLink from './more-results-link'
-import Divider from '_src/components/divider'
+import Divider from '_src/shared/components/divider'
 import * as entitiesPropTypes from '_src/domain/prop-types'
 import entityType from '_src/domain/types/entity-type'
 // TODO fix this:

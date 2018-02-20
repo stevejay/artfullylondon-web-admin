@@ -1,4 +1,4 @@
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import statusType from '_src/domain/types/status-type'
 

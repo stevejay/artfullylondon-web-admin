@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import * as reduxLib from '_src/lib/redux'
+import * as reduxLib from '_src/shared/lib/redux'
 
 import * as venueMonitors from './venue-monitor'
 import * as venueEventMonitors from './venue-event-monitors'

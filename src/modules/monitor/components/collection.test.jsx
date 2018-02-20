@@ -3,8 +3,8 @@ import _ from 'lodash'
 
 import { MonitorCollection } from './collection'
 import UpdateMonitorForm from '../forms/update-monitor'
-import Button from '_src/components/button'
-import Modal from '_src/components/modal'
+import Button from '_src/shared/components/button'
+import Modal from '_src/shared/components/modal'
 
 it('should render correctly when get is in progress', () => {
   const wrapper = shallow(

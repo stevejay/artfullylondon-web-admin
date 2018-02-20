@@ -2,7 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './search'
 import * as searchActions from '../actions'
-import * as globalConstants from '_src/constants'
+import * as globalConstants from '_src/shared/constants'
 import entityType from '_src/domain/types/entity-type'
 import { actions as userActions } from '_src/modules/user'
 import { SummaryEvent } from '_src/domain/event'

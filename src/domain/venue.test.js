@@ -1,6 +1,6 @@
 import { SummaryVenue, FullVenue } from '_src/domain/venue'
 import linkType from '_src/domain/types/link-type'
-import * as timeLib from '_src/lib/time'
+import * as timeLib from '_src/shared/lib/time'
 import entityType from '_src/domain/types/entity-type'
 
 describe('SummaryVenue', () => {

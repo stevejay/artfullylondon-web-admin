@@ -1,8 +1,8 @@
 import RichTextEditor from 'react-rte'
 
-import * as imageLib from '_src/lib/image'
-import * as entityLib from '_src/lib/entity'
-import * as dateLib from '_src/lib/date'
+import * as imageLib from '_src/shared/lib/image'
+import * as entityLib from '_src/shared/lib/entity'
+import * as dateLib from '_src/shared/lib/date'
 import statusType from '_src/domain/types/status-type'
 import imageStatusType from '_src/domain/types/image-status-type'
 

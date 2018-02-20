@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import FormRow from '_src/components/form/row'
-import FormError from '_src/components/form/error'
-import SubFormButtons from '_src/components/form/sub-form-buttons'
-import TextField from '_src/components/text/field'
-import SelectField from '_src/components/select/field'
+import FormRow from '_src/shared/components/form/row'
+import FormError from '_src/shared/components/form/error'
+import SubFormButtons from '_src/shared/components/form/sub-form-buttons'
+import TextField from '_src/shared/components/text/field'
+import SelectField from '_src/shared/components/select/field'
 import * as linkConstants from '../constants'
 
 export const AddLinkForm = ({

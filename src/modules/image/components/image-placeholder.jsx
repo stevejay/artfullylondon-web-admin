@@ -7,7 +7,7 @@ import Tags from 'react-icons/lib/fa/tags'
 import Cogs from 'react-icons/lib/fa/cogs'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import * as entitiesPropTypes from '_src/domain/prop-types'
 import entityType from '_src/domain/types/entity-type'
 import './image-placeholder.scss'

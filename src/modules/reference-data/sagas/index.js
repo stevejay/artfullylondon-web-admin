@@ -1,8 +1,8 @@
 import { put, take, fork, call } from 'redux-saga/effects'
 
 import * as referenceActions from '../actions'
-import * as fetchLib from '_src/lib/fetch'
-import * as sagaLib from '_src/lib/saga'
+import * as fetchLib from '_src/shared/lib/fetch'
+import * as sagaLib from '_src/shared/lib/saga'
 
 export function * fetchReferenceData () {
   yield take(referenceActions.types.FETCH_REFERENCE_DATA)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import log from 'loglevel'
 import { withState } from 'recompose'
 
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import './footer.scss'
 
 export class Footer extends React.PureComponent {

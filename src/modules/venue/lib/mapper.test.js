@@ -1,5 +1,5 @@
 import * as venueMapper from './mapper'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import wheelchairAccessType from '_src/domain/types/wheelchair-access-type'

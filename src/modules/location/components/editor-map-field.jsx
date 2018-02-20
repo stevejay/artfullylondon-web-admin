@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FieldContainer from '_src/components/field/container'
-import FieldBorder from '_src/components/field/border'
+import FieldContainer from '_src/shared/components/field/container'
+import FieldBorder from '_src/shared/components/field/border'
 import EditorMap from './editor-map'
 
 class EditorMapField extends React.Component {

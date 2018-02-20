@@ -2,8 +2,8 @@ import { take, call, put } from 'redux-saga/effects'
 
 import * as referenceActions from '../actions'
 import * as sagas from './index'
-import * as sagaLib from '_src/lib/saga'
-import * as fetchLib from '_src/lib/fetch'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as fetchLib from '_src/shared/lib/fetch'
 
 describe('fetchReferenceData', () => {
   it('should fetch the server constants', () => {

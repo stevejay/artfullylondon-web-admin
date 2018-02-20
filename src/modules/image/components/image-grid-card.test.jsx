@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import IconButton from '_src/components/button/icon'
+import IconButton from '_src/shared/components/button/icon'
 import ImageGridCard from './image-grid-card'
 
 it('should render correctly when the image has a copyright', () => {

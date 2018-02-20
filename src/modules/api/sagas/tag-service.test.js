@@ -1,7 +1,7 @@
 import { call } from 'redux-saga/effects'
 
 import * as sagas from './tag-service'
-import * as fetchLib from '_src/lib/fetch'
+import * as fetchLib from '_src/shared/lib/fetch'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 describe('getTags', () => {

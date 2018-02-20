@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import { EditVenueForm } from './edit-venue'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 
 const timeActions = {
   addOpeningTime: _.noop,

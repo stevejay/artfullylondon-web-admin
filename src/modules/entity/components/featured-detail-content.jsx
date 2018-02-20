@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import './featured-detail-content.scss'
 
 class EntityFeaturedDetailContent extends ShouldNeverUpdateComponent {

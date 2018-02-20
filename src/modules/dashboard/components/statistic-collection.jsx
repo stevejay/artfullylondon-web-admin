@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import FadeTransition from '_src/components/transition/fade'
+import FadeTransition from '_src/shared/components/transition/fade'
 import entityType from '_src/domain/types/entity-type'
 import Statistic from './statistic'
 import './statistic-collection.scss'

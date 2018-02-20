@@ -1,7 +1,7 @@
 import React from 'react'
 
 import OpeningTimesEntry from './opening-times-entry'
-import * as timeLib from '_src/lib/time'
+import * as timeLib from '_src/shared/lib/time'
 
 beforeEach(() => {
   timeLib.formatOpeningTimesOrPerformanceTimeForDisplay = jest

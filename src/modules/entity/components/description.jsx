@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import linkType from '_src/domain/types/link-type'
 import * as entityConstants from '../constants'
 import './description.scss'

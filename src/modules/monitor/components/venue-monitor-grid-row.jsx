@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PencilIcon from 'react-icons/lib/fa/pencil'
 
-import IconButton from '_src/components/button/icon'
+import IconButton from '_src/shared/components/button/icon'
 import './venue-monitor-grid-row.scss'
 
 const ROW_LABEL = 'Venue Openings'

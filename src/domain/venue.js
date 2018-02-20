@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-import * as venueLib from '_src/lib/venue'
-import * as timeLib from '_src/lib/time'
+import * as venueLib from '_src/shared/lib/venue'
+import * as timeLib from '_src/shared/lib/time'
 import { Entity } from '_src/domain/entity'
 import entityType from '_src/domain/types/entity-type'
 import linkType from '_src/domain/types/link-type'

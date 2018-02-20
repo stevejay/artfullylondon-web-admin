@@ -8,10 +8,10 @@ import {
 } from 'redux-form'
 import log from 'loglevel'
 
-import normalise from '_src/lib/normalise'
+import normalise from '_src/shared/lib/normalise'
 import * as tagConstants from '../constants'
-import * as sagaLib from '_src/lib/saga'
-import * as validationLib from '_src/lib/validation'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as validationLib from '_src/shared/lib/validation'
 import * as tagActions from '../actions'
 import { tagService } from '_src/modules/api'
 

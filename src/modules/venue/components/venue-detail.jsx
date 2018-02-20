@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import LazyLoad from 'react-lazyload'
 import { connect } from 'react-redux'
 
-import BasicSection from '_src/components/section/basic'
+import BasicSection from '_src/shared/components/section/basic'
 import {
   EntityDescription,
   EntityDetailsContainer,
@@ -27,7 +27,7 @@ import {
   actions as monitorActions
 } from '_src/modules/monitor'
 import { FullVenue } from '_src/domain/venue'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 
 export class VenueDetail extends React.Component {
   handleVenueMonitorMounted = () => {

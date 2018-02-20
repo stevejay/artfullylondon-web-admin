@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a multi line text input correctly 1`] = `
+<textarea
+  autoCapitalize="none"
+  autoComplete="off"
+  autoCorrect="off"
+  className="src-shared-components-text-index__textarea"
+  disabled={false}
+  id="some-id"
+  maxLength={1000}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  placeholder="The Placeholder"
+  readOnly={false}
+  rows={10}
+  spellCheck={false}
+  value="term"
+/>
+`;
+
+exports[`should render a single line text input correctly 1`] = `
+<div
+  className="src-shared-components-text-index__container"
+>
+  <TextIcon />
+  <input
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect="off"
+    className="src-shared-components-text-index__input"
+    disabled={false}
+    id="some-id"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    placeholder="The Placeholder"
+    readOnly={false}
+    spellCheck={false}
+    type="text"
+    value="term"
+  />
+</div>
+`;
+
+exports[`should render a single line text input with autos correctly 1`] = `
+<div
+  className="src-shared-components-text-index__container"
+>
+  <TextIcon />
+  <input
+    autoCapitalize="sentences"
+    autoComplete="on"
+    autoCorrect="on"
+    className="src-shared-components-text-index__input"
+    disabled={false}
+    id="some-id"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    placeholder="The Placeholder"
+    readOnly={false}
+    spellCheck={true}
+    type="text"
+    value="term"
+  />
+</div>
+`;
+
+exports[`should render correctly with an error 1`] = `
+<div
+  className="src-shared-components-text-index__container"
+>
+  <TextIcon />
+  <input
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect="off"
+    className="src-shared-components-text-index__input-error src-shared-components-text-index__input src-shared-components-text-index__error"
+    disabled={false}
+    id="some-id"
+    maxLength={50}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    placeholder="The Placeholder"
+    readOnly={false}
+    spellCheck={false}
+    type="password"
+    value="term"
+  />
+</div>
+`;

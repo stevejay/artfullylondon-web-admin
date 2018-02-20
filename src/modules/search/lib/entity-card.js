@@ -1,4 +1,4 @@
-import * as imageLib from '_src/lib/image'
+import * as imageLib from '_src/shared/lib/image'
 
 const DEFAULT_ENTITY_CARD_HEIGHT = 175
 

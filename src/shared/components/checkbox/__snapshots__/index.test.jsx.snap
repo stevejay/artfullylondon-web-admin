@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when checked 1`] = `
+<div
+  className="src-shared-components-checkbox-index__container"
+>
+  <input
+    checked={true}
+    className="src-shared-components-checkbox-index__checkbox"
+    id="checkbox_1"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="src-shared-components-checkbox-index__label"
+    htmlFor="checkbox_1"
+  >
+    <div
+      id="child"
+    />
+  </label>
+  <FaCheck
+    className="src-shared-components-checkbox-index__checkmark"
+  />
+</div>
+`;
+
+exports[`should render correctly when has an error 1`] = `
+<div
+  className="src-shared-components-checkbox-index__container-error src-shared-components-checkbox-index__container"
+>
+  <input
+    checked={true}
+    className="src-shared-components-checkbox-index__checkbox"
+    id="checkbox_3"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="src-shared-components-checkbox-index__label"
+    htmlFor="checkbox_3"
+  >
+    <div
+      id="child"
+    />
+  </label>
+  <FaCheck
+    className="src-shared-components-checkbox-index__checkmark"
+  />
+</div>
+`;
+
+exports[`should render correctly when not checked 1`] = `
+<div
+  className="src-shared-components-checkbox-index__container"
+>
+  <input
+    checked={false}
+    className="src-shared-components-checkbox-index__checkbox"
+    id="checkbox_2"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    className="src-shared-components-checkbox-index__label"
+    htmlFor="checkbox_2"
+  >
+    <div
+      id="child"
+    />
+  </label>
+</div>
+`;

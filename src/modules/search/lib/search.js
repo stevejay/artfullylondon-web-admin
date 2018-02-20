@@ -1,6 +1,6 @@
 import queryString from 'query-string'
 
-import * as globalConstants from '_src/constants'
+import * as globalConstants from '_src/shared/constants'
 
 export function maybeHasMoreSearchResults (entityType, items, take) {
   const threshold = Math.floor(take / 4)

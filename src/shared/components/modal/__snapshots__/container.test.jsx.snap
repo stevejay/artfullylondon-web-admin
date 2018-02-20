@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div
+  className="src-shared-components-modal-Container__container-narrow src-shared-components-modal-Container__container"
+>
+  <h1
+    className="src-shared-components-modal-Container__header"
+  >
+    Some Title
+  </h1>
+  <IconButton
+    aria-label="Close modal dialog"
+    className="src-shared-components-modal-Container__close"
+    icon={[Function]}
+    onClick={[Function]}
+    type="inverse"
+  />
+  <div
+    id="child"
+  />
+</div>
+`;

@@ -6,7 +6,7 @@ import { SummaryTalent } from '_src/domain/talent'
 import { SummaryVenue } from '_src/domain/venue'
 import * as searchActions from '../actions'
 import { actions as userActions } from '_src/modules/user'
-import * as globalConstants from '_src/constants'
+import * as globalConstants from '_src/shared/constants'
 import entityType from '_src/domain/types/entity-type'
 
 const initialState = {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import Message from '_src/components/message'
+import Message from '_src/shared/components/message'
 import { SummaryEventSeries } from '_src/domain/event-series'
 
 class EventSeriesLink extends React.PureComponent {

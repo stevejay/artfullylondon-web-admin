@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import window from 'global/window'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
-import Loader from '_src/components/loader'
+  from '_src/shared/components/base-class/should-never-update'
+import Loader from '_src/shared/components/loader'
 import GoogleMapStatic from './google-map-static'
 import * as locationLib from '../lib/location'
 import * as locationConstants from '../constants'

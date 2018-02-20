@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import TalentsGridRow from './talents-grid-row'
-import Text from '_src/components/text'
+import Text from '_src/shared/components/text'
 
 it('should render correctly', () => {
   const wrapper = shallow(

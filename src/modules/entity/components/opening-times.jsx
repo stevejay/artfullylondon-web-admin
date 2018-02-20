@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { FullVenue } from '_src/domain/venue'
 import { FullEvent } from '_src/domain/event'
-import Message from '_src/components/message'
+import Message from '_src/shared/components/message'
 import { Tag } from '_src/modules/tag'
 import AdditionalDetailHeading from './additional-detail-heading'
 import OpeningTimeEntry from './opening-times-entry'

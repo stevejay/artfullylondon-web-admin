@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a 404 error correctly 1`] = `
+<BasicSection
+  className="src-shared-components-error-index__section"
+>
+  <h1
+    className="src-shared-components-error-index__heading"
+  >
+    <FaThumbsODown
+      className="src-shared-components-error-index__icon"
+    />
+    Sorry—we couldn't find that info
+  </h1>
+</BasicSection>
+`;
+
+exports[`should render a 500 error correctly 1`] = `
+<BasicSection
+  className="src-shared-components-error-index__section"
+>
+  <h1
+    className="src-shared-components-error-index__heading"
+  >
+    <FaThumbsODown
+      className="src-shared-components-error-index__icon"
+    />
+    Oops—something went wrong
+  </h1>
+</BasicSection>
+`;

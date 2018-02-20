@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Expander from '_src/components/expander'
+import Expander from '_src/shared/components/expander'
 import SidenavMenuLink from './sidenav-menu-link'
 import './sidenav-menu.scss'
 

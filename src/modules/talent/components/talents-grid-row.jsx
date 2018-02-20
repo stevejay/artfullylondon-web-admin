@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Text from '_src/components/text'
-import GridRow from '_src/components/grid/row'
+import Text from '_src/shared/components/text'
+import GridRow from '_src/shared/components/grid/row'
 import './talents-grid-row.scss'
 
 class TalentsGridRow extends React.PureComponent {

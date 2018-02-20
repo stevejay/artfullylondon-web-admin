@@ -7,8 +7,8 @@ import log from 'loglevel'
 
 import * as appUpdaterConstants from '../constants'
 import * as appUpdaterActions from '../actions'
-import * as fetchLib from '_src/lib/fetch'
-import * as sagaLib from '_src/lib/saga'
+import * as fetchLib from '_src/shared/lib/fetch'
+import * as sagaLib from '_src/shared/lib/saga'
 import { actions as notificationActions } from '_src/modules/notification'
 
 export function * checkForNewAppVersion ({ meta }) {

@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import Form from '_src/components/form'
-import FormRow from '_src/components/form/row'
-import FormError from '_src/components/form/error'
-import TextField from '_src/components/text/field'
-import ButtonField from '_src/components/button/field'
+import Form from '_src/shared/components/form'
+import FormRow from '_src/shared/components/form/row'
+import FormError from '_src/shared/components/form/error'
+import TextField from '_src/shared/components/text/field'
+import ButtonField from '_src/shared/components/button/field'
 import * as tagConstants from '../constants'
 
 export const AddTagForm = ({

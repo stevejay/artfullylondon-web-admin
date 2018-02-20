@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FieldContainer from '_src/components/field/container'
-import FieldBorder from '_src/components/field/border'
-import FieldDivider from '_src/components/field/divider'
-import Grid from '_src/components/grid'
-import * as arrayLib from '_src/lib/array'
+import FieldContainer from '_src/shared/components/field/container'
+import FieldBorder from '_src/shared/components/field/border'
+import FieldDivider from '_src/shared/components/field/divider'
+import Grid from '_src/shared/components/grid'
+import * as arrayLib from '_src/shared/lib/array'
 
 class TimesField extends React.Component {
   shouldComponentUpdate (nextProps) {

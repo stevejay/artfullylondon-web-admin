@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import CloseButton from '_src/components/button/close'
+import CloseButton from '_src/shared/components/button/close'
 import * as notificationConstants from '../constants'
 import './notification.scss'
 

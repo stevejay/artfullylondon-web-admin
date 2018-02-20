@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Container
+  disabled={false}
+  htmlFor="The Label"
+  label="The Label"
+  required={false}
+>
+  <div
+    className="src-shared-components-radio-button-field__options-container"
+  >
+    <RadioButton
+      checked={true}
+      key="id-1"
+      label="Label One"
+      name="The Name"
+      onChange={[Function]}
+      value="id-1"
+    />
+    <RadioButton
+      checked={false}
+      key="id-2"
+      label="Label Two"
+      name="The Name"
+      onChange={[Function]}
+      value="id-2"
+    />
+  </div>
+</Container>
+`;

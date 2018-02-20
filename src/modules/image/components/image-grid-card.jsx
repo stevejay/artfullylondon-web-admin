@@ -4,7 +4,7 @@ import Trash from 'react-icons/lib/fa/trash-o'
 import Heart from 'react-icons/lib/fa/heart'
 import Pencil from 'react-icons/lib/fa/pencil'
 
-import IconButton from '_src/components/button/icon'
+import IconButton from '_src/shared/components/button/icon'
 import ImageGridImage from './image-grid-image'
 import * as entitiesPropTypes from '_src/domain/prop-types'
 import './image-grid-card.scss'

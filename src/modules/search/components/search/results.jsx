@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Pagination from '_src/components/pagination'
+import Pagination from '_src/shared/components/pagination'
 import EntityCardCollection from '../entity-card/collection'
 import * as searchConstants from '../../constants'
 import * as cardContentFactory

@@ -8,15 +8,15 @@ import {
   change
 } from 'redux-form'
 
-import { validate } from '_src/lib/validation'
-import { submitErrorHandler } from '_src/lib/saga'
-import normalise from '_src/lib/normalise'
+import { validate } from '_src/shared/lib/validation'
+import { submitErrorHandler } from '_src/shared/lib/saga'
+import normalise from '_src/shared/lib/normalise'
 import * as timeSagas from './index'
 import * as timeConstants from '../constants'
 import * as timeConstraints from '../constants/constraints'
 import * as timeNormalisers from '../constants/normalisers'
 import * as timeValidation from '../lib/validation'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 
 describe('addOpeningTimeOrPerformance', () => {
   const values = { name: 'Foo' }

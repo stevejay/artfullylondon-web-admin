@@ -8,9 +8,9 @@ import entityType from '_src/domain/types/entity-type'
 import linkType from '_src/domain/types/link-type'
 import costType from '_src/domain/types/cost-type'
 import tagType from '_src/domain/types/tag-type'
-import * as venueLib from '_src/lib/venue'
-import * as timeLib from '_src/lib/time'
-import * as eventLib from '_src/lib/event'
+import * as venueLib from '_src/shared/lib/venue'
+import * as timeLib from '_src/shared/lib/time'
+import * as eventLib from '_src/shared/lib/event'
 
 export class SummaryEvent {
   constructor (entity) {

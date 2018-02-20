@@ -4,13 +4,13 @@ import { cloneableGenerator } from 'redux-saga/utils'
 import { startSubmit, stopSubmit } from 'redux-form'
 
 import * as sagas from './index'
-import * as sagaLib from '_src/lib/saga'
-import * as dateLib from '_src/lib/date'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as dateLib from '_src/shared/lib/date'
 import * as entityActions from '../actions'
-import * as validationLib from '_src/lib/validation'
+import * as validationLib from '_src/shared/lib/validation'
 import { eventService } from '_src/modules/api'
-import history from '_src/lib/history'
-import normalise from '_src/lib/normalise'
+import history from '_src/shared/lib/history'
+import normalise from '_src/shared/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
 
 dateLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when showing current step 1`] = `
+<li
+  className="src-shared-components-step-index__step-active src-shared-components-step-index__step"
+  onClick={null}
+  tabIndex={-1}
+>
+  <span
+    className="src-shared-components-step-index__number"
+  >
+    2
+  </span>
+  <span
+    className="src-shared-components-step-index__title"
+  >
+    The Title
+  </span>
+</li>
+`;
+
+exports[`should render correctly when showing step after current step 1`] = `
+<li
+  className="src-shared-components-step-index__step-next src-shared-components-step-index__step"
+  onClick={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="src-shared-components-step-index__number"
+  >
+    3
+  </span>
+  <span
+    className="src-shared-components-step-index__title"
+  >
+    The Title
+  </span>
+</li>
+`;
+
+exports[`should render correctly when showing step before current step 1`] = `
+<li
+  className="src-shared-components-step-index__step-completed src-shared-components-step-index__step"
+  onClick={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="src-shared-components-step-index__number"
+  >
+    1
+  </span>
+  <span
+    className="src-shared-components-step-index__title"
+  >
+    The Title
+  </span>
+</li>
+`;
+
+exports[`should render correctly when showing step way after current step 1`] = `
+<li
+  className="src-shared-components-step-index__step-disabled src-shared-components-step-index__step"
+  onClick={null}
+  tabIndex={-1}
+>
+  <span
+    className="src-shared-components-step-index__number"
+  >
+    6
+  </span>
+  <span
+    className="src-shared-components-step-index__title"
+  >
+    The Title
+  </span>
+</li>
+`;
+
+exports[`should render correctly when showing step way before current step 1`] = `
+<li
+  className="src-shared-components-step-index__step-completed src-shared-components-step-index__step"
+  onClick={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="src-shared-components-step-index__number"
+  >
+    1
+  </span>
+  <span
+    className="src-shared-components-step-index__title"
+  >
+    The Title
+  </span>
+</li>
+`;

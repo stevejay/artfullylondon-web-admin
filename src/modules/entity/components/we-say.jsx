@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import * as entityConstants from '../constants'
 import './we-say.scss'
 

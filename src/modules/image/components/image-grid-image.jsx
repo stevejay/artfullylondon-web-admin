@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import ImagePlaceholder from './image-placeholder'
-import * as imageLib from '_src/lib/image'
+import * as imageLib from '_src/shared/lib/image'
 import * as entitiesPropTypes from '_src/domain/prop-types'
 import './image-grid-image.scss'
 

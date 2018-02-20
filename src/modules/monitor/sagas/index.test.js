@@ -4,10 +4,10 @@ import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
 import * as sagas from './index'
-import * as sagaLib from '_src/lib/saga'
+import * as sagaLib from '_src/shared/lib/saga'
 import * as monitorActions from '../actions'
 import * as monitorConstants from '../constants'
-import * as validationLib from '_src/lib/validation'
+import * as validationLib from '_src/shared/lib/validation'
 import { monitorService } from '_src/modules/api'
 
 describe('getVenueEventMonitors', () => {

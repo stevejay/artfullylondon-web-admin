@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a default divider correctly 1`] = `
+<div
+  className="src-shared-components-divider-index__basic src-shared-components-divider-index__divider"
+  role="presentation"
+/>
+`;
+
+exports[`should render a hidden divider correctly 1`] = `
+<div
+  className="src-shared-components-divider-index__hidden src-shared-components-divider-index__divider"
+  role="presentation"
+/>
+`;
+
+exports[`should render a threedee divider correctly 1`] = `
+<div
+  className="src-shared-components-divider-index__threedee src-shared-components-divider-index__divider"
+  role="presentation"
+/>
+`;

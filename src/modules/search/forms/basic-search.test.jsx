@@ -3,9 +3,9 @@ import { Field } from 'redux-form'
 import _ from 'lodash'
 
 import { BasicSearchForm } from './basic-search'
-import Form from '_src/components/form'
+import Form from '_src/shared/components/form'
 import * as searchActions from '../actions'
-import * as globalConstants from '_src/constants'
+import * as globalConstants from '_src/shared/constants'
 
 it('should render correctly', () => {
   const wrapper = shallow(

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import NoEntries from '_src/components/no-entries'
+import NoEntries from '_src/shared/components/no-entries'
 import './image-grid.scss'
 
 const ImageGrid = ({ children }) =>

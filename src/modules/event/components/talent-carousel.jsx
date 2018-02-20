@@ -5,7 +5,7 @@ import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import _ from 'lodash'
 
 import EventTalent from './talent'
-import IconButton from '_src/components/button/icon'
+import IconButton from '_src/shared/components/button/icon'
 import { EventSummaryTalent } from '_src/domain/talent'
 import './talent-carousel.scss'
 

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<button
+  className="src-shared-components-field-reset-button__button"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="src-shared-components-field-reset-button__content-wrapper"
+  >
+    <FaClose
+      className="src-shared-components-field-reset-button__icon"
+    />
+  </span>
+</button>
+`;
+
+exports[`should render correctly when disabled 1`] = `
+<button
+  className="src-shared-components-field-reset-button__button"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="src-shared-components-field-reset-button__content-wrapper"
+  >
+    <FaClose
+      className="src-shared-components-field-reset-button__icon"
+    />
+  </span>
+</button>
+`;

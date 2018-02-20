@@ -1,7 +1,7 @@
 import { call } from 'redux-saga/effects'
 
 import * as sagas from './search-service'
-import * as fetchLib from '_src/lib/fetch'
+import * as fetchLib from '_src/shared/lib/fetch'
 
 describe('getEntityCounts', () => {
   it('should get', () => {

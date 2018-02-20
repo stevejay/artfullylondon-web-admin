@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { AppUpdater } from './app-updater'
 import * as appUpdaterActions from '../actions'
-import Button from '_src/components/button'
+import Button from '_src/shared/components/button'
 
 it('should trigger app update state checks on construction', () => {
   const dispatch = jest.fn().mockReturnValue(Promise.resolve())

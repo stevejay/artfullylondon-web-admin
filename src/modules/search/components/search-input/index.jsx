@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import document from 'global/document'
 
 import AutocompleteList from './autocomplete-list'
-import FadeTransition from '_src/components/transition/fade'
-import * as globalConstants from '_src/constants'
+import FadeTransition from '_src/shared/components/transition/fade'
+import * as globalConstants from '_src/shared/constants'
 import './index.scss'
 
 const AUTOCOMPLETE_MIN_SEARCH_TERM_LENGTH = 2

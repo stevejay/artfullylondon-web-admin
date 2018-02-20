@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when checked 1`] = `
+<div
+  className="src-shared-components-radio-button-index__container-checked src-shared-components-radio-button-index__container"
+>
+  <input
+    checked={true}
+    className="src-shared-components-radio-button-index__input"
+    id="the-value"
+    name="the-name"
+    onChange={[Function]}
+    tabIndex="0"
+    type="radio"
+  />
+  <label
+    className="src-shared-components-radio-button-index__label"
+    htmlFor="the-value"
+  >
+    <span>
+      The Label
+    </span>
+  </label>
+</div>
+`;
+
+exports[`should render correctly when not checked 1`] = `
+<div
+  className="src-shared-components-radio-button-index__container"
+>
+  <input
+    checked={false}
+    className="src-shared-components-radio-button-index__input"
+    id="the-value"
+    name="the-name"
+    onChange={[Function]}
+    tabIndex="0"
+    type="radio"
+  />
+  <label
+    className="src-shared-components-radio-button-index__label"
+    htmlFor="the-value"
+  >
+    <span>
+      The Label
+    </span>
+  </label>
+</div>
+`;

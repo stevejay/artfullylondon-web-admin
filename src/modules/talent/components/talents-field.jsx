@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Grid from '_src/components/grid'
-import FieldContainer from '_src/components/field/container'
-import FieldBorder from '_src/components/field/border'
+import Grid from '_src/shared/components/grid'
+import FieldContainer from '_src/shared/components/field/container'
+import FieldBorder from '_src/shared/components/field/border'
 import TalentsGridRow from './talents-grid-row'
-import * as arrayLib from '_src/lib/array'
+import * as arrayLib from '_src/shared/lib/array'
 
 class TalentsField extends React.Component {
   shouldComponentUpdate (nextProps) {

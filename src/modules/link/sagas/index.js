@@ -8,9 +8,9 @@ import {
 } from 'redux-form'
 import log from 'loglevel'
 
-import normalise from '_src/lib/normalise'
-import * as sagaLib from '_src/lib/saga'
-import * as validationLib from '_src/lib/validation'
+import normalise from '_src/shared/lib/normalise'
+import * as sagaLib from '_src/shared/lib/saga'
+import * as validationLib from '_src/shared/lib/validation'
 import * as linkLib from '../lib/link'
 import * as linkActions from '../actions'
 import * as linkConstants from '../constants'

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<DropdownTransition>
+  <BasicTransition
+    appear={false}
+    className="src-shared-components-dropdown-transition__dropdown-transition"
+    in={false}
+    mountOnEnter={true}
+    onEnter={[Function]}
+    onExit={[Function]}
+    timeoutMs={NaN}
+    unmountOnExit={true}
+  >
+    <Transition
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      mountOnEnter={true}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      timeout={NaN}
+      unmountOnExit={true}
+    />
+  </BasicTransition>
+</DropdownTransition>
+`;

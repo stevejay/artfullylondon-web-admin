@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withState } from 'recompose'
 
-import FadeTransition from '_src/components/transition/fade'
-import Button from '_src/components/button'
+import FadeTransition from '_src/shared/components/transition/fade'
+import Button from '_src/shared/components/button'
 import * as appUpdaterActions from '../actions'
 import './app-updater.scss'
 

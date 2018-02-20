@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import ShouldNeverUpdateComponent
-  from '_src/components/base-class/should-never-update'
+  from '_src/shared/components/base-class/should-never-update'
 import { ImagePlaceholder } from '_src/modules/image'
 import * as entityCardLib from '../../lib/entity-card'
 import * as entitiesPropTypes from '_src/domain/prop-types'

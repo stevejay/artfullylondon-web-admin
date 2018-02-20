@@ -1,6 +1,6 @@
 import { call } from 'redux-saga/effects'
 
-import * as fetchLib from '_src/lib/fetch'
+import * as fetchLib from '_src/shared/lib/fetch'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 const EVENT_SERVICE_URL = `${process.env.WEBSITE_API_HOST_URL}/event-service`

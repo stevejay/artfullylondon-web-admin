@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import { EventDetail } from './event-detail'
 import { FullEvent } from '_src/domain/event'
-import * as dateLib from '_src/lib/date'
+import * as dateLib from '_src/shared/lib/date'
 import * as eventActions from '../actions'
 import EventTalentCarousel from './talent-carousel'
 
