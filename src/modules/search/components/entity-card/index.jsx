@@ -4,7 +4,7 @@ import ArrowCircleRight from 'react-icons/lib/fa/arrow-circle-right'
 import { Link } from 'react-router-dom'
 
 import EntityCardShell from './shell'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as searchConstants from '../../constants'
 import './index.scss'
 
 class EntityCard extends React.PureComponent {
@@ -35,7 +35,7 @@ class EntityCard extends React.PureComponent {
 }
 
 EntityCard.propTypes = {
-  entity: entitiesPropTypes.SUMMARY_ENTITY.isRequired,
+  entity: searchConstants.SUMMARY_ENTITY_PROP_TYPE.isRequired,
   dateStr: PropTypes.string.isRequired,
   cardContentFactory: PropTypes.func.isRequired,
   onClick: PropTypes.func

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import EntityCard from './index'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as searchConstants from '../../constants'
 import './collection.scss'
 
 class EntityCardCollection extends React.PureComponent {
@@ -29,7 +29,9 @@ class EntityCardCollection extends React.PureComponent {
 }
 
 EntityCardCollection.propTypes = {
-  entities: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
+  entities: PropTypes.arrayOf(
+    searchConstants.SUMMARY_ENTITY_PROP_TYPE.isRequired
+  ),
   // TODO is getInProgress needed by this component?
   getInProgress: PropTypes.bool,
   dateStr: PropTypes.string.isRequired,

@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import { SummaryVenue } from '_src/domain/venue'
+import { SummaryTalent } from '_src/domain/talent'
+import { SummaryEvent } from '_src/domain/event'
+import { SummaryEventSeries } from '_src/domain/event-series'
 import * as globalConstants from '_src/constants'
 import * as entitiesPropTypes from '_src/domain/prop-types'
 import entityType from '_src/domain/types/entity-type'
@@ -20,6 +24,13 @@ export const SEARCH_TYPE_BASIC = 'SEARCH_TYPE_BASIC'
 export const SEARCH_TYPE_EVENT = 'SEARCH_TYPE_EVENT'
 export const SEARCH_TYPE_AUTOCOMPLETE = 'SEARCH_TYPE_AUTOCOMPLETE'
 export const SEARCH_TYPE_MAP_SCROLLED = 'SEARCH_TYPE_MAP_SCROLLED'
+
+export const SUMMARY_ENTITY_PROP_TYPE = PropTypes.oneOfType([
+  PropTypes.instanceOf(SummaryEvent),
+  PropTypes.instanceOf(SummaryEventSeries),
+  PropTypes.instanceOf(SummaryTalent),
+  PropTypes.instanceOf(SummaryVenue)
+])
 
 export const AUTOCOMPLETE_ITEM_PROPTYPES = PropTypes.oneOfType([
   PropTypes.shape({

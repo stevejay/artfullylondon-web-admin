@@ -10,11 +10,10 @@ exports[`should render correctly 1`] = `
     entity={
       Object {
         "entityType": "venue",
-        "entityTypeLabel": "The Label",
+        "getEntityTypeLabel": [Function],
+        "getUrl": [Function],
+        "hasImage": [Function],
         "id": "some-id",
-        "image": "12345678",
-        "imageRatio": 2,
-        "url": "http://some/url",
       }
     }
   />
@@ -22,11 +21,10 @@ exports[`should render correctly 1`] = `
     entity={
       Object {
         "entityType": "venue",
-        "entityTypeLabel": "The Label",
+        "getEntityTypeLabel": [Function],
+        "getUrl": [Function],
+        "hasImage": [Function],
         "id": "some-id",
-        "image": "12345678",
-        "imageRatio": 2,
-        "url": "http://some/url",
       }
     }
     onImageLoad={[Function]}

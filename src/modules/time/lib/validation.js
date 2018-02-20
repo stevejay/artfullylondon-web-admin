@@ -18,8 +18,9 @@ function closureIsAllowed (existingClosures, newClosure) {
     return true
   }
 
-  // We are trying to add one that can only be by itself.
   const hasTime = newClosure.from || newClosure.at
+
+  // We are trying to add one that can only be by itself.
   if (!hasTime) {
     return false
   }

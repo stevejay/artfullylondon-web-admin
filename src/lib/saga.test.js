@@ -1,5 +1,6 @@
 import { SubmissionError, stopSubmit } from 'redux-form'
-import { put } from 'redux-saga/effects'
+import { put, call } from 'redux-saga/effects'
+import log from 'loglevel'
 
 import * as sagaLib from '_src/lib/saga'
 
@@ -14,11 +15,14 @@ describe('submitErrorHandler', () => {
 
     const generator = sagaLib.submitErrorHandler(error, SOME_FORM_NAME)
 
-    expect(generator.next().value).toEqual(
-      put(stopSubmit(SOME_FORM_NAME, errors))
-    )
+    let result = generator.next()
+    expect(result.value).toEqual(call(log.error, error))
 
-    expect(generator.next()).toEqual({ done: true, value: undefined })
+    result = generator.next()
+    expect(result.value).toEqual(put(stopSubmit(SOME_FORM_NAME, errors)))
+
+    result = generator.next()
+    expect(result.done).toEqual(true)
   })
 
   it('should stop form submission with the default error value when a general error has been thrown', () => {
@@ -26,10 +30,15 @@ describe('submitErrorHandler', () => {
 
     const generator = sagaLib.submitErrorHandler(error, SOME_FORM_NAME)
 
-    expect(generator.next().value).toEqual(
+    let result = generator.next()
+    expect(result.value).toEqual(call(log.error, error))
+
+    result = generator.next()
+    expect(result.value).toEqual(
       put(stopSubmit(SOME_FORM_NAME, { _error: 'some message' }))
     )
 
-    expect(generator.next()).toEqual({ done: true, value: undefined })
+    result = generator.next()
+    expect(result.done).toEqual(true)
   })
 })

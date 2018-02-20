@@ -1,6 +1,5 @@
 import { call, put, select } from 'redux-saga/effects'
 import { cloneableGenerator } from 'redux-saga/utils'
-import log from 'loglevel'
 import {
   startSubmit,
   stopSubmit,
@@ -12,9 +11,7 @@ import {
 import { validate } from '_src/lib/validation'
 import { submitErrorHandler } from '_src/lib/saga'
 import normalise from '_src/lib/normalise'
-import * as sagaLib from '_src/lib/saga'
 import * as timeSagas from './index'
-import * as validationLib from '_src/lib/validation'
 import * as timeConstants from '../constants'
 import * as timeConstraints from '../constants/constraints'
 import * as timeNormalisers from '../constants/normalisers'
@@ -78,8 +75,6 @@ describe('addOpeningTimeOrPerformance', () => {
 
 describe('addTimesRange', () => {
   const values = { name: 'Foo' }
-  const constraint = jest.fn()
-  const validator = jest.fn()
 
   const generator = cloneableGenerator(timeSagas.addTimesRange)({
     payload: {

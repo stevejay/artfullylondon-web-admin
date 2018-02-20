@@ -17,7 +17,6 @@ import * as globalConstants from '_src/constants'
 import * as dateLib from '_src/lib/date'
 import * as searchConstants from '../constants'
 import * as searchActions from '../actions'
-import * as entitiesPropTypes from '_src/domain/prop-types'
 import entityType from '_src/domain/types/entity-type'
 import './results.scss'
 
@@ -84,8 +83,7 @@ export class SearchResultsPage extends React.Component {
     const hasResults = !!resultParams && !_.isEmpty(items)
     const noResults = !searchInProgress && !hasResults && !_.isNil(items)
 
-    const isAllSearch =
-      hasResults && resultParams.entityType === entityType.ALL
+    const isAllSearch = hasResults && resultParams.entityType === entityType.ALL
 
     return (
       <BasicSection>
@@ -133,7 +131,7 @@ SearchResultsPage.propTypes = {
     take: PropTypes.number.isRequired
   }),
   total: PropTypes.number.isRequired,
-  items: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
+  items: PropTypes.arrayOf(searchConstants.SUMMARY_ENTITY_PROP_TYPE.isRequired),
   location: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 }

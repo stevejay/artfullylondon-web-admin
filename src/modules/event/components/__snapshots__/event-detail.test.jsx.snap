@@ -16,16 +16,8 @@ exports[`should render a current event correctly 1`] = `
     <EntityInfoBar
       entity={
         FullEvent {
-          "entity": Object {
-            "images": Array [],
-            "name": "Name",
-            "venue": Object {
-              "latitude": 1,
-              "longitude": 2,
-            },
-          },
           "eventSeries": null,
-          "groupedDates": null,
+          "images": Array [],
           "isExpiredOn": [MockFunction] {
             "calls": Array [
               Array [
@@ -33,6 +25,7 @@ exports[`should render a current event correctly 1`] = `
               ],
             ],
           },
+          "name": "Name",
           "tags": Array [],
           "talents": Array [],
           "venue": SummaryVenue {
@@ -49,16 +42,8 @@ exports[`should render a current event correctly 1`] = `
           dateStr="2018/01/01"
           event={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -66,6 +51,7 @@ exports[`should render a current event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -78,16 +64,8 @@ exports[`should render a current event correctly 1`] = `
         <EntityDescription
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -95,6 +73,7 @@ exports[`should render a current event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -107,16 +86,8 @@ exports[`should render a current event correctly 1`] = `
         <EntityWeSay
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -124,6 +95,7 @@ exports[`should render a current event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -136,16 +108,8 @@ exports[`should render a current event correctly 1`] = `
         <EntityExternalLinks
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -153,6 +117,7 @@ exports[`should render a current event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -176,16 +141,8 @@ exports[`should render a current event correctly 1`] = `
           dateStr="2018/01/01"
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -193,6 +150,7 @@ exports[`should render a current event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -201,6 +159,9 @@ exports[`should render a current event correctly 1`] = `
               },
             }
           }
+        />
+        <Divider
+          type="basic"
         />
       </EntityColumn>
     </EntityColumnLayout>
@@ -235,28 +196,8 @@ exports[`should render a current event correctly that has full details 1`] = `
     <EntityInfoBar
       entity={
         FullEvent {
-          "entity": Object {
-            "eventSeries": Object {},
-            "images": Array [],
-            "name": "Name",
-            "tags": Array [
-              Object {
-                "id": "medium/theatre",
-                "label": "theatre",
-              },
-            ],
-            "talents": Array [
-              Object {
-                "lastName": "Last",
-              },
-            ],
-            "venue": Object {
-              "latitude": 1,
-              "longitude": 2,
-            },
-          },
           "eventSeries": SummaryEventSeries {},
-          "groupedDates": null,
+          "images": Array [],
           "isExpiredOn": [MockFunction] {
             "calls": Array [
               Array [
@@ -264,6 +205,7 @@ exports[`should render a current event correctly that has full details 1`] = `
               ],
             ],
           },
+          "name": "Name",
           "tags": Array [],
           "talents": Array [
             EventSummaryTalent {
@@ -284,28 +226,8 @@ exports[`should render a current event correctly that has full details 1`] = `
           dateStr="2018/01/01"
           event={
             FullEvent {
-              "entity": Object {
-                "eventSeries": Object {},
-                "images": Array [],
-                "name": "Name",
-                "tags": Array [
-                  Object {
-                    "id": "medium/theatre",
-                    "label": "theatre",
-                  },
-                ],
-                "talents": Array [
-                  Object {
-                    "lastName": "Last",
-                  },
-                ],
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": SummaryEventSeries {},
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -313,6 +235,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [
                 EventSummaryTalent {
@@ -329,28 +252,8 @@ exports[`should render a current event correctly that has full details 1`] = `
         <EntityDescription
           entity={
             FullEvent {
-              "entity": Object {
-                "eventSeries": Object {},
-                "images": Array [],
-                "name": "Name",
-                "tags": Array [
-                  Object {
-                    "id": "medium/theatre",
-                    "label": "theatre",
-                  },
-                ],
-                "talents": Array [
-                  Object {
-                    "lastName": "Last",
-                  },
-                ],
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": SummaryEventSeries {},
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -358,6 +261,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [
                 EventSummaryTalent {
@@ -374,28 +278,8 @@ exports[`should render a current event correctly that has full details 1`] = `
         <EntityWeSay
           entity={
             FullEvent {
-              "entity": Object {
-                "eventSeries": Object {},
-                "images": Array [],
-                "name": "Name",
-                "tags": Array [
-                  Object {
-                    "id": "medium/theatre",
-                    "label": "theatre",
-                  },
-                ],
-                "talents": Array [
-                  Object {
-                    "lastName": "Last",
-                  },
-                ],
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": SummaryEventSeries {},
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -403,6 +287,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [
                 EventSummaryTalent {
@@ -422,28 +307,8 @@ exports[`should render a current event correctly that has full details 1`] = `
         <EntityExternalLinks
           entity={
             FullEvent {
-              "entity": Object {
-                "eventSeries": Object {},
-                "images": Array [],
-                "name": "Name",
-                "tags": Array [
-                  Object {
-                    "id": "medium/theatre",
-                    "label": "theatre",
-                  },
-                ],
-                "talents": Array [
-                  Object {
-                    "lastName": "Last",
-                  },
-                ],
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": SummaryEventSeries {},
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -451,6 +316,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [
                 EventSummaryTalent {
@@ -487,28 +353,8 @@ exports[`should render a current event correctly that has full details 1`] = `
           dateStr="2018/01/01"
           entity={
             FullEvent {
-              "entity": Object {
-                "eventSeries": Object {},
-                "images": Array [],
-                "name": "Name",
-                "tags": Array [
-                  Object {
-                    "id": "medium/theatre",
-                    "label": "theatre",
-                  },
-                ],
-                "talents": Array [
-                  Object {
-                    "lastName": "Last",
-                  },
-                ],
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": SummaryEventSeries {},
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -516,6 +362,7 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [
                 EventSummaryTalent {
@@ -565,16 +412,8 @@ exports[`should render an expired event correctly 1`] = `
     <EntityInfoBar
       entity={
         FullEvent {
-          "entity": Object {
-            "images": Array [],
-            "name": "Name",
-            "venue": Object {
-              "latitude": 1,
-              "longitude": 2,
-            },
-          },
           "eventSeries": null,
-          "groupedDates": null,
+          "images": Array [],
           "isExpiredOn": [MockFunction] {
             "calls": Array [
               Array [
@@ -582,6 +421,7 @@ exports[`should render an expired event correctly 1`] = `
               ],
             ],
           },
+          "name": "Name",
           "tags": Array [],
           "talents": Array [],
           "venue": SummaryVenue {
@@ -598,16 +438,8 @@ exports[`should render an expired event correctly 1`] = `
           dateStr="2018/01/01"
           event={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -615,6 +447,7 @@ exports[`should render an expired event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -627,16 +460,8 @@ exports[`should render an expired event correctly 1`] = `
         <EntityDescription
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -644,6 +469,7 @@ exports[`should render an expired event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -656,16 +482,8 @@ exports[`should render an expired event correctly 1`] = `
         <EntityWeSay
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -673,6 +491,7 @@ exports[`should render an expired event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {
@@ -685,16 +504,8 @@ exports[`should render an expired event correctly 1`] = `
         <EntityExternalLinks
           entity={
             FullEvent {
-              "entity": Object {
-                "images": Array [],
-                "name": "Name",
-                "venue": Object {
-                  "latitude": 1,
-                  "longitude": 2,
-                },
-              },
               "eventSeries": null,
-              "groupedDates": null,
+              "images": Array [],
               "isExpiredOn": [MockFunction] {
                 "calls": Array [
                   Array [
@@ -702,6 +513,7 @@ exports[`should render an expired event correctly 1`] = `
                   ],
                 ],
               },
+              "name": "Name",
               "tags": Array [],
               "talents": Array [],
               "venue": SummaryVenue {

@@ -2,7 +2,7 @@ import React from 'react'
 
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityConstants from '../constants'
 import './we-say.scss'
 
 class EntityWeSay extends ShouldNeverUpdateComponent {
@@ -23,7 +23,7 @@ class EntityWeSay extends ShouldNeverUpdateComponent {
 }
 
 EntityWeSay.propTypes = {
-  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired
+  entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE.isRequired
 }
 
 export default EntityWeSay

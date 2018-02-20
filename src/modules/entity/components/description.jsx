@@ -3,7 +3,7 @@ import React from 'react'
 import ShouldNeverUpdateComponent
   from '_src/components/base-class/should-never-update'
 import linkType from '_src/domain/types/link-type'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityConstants from '../constants'
 import './description.scss'
 
 class EntityDescription extends ShouldNeverUpdateComponent {
@@ -33,7 +33,7 @@ class EntityDescription extends ShouldNeverUpdateComponent {
 }
 
 EntityDescription.propTypes = {
-  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired
+  entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE.isRequired
 }
 
 export default EntityDescription

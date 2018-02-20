@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Envelope from 'react-icons/lib/fa/envelope-o'
 import Instagram from 'react-icons/lib/fa/instagram'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Facebook from 'react-icons/lib/fa/facebook'
 
 import linkType from '_src/domain/types/link-type'
-import * as entitiesPropTypes from '_src/domain/prop-types'
 import EntityExternalLink from './external-link'
 import './external-links.scss'
 
@@ -38,7 +38,10 @@ class EntityExternalLinks extends React.PureComponent {
 }
 
 EntityExternalLinks.propTypes = {
-  entity: entitiesPropTypes.EDITABLE_ENTITY.isRequired
+  entity: PropTypes.shape({
+    email: PropTypes.string,
+    getLinkByType: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default EntityExternalLinks

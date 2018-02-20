@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Pagination from '_src/components/pagination'
 import EntityCardCollection from '../entity-card/collection'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as searchConstants from '../../constants'
 import * as cardContentFactory
   from '../search-results-cards/card-content-factory'
 
@@ -40,7 +40,7 @@ class SearchResults extends React.PureComponent {
 }
 
 SearchResults.propTypes = {
-  items: PropTypes.arrayOf(entitiesPropTypes.SUMMARY_ENTITY.isRequired),
+  items: PropTypes.arrayOf(searchConstants.SUMMARY_ENTITY_PROP_TYPE.isRequired),
   total: PropTypes.number.isRequired,
   skip: PropTypes.number.isRequired,
   take: PropTypes.number.isRequired,
