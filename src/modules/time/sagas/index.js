@@ -34,214 +34,21 @@ export function * setNewFormValue (
   yield put(change(parentFormName, propertyName, newValues))
 }
 
-export function * addOpeningTime (action) {
+export function * addOpeningTimeOrPerformance (
+  formName,
+  constraint,
+  propertyName,
+  validator,
+  action
+) {
   try {
     const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
-    yield call(validate, values, timeConstraints.OPENING_TIME_CONSTRAINT)
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'openingTimes',
-      timeValidation.validateNewDayEntry
-    )
-    yield put(stopSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
+    yield put(startSubmit(formName))
+    yield call(validate, values, constraint)
+    yield call(setNewFormValue, parentFormName, values, propertyName, validator)
+    yield put(stopSubmit(formName))
   } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_OPENING_TIME_FORM_NAME
-    )
-  }
-}
-
-export function * addAdditionalOpeningTime (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME))
-
-    yield call(
-      validate,
-      values,
-      timeConstraints.ADDITIONAL_OPENING_TIME_CONSTRAINT
-    )
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'additionalOpeningTimes',
-      timeValidation.validateNewDateEntry
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME
-    )
-  }
-}
-
-export function * addSpecialOpeningTime (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME))
-
-    yield call(
-      validate,
-      values,
-      timeConstraints.SPECIAL_OPENING_TIME_CONSTRAINT
-    )
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'specialOpeningTimes',
-      timeValidation.validateNewDateEntry
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME
-    )
-  }
-}
-
-export function * addOpeningTimeClosure (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME))
-
-    yield call(
-      validate,
-      values,
-      timeConstraints.OPENING_TIME_CLOSURE_CONSTRAINT
-    )
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'openingTimesClosures',
-      timeValidation.validateNewClosure
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME
-    )
-  }
-}
-
-export function * addPerformance (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
-    yield call(validate, values, timeConstraints.PERFORMANCE_CONSTRAINT)
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'performances',
-      timeValidation.validateNewDayEntry
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
-  } catch (err) {
-    yield call(submitErrorHandler, err, timeConstants.ADD_PERFORMANCE_FORM_NAME)
-  }
-}
-
-export function * addAdditionalPerformance (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME))
-
-    yield call(
-      validate,
-      values,
-      timeConstraints.ADDITIONAL_PERFORMANCE_CONSTRAINT
-    )
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'additionalPerformances',
-      timeValidation.validateNewDateEntry
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME
-    )
-  }
-}
-
-export function * addSpecialPerformance (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME))
-
-    yield call(
-      validate,
-      values,
-      timeConstraints.SPECIAL_PERFORMANCES_CONSTRAINT
-    )
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'specialPerformances',
-      timeValidation.validateNewDateEntry
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME
-    )
-  }
-}
-
-export function * addPerformanceClosure (action) {
-  try {
-    const { values, parentFormName } = action.payload
-    yield put(startSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME))
-    yield call(validate, values, timeConstraints.PERFORMANCE_CLOSURE_CONSTRAINT)
-
-    yield call(
-      setNewFormValue,
-      parentFormName,
-      values,
-      'performancesClosures',
-      timeValidation.validateNewClosure
-    )
-
-    yield put(stopSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME))
-  } catch (err) {
-    yield call(
-      submitErrorHandler,
-      err,
-      timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME
-    )
+    yield call(submitErrorHandler, err, formName)
   }
 }
 
@@ -274,13 +81,69 @@ export function * addTimesRange (action) {
 }
 
 export default [
-  takeLatest(types.ADD_OPENING_TIME, addOpeningTime),
-  takeLatest(types.ADD_ADDITIONAL_OPENING_TIME, addAdditionalOpeningTime),
-  takeLatest(types.ADD_SPECIAL_OPENING_TIME, addSpecialOpeningTime),
-  takeLatest(types.ADD_OPENING_TIME_CLOSURE, addOpeningTimeClosure),
-  takeLatest(types.ADD_PERFORMANCE, addPerformance),
-  takeLatest(types.ADD_ADDITIONAL_PERFORMANCE, addAdditionalPerformance),
-  takeLatest(types.ADD_SPECIAL_PERFORMANCE, addSpecialPerformance),
-  takeLatest(types.ADD_PERFORMANCE_CLOSURE, addPerformanceClosure),
+  takeLatest(
+    types.ADD_OPENING_TIME,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_OPENING_TIME_FORM_NAME,
+    timeConstraints.OPENING_TIME_CONSTRAINT,
+    'openingTimes',
+    timeValidation.validateNewDayEntry
+  ),
+  takeLatest(
+    types.ADD_ADDITIONAL_OPENING_TIME,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME,
+    timeConstraints.ADDITIONAL_OPENING_TIME_CONSTRAINT,
+    'additionalOpeningTimes',
+    timeValidation.validateNewDateEntry
+  ),
+  takeLatest(
+    types.ADD_SPECIAL_OPENING_TIME,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME,
+    timeConstraints.SPECIAL_OPENING_TIME_CONSTRAINT,
+    'specialOpeningTimes',
+    timeValidation.validateNewDateEntry
+  ),
+  takeLatest(
+    types.ADD_OPENING_TIME_CLOSURE,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME,
+    timeConstraints.OPENING_TIME_CLOSURE_CONSTRAINT,
+    'openingTimesClosures',
+    timeValidation.validateNewClosure
+  ),
+  takeLatest(
+    types.ADD_PERFORMANCE,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_PERFORMANCE_FORM_NAME,
+    timeConstraints.PERFORMANCE_CONSTRAINT,
+    'performances',
+    timeValidation.validateNewDayEntry
+  ),
+  takeLatest(
+    types.ADD_ADDITIONAL_PERFORMANCE,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME,
+    timeConstraints.ADDITIONAL_PERFORMANCE_CONSTRAINT,
+    'additionalPerformances',
+    timeValidation.validateNewDateEntry
+  ),
+  takeLatest(
+    types.ADD_SPECIAL_PERFORMANCE,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME,
+    timeConstraints.SPECIAL_PERFORMANCES_CONSTRAINT,
+    'specialPerformances',
+    timeValidation.validateNewDateEntry
+  ),
+  takeLatest(
+    types.ADD_PERFORMANCE_CLOSURE,
+    addOpeningTimeOrPerformance,
+    timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME,
+    timeConstraints.PERFORMANCE_CLOSURE_CONSTRAINT,
+    'performancesClosures',
+    timeValidation.validateNewClosure
+  ),
   takeLatest(types.ADD_TIMES_RANGE, addTimesRange)
 ]
