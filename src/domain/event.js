@@ -8,7 +8,6 @@ import entityType from '_src/domain/types/entity-type'
 import linkType from '_src/domain/types/link-type'
 import costType from '_src/domain/types/cost-type'
 import tagType from '_src/domain/types/tag-type'
-import * as entityLib from '_src/lib/entity'
 import * as venueLib from '_src/lib/venue'
 import * as timeLib from '_src/lib/time'
 import * as eventLib from '_src/lib/event'
@@ -106,7 +105,7 @@ export class FullEvent extends Entity {
     }
 
     if (this.mediumTags.length === 1) {
-      return mediumTags[0].label
+      return this.mediumTags[0].label
     }
 
     if (this.mediumTags.length === 2) {

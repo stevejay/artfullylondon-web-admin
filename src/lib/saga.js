@@ -6,6 +6,8 @@ import Backoff from 'backo'
 import log from 'loglevel'
 
 export function * submitErrorHandler (err, formName) {
+  yield call(log.error, err)
+
   if (!_.isNil(err.errors)) {
     yield put(stopSubmit(formName, err.errors))
   } else {

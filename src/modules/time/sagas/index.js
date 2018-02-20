@@ -4,8 +4,7 @@ import {
   stopSubmit,
   reset,
   getFormValues,
-  change,
-  SubmissionError
+  change
 } from 'redux-form'
 import _ from 'lodash'
 
@@ -16,43 +15,211 @@ import * as timeActions from '../actions'
 import * as timeConstants from '../constants'
 import * as timeConstraints from '../constants/constraints'
 import * as timeNormalisers from '../constants/normalisers'
+import * as timeValidation from '../lib/validation'
 import * as dateLib from '_src/lib/date'
 
 // TODO extract the form value manipulations into a series of separate sagas.
-// TODO replace the consoles with loglevel.
 
-function * addOpeningTime (action) {
+export function * getNewOpeningTimesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const openingTimes = formValues.openingTimes
+
+  const newOpeningTime = {
+    key: dateLib.createTimeKey(values),
+    day: values.day,
+    from: values.from,
+    to: values.to,
+    timesRangeId: values.timesRangeId
+  }
+
+  yield call(timeValidation.validateNewDayEntry, openingTimes, newOpeningTime)
+  const newOpeningTimes = openingTimes.slice()
+  newOpeningTimes.push(newOpeningTime)
+  return _.sortBy(newOpeningTimes, value => value.key)
+}
+
+export function * getNewAdditionalOpeningTimesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const additionalOpeningTimes = formValues.additionalOpeningTimes
+
+  const newAdditionalOpeningTime = {
+    key: dateLib.createTimeKey(values),
+    date: values.date,
+    from: values.from,
+    to: values.to
+  }
+
+  yield call(
+    timeValidation.validateNewDateEntry,
+    additionalOpeningTimes,
+    newAdditionalOpeningTime
+  )
+
+  const newAdditionalOpeningTimes = additionalOpeningTimes.slice()
+  newAdditionalOpeningTimes.push(newAdditionalOpeningTime)
+  return _.sortBy(newAdditionalOpeningTimes, value => value.key)
+}
+
+export function * getNewSpecialOpeningTimesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const specialOpeningTimes = formValues.specialOpeningTimes
+
+  const newSpecialOpeningTime = {
+    key: dateLib.createTimeKey(values),
+    date: values.date,
+    from: values.from,
+    to: values.to,
+    audienceTags: values.audienceTags
+  }
+
+  yield call(
+    timeValidation.validateNewDateEntry,
+    specialOpeningTimes,
+    newSpecialOpeningTime
+  )
+
+  const newSpecialOpeningTimes = specialOpeningTimes.slice()
+  newSpecialOpeningTimes.push(newSpecialOpeningTime)
+  return _.sortBy(newSpecialOpeningTimes, value => value.key)
+}
+
+export function * getNewOpeningTimesClosuresFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const closures = formValues.openingTimesClosures
+
+  const newClosure = {
+    key: dateLib.createTimeKey(values),
+    date: values.date
+  }
+
+  if (values.from) {
+    newClosure.from = values.from
+    newClosure.to = values.to
+  }
+
+  yield call(timeValidation.validateNewClosure, closures, newClosure)
+  const newClosures = closures.slice()
+  newClosures.push(newClosure)
+  return _.sortBy(newClosures, value => value.key)
+}
+
+export function * getNewPerformancesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const performances = formValues.performances
+
+  const newPerformance = {
+    key: dateLib.createTimeKey(values),
+    day: values.day,
+    at: values.at,
+    timesRangeId: values.timesRangeId
+  }
+
+  yield call(timeValidation.validateNewDayEntry, performances, newPerformance)
+
+  const newPerformances = performances.slice()
+  newPerformances.push(newPerformance)
+  return _.sortBy(newPerformances, value => value.key)
+}
+
+export function * getNewAdditionalPerformancesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const additionalPerformances = formValues.additionalPerformances
+
+  const newAdditional = {
+    key: dateLib.createTimeKey(values),
+    date: values.date,
+    at: values.at
+  }
+
+  yield call(
+    timeValidation.validateNewDateEntry,
+    additionalPerformances,
+    newAdditional
+  )
+
+  const newAdditionalPerformances = additionalPerformances.slice()
+  newAdditionalPerformances.push(newAdditional)
+  return _.sortBy(newAdditionalPerformances, value => value.key)
+}
+
+export function * getNewSpecialPerformancesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const specialPerformances = formValues.specialPerformances
+
+  const newSpecialPerformance = {
+    key: dateLib.createTimeKey(values),
+    date: values.date,
+    at: values.at,
+    audienceTags: values.audienceTags
+  }
+
+  yield call(
+    timeValidation.validateNewDateEntry,
+    specialPerformances,
+    newSpecialPerformance
+  )
+
+  const newSpecialPerformances = specialPerformances.slice()
+  newSpecialPerformances.push(newSpecialPerformance)
+  return _.sortBy(newSpecialPerformances, value => value.key)
+}
+
+export function * getNewPerformancesClosuresFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const closures = formValues.performancesClosures
+
+  const newClosure = {
+    key: dateLib.createTimeKey(values),
+    date: values.date
+  }
+
+  if (values.at) {
+    newClosure.at = values.at
+  }
+
+  yield call(timeValidation.validateNewClosure, closures, newClosure)
+  const newClosures = closures.slice()
+  newClosures.push(newClosure)
+  return _.sortBy(newClosures, value => value.key)
+}
+
+export function * getNewTimesRangesFormValue (parentFormName, values) {
+  const formValues = yield select(getFormValues, parentFormName)
+  const timesRanges = formValues.timesRanges
+
+  const newTimesRange = {
+    key: values.dateFrom,
+    id: values.dateFrom,
+    dateFrom: values.dateFrom,
+    dateTo: values.dateTo
+  }
+
+  if (values.label) {
+    newTimesRange.label = values.label
+  }
+
+  yield call(timeValidation.validateNewTimesRange, timesRanges, newTimesRange)
+
+  const newTimesRanges = timesRanges.slice()
+  newTimesRanges.push(newTimesRange)
+  return _.sortBy(newTimesRanges, value => value.dateFrom)
+}
+
+export function * addOpeningTime (action) {
   try {
-    yield put.resolve(startSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
     yield call(validate, values, timeConstraints.OPENING_TIME_CONSTRAINT)
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const openingTimes = formValues.openingTimes
+    const newOpeningTimes = yield call(
+      getNewOpeningTimesFormValue,
+      parentFormName,
+      values
+    )
 
-    const newOpeningTime = {
-      key: dateLib.createTimeKey(values),
-      day: values.day,
-      from: values.from,
-      to: values.to,
-      timesRangeId: values.timesRangeId
-    }
-
-    if (!isDayEntryAllowed(openingTimes, newOpeningTime)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing opening times.'
-      })
-    }
-
-    let newOpeningTimes = openingTimes.slice()
-    newOpeningTimes.push(newOpeningTime)
-    newOpeningTimes = _.sortBy(newOpeningTimes, value => value.key)
-
-    yield put.resolve(change(parentFormName, 'openingTimes', newOpeningTimes))
-    yield put.resolve(stopSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
+    yield put(change(parentFormName, 'openingTimes', newOpeningTimes))
+    yield put(stopSubmit(timeConstants.ADD_OPENING_TIME_FORM_NAME))
   } catch (err) {
-    console.error('addOpeningTime error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -61,43 +228,24 @@ function * addOpeningTime (action) {
   }
 }
 
-function * addAdditionalOpeningTime (action) {
+export function * addAdditionalOpeningTime (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME))
+
     yield call(
       validate,
       values,
       timeConstraints.ADDITIONAL_OPENING_TIME_CONSTRAINT
     )
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const additionalOpeningTimes = formValues.additionalOpeningTimes
-
-    const newAdditionalOpeningTime = {
-      key: dateLib.createTimeKey(values),
-      date: values.date,
-      from: values.from,
-      to: values.to
-    }
-
-    if (!isDateEntryAllowed(additionalOpeningTimes, newAdditionalOpeningTime)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing additional opening times.'
-      })
-    }
-
-    let newAdditionalOpeningTimes = additionalOpeningTimes.slice()
-    newAdditionalOpeningTimes.push(newAdditionalOpeningTime)
-    newAdditionalOpeningTimes = _.sortBy(
-      newAdditionalOpeningTimes,
-      value => value.key
+    const newAdditionalOpeningTimes = yield call(
+      getNewAdditionalOpeningTimesFormValue,
+      parentFormName,
+      values
     )
 
-    yield put.resolve(
+    yield put(
       change(
         parentFormName,
         'additionalOpeningTimes',
@@ -105,11 +253,8 @@ function * addAdditionalOpeningTime (action) {
       )
     )
 
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME)
-    )
+    yield put(stopSubmit(timeConstants.ADD_ADDITIONAL_OPENING_TIME_FORM_NAME))
   } catch (err) {
-    console.error('addAdditionalOpeningTime error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -118,52 +263,28 @@ function * addAdditionalOpeningTime (action) {
   }
 }
 
-function * addSpecialOpeningTime (action) {
+export function * addSpecialOpeningTime (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME))
+
     yield call(
       validate,
       values,
       timeConstraints.SPECIAL_OPENING_TIME_CONSTRAINT
     )
-
-    const formValues = yield select(getFormValues(parentFormName))
-    const specialOpeningTimes = formValues.specialOpeningTimes
-
-    const newSpecialOpeningTime = {
-      key: dateLib.createTimeKey(values),
-      date: values.date,
-      from: values.from,
-      to: values.to,
-      audienceTags: values.audienceTags
-    }
-
-    if (!isDateEntryAllowed(specialOpeningTimes, newSpecialOpeningTime)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing special opening times.'
-      })
-    }
-
-    let newSpecialOpeningTimes = specialOpeningTimes.slice()
-    newSpecialOpeningTimes.push(newSpecialOpeningTime)
-    newSpecialOpeningTimes = _.sortBy(
-      newSpecialOpeningTimes,
-      value => value.key
+    const newSpecialOpeningTimes = yield call(
+      getNewSpecialOpeningTimesFormValue,
+      parentFormName,
+      values
     )
 
-    yield put.resolve(
+    yield put(
       change(parentFormName, 'specialOpeningTimes', newSpecialOpeningTimes)
     )
 
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME)
-    )
+    yield put(stopSubmit(timeConstants.ADD_SPECIAL_OPENING_TIME_FORM_NAME))
   } catch (err) {
-    console.error('addSpecialOpeningTime error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -172,50 +293,26 @@ function * addSpecialOpeningTime (action) {
   }
 }
 
-function * addOpeningTimeClosure (action) {
+export function * addOpeningTimeClosure (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME))
+
     yield call(
       validate,
       values,
       timeConstraints.OPENING_TIME_CLOSURE_CONSTRAINT
     )
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const closures = formValues.openingTimesClosures
-
-    const newClosure = {
-      key: dateLib.createTimeKey(values),
-      date: values.date
-    }
-
-    if (values.from) {
-      newClosure.from = values.from
-      newClosure.to = values.to
-    }
-
-    if (!isClosureAllowed(closures, newClosure)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing closures.'
-      })
-    }
-
-    let newClosures = closures.slice()
-    newClosures.push(newClosure)
-    newClosures = _.sortBy(newClosures, value => value.key)
-
-    yield put.resolve(
-      change(parentFormName, 'openingTimesClosures', newClosures)
+    const newClosures = yield call(
+      getNewOpeningTimesClosuresFormValue,
+      parentFormName,
+      values
     )
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME)
-    )
+
+    yield put(change(parentFormName, 'openingTimesClosures', newClosures))
+    yield put(stopSubmit(timeConstants.ADD_OPENING_TIME_CLOSURE_FORM_NAME))
   } catch (err) {
-    console.error('addOpeningTimeClosure error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -224,77 +321,43 @@ function * addOpeningTimeClosure (action) {
   }
 }
 
-function * addPerformance (action) {
+export function * addPerformance (action) {
   try {
-    yield put.resolve(startSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
     yield call(validate, values, timeConstraints.PERFORMANCE_CONSTRAINT)
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const performances = formValues.performances
+    const newPerformances = yield call(
+      getNewPerformancesFormValue,
+      parentFormName,
+      values
+    )
 
-    const newPerformance = {
-      key: dateLib.createTimeKey(values),
-      day: values.day,
-      at: values.at,
-      timesRangeId: values.timesRangeId
-    }
-
-    if (!isDayEntryAllowed(performances, newPerformance)) {
-      throw new SubmissionError({
-        _error: 'These values coincide with one or more existing performances.'
-      })
-    }
-
-    let newPerformances = performances.slice()
-    newPerformances.push(newPerformance)
-    newPerformances = _.sortBy(newPerformances, value => value.key)
-
-    yield put.resolve(change(parentFormName, 'performances', newPerformances))
-    yield put.resolve(stopSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
+    yield put(change(parentFormName, 'performances', newPerformances))
+    yield put(stopSubmit(timeConstants.ADD_PERFORMANCE_FORM_NAME))
   } catch (err) {
-    console.error('addPerformance error', err)
     yield call(submitErrorHandler, err, timeConstants.ADD_PERFORMANCE_FORM_NAME)
   }
 }
 
-function * addAdditionalPerformance (action) {
+export function * addAdditionalPerformance (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME))
+
     yield call(
       validate,
       values,
       timeConstraints.ADDITIONAL_PERFORMANCE_CONSTRAINT
     )
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const additionalPerformances = formValues.additionalPerformances
-
-    const newAdditional = {
-      key: dateLib.createTimeKey(values),
-      date: values.date,
-      at: values.at
-    }
-
-    if (!isDateEntryAllowed(additionalPerformances, newAdditional)) {
-      throw new SubmissionError({
-        _error: 'These values coincide with one or more existing additional performances.'
-      })
-    }
-
-    let newAdditionalPerformances = additionalPerformances.slice()
-    newAdditionalPerformances.push(newAdditional)
-    newAdditionalPerformances = _.sortBy(
-      newAdditionalPerformances,
-      value => value.key
+    const newAdditionalPerformances = call(
+      getNewAdditionalPerformancesFormValue,
+      parentFormName,
+      values
     )
 
-    yield put.resolve(
+    yield put(
       change(
         parentFormName,
         'additionalPerformances',
@@ -302,11 +365,8 @@ function * addAdditionalPerformance (action) {
       )
     )
 
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME)
-    )
+    yield put(stopSubmit(timeConstants.ADD_ADDITIONAL_PERFORMANCE_FORM_NAME))
   } catch (err) {
-    console.error('addAdditionalPerformance error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -315,51 +375,29 @@ function * addAdditionalPerformance (action) {
   }
 }
 
-function * addSpecialPerformance (action) {
+export function * addSpecialPerformance (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME))
+
     yield call(
       validate,
       values,
       timeConstraints.SPECIAL_PERFORMANCES_CONSTRAINT
     )
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const specialPerformances = formValues.specialPerformances
-
-    const newSpecialPerformance = {
-      key: dateLib.createTimeKey(values),
-      date: values.date,
-      at: values.at,
-      audienceTags: values.audienceTags
-    }
-
-    if (!isDateEntryAllowed(specialPerformances, newSpecialPerformance)) {
-      throw new SubmissionError({
-        _error: 'These values coincide with one or more existing special performances.'
-      })
-    }
-
-    let newSpecialPerformances = specialPerformances.slice()
-    newSpecialPerformances.push(newSpecialPerformance)
-    newSpecialPerformances = _.sortBy(
-      newSpecialPerformances,
-      value => value.key
+    const newSpecialPerformances = yield call(
+      getNewSpecialPerformancesFormValue,
+      parentFormName,
+      values
     )
 
-    yield put.resolve(
+    yield put(
       change(parentFormName, 'specialPerformances', newSpecialPerformances)
     )
 
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME)
-    )
+    yield put(stopSubmit(timeConstants.ADD_SPECIAL_PERFORMANCE_FORM_NAME))
   } catch (err) {
-    console.error('addSpecialPerformance error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -368,46 +406,21 @@ function * addSpecialPerformance (action) {
   }
 }
 
-function * addPerformanceClosure (action) {
+export function * addPerformanceClosure (action) {
   try {
-    yield put.resolve(
-      startSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME)
-    )
-
     const { values, parentFormName } = action.payload
+    yield put(startSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME))
     yield call(validate, values, timeConstraints.PERFORMANCE_CLOSURE_CONSTRAINT)
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const closures = formValues.performancesClosures
-
-    const newClosure = {
-      key: dateLib.createTimeKey(values),
-      date: values.date
-    }
-
-    if (values.at) {
-      newClosure.at = values.at
-    }
-
-    if (!isClosureAllowed(closures, newClosure)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing closures.'
-      })
-    }
-
-    let newClosures = closures.slice()
-    newClosures.push(newClosure)
-    newClosures = _.sortBy(newClosures, value => value.key)
-
-    yield put.resolve(
-      change(parentFormName, 'performancesClosures', newClosures)
+    const newClosures = yield call(
+      getNewPerformancesClosuresFormValue,
+      parentFormName,
+      values
     )
 
-    yield put.resolve(
-      stopSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME)
-    )
+    yield put(change(parentFormName, 'performancesClosures', newClosures))
+    yield put(stopSubmit(timeConstants.ADD_PERFORMANCE_CLOSURE_FORM_NAME))
   } catch (err) {
-    console.error('addPerformanceClosure error', err)
     yield call(
       submitErrorHandler,
       err,
@@ -416,128 +429,31 @@ function * addPerformanceClosure (action) {
   }
 }
 
-function * addTimesRange (action) {
+export function * addTimesRange (action) {
   try {
-    yield put.resolve(startSubmit(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
-    const { parentFormName } = action.payload
+    const { parentFormName, values: payloadValues } = action.payload
+    yield put(startSubmit(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
 
     const values = yield call(
       normalise,
-      action.payload.values,
+      payloadValues,
       timeNormalisers.TIMES_RANGE_NORMALISER
     )
 
     yield call(validate, values, timeConstraints.TIMES_RANGE_CONSTRAINT)
 
-    const formValues = yield select(getFormValues(parentFormName))
-    const timesRanges = formValues.timesRanges
+    const newTimesRanges = yield call(
+      getNewTimesRangesFormValue,
+      parentFormName,
+      values
+    )
 
-    const newTimesRange = {
-      key: values.dateFrom,
-      id: values.dateFrom,
-      dateFrom: values.dateFrom,
-      dateTo: values.dateTo
-    }
-
-    if (values.label) {
-      newTimesRange.label = values.label
-    }
-
-    if (!isTimesRangeAllowed(timesRanges, newTimesRange)) {
-      throw new SubmissionError({
-        _error: 'These values overlap with one or more existing times ranges.'
-      })
-    }
-
-    let newTimesRanges = timesRanges.slice()
-    newTimesRanges.push(newTimesRange)
-    newTimesRanges = _.sortBy(newTimesRanges, value => value.dateFrom)
-
-    yield put.resolve(change(parentFormName, 'timesRanges', newTimesRanges))
-
-    yield put.resolve(reset(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
-    yield put.resolve(stopSubmit(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
+    yield put(change(parentFormName, 'timesRanges', newTimesRanges))
+    yield put(reset(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
+    yield put(stopSubmit(timeConstants.ADD_TIMES_RANGE_FORM_NAME))
   } catch (err) {
-    console.error('addTimesRange error', err)
     yield call(submitErrorHandler, err, timeConstants.ADD_TIMES_RANGE_FORM_NAME)
   }
-}
-
-function isClosureAllowed (existingClosures, newClosure) {
-  const dateMatches = existingClosures.filter(x => x.date === newClosure.date)
-
-  // There are no existing closures for this date.
-  if (dateMatches.length === 0) {
-    return true
-  }
-
-  // We are trying to add one that can only be by itself.
-  const hasTime = newClosure.from || newClosure.at
-  if (!hasTime) {
-    return false
-  }
-
-  // There is an existing closure that can only be by itself.
-  if (dateMatches.findIndex(x => !x.from && !x.at) > -1) {
-    return false
-  }
-
-  return (
-    dateMatches.findIndex(
-      x =>
-        (newClosure.at && newClosure.at === x.at) ||
-        (newClosure.from && newClosure.from < x.to && newClosure.to > x.from)
-    ) === -1
-  )
-}
-
-function isDayEntryAllowed (existingTimes, newTime) {
-  const dayMatches = existingTimes.filter(
-    x =>
-      x.day === newTime.day &&
-      (!newTime.timesRangeId || newTime.timesRangeId === x.timesRangeId)
-  )
-
-  // There are no existing times for this day (including times range id if it exists).
-  if (dayMatches.length === 0) {
-    return true
-  }
-
-  return (
-    dayMatches.findIndex(
-      x =>
-        (newTime.at && newTime.at === x.at) ||
-        (newTime.from && newTime.from < x.to && newTime.to > x.from)
-    ) === -1
-  )
-}
-
-function isDateEntryAllowed (existingTimes, newTime) {
-  const dateMatches = existingTimes.filter(x => x.date === newTime.date)
-
-  // There are no existing times for this day.
-  if (dateMatches.length === 0) {
-    return true
-  }
-
-  return (
-    dateMatches.findIndex(
-      x =>
-        (newTime.at && newTime.at === x.at) ||
-        (newTime.from && newTime.from < x.to && newTime.to > x.from)
-    ) === -1
-  )
-}
-
-function isTimesRangeAllowed (existingTimesRanges, newTimesRange) {
-  return (
-    existingTimesRanges.findIndex(
-      x =>
-        (newTimesRange.dateFrom <= x.dateTo &&
-          newTimesRange.dateTo >= x.dateFrom) ||
-        (newTimesRange.label && x.label === newTimesRange.label)
-    ) === -1
-  )
 }
 
 export default [

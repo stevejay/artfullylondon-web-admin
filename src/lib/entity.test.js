@@ -1,5 +1,4 @@
 import * as entityLib from '_src/lib/entity'
-import entityType from '_src/domain/types/entity-type'
 
 describe('descriptionStringIsEmpty', () => {
   it('should handle a non-empty description string', () => {

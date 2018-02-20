@@ -11,10 +11,7 @@ import DatepickerField from '_src/components/datepicker/field'
 import * as globalConstants from '_src/constants'
 import tagType from '_src/domain/types/tag-type'
 import * as timeConstants from '../constants'
-import {
-  selectors as tagSelectors,
-  constants as tagConstants
-} from '_src/modules/tag'
+import { selectors as tagSelectors } from '_src/modules/tag'
 
 export const AddSpecialPerformanceForm = ({
   pristine,

@@ -1,13 +1,4 @@
 import { SummaryEvent, FullEvent } from '_src/domain/event'
-import eventType from '_src/domain/types/event-type'
-import costType from '_src/domain/types/cost-type'
-import bookingType from '_src/domain/types/booking-type'
-import occurrenceType from '_src/domain/types/occurrence-type'
-import entityType from '_src/domain/types/entity-type'
-import linkType from '_src/domain/types/link-type'
-import * as eventLib from '_src/lib/event'
-import * as timeLib from '_src/lib/time'
-import * as entityLib from '_src/lib/entity'
 
 describe('SummaryEvent', () => {
   it('should construct a summary event', () => {
