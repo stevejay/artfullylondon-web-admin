@@ -142,10 +142,6 @@ if (PRODUCTION) {
       minify: true
     }),
     new LodashModuleReplacementPlugin(),
-    new webpack.NormalModuleReplacementPlugin(
-      /_src\/debug\/dev-tools/,
-      '_src/debug/dev-tools.prod.js'
-    ),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),

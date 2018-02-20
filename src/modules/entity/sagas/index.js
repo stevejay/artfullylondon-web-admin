@@ -6,7 +6,7 @@ import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
 import normalise from '_src/lib/normalise'
-import history from '_src/history'
+import history from '_src/lib/history'
 import { eventService } from '_src/modules/api'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'

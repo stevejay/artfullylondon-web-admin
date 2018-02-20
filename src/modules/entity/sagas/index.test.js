@@ -9,7 +9,7 @@ import * as dateLib from '_src/lib/date'
 import * as entityActions from '../actions'
 import * as validationLib from '_src/lib/validation'
 import { eventService } from '_src/modules/api'
-import history from '_src/history'
+import history from '_src/lib/history'
 import normalise from '_src/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
 

@@ -3,7 +3,7 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { initialize } from 'redux-form'
 import log from 'loglevel'
 
-import history from '_src/history'
+import history from '_src/lib/history'
 import normalise from '_src/lib/normalise'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'

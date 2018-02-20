@@ -54,9 +54,16 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- fix the weird iframe back button issue.
+  code for that:
+ history.listen((location, action) => {
+   console.log(
+     `The current URL is ${location.pathname}${location.search}${location.hash}. The last navigation action was ${action}`
+   )
+ })
+
 - scroll position restoration on back button
 - put shared code into a shared directory.
-- extend: https://stackoverflow.com/questions/15054678/how-to-add-methods-to-a-json-objects-prototype
 - replace divs with fragments where possible
 - switch to netlify hosting?
 - https://github.com/marmelab/battery-friendly-timer for the app-updater.

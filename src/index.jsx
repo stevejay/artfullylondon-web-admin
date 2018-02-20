@@ -9,8 +9,8 @@ import { Router, Route } from 'react-router-dom'
 import smartOutline from 'smart-outline'
 import document from 'global/document'
 
-import history from '_src/history'
-import store from '_src/redux-store'
+import history from '_src/lib/history'
+import store from '_src/store'
 import Routes from '_src/routes'
 
 smartOutline.init()

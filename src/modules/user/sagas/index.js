@@ -8,7 +8,7 @@ import * as authLib from '../lib/auth'
 import * as userConstants from '../constants'
 import * as userActions from '../actions'
 import { selectors } from '../reducers'
-import history from '_src/history'
+import history from '_src/lib/history'
 
 export function * attemptAutoLogIn () {
   try {

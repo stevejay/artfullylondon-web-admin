@@ -6,13 +6,6 @@ exports[`should render correctly 1`] = `
     Object {
       "dispatch": [Function],
       "getState": [Function],
-      "liftedStore": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
       "replaceReducer": [Function],
       "subscribe": [Function],
       Symbol(observable): [Function],

@@ -10,7 +10,7 @@ import * as validationLib from '_src/lib/validation'
 import * as userConstants from '../constants'
 import * as userActions from '../actions'
 import { selectors } from '../reducers'
-import history from '_src/history'
+import history from '_src/lib/history'
 
 describe('getAuthTokenForCurrentUser', () => {
   describe('user is not logged in', () => {

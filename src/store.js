@@ -4,7 +4,6 @@ import { all } from 'redux-saga/effects'
 import { middleware as thunkMiddleware } from 'redux-saga-thunk'
 import { reducer as formReducer } from 'redux-form'
 
-import * as devTools from '_src/debug/dev-tools'
 import * as entity from '_src/modules/entity'
 import * as appUpdater from '_src/modules/app-updater'
 import * as notification from '_src/modules/notification'
@@ -50,10 +49,7 @@ const sagas = function * () {
 }
 
 const sagaMiddleware = createSagaMiddleware()
-
-const middlewareApplier = devTools.devToolsApplier(
-  applyMiddleware(thunkMiddleware, sagaMiddleware)
-)
+const middlewareApplier = applyMiddleware(thunkMiddleware, sagaMiddleware)
 
 function configure (initialState) {
   const store = middlewareApplier(createStore)(reducer, initialState)

@@ -5,7 +5,7 @@ import { initialize } from 'redux-form'
 import { cloneableGenerator } from 'redux-saga/utils'
 
 import normalise from '_src/lib/normalise'
-import history from '_src/history'
+import history from '_src/lib/history'
 import * as sagaLib from '_src/lib/saga'
 import * as validationLib from '_src/lib/validation'
 import * as sagas from './index'
