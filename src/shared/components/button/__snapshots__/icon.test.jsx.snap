@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render a compact icon button correctly 1`] = `
+<button
+  className="src-shared-components-button-icon__button-compact-inverse src-shared-components-button-icon__button-compact src-shared-components-button-icon__button"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <FaClose />
+</button>
+`;
+
 exports[`should render a default icon button correctly 1`] = `
 <button
   className="src-shared-components-button-icon__button-default src-shared-components-button-icon__button"
