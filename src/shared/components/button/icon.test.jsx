@@ -17,6 +17,14 @@ it('should render an inverse icon button correctly', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
+it('should render a compact icon button correctly', () => {
+  const wrapper = shallow(
+    <IconButton type='inverse' icon={CloseIcon} onClick={_.noop} compact />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
 it('should render icon button that is aria-expanded correctly', () => {
   const wrapper = shallow(
     <IconButton ariaExpanded icon={CloseIcon} onClick={_.noop} />
