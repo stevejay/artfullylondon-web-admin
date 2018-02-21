@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withStateHandlers } from 'recompose'
 
 import Page from '_src/shared/components/page'
 import PageHeader from '_src/shared/components/page/header'
 import PageMain from '_src/shared/components/page/main'
 import PageFooter from '_src/shared/components/page/footer'
+import NotFoundPage from '_src/shared/components/error/not-found-page'
 import { Header, Sidenav } from '_src/modules/nav'
 import { Footer } from '_src/modules/footer'
 import { NotificationContainer } from '_src/modules/notification'
 import { AppUpdater } from '_src/modules/app-updater'
-import NotFoundPage from '_src/shared/components/error/not-found-page'
 import { DashboardPage } from '_src/modules/dashboard'
 import {
   LoginPage,
@@ -32,28 +33,23 @@ import {
 import { EventEditOrCreate, EventDetail } from '_src/modules/event'
 import entityType from '_src/domain/types/entity-type'
 
-export class Routes extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { showQuicksearch: false, showSidenav: false }
-    props.dispatch(userActions.attemptAutoLogIn())
-    props.dispatch(referenceActions.fetchReferenceData())
-  }
-  handleHideQuicksearch = () => {
-    this.setState({ showQuicksearch: false })
-  }
-  handleShowQuicksearch = () => {
-    this.setState({ showQuicksearch: true })
-  }
-  handleHideSidenav = () => {
-    this.setState({ showSidenav: false })
-  }
-  handleShowSidenav = () => {
-    this.setState({ showSidenav: true })
+export class Routes extends React.PureComponent {
+  componentWillMount () {
+    this.props.dispatch(userActions.attemptAutoLogIn())
+    this.props.dispatch(referenceActions.fetchReferenceData())
   }
   render () {
-    const { loggedIn, autoLogInAttempted } = this.props
-    const { showQuicksearch, showSidenav } = this.state
+    const {
+      loggedIn,
+      autoLogInAttempted,
+      showingQuicksearch,
+      showingSidenav,
+      showQuicksearch,
+      hideQuicksearch,
+      showSidenav,
+      hideSidenav,
+      location: { pathname }
+    } = this.props
 
     if (!autoLogInAttempted) {
       return null
@@ -62,14 +58,11 @@ export class Routes extends React.Component {
     return (
       <Page>
         <Sidenav
-          show={showSidenav}
-          onHide={this.handleHideSidenav}
-          pathname={this.props.location.pathname}
+          show={showingSidenav}
+          onHide={hideSidenav}
+          pathname={pathname}
         />
-        <Quicksearch
-          show={showQuicksearch}
-          onHide={this.handleHideQuicksearch}
-        />
+        <Quicksearch show={showingQuicksearch} onHide={hideQuicksearch} />
         {!loggedIn &&
           <PageMain>
             <Switch>
@@ -81,9 +74,9 @@ export class Routes extends React.Component {
           <React.Fragment>
             <PageHeader>
               <Header
-                showingSidenav={showSidenav}
-                onShowQuicksearch={this.handleShowQuicksearch}
-                onShowSidenav={this.handleShowSidenav}
+                showingSidenav={showingSidenav}
+                onShowQuicksearch={showQuicksearch}
+                onShowSidenav={showSidenav}
               />
             </PageHeader>
             <PageMain>
@@ -148,7 +141,13 @@ Routes.propTypes = {
   autoLogInAttempted: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  showingQuicksearch: PropTypes.bool.isRequired,
+  showingSidenav: PropTypes.bool.isRequired,
+  showQuicksearch: PropTypes.func.isRequired,
+  hideQuicksearch: PropTypes.func.isRequired,
+  showSidenav: PropTypes.func.isRequired,
+  hideSidenav: PropTypes.func.isRequired
 }
 
 export default withRouter(
@@ -158,5 +157,15 @@ export default withRouter(
       autoLogInAttempted: userSelectors.autoLogInAttempted(state),
       loggedIn: userSelectors.userIsLoggedIn(state)
     })
-  )(Routes)
+  )(
+    withStateHandlers(
+      { showingQuicksearch: false, showingSidenav: false },
+      {
+        showQuicksearch: () => () => ({ showingQuicksearch: true }),
+        hideQuicksearch: () => () => ({ showingQuicksearch: false }),
+        showSidenav: () => () => ({ showingSidenav: true }),
+        hideSidenav: () => () => ({ showingSidenav: false })
+      }
+    )(Routes)
+  )
 )

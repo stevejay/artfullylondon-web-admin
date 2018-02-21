@@ -4,6 +4,8 @@ import _ from 'lodash'
 import { actions as referenceActions } from '_src/modules/reference-data'
 import { actions as userActions } from '_src/modules/user'
 import { Routes } from '_src/routes'
+import { Header, Sidenav } from '_src/modules/nav'
+import { Quicksearch } from '_src/modules/search'
 
 it('should render correctly when auto login not yet attempted', () => {
   const wrapper = shallow(
@@ -12,6 +14,12 @@ it('should render correctly when auto login not yet attempted', () => {
       autoLogInAttempted={false}
       dispatch={_.noop}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
@@ -25,6 +33,12 @@ it('should render correctly when not logged in', () => {
       autoLogInAttempted
       dispatch={_.noop}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
@@ -38,13 +52,57 @@ it('should render correctly when logged in', () => {
       autoLogInAttempted
       dispatch={_.noop}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should trigger initial actions', () => {
+it('should render correctly when logged in and showing quicksearch', () => {
+  const wrapper = shallow(
+    <Routes
+      loggedIn
+      autoLogInAttempted
+      dispatch={_.noop}
+      location={{ pathname: '/some/path' }}
+      showingQuicksearch
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should render correctly when logged in and showing sidenav', () => {
+  const wrapper = shallow(
+    <Routes
+      loggedIn
+      autoLogInAttempted
+      dispatch={_.noop}
+      location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should trigger the initial actions', () => {
   const mockDispatch = jest.fn()
 
   shallow(
@@ -53,48 +111,110 @@ it('should trigger initial actions', () => {
       autoLogInAttempted
       dispatch={mockDispatch}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
-  expect(mockDispatch.mock.calls.length).toEqual(2)
+  expect(mockDispatch).toHaveBeenCalledWith(userActions.attemptAutoLogIn())
 
-  expect(mockDispatch.mock.calls[0]).toEqual([userActions.attemptAutoLogIn()])
-
-  expect(mockDispatch.mock.calls[1]).toEqual([
+  expect(mockDispatch).toHaveBeenCalledWith(
     referenceActions.fetchReferenceData()
-  ])
+  )
 })
 
-it('should hide and show the quicksearch', () => {
+it('should handle showing the quicksearch', () => {
+  const showQuicksearch = jest.fn()
+
   const wrapper = shallow(
     <Routes
-      loggedIn={false}
-      autoLogInAttempted={false}
+      loggedIn
+      autoLogInAttempted
       dispatch={_.noop}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={showQuicksearch}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
-  wrapper.instance().handleHideQuicksearch()
-  expect(wrapper.state().showQuicksearch).toEqual(false)
+  wrapper.find(Header).prop('onShowQuicksearch')()
 
-  wrapper.instance().handleShowQuicksearch()
-  expect(wrapper.state().showQuicksearch).toEqual(true)
+  expect(showQuicksearch).toHaveBeenCalled()
 })
 
-it('should hide and show the sidenav', () => {
+it('should handle hiding the quicksearch', () => {
+  const hideQuicksearch = jest.fn()
+
   const wrapper = shallow(
     <Routes
-      loggedIn={false}
-      autoLogInAttempted={false}
+      loggedIn
+      autoLogInAttempted
       dispatch={_.noop}
       location={{ pathname: '/some/path' }}
+      showingQuicksearch
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={hideQuicksearch}
+      showSidenav={_.noop}
+      hideSidenav={_.noop}
     />
   )
 
-  wrapper.instance().handleHideSidenav()
-  expect(wrapper.state().showSidenav).toEqual(false)
+  wrapper.find(Quicksearch).prop('onHide')()
 
-  wrapper.instance().handleShowSidenav()
-  expect(wrapper.state().showSidenav).toEqual(true)
+  expect(hideQuicksearch).toHaveBeenCalled()
+})
+
+it('should handle showing the sidenav', () => {
+  const showSidenav = jest.fn()
+
+  const wrapper = shallow(
+    <Routes
+      loggedIn
+      autoLogInAttempted
+      dispatch={_.noop}
+      location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav={false}
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={showSidenav}
+      hideSidenav={_.noop}
+    />
+  )
+
+  wrapper.find(Header).prop('onShowSidenav')()
+
+  expect(showSidenav).toHaveBeenCalled()
+})
+
+it('should handle hiding the sidenav', () => {
+  const hideSidenav = jest.fn()
+
+  const wrapper = shallow(
+    <Routes
+      loggedIn
+      autoLogInAttempted
+      dispatch={_.noop}
+      location={{ pathname: '/some/path' }}
+      showingQuicksearch={false}
+      showingSidenav
+      showQuicksearch={_.noop}
+      hideQuicksearch={_.noop}
+      showSidenav={_.noop}
+      hideSidenav={hideSidenav}
+    />
+  )
+
+  wrapper.find(Sidenav).prop('onHide')()
+
+  expect(hideSidenav).toHaveBeenCalled()
 })
