@@ -48,20 +48,17 @@
             <span></span>
             <span></span>
         </div>
-        <h1>
-            Artfully
-            <span>London</span>
-        </h1>
+        <h1>Artfully <span>London</span></h1>
     </div>
     <%= htmlWebpackPlugin.files.webpackManifest %>
-        <% for (var css in htmlWebpackPlugin.files.css) { %>
-            <% if (htmlWebpackPlugin.files.css[css].indexOf('global') === -1) { %>
-                <link rel="stylesheet" href="/<%= htmlWebpackPlugin.files.css[css] %>">
-                <% } %>
-                    <% } %>
-                        <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-                            <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-                            <% } %>
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+        <% if (htmlWebpackPlugin.files.css[css].indexOf('global') === -1) { %>
+            <link rel="stylesheet" href="/<%= htmlWebpackPlugin.files.css[css] %>">
+        <% } %>
+    <% } %>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+        <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
 </body>
 
 </html>
