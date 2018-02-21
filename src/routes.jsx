@@ -22,7 +22,7 @@ import {
 import { actions as referenceActions } from '_src/modules/reference-data'
 import { TagsTypePage } from '_src/modules/tag'
 import { ResultsPage, Quicksearch } from '_src/modules/search'
-import { EntityPage } from '_src/modules/entity'
+import { EntityRoutes } from '_src/modules/entity'
 import { TalentEditOrCreate, TalentDetail } from '_src/modules/talent'
 import { VenueEditOrCreate, VenueDetail } from '_src/modules/venue'
 import {
@@ -91,6 +91,48 @@ export class Routes extends React.Component {
                 <Route path='/' exact component={DashboardPage} />
                 <Route path='/tags/:type' component={TagsTypePage} />
                 <Route path='/search' component={ResultsPage} />
+                <Route
+                  path='/talent'
+                  render={() => (
+                    <EntityRoutes
+                      entityType={entityType.TALENT}
+                      editOrCreateComponent={TalentEditOrCreate}
+                      detailComponent={TalentDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/venue'
+                  render={() => (
+                    <EntityRoutes
+                      entityType={entityType.VENUE}
+                      editOrCreateComponent={VenueEditOrCreate}
+                      detailComponent={VenueDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event-series'
+                  render={() => (
+                    <EntityRoutes
+                      entityType={entityType.EVENT_SERIES}
+                      editOrCreateComponent={EventSeriesEditOrCreate}
+                      detailComponent={EventSeriesDetail}
+                    />
+                  )}
+                />
+                <Route
+                  path='/event'
+                  render={() => (
+                    <EntityRoutes
+                      entityType={entityType.EVENT}
+                      editOrCreateComponent={EventEditOrCreate}
+                      detailComponent={EventDetail}
+                    />
+                  )}
+                />
+
+                {/*
                 <Route
                   path='/talent'
                   exact
@@ -211,6 +253,7 @@ export class Routes extends React.Component {
                     />
                   )}
                 />
+                */}
                 <Redirect from='/login' to='/' />
                 <Route component={NotFoundPage} />
               </Switch>

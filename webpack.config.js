@@ -24,7 +24,7 @@ const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
 const SRC_DIR = path.join(__dirname, './src')
 const SCSS_DIR = path.join(SRC_DIR, './scss')
 const BUILD_DIR = path.join(__dirname, './build')
-const CSS_MODULES_FILES_REGEX = /src[\\/](components|containers|modules)[\\/]/
+const CSS_MODULES_FILES_REGEX = /src[\\/](shared\/components|modules)[\\/]/
 const VERSION_FILE_NAME = 'version.json'
 
 const extractAppCSS = new ExtractTextPlugin({
@@ -180,13 +180,7 @@ if (PRODUCTION) {
     ]),
     new UnusedWebpackPlugin({
       directories: [SRC_DIR],
-      exclude: [
-        '.DS_Store',
-        '*.test.js',
-        '*.test.jsx',
-        '*.snap',
-        'debug/dev-tools.prod.js'
-      ]
+      exclude: ['.DS_Store', '*.test.js', '*.test.jsx', '*.snap']
     })
   ])
 }

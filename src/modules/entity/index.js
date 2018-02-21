@@ -1,5 +1,3 @@
-import EntityPage from './pages/entity'
-
 import EntityFeaturedDetail from './components/featured-detail'
 import EntityDescription from './components/description'
 import EntitySectionHeading from './components/section-heading'
@@ -12,6 +10,7 @@ import EntityColumn from './components/column'
 import EntityAddress from './components/address'
 import EntityDisabilityAccess from './components/disability-access'
 import OpeningTimes from './components/opening-times'
+import EntityRoutes from './pages/entity-routes'
 
 import { moduleName, reducer, selectors } from './reducers'
 import sagas from './sagas'
@@ -19,7 +18,6 @@ import * as actions from './actions'
 import * as entityMapper from './lib/mapper'
 
 export {
-  EntityPage,
   EntityFeaturedDetail,
   EntityDescription,
   EntitySectionHeading,
@@ -32,6 +30,7 @@ export {
   EntityAddress,
   EntityDisabilityAccess,
   OpeningTimes,
+  EntityRoutes,
   entityMapper,
   moduleName,
   reducer,
