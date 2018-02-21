@@ -37,63 +37,19 @@ exports[`should render correctly when logged in 1`] = `
           path="/search"
         />
         <Route
-          exact={true}
           path="/talent"
           render={[Function]}
         />
         <Route
-          exact={true}
-          path="/talent/edit/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/talent/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
           path="/venue"
           render={[Function]}
         />
         <Route
-          exact={true}
-          path="/venue/edit/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/venue/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
           path="/event-series"
           render={[Function]}
         />
         <Route
-          exact={true}
-          path="/event-series/edit/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/event-series/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
           path="/event"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/event/edit/(.*)"
-          render={[Function]}
-        />
-        <Route
-          exact={true}
-          path="/event/(.*)"
           render={[Function]}
         />
         <Redirect

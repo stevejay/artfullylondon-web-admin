@@ -16,8 +16,6 @@ const packageJson = require('./package.json')
 
 buildConstants.WEBSITE_VERSION = packageJson.version
 
-// "WEBSITE_API_HOST_URL": "https://api.artfully.london",
-
 const NODE_ENV = process.env.NODE_ENV
 const PRODUCTION = NODE_ENV === 'production'
 const AWS_SDK_BUNDLE = 'amazon-cognito-identity-js/dist/aws-cognito-sdk.min.js'
