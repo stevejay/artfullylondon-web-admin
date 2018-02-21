@@ -5,7 +5,7 @@ import ShouldNeverUpdateComponent
   from '_src/shared/components/base-class/should-never-update'
 import ImagePlaceholder from './image-placeholder'
 import * as imageLib from '_src/shared/lib/image'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityType from '_src/domain/types/entity-type'
 import './image-grid-image.scss'
 
 class ImageGridImage extends ShouldNeverUpdateComponent {
@@ -23,7 +23,7 @@ class ImageGridImage extends ShouldNeverUpdateComponent {
 
 ImageGridImage.propTypes = {
   imageId: PropTypes.string,
-  type: entitiesPropTypes.ENTITY_TYPE.isRequired,
+  type: PropTypes.oneOf(entityType.VALUES).isRequired,
   size: PropTypes.oneOf(['tiny', 'very-small', 'small', 'medium']).isRequired
 }
 

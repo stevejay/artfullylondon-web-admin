@@ -1,4 +1,6 @@
-export default {
+import _ from 'lodash'
+
+const TYPE = {
   EVENT: 'event',
   EVENT_SERIES: 'event-series',
   VENUE: 'venue',
@@ -7,3 +9,6 @@ export default {
   USER: 'user',
   ALL: 'all'
 }
+
+export default TYPE
+export const VALUES = _.values(TYPE)

@@ -8,7 +8,7 @@ import ShouldNeverUpdateComponent
   from '_src/shared/components/base-class/should-never-update'
 import { ImagePlaceholder } from '_src/modules/image'
 import * as entityCardLib from '../../lib/entity-card'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityType from '_src/domain/types/entity-type'
 import './image.scss'
 
 class Image extends ShouldNeverUpdateComponent {
@@ -60,7 +60,7 @@ class Image extends ShouldNeverUpdateComponent {
 Image.propTypes = {
   entity: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
+    entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
     image: PropTypes.string,
     cardImageLoaded: PropTypes.bool,
     hasImage: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@ import Error from '_src/shared/components/error'
 import FadeTransition from '_src/shared/components/transition/fade'
 import BoxesLoader from '_src/shared/components/loader/boxes'
 import BasicSection from '_src/shared/components/section/basic'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityType from '_src/domain/types/entity-type'
 import * as entityConstants from '../constants'
 import * as entityActions from '../actions'
 import { selectors as entitySelectors } from '../reducers'
@@ -74,7 +74,7 @@ export class EntityPage extends React.Component {
 }
 
 EntityPage.propTypes = {
-  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
+  entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
   entityId: PropTypes.string,
   entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE,
   getInProgress: PropTypes.bool.isRequired,

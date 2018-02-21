@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withState } from 'recompose'
 import _ from 'lodash'
 
-import * as entitiesPropTypes from '_src/domain/prop-types'
 import FieldContainer from '_src/shared/components/field/container'
 import FieldBorder from '_src/shared/components/field/border'
 import FieldDivider from '_src/shared/components/field/divider'
@@ -12,6 +11,7 @@ import UpdateImageModal from './update-image-modal'
 import ImageGrid from './image-grid'
 import ImageGridCard from './image-grid-card'
 import AddImageForm from '../forms/add-image-form'
+import * as entityType from '_src/domain/types/entity-type'
 import * as imageActions from '../actions'
 
 export class ImagesField extends React.Component {
@@ -108,7 +108,7 @@ export class ImagesField extends React.Component {
 ImagesField.propTypes = {
   label: PropTypes.string.isRequired,
   parentFormName: PropTypes.string.isRequired,
-  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
+  entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
   input: PropTypes.shape({
     value: PropTypes.arrayOf(
       PropTypes.shape({

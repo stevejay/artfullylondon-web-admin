@@ -1,9 +1,10 @@
 import { SummaryEventSeries, FullEventSeries } from '_src/domain/event-series'
+import entityType from '_src/domain/types/entity-type'
 
 describe('SummaryEventSeries', () => {
   it('should construct an occasional event series', () => {
     const subject = new SummaryEventSeries({
-      entityType: 'event-series',
+      entityType: entityType.EVENT_SERIES,
       id: 'event-series-id',
       status: 'Active',
       name: 'Bang Said The Gun',
@@ -15,7 +16,7 @@ describe('SummaryEventSeries', () => {
       imageRatio: 1.2
     })
 
-    expect(subject.entityType).toEqual('event-series')
+    expect(subject.entityType).toEqual(entityType.EVENT_SERIES)
     expect(subject.id).toEqual('event-series-id')
     expect(subject.key).toEqual('event-series-id')
     expect(subject.name).toEqual('Bang Said The Gun')
@@ -32,7 +33,7 @@ describe('SummaryEventSeries', () => {
 
   it('should construct an season event series with no image', () => {
     const subject = new SummaryEventSeries({
-      entityType: 'event-series',
+      entityType: entityType.EVENT_SERIES,
       id: 'event-series-id',
       status: 'Active',
       name: 'Bang Said The Gun',
@@ -41,7 +42,7 @@ describe('SummaryEventSeries', () => {
       summary: 'A poetry riot'
     })
 
-    expect(subject.entityType).toEqual('event-series')
+    expect(subject.entityType).toEqual(entityType.EVENT_SERIES)
     expect(subject.id).toEqual('event-series-id')
     expect(subject.key).toEqual('event-series-id')
     expect(subject.name).toEqual('Bang Said The Gun')
@@ -80,6 +81,7 @@ describe('FullEventSeries', () => {
       updatedDate: '2016/01/11'
     })
 
+    expect(subject.entityType).toEqual(entityType.EVENT_SERIES)
     expect(subject.name).toEqual('Bang Said The Gun')
     expect(subject.getInfoBarLabel()).toEqual('Occasional Series')
     expect(subject.getEditUrl()).toEqual('/event-series/edit/event-series-id')

@@ -5,8 +5,9 @@ import ShouldNeverUpdateComponent
   from '_src/shared/components/base-class/should-never-update'
 import MoreResultsLink from './more-results-link'
 import Divider from '_src/shared/components/divider'
-import * as entitiesPropTypes from '_src/domain/prop-types'
-import entityType from '_src/domain/types/entity-type'
+import entityType, {
+  VALUES as entityTypeValues
+} from '_src/domain/types/entity-type'
 // TODO fix this:
 import * as searchLib from '../../lib/search'
 
@@ -54,7 +55,7 @@ class SearchMoreResults extends ShouldNeverUpdateComponent {
 SearchMoreResults.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      entityType: entitiesPropTypes.ENTITY_TYPE.isRequired
+      entityType: PropTypes.oneOf(entityTypeValues).isRequired
     })
   ).isRequired,
   take: PropTypes.number.isRequired,

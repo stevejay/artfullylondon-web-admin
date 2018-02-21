@@ -13,6 +13,7 @@ export class FullEventSeries extends Entity {
     return this.eventSeriesType + ' Series'
   }
 
+  // TODO remove when can
   getUrl () {
     throw new Error('url accessed')
   }

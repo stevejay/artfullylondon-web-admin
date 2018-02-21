@@ -17,6 +17,7 @@ export class FullVenue extends Entity {
     return this.venueType
   }
 
+  // TODO remove when can
   getUrl () {
     throw new Error('url accessed')
   }

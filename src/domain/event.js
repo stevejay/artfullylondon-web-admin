@@ -86,6 +86,7 @@ export class FullEvent extends Entity {
     return entityType.EVENT
   }
 
+  // TODO remove when can
   getUrl () {
     throw new Error('url accessed')
   }

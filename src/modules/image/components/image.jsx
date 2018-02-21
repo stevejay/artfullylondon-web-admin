@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import ImagePlaceholder from './image-placeholder'
 import ImageCarousel from './image-carousel'
 import ImageCredit from './image-credit'
-import * as entitiesPropTypes from '_src/domain/prop-types'
+import * as entityType from '_src/domain/types/entity-type'
 import * as imageLib from '_src/shared/lib/image'
 import './image.scss'
 
@@ -51,7 +51,7 @@ class Image extends React.PureComponent {
 }
 
 Image.propTypes = {
-  entityType: entitiesPropTypes.ENTITY_TYPE.isRequired,
+  entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
   images: PropTypes.array,
   showCarousel: PropTypes.bool.isRequired
 }

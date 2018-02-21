@@ -16,6 +16,7 @@ export class FullTalent extends Entity {
     return this.commonRole
   }
 
+  // TODO remove when can
   getUrl () {
     throw new Error('url accessed')
   }

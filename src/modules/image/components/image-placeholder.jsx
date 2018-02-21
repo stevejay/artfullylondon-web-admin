@@ -8,8 +8,9 @@ import Cogs from 'react-icons/lib/fa/cogs'
 
 import ShouldNeverUpdateComponent
   from '_src/shared/components/base-class/should-never-update'
-import * as entitiesPropTypes from '_src/domain/prop-types'
-import entityType from '_src/domain/types/entity-type'
+import entityType, {
+  VALUES as entityTypeValues
+} from '_src/domain/types/entity-type'
 import './image-placeholder.scss'
 
 class ImagePlaceholder extends ShouldNeverUpdateComponent {
@@ -44,7 +45,7 @@ class ImagePlaceholder extends ShouldNeverUpdateComponent {
 }
 
 ImagePlaceholder.propTypes = {
-  type: entitiesPropTypes.ENTITY_TYPE.isRequired,
+  type: PropTypes.oneOf(entityTypeValues).isRequired,
   size: PropTypes.oneOf([
     'tiny',
     'very-small',
