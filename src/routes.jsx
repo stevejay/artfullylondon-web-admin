@@ -86,7 +86,8 @@ export class Routes extends React.PureComponent {
                 <Route path='/search' component={ResultsPage} />
                 <Route
                   path='/talent'
-                  render={() => (
+                  render={/* istanbul ignore next */
+                  () => (
                     <EntityRoutes
                       entityType={entityType.TALENT}
                       editOrCreateComponent={TalentEditOrCreate}
@@ -96,7 +97,8 @@ export class Routes extends React.PureComponent {
                 />
                 <Route
                   path='/venue'
-                  render={() => (
+                  render={/* istanbul ignore next */
+                  () => (
                     <EntityRoutes
                       entityType={entityType.VENUE}
                       editOrCreateComponent={VenueEditOrCreate}
@@ -106,7 +108,8 @@ export class Routes extends React.PureComponent {
                 />
                 <Route
                   path='/event-series'
-                  render={() => (
+                  render={/* istanbul ignore next */
+                  () => (
                     <EntityRoutes
                       entityType={entityType.EVENT_SERIES}
                       editOrCreateComponent={EventSeriesEditOrCreate}
@@ -116,7 +119,8 @@ export class Routes extends React.PureComponent {
                 />
                 <Route
                   path='/event'
-                  render={() => (
+                  render={/* istanbul ignore next */
+                  () => (
                     <EntityRoutes
                       entityType={entityType.EVENT}
                       editOrCreateComponent={EventEditOrCreate}

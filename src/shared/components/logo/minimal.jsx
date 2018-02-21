@@ -1,12 +1,12 @@
 import React from 'react'
 import _ from 'lodash'
 
+import ShouldNeverUpdateComponent
+  from '_src/shared/components/base-class/should-never-update'
+
 const LOGO_SIZE_PARAMS = { width: '110px', height: '110px' }
 
-class LogoMinimal extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class LogoMinimal extends ShouldNeverUpdateComponent {
   render () {
     // There was a problem when more than one instance of this class was rendered
     // at the same time: the gradient ids needed to be unique.

@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/shared/components/base-class/should-never-update'
 import './index.scss'
 
 const TYPE_DEFAULT = 'default'
 const TYPE_INVERSE = 'inverse'
 
-class Loader extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class Loader extends ShouldNeverUpdateComponent {
   render () {
     const { size, type, className } = this.props
 

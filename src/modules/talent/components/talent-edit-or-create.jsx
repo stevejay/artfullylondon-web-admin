@@ -57,7 +57,7 @@ export class TalentEditOrCreate extends React.Component {
       <React.Fragment>
         <Image entityType={entityType.TALENT} images={entity.images} />
         <EntityHeading>
-          {entity.name || 'New Talent'}
+          {isEdit ? entity.name : 'New Talent'}
         </EntityHeading>
         <EntityDetailsContainer>
           <EditTalentForm

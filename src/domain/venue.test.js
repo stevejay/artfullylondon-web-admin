@@ -111,6 +111,16 @@ describe('FullVenue', () => {
     expect(subject.entityType).toEqual('venue')
     expect(subject.getInfoBarLabel()).toEqual('Art Gallery')
     expect(subject.getEditUrl()).toEqual('/venue/edit/venue-id')
+    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
+    expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
+  })
+
+  it('should get the full address when there is no postcode', () => {
+    const subject = new FullVenue({
+      address: 'Bankside\nLondon'
+    })
+
+    expect(subject.createFullAddress()).toEqual('Bankside, London')
   })
 
   it('should get the homepage URL', () => {

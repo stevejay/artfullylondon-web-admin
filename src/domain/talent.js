@@ -9,7 +9,7 @@ export class FullTalent extends Entity {
   }
 
   get name () {
-    return `${this.firstNames || ''} ${this.lastName || ''}`.trim()
+    return `${this.firstNames || ''} ${this.lastName}`.trim()
   }
 
   getInfoBarLabel () {
@@ -36,7 +36,7 @@ export class SummaryTalent {
   }
 
   get name () {
-    return `${this.firstNames || ''} ${this.lastName || ''}`.trim()
+    return `${this.firstNames || ''} ${this.lastName}`.trim()
   }
 
   getEntityTypeLabel () {

@@ -10,13 +10,3 @@ it('should render correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
-
-it('should never update', () => {
-  const wrapper = shallow(
-    <SidenavMenuLink path='/some/path' label='The Label' onClick={_.noop} />
-  )
-
-  const result = wrapper.instance().shouldComponentUpdate({})
-
-  expect(result).toEqual(false)
-})

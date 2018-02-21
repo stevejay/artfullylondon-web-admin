@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/shared/components/base-class/should-never-update'
 import './index.scss'
 
-class Divider extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class Divider extends ShouldNeverUpdateComponent {
   render () {
     const { type, ...rest } = this.props
     return <div role='presentation' {...rest} styleName={type} />

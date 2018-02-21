@@ -24,4 +24,5 @@ export const root = (
 )
 
 const reactRoot = document.getElementById('react-root')
+/* istanbul ignore next */
 reactRoot && render(root, reactRoot)

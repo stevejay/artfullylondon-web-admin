@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/shared/components/base-class/should-never-update'
 import './icon.scss'
 
-class TextIcon extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class TextIcon extends ShouldNeverUpdateComponent {
   // TODO find a solution for the className here:
   render () {
     const { icon } = this.props

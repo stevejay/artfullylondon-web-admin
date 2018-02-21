@@ -8,7 +8,8 @@ it('should render correctly', () => {
     id: 'talent-2',
     image: '12345678',
     url: 'http://some/url',
-    name: 'The Talent Name'
+    firstNames: 'First',
+    lastName: 'Last'
   })
 
   mockTalent.createRolesString = jest.fn().mockReturnValue('Roles string')
@@ -27,7 +28,8 @@ it('should render correctly when there is no image', () => {
   const mockTalent = new EventSummaryTalent({
     id: 'talent-2',
     url: 'http://some/url',
-    name: 'The Talent Name'
+    firstNames: 'First',
+    lastName: 'Last'
   })
 
   mockTalent.createRolesString = jest.fn().mockReturnValue('Roles string')
@@ -47,7 +49,8 @@ it('should render correctly when there are no characters', () => {
     id: 'talent-2',
     image: '12345678',
     url: 'http://some/url',
-    name: 'The Talent Name'
+    firstNames: 'First',
+    lastName: 'Last'
   })
 
   mockTalent.createRolesString = jest.fn().mockReturnValue('Roles string')

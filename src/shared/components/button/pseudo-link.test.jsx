@@ -62,15 +62,3 @@ it('should handle a non-Enter key being pressed', () => {
 
   expect(handleClick).not.toHaveBeenCalled()
 })
-
-it('should not update', () => {
-  const wrapper = shallow(
-    <PseudoLinkButton onClick={_.noop}>
-      <div id='child' />
-    </PseudoLinkButton>
-  )
-
-  const result = wrapper.instance().shouldComponentUpdate()
-
-  expect(result).toEqual(false)
-})

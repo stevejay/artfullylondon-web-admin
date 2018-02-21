@@ -25,7 +25,9 @@ exports[`should render correctly 1`] = `
       <Link
         replace={false}
         to="/talent/talent-2"
-      />
+      >
+        First Last
+      </Link>
     </h4>
   </div>
 </div>
@@ -51,7 +53,9 @@ exports[`should render correctly when there are no characters 1`] = `
       <Link
         replace={false}
         to="/talent/talent-2"
-      />
+      >
+        First Last
+      </Link>
     </h4>
   </div>
 </div>
@@ -83,7 +87,9 @@ exports[`should render correctly when there is no image 1`] = `
       <Link
         replace={false}
         to="/talent/talent-2"
-      />
+      >
+        First Last
+      </Link>
     </h4>
   </div>
 </div>

@@ -4,7 +4,9 @@ exports[`should render correctly 1`] = `
 <ContentContainer>
   <Heading
     id="some-id"
-  />
+  >
+    First Last
+  </Heading>
   <SubHeading>
     Actor
   </SubHeading>

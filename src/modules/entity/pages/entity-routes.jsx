@@ -13,21 +13,22 @@ const EntityRoutes = ({
     <Route
       path={`/${entityType}`}
       exact
-      render={() => (
+      render={/* istanbul ignore next */
+      () => (
         <EntityPage entityType={entityType} component={editOrCreateComponent} />
       )}
     />
     <Route
       path={`/${entityType}/edit/(.*)`}
       exact
-      render={() => (
+      render={/* istanbul ignore next */ () => (
         <EntityPage entityType={entityType} component={editOrCreateComponent} />
       )}
     />
     <Route
       path={`/${entityType}/(.*)`}
       exact
-      render={() => (
+      render={/* istanbul ignore next */ () => (
         <EntityPage entityType={entityType} component={detailComponent} />
       )}
     />

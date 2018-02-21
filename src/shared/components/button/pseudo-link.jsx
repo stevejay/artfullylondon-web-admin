@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ShouldNeverUpdateComponent
+  from '_src/shared/components/base-class/should-never-update'
 import * as globalConstants from '_src/shared/constants'
 import './pseudo-link.scss'
 
-class PseudoLink extends React.Component {
-  shouldComponentUpdate () {
-    return false
-  }
+class PseudoLink extends ShouldNeverUpdateComponent {
   handleClick = event => {
     event.preventDefault()
     event.stopPropagation()

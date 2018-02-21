@@ -6,7 +6,8 @@ import TalentCardContent from './talent-card-content'
 it('should render correctly', () => {
   const entity = new SummaryTalent({
     id: 'some-id',
-    name: 'Some Name',
+    firstNames: 'First',
+    lastName: 'Last',
     commonRole: 'Actor'
   })
 
