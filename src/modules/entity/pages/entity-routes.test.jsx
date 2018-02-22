@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 
 import EntityRoutes from './entity-routes'
 import entityType from '_src/domain/types/entity-type'

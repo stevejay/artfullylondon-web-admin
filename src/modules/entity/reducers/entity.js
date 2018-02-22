@@ -1,11 +1,7 @@
 import { handleActions } from 'redux-actions'
 
-import { FullEvent } from '_src/domain/event'
-import { FullEventSeries } from '_src/domain/event-series'
-import { FullTalent } from '_src/domain/talent'
-import { FullVenue } from '_src/domain/venue'
 import { types } from '../actions'
-import entityType from '_src/domain/types/entity-type'
+import * as entityFactory from '_src/domain/entity-factory'
 
 const initialState = {
   entityId: null,
@@ -19,7 +15,7 @@ export const reducer = handleActions(
     [types.CLEAR_ENTITY]: () => initialState,
     [types.RESET_ENTITY_FOR_CREATE]: (state, action) => ({
       ...initialState,
-      entity: createEntity(action.payload.entityType)
+      entity: entityFactory.createEntity(action.payload.entityType)
     }),
     [types.GET_ENTITY_STARTED]: (state, action) => ({
       ...state,
@@ -31,7 +27,10 @@ export const reducer = handleActions(
     [types.GET_ENTITY_SUCCEEDED]: (state, action) => ({
       ...state,
       getInProgress: false,
-      entity: createEntity(action.payload.entityType, action.payload.entity)
+      entity: entityFactory.createEntity(
+        action.payload.entityType,
+        action.payload.entity
+      )
     }),
     [types.GET_ENTITY_FAILED]: (state, action) => ({
       ...initialState,
@@ -50,22 +49,6 @@ export const selectors = {
     state.entity.entityType !== expectedEntityType ||
     (state.entityId && state.entityId !== state.entity.id),
   failedToGetEntity: state => state.getFailed
-}
-
-function createEntity (type, entity = null) {
-  switch (type) {
-    case entityType.EVENT:
-      return new FullEvent(entity)
-    case entityType.EVENT_SERIES:
-      return new FullEventSeries(entity)
-    case entityType.TALENT:
-      return new FullTalent(entity)
-    case entityType.VENUE:
-      return new FullVenue(entity)
-    /* istanbul ignore next */
-    default:
-      throw new Error(`entityType ${type} not supported`)
-  }
 }
 
 // TODO delete the following when I can:

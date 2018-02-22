@@ -14,9 +14,9 @@ const EntityRoutes = ({
       path={`/${entityType}`}
       exact
       render={/* istanbul ignore next */
-      () => (
-        <EntityPage entityType={entityType} component={editOrCreateComponent} />
-      )}
+        () => (
+          <EntityPage entityType={entityType} component={editOrCreateComponent} />
+        )}
     />
     <Route
       path={`/${entityType}/edit/(.*)`}

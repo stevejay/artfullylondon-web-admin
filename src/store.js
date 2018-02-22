@@ -44,7 +44,8 @@ const sagas = function * () {
     ...user.sagas,
     ...dashboard.sagas,
     ...time.sagas,
-    ...monitor.sagas
+    ...monitor.sagas,
+    ...event.sagas
   ])
 }
 

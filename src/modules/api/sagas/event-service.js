@@ -12,6 +12,14 @@ export function * getEntity (entityType, id) {
   return json.entity
 }
 
+// TODO change api to support getting a single summary entity
+export function * getSummaryEntity (entityType, id) {
+  const token = yield call(getAuthTokenForCurrentUser)
+  const url = `${EVENT_SERVICE_URL}/public/${entityType}?ids=${encodeURIComponent(id)}`
+  const json = yield call(fetchLib.get, url, token)
+  return json.entities[0]
+}
+
 export function * saveEntity (entityType, values, mapper, isEdit) {
   const token = yield call(getAuthTokenForCurrentUser)
   let json = null

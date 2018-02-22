@@ -1,9 +1,9 @@
 import * as reduxLib from '_src/shared/lib/redux'
 
-import * as talent from './talent'
+import * as event from './event'
 
 export const moduleName = 'event'
 
-export const reducer = talent.reducer
+export const reducer = event.reducer
 
-export const selectors = reduxLib.mapSelectors(talent.selectors, moduleName)
+export const selectors = reduxLib.mapSelectors(event.selectors, moduleName)
