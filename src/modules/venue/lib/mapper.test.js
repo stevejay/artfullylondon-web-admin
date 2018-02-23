@@ -57,7 +57,7 @@ describe('getInitialValues', () => {
       openingTimesClosures: [],
       namedClosures: [],
       description: 'Description',
-      links: { links: [{ type: 'Wikipedia' }] },
+      links: [{ type: 'Wikipedia' }],
       images: [{ id: '1111' }],
       weSay: '',
       version: 9,

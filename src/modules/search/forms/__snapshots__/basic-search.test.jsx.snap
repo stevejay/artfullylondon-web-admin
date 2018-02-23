@@ -15,7 +15,9 @@ exports[`should render correctly 1`] = `
       onAutocompleteSelect={[Function]}
       searchInProgress={false}
     />
-    <SearchInputToolbar>
+    <SearchInputToolbar
+      className="src-modules-search-forms-basic-search__toolbar"
+    >
       <Field
         compact={true}
         component={[Function]}
@@ -26,11 +28,11 @@ exports[`should render correctly 1`] = `
               "value": "all",
             },
             Object {
-              "label": "Venues",
+              "label": "Venue",
               "value": "venue",
             },
             Object {
-              "label": "Events",
+              "label": "Event",
               "value": "event",
             },
             Object {

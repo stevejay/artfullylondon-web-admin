@@ -5,7 +5,7 @@ import { withState } from 'recompose'
 import Loader from '_src/shared/components/loader'
 import FieldContainer from '_src/shared/components/field/container'
 import FieldBorder from '_src/shared/components/field/border'
-import entityType from '_src/domain/types/entity-type'
+import { VALUES as entityTypeValues } from '_src/domain/types/entity-type'
 
 class EntitySelectorField extends React.Component {
   render () {
@@ -37,7 +37,7 @@ class EntitySelectorField extends React.Component {
 }
 
 EntitySelectorField.propTypes = {
-  entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
+  entityType: PropTypes.oneOf(entityTypeValues).isRequired,
   label: PropTypes.string.isRequired,
   input: PropTypes.shape({
     value: PropTypes.shape({

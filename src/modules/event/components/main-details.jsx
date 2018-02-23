@@ -19,7 +19,7 @@ class EventMainDetails extends React.PureComponent {
           {event.createEventOccurrenceDescriptionOn(dateStr)}
         </EntityFeaturedDetail>
         <EntityFeaturedDetail heading='Where'>
-          <Link to={event.venue.url}>{event.venue.name}</Link>
+          <Link to={event.venue.getUrl()}>{event.venue.name}</Link>
         </EntityFeaturedDetail>
         <EntityFeaturedDetail heading='Cost'>
           {event.createCostDescription()}

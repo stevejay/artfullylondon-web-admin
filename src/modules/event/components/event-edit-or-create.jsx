@@ -9,9 +9,9 @@ import Divider from '_src/shared/components/divider'
 import StepCollection from '_src/shared/components/step/collection'
 import { FullEvent } from '_src/domain/event'
 import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
-import * as eventConstants from '../constants'
-import * as eventConstraints from '../constants/constraints'
 import entityType from '_src/domain/types/entity-type'
+import * as eventConstants from '../constants'
+import * as eventMapper from '../lib/mapper'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
 import ImagesForm from '../forms/images'
@@ -73,14 +73,11 @@ export class EventEditOrCreate extends React.Component {
   handleSubmitTalent = values => {}
   handleSubmit = values => {}
   render () {
-    const { entity, stepIndex, onCancel } = this.props
+    const { entity, isEdit, stepIndex, onCancel } = this.props
 
     return (
       <React.Fragment>
-        <Image
-          entityType={entityType.EVENT}
-          images={entity.images}
-        />
+        <Image entityType={entityType.EVENT} images={entity.images} />
         <EntityHeading>
           {entity.name || 'New Event'}
         </EntityHeading>
@@ -95,7 +92,8 @@ export class EventEditOrCreate extends React.Component {
             <BasicsForm
               onSubmit={this.handleSubmitBasics}
               onCancel={onCancel}
-              constraint={eventConstraints.BASIC_CONSTRAINT}
+              isEdit={isEdit}
+              initialValues={eventMapper.getInitialValues(entity)}
             />}
           {stepIndex === 1 &&
             <TagsForm

@@ -33,7 +33,7 @@ export function getInitialValues (talent) {
     commonRole: talent.commonRole,
     description: entityMapper.getRichTextInitialValue(talent.description),
     descriptionCredit: talent.descriptionCredit || '',
-    links: entityMapper.getLinksInitialValue(talent.links.links),
+    links: entityMapper.getLinksInitialValue(talent.links),
     images: entityMapper.getImagesInitialValue(talent.images),
     weSay: talent.weSay || '',
     version: talent.version,

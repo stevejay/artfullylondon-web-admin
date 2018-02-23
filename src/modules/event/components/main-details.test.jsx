@@ -5,7 +5,7 @@ import { FullEvent } from '_src/domain/event'
 
 it('should render correctly', () => {
   const event = new FullEvent({
-    venue: { url: 'http://some/venue/url', name: 'Venue Name' }
+    venue: { id: 'some-venue-id', name: 'Venue Name' }
   })
 
   event.createEventOccurrenceDescriptionOn = jest

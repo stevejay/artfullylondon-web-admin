@@ -227,6 +227,14 @@ function getAudienceTagsInitialValue (audienceTags) {
   return (audienceTags || []).map(tag => ({ id: tag.id, label: tag.label }))
 }
 
+export function getSoldOutPerformancesInitialValue (soldOutPerformances) {
+  return (soldOutPerformances || []).map(performance => ({
+    key: dateLib.createTimeKey(performance),
+    date: performance.date.toString(),
+    at: performance.at
+  }))
+}
+
 export function mapSubmittedTimesRanges (timesRanges) {
   return (timesRanges || []).map(timesRange => ({
     id: timesRange.id,

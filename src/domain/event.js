@@ -172,6 +172,10 @@ export class FullEvent extends Entity {
     return !!this.tags && this.tags.length > 0
   }
 
+  isExpiredOn (dateStr) {
+    return dateStr > this.dateTo
+  }
+
   getHomepageUrl () {
     const homepage = this.getLinkByType(linkType.HOMEPAGE)
     return homepage ? homepage.url : null

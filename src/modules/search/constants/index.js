@@ -16,8 +16,8 @@ export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'
 
 export const SEARCH_ENTITY_DROPDOWN_OPTIONS = [
   { label: 'All', value: entityType.ALL },
-  { label: 'Venues', value: entityType.VENUE },
-  { label: 'Events', value: entityType.EVENT },
+  { label: 'Venue', value: entityType.VENUE },
+  { label: 'Event', value: entityType.EVENT },
   { label: 'Talent', value: entityType.TALENT }
 ]
 

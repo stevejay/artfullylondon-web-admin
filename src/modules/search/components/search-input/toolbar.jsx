@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './toolbar.scss'
 
 const SearchInputToolbar = ({ children, className }) => (
-  <div styleName='toolbar'>{children}</div>
+  <div styleName='toolbar' className={className}>{children}</div>
 )
 
 SearchInputToolbar.propTypes = {

@@ -14,7 +14,7 @@ exports[`should render correctly 1`] = `
   >
     <Link
       replace={false}
-      to="http://some/venue/url"
+      to="/venue/some-venue-id"
     >
       Venue Name
     </Link>

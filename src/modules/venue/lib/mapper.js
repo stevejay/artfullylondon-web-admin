@@ -73,7 +73,7 @@ export function getInitialValues (venue) {
     ),
     description: entityMapper.getRichTextInitialValue(venue.description),
     descriptionCredit: venue.descriptionCredit || '',
-    links: entityMapper.getLinksInitialValue(venue.links.links),
+    links: entityMapper.getLinksInitialValue(venue.links),
     images: entityMapper.getImagesInitialValue(venue.images),
     weSay: venue.weSay || '',
     notes: venue.notes || '',

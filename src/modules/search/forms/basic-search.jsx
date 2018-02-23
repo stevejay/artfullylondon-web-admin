@@ -61,7 +61,7 @@ export class BasicSearchForm extends React.Component {
             onAutocompleteSearch={this.handleAutocompleteSearch}
             onAutocompleteSelect={this.handleAutocompleteSelect}
           />
-          <SearchInputToolbar>
+          <SearchInputToolbar styleName='toolbar'>
             <Field
               name='entityType'
               component={DropdownField}

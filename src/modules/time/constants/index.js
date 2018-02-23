@@ -18,35 +18,6 @@ export const DAYS_OF_WEEK_DROPDOWN_OPTIONS = [
   { value: '6', label: 'Sunday' }
 ]
 
-export const DURATION_DROPDOWN_OPTIONS = [
-  { value: '00:15', label: '15 mins' },
-  { value: '00:30', label: '30 mins' },
-  { value: '00:45', label: '45 mins' },
-  { value: '01:00', label: '1 hour' },
-  { value: '01:15', label: '1 hour 15 mins' },
-  { value: '01:20', label: '1 hour 20 mins' },
-  { value: '01:30', label: '1 hour 30 mins' },
-  { value: '01:40', label: '1 hour 40 mins' },
-  { value: '01:45', label: '1 hour 45 mins' },
-  { value: '02:00', label: '2 hours' },
-  { value: '02:15', label: '2 hours 15 mins' },
-  { value: '02:20', label: '2 hours 20 mins' },
-  { value: '02:30', label: '2 hours 30 mins' },
-  { value: '02:40', label: '2 hours 40 mins' },
-  { value: '02:45', label: '2 hours 45 mins' },
-  { value: '03:00', label: '3 hours' },
-  { value: '03:15', label: '3 hours 15 mins' },
-  { value: '03:20', label: '3 hours 20 mins' },
-  { value: '03:30', label: '3 hours 30 mins' },
-  { value: '03:40', label: '3 hours 40 mins' },
-  { value: '03:45', label: '3 hours 45 mins' },
-  { value: '04:00', label: '4 hours' },
-  { value: '05:00', label: '5 hours' },
-  { value: '06:00', label: '6 hours' },
-  { value: '07:00', label: '7 hours' },
-  { value: '08:00', label: '8 hours' }
-]
-
 export const TIME_OF_DAY_DROPDOWN_OPTIONS = [
   { value: '00:00', label: '12:00 am' },
   { value: '00:15', label: '12:15 am' },

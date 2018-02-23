@@ -34,7 +34,7 @@ export function getInitialValues (eventSeries) {
     summary: eventSeries.summary,
     description: entityMapper.getRichTextInitialValue(eventSeries.description),
     descriptionCredit: eventSeries.descriptionCredit || '',
-    links: entityMapper.getLinksInitialValue(eventSeries.links.links),
+    links: entityMapper.getLinksInitialValue(eventSeries.links),
     images: entityMapper.getImagesInitialValue(eventSeries.images),
     weSay: eventSeries.weSay || '',
     version: eventSeries.version,
