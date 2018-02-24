@@ -14,6 +14,7 @@ const Container = ({
   disabled,
   children,
   tooltip,
+  className,
   ...rest
 }) => {
   const hasError = !!touched && !!error && !disabled
@@ -22,7 +23,7 @@ const Container = ({
   containerStyle = disabled ? containerStyle + '-disabled' : containerStyle
 
   return (
-    <div {...rest} styleName={containerStyle}>
+    <div {...rest} className={className} styleName={containerStyle}>
       {!!label &&
         <FieldLabel
           tooltip={tooltip}
@@ -47,7 +48,8 @@ Container.propTypes = {
   error: PropTypes.any,
   touched: PropTypes.any,
   required: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  className: PropTypes.string
 }
 
 export default Container

@@ -38,6 +38,7 @@ class Message extends React.PureComponent {
       icon,
       linkTo,
       message, // eslint-disable-line
+      className,
       ...rest
     } = this.props
 
@@ -57,14 +58,20 @@ class Message extends React.PureComponent {
 
     if (linkTo) {
       return (
-        <Link {...rest} to={linkTo} styleName={type} role='alert'>
+        <Link
+          {...rest}
+          to={linkTo}
+          styleName={type}
+          className={className}
+          role='alert'
+        >
           {iconElement}
           {content}
         </Link>
       )
     } else {
       return (
-        <div {...rest} styleName={type} role='alert'>
+        <div {...rest} styleName={type} className={className} role='alert'>
           {iconElement}
           {content}
         </div>
@@ -79,7 +86,8 @@ Message.propTypes = {
   children: PropTypes.any,
   showIcon: PropTypes.bool,
   icon: PropTypes.func,
-  linkTo: PropTypes.string
+  linkTo: PropTypes.string,
+  className: PropTypes.string
 }
 
 Message.defaultProps = {

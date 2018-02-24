@@ -8,14 +8,13 @@ import log from 'loglevel'
 // import normalise from '_src/shared/lib/normalise'
 // import history from '_src/shared/lib/history'
 // import { eventService } from '_src/modules/api'
-// import * as sagaLib from '_src/shared/lib/saga'
+import * as sagaLib from '_src/shared/lib/saga'
 // import * as validationLib from '_src/shared/lib/validation'
 import * as eventActions from '../actions'
 import { eventService } from '_src/modules/api'
 import * as entityFactory from '_src/domain/entity-factory'
 import { actions as notificationActions } from '_src/modules/notification'
 
-// TODO remove thunk nature?
 export function * getSubEntity ({ payload, meta }) {
   const { subEntityType, id, parentFormName } = payload
 
@@ -23,7 +22,7 @@ export function * getSubEntity ({ payload, meta }) {
     const entity = yield call(eventService.getSummaryEntity, subEntityType, id)
     const result = entityFactory.createSummaryEntity(subEntityType, entity)
     yield put(change(parentFormName, _.camelCase(subEntityType), result))
-    // yield put(sagaLib.returnAsPromise({ entity: result }, meta))
+    yield put(sagaLib.returnAsPromise(null, meta))
   } catch (err) {
     yield call(log.error, err)
 

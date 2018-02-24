@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import AutocompleteHeaderItem from './autocomplete-header-item'
 import AutocompleteItem from './autocomplete-item'
-import * as searchConstants from '../../constants'
 import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
+import * as globalConstants from '_src/shared/constants'
 import './autocomplete-list.scss'
 
 const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (
@@ -26,7 +26,7 @@ const AutocompleteList = ({ items, currentIndex, className, onSelectItem }) => (
 
 AutocompleteList.propTypes = {
   currentIndex: PropTypes.number.isRequired,
-  items: searchConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
+  items: globalConstants.AUTOCOMPLETE_ITEMS_PROPTYPES.isRequired,
   className: PropTypes.string,
   onSelectItem: PropTypes.func.isRequired
 }

@@ -1,15 +1,11 @@
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 
 import { SummaryVenue } from '_src/domain/venue'
 import { SummaryTalent } from '_src/domain/talent'
 import { SummaryEvent } from '_src/domain/event'
 import { SummaryEventSeries } from '_src/domain/event-series'
 import * as globalConstants from '_src/shared/constants'
-import entityType, {
-  VALUES as entityTypeValues
-} from '_src/domain/types/entity-type'
-import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
+import entityType from '_src/domain/types/entity-type'
 
 export const BASIC_SEARCH_FORM_NAME = 'BasicSearch'
 export const HEADER_SEARCH_FORM_NAME = 'HeaderSearch'
@@ -32,23 +28,6 @@ export const SUMMARY_ENTITY_PROP_TYPE = PropTypes.oneOfType([
   PropTypes.instanceOf(SummaryTalent),
   PropTypes.instanceOf(SummaryVenue)
 ])
-
-export const AUTOCOMPLETE_ITEM_PROPTYPES = PropTypes.oneOfType([
-  PropTypes.shape({
-    autocompleteItemType: PropTypes.oneOf(_.values(autocompleteItemType)),
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    entityType: PropTypes.oneOf(entityTypeValues).isRequired
-  }),
-  PropTypes.shape({
-    autocompleteItemType: PropTypes.oneOf(_.values(autocompleteItemType)),
-    label: PropTypes.string.isRequired
-  })
-])
-
-export const AUTOCOMPLETE_ITEMS_PROPTYPES = PropTypes.arrayOf(
-  AUTOCOMPLETE_ITEM_PROPTYPES.isRequired
-)
 
 export const ALLOWED_BASIC_SEARCH_ENTITY_TYPES = [
   entityType.EVENT,

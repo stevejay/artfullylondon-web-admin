@@ -158,7 +158,8 @@ class SearchInput extends React.PureComponent {
       ariaLabel,
       maxLength,
       value,
-      disabled
+      disabled,
+      htmlId
     } = this.props
 
     const { autocompleteItems, showAutocomplete } = this.state
@@ -183,6 +184,7 @@ class SearchInput extends React.PureComponent {
           spellCheck={false}
           maxLength={maxLength}
           aria-label={ariaLabel}
+          id={htmlId}
         />
         <FadeTransition in={showDropdown} appear mountOnEnter unmountOnExit>
           <AutocompleteList
@@ -207,7 +209,8 @@ SearchInput.propTypes = {
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'large']),
   maxLength: PropTypes.number,
-  ariaLabel: PropTypes.string
+  ariaLabel: PropTypes.string,
+  htmlId: PropTypes.string
 }
 
 SearchInput.defaultProps = {

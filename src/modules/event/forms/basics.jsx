@@ -23,6 +23,8 @@ import * as eventConstants from '../constants'
 import * as globalConstants from '_src/shared/constants'
 import * as eventLib from '_src/shared/lib/event'
 import * as eventNormaliseLib from '../lib/normalise'
+import * as eventActions from '../actions'
+import { actions as searchActions } from '_src/modules/search'
 import { BASIC_CONSTRAINT } from '../constants/constraints'
 
 export class EditEventBasicsForm extends React.Component {
@@ -53,8 +55,19 @@ export class EditEventBasicsForm extends React.Component {
       this.props.change('bookingOpens', '')
     }
   }
-  handleGetEventSeries = id => {
-    console.log('handleGetEventSeries', id)
+  handleAutocompleteSelect = (entityType, id) => {
+    return this.props.dispatch(
+      eventActions.getSubEntity(
+        entityType,
+        id,
+        eventConstants.EDIT_EVENT_BASICS_FORM_NAME
+      )
+    )
+  }
+  handleAutocompleteSearch = (term, entityType) => {
+    return this.props.dispatch(
+      searchActions.autocompleteSearch(term, entityType)
+    )
   }
   render () {
     const {
@@ -62,6 +75,7 @@ export class EditEventBasicsForm extends React.Component {
       bookingTypeValue,
       occurrenceTypeValue,
       eventTypeValue,
+      dateFromValue,
       handleSubmit,
       error,
       submitting,
@@ -84,10 +98,6 @@ export class EditEventBasicsForm extends React.Component {
         : eventConstants.EXHIBITION_OCCURRENCE_TYPE_DROPDOWN_OPTIONS
     }
 
-    // entityDetailsUrlTemplate='/event-series/{id}'
-    // entityDetailsFormatter={eventSeriesDetailsFormatter}
-    // entitySearchLabel='Search for an Event Series'
-
     return (
       <Form onSubmit={handleSubmit}>
         <FormRow>
@@ -102,12 +112,61 @@ export class EditEventBasicsForm extends React.Component {
 
         <FormRow>
           <Field
+            label='Occurrence Type'
+            name='occurrenceType'
+            component={SelectField}
+            options={occurrenceTypeOptions}
+            required
+            searchable={false}
+            onChange={this.handleChangeOccurrenceType}
+            containerStyle={{ minWidth: '10rem' }}
+          />
+          <Field
+            label='Date From'
+            name='dateFrom'
+            htmlId='dateFrom'
+            dateFormat={globalConstants.DATE_FORMAT}
+            component={DatepickerField}
+            disabled={!showOccurrenceRange}
+            onChange={this.handleChangeDateFrom}
+          />
+          <Field
+            label='Date To'
+            name='dateTo'
+            htmlId='dateTo'
+            dateFormat={globalConstants.DATE_FORMAT}
+            component={DatepickerField}
+            minDate={dateFromValue || null}
+            disabled={!showOccurrenceRange}
+            onChange={this.handleChangeDateTo}
+          />
+        </FormRow>
+        <FormRow>
+          <Field
+            label='Venue'
+            name='venue'
+            component={EntitySelectorField}
+            entityType={entityType.VENUE}
+            onAutocompleteSelect={this.handleAutocompleteSelect}
+            onAutocompleteSearch={this.handleAutocompleteSearch}
+          />
+        </FormRow>
+        <FormRow>
+          <Field
+            label='Guidance for Finding the Event'
+            name='venueGuidance'
+            component={TextField}
+            maxLength={BASIC_CONSTRAINT.venueGuidance.length.maximum}
+          />
+        </FormRow>
+        <FormRow>
+          <Field
             label='Event Series'
             name='eventSeries'
             component={EntitySelectorField}
             entityType={entityType.EVENT_SERIES}
-            getSubEntity={this.handleGetEventSeries}
-            parentFormName={eventConstants.EDIT_EVENT_BASICS_FORM_NAME}
+            onAutocompleteSelect={this.handleAutocompleteSelect}
+            onAutocompleteSearch={this.handleAutocompleteSearch}
           />
         </FormRow>
         <FormRow>

@@ -1,6 +1,7 @@
 @import 'theme';
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: 1px solid $field-border-color;

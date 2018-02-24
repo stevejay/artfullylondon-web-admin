@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import * as searchConstants from '../../constants'
+import * as globalConstants from '_src/shared/constants'
 import './autocomplete-item.scss'
 
 // TODO there's confusion here about item.output being used for the label,
@@ -30,7 +30,7 @@ class AutocompleteItem extends React.Component {
 AutocompleteItem.propTypes = {
   index: PropTypes.number.isRequired,
   currentIndex: PropTypes.number.isRequired,
-  item: searchConstants.AUTOCOMPLETE_ITEM_PROPTYPES.isRequired,
+  item: globalConstants.AUTOCOMPLETE_ITEM_PROPTYPES.isRequired,
   onSelect: PropTypes.func.isRequired
 }
 
