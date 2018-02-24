@@ -5,8 +5,7 @@ export const types = {
   GET_ENTITY_FAILED: 'entity/GET_ENTITY_FAILED',
   SAVE_ENTITY: 'entity/SAVE_ENTITY',
   RESET_ENTITY_FOR_CREATE: 'entity/RESET_ENTITY_FOR_CREATE',
-  CLEAR_ENTITY: 'entity/CLEAR_ENTITY',
-  UPDATE_ENTITY_WITH_EDITS: 'entity/UPDATE_ENTITY_WITH_EDITS'
+  CLEAR_ENTITY: 'entity/CLEAR_ENTITY'
 }
 
 export const getEntity = (entityType, id) => ({
@@ -57,9 +56,4 @@ export const resetEntityForCreate = entityType => ({
 
 export const clearEntity = () => ({
   type: types.CLEAR_ENTITY
-})
-
-export const updateEntityWithEdits = values => ({
-  type: types.UPDATE_ENTITY_WITH_EDITS,
-  payload: { values }
 })

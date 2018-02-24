@@ -2,17 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { submit as submitReduxForm } from 'redux-form'
-import { withState } from 'recompose'
+import { withStateHandlers } from 'recompose'
 
 import { Image } from '_src/modules/image'
 import Divider from '_src/shared/components/divider'
 import StepCollection from '_src/shared/components/step/collection'
 import { FullEvent } from '_src/domain/event'
-import {
-  EntityDetailsContainer,
-  EntityHeading,
-  actions as entityActions
-} from '_src/modules/entity'
+import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
 import entityType from '_src/domain/types/entity-type'
 import * as eventConstants from '../constants'
 import * as eventMapper from '../lib/mapper'
@@ -36,17 +32,21 @@ const STEPS = [
 export class EventEditOrCreate extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.entity.id !== this.props.entity.id) {
-      this.props.updateStepIndex(0)
+      this.props.resetInitialValues(
+        eventMapper.getInitialValues(nextProps.entity)
+      )
+
+      this.props.setStepIndex(0)
     }
   }
   nextPage = () => {
-    const { stepIndex, updateStepIndex } = this.props
-    stepIndex < 4 && updateStepIndex(stepIndex + 1)
+    const { stepIndex, setStepIndex } = this.props
+    stepIndex < 4 && setStepIndex(stepIndex + 1)
   }
   previousPage = event => {
     event.preventDefault()
-    const { stepIndex, updateStepIndex } = this.props
-    stepIndex > 0 && updateStepIndex(stepIndex - 1)
+    const { stepIndex, setStepIndex } = this.props
+    stepIndex > 0 && setStepIndex(stepIndex - 1)
   }
   handleStepClick = nextStepIndex => {
     const { stepIndex } = this.props
@@ -71,7 +71,7 @@ export class EventEditOrCreate extends React.Component {
           )
       }
     } else {
-      this.props.updateStepIndex(nextStepIndex)
+      this.props.setStepIndex(nextStepIndex)
     }
   }
   handleSubmitBasics = values => {
@@ -85,7 +85,7 @@ export class EventEditOrCreate extends React.Component {
         values =>
           new Promise(resolve => {
             eventNormaliseLib.normaliseEventValues(values)
-            this.props.dispatch(entityActions.updateEntityWithEdits(values))
+            this.props.updateInitialValues(values)
             this.nextPage()
             resolve()
           })
@@ -96,7 +96,7 @@ export class EventEditOrCreate extends React.Component {
   handleSubmitTalent = values => {}
   handleSubmit = values => {}
   render () {
-    const { entity, isEdit, stepIndex, onCancel } = this.props
+    const { entity, isEdit, stepIndex, initialValues, onCancel } = this.props
 
     return (
       <React.Fragment>
@@ -116,13 +116,14 @@ export class EventEditOrCreate extends React.Component {
               onSubmit={this.handleSubmitBasics}
               onCancel={onCancel}
               isEdit={isEdit}
-              initialValues={eventMapper.getInitialValues(entity)}
+              initialValues={initialValues}
             />}
           {stepIndex === 1 &&
             <TagsForm
               onSubmit={this.handleSubmitTags}
               previousPage={this.previousPage}
               onCancel={onCancel}
+              initialValues={initialValues}
             />}
           {stepIndex === 2 &&
             <TimesForm
@@ -154,9 +155,28 @@ EventEditOrCreate.propTypes = {
   onCancel: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   stepIndex: PropTypes.number.isRequired,
-  updateStepIndex: PropTypes.func.isRequired
+  initialValues: PropTypes.object.isRequired,
+  setStepIndex: PropTypes.func.isRequired,
+  updateInitialValues: PropTypes.func.isRequired,
+  resetInitialValues: PropTypes.func.isRequired
 }
 
 export default connect()(
-  withState('stepIndex', 'updateStepIndex', 0)(EventEditOrCreate)
+  withStateHandlers(
+    props => ({
+      stepIndex: 0,
+      initialValues: eventMapper.getInitialValues(props.entity)
+    }),
+    {
+      setStepIndex: () => value => ({
+        stepIndex: value
+      }),
+      updateInitialValues: ({ initialValues }) => values => ({
+        initialValues: { ...initialValues, ...values }
+      }),
+      resetInitialValues: () => values => ({
+        initialValues: values
+      })
+    }
+  )(EventEditOrCreate)
 )
