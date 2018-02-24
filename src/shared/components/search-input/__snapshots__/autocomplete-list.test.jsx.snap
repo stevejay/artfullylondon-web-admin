@@ -2,7 +2,7 @@
 
 exports[`should render an autocomplete list with a single entity entry correctly 1`] = `
 <ul
-  className="src-modules-search-components-search-input-autocomplete-list__container"
+  className="src-shared-components-search-input-autocomplete-list__container"
 >
   <AutocompleteItem
     currentIndex={0}
@@ -24,7 +24,7 @@ exports[`should render an autocomplete list with a single entity entry correctly
 
 exports[`should render an autocomplete list with a single label entry correctly 1`] = `
 <ul
-  className="src-modules-search-components-search-input-autocomplete-list__container"
+  className="src-shared-components-search-input-autocomplete-list__container"
 >
   <AutocompleteHeaderItem
     key="Some label"

@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-modules-search-components-search-input-field__container"
+  className="src-shared-components-search-input-field__container"
 >
   <SearchInput
     maxLength={100}

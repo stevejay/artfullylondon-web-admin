@@ -35,6 +35,13 @@ export const reducer = handleActions(
     [types.GET_ENTITY_FAILED]: (state, action) => ({
       ...initialState,
       getFailed: true
+    }),
+    [types.UPDATE_ENTITY_WITH_EDITS]: (state, action) => ({
+      ...state,
+      entity: entityFactory.createEntity(state.entity.entityType, {
+        ...state.entity,
+        ...action.payload.values
+      })
     })
   },
   initialState

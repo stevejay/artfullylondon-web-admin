@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <li
-  className="src-modules-search-components-search-input-autocomplete-header-item__header"
+  className="src-shared-components-search-input-autocomplete-header-item__header"
 >
   event
 </li>

@@ -71,6 +71,7 @@ export class EditEventBasicsForm extends React.Component {
   }
   render () {
     const {
+      initialValues,
       costTypeValue,
       bookingTypeValue,
       occurrenceTypeValue,
@@ -109,7 +110,24 @@ export class EditEventBasicsForm extends React.Component {
             maxLength={BASIC_CONSTRAINT.name.length.maximum}
           />
         </FormRow>
-
+        <FormRow>
+          <Field
+            label='Event Type'
+            name='eventType'
+            component={SelectField}
+            options={eventConstants.EVENT_TYPE_DROPDOWN_OPTIONS}
+            required
+            searchable={false}
+          />
+          {isEdit &&
+            <Field
+              label='Status'
+              name='status'
+              component={SelectField}
+              options={initialValues.validStatuses}
+              searchable={false}
+            />}
+        </FormRow>
         <FormRow>
           <Field
             label='Occurrence Type'

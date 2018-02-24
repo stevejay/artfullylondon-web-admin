@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-modules-search-components-search-input-toolbar__toolbar"
+  className="src-shared-components-search-input-toolbar__toolbar"
 >
   <div
     id="child"

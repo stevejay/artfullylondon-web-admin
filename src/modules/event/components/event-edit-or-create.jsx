@@ -8,10 +8,17 @@ import { Image } from '_src/modules/image'
 import Divider from '_src/shared/components/divider'
 import StepCollection from '_src/shared/components/step/collection'
 import { FullEvent } from '_src/domain/event'
-import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
+import {
+  EntityDetailsContainer,
+  EntityHeading,
+  actions as entityActions
+} from '_src/modules/entity'
 import entityType from '_src/domain/types/entity-type'
 import * as eventConstants from '../constants'
 import * as eventMapper from '../lib/mapper'
+import * as eventNormaliseLib from '../lib/normalise'
+import * as validationLib from '_src/shared/lib/validation'
+import { BASIC_CONSTRAINT } from '../constants/constraints'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
 import ImagesForm from '../forms/images'
@@ -67,7 +74,23 @@ export class EventEditOrCreate extends React.Component {
       this.props.updateStepIndex(nextStepIndex)
     }
   }
-  handleSubmitBasics = values => {}
+  handleSubmitBasics = values => {
+    return validationLib
+      .validate(values, BASIC_CONSTRAINT, (values, errors) => {
+        if (!values.venue || !values.venue.id) {
+          errors.venue = 'No venue selected'
+        }
+      })
+      .then(
+        values =>
+          new Promise(resolve => {
+            eventNormaliseLib.normaliseEventValues(values)
+            this.props.dispatch(entityActions.updateEntityWithEdits(values))
+            this.nextPage()
+            resolve()
+          })
+      )
+  }
   handleSubmitTags = values => {}
   handleSubmitTimes = values => {}
   handleSubmitTalent = values => {}
