@@ -28,7 +28,9 @@ describe('getTags', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next([{ id: 1 }])
-    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([{ id: 1 }])))
+    expect(result.value).toEqual(
+      put(tagActions.getTagsSucceeded([{ id: 1 }], 'medium'))
+    )
 
     result = generatorClone.next()
     expect(result.done).toEqual(true)
@@ -38,7 +40,7 @@ describe('getTags', () => {
     const generatorClone = generator.clone()
 
     let result = generatorClone.next([])
-    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([])))
+    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([], 'medium')))
 
     result = generatorClone.next()
     expect(result.done).toEqual(true)
@@ -60,9 +62,9 @@ describe('getTags', () => {
 })
 
 describe('addTag', () => {
-  const generator = cloneableGenerator(tagSagas.addTag)({
-    payload: { label: 'Sculpture', tagType: 'medium' }
-  })
+  const generator = cloneableGenerator(tagSagas.addTag)(
+    tagActions.addTag({ label: 'Sculpture', tagType: 'medium' })
+  )
 
   it('should prepare to add the tag', () => {
     let result = generator.next()
@@ -106,10 +108,13 @@ describe('addTag', () => {
     })
     expect(result.value).toEqual(
       put(
-        tagActions.addTagSucceeded({
-          id: 'medium/sculpture',
-          label: 'sculpture'
-        })
+        tagActions.addTagSucceeded(
+          {
+            id: 'medium/sculpture',
+            label: 'sculpture'
+          },
+          'medium'
+        )
       )
     )
 
@@ -120,6 +125,19 @@ describe('addTag', () => {
 
     result = generatorClone.next()
     expect(result.value).toEqual(put(reset(tagConstants.TAG_EDITOR_FORM_NAME)))
+
+    result = generatorClone.next()
+    expect(result.value).toEqual(
+      put(
+        sagaLib.returnAsPromise(
+          {
+            id: 'medium/sculpture',
+            label: 'sculpture'
+          },
+          { thunk: true }
+        )
+      )
+    )
 
     result = generatorClone.next()
     expect(result.done).toEqual(true)

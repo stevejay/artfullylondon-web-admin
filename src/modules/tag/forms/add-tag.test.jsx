@@ -12,8 +12,6 @@ it('should render correctly', () => {
       submitting={false}
       handleSubmit={_.noop}
       onSubmit={_.noop}
-      reset={_.noop}
-      tagType='medium'
     />
   )
 
@@ -29,8 +27,6 @@ it('should render correctly when text has been entered but the tag cannot curren
       submitting={false}
       handleSubmit={_.noop}
       onSubmit={_.noop}
-      reset={_.noop}
-      tagType='medium'
     />
   )
 

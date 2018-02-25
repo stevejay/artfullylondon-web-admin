@@ -33,7 +33,7 @@ it('should handle a get tags started message', () => {
     getFailed: false,
     addInProgress: false,
     deleteInProgress: false,
-    tagType: 'medium',
+    tagType: null,
     tags: null
   })
 })
@@ -44,11 +44,14 @@ it('should handle a get tags succeeded message', () => {
     getFailed: false,
     addInProgress: false,
     deleteInProgress: false,
-    tagType: 'medium',
+    tagType: null,
     tags: null
   })
 
-  const actual = reducer(state, tagActions.getTagsSucceeded([{ id: 1 }]))
+  const actual = reducer(
+    state,
+    tagActions.getTagsSucceeded([{ id: 1 }], 'medium')
+  )
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -66,7 +69,7 @@ it('should handle a get tags failed message', () => {
     getFailed: false,
     addInProgress: false,
     deleteInProgress: false,
-    tagType: 'medium',
+    tagType: null,
     tags: null
   })
 
@@ -77,7 +80,7 @@ it('should handle a get tags failed message', () => {
     getFailed: true,
     addInProgress: false,
     deleteInProgress: false,
-    tagType: 'medium',
+    tagType: null,
     tags: null
   })
 })
@@ -114,7 +117,7 @@ it('should handle an add tag succeeded message when the tag is to be added at th
     tags: [{ id: 1 }]
   })
 
-  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }))
+  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }, 'medium'))
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -136,7 +139,7 @@ it('should handle an add tag succeeded message when the tag is to be added at th
     tags: [{ id: 2 }]
   })
 
-  const actual = reducer(state, tagActions.addTagSucceeded({ id: 1 }))
+  const actual = reducer(state, tagActions.addTagSucceeded({ id: 1 }, 'medium'))
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -145,6 +148,50 @@ it('should handle an add tag succeeded message when the tag is to be added at th
     deleteInProgress: false,
     tagType: 'medium',
     tags: [{ id: 1 }, { id: 2 }]
+  })
+})
+
+it('should reject an add tag succeeded message when the tag type is not correct', () => {
+  const state = deepFreeze({
+    getInProgress: false,
+    getFailed: false,
+    addInProgress: false,
+    deleteInProgress: false,
+    tagType: 'medium',
+    tags: [{ id: 1 }]
+  })
+
+  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }, 'style'))
+
+  expect(actual).toEqual({
+    getInProgress: false,
+    getFailed: false,
+    addInProgress: false,
+    deleteInProgress: false,
+    tagType: 'medium',
+    tags: [{ id: 1 }]
+  })
+})
+
+it('should reject an add tag succeeded message when there are no tags', () => {
+  const state = deepFreeze({
+    getInProgress: false,
+    getFailed: false,
+    addInProgress: false,
+    deleteInProgress: false,
+    tagType: null,
+    tags: null
+  })
+
+  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }, 'medium'))
+
+  expect(actual).toEqual({
+    getInProgress: false,
+    getFailed: false,
+    addInProgress: false,
+    deleteInProgress: false,
+    tagType: null,
+    tags: null
   })
 })
 

@@ -1,11 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
-import {
-  startSubmit,
-  stopSubmit,
-  reset
-  // getFormValues,
-  // change
-} from 'redux-form'
+import { startSubmit, stopSubmit, reset } from 'redux-form'
 import log from 'loglevel'
 
 import normalise from '_src/shared/lib/normalise'
@@ -15,74 +9,29 @@ import * as validationLib from '_src/shared/lib/validation'
 import * as tagActions from '../actions'
 import { tagService } from '_src/modules/api'
 
-// function * getAllTags () {
-//   try {
-//     yield put({ type: tagActionTypes.GET_TAGS_STARTED })
-
-//     const url = process.env.WEBSITE_API_HOST_URL + '/tag-service/tags'
-//     const token = yield call(getAuthTokenForCurrentUser)
-//     const json = yield call(fetchLib.get, url, token)
-
-//     yield put({
-//       type: tagActionTypes.GET_TAGS_SUCCEEDED,
-//       payload: json
-//     })
-//   } catch (err) {
-//     yield call(log.error, err)
-//     yield put({ type: tagActionTypes.GET_TAGS_FAILED })
-//   }
-// }
-
 export function * getTags (action) {
   try {
     const tagType = action.payload.tagType
-    yield put(tagActions.getTagsStarted(tagType))
+    yield put(tagActions.getTagsStarted())
     const tags = yield call(tagService.getTags, tagType)
-    yield put(tagActions.getTagsSucceeded(tags))
+    yield put(tagActions.getTagsSucceeded(tags, tagType))
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.getTagsFailed())
   }
 }
 
-export function * addTag (action) {
+export function * addTag ({ payload, meta }) {
   try {
     yield put(startSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     yield put(tagActions.addTagStarted())
-
-    const values = yield call(
-      normalise,
-      action.payload,
-      tagConstants.NORMALISER
-    )
-
+    const values = yield call(normalise, payload, tagConstants.NORMALISER)
     yield call(validationLib.validate, values, tagConstants.CONSTRAINT)
     const tag = yield call(tagService.addTag, values)
-    yield put(tagActions.addTagSucceeded(tag))
-
-    // TODO delete this if not used by event editor:
-
-    // if (action.payload.addTagForEvent) {
-    //   const propertyName = getEventTagsPropertyName(tagType)
-
-    //   const formValues = yield select(
-    //     getFormValues(tagConstants.EDIT_EVENT_TAGS_FORM_NAME)
-    //   )
-
-    //   const tags = formValues[propertyName]
-
-    //   if (tags.indexOf(x => x.id === json.tag.id) === -1) {
-    //     const newTags = tags.slice()
-    //     newTags.push(json.tag)
-
-    //     yield put(
-    //       change(tagConstants.EDIT_EVENT_TAGS_FORM_NAME, propertyName, newTags)
-    //     )
-    //   }
-    // }
-
+    yield put(tagActions.addTagSucceeded(tag, values.tagType))
     yield put(stopSubmit(tagConstants.TAG_EDITOR_FORM_NAME))
     yield put(reset(tagConstants.TAG_EDITOR_FORM_NAME))
+    yield put(sagaLib.returnAsPromise(tag, meta))
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.addTagFailed())
@@ -105,30 +54,13 @@ export function * deleteTag (action) {
     yield put(tagActions.deleteTagStarted())
     yield call(tagService.deleteTag, id)
     yield put(tagActions.deleteTagSucceeded(id))
-    // yield put({ type: tagActionTypes.TAG_DELETED })
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.deleteTagFailed())
   }
 }
 
-// function getEventTagsPropertyName (tagType) {
-//   switch (tagType) {
-//     case tagConstants.TAG_TYPE_MEDIUM:
-//       return 'mediumTags'
-//     case tagConstants.TAG_TYPE_STYLE:
-//       return 'styleTags'
-//     case tagConstants.TAG_TYPE_AUDIENCE:
-//       return 'audienceTags'
-//     case tagConstants.TAG_TYPE_GEO:
-//       return 'geoTags'
-//     default:
-//       throw new Error(`tagType out of range: ${tagType}`)
-//   }
-// }
-
 export default [
-  // takeLatest(tagActionTypes.GET_ALL_TAGS, getAllTags),
   takeLatest(tagActions.types.GET_TAGS, getTags),
   takeLatest(tagActions.types.ADD_TAG, addTag),
   takeLatest(tagActions.types.DELETE_TAG, deleteTag)

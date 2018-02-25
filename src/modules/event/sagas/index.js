@@ -1,18 +1,12 @@
-// import { delay } from 'redux-saga'
 import _ from 'lodash'
 import { call, put, takeLatest } from 'redux-saga/effects'
-// import { startSubmit, stopSubmit, reset, arrayPush, change } from 'redux-form'
 import { change } from 'redux-form'
 import log from 'loglevel'
 
-// import normalise from '_src/shared/lib/normalise'
-// import history from '_src/shared/lib/history'
-// import { eventService } from '_src/modules/api'
 import * as sagaLib from '_src/shared/lib/saga'
-// import * as validationLib from '_src/shared/lib/validation'
 import * as eventActions from '../actions'
-import { eventService } from '_src/modules/api'
 import * as entityFactory from '_src/domain/entity-factory'
+import { eventService, tagService } from '_src/modules/api'
 import { actions as notificationActions } from '_src/modules/notification'
 
 export function * getSubEntity ({ payload, meta }) {
@@ -35,65 +29,23 @@ export function * getSubEntity ({ payload, meta }) {
   }
 }
 
-// function _getConstraintForEntityType (entityType) {
-//   switch (entityType) {
-//     case entityConstants.ENTITY_TYPE_TALENT:
-//       return talentConstraint
-//     case entityConstants.ENTITY_TYPE_VENUE:
-//       return venueConstraint
-//     case entityConstants.ENTITY_TYPE_EVENT:
-//       return eventConstraints.BASIC_CONSTRAINT
-//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-//       return eventSeriesConstraint
-//     default:
-//       throw new Error(`entityType out of range: ${entityType}`)
-//   }
-// }
+export function * getAllTags () {
+  try {
+    const tags = yield call(tagService.getAllTags)
+    yield put(eventActions.getAllTagsSucceeded(tags))
+  } catch (err) {
+    yield call(log.error, err)
 
-// function _getNormaliserForEntityType (entityType) {
-//   switch (entityType) {
-//     case entityConstants.ENTITY_TYPE_TALENT:
-//       return talentNormaliser
-//     case entityConstants.ENTITY_TYPE_VENUE:
-//       return venueNormaliser
-//     case entityConstants.ENTITY_TYPE_EVENT:
-//       return eventNormalisers.basicNormaliser
-//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-//       return eventSeriesNormaliser
-//     default:
-//       throw new Error(`entityType out of range: ${entityType}`)
-//   }
-// }
+    yield put(
+      notificationActions.addErrorNotification(
+        'Load Failed',
+        `Failed to load the tags`
+      )
+    )
+  }
+}
 
-// function _getMapperForEntityType (entityType) {
-//   switch (entityType) {
-//     case entityConstants.ENTITY_TYPE_TALENT:
-//       return mappingsLib.mapTalentToServer
-//     case entityConstants.ENTITY_TYPE_VENUE:
-//       return mappingsLib.mapVenueToServer
-//     case entityConstants.ENTITY_TYPE_EVENT:
-//       return mappingsLib.mapEventToServer
-//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-//       return mappingsLib.mapEventSeriesToServer
-//     default:
-//       throw new Error(`entityType out of range: ${entityType}`)
-//   }
-// }
-
-// function _getFormNameForEntityType (entityType) {
-//   switch (entityType) {
-//     case entityConstants.ENTITY_TYPE_TALENT:
-//       return formConstants.EDIT_TALENT_FORM_NAME
-//     case entityConstants.ENTITY_TYPE_VENUE:
-//       return formConstants.EDIT_VENUE_FORM_NAME
-//     case entityConstants.ENTITY_TYPE_EVENT:
-//       return formConstants.EDIT_EVENT_IMAGES_FORM_NAME
-//     case entityConstants.ENTITY_TYPE_EVENT_SERIES:
-//       return formConstants.EDIT_EVENT_SERIES_FORM_NAME
-//     default:
-//       throw new Error(`entityType out of range: ${entityType}`)
-//   }
-// }
+// TODO Delete when I can:
 
 // function * getEventAsCopy (action) {
 //   const { id } = action.payload
@@ -116,38 +68,6 @@ export function * getSubEntity ({ payload, meta }) {
 //       type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
 //       payload: { statusCode: err.statusCode || 500 }
 //     })
-//   }
-// }
-
-// function * autocompleteSearch (action) {
-//   try {
-//     yield call(delay, 300) // debounce
-//     const query = normalise(
-//       action.payload.query,
-//       searchConstants.AUTO_SEARCH_QUERY_NORMALISER
-//     )
-//     const errors = yield call(
-//       validationLib.validate,
-//       query,
-//       searchConstants.AUTO_SEARCH_QUERY_CONSTRAINT,
-//       null,
-//       true
-//     )
-
-//     if (errors !== null) {
-//       yield call(log.error, errors)
-//       return
-//     }
-
-//     const requestUrl = searchLib.createAutocompleteSearchRequestUrl(query)
-//     const json = yield call(get, requestUrl)
-
-//     yield put({
-//       type: entityActionTypes.AUTOCOMPLETE_SEARCH_SUCCEEDED,
-//       payload: json
-//     })
-//   } catch (err) {
-//     yield call(log.error, err)
 //   }
 // }
 
@@ -225,7 +145,8 @@ export function * getSubEntity ({ payload, meta }) {
 // }
 
 export default [
-  takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity)
+  takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity),
+  takeLatest(eventActions.types.GET_ALL_TAGS, getAllTags)
   // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),
   // takeLatest(entityActionTypes.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
   // takeLatest(entityActionTypes.GET_EVENT_AS_COPY, getEventAsCopy)

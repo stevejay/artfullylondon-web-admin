@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FieldContainer from '_src/shared/components/field/container'
-import Dropdown from './index'
+import Select from './index'
 
 class SelectField extends React.Component {
   shouldComponentUpdate (nextProps) {
@@ -40,7 +40,7 @@ class SelectField extends React.Component {
         disabled={disabled}
         style={containerStyle}
       >
-        <Dropdown
+        <Select
           value={value}
           onChange={onChange}
           name={label}

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when not showing the add tag modal 1`] = `
+<FormRow>
+  <Field
+    component={[Function]}
+    containerStyle={
+      Object {
+        "flexBasis": "auto",
+      }
+    }
+    label="The Label"
+    multi={true}
+    name="theName"
+    options={
+      Array [
+        Object {
+          "id": "a",
+          "label": "A",
+        },
+      ]
+    }
+    searchable={false}
+    valueKey="id"
+  />
+  <ButtonField
+    label="New…"
+    onClick={[Function]}
+    submitting={false}
+    type="button"
+  />
+  <Modal
+    aria-label="Tag Selector"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={false}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="New Tag"
+      type="narrow"
+    >
+      <ReduxForm
+        canAddTag={true}
+        className="src-modules-event-components-tag-selector__form"
+        initialValues={
+          Object {
+            "label": "",
+            "tagType": "medium",
+          }
+        }
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</FormRow>
+`;
+
+exports[`should render correctly when showing the add tag modal 1`] = `
+<FormRow>
+  <Field
+    component={[Function]}
+    containerStyle={
+      Object {
+        "flexBasis": "auto",
+      }
+    }
+    label="The Label"
+    multi={true}
+    name="theName"
+    options={
+      Array [
+        Object {
+          "id": "a",
+          "label": "A",
+        },
+      ]
+    }
+    searchable={false}
+    valueKey="id"
+  />
+  <ButtonField
+    label="New…"
+    onClick={[Function]}
+    submitting={false}
+    type="button"
+  />
+  <Modal
+    aria-label="Tag Selector"
+    backdropTransition={[Function]}
+    onHide={[Function]}
+    show={true}
+    transition={[Function]}
+  >
+    <ModalContainer
+      dismissable={true}
+      onHide={[Function]}
+      title="New Tag"
+      type="narrow"
+    >
+      <ReduxForm
+        canAddTag={true}
+        className="src-modules-event-components-tag-selector__form"
+        initialValues={
+          Object {
+            "label": "",
+            "tagType": "medium",
+          }
+        }
+        onSubmit={[Function]}
+      />
+    </ModalContainer>
+  </Modal>
+</FormRow>
+`;

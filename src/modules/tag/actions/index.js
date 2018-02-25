@@ -18,14 +18,13 @@ export const getTags = tagType => ({
   payload: { tagType }
 })
 
-export const getTagsStarted = tagType => ({
-  type: types.GET_TAGS_STARTED,
-  payload: { tagType }
+export const getTagsStarted = () => ({
+  type: types.GET_TAGS_STARTED
 })
 
-export const getTagsSucceeded = tags => ({
+export const getTagsSucceeded = (tags, tagType) => ({
   type: types.GET_TAGS_SUCCEEDED,
-  payload: { tags }
+  payload: { tags, tagType }
 })
 
 export const getTagsFailed = () => ({
@@ -34,16 +33,17 @@ export const getTagsFailed = () => ({
 
 export const addTag = payload => ({
   type: types.ADD_TAG,
-  payload
+  payload,
+  meta: { thunk: true }
 })
 
 export const addTagStarted = () => ({
   type: types.ADD_TAG_STARTED
 })
 
-export const addTagSucceeded = tag => ({
+export const addTagSucceeded = (tag, tagType) => ({
   type: types.ADD_TAG_SUCCEEDED,
-  payload: { tag }
+  payload: { tag, tagType }
 })
 
 export const addTagFailed = () => ({

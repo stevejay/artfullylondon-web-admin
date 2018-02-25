@@ -21,13 +21,14 @@ export const reducer = handleActions(
       getFailed: false,
       addInProgress: false,
       deleteInProgress: false,
-      tagType: action.payload.tagType,
+      tagType: null,
       tags: null
     }),
     [types.GET_TAGS_SUCCEEDED]: (state, action) => ({
       ...state,
       getInProgress: false,
       deleteInProgress: false,
+      tagType: action.payload.tagType,
       tags: tagLib.processReceivedTags(action.payload.tags)
     }),
     [types.GET_TAGS_FAILED]: state => ({
@@ -40,7 +41,11 @@ export const reducer = handleActions(
       addInProgress: true
     }),
     [types.ADD_TAG_SUCCEEDED]: (state, action) => {
-      const { payload: { tag } } = action
+      const { payload: { tag, tagType } } = action
+
+      if (tagType !== state.tagType || _.isNil(state.tags)) {
+        return state
+      }
 
       let spliceIndex = _.findIndex(state.tags, value => value.id > tag.id)
 

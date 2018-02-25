@@ -12,6 +12,13 @@ export function * getTags (tagType) {
   return json.tags[tagType] || []
 }
 
+export function * getAllTags () {
+  const token = yield call(getAuthTokenForCurrentUser)
+  const url = `${TAG_SERVICE_URL}/tags`
+  const json = yield call(fetchLib.get, url, token)
+  return json.tags
+}
+
 export function * addTag (values) {
   const { tagType, label } = values
   const token = yield call(getAuthTokenForCurrentUser)

@@ -48,6 +48,25 @@ describe('getTags', () => {
   })
 })
 
+describe('getAllTags', () => {
+  it('should get all tags', () => {
+    const generator = sagas.getAllTags('medium')
+
+    let result = generator.next()
+    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
+
+    result = generator.next('some-token')
+    expect(result.value).toEqual(
+      call(fetchLib.get, 'https://api.test.com/tag-service/tags', 'some-token')
+    )
+
+    result = generator.next({ tags: { medium: [{ label: 'foo' }] } })
+    expect(result.value).toEqual({ medium: [{ label: 'foo' }] })
+
+    expect(result.done).toEqual(true)
+  })
+})
+
 describe('addTag', () => {
   it('should add', () => {
     const generator = sagas.addTag({ tagType: 'medium', label: 'Label' })

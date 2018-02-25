@@ -14,6 +14,7 @@ import * as eventConstants from '../constants'
 import * as eventMapper from '../lib/mapper'
 import * as eventNormaliseLib from '../lib/normalise'
 import * as validationLib from '_src/shared/lib/validation'
+import * as eventActions from '../actions'
 import { BASIC_CONSTRAINT } from '../constants/constraints'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
@@ -30,6 +31,9 @@ const STEPS = [
 ]
 
 export class EventEditOrCreate extends React.Component {
+  componentWillMount () {
+    this.props.dispatch(eventActions.getAllTags())
+  }
   componentWillReceiveProps (nextProps) {
     if (nextProps.entity.id !== this.props.entity.id) {
       this.props.resetInitialValues(
@@ -121,27 +125,34 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 1 &&
             <TagsForm
               onSubmit={this.handleSubmitTags}
-              previousPage={this.previousPage}
+              onPreviousPage={this.previousPage}
               onCancel={onCancel}
+              isEdit={isEdit}
               initialValues={initialValues}
             />}
           {stepIndex === 2 &&
             <TimesForm
               onSubmit={this.handleSubmitTimes}
-              previousPage={this.previousPage}
+              onPreviousPage={this.previousPage}
               onCancel={onCancel}
+              isEdit={isEdit}
+              initialValues={initialValues}
             />}
           {stepIndex === 3 &&
             <TalentsForm
               onSubmit={this.handleSubmitTalent}
-              previousPage={this.previousPage}
+              onPreviousPage={this.previousPage}
               onCancel={onCancel}
+              isEdit={isEdit}
+              initialValues={initialValues}
             />}
           {stepIndex === 4 &&
             <ImagesForm
               onSubmit={this.handleSubmit}
-              previousPage={this.previousPage}
+              onPreviousPage={this.previousPage}
               onCancel={onCancel}
+              isEdit={isEdit}
+              initialValues={initialValues}
             />}
         </EntityDetailsContainer>
       </React.Fragment>

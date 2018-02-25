@@ -14,9 +14,10 @@ export const AddTagForm = ({
   handleSubmit,
   pristine,
   submitting,
-  error
+  error,
+  className
 }) => (
-  <Form onSubmit={handleSubmit}>
+  <Form onSubmit={handleSubmit} className={className}>
     <FormRow>
       <Field
         label='Tag Name'
@@ -42,12 +43,11 @@ export const AddTagForm = ({
 AddTagForm.propTypes = {
   canAddTag: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
+  className: PropTypes.string,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  tagType: PropTypes.string.isRequired,
   error: PropTypes.any
 }
 
