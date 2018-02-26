@@ -121,7 +121,7 @@ export function getInitialValues (event) {
       event.performancesClosures
     ),
     duration: event.duration || '',
-    talents: event.talents || [],
+    talents: _getTalentsInitialValue(event.talents),
     audienceTags: event.audienceTags || [],
     mediumTags: event.mediumTags || [],
     styleTags: event.styleTags || [],
@@ -137,6 +137,16 @@ export function getInitialValues (event) {
     weSay: event.weSay || '',
     version: event.version
   }
+}
+
+// TODO move somewhere else?
+function _getTalentsInitialValue (talents) {
+  return (talents || []).map(talent => ({
+    ...talent,
+    key: talent.id,
+    roles: (talent.roles || []).join(', '),
+    characters: (talent.characters || []).join(', ')
+  }))
 }
 
 export function mapSubmittedValues (values) {

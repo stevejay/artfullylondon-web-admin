@@ -15,13 +15,11 @@ class TalentsGridRow extends React.PureComponent {
   render () {
     const { value, onDelete } = this.props
 
-    // TODO value.roles and value.characters will likely be wrong.
-
     return (
       <GridRow id={value.key} onDelete={onDelete}>
         <div styleName='first-row'>
           <a href={`/talent/${value.id}`} target='_blank' rel='noopener'>
-            {value.name || 'TODO!!!'}
+            {value.name || `${value.firstNames} ${value.lastName}`}
           </a>
         </div>
         <Text

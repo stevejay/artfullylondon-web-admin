@@ -3,6 +3,20 @@ import statusType from '_src/domain/types/status-type'
 import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 
+export function getBasicTalentInitialValues () {
+  return {
+    status: statusType.ACTIVE,
+    firstNames: '',
+    lastName: '',
+    talentType: talentType.INDIVIDUAL,
+    commonRole: '',
+    links: [],
+    images: [],
+    weSay: '',
+    version: 0
+  }
+}
+
 export function getInitialValues (talent) {
   if (talent.isNew()) {
     return {

@@ -736,69 +736,69 @@ function _formatTimesForDayDisplay (times) {
   return times ? times.join(', ') : 'Closed'
 }
 
-// export function getEventTimesFormDisplayFlags (
-//   eventType,
-//   occurrenceType,
-//   dateFrom,
-//   dateTo,
-//   venue,
-//   useVenueOpeningTimes
-// ) {
-//   useVenueOpeningTimes = !!useVenueOpeningTimes
+export function getEventTimesFormDisplayFlags (
+  eventType,
+  occurrenceType,
+  dateFrom,
+  dateTo,
+  venue,
+  useVenueOpeningTimes
+) {
+  useVenueOpeningTimes = !!useVenueOpeningTimes
 
-//   const isPerformance = eventLib.eventIsPerformance(eventType)
-//   const isOneTimePerformance =
-//     isPerformance && eventLib.eventIsOneTime(occurrenceType)
+  const isPerformance = eventLib.eventIsPerformance(eventType)
+  const isOneTimePerformance =
+    isPerformance && eventLib.eventIsOneTime(occurrenceType)
 
-//   const isExhibition = !isPerformance
+  const isExhibition = !isPerformance
 
-//   const hasRange = eventLib.occurrenceHasDateRange(occurrenceType)
-//   const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
+  const hasRange = eventLib.occurrenceHasDateRange(occurrenceType)
+  const isSingleDay = isOneTimePerformance || (hasRange && dateFrom === dateTo)
 
-//   const isLongerThanWeek =
-//     (hasRange && dateLib.periodIsLongerThanWeek(dateFrom, dateTo)) ||
-//     eventLib.occurrenceIsContinuous(occurrenceType)
+  const isLongerThanWeek =
+    (hasRange && dateLib.periodIsLongerThanWeek(dateFrom, dateTo)) ||
+    eventLib.occurrenceIsContinuous(occurrenceType)
 
-//   const venueHasOpeningTimes =
-//     isExhibition &&
-//     ((!!venue.openingTimes && venue.openingTimes.length > 0) ||
-//       (!!venue.openingTimesOverrides && venue.openingTimesOverrides.length > 0))
+  const venueHasOpeningTimes =
+    isExhibition &&
+    ((!!venue.openingTimes && venue.openingTimes.length > 0) ||
+      (!!venue.openingTimesOverrides && venue.openingTimesOverrides.length > 0))
 
-//   const showSingleDayOpeningTimes =
-//     isExhibition && isSingleDay && !useVenueOpeningTimes
+  const showSingleDayOpeningTimes =
+    isExhibition && isSingleDay && !useVenueOpeningTimes
 
-//   const showOpeningTimesByDate =
-//     isExhibition && !isSingleDay && !isLongerThanWeek && !useVenueOpeningTimes
+  const showOpeningTimesByDate =
+    isExhibition && !isSingleDay && !isLongerThanWeek && !useVenueOpeningTimes
 
-//   const showPerformancesByDate =
-//     isPerformance && !isSingleDay && !isLongerThanWeek
+  const showPerformancesByDate =
+    isPerformance && !isSingleDay && !isLongerThanWeek
 
-//   const showSingleDayPerformances = isPerformance && isSingleDay
+  const showSingleDayPerformances = isPerformance && isSingleDay
 
-//   if (isExhibition) {
-//     return {
-//       showUseVenueTimesOption: venueHasOpeningTimes,
-//       showTimesRanges: !isSingleDay &&
-//         isLongerThanWeek &&
-//         !useVenueOpeningTimes &&
-//         hasRange,
-//       showOpeningTimes: isLongerThanWeek && !useVenueOpeningTimes,
-//       showAdditionalOpeningTimes: !isSingleDay &&
-//         (isLongerThanWeek || useVenueOpeningTimes),
-//       showAdditionalOpeningTimesAsOpeningTimes: showSingleDayOpeningTimes ||
-//         showOpeningTimesByDate,
-//       showSpecialOpeningTimes: !isSingleDay,
-//       showOpeningTimesClosures: !isSingleDay
-//     }
-//   } else {
-//     return {
-//       showTimesRanges: !isSingleDay && isLongerThanWeek && hasRange,
-//       showPerformances: isLongerThanWeek,
-//       showAdditionalPerformances: !isSingleDay && isLongerThanWeek,
-//       showAdditionalPerformancesAsPerformances: showSingleDayPerformances ||
-//         showPerformancesByDate,
-//       showSpecialPerformances: !isOneTimePerformance,
-//       showPerformancesClosures: !isSingleDay
-//     }
-//   }
-// }
+  if (isExhibition) {
+    return {
+      showUseVenueTimesOption: venueHasOpeningTimes,
+      showTimesRanges: !isSingleDay &&
+        isLongerThanWeek &&
+        !useVenueOpeningTimes &&
+        hasRange,
+      showOpeningTimes: isLongerThanWeek && !useVenueOpeningTimes,
+      showAdditionalOpeningTimes: !isSingleDay &&
+        (isLongerThanWeek || useVenueOpeningTimes),
+      showAdditionalOpeningTimesAsOpeningTimes: showSingleDayOpeningTimes ||
+        showOpeningTimesByDate,
+      showSpecialOpeningTimes: !isSingleDay,
+      showOpeningTimesClosures: !isSingleDay
+    }
+  } else {
+    return {
+      showTimesRanges: !isSingleDay && isLongerThanWeek && hasRange,
+      showPerformances: isLongerThanWeek,
+      showAdditionalPerformances: !isSingleDay && isLongerThanWeek,
+      showAdditionalPerformancesAsPerformances: showSingleDayPerformances ||
+        showPerformancesByDate,
+      showSpecialPerformances: !isOneTimePerformance,
+      showPerformancesClosures: !isSingleDay
+    }
+  }
+}

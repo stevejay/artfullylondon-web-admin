@@ -17,3 +17,13 @@ export function updateElementByKey (array, key, newValues) {
 export function removeElementByKey (array, key) {
   return array.filter(x => (x.key || x) !== key)
 }
+
+export function addElement (array, newElement) {
+  if (_.find(array, x => (x.key || x) === (newElement.key || newElement))) {
+    return null
+  }
+
+  const newArray = array.slice()
+  newArray.push(newElement)
+  return newArray
+}

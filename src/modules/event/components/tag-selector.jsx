@@ -11,7 +11,6 @@ import ButtonField from '_src/shared/components/button/field'
 import SelectField from '_src/shared/components/select/field'
 import { AddTagForm } from '_src/modules/tag'
 import './tag-selector.scss'
-// import * as eventActions from '../actions'
 
 export class TagSelector extends React.Component {
   handleAddTag = () => {

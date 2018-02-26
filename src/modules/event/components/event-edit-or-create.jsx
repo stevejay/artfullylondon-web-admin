@@ -15,7 +15,12 @@ import * as eventMapper from '../lib/mapper'
 import * as eventNormaliseLib from '../lib/normalise'
 import * as validationLib from '_src/shared/lib/validation'
 import * as eventActions from '../actions'
-import { BASIC_CONSTRAINT } from '../constants/constraints'
+import {
+  BASIC_CONSTRAINT,
+  TAGS_CONSTRAINT,
+  TIMES_CONSTRAINT,
+  TALENT_CONSTRAINT
+} from '../constants/constraints'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
 import ImagesForm from '../forms/images'
@@ -47,7 +52,7 @@ export class EventEditOrCreate extends React.Component {
     const { stepIndex, setStepIndex } = this.props
     stepIndex < 4 && setStepIndex(stepIndex + 1)
   }
-  previousPage = event => {
+  handlePreviousPage = event => {
     event.preventDefault()
     const { stepIndex, setStepIndex } = this.props
     stepIndex > 0 && setStepIndex(stepIndex - 1)
@@ -79,26 +84,51 @@ export class EventEditOrCreate extends React.Component {
     }
   }
   handleSubmitBasics = values => {
-    return validationLib
-      .validate(values, BASIC_CONSTRAINT, (values, errors) => {
+    return this._handlePageSubmit(
+      values,
+      BASIC_CONSTRAINT,
+      (values, errors) => {
         if (!values.venue || !values.venue.id) {
           errors.venue = 'No venue selected'
         }
-      })
-      .then(
-        values =>
-          new Promise(resolve => {
-            eventNormaliseLib.normaliseEventValues(values)
-            this.props.updateInitialValues(values)
-            this.nextPage()
-            resolve()
-          })
-      )
+      }
+    )
   }
-  handleSubmitTags = values => {}
-  handleSubmitTimes = values => {}
-  handleSubmitTalent = values => {}
-  handleSubmit = values => {}
+  handleSubmitTags = values => {
+    return this._handlePageSubmit(values, TAGS_CONSTRAINT, (values, errors) => {
+      if (!values.mediumTags || values.mediumTags.length === 0) {
+        errors.mediumTags = "Medium Tags can't be empty"
+      }
+    })
+  }
+  handleSubmitTimes = values => {
+    return this._handlePageSubmit(values, TIMES_CONSTRAINT)
+  }
+  handleSubmitTalent = values => {
+    return this._handlePageSubmit(
+      values,
+      TALENT_CONSTRAINT,
+      (values, errors) => {
+        if (values.talents.filter(x => x.roles === '').length) {
+          errors.talents = 'All talent must have roles assigned'
+        }
+      }
+    )
+  }
+  handleSubmit = values => {
+    // TODO
+  }
+  _handlePageSubmit = (values, constraint, extraConstraint) => {
+    return validationLib.validate(values, constraint, extraConstraint).then(
+      values =>
+        new Promise(resolve => {
+          eventNormaliseLib.normaliseEventValues(values)
+          this.props.updateInitialValues(values)
+          this.nextPage()
+          resolve()
+        })
+    )
+  }
   render () {
     const { entity, isEdit, stepIndex, initialValues, onCancel } = this.props
 
@@ -125,7 +155,7 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 1 &&
             <TagsForm
               onSubmit={this.handleSubmitTags}
-              onPreviousPage={this.previousPage}
+              onPreviousPage={this.handlePreviousPage}
               onCancel={onCancel}
               isEdit={isEdit}
               initialValues={initialValues}
@@ -133,7 +163,7 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 2 &&
             <TimesForm
               onSubmit={this.handleSubmitTimes}
-              onPreviousPage={this.previousPage}
+              onPreviousPage={this.handlePreviousPage}
               onCancel={onCancel}
               isEdit={isEdit}
               initialValues={initialValues}
@@ -141,7 +171,7 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 3 &&
             <TalentsForm
               onSubmit={this.handleSubmitTalent}
-              onPreviousPage={this.previousPage}
+              onPreviousPage={this.handlePreviousPage}
               onCancel={onCancel}
               isEdit={isEdit}
               initialValues={initialValues}
@@ -149,7 +179,7 @@ export class EventEditOrCreate extends React.Component {
           {stepIndex === 4 &&
             <ImagesForm
               onSubmit={this.handleSubmit}
-              onPreviousPage={this.previousPage}
+              onPreviousPage={this.handlePreviousPage}
               onCancel={onCancel}
               isEdit={isEdit}
               initialValues={initialValues}

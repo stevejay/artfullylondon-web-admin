@@ -7,13 +7,22 @@ import './index.scss'
 
 class Divider extends ShouldNeverUpdateComponent {
   render () {
-    const { type, ...rest } = this.props
-    return <div role='presentation' {...rest} styleName={type} />
+    const { type, className, ...rest } = this.props
+
+    return (
+      <div
+        role='presentation'
+        {...rest}
+        styleName={type}
+        className={className}
+      />
+    )
   }
 }
 
 Divider.propTypes = {
-  type: PropTypes.oneOf(['basic', 'hidden', 'threedee'])
+  type: PropTypes.oneOf(['basic', 'hidden', 'threedee']),
+  className: PropTypes.string
 }
 
 Divider.defaultProps = {

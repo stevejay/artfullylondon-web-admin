@@ -14,6 +14,7 @@ import DayAndTimeEntry from './components/day-and-time-entry'
 import DayAndTimePeriodEntry from './components/day-and-time-period-entry'
 import TimesField from './components/times-field'
 import TimesRangeEntry from './components/times-range-entry'
+import { getTimesRangesOptions } from './lib/time'
 
 import sagas from './sagas'
 import * as actions from './actions'
@@ -39,5 +40,6 @@ export {
   TimesRangeEntry,
   sagas,
   actions,
-  constraints
+  constraints,
+  getTimesRangesOptions
 }

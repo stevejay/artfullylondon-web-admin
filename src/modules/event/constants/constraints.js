@@ -150,7 +150,7 @@ export const BASIC_CONSTRAINT = {
   }
 }
 
-export const CONSTRAINT = {
+export const TAGS_CONSTRAINT = {
   mediumTags: { presence: true }
 }
 
