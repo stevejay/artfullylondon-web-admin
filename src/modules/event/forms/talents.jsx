@@ -20,7 +20,8 @@ import * as eventConstants from '../constants'
 import {
   TalentsField,
   CreateBasicTalentForm,
-  getBasicTalentInitialValues
+  getBasicTalentInitialValues,
+  actions as talentActions
 } from '_src/modules/talent'
 import { actions as searchActions } from '_src/modules/search'
 import * as arrayLib from '_src/shared/lib/array'
@@ -35,7 +36,7 @@ export class EditEventTalentsForm extends React.Component {
     this._talent = ref
   }
   handleAutocompleteSelect = (entityType, id, item) => {
-    // TODO improve this method
+    // TODO make this method cleaner
 
     try {
       const newTalent = {
@@ -80,9 +81,14 @@ export class EditEventTalentsForm extends React.Component {
     this.props.setShowingModal(false)
   }
   handleCreateTalent = values => {
-    console.log('handleCreateTalent', values)
-
-    this.handleHideModal()
+    this.props
+      .dispatch(
+        talentActions.createTalentForEntity(
+          values,
+          eventConstants.EDIT_EVENT_TALENTS_FORM_NAME
+        )
+      )
+      .then(this.handleHideModal)
   }
   render () {
     const {

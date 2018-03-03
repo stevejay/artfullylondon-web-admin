@@ -62,6 +62,8 @@ I have installed a beta version of standard v11 to deal with an eslint error.
    )
  })
 
+- https://geowarin.github.io/what-i-did-wrong-as-a-cto/
+
 - scroll position restoration on back button
 - put shared code into a shared directory.
 - replace divs with fragments where possible

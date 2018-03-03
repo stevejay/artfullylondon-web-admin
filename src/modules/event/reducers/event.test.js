@@ -1,8 +1,10 @@
 import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './event'
-import * as eventActions from '../actions'
 import { actions as tagActions } from '_src/modules/tag'
+import { actions as entityActions } from '_src/modules/entity'
+import entityType from '_src/domain/types/entity-type'
+import * as eventActions from '../actions'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
@@ -107,6 +109,68 @@ it('should handle adding a tag when there are no tags', () => {
   })
 })
 
+it('should handle resetting when event entity is being reset', () => {
+  const state = deepFreeze({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+
+  const actual = reducer(
+    state,
+    entityActions.resetEntityForCreate(entityType.EVENT)
+  )
+
+  expect(actual).toEqual({
+    selectedTalentId: null,
+    tags: null
+  })
+})
+
+it('should not reset when non-event entity is being reset', () => {
+  const state = deepFreeze({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+
+  const actual = reducer(
+    state,
+    entityActions.resetEntityForCreate(entityType.VENUE)
+  )
+
+  expect(actual).toEqual({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+})
+
+it('should handle resetting when event entity is being loaded', () => {
+  const state = deepFreeze({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+
+  const actual = reducer(state, entityActions.getEntity(entityType.EVENT))
+
+  expect(actual).toEqual({
+    selectedTalentId: null,
+    tags: null
+  })
+})
+
+it('should not reset when non-event entity is being loaded', () => {
+  const state = deepFreeze({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+
+  const actual = reducer(state, entityActions.getEntity(entityType.TALENT))
+
+  expect(actual).toEqual({
+    selectedTalentId: null,
+    tags: { medium: [] }
+  })
+})
+
 describe('selectors', () => {
   describe('selectedTalentId', () => {
     it('should get the value', () => {
@@ -121,6 +185,20 @@ describe('selectors', () => {
       const state = { tags: { medium: [{ id: 'a', label: 'A' }] } }
       const actual = selectors.tags(state)
       expect(actual).toEqual({ medium: [{ id: 'a', label: 'A' }] })
+    })
+  })
+
+  describe('hasTags', () => {
+    it('should get the value when has tags', () => {
+      const state = { tags: { medium: [{ id: 'a', label: 'A' }] } }
+      const actual = selectors.hasTags(state)
+      expect(actual).toEqual(true)
+    })
+
+    it('should get the value when has no tags', () => {
+      const state = { tags: null }
+      const actual = selectors.hasTags(state)
+      expect(actual).toEqual(false)
     })
   })
 })

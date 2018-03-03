@@ -102,9 +102,12 @@ EditEventTagsForm.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  tags: eventSelectors.tags(state)
-}))(
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    tags: eventSelectors.tags(state)
+  })
+)(
   reduxForm({
     form: eventConstants.EDIT_EVENT_TAGS_FORM_NAME,
     enableReinitialize: true

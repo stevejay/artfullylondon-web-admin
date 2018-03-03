@@ -17,6 +17,7 @@ import * as link from '_src/modules/link'
 import * as time from '_src/modules/time'
 import * as monitor from '_src/modules/monitor'
 import * as event from '_src/modules/event'
+import * as talent from '_src/modules/talent'
 
 const reducer = combineReducers({
   form: formReducer,
@@ -45,7 +46,8 @@ const sagas = function * () {
     ...dashboard.sagas,
     ...time.sagas,
     ...monitor.sagas,
-    ...event.sagas
+    ...event.sagas,
+    ...talent.sagas
   ])
 }
 
