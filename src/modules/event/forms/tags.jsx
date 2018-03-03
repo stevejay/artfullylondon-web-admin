@@ -2,9 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, arrayPush } from 'redux-form'
-import _ from 'lodash'
 
-import LoaderPanel from '_src/shared/components/loader/panel'
 import Form from '_src/shared/components/form'
 import FormError from '_src/shared/components/form/error'
 import FormButtons from '_src/shared/components/form/buttons'
@@ -12,8 +10,10 @@ import Divider from '_src/shared/components/divider'
 import TagSelector from '../components/tag-selector'
 import tagType from '_src/domain/types/tag-type'
 import * as eventConstants from '../constants'
-import { actions as tagActions } from '_src/modules/tag'
-import { selectors as eventSelectors } from '../reducers'
+import {
+  actions as tagActions,
+  selectors as tagSelectors
+} from '_src/modules/tag'
 
 export class EditEventTagsForm extends React.Component {
   handleAddTag = values => {
@@ -30,7 +30,10 @@ export class EditEventTagsForm extends React.Component {
   render () {
     const {
       isEdit,
-      tags,
+      styleTags,
+      mediumTags,
+      audienceTags,
+      geoTags,
       handleSubmit,
       error,
       submitting,
@@ -38,44 +41,37 @@ export class EditEventTagsForm extends React.Component {
       onPreviousPage
     } = this.props
 
-    const hasTags = !_.isNil(tags)
-
     return (
       <Form onSubmit={handleSubmit}>
-        {!hasTags && <LoaderPanel size='large' />}
-        {hasTags &&
-          <TagSelector
-            tagType={tagType.MEDIUM}
-            label='Medium Tags'
-            name='mediumTags'
-            options={tags.medium}
-            required
-            onAddTag={this.handleAddTag}
-          />}
-        {hasTags &&
-          <TagSelector
-            tagType={tagType.STYLE}
-            label='Style Tags'
-            name='styleTags'
-            options={tags.style}
-            onAddTag={this.handleAddTag}
-          />}
-        {hasTags &&
-          <TagSelector
-            tagType={tagType.AUDIENCE}
-            label='Audience Tags'
-            name='audienceTags'
-            options={tags.audience}
-            onAddTag={this.handleAddTag}
-          />}
-        {hasTags &&
-          <TagSelector
-            tagType={tagType.GEO}
-            label='Geo Tags'
-            name='geoTags'
-            options={tags.geo}
-            onAddTag={this.handleAddTag}
-          />}
+        <TagSelector
+          tagType={tagType.MEDIUM}
+          label='Medium Tags'
+          name='mediumTags'
+          options={mediumTags}
+          required
+          onAddTag={this.handleAddTag}
+        />
+        <TagSelector
+          tagType={tagType.STYLE}
+          label='Style Tags'
+          name='styleTags'
+          options={styleTags}
+          onAddTag={this.handleAddTag}
+        />
+        <TagSelector
+          tagType={tagType.AUDIENCE}
+          label='Audience Tags'
+          name='audienceTags'
+          options={audienceTags}
+          onAddTag={this.handleAddTag}
+        />
+        <TagSelector
+          tagType={tagType.GEO}
+          label='Geo Tags'
+          name='geoTags'
+          options={geoTags}
+          onAddTag={this.handleAddTag}
+        />
         <Divider />
         <FormError error={error} />
         <FormButtons
@@ -92,7 +88,10 @@ export class EditEventTagsForm extends React.Component {
 EditEventTagsForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   isEdit: PropTypes.bool.isRequired,
-  tags: PropTypes.object,
+  styleTags: PropTypes.array.isRequired,
+  audienceTags: PropTypes.array.isRequired,
+  geoTags: PropTypes.array.isRequired,
+  mediumTags: PropTypes.array.isRequired,
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
@@ -105,7 +104,10 @@ EditEventTagsForm.propTypes = {
 export default connect(
   /* istanbul ignore next */
   state => ({
-    tags: eventSelectors.tags(state)
+    styleTags: tagSelectors.getTagsForType(state, tagType.STYLE),
+    audienceTags: tagSelectors.getTagsForType(state, tagType.AUDIENCE),
+    geoTags: tagSelectors.getTagsForType(state, tagType.GEO),
+    mediumTags: tagSelectors.getTagsForType(state, tagType.MEDIUM)
   })
 )(
   reduxForm({

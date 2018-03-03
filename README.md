@@ -54,6 +54,7 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 
 ## TODO
 
+- https://serverless.com/blog/keep-your-lambdas-warm/
 - fix the weird iframe back button issue.
   code for that:
  history.listen((location, action) => {

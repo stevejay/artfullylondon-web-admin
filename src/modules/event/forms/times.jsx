@@ -29,10 +29,8 @@ import {
   actions as timeActions,
   getTimesRangesOptions
 } from '_src/modules/time'
-import tagType from '_src/domain/types/tag-type'
 import * as timeLib from '_src/shared/lib/time'
 import * as eventConstants from '../constants'
-import { selectors as eventSelectors } from '../reducers'
 
 export class EditEventTimesForm extends React.Component {
   render () {
@@ -40,7 +38,6 @@ export class EditEventTimesForm extends React.Component {
       initialValues,
       useVenueOpeningTimesValue,
       timesRangesValue,
-      tags: { [tagType.AUDIENCE]: audienceTags },
       handleSubmit,
       error,
       submitting,
@@ -191,7 +188,6 @@ export class EditEventTimesForm extends React.Component {
               parentFormName={eventConstants.EDIT_EVENT_TIMES_FORM_NAME}
               minDate={dateFrom}
               maxDate={dateTo}
-              audienceTags={audienceTags}
               onSubmit={timeActions.addSpecialOpeningTime}
             />
           </FormRow>}
@@ -207,7 +203,6 @@ export class EditEventTimesForm extends React.Component {
               parentFormName={eventConstants.EDIT_EVENT_TIMES_FORM_NAME}
               minDate={dateFrom}
               maxDate={dateTo}
-              audienceTags={audienceTags}
               onSubmit={timeActions.addSpecialPerformance}
             />
           </FormRow>}
@@ -259,7 +254,6 @@ EditEventTimesForm.propTypes = {
   isEdit: PropTypes.bool.isRequired,
   useVenueOpeningTimesValue: PropTypes.bool,
   timesRangesValue: PropTypes.array,
-  tags: PropTypes.object,
   submitting: PropTypes.bool.isRequired,
   error: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
@@ -278,6 +272,5 @@ const selector = formValueSelector(eventConstants.EDIT_EVENT_TIMES_FORM_NAME)
 
 export default connect(state => ({
   useVenueOpeningTimesValue: selector(state, 'useVenueOpeningTimes'),
-  timesRangesValue: selector(state, 'timesRanges'),
-  tags: eventSelectors.tags(state)
+  timesRangesValue: selector(state, 'timesRanges')
 }))(WrappedEditEventTimesForm)
