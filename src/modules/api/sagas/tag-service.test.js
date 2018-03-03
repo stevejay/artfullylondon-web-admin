@@ -21,28 +21,7 @@ describe('getTags', () => {
     )
 
     result = generator.next({ tags: { medium: [{ label: 'foo' }] } })
-    expect(result.value).toEqual([{ label: 'foo' }])
-
-    expect(result.done).toEqual(true)
-  })
-
-  it('should get when tags do not exist', () => {
-    const generator = sagas.getTags('medium')
-
-    let result = generator.next()
-    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
-
-    result = generator.next('some-token')
-    expect(result.value).toEqual(
-      call(
-        fetchLib.get,
-        'https://api.test.com/tag-service/tags/medium',
-        'some-token'
-      )
-    )
-
-    result = generator.next({ tags: { audience: [{ label: 'foo' }] } })
-    expect(result.value).toEqual([])
+    expect(result.value).toEqual({ medium: [{ label: 'foo' }] })
 
     expect(result.done).toEqual(true)
   })

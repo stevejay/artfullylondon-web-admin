@@ -5,6 +5,7 @@ import log from 'loglevel'
 import { FullTalent } from '_src/domain/talent'
 import { EntityPage } from './entity'
 import * as entityActions from '../actions'
+import { actions as tagActions } from '_src/modules/tag'
 
 class SomeComponent extends React.Component {
   render () {
@@ -16,10 +17,12 @@ it('should render correctly when an error was raised', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed
+      gettingTags={false}
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
@@ -40,10 +43,12 @@ it('should render correctly when an error was raised', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed
+      gettingTags={false}
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
@@ -64,10 +69,12 @@ it('should render correctly when get entity failed', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed
+      gettingTags={false}
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
@@ -85,10 +92,35 @@ it('should render correctly when get is in progress', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress
       getFailed={false}
+      gettingTags={false}
+      component={SomeComponent}
+      dispatch={_.noop}
+      match={{}}
+      location={{}}
+      history={{}}
+      hasError={false}
+      setHasError={_.noop}
+    />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
+it('should render correctly when getting tags', () => {
+  const wrapper = shallow(
+    <EntityPage
+      entityType='talent'
+      viewing
+      entityId='some-id'
+      entity={null}
+      getInProgress={false}
+      getFailed={false}
+      gettingTags
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
@@ -106,10 +138,12 @@ it('should render correctly when has an entity', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={new FullTalent({ id: 'some-id' })}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}
@@ -123,16 +157,18 @@ it('should render correctly when has an entity', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('should trigger getting the entity on construction when editing an entity', () => {
+it('should trigger getting the entity on construction when viewing an entity', () => {
   const dispatch = jest.fn()
 
   shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
@@ -146,6 +182,37 @@ it('should trigger getting the entity on construction when editing an entity', (
   expect(dispatch).toHaveBeenCalledWith(
     entityActions.getEntity('talent', 'some-id')
   )
+
+  expect(dispatch).not.toHaveBeenCalledWith(tagActions.getTags())
+})
+
+it('should trigger getting the entity on construction when editing an entity', () => {
+  const dispatch = jest.fn()
+
+  shallow(
+    <EntityPage
+      entityType='talent'
+      viewing={false}
+      entityId='some-id'
+      entity={null}
+      getInProgress={false}
+      getFailed={false}
+      gettingTags={false}
+      component={SomeComponent}
+      dispatch={dispatch}
+      match={{}}
+      location={{}}
+      history={{}}
+      hasError={false}
+      setHasError={_.noop}
+    />
+  )
+
+  expect(dispatch).toHaveBeenCalledWith(
+    entityActions.getEntity('talent', 'some-id')
+  )
+
+  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags())
 })
 
 it('should trigger getting the entity on construction when creating an entity', () => {
@@ -154,10 +221,12 @@ it('should trigger getting the entity on construction when creating an entity', 
   shallow(
     <EntityPage
       entityType='talent'
+      viewing={false}
       entityId={null}
       entity={null}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
@@ -171,6 +240,8 @@ it('should trigger getting the entity on construction when creating an entity', 
   expect(dispatch).toHaveBeenCalledWith(
     entityActions.resetEntityForCreate('talent')
   )
+
+  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags())
 })
 
 it('should not trigger getting the entity when props change but the same entity is specified', () => {
@@ -180,10 +251,12 @@ it('should not trigger getting the entity when props change but the same entity 
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
@@ -206,10 +279,12 @@ it('should trigger getting the entity when props change and a different entity i
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing
       entityId='some-id'
       entity={null}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={dispatch}
       match={{}}
@@ -226,12 +301,6 @@ it('should trigger getting the entity when props change and a different entity i
     entityId: 'some-other-id'
   })
 
-  expect(dispatch).toHaveBeenCalledTimes(2)
-
-  expect(dispatch).toHaveBeenCalledWith(
-    entityActions.getEntity('talent', 'some-other-id')
-  )
-
   expect(setHasError).toHaveBeenCalledWith(false)
 })
 
@@ -242,10 +311,12 @@ it('should handle cancelling the entity edit', () => {
   const wrapper = shallow(
     <EntityPage
       entityType='talent'
+      viewing={false}
       entityId='some-id'
       entity={new FullTalent({ id: 'some-id' })}
       getInProgress={false}
       getFailed={false}
+      gettingTags={false}
       component={SomeComponent}
       dispatch={_.noop}
       match={{}}

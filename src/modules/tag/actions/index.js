@@ -13,7 +13,7 @@ export const types = {
   DELETE_TAG_FAILED: 'tag/DELETE_TAG_FAILED'
 }
 
-export const getTags = tagType => ({
+export const getTags = (tagType = null) => ({
   type: types.GET_TAGS,
   payload: { tagType }
 })
@@ -22,9 +22,9 @@ export const getTagsStarted = () => ({
   type: types.GET_TAGS_STARTED
 })
 
-export const getTagsSucceeded = (tags, tagType) => ({
+export const getTagsSucceeded = tags => ({
   type: types.GET_TAGS_SUCCEEDED,
-  payload: { tags, tagType }
+  payload: { tags }
 })
 
 export const getTagsFailed = () => ({

@@ -12,9 +12,15 @@ import { tagService } from '_src/modules/api'
 export function * getTags (action) {
   try {
     const tagType = action.payload.tagType
+    const hasTagType = !!tagType
     yield put(tagActions.getTagsStarted())
-    const tags = yield call(tagService.getTags, tagType)
-    yield put(tagActions.getTagsSucceeded(tags, tagType))
+
+    const tags = yield call(
+      hasTagType ? tagService.getTags : tagService.getAllTags,
+      tagType
+    )
+
+    yield put(tagActions.getTagsSucceeded(tags))
   } catch (err) {
     yield call(log.error, err)
     yield put(tagActions.getTagsFailed())

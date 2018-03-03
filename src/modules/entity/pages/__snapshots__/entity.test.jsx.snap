@@ -25,6 +25,15 @@ exports[`should render correctly when get is in progress 1`] = `
 </BasicSection>
 `;
 
+exports[`should render correctly when getting tags 1`] = `
+<BasicSection>
+  <BoxesLoader
+    size="large"
+    type="default"
+  />
+</BasicSection>
+`;
+
 exports[`should render correctly when has an entity 1`] = `
 <FadeTransition
   appear={true}

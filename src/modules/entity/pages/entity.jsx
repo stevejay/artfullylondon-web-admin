@@ -12,6 +12,10 @@ import BasicSection from '_src/shared/components/section/basic'
 import * as entityType from '_src/domain/types/entity-type'
 import * as entityConstants from '../constants'
 import * as entityActions from '../actions'
+import {
+  actions as tagActions,
+  selectors as tagSelectors
+} from '_src/modules/tag'
 import { selectors as entitySelectors } from '../reducers'
 
 // TODO could split into EntityDetailPage and EntityEditOrCreatePage?
@@ -34,7 +38,11 @@ export class EntityPage extends React.Component {
     event.preventDefault()
     this.props.history.goBack()
   }
-  _getOrResetEntity ({ entityType, entityId }) {
+  _getOrResetEntity ({ entityType, entityId, viewing }) {
+    if (!viewing) {
+      this.props.dispatch(tagActions.getTags())
+    }
+
     this.props.dispatch(
       entityId
         ? entityActions.getEntity(entityType, entityId)
@@ -47,6 +55,7 @@ export class EntityPage extends React.Component {
       entity,
       getInProgress,
       getFailed,
+      gettingTags,
       component: Component,
       hasError
     } = this.props
@@ -55,7 +64,7 @@ export class EntityPage extends React.Component {
       return <BasicSection><Error /></BasicSection>
     }
 
-    if (getInProgress) {
+    if (getInProgress || gettingTags) {
       return <BasicSection><BoxesLoader /></BasicSection>
     }
 
@@ -75,10 +84,12 @@ export class EntityPage extends React.Component {
 
 EntityPage.propTypes = {
   entityType: PropTypes.oneOf(entityType.VALUES).isRequired,
+  viewing: PropTypes.bool.isRequired,
   entityId: PropTypes.string,
   entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE,
   getInProgress: PropTypes.bool.isRequired,
   getFailed: PropTypes.bool.isRequired,
+  gettingTags: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
@@ -95,7 +106,8 @@ export default withRouter(
       entityId: ownProps.match.params[0],
       entity: entitySelectors.entity(state),
       getInProgress: entitySelectors.gettingEntity(state, ownProps.entityType),
-      getFailed: entitySelectors.failedToGetEntity(state)
+      getFailed: entitySelectors.failedToGetEntity(state),
+      gettingTags: tagSelectors.gettingTags(state)
     })
   )(withState('hasError', 'setHasError', false)(EntityPage))
 )

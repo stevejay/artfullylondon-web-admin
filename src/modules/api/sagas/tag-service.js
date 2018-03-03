@@ -9,7 +9,7 @@ export function * getTags (tagType) {
   const token = yield call(getAuthTokenForCurrentUser)
   const url = `${TAG_SERVICE_URL}/tags/${tagType}`
   const json = yield call(fetchLib.get, url, token)
-  return json.tags[tagType] || []
+  return json.tags
 }
 
 export function * getAllTags () {

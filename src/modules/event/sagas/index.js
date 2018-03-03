@@ -6,7 +6,7 @@ import log from 'loglevel'
 import * as sagaLib from '_src/shared/lib/saga'
 import * as eventActions from '../actions'
 import * as entityFactory from '_src/domain/entity-factory'
-import { eventService, tagService } from '_src/modules/api'
+import { eventService } from '_src/modules/api'
 import { actions as notificationActions } from '_src/modules/notification'
 
 export function * getSubEntity ({ payload, meta }) {
@@ -24,22 +24,6 @@ export function * getSubEntity ({ payload, meta }) {
       notificationActions.addErrorNotification(
         'Load Failed',
         `Failed to load ${subEntityType} entity`
-      )
-    )
-  }
-}
-
-export function * getAllTags () {
-  try {
-    const tags = yield call(tagService.getAllTags)
-    yield put(eventActions.getAllTagsSucceeded(tags))
-  } catch (err) {
-    yield call(log.error, err)
-
-    yield put(
-      notificationActions.addErrorNotification(
-        'Load Failed',
-        `Failed to load the tags`
       )
     )
   }
@@ -145,8 +129,7 @@ export function * getAllTags () {
 // }
 
 export default [
-  takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity),
-  takeLatest(eventActions.types.GET_ALL_TAGS, getAllTags)
+  takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity)
   // takeLatest(entityActionTypes.AUTOCOMPLETE_SEARCH, autocompleteSearch),
   // takeLatest(entityActionTypes.CREATE_TALENT_FOR_EVENT, createTalentForEvent),
   // takeLatest(entityActionTypes.GET_EVENT_AS_COPY, getEventAsCopy)

@@ -12,52 +12,64 @@ import * as tagActions from '../actions'
 import { tagService } from '_src/modules/api'
 
 describe('getTags', () => {
-  const generator = cloneableGenerator(tagSagas.getTags)({
-    payload: { tagType: 'medium' }
-  })
-
-  it('should prepare to get the tags for a tag type', () => {
-    let result = generator.next()
-    expect(result.value).toEqual(put(tagActions.getTagsStarted('medium')))
-
-    result = generator.next()
-    expect(result.value).toEqual(call(tagService.getTags, 'medium'))
-  })
-
-  it('should handle a response with tags', () => {
-    const generatorClone = generator.clone()
-
-    let result = generatorClone.next([{ id: 1 }])
-    expect(result.value).toEqual(
-      put(tagActions.getTagsSucceeded([{ id: 1 }], 'medium'))
+  describe('get a single tag type', () => {
+    const generator = cloneableGenerator(tagSagas.getTags)(
+      tagActions.getTags('medium')
     )
 
-    result = generatorClone.next()
-    expect(result.done).toEqual(true)
+    it('should prepare to get the tags', () => {
+      let result = generator.next()
+      expect(result.value).toEqual(put(tagActions.getTagsStarted()))
+
+      result = generator.next()
+      expect(result.value).toEqual(call(tagService.getTags, 'medium'))
+    })
+
+    it('should successfully get the tags', () => {
+      const generatorClone = generator.clone()
+
+      let result = generatorClone.next({ medium: [{ id: 1 }] })
+      expect(result.value).toEqual(
+        put(tagActions.getTagsSucceeded({ medium: [{ id: 1 }] }))
+      )
+
+      result = generatorClone.next()
+      expect(result.done).toEqual(true)
+    })
+
+    it('should handle an error response', () => {
+      const generatorClone = generator.clone()
+      const error = new Error('deliberately thrown')
+
+      let result = generatorClone.throw(error)
+      expect(result.value).toEqual(call(log.error, error))
+
+      result = generatorClone.next()
+      expect(result.value).toEqual(put(tagActions.getTagsFailed()))
+
+      result = generatorClone.next()
+      expect(result.done).toEqual(true)
+    })
   })
 
-  it('should handle a response with no tags', () => {
-    const generatorClone = generator.clone()
+  describe('get all tag types', () => {
+    it('should get the tags', () => {
+      const generator = tagSagas.getTags(tagActions.getTags())
 
-    let result = generatorClone.next([])
-    expect(result.value).toEqual(put(tagActions.getTagsSucceeded([], 'medium')))
+      let result = generator.next()
+      expect(result.value).toEqual(put(tagActions.getTagsStarted()))
 
-    result = generatorClone.next()
-    expect(result.done).toEqual(true)
-  })
+      result = generator.next()
+      expect(result.value).toEqual(call(tagService.getAllTags, null))
 
-  it('should handle an error response', () => {
-    const generatorClone = generator.clone()
-    const error = new Error('deliberately thrown')
+      result = generator.next({ medium: [{ id: 1 }] })
+      expect(result.value).toEqual(
+        put(tagActions.getTagsSucceeded({ medium: [{ id: 1 }] }))
+      )
 
-    let result = generatorClone.throw(error)
-    expect(result.value).toEqual(call(log.error, error))
-
-    result = generatorClone.next()
-    expect(result.value).toEqual(put(tagActions.getTagsFailed()))
-
-    result = generatorClone.next()
-    expect(result.done).toEqual(true)
+      result = generator.next()
+      expect(result.done).toEqual(true)
+    })
   })
 })
 

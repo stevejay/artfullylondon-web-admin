@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import EntityPage from './entity'
 
+// TODO find a better solution than the viewing flag:
+
 const EntityRoutes = ({
   entityType,
   editOrCreateComponent,
@@ -15,21 +17,33 @@ const EntityRoutes = ({
       exact
       render={/* istanbul ignore next */
         () => (
-          <EntityPage entityType={entityType} component={editOrCreateComponent} />
+          <EntityPage
+            entityType={entityType}
+            viewing={false}
+            component={editOrCreateComponent}
+          />
         )}
     />
     <Route
       path={`/${entityType}/edit/(.*)`}
       exact
       render={/* istanbul ignore next */ () => (
-        <EntityPage entityType={entityType} component={editOrCreateComponent} />
+        <EntityPage
+          entityType={entityType}
+          viewing={false}
+          component={editOrCreateComponent}
+        />
       )}
     />
     <Route
       path={`/${entityType}/(.*)`}
       exact
       render={/* istanbul ignore next */ () => (
-        <EntityPage entityType={entityType} component={detailComponent} />
+        <EntityPage
+          entityType={entityType}
+          viewing
+          component={detailComponent}
+        />
       )}
     />
   </Switch>

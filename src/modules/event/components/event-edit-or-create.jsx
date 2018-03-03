@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { submit as submitReduxForm } from 'redux-form'
 import { withStateHandlers } from 'recompose'
 
-import BoxesLoader from '_src/shared/components/loader/boxes'
 import { Image } from '_src/modules/image'
 import Divider from '_src/shared/components/divider'
 import StepCollection from '_src/shared/components/step/collection'
@@ -15,8 +14,6 @@ import * as eventConstants from '../constants'
 import * as eventMapper from '../lib/mapper'
 import * as eventNormaliseLib from '../lib/normalise'
 import * as validationLib from '_src/shared/lib/validation'
-import * as eventActions from '../actions'
-import { selectors as eventSelectors } from '../reducers'
 import {
   BASIC_CONSTRAINT,
   TAGS_CONSTRAINT,
@@ -38,9 +35,6 @@ const STEPS = [
 ]
 
 export class EventEditOrCreate extends React.Component {
-  componentWillMount () {
-    this.props.dispatch(eventActions.getAllTags())
-  }
   componentWillReceiveProps (nextProps) {
     if (nextProps.entity.id !== this.props.entity.id) {
       this.props.resetInitialValues(
@@ -132,18 +126,7 @@ export class EventEditOrCreate extends React.Component {
     )
   }
   render () {
-    const {
-      entity,
-      isEdit,
-      hasTags,
-      stepIndex,
-      initialValues,
-      onCancel
-    } = this.props
-
-    if (!hasTags) {
-      return <BoxesLoader />
-    }
+    const { entity, isEdit, stepIndex, initialValues, onCancel } = this.props
 
     return (
       <React.Fragment>
@@ -206,7 +189,6 @@ export class EventEditOrCreate extends React.Component {
 EventEditOrCreate.propTypes = {
   entity: PropTypes.instanceOf(FullEvent).isRequired,
   isEdit: PropTypes.bool.isRequired,
-  hasTags: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   stepIndex: PropTypes.number.isRequired,
@@ -216,9 +198,7 @@ EventEditOrCreate.propTypes = {
   resetInitialValues: PropTypes.func.isRequired
 }
 
-export default connect(state => ({
-  hasTags: eventSelectors.hasTags(state)
-}))(
+export default connect()(
   withStateHandlers(
     props => ({
       stepIndex: 0,

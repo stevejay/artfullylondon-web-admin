@@ -4,12 +4,13 @@ import _ from 'lodash'
 import { types } from '../actions'
 import * as tagLib from '../lib/tag'
 
+const EMPTY_ARRAY = []
+
 const initialState = {
   getInProgress: false,
   getFailed: false,
   addInProgress: false,
   deleteInProgress: false,
-  tagType: null,
   tags: null
 }
 
@@ -20,16 +21,16 @@ export const reducer = handleActions(
       getInProgress: true,
       getFailed: false,
       addInProgress: false,
-      deleteInProgress: false,
-      tagType: null,
-      tags: null
+      deleteInProgress: false
     }),
     [types.GET_TAGS_SUCCEEDED]: (state, action) => ({
       ...state,
       getInProgress: false,
       deleteInProgress: false,
-      tagType: action.payload.tagType,
-      tags: tagLib.processReceivedTags(action.payload.tags)
+      tags: {
+        ...state.tags,
+        ..._.mapValues(action.payload.tags, tagLib.processReceivedTags)
+      }
     }),
     [types.GET_TAGS_FAILED]: state => ({
       ...state,
@@ -43,23 +44,29 @@ export const reducer = handleActions(
     [types.ADD_TAG_SUCCEEDED]: (state, action) => {
       const { payload: { tag, tagType } } = action
 
-      if (tagType !== state.tagType || _.isNil(state.tags)) {
-        return state
+      if (_.isNil(state.tags)) {
+        return {
+          ...state,
+          addInProgress: false
+        }
       }
 
-      let spliceIndex = _.findIndex(state.tags, value => value.id > tag.id)
+      const newTags = (state.tags[tagType] || []).slice()
+      let spliceIndex = _.findIndex(newTags, value => value.id > tag.id)
 
       if (spliceIndex === -1) {
-        spliceIndex = state.tags.length
+        spliceIndex = newTags.length
       }
 
-      const newTags = state.tags.slice()
       newTags.splice(spliceIndex, 0, tag)
 
       return {
         ...state,
         addInProgress: false,
-        tags: newTags
+        tags: {
+          ...state.tags,
+          [tagType]: newTags
+        }
       }
     },
     [types.ADD_TAG_FAILED]: state => ({
@@ -72,15 +79,29 @@ export const reducer = handleActions(
     }),
     [types.DELETE_TAG_SUCCEEDED]: (state, action) => {
       const id = action.payload.id
-      const deleteIndex = _.findIndex(state.tags, value => value.id === id)
+      const tagType = tagLib.getTagTypeFromTagId(id)
 
-      const newTags = state.tags.slice()
-      newTags.splice(deleteIndex, 1)
+      if (_.isNil(state.tags) || _.isNil(state.tags[tagType])) {
+        return {
+          ...state,
+          deleteInProgress: false
+        }
+      }
+
+      const newTags = (state.tags[tagType] || []).slice()
+      const deleteIndex = _.findIndex(newTags, value => value.id === id)
+
+      if (deleteIndex > -1) {
+        newTags.splice(deleteIndex, 1)
+      }
 
       return {
         ...state,
         deleteInProgress: false,
-        tags: newTags
+        tags: {
+          ...state.tags,
+          [tagType]: newTags
+        }
       }
     },
     [types.DELETE_TAG_FAILED]: state => ({
@@ -92,8 +113,14 @@ export const reducer = handleActions(
 )
 
 export const selectors = {
-  getTagsForType: (state, tagType) =>
-    (tagType === state.tagType ? state.tags : null),
+  hasTags: state => !_.isNil(state.tags),
+  getTagsForType: (state, tagType) => {
+    if (_.isNil(state.tags)) {
+      return EMPTY_ARRAY
+    }
+
+    return state.tags[tagType] || EMPTY_ARRAY
+  },
   gettingTags: state => state.getInProgress,
   failedToGetTags: state => state.getFailed,
   addingTag: state => state.addInProgress,
