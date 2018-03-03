@@ -28,10 +28,6 @@ import { selectors as eventSelectors } from '../reducers'
 import * as eventActions from '../actions'
 
 export class EventDetail extends React.Component {
-  handleClickCopy = () => {
-    console.log('handleClickCopy')
-    // this.props.getEventAsCopy({ id: this.props.entity.id })
-  }
   handleTalentSelected = ({ talentId }) => {
     this.props.dispatch(eventActions.updateSelectedTalent(talentId))
   }
@@ -45,7 +41,7 @@ export class EventDetail extends React.Component {
         <Image entityType={entity.entityType} images={entity.images} />
         <EntityHeading>{entity.name}</EntityHeading>
         <EntityDetailsContainer>
-          <EntityInfoBar entity={entity} onClickCopy={this.handleClickCopy} />
+          <EntityInfoBar entity={entity} />
           <EntityColumnLayout>
             <EntityColumn>
               <EventMainDetails event={entity} dateStr={dateStr} />

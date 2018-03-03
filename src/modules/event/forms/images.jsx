@@ -20,8 +20,6 @@ export class EditEventImagesForm extends React.Component {
     if (imageEditorIsPristine) {
       return onSubmit(values)
     } else {
-      console.log('add error')
-
       dispatch(
         notificationActions.addErrorNotification(
           'Submit Cancelled',

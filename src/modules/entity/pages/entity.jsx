@@ -30,6 +30,14 @@ export class EntityPage extends React.Component {
       this._getOrResetEntity(nextProps)
     }
   }
+  shouldComponentUpdate (nextProps) {
+    return (
+      nextProps.getInProgress !== this.props.getInProgress ||
+      nextProps.getFailed !== this.props.getFailed ||
+      nextProps.gettingTags !== this.props.gettingTags ||
+      nextProps.entity !== this.props.entity
+    )
+  }
   componentDidCatch (error, info) {
     this.props.setHasError(true)
     log.error(error, info.componentStack)
@@ -38,7 +46,7 @@ export class EntityPage extends React.Component {
     event.preventDefault()
     this.props.history.goBack()
   }
-  _getOrResetEntity ({ entityType, entityId, viewing }) {
+  _getOrResetEntity ({ entityType, entityId, viewing, location }) {
     if (!viewing) {
       this.props.dispatch(tagActions.getTags())
     }
@@ -105,7 +113,11 @@ export default withRouter(
     (state, ownProps) => ({
       entityId: ownProps.match.params[0],
       entity: entitySelectors.entity(state),
-      getInProgress: entitySelectors.gettingEntity(state, ownProps.entityType),
+      getInProgress: entitySelectors.gettingEntity(
+        state,
+        ownProps.entityType,
+        ownProps.match.params[0]
+      ),
       getFailed: entitySelectors.failedToGetEntity(state),
       gettingTags: tagSelectors.gettingTags(state)
     })

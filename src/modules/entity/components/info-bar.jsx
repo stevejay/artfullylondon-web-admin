@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import GlobeIcon from 'react-icons/lib/fa/globe'
 import PencilIcon from 'react-icons/lib/fa/pencil'
@@ -15,7 +14,7 @@ import './info-bar.scss'
 
 class EntityInfoBar extends ShouldNeverUpdateComponent {
   render () {
-    const { entity, onClickCopy } = this.props
+    const { entity } = this.props
     const tagsLabel = entity.getInfoBarLabel()
     const homepage = entity.getLinkByType(linkType.HOMEPAGE)
 
@@ -52,7 +51,7 @@ class EntityInfoBar extends ShouldNeverUpdateComponent {
               styleName='link'
               to={{
                 pathname: '/event',
-                state: { copyEventId: entity.id }
+                state: { copyEntityId: entity.id }
               }}
             >
               Copy
@@ -64,8 +63,7 @@ class EntityInfoBar extends ShouldNeverUpdateComponent {
 }
 
 EntityInfoBar.propTypes = {
-  entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE.isRequired,
-  onClickCopy: PropTypes.func
+  entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE.isRequired
 }
 
 export default EntityInfoBar

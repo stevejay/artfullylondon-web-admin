@@ -15,6 +15,7 @@ import {
 } from '_src/modules/entity'
 import entityType from '_src/domain/types/entity-type'
 import * as eventConstants from '../constants'
+import * as eventNormalisers from '../constants/normalisers'
 import * as eventMapper from '../lib/mapper'
 import * as eventNormaliseLib from '../lib/normalise'
 import * as validationLib from '_src/shared/lib/validation'
@@ -22,7 +23,8 @@ import {
   BASIC_CONSTRAINT,
   TAGS_CONSTRAINT,
   TIMES_CONSTRAINT,
-  TALENT_CONSTRAINT
+  TALENT_CONSTRAINT,
+  ALL_CONSTRAINT
 } from '../constants/constraints'
 import BasicsForm from '../forms/basics'
 import TagsForm from '../forms/tags'
@@ -124,8 +126,8 @@ export class EventEditOrCreate extends React.Component {
         values,
         isEdit,
         eventConstants.EDIT_EVENT_IMAGES_FORM_NAME,
-        eventConstants.ALL_NORMALISER,
-        eventConstants.ALL_CONSTRAINT,
+        eventNormalisers.ALL_NORMALISER,
+        ALL_CONSTRAINT,
         eventMapper.mapSubmittedValues
       )
     )
