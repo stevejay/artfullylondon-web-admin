@@ -48,7 +48,13 @@ class EntityInfoBar extends ShouldNeverUpdateComponent {
         {entity.entityType === entityType.EVENT &&
           <li styleName='item'>
             <CopyIcon styleName='icon' />
-            <Link styleName='link' to='/event' onClick={onClickCopy}>
+            <Link
+              styleName='link'
+              to={{
+                pathname: '/event',
+                state: { copyEventId: entity.id }
+              }}
+            >
               Copy
             </Link>
           </li>}

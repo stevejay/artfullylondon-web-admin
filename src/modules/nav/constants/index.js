@@ -2,25 +2,25 @@ const ENTITIES_MENU = {
   label: 'Entities',
   items: [
     {
-      label: 'Add Event',
+      label: 'New Event',
       path: '/event',
       value: '/event',
       match: /^\/event$/i
     },
     {
-      label: 'Add Event Series',
+      label: 'New Event Series',
       path: '/event-series',
       value: '/event-series',
       match: /^\/event-series$/i
     },
     {
-      label: 'Add Talent',
+      label: 'New Talent',
       path: '/talent',
       value: '/talent',
       match: /^\/talent$/i
     },
     {
-      label: 'Add Venue',
+      label: 'New Venue',
       path: '/venue',
       value: '/venue',
       match: /^\/venue$/i

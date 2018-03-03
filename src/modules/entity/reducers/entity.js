@@ -47,6 +47,6 @@ export const selectors = {
     state.getInProgress ||
     !state.entity ||
     state.entity.entityType !== expectedEntityType ||
-    (state.entityId && state.entityId !== state.entity.id),
+    (!!state.entityId && state.entityId !== state.entity.id),
   failedToGetEntity: state => state.getFailed
 }
