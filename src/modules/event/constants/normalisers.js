@@ -18,3 +18,5 @@ export const BASIC_NORMALISER = {
     trim: true
   }
 }
+
+export const ALL_NORMALISER = BASIC_NORMALISER

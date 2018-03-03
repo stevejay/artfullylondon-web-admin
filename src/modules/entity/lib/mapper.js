@@ -325,3 +325,18 @@ function mapSubmittedAudienceTags (audienceTags) {
 export function mapSubmittedNamedClosures (namedClosures) {
   return namedClosures ? namedClosures.split(',') : null
 }
+
+export function mapSubmittedEventTalents (talents) {
+  return (talents || []).map(talent => ({
+    id: talent.id,
+    roles: _mapCSVStringToServer(talent.roles),
+    characters: _mapCSVStringToServer(talent.characters)
+  }))
+}
+
+function _mapCSVStringToServer (str) {
+  return (str || '')
+    .split(',')
+    .map(role => role.trim())
+    .filter(role => role !== '')
+}

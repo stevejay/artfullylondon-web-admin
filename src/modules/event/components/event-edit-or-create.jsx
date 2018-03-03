@@ -8,7 +8,11 @@ import { Image } from '_src/modules/image'
 import Divider from '_src/shared/components/divider'
 import StepCollection from '_src/shared/components/step/collection'
 import { FullEvent } from '_src/domain/event'
-import { EntityDetailsContainer, EntityHeading } from '_src/modules/entity'
+import {
+  EntityDetailsContainer,
+  EntityHeading,
+  actions as entityActions
+} from '_src/modules/entity'
 import entityType from '_src/domain/types/entity-type'
 import * as eventConstants from '../constants'
 import * as eventMapper from '../lib/mapper'
@@ -112,7 +116,19 @@ export class EventEditOrCreate extends React.Component {
     )
   }
   handleSubmit = values => {
-    // TODO
+    const { isEdit, dispatch } = this.props
+
+    dispatch(
+      entityActions.saveEntity(
+        entityType.EVENT,
+        values,
+        isEdit,
+        eventConstants.EDIT_EVENT_IMAGES_FORM_NAME,
+        eventConstants.ALL_NORMALISER,
+        eventConstants.ALL_CONSTRAINT,
+        eventMapper.mapSubmittedValues
+      )
+    )
   }
   _handlePageSubmit = (values, constraint, extraConstraint) => {
     return validationLib.validate(values, constraint, extraConstraint).then(
@@ -190,12 +206,12 @@ EventEditOrCreate.propTypes = {
   entity: PropTypes.instanceOf(FullEvent).isRequired,
   isEdit: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   stepIndex: PropTypes.number.isRequired,
   initialValues: PropTypes.object.isRequired,
   setStepIndex: PropTypes.func.isRequired,
   updateInitialValues: PropTypes.func.isRequired,
-  resetInitialValues: PropTypes.func.isRequired
+  resetInitialValues: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect()(

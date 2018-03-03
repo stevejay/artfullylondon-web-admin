@@ -194,3 +194,11 @@ export const TALENT_CONSTRAINT = {
 export const IMAGE_CONSTRAINT = {
   // no-op
 }
+
+export const ALL_CONSTRAINT = {
+  ...BASIC_CONSTRAINT,
+  ...TAGS_CONSTRAINT,
+  ...TIMES_CONSTRAINT,
+  ...TALENT_CONSTRAINT,
+  ...IMAGE_CONSTRAINT
+}

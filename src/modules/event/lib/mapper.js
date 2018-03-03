@@ -139,7 +139,7 @@ export function getInitialValues (event) {
   }
 }
 
-// TODO move somewhere else?
+// TODO move to the talent/entity module?
 function _getTalentsInitialValue (talents) {
   return (talents || []).map(talent => ({
     ...talent,
@@ -150,14 +150,68 @@ function _getTalentsInitialValue (talents) {
 }
 
 export function mapSubmittedValues (values) {
+  const isFree = !eventLib.eventIsPaid(values.costType)
+  const costFrom = isFree ? null : parseFloat(values.costFrom)
+  const costTo = isFree ? null : parseFloat(values.costTo)
+
+  const bookingNotRequired = !eventLib.bookingRequired(values.bookingType)
+  const bookingOpens = bookingNotRequired ? null : values.bookingOpens
+  const hasOccurrenceRange = eventLib.occurrenceHasDateRange(
+    values.occurrenceType
+  )
+
   return {
     status: values.status,
     name: values.name.trim(),
+    eventType: values.eventType,
+    occurrenceType: values.occurrenceType,
+    dateFrom: hasOccurrenceRange ? values.dateFrom : null,
+    dateTo: hasOccurrenceRange ? values.dateTo : null,
+    summary: values.summary.trim(),
+    costType: values.costType,
+    costFrom: costFrom,
+    costTo: costTo,
+    bookingType: values.bookingType,
+    bookingOpens: bookingOpens,
+    venueId: values.venue.id,
+    venueGuidance: values.venueGuidance.trim(),
+    eventSeriesId: values.eventSeries.id || null,
+    duration: values.duration.trim(),
+    useVenueOpeningTimes: values.useVenueOpeningTimes,
+    timesRanges: entityMapper.mapSubmittedTimesRanges(values.timesRanges),
+    openingTimes: entityMapper.mapSubmittedOpeningTimes(values.openingTimes),
+    additionalOpeningTimes: entityMapper.mapSubmittedAdditionalOpeningTimes(
+      values.additionalOpeningTimes
+    ),
+    specialOpeningTimes: entityMapper.mapSubmittedSpecialOpeningTimes(
+      values.specialOpeningTimes
+    ),
+    openingTimesClosures: entityMapper.mapSubmittedOpeningTimesClosures(
+      values.openingTimesClosures
+    ),
+    performances: entityMapper.mapSubmittedPerformances(values.performances),
+    additionalPerformances: entityMapper.mapSubmittedAdditionalPerformances(
+      values.additionalPerformances
+    ),
+    specialPerformances: entityMapper.mapSubmittedSpecialPerformances(
+      values.specialPerformances
+    ),
+    performancesClosures: entityMapper.mapSubmittedPerformancesClosures(
+      values.performancesClosures
+    ),
+    talents: entityMapper.mapSubmittedEventTalents(values.talents),
+    mediumTags: values.mediumTags,
+    styleTags: values.styleTags,
+    audienceTags: values.audienceTags,
+    geoTags: values.geoTags,
+    weSay: (values.weSay || '').trim(),
+    rating: parseInt(values.rating),
+    minAge: values.minAge ? parseInt(values.minAge) : null,
+    // namedClosures: entityMapper.mapSubmittedNamedClosures(values.namedClosures),
     description: entityMapper.mapSubmittedDescription(values.description),
     descriptionCredit: values.descriptionCredit.trim(),
     links: entityMapper.mapSubmittedLinks(values.links),
     images: entityMapper.mapSubmittedImages(values.images),
-    weSay: (values.weSay || '').trim(),
     version: values.version + 1
   }
 }
