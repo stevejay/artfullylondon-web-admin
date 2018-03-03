@@ -47,15 +47,21 @@ export class EntityPage extends React.Component {
     this.props.history.goBack()
   }
   _getOrResetEntity ({ entityType, entityId, viewing, location }) {
+    const { dispatch } = this.props
+
     if (!viewing) {
-      this.props.dispatch(tagActions.getTags())
+      dispatch(tagActions.getTags())
     }
 
-    this.props.dispatch(
-      entityId
-        ? entityActions.getEntity(entityType, entityId)
-        : entityActions.resetEntityForCreate(entityType)
-    )
+    if (location.state && location.state.copyEntityId) {
+      dispatch(
+        entityActions.copyEntity(entityType, location.state.copyEntityId)
+      )
+    } else if (entityId) {
+      dispatch(entityActions.getEntity(entityType, entityId))
+    } else {
+      dispatch(entityActions.resetEntityForCreate(entityType))
+    }
   }
   render () {
     const {

@@ -23,25 +23,25 @@ exports[`should render correctly when logged in 1`] = `
       items={
         Array [
           Object {
-            "label": "Add Event",
+            "label": "New Event",
             "match": /\\^\\\\/event\\$/i,
             "path": "/event",
             "value": "/event",
           },
           Object {
-            "label": "Add Event Series",
+            "label": "New Event Series",
             "match": /\\^\\\\/event-series\\$/i,
             "path": "/event-series",
             "value": "/event-series",
           },
           Object {
-            "label": "Add Talent",
+            "label": "New Talent",
             "match": /\\^\\\\/talent\\$/i,
             "path": "/talent",
             "value": "/talent",
           },
           Object {
-            "label": "Add Venue",
+            "label": "New Venue",
             "match": /\\^\\\\/venue\\$/i,
             "path": "/venue",
             "value": "/venue",
@@ -122,25 +122,25 @@ exports[`should render correctly when not showing 1`] = `
       items={
         Array [
           Object {
-            "label": "Add Event",
+            "label": "New Event",
             "match": /\\^\\\\/event\\$/i,
             "path": "/event",
             "value": "/event",
           },
           Object {
-            "label": "Add Event Series",
+            "label": "New Event Series",
             "match": /\\^\\\\/event-series\\$/i,
             "path": "/event-series",
             "value": "/event-series",
           },
           Object {
-            "label": "Add Talent",
+            "label": "New Talent",
             "match": /\\^\\\\/talent\\$/i,
             "path": "/talent",
             "value": "/talent",
           },
           Object {
-            "label": "Add Venue",
+            "label": "New Venue",
             "match": /\\^\\\\/venue\\$/i,
             "path": "/venue",
             "value": "/venue",

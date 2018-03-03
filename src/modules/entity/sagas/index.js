@@ -24,6 +24,26 @@ export function * getEntity (action) {
   }
 }
 
+export function * copyEntity (action) {
+  const { entityType, id } = action.payload
+
+  try {
+    yield put(entityActions.clearEntity())
+    yield put(entityActions.getEntityStarted(null))
+    const entity = yield call(eventService.getEntity, entityType, id)
+
+    delete entity.id
+    delete entity.name
+    delete entity.firstNames
+    delete entity.lastName
+
+    yield put(entityActions.getEntitySucceeded(entityType, entity))
+  } catch (err) {
+    yield call(log.error, err)
+    yield put(entityActions.getEntityFailed())
+  }
+}
+
 export function * saveEntity ({
   payload: {
     entityType,
@@ -59,32 +79,8 @@ export function * saveEntity ({
   }
 }
 
-// function * getEventAsCopy (action) {
-//   const { id } = action.payload
-
-//   try {
-//     yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
-
-//     const token = yield call(getAuthTokenForCurrentUser)
-//     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
-//     const json = yield call(get, url, token)
-
-//     yield put({
-//       type: entityActionTypes.GET_EVENT_AS_COPY_SUCCEEDED,
-//       payload: { entity: json.entity }
-//     })
-//   } catch (err) {
-//     yield call(log.error, err)
-
-//     yield put({
-//       type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
-//       payload: { statusCode: err.statusCode || 500 }
-//     })
-//   }
-// }
-
 export default [
   takeLatest(entityActions.types.GET_ENTITY, getEntity),
-  takeLatest(entityActions.types.SAVE_ENTITY, saveEntity)
-  // takeLatest(entityActionTypes.GET_EVENT_AS_COPY, getEventAsCopy)
+  takeLatest(entityActions.types.SAVE_ENTITY, saveEntity),
+  takeLatest(entityActions.types.COPY_ENTITY, copyEntity)
 ]

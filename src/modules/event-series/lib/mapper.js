@@ -2,6 +2,7 @@ import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import statusType from '_src/domain/types/status-type'
 
+// TODO merge the new and edit initial values population:
 export function getInitialValues (eventSeries) {
   if (eventSeries.isNew()) {
     return {

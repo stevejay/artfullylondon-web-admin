@@ -3,6 +3,7 @@ import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import statusType from '_src/domain/types/status-type'
 
+// TODO merge the new and edit initial values population:
 export function getInitialValues (venue) {
   if (venue.isNew()) {
     return {

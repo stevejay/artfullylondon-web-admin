@@ -3,56 +3,6 @@ import { entityMapper } from '_src/modules/entity'
 import * as eventLib from '_src/shared/lib/event'
 
 export function getInitialValues (event) {
-  if (event.isNew()) {
-    return {
-      id: null,
-      status: statusType.ACTIVE,
-      validStatuses: entityMapper.getValidStatusesInitialValue(),
-      name: '',
-      eventType: '',
-      occurrenceType: '',
-      dateFrom: null,
-      dateTo: null,
-      soldOut: false,
-      costType: '',
-      costFrom: '',
-      costTo: '',
-      bookingType: '',
-      bookingOpens: null,
-      summary: '',
-      rating: '3',
-      minAge: '',
-      maxAge: '',
-      eventSeries: {},
-      venue: {},
-      venueGuidance: '',
-      useVenueOpeningTimes: false,
-      timesRanges: [],
-      openingTimes: [],
-      additionalOpeningTimes: [],
-      specialOpeningTimes: [],
-      openingTimesClosures: [],
-      performances: [],
-      additionalPerformances: [],
-      specialPerformances: [],
-      performancesClosures: [],
-      duration: '',
-      talents: [],
-      audienceTags: [],
-      mediumTags: [],
-      styleTags: [],
-      geoTags: [],
-      reviews: [],
-      soldOutPerformances: [],
-      description: entityMapper.getRichTextInitialValue(),
-      descriptionCredit: '',
-      links: [],
-      images: [],
-      weSay: '',
-      version: 0
-    }
-  }
-
   const isPaid = eventLib.eventIsPaid(event.costType)
   const bookingIsRequired = eventLib.bookingRequired(event.bookingType)
   const hasOccurrenceRange = eventLib.occurrenceHasDateRange(
@@ -60,22 +10,22 @@ export function getInitialValues (event) {
   )
 
   return {
-    id: event.id,
-    status: event.status,
+    id: event.id || null,
+    status: event.status || statusType.ACTIVE,
     validStatuses: entityMapper.getValidStatusesInitialValue(event.status),
-    eventType: event.eventType,
-    name: event.name,
-    occurrenceType: event.occurrenceType,
+    eventType: event.eventType || '',
+    name: event.name || '',
+    occurrenceType: event.occurrenceType || '',
     dateFrom: hasOccurrenceRange ? event.dateFrom : null,
     dateTo: hasOccurrenceRange ? event.dateTo : null,
     soldOut: !!event.soldOut,
-    costType: event.costType,
+    costType: event.costType || '',
     costFrom: isPaid ? event.costFrom.toFixed(2) : '',
     costTo: isPaid ? event.costTo.toFixed(2) : '',
-    bookingType: event.bookingType,
+    bookingType: event.bookingType || '',
     bookingOpens: bookingIsRequired ? event.bookingOpens : null,
-    summary: event.summary,
-    rating: event.rating.toString(),
+    summary: event.summary || '',
+    rating: event.rating ? event.rating.toString() : '3',
     minAge: event.minAge ? event.minAge.toString() : '',
     maxAge: event.maxAge ? event.maxAge.toString() : '',
     eventSeries: event.eventSeries
@@ -135,7 +85,7 @@ export function getInitialValues (event) {
     links: entityMapper.getLinksInitialValue(event.links),
     images: entityMapper.getImagesInitialValue(event.images),
     weSay: event.weSay || '',
-    version: event.version
+    version: event.version || 0
   }
 }
 

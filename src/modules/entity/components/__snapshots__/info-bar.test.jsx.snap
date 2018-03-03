@@ -95,9 +95,15 @@ exports[`should render an info bar for an event correctly 1`] = `
     />
     <Link
       className="src-modules-entity-components-info-bar__link"
-      onClick={[Function]}
       replace={false}
-      to="/event"
+      to={
+        Object {
+          "pathname": "/event",
+          "state": Object {
+            "copyEntityId": "some-event-id",
+          },
+        }
+      }
     >
       Copy
     </Link>

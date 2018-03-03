@@ -34,7 +34,6 @@ exports[`should render a current event correctly 1`] = `
           },
         }
       }
-      onClickCopy={[Function]}
     />
     <EntityColumnLayout>
       <EntityColumn>
@@ -218,7 +217,6 @@ exports[`should render a current event correctly that has full details 1`] = `
           },
         }
       }
-      onClickCopy={[Function]}
     />
     <EntityColumnLayout>
       <EntityColumn>
@@ -430,7 +428,6 @@ exports[`should render an expired event correctly 1`] = `
           },
         }
       }
-      onClickCopy={[Function]}
     />
     <EntityColumnLayout>
       <EntityColumn>

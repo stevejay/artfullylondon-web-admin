@@ -17,6 +17,7 @@ export function getBasicTalentInitialValues () {
   }
 }
 
+// TODO merge the new and edit initial values population:
 export function getInitialValues (talent) {
   if (talent.isNew()) {
     return {

@@ -298,10 +298,15 @@ it('should trigger getting the entity when props change and a different entity i
   wrapper.instance().componentWillReceiveProps({
     location: { path: '/second' },
     entityType: 'talent',
-    entityId: 'some-other-id'
+    entityId: 'some-other-id',
+    dispatch
   })
 
   expect(setHasError).toHaveBeenCalledWith(false)
+
+  expect(dispatch).toHaveBeenCalledWith(
+    entityActions.getEntity('talent', 'some-id')
+  )
 })
 
 it('should handle cancelling the entity edit', () => {
