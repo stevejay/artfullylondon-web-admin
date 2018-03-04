@@ -13,7 +13,7 @@
     "lint": "standard --fix",
     "test": "jest --no-cache",
     "build-analyse": "webpack-bundle-analyzer build/stats.json",
-    "test-ci": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test-ci": "jest --coverage --runInBand && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "cypress:open": "cypress open"
   },
   "devEngines": {
