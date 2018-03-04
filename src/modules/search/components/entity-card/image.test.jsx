@@ -2,6 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import EntityCardImage from './image'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly', () => {
   const wrapper = shallow(

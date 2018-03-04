@@ -1,4 +1,5 @@
 import { Entity } from './entity'
+import linkType from '_src/domain/types/link-type'
 
 describe('isNew', () => {
   it('should return correct value for a new entity', () => {

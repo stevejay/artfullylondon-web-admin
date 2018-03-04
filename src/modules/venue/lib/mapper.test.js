@@ -5,6 +5,8 @@ import wheelchairAccessType from '_src/domain/types/wheelchair-access-type'
 import disabledBathroomType from '_src/domain/types/disabled-bathroom-type'
 import hearingFacilitiesType from '_src/domain/types/hearing-facilities-type'
 import statusType from '_src/domain/types/status-type'
+import linkType from '_src/domain/types/link-type'
+import venueType from '_src/domain/types/venue-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing venue', () => {

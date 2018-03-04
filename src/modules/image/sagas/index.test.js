@@ -19,6 +19,7 @@ import { actions as notificationActions } from '_src/modules/notification'
 import * as validationLib from '_src/shared/lib/validation'
 import * as sagaLib from '_src/shared/lib/saga'
 import { imageService } from '_src/modules/api'
+import entityType from '_src/domain/types/entity-type'
 
 describe('updateImage', () => {
   const generator = cloneableGenerator(sagas.updateImage)({

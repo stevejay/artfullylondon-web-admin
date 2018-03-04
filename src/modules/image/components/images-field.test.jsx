@@ -6,6 +6,7 @@ import ImageGridCard from './image-grid-card'
 import UpdateImageModal from './update-image-modal'
 import AddImageForm from '../forms/add-image-form'
 import * as imageActions from '../actions'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when not showign the update image modal', () => {
   const wrapper = shallow(

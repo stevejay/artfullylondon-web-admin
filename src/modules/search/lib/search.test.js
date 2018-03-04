@@ -1,4 +1,5 @@
 import * as searchLib from './search'
+import entityType from '_src/domain/types/entity-type'
 
 describe('createSearchPageUrl', () => {
   const tests = [

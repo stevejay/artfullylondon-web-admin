@@ -5,6 +5,7 @@ import { TagSelector } from './tag-selector'
 import Modal from '_src/shared/components/modal'
 import { AddTagForm } from '_src/modules/tag'
 import ButtonField from '_src/shared/components/button/field'
+import tagType from '_src/domain/types/tag-type'
 
 it('should render correctly when not showing the add tag modal', () => {
   const wrapper = shallow(

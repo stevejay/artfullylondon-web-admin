@@ -6,6 +6,7 @@ import { FullTalent } from '_src/domain/talent'
 import { EntityPage } from './entity'
 import * as entityActions from '../actions'
 import { actions as tagActions } from '_src/modules/tag'
+import entityType from '_src/domain/types/entity-type'
 
 class SomeComponent extends React.Component {
   render () {

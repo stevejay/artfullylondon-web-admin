@@ -9,6 +9,7 @@ import * as tagSagas from './index'
 import * as validationLib from '_src/shared/lib/validation'
 import * as tagConstants from '../constants'
 import * as tagActions from '../actions'
+import tagType from '_src/domain/types/tag-type'
 import { tagService } from '_src/modules/api'
 
 describe('getTags', () => {

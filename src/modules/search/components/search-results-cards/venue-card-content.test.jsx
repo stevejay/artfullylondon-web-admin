@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SummaryVenue } from '_src/domain/venue'
 import VenueCardContent from './venue-card-content'
+import venueType from '_src/domain/types/venue-type'
 
 it('should render correctly', () => {
   const entity = new SummaryVenue({

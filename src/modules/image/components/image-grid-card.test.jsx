@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 import IconButton from '_src/shared/components/button/icon'
 import ImageGridCard from './image-grid-card'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when the image has a copyright', () => {
   const wrapper = shallow(

@@ -1,6 +1,11 @@
 import { SummaryVenue, FullVenue } from '_src/domain/venue'
 import linkType from '_src/domain/types/link-type'
 import entityType from '_src/domain/types/entity-type'
+import statusType from '_src/domain/types/status-type'
+import venueType from '_src/domain/types/venue-type'
+import hearingFacilitiesType from '_src/domain/types/hearing-facilities-type'
+import disabledBathroomType from '_src/domain/types/disabled-bathroom-type'
+import wheelchairAccessType from '_src/domain/types/wheelchair-access-type'
 import * as timeLib from '_src/shared/lib/time'
 
 describe('SummaryVenue', () => {

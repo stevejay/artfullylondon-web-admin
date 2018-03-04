@@ -2,6 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './dashboard'
 import * as dashboardActions from '../actions'
+import entityType from '_src/domain/types/entity-type'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})
@@ -77,7 +78,9 @@ describe('selectors', () => {
 
       const result = selectors.entityCounts(state)
 
-      expect(result).toEqual({ venue: { entityType: entityType.VENUE, count: 100 } })
+      expect(result).toEqual({
+        venue: { entityType: entityType.VENUE, count: 100 }
+      })
     })
   })
 

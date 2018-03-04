@@ -11,6 +11,8 @@ import { eventService } from '_src/modules/api'
 import history from '_src/shared/lib/history'
 import normalise from '_src/shared/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
+import entityType from '_src/domain/types/entity-type'
+import statusType from '_src/domain/types/status-type'
 
 describe('copyEntity', () => {
   const generator = cloneableGenerator(sagas.copyEntity)(

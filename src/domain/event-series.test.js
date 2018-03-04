@@ -1,5 +1,8 @@
 import { SummaryEventSeries, FullEventSeries } from '_src/domain/event-series'
 import entityType from '_src/domain/types/entity-type'
+import statusType from '_src/domain/types/status-type'
+import eventSeriesType from '_src/domain/types/event-series-type'
+import linkType from '_src/domain/types/link-type'
 
 describe('SummaryEventSeries', () => {
   let entity = null

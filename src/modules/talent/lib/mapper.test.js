@@ -1,7 +1,8 @@
 import * as talentMapper from './mapper'
+import { entityMapper } from '_src/modules/entity'
 import talentType from '_src/domain/types/talent-type'
 import statusType from '_src/domain/types/status-type'
-import { entityMapper } from '_src/modules/entity'
+import linkType from '_src/domain/types/link-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing talent', () => {

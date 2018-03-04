@@ -1,6 +1,7 @@
 import React from 'react'
 
 import EntityCardEntityTypeLabel from './entity-type-label'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly', () => {
   const wrapper = shallow(

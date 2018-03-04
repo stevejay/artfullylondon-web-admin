@@ -3,6 +3,7 @@ import { call } from 'redux-saga/effects'
 import * as sagas from './tag-service'
 import * as fetchLib from '_src/shared/lib/fetch'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import tagType from '_src/domain/types/tag-type'
 
 describe('getTags', () => {
   it('should get when tags exist', () => {

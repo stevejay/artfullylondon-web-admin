@@ -5,6 +5,7 @@ import { TagsTypePage } from './tags-type'
 import * as tagActions from '../actions'
 import EditableTagCollection from '../components/editable-tag-collection'
 import AddTagForm from '../forms/add-tag'
+import tagType from '_src/domain/types/tag-type'
 
 it('should render correctly when get tags succeeded', () => {
   const wrapper = shallow(

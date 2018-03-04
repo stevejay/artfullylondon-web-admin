@@ -6,6 +6,7 @@ import { FullEvent } from '_src/domain/event'
 import { FullEventSeries } from '_src/domain/event-series'
 import { FullTalent } from '_src/domain/talent'
 import { FullVenue } from '_src/domain/venue'
+import entityType from '_src/domain/types/entity-type'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

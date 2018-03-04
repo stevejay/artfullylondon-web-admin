@@ -16,6 +16,7 @@ import * as sagas from './index'
 import * as linkActions from '../actions'
 import * as linkConstants from '../constants'
 import * as linkLib from '../lib/link'
+import linkType from '_src/domain/types/link-type'
 
 describe('deleteLinkFromLinksFormValue', () => {
   it('should delete the link', () => {

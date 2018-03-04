@@ -1,6 +1,8 @@
 import * as eventSeriesMapper from './mapper'
 import { entityMapper } from '_src/modules/entity'
 import statusType from '_src/domain/types/status-type'
+import linkType from '_src/domain/types/link-type'
+import eventSeriesType from '_src/domain/types/event-series-type'
 
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing event series', () => {

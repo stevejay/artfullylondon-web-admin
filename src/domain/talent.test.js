@@ -4,6 +4,9 @@ import {
   EventSummaryTalent
 } from '_src/domain/talent'
 import entityType from '_src/domain/types/entity-type'
+import linkType from '_src/domain/types/link-type'
+import talentType from '_src/domain/types/talent-type'
+import statusType from '_src/domain/types/status-type'
 
 describe('SummaryTalent', () => {
   let entity = null

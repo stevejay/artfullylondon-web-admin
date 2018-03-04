@@ -14,6 +14,7 @@ import * as searchConstants from '../constants'
 import * as searchLib from '../lib/search'
 import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
 import { searchService } from '_src/modules/api/index'
+import entityType from '_src/domain/types/entity-type'
 
 describe('pushBasicSearchToUrl', () => {
   it('should create the url and push it', () => {

@@ -3,6 +3,7 @@ import { call } from 'redux-saga/effects'
 import * as sagas from './image-service'
 import * as fetchLib from '_src/shared/lib/fetch'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import entityType from '_src/domain/types/entity-type'
 
 describe('addImage', () => {
   it('should add an image', () => {

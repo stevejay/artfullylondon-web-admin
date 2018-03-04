@@ -6,6 +6,7 @@ import { BasicSearchForm } from './basic-search'
 import Form from '_src/shared/components/form'
 import * as searchActions from '../actions'
 import * as globalConstants from '_src/shared/constants'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly', () => {
   const wrapper = shallow(

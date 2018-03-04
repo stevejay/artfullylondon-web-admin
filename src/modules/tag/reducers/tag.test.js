@@ -2,6 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import { reducer, selectors } from './tag'
 import * as tagActions from '../actions'
+import tagType from '_src/domain/types/tag-type'
 
 it('should have the correct initial state', () => {
   const actual = reducer(undefined, {})

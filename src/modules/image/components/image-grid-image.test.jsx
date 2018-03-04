@@ -1,6 +1,7 @@
 import React from 'react'
 
 import ImageGridImage from './image-grid-image'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when has an image id', () => {
   const wrapper = shallow(

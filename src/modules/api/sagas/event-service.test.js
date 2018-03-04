@@ -3,6 +3,7 @@ import { call } from 'redux-saga/effects'
 import * as sagas from './event-service'
 import * as fetchLib from '_src/shared/lib/fetch'
 import { getAuthTokenForCurrentUser } from '_src/modules/user'
+import entityType from '_src/domain/types/entity-type'
 
 describe('getEntity', () => {
   it('should get an entity', () => {
@@ -54,7 +55,12 @@ describe('saveEntity', () => {
   const mapper = jest.fn(value => value)
 
   it('should save a new entity', () => {
-    const generator = sagas.saveEntity(entityType.TALENT, { name: 'Foo' }, mapper, false)
+    const generator = sagas.saveEntity(
+      entityType.TALENT,
+      { name: 'Foo' },
+      mapper,
+      false
+    )
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))

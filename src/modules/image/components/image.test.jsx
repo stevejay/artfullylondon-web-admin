@@ -1,6 +1,7 @@
 import React from 'react'
 
 import EntityImage from './image'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly when showing the carousel', () => {
   const wrapper = shallow(

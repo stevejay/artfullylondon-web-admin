@@ -1,4 +1,5 @@
 import * as tagLib from './tag'
+import tagType from '_src/domain/types/tag-type'
 
 describe('getTagTypeFromTagId', () => {
   const tests = [

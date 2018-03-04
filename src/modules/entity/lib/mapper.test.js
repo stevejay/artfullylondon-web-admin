@@ -2,6 +2,8 @@ import RichTextEditor from 'react-rte'
 
 import * as entityMapper from './mapper'
 import statusType from '_src/domain/types/status-type'
+import linkType from '_src/domain/types/link-type'
+import imageStatusType from '_src/domain/types/image-status-type'
 
 describe('getRichTextInitialValue', () => {
   it('should handle an empty initial value', () => {

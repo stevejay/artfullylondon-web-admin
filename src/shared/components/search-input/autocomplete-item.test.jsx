@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 import SearchInputAutocompleteItem from './autocomplete-item'
 import autocompleteItemType from '_src/domain/types/autocomplete-item-type'
+import entityType from '_src/domain/types/entity-type'
 
 it('should render correctly an autocomplete entity that is not currently selected', () => {
   const wrapper = shallow(
