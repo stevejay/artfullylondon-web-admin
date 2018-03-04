@@ -9,10 +9,12 @@
     "serve": "firebase serve --project artfullylondon-prod-admin",
     "deploy": "firebase deploy --project artfullylondon-prod-admin",
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
+    "start:defaults": "cross-env-shell node ./browser-sync.js",
     "lint": "standard --fix",
     "test": "jest --no-cache",
     "build-analyse": "webpack-bundle-analyzer build/stats.json",
-    "test-ci": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test-ci": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "cypress:open": "cypress open"
   },
   "devEngines": {
     "node": "8.x || 9.x"
