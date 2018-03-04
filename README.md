@@ -1,5 +1,8 @@
 # Artfully London Admin App
 
+[![CircleCI](https://circleci.com/gh/stevejay/artfullylondon-web-admin.svg?style=svg)](https://circleci.com/gh/stevejay/artfullylondon-web-admin)
+[![Coverage Status](https://coveralls.io/repos/github/stevejay/artfullylondon-web-admin/badge.svg?branch=master)](https://coveralls.io/github/stevejay/artfullylondon-web-admin?branch=master)
+
 Live site is [here](https://www.artfully-admin.site).
 For readonly access, use the username `readonly` and the password `Readonly1`.
 
