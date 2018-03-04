@@ -7,7 +7,7 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 describe('addImage', () => {
   it('should add an image', () => {
     const generator = sagas.addImage(
-      'talent',
+      entityType.TALENT,
       'some-id',
       '/some/url',
       'Some copyright',
@@ -22,7 +22,7 @@ describe('addImage', () => {
       call(
         fetchLib.put,
         'https://api.test.com/image-service/image/some-id',
-        { url: '/some/url', type: 'talent' },
+        { url: '/some/url', type: entityType.TALENT },
         'some-token'
       )
     )

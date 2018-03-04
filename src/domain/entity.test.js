@@ -16,28 +16,28 @@ describe('getLinkByType', () => {
   it('should handle a link that exists', () => {
     const subject = new Entity({
       links: [
-        { type: 'Wikipedia', url: '/some/wikipedia/url' },
-        { type: 'Facebook', url: '/some/facebook/url' }
+        { type: linkType.WIKIPEDIA, url: '/some/wikipedia/url' },
+        { type: linkType.FACEBOOK, url: '/some/facebook/url' }
       ]
     })
 
-    expect(subject.getLinkByType('Wikipedia')).toEqual({
-      type: 'Wikipedia',
+    expect(subject.getLinkByType(linkType.WIKIPEDIA)).toEqual({
+      type: linkType.WIKIPEDIA,
       url: '/some/wikipedia/url'
     })
   })
 
   it('should handle a link that does not exists', () => {
     const subject = new Entity({
-      links: [{ type: 'Facebook', url: '/some/facebook/url' }]
+      links: [{ type: linkType.FACEBOOK, url: '/some/facebook/url' }]
     })
 
-    expect(subject.getLinkByType('Wikipedia')).toEqual(null)
+    expect(subject.getLinkByType(linkType.WIKIPEDIA)).toEqual(null)
   })
 
   it('should handle null links', () => {
     const subject = new Entity({})
-    expect(subject.getLinkByType('Wikipedia')).toEqual(null)
+    expect(subject.getLinkByType(linkType.WIKIPEDIA)).toEqual(null)
   })
 })
 

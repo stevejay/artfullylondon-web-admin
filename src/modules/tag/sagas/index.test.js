@@ -14,7 +14,7 @@ import { tagService } from '_src/modules/api'
 describe('getTags', () => {
   describe('get a single tag type', () => {
     const generator = cloneableGenerator(tagSagas.getTags)(
-      tagActions.getTags('medium')
+      tagActions.getTags(tagType.MEDIUM)
     )
 
     it('should prepare to get the tags', () => {
@@ -22,7 +22,7 @@ describe('getTags', () => {
       expect(result.value).toEqual(put(tagActions.getTagsStarted()))
 
       result = generator.next()
-      expect(result.value).toEqual(call(tagService.getTags, 'medium'))
+      expect(result.value).toEqual(call(tagService.getTags, tagType.MEDIUM))
     })
 
     it('should successfully get the tags', () => {
@@ -75,7 +75,7 @@ describe('getTags', () => {
 
 describe('addTag', () => {
   const generator = cloneableGenerator(tagSagas.addTag)(
-    tagActions.addTag({ label: 'Sculpture', tagType: 'medium' })
+    tagActions.addTag({ label: 'Sculpture', tagType: tagType.MEDIUM })
   )
 
   it('should prepare to add the tag', () => {
@@ -91,23 +91,23 @@ describe('addTag', () => {
     expect(result.value).toEqual(
       call(
         normalise,
-        { label: 'Sculpture', tagType: 'medium' },
+        { label: 'Sculpture', tagType: tagType.MEDIUM },
         tagConstants.NORMALISER
       )
     )
 
-    result = generator.next({ label: 'sculpture', tagType: 'medium' })
+    result = generator.next({ label: 'sculpture', tagType: tagType.MEDIUM })
     expect(result.value).toEqual(
       call(
         validationLib.validate,
-        { label: 'sculpture', tagType: 'medium' },
+        { label: 'sculpture', tagType: tagType.MEDIUM },
         tagConstants.CONSTRAINT
       )
     )
 
     result = generator.next()
     expect(result.value).toEqual(
-      call(tagService.addTag, { label: 'sculpture', tagType: 'medium' })
+      call(tagService.addTag, { label: 'sculpture', tagType: tagType.MEDIUM })
     )
   })
 
@@ -125,7 +125,7 @@ describe('addTag', () => {
             id: 'medium/sculpture',
             label: 'sculpture'
           },
-          'medium'
+          tagType.MEDIUM
         )
       )
     )

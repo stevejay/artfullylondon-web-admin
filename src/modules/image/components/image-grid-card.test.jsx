@@ -14,7 +14,7 @@ it('should render correctly when the image has a copyright', () => {
         copyright: 'The Copyright',
         ratio: 2
       }}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={_.noop}
       onUpdate={_.noop}
       onSetMain={_.noop}
@@ -33,7 +33,7 @@ it('should render correctly when the image is not the main image', () => {
         isMain: false,
         ratio: 2
       }}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={_.noop}
       onUpdate={_.noop}
       onSetMain={_.noop}
@@ -52,7 +52,7 @@ it('should render correctly when the image is the main image', () => {
         isMain: true,
         ratio: 2
       }}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={_.noop}
       onUpdate={_.noop}
       onSetMain={_.noop}
@@ -69,7 +69,7 @@ describe('shouldComponentUpdate', () => {
     const wrapper = shallow(
       <ImageGridCard
         value={value}
-        entityType='venue'
+        entityType={entityType.VENUE}
         onDelete={_.noop}
         onUpdate={_.noop}
         onSetMain={_.noop}
@@ -85,7 +85,7 @@ describe('shouldComponentUpdate', () => {
     const wrapper = shallow(
       <ImageGridCard
         value={{ key: 'key', id: 'id1', isMain: false, ratio: 2 }}
-        entityType='venue'
+        entityType={entityType.VENUE}
         onDelete={_.noop}
         onUpdate={_.noop}
         onSetMain={_.noop}
@@ -107,7 +107,7 @@ it('should handle the edit option being clicked', () => {
   const wrapper = shallow(
     <ImageGridCard
       value={value}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={_.noop}
       onUpdate={handleUpdate}
       onSetMain={_.noop}
@@ -126,7 +126,7 @@ it('should handle the delete option being clicked', () => {
   const wrapper = shallow(
     <ImageGridCard
       value={{ key: 'key', id: 'id1', isMain: false, ratio: 2 }}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={handleDelete}
       onUpdate={_.noop}
       onSetMain={_.noop}
@@ -146,7 +146,7 @@ it('should handle the set as main option being clicked', () => {
   const wrapper = shallow(
     <ImageGridCard
       value={{ key: 'key', id: 'id1', isMain: false, ratio: 2 }}
-      entityType='venue'
+      entityType={entityType.VENUE}
       onDelete={_.noop}
       onUpdate={_.noop}
       onSetMain={handleSetMain}

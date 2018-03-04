@@ -14,7 +14,7 @@ import { actions as notificationActions } from '_src/modules/notification'
 
 describe('copyEntity', () => {
   const generator = cloneableGenerator(sagas.copyEntity)(
-    entityActions.copyEntity('talent', 'some-id')
+    entityActions.copyEntity(entityType.TALENT, 'some-id')
   )
 
   it('should prepare to copy an entity', () => {
@@ -26,7 +26,7 @@ describe('copyEntity', () => {
 
     result = generator.next()
     expect(result.value).toEqual(
-      call(eventService.getEntity, 'talent', 'some-id')
+      call(eventService.getEntity, entityType.TALENT, 'some-id')
     )
   })
 
@@ -38,14 +38,14 @@ describe('copyEntity', () => {
       name: 'Some Name',
       firstNames: 'Some First Names',
       lastName: 'Some Last Name',
-      status: 'Active'
+      status: statusType.ACTIVE
     }
 
     let result = generatorClone.next(entity)
     expect(result.value).toEqual(
       put(
-        entityActions.getEntitySucceeded('talent', {
-          status: 'Active'
+        entityActions.getEntitySucceeded(entityType.TALENT, {
+          status: statusType.ACTIVE
         })
       )
     )
@@ -71,7 +71,7 @@ describe('copyEntity', () => {
 
 describe('getEntity', () => {
   const generator = cloneableGenerator(sagas.getEntity)(
-    entityActions.getEntity('talent', 'some-id')
+    entityActions.getEntity(entityType.TALENT, 'some-id')
   )
 
   it('should prepare to get an entity', () => {
@@ -83,7 +83,7 @@ describe('getEntity', () => {
 
     result = generator.next()
     expect(result.value).toEqual(
-      call(eventService.getEntity, 'talent', 'some-id')
+      call(eventService.getEntity, entityType.TALENT, 'some-id')
     )
   })
 
@@ -93,7 +93,7 @@ describe('getEntity', () => {
 
     let result = generatorClone.next(entity)
     expect(result.value).toEqual(
-      put(entityActions.getEntitySucceeded('talent', entity))
+      put(entityActions.getEntitySucceeded(entityType.TALENT, entity))
     )
 
     result = generatorClone.next()
@@ -123,7 +123,7 @@ describe('saveEntity', () => {
   it('should create an entity', () => {
     const generator = sagas.saveEntity(
       entityActions.saveEntity(
-        'talent',
+        entityType.TALENT,
         { name: 'foo' },
         false,
         'SomeFormName',
@@ -148,7 +148,7 @@ describe('saveEntity', () => {
     expect(result.value).toEqual(
       call(
         eventService.saveEntity,
-        'talent',
+        entityType.TALENT,
         { name: 'normalised foo' },
         mapper,
         false
@@ -168,7 +168,7 @@ describe('saveEntity', () => {
   it('should update an entity', () => {
     const generator = sagas.saveEntity(
       entityActions.saveEntity(
-        'talent',
+        entityType.TALENT,
         { name: 'foo' },
         true,
         'SomeFormName',
@@ -197,7 +197,7 @@ describe('saveEntity', () => {
     expect(result.value).toEqual(
       call(
         eventService.saveEntity,
-        'talent',
+        entityType.TALENT,
         { name: 'normalised foo', id: 'existing-id' },
         mapper,
         true
@@ -217,7 +217,7 @@ describe('saveEntity', () => {
   it('should handle an error being raised', () => {
     const generator = sagas.saveEntity(
       entityActions.saveEntity(
-        'talent',
+        entityType.TALENT,
         { name: 'foo' },
         false,
         'SomeFormName',

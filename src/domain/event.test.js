@@ -13,12 +13,12 @@ describe('SummaryEvent', () => {
     entity = {
       entityType: entityType.EVENT,
       id: 'event-id',
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Taming of the Shrew',
-      eventType: 'Performance',
-      occurrenceType: 'Bounded',
+      eventType: eventType.PERFORMANCE,
+      occurrenceType: occurrenceType.BOUNDED,
       soldOut: true,
-      costType: 'Paid',
+      costType: costType.PAID,
       dateFrom: '2016/02/11',
       dateTo: '2016/02/13',
       summary: 'A Shakespearian classic',
@@ -34,82 +34,82 @@ describe('SummaryEvent', () => {
   })
 
   it('should handle the key', () => {
-    const actual = new SummaryEvent(entity)
-    expect(actual.key).toEqual('event-id')
+    const subject = new SummaryEvent(entity)
+    expect(subject.key).toEqual('event-id')
   })
 
   describe('isFreeEvent', () => {
     it('should handle a free event', () => {
-      entity.costType = 'Free'
-      const actual = new SummaryEvent(entity)
-      expect(actual.isFreeEvent()).toEqual(true)
+      entity.costType = costType.FREE
+      const subject = new SummaryEvent(entity)
+      expect(subject.isFreeEvent()).toEqual(true)
     })
 
     it('should handle a paid event', () => {
-      entity.costType = 'Paid'
-      const actual = new SummaryEvent(entity)
-      expect(actual.isFreeEvent()).toEqual(false)
+      entity.costType = costType.PAID
+      const subject = new SummaryEvent(entity)
+      expect(subject.isFreeEvent()).toEqual(false)
     })
   })
 
   describe('getEntityTypeLabel', () => {
     it('should handle getting the entity type label for a free event', () => {
-      entity.costType = 'Free'
-      const actual = new SummaryEvent(entity)
-      expect(actual.getEntityTypeLabel()).toEqual('Free Event')
+      entity.costType = costType.FREE
+      const subject = new SummaryEvent(entity)
+      expect(subject.getEntityTypeLabel()).toEqual('Free Event')
     })
 
     it('should handle getting the entity type label for a paid event', () => {
-      entity.costType = 'Paid'
-      const actual = new SummaryEvent(entity)
-      expect(actual.getEntityTypeLabel()).toEqual('Event')
+      entity.costType = costType.PAID
+      const subject = new SummaryEvent(entity)
+      expect(subject.getEntityTypeLabel()).toEqual('Event')
     })
   })
 
   describe('hasImage', () => {
     it('should handle having an image', () => {
       entity.image = '12345678123456781234567812345678'
-      const actual = new SummaryEvent(entity)
-      expect(actual.hasImage()).toEqual(true)
+      const subject = new SummaryEvent(entity)
+      expect(subject.hasImage()).toEqual(true)
     })
 
     it('should handle having no image', () => {
       entity.image = null
-      const actual = new SummaryEvent(entity)
-      expect(actual.hasImage()).toEqual(false)
+      const subject = new SummaryEvent(entity)
+      expect(subject.hasImage()).toEqual(false)
     })
   })
 
   it('should handle getUrl', () => {
-    const actual = new SummaryEvent(entity)
-    expect(actual.getUrl()).toEqual('/event/event-id')
+    const subject = new SummaryEvent(entity)
+    expect(subject.getUrl()).toEqual('/event/event-id')
   })
 
   it('should handle getPostcodeDistrict', () => {
-    const actual = new SummaryEvent(entity)
-    expect(actual.getPostcodeDistrict()).toEqual('N5')
+    const subject = new SummaryEvent(entity)
+    expect(subject.getPostcodeDistrict()).toEqual('N5')
   })
 
   describe('isExpiredOn', () => {
     it('should handle an expired event', () => {
       entity.dateTo = '2017/12/12'
-      const actual = new SummaryEvent(entity)
-      expect(actual.isExpiredOn('2018/01/01')).toEqual(true)
+      const subject = new SummaryEvent(entity)
+      expect(subject.isExpiredOn('2018/01/01')).toEqual(true)
     })
 
     it('should handle a not expired event', () => {
       entity.dateTo = '2018/12/12'
-      const actual = new SummaryEvent(entity)
-      expect(actual.isExpiredOn('2018/01/01')).toEqual(false)
+      const subject = new SummaryEvent(entity)
+      expect(subject.isExpiredOn('2018/01/01')).toEqual(false)
     })
   })
 
   it('should handle createDateRangeLabel', () => {
     timeLib.createDateRangeLabel = jest.fn().mockReturnValue('Date Range Label')
 
-    const actual = new SummaryEvent(entity)
+    const subject = new SummaryEvent(entity)
 
-    expect(actual.createDateRangeLabel('2018/01/01')).toEqual(
+    expect(subject.createDateRangeLabel('2018/01/01')).toEqual(
       'Date Range Label'
     )
 
@@ -125,36 +125,36 @@ describe('SummaryEvent', () => {
       entity.dateFrom = '2019/01/01'
       entity.dateTo = '2019/02/02'
 
-      const actual = new SummaryEvent(entity)
+      const subject = new SummaryEvent(entity)
 
-      expect(actual.isCurrent('2018/01/01')).toEqual(false)
+      expect(subject.isCurrent('2018/01/01')).toEqual(false)
     })
 
     it('should handle a past event', () => {
       entity.dateFrom = '2017/01/01'
       entity.dateTo = '2017/02/02'
 
-      const actual = new SummaryEvent(entity)
+      const subject = new SummaryEvent(entity)
 
-      expect(actual.isCurrent('2018/01/01')).toEqual(false)
+      expect(subject.isCurrent('2018/01/01')).toEqual(false)
     })
 
     it('should handle a current event', () => {
       entity.dateFrom = '2017/01/01'
       entity.dateTo = '2019/02/02'
 
-      const actual = new SummaryEvent(entity)
+      const subject = new SummaryEvent(entity)
 
-      expect(actual.isCurrent('2018/01/01')).toEqual(true)
+      expect(subject.isCurrent('2018/01/01')).toEqual(true)
     })
 
     it('should handle an event with no dates', () => {
       entity.dateFrom = null
       entity.dateTo = null
 
-      const actual = new SummaryEvent(entity)
+      const subject = new SummaryEvent(entity)
 
-      expect(actual.isCurrent('2018/01/01')).toEqual(true)
+      expect(subject.isCurrent('2018/01/01')).toEqual(true)
     })
   })
 })
@@ -165,17 +165,17 @@ describe('FullEvent', () => {
   beforeEach(() => {
     entity = {
       id: 'event-id',
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Taming of the Shrew',
-      eventType: 'Performance',
-      occurrenceType: 'Bounded',
+      eventType: eventType.PERFORMANCE,
+      occurrenceType: occurrenceType.BOUNDED,
       dateFrom: '2016/02/11',
       dateTo: '2016/02/13',
       soldOut: true,
-      costType: 'Paid',
+      costType: costType.PAID,
       costFrom: 20,
       costTo: 21,
-      bookingType: 'NotRequired',
+      bookingType: bookingType.NOT_REQUIRED,
       bookingOpens: '2017/12/13',
       summary: 'A Shakespearian classic',
       description: 'A contemporary update of this Shakespearian classic',
@@ -183,30 +183,32 @@ describe('FullEvent', () => {
       rating: 3,
       minAge: 14,
       maxAge: 18,
-      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
+      links: [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
+      ],
       eventSeries: {
         entityType: entityType.EVENT_SERIES,
-        eventSeriesType: 'Occasional',
+        eventSeriesType: eventSeriesType.OCCASIONAL,
         id: 'event-series-id',
         name: 'Some Event Series',
         occurrence: 'Some occurrence',
-        status: 'Active',
+        status: statusType.ACTIVE,
         summary: 'A summary',
         description: undefined
       },
       venue: {
         entityType: entityType.VENUE,
-        status: 'Active',
-        venueType: 'Theatre',
+        status: statusType.ACTIVE,
+        venueType: venueType.THEATRE,
         id: 'venue-id',
         name: 'Almeida Theatre',
         address: 'Islington',
         postcode: 'N5 2UA',
         latitude: 53,
         longitude: 2,
-        wheelchairAccessType: 'FullAccess',
-        disabledBathroomType: 'Present',
-        hearingFacilitiesType: 'HearingLoops',
+        wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+        disabledBathroomType: disabledBathroomType.PRESENT,
+        hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
         hasPermanentCollection: false
       },
       venueGuidance: 'Through the curtains',
@@ -229,8 +231,8 @@ describe('FullEvent', () => {
           id: 'talent-id',
           firstNames: 'John',
           lastName: 'Doe',
-          status: 'Active',
-          talentType: 'Individual',
+          status: statusType.ACTIVE,
+          talentType: talentType.INDIVIDUAL,
           roles: ['Director'],
           characters: ['Polonius']
         }
@@ -260,51 +262,51 @@ describe('FullEvent', () => {
   })
 
   it('should wrap the sub entities', () => {
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.eventSeries).toBeInstanceOf(SummaryEventSeries)
-    expect(actual.venue).toBeInstanceOf(SummaryVenue)
-    expect(actual.talents[0]).toBeInstanceOf(EventSummaryTalent)
+    expect(subject.eventSeries).toBeInstanceOf(SummaryEventSeries)
+    expect(subject.venue).toBeInstanceOf(SummaryVenue)
+    expect(subject.talents[0]).toBeInstanceOf(EventSummaryTalent)
   })
 
   it('should combine the tags', () => {
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.tags).toEqual([
-      { id: 'medium/sculpture', label: 'sculpture', type: 'medium' },
-      { id: 'style/contemporary', label: 'contemporary', type: 'style' },
-      { id: 'geo/europe', label: 'europe', type: 'geo' },
-      { id: 'geo/spain', label: 'spain', type: 'geo' },
-      { id: 'audience/families', label: 'families', type: 'audience' }
+    expect(subject.tags).toEqual([
+      { id: 'medium/sculpture', label: 'sculpture', type: tagType.MEDIUM },
+      { id: 'style/contemporary', label: 'contemporary', type: tagType.STYLE },
+      { id: 'geo/europe', label: 'europe', type: tagType.GEO },
+      { id: 'geo/spain', label: 'spain', type: tagType.GEO },
+      { id: 'audience/families', label: 'families', type: tagType.AUDIENCE }
     ])
   })
 
   it('should handle the id', () => {
-    const actual = new FullEvent(entity)
-    expect(actual.id).toEqual('event-id')
+    const subject = new FullEvent(entity)
+    expect(subject.id).toEqual('event-id')
   })
 
   it('should handle the entity type', () => {
-    const actual = new FullEvent(entity)
-    expect(actual.entityType).toEqual(entityType.EVENT)
+    const subject = new FullEvent(entity)
+    expect(subject.entityType).toEqual(entityType.EVENT)
   })
 
   it('should handle the edit url', () => {
-    const actual = new FullEvent(entity)
-    expect(actual.getEditUrl()).toEqual('/event/edit/event-id')
+    const subject = new FullEvent(entity)
+    expect(subject.getEditUrl()).toEqual('/event/edit/event-id')
   })
 
   describe('createAgeDescription', () => {
     it('should handle an age', () => {
       entity.minAge = 5
-      const actual = new FullEvent(entity)
-      expect(actual.createAgeDescription()).toEqual('5+')
+      const subject = new FullEvent(entity)
+      expect(subject.createAgeDescription()).toEqual('5+')
     })
 
     it('should handle no age', () => {
       entity.minAge = null
-      const actual = new FullEvent(entity)
-      expect(actual.createAgeDescription()).toEqual(null)
+      const subject = new FullEvent(entity)
+      expect(subject.createAgeDescription()).toEqual(null)
     })
   })
 
@@ -312,15 +314,15 @@ describe('FullEvent', () => {
     it('should handle an event with no medium', () => {
       entity.mediumTags = []
 
-      const actual = new FullEvent(entity)
+      const subject = new FullEvent(entity)
 
-      expect(actual.getInfoBarLabel()).toEqual('unknown medium')
+      expect(subject.getInfoBarLabel()).toEqual('unknown medium')
     })
 
     it('should handle an event with one medium', () => {
-      const actual = new FullEvent(entity)
+      const subject = new FullEvent(entity)
 
-      expect(actual.getInfoBarLabel()).toEqual('sculpture')
+      expect(subject.getInfoBarLabel()).toEqual('sculpture')
     })
 
     it('should handle an event with two mediums', () => {
@@ -329,9 +331,9 @@ describe('FullEvent', () => {
         { id: 'medium/painting', label: 'painting' }
       ]
 
-      const actual = new FullEvent(entity)
+      const subject = new FullEvent(entity)
 
-      expect(actual.getInfoBarLabel()).toEqual('sculpture / painting')
+      expect(subject.getInfoBarLabel()).toEqual('sculpture / painting')
     })
 
     it('should handle an event with three mediums', () => {
@@ -341,9 +343,9 @@ describe('FullEvent', () => {
         { id: 'medium/photography', label: 'photography' }
       ]
 
-      const actual = new FullEvent(entity)
+      const subject = new FullEvent(entity)
 
-      expect(actual.getInfoBarLabel()).toEqual('mixed media')
+      expect(subject.getInfoBarLabel()).toEqual('mixed media')
     })
   })
 
@@ -352,15 +354,15 @@ describe('FullEvent', () => {
       .fn()
       .mockReturnValue('Event Occurrence')
 
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.createEventOccurrenceDescriptionOn('2018/01/01')).toEqual(
+    expect(subject.createEventOccurrenceDescriptionOn('2018/01/01')).toEqual(
       'Event Occurrence'
     )
 
     expect(eventLib.formatEventOccurrenceForDisplay).toHaveBeenCalledWith(
-      'Bounded',
-      'Performance',
+      occurrenceType.BOUNDED,
+      eventType.PERFORMANCE,
       '2016/02/11',
       '2016/02/13',
       [{ date: '2016/08/15', at: '08:00' }],
@@ -371,23 +373,27 @@ describe('FullEvent', () => {
   it('should handle createCostDescription', () => {
     eventLib.formatCostForDisplay = jest.fn().mockReturnValue('Cost')
 
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.createCostDescription()).toEqual('Cost')
-    expect(eventLib.formatCostForDisplay).toHaveBeenCalledWith('Paid', 20, 21)
+    expect(subject.createCostDescription()).toEqual('Cost')
+    expect(eventLib.formatCostForDisplay).toHaveBeenCalledWith(
+      costType.PAID,
+      20,
+      21
+    )
   })
 
   it('should handle createBookingDescriptionOn', () => {
     eventLib.formatBookingInfoForDisplay = jest.fn().mockReturnValue('Cost')
 
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.createBookingDescriptionOn('2018/01/01')).toEqual('Cost')
+    expect(subject.createBookingDescriptionOn('2018/01/01')).toEqual('Cost')
 
     expect(eventLib.formatBookingInfoForDisplay).toHaveBeenCalledWith(
-      'NotRequired',
+      bookingType.NOT_REQUIRED,
       '2017/12/13',
-      actual,
+      subject,
       '2018/01/01'
     )
   })
@@ -395,21 +401,21 @@ describe('FullEvent', () => {
   it('should handle createTimesDetailsOn', () => {
     timeLib.getTimesDetails = jest.fn().mockReturnValue('Times Details')
 
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.createTimesDetailsOn('2018/01/01')).toEqual('Times Details')
+    expect(subject.createTimesDetailsOn('2018/01/01')).toEqual('Times Details')
 
     expect(timeLib.getTimesDetails).toHaveBeenCalledWith(
-      actual,
+      subject,
       entityType.EVENT,
       '2018/01/01'
     )
   })
 
   it('should handle getPin', () => {
-    const actual = new FullEvent(entity)
+    const subject = new FullEvent(entity)
 
-    expect(actual.getPin()).toEqual({
+    expect(subject.getPin()).toEqual({
       lat: 53,
       lng: 2
     })
@@ -417,34 +423,34 @@ describe('FullEvent', () => {
 
   describe('hasEventSeries', () => {
     it('should handle an event with an event series', () => {
-      const actual = new FullEvent(entity)
-      expect(actual.hasEventSeries()).toEqual(true)
+      const subject = new FullEvent(entity)
+      expect(subject.hasEventSeries()).toEqual(true)
     })
 
     it('should handle an event with no event series', () => {
       entity.eventSeries = null
-      const actual = new FullEvent(entity)
-      expect(actual.hasEventSeries()).toEqual(false)
+      const subject = new FullEvent(entity)
+      expect(subject.hasEventSeries()).toEqual(false)
     })
   })
 
   describe('hasTalents', () => {
     it('should handle an event with talents', () => {
-      const actual = new FullEvent(entity)
-      expect(actual.hasTalents()).toEqual(true)
+      const subject = new FullEvent(entity)
+      expect(subject.hasTalents()).toEqual(true)
     })
 
     it('should handle an event with no talents', () => {
       entity.talents = []
-      const actual = new FullEvent(entity)
-      expect(actual.hasTalents()).toEqual(false)
+      const subject = new FullEvent(entity)
+      expect(subject.hasTalents()).toEqual(false)
     })
   })
 
   describe('hasTags', () => {
     it('should handle an event with tags', () => {
-      const actual = new FullEvent(entity)
-      expect(actual.hasTags()).toEqual(true)
+      const subject = new FullEvent(entity)
+      expect(subject.hasTags()).toEqual(true)
     })
 
     it('should handle an event with no tags', () => {
@@ -453,44 +459,44 @@ describe('FullEvent', () => {
       entity.geoTags = []
       entity.audienceTags = []
 
-      const actual = new FullEvent(entity)
+      const subject = new FullEvent(entity)
 
-      expect(actual.hasTags()).toEqual(false)
+      expect(subject.hasTags()).toEqual(false)
     })
   })
 
   describe('isExpiredOn', () => {
     it('should handle an expired event', () => {
       entity.dateTo = '2017/12/12'
-      const actual = new FullEvent(entity)
-      expect(actual.isExpiredOn('2018/01/01')).toEqual(true)
+      const subject = new FullEvent(entity)
+      expect(subject.isExpiredOn('2018/01/01')).toEqual(true)
     })
 
     it('should handle a not expired event', () => {
       entity.dateTo = '2018/12/12'
-      const actual = new FullEvent(entity)
-      expect(actual.isExpiredOn('2018/01/01')).toEqual(false)
+      const subject = new FullEvent(entity)
+      expect(subject.isExpiredOn('2018/01/01')).toEqual(false)
     })
   })
 
   describe('getHomepageUrl', () => {
     it('should handle an event with a homepage', () => {
       entity.links = [
-        { type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' },
-        { type: 'Homepage', url: 'https://homepage.com/foo' }
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' },
+        { type: linkType.HOMEPAGE, url: 'https://homepage.com/foo' }
       ]
 
-      const actual = new FullEvent(entity)
-      expect(actual.getHomepageUrl()).toEqual('https://homepage.com/foo')
+      const subject = new FullEvent(entity)
+      expect(subject.getHomepageUrl()).toEqual('https://homepage.com/foo')
     })
 
     it('should handle an event with no homepage', () => {
       entity.links = [
-        { type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
       ]
 
-      const actual = new FullEvent(entity)
-      expect(actual.getHomepageUrl()).toEqual(null)
+      const subject = new FullEvent(entity)
+      expect(subject.getHomepageUrl()).toEqual(null)
     })
   })
 })

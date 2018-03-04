@@ -39,13 +39,13 @@ it('should handle a succeeded message', () => {
   const actual = reducer(
     state,
     dashboardActions.getEntityCountsSucceeded({
-      items: [{ entityType: 'venue', count: 100 }]
+      items: [{ entityType: entityType.VENUE, count: 100 }]
     })
   )
 
   expect(actual).toEqual({
     entityCounts: {
-      venue: { entityType: 'venue', count: 100 }
+      venue: { entityType: entityType.VENUE, count: 100 }
     },
     getEntityCountsInProgress: false,
     getEntityCountsFailed: false
@@ -72,12 +72,12 @@ describe('selectors', () => {
   describe('entityCounts', () => {
     it('should return the current value', () => {
       const state = {
-        entityCounts: { venue: { entityType: 'venue', count: 100 } }
+        entityCounts: { venue: { entityType: entityType.VENUE, count: 100 } }
       }
 
       const result = selectors.entityCounts(state)
 
-      expect(result).toEqual({ venue: { entityType: 'venue', count: 100 } })
+      expect(result).toEqual({ venue: { entityType: entityType.VENUE, count: 100 } })
     })
   })
 

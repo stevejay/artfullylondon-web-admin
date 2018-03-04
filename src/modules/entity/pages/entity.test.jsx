@@ -16,7 +16,7 @@ class SomeComponent extends React.Component {
 it('should render correctly when an error was raised', () => {
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -42,7 +42,7 @@ it('should render correctly when an error was raised', () => {
 
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -68,7 +68,7 @@ it('should render correctly when an error was raised', () => {
 it('should render correctly when get entity failed', () => {
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -91,7 +91,7 @@ it('should render correctly when get entity failed', () => {
 it('should render correctly when get is in progress', () => {
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -114,7 +114,7 @@ it('should render correctly when get is in progress', () => {
 it('should render correctly when getting tags', () => {
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -137,7 +137,7 @@ it('should render correctly when getting tags', () => {
 it('should render correctly when has an entity', () => {
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={new FullTalent({ id: 'some-id' })}
@@ -162,7 +162,7 @@ it('should trigger getting the entity on construction when viewing an entity', (
 
   shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -180,7 +180,7 @@ it('should trigger getting the entity on construction when viewing an entity', (
   )
 
   expect(dispatch).toHaveBeenCalledWith(
-    entityActions.getEntity('talent', 'some-id')
+    entityActions.getEntity(entityType.TALENT, 'some-id')
   )
 
   expect(dispatch).not.toHaveBeenCalledWith(tagActions.getTags())
@@ -191,7 +191,7 @@ it('should trigger getting the entity on construction when editing an entity', (
 
   shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing={false}
       entityId='some-id'
       entity={null}
@@ -209,7 +209,7 @@ it('should trigger getting the entity on construction when editing an entity', (
   )
 
   expect(dispatch).toHaveBeenCalledWith(
-    entityActions.getEntity('talent', 'some-id')
+    entityActions.getEntity(entityType.TALENT, 'some-id')
   )
 
   expect(dispatch).toHaveBeenCalledWith(tagActions.getTags())
@@ -220,7 +220,7 @@ it('should trigger getting the entity on construction when creating an entity', 
 
   shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing={false}
       entityId={null}
       entity={null}
@@ -238,7 +238,7 @@ it('should trigger getting the entity on construction when creating an entity', 
   )
 
   expect(dispatch).toHaveBeenCalledWith(
-    entityActions.resetEntityForCreate('talent')
+    entityActions.resetEntityForCreate(entityType.TALENT)
   )
 
   expect(dispatch).toHaveBeenCalledWith(tagActions.getTags())
@@ -250,7 +250,7 @@ it('should not trigger getting the entity when props change but the same entity 
 
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -278,7 +278,7 @@ it('should trigger getting the entity when props change and a different entity i
 
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing
       entityId='some-id'
       entity={null}
@@ -297,7 +297,7 @@ it('should trigger getting the entity when props change and a different entity i
 
   wrapper.instance().componentWillReceiveProps({
     location: { path: '/second' },
-    entityType: 'talent',
+    entityType: entityType.TALENT,
     entityId: 'some-other-id',
     dispatch
   })
@@ -305,7 +305,7 @@ it('should trigger getting the entity when props change and a different entity i
   expect(setHasError).toHaveBeenCalledWith(false)
 
   expect(dispatch).toHaveBeenCalledWith(
-    entityActions.getEntity('talent', 'some-id')
+    entityActions.getEntity(entityType.TALENT, 'some-id')
   )
 })
 
@@ -315,7 +315,7 @@ it('should handle cancelling the entity edit', () => {
 
   const wrapper = shallow(
     <EntityPage
-      entityType='talent'
+      entityType={entityType.TALENT}
       viewing={false}
       entityId='some-id'
       entity={new FullTalent({ id: 'some-id' })}

@@ -15,16 +15,16 @@ describe('getInitialValues', () => {
 
     const talent = {
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       firstNames: 'Foo',
       lastName: 'Bar',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'Some common role',
       weSay: 'Something',
       version: 9,
       createdDate: '2018/01/01',
       description: 'Description',
-      links: [{ type: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }]
     }
 
@@ -32,15 +32,15 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       firstNames: 'Foo',
       lastName: 'Bar',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'Some common role',
       description: 'Rich Text Description',
       descriptionCredit: '',
-      links: [{ type: 'Wikipedia', key: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA, key: linkType.WIKIPEDIA }],
       images: [
         {
           id: '1111',
@@ -54,7 +54,7 @@ describe('getInitialValues', () => {
     })
 
     expect(entityMapper.getValidStatusesInitialValue).toHaveBeenCalledWith(
-      'Active'
+      statusType.ACTIVE
     )
 
     expect(entityMapper.getRichTextInitialValue).toHaveBeenCalledWith(
@@ -100,7 +100,7 @@ describe('mapSubmittedValues', () => {
 
     entityMapper.mapSubmittedLinks = jest
       .fn()
-      .mockReturnValue([{ type: 'Wikipedia' }])
+      .mockReturnValue([{ type: linkType.WIKIPEDIA }])
 
     entityMapper.mapSubmittedDescription = jest
       .fn()
@@ -111,9 +111,9 @@ describe('mapSubmittedValues', () => {
       lastName: 'Last',
       version: 7,
       weSay: ' We say ',
-      status: 'Active',
+      status: statusType.ACTIVE,
       commonRole: 'The common role',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       description: 'Description',
       descriptionCredit: '',
       images: [{ key: '1111' }],
@@ -127,10 +127,10 @@ describe('mapSubmittedValues', () => {
       lastName: 'Last',
       description: 'Mapped description',
       descriptionCredit: '',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'The common role',
-      status: 'Active',
-      links: [{ type: 'Wikipedia' }],
+      status: statusType.ACTIVE,
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }],
       weSay: 'We say',
       version: 8

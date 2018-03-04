@@ -12,7 +12,7 @@ it('should render correctly when not showign the update image modal', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -32,7 +32,7 @@ it('should render correctly when showing the update image modal', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -54,7 +54,7 @@ it('should handle adding an image that should be marked as the main image', () =
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{ value: [], onChange: _.noop }}
       meta={{ touched: false, error: null }}
       initialValues={null}
@@ -71,7 +71,7 @@ it('should handle adding an image that should be marked as the main image', () =
         values: { url: 'http://some-url' },
         isMain: true
       },
-      'venue',
+      entityType.VENUE,
       'ParentFormName'
     )
   )
@@ -84,7 +84,7 @@ it('should handle adding an image that should not be marked as the main image', 
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -104,7 +104,7 @@ it('should handle adding an image that should not be marked as the main image', 
         values: { url: 'http://some-url' },
         isMain: false
       },
-      'venue',
+      entityType.VENUE,
       'ParentFormName'
     )
   )
@@ -117,7 +117,7 @@ it('should handle showing the edit image modal', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -143,7 +143,7 @@ it('should handle hiding the edit image modal', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -169,7 +169,7 @@ it('should handle updating an image', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -209,7 +209,7 @@ it('should handle deleting an image', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -235,7 +235,7 @@ it('should handle setting an image as main', () => {
     <ImagesField
       label='The Label'
       parentFormName='ParentFormName'
-      entityType='venue'
+      entityType={entityType.VENUE}
       input={{
         value: [{ key: 'some-key', id: 'some-id', isMain: true }],
         onChange: _.noop
@@ -262,7 +262,7 @@ describe('shouldComponentUpdate', () => {
       <ImagesField
         label='The Label'
         parentFormName='ParentFormName'
-        entityType='venue'
+        entityType={entityType.VENUE}
         input={{ value, onChange: _.noop }}
         meta={{ touched: false, error: null }}
         initialValues={null}
@@ -287,7 +287,7 @@ describe('shouldComponentUpdate', () => {
       <ImagesField
         label='The Label'
         parentFormName='ParentFormName'
-        entityType='venue'
+        entityType={entityType.VENUE}
         input={{ value, onChange: _.noop }}
         meta={{ touched: false, error: null }}
         initialValues={null}

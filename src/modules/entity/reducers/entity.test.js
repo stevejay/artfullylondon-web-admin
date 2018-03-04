@@ -26,7 +26,7 @@ it('should handle resetting an entity for create', () => {
     getFailed: true
   })
 
-  const actual = reducer(state, entityActions.resetEntityForCreate('talent'))
+  const actual = reducer(state, entityActions.resetEntityForCreate(entityType.TALENT))
 
   expect(actual.entityId).toEqual(null)
   expect(actual.entity).toEqual(new FullTalent())
@@ -83,7 +83,7 @@ it('should handle successfully getting a talent', () => {
 
   const actual = reducer(
     state,
-    entityActions.getEntitySucceeded('talent', {
+    entityActions.getEntitySucceeded(entityType.TALENT, {
       id: 'server-id'
     })
   )
@@ -106,7 +106,7 @@ it('should handle successfully getting a venue', () => {
 
   const actual = reducer(
     state,
-    entityActions.getEntitySucceeded('venue', {
+    entityActions.getEntitySucceeded(entityType.VENUE, {
       id: 'server-id'
     })
   )
@@ -129,7 +129,7 @@ it('should handle successfully getting an event series', () => {
 
   const actual = reducer(
     state,
-    entityActions.getEntitySucceeded('event-series', {
+    entityActions.getEntitySucceeded(entityType.EVENT_SERIES, {
       id: 'server-id'
     })
   )
@@ -152,7 +152,7 @@ it('should handle successfully getting an event', () => {
 
   const actual = reducer(
     state,
-    entityActions.getEntitySucceeded('event', {
+    entityActions.getEntitySucceeded(entityType.EVENT, {
       id: 'server-id'
     })
   )
@@ -214,8 +214,8 @@ describe('selectors', () => {
     })
 
     it('should get the value when entity is for wrong entity type', () => {
-      const state = { getInProgress: false, entity: { entityType: 'talent' } }
-      const actual = selectors.gettingEntity(state, 'venue')
+      const state = { getInProgress: false, entity: { entityType: entityType.TALENT } }
+      const actual = selectors.gettingEntity(state, entityType.VENUE)
       expect(actual).toEqual(true)
     })
 
@@ -223,10 +223,10 @@ describe('selectors', () => {
       const state = {
         getInProgress: false,
         entityId: 'some-other-id',
-        entity: { entityType: 'talent', id: 'some-id' }
+        entity: { entityType: entityType.TALENT, id: 'some-id' }
       }
 
-      const actual = selectors.gettingEntity(state, 'talent')
+      const actual = selectors.gettingEntity(state, entityType.TALENT)
 
       expect(actual).toEqual(true)
     })
@@ -235,10 +235,10 @@ describe('selectors', () => {
       const state = {
         getInProgress: false,
         entityId: 'some-id',
-        entity: { entityType: 'talent', id: 'some-id' }
+        entity: { entityType: entityType.TALENT, id: 'some-id' }
       }
 
-      const actual = selectors.gettingEntity(state, 'talent')
+      const actual = selectors.gettingEntity(state, entityType.TALENT)
 
       expect(actual).toEqual(false)
     })

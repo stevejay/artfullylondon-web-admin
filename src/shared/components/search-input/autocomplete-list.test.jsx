@@ -13,7 +13,7 @@ it('should render an autocomplete list with a single entity entry correctly', ()
           autocompleteItemType: autocompleteItemType.ENTITY,
           id: 'some-id',
           name: 'Some Name',
-          entityType: 'event',
+          entityType: entityType.EVENT,
           output: 'Some output'
         }
       ]}

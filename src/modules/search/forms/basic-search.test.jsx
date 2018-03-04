@@ -12,11 +12,11 @@ it('should render correctly', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={_.noop}
       handleSubmit={_.noop}
@@ -35,11 +35,11 @@ it('should handle an autocomplete item being selected', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={dispatch}
       handleSubmit={_.noop}
@@ -62,11 +62,11 @@ it('should handle an autocomplete search', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={dispatch}
       handleSubmit={_.noop}
@@ -78,7 +78,7 @@ it('should handle an autocomplete search', () => {
   wrapper.find(Field).at(0).prop('onAutocompleteSearch')({ term: 'some term' })
 
   expect(dispatch).toHaveBeenCalledWith(
-    searchActions.autocompleteSearch('some term', 'talent')
+    searchActions.autocompleteSearch('some term', entityType.TALENT)
   )
 })
 
@@ -90,11 +90,11 @@ it('should handle an Enter key press', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={_.noop}
       handleSubmit={handleSubmit}
@@ -120,11 +120,11 @@ it('should ignore a non-Enter key press', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={_.noop}
       handleSubmit={handleSubmit}
@@ -149,11 +149,11 @@ it('should trigger submit when the entity type prop changes', () => {
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={_.noop}
       handleSubmit={handleSubmit}
@@ -163,7 +163,7 @@ it('should trigger submit when the entity type prop changes', () => {
   )
 
   wrapper.instance().componentWillReceiveProps({
-    entityTypeSelector: 'venue'
+    entityTypeSelector: entityType.VENUE
   })
 
   expect(handleSubmit).toHaveBeenCalled()
@@ -176,11 +176,11 @@ it('should not trigger submit when the entity type prop does not change', () => 
     <BasicSearchForm
       initialValues={{
         term: 'foo',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         skip: 10,
         take: 20
       }}
-      entityTypeSelector='talent'
+      entityTypeSelector={entityType.TALENT}
       submitting={false}
       dispatch={_.noop}
       handleSubmit={handleSubmit}
@@ -190,7 +190,7 @@ it('should not trigger submit when the entity type prop does not change', () => 
   )
 
   wrapper.instance().componentWillReceiveProps({
-    entityTypeSelector: 'talent'
+    entityTypeSelector: entityType.TALENT
   })
 
   expect(handleSubmit).not.toHaveBeenCalled()

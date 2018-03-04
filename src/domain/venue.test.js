@@ -1,16 +1,18 @@
 import { SummaryVenue, FullVenue } from '_src/domain/venue'
 import linkType from '_src/domain/types/link-type'
-import * as timeLib from '_src/shared/lib/time'
 import entityType from '_src/domain/types/entity-type'
+import * as timeLib from '_src/shared/lib/time'
 
 describe('SummaryVenue', () => {
-  it('should construct a summary venue', () => {
-    const subject = new SummaryVenue({
-      entityType: 'venue',
+  let entity = null
+
+  beforeEach(() => {
+    entity = {
+      entityType: entityType.VENUE,
       id: 'venue-id',
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Tate Modern',
-      venueType: 'Art Gallery',
+      venueType: venueType.ART_GALLERY,
       address: 'Bankside\nLondon',
       postcode: 'SW1 2ER',
       latitude: 51.5398,
@@ -18,55 +20,80 @@ describe('SummaryVenue', () => {
       image: 'abcd1234abcd1234abcd1234abcd1234',
       imageCopyright: 'Foo',
       imageRatio: 1.2
-    })
-
-    expect(subject.key).toEqual('venue-id')
-    expect(subject.getPostcodeDistrict()).toEqual('SW1')
-    expect(subject.getEntityTypeLabel()).toEqual('Venue')
-    expect(subject.getUrl()).toEqual('/venue/venue-id')
-    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
-    expect(subject.hasImage()).toEqual(true)
-    expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
+    }
   })
 
-  it('should construct a summary venue with no image or postcode', () => {
-    const subject = new SummaryVenue({
-      entityType: 'venue',
-      id: 'venue-id',
-      status: 'Active',
-      name: 'Tate Modern',
-      venueType: 'Art Gallery',
-      address: 'Bankside\nLondon',
-      latitude: 51.5398,
-      longitude: -0.109
+  it('should get the key', () => {
+    const subject = new SummaryVenue(entity)
+    expect(subject.key).toEqual('venue-id')
+  })
+
+  it('should handle getPostcodeDistrict', () => {
+    const subject = new SummaryVenue(entity)
+    expect(subject.getPostcodeDistrict()).toEqual('SW1')
+  })
+
+  it('should handle getEntityTypeLabel', () => {
+    const subject = new SummaryVenue(entity)
+    expect(subject.getEntityTypeLabel()).toEqual('Venue')
+  })
+
+  it('should handle getUrl', () => {
+    const subject = new SummaryVenue(entity)
+    expect(subject.getUrl()).toEqual('/venue/venue-id')
+  })
+
+  it('should handle getPin', () => {
+    const subject = new SummaryVenue(entity)
+    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
+  })
+
+  describe('hasImage', () => {
+    it('should handle having an image', () => {
+      entity.image = '12345678123456781234567812345678'
+      const subject = new SummaryVenue(entity)
+      expect(subject.hasImage()).toEqual(true)
     })
 
-    expect(subject.key).toEqual('venue-id')
-    expect(subject.getPostcodeDistrict()).toEqual(null)
-    expect(subject.getEntityTypeLabel()).toEqual('Venue')
-    expect(subject.getUrl()).toEqual('/venue/venue-id')
-    expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
-    expect(subject.hasImage()).toEqual(false)
-    expect(subject.createFullAddress()).toEqual('Bankside, London')
+    it('should handle having no image', () => {
+      entity.image = null
+      const subject = new SummaryVenue(entity)
+      expect(subject.hasImage()).toEqual(false)
+    })
+  })
+
+  describe('createFullAddress', () => {
+    it('should handle having a postcode', () => {
+      const subject = new SummaryVenue(entity)
+      expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
+    })
+
+    it('should handle having no postcode', () => {
+      entity.postcode = null
+      const subject = new SummaryVenue(entity)
+      expect(subject.createFullAddress()).toEqual('Bankside, London')
+    })
   })
 })
 
 describe('FullVenue', () => {
-  it('should construct a full venue', () => {
-    const subject = new FullVenue({
+  let entity = null
+
+  beforeEach(() => {
+    entity = {
       id: 'venue-id',
       name: 'Tate Modern',
-      status: 'Active',
-      venueType: 'Art Gallery',
+      status: statusType.ACTIVE,
+      venueType: venueType.ART_GALLERY,
       description: 'Some description',
       descriptionCredit: 'Some description credit',
       address: 'Bankside\nLondon',
       postcode: 'SW1 2ER',
       latitude: 51.5398,
       longitude: -0.109,
-      wheelchairAccessType: 'FullAccess',
-      disabledBathroomType: 'Present',
-      hearingFacilitiesType: 'HearingLoops',
+      wheelchairAccessType: wheelchairAccessType.FULL_ACCESS,
+      disabledBathroomType: disabledBathroomType.PRESENT,
+      hearingFacilitiesType: hearingFacilitiesType.HEARING_LOOPS,
       hasPermanentCollection: true,
       email: 'boxoffice@tate.co.uk',
       telephone: '020 7359 4404',
@@ -79,7 +106,9 @@ describe('FullVenue', () => {
       ],
       openingTimesClosures: [{ date: '2016/02/10' }, { date: '2016/02/11' }],
       namedClosures: ['ChristmasDay', 'NewYearsDay'],
-      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
+      links: [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
+      ],
       images: [
         {
           id: 'abcd1234abcd1234abcd1234abcd1234',
@@ -93,50 +122,74 @@ describe('FullVenue', () => {
       schemeVersion: 3,
       createdDate: '2016/01/10',
       updatedDate: '2016/01/11'
-    })
+    }
+  })
 
-    expect(subject.id).toEqual('venue-id')
-    expect(subject.name).toEqual('Tate Modern')
-    expect(subject.status).toEqual('Active')
-    expect(subject.entityType).toEqual('venue')
+  it('should handle entityType', () => {
+    const subject = new FullVenue(entity)
+    expect(subject.entityType).toEqual(entityType.VENUE)
+  })
+
+  it('should handle getInfoBarLabel', () => {
+    const subject = new FullVenue(entity)
     expect(subject.getInfoBarLabel()).toEqual('Art Gallery')
+  })
+
+  it('should handle getEditUrl', () => {
+    const subject = new FullVenue(entity)
     expect(subject.getEditUrl()).toEqual('/venue/edit/venue-id')
+  })
+
+  it('should handle getPin', () => {
+    const subject = new FullVenue(entity)
     expect(subject.getPin()).toEqual({ lat: 51.5398, lng: -0.109 })
-    expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
   })
 
-  it('should get the full address when there is no postcode', () => {
-    const subject = new FullVenue({
-      address: 'Bankside\nLondon'
+  describe('getHomepageUrl', () => {
+    it('should handle a venue with a homepage', () => {
+      entity.links = [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' },
+        { type: linkType.HOMEPAGE, url: 'https://homepage.com/foo' }
+      ]
+
+      const subject = new FullVenue(entity)
+      expect(subject.getHomepageUrl()).toEqual('https://homepage.com/foo')
     })
 
-    expect(subject.createFullAddress()).toEqual('Bankside, London')
-  })
+    it('should handle a venue with no homepage', () => {
+      entity.links = [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
+      ]
 
-  it('should get the homepage URL', () => {
-    const subject = new FullVenue({
-      links: [{ type: linkType.HOMEPAGE, url: '/some/url' }]
+      const subject = new FullVenue(entity)
+      expect(subject.getHomepageUrl()).toEqual(null)
     })
-
-    expect(subject.getHomepageUrl()).toEqual('/some/url')
   })
 
-  it('should get the homepage URL when there is none', () => {
-    const subject = new FullVenue({ links: [] })
-    expect(subject.getHomepageUrl()).toEqual(null)
-  })
+  it('should handle createTimesDetailsOn', () => {
+    timeLib.getTimesDetails = jest.fn().mockReturnValue('Times Details')
 
-  it('should create times details', () => {
-    timeLib.getTimesDetails = jest.fn().mockReturnValue('Times details')
+    const subject = new FullVenue(entity)
 
-    const subject = new FullVenue({ name: 'The name' })
+    expect(subject.createTimesDetailsOn('2018/01/01')).toEqual('Times Details')
 
-    expect(subject.createTimesDetailsOn('2017/01/20')).toBe('Times details')
-
-    expect(timeLib.getTimesDetails).toBeCalledWith(
-      { name: 'The name' },
+    expect(timeLib.getTimesDetails).toHaveBeenCalledWith(
+      subject,
       entityType.VENUE,
-      '2017/01/20'
+      '2018/01/01'
     )
+  })
+
+  describe('createFullAddress', () => {
+    it('should handle having a postcode', () => {
+      const subject = new FullVenue(entity)
+      expect(subject.createFullAddress()).toEqual('Bankside, London, SW1 2ER')
+    })
+
+    it('should handle having no postcode', () => {
+      entity.postcode = null
+      const subject = new FullVenue(entity)
+      expect(subject.createFullAddress()).toEqual('Bankside, London')
+    })
   })
 })

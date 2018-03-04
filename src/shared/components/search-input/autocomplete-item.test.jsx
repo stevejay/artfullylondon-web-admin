@@ -13,7 +13,7 @@ it('should render correctly an autocomplete entity that is not currently selecte
         autocompleteItemType: autocompleteItemType.ENTITY,
         id: 'some-id',
         name: 'Some Name',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         output: 'Some output'
       }}
       onSelect={_.noop}
@@ -32,7 +32,7 @@ it('should render correctly an autocomplete entity that is currently selected', 
         autocompleteItemType: autocompleteItemType.ENTITY,
         id: 'some-id',
         name: 'Some Name',
-        entityType: 'event',
+        entityType: entityType.EVENT,
         output: 'Some output'
       }}
       onSelect={_.noop}
@@ -51,7 +51,7 @@ it('should handle a click on an item', () => {
     autocompleteItemType: autocompleteItemType.ENTITY,
     id: 'some-id',
     name: 'Some Name',
-    entityType: 'event'
+    entityType: entityType.EVENT
   }
 
   const wrapper = shallow(

@@ -5,22 +5,22 @@ describe('getTagTypeFromTagId', () => {
     {
       it: 'should handle a medium tag',
       arg: 'medium/painting',
-      expected: 'medium'
+      expected: tagType.MEDIUM
     },
     {
       it: 'should handle a style tag',
       arg: 'style/contemporary',
-      expected: 'style'
+      expected: tagType.STYLE
     },
     {
       it: 'should handle a geo tag',
       arg: 'geo/usa',
-      expected: 'geo'
+      expected: tagType.GEO
     },
     {
       it: 'should handle an audience tag',
       arg: 'audience/families',
-      expected: 'audience'
+      expected: tagType.AUDIENCE
     }
   ]
 
@@ -39,7 +39,7 @@ describe('getTagTypeFromTagId', () => {
 describe('getTagTypeFromLocation', () => {
   it('should get tag type from valid location', () => {
     const actual = tagLib.getTagTypeFromLocation({ pathname: '/foo/GEO' })
-    expect(actual).toEqual('geo')
+    expect(actual).toEqual(tagType.GEO)
   })
 
   it('should throw an error for invalid location', () => {
@@ -51,7 +51,7 @@ describe('getTagTypeUrlParameter', () => {
   it('should get the parameter', () => {
     const match = { params: { type: 'Medium' } }
     const result = tagLib.getTagTypeUrlParameter(match)
-    expect(result).toEqual('medium')
+    expect(result).toEqual(tagType.MEDIUM)
   })
 })
 

@@ -8,7 +8,7 @@ it('should render correctly', () => {
     <EntityCardImage
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         image: '12345678',
         imageRatio: 2,
         cardImageLoaded: false,
@@ -27,7 +27,7 @@ it('should render correctly when card image is loaded', () => {
     <EntityCardImage
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         image: '12345678',
         imageRatio: 2,
         cardImageLoaded: true,
@@ -46,7 +46,7 @@ it('should render correctly when there is no image', () => {
     <EntityCardImage
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         hasImage: () => false,
         getUrl: () => 'http://some/url'
       }}
@@ -64,7 +64,7 @@ it('should handle the image load event', () => {
     <EntityCardImage
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         image: '12345678',
         imageRatio: 2,
         cardImageLoaded: false,
@@ -79,7 +79,7 @@ it('should handle the image load event', () => {
 
   expect(handleImageLoad).toHaveBeenCalledWith({
     id: 'some-id',
-    entityType: 'venue'
+    entityType: entityType.VENUE
   })
 })
 
@@ -88,7 +88,7 @@ it('should not update', () => {
     <EntityCardImage
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         image: '12345678',
         imageRatio: 2,
         cardImageLoaded: false,

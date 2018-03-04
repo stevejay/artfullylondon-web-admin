@@ -57,14 +57,14 @@ describe('maybeHasMoreSearchResults', () => {
     {
       it: 'should handle search results that may have more results',
       args: {
-        entityType: 'event',
+        entityType: entityType.EVENT,
         items: [
-          { entityType: 'event' },
-          { entityType: 'event' },
-          { entityType: 'event' },
-          { entityType: 'event' },
-          { entityType: 'event' },
-          { entityType: 'event' }
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT }
         ],
         take: 12
       },
@@ -73,8 +73,11 @@ describe('maybeHasMoreSearchResults', () => {
     {
       it: 'should handle search results that does not have more results',
       args: {
-        entityType: 'event',
-        items: [{ entityType: 'event' }, { entityType: 'event' }],
+        entityType: entityType.EVENT,
+        items: [
+          { entityType: entityType.EVENT },
+          { entityType: entityType.EVENT }
+        ],
         take: 12
       },
       expected: false

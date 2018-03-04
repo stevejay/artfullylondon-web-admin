@@ -76,7 +76,7 @@ describe('deleteLink', () => {
 describe('addLinkToLinksFormValue', () => {
   it('should add the link', () => {
     const generator = sagas.addLinkToLinksFormValue('ParentFormName', {
-      linkType: 'Wikipedia',
+      linkType: linkType.WIKIPEDIA,
       linkUrl: '/some/url'
     })
 
@@ -87,8 +87,8 @@ describe('addLinkToLinksFormValue', () => {
     expect(result.value).toEqual([
       { id: 1 },
       {
-        key: 'Wikipedia',
-        type: 'Wikipedia',
+        key: linkType.WIKIPEDIA,
+        type: linkType.WIKIPEDIA,
         url: '/some/url'
       }
     ])
@@ -100,7 +100,7 @@ describe('addLinkToLinksFormValue', () => {
 describe('addLink', () => {
   const generator = cloneableGenerator(sagas.addLink)(
     linkActions.addLink(
-      { linkType: 'Facebook', linkUrl: '/some/url' },
+      { linkType: linkType.FACEBOOK, linkUrl: '/some/url' },
       'ParentFormName'
     )
   )
@@ -117,20 +117,20 @@ describe('addLink', () => {
     expect(result.value).toEqual(
       call(
         normalise,
-        { linkType: 'Facebook', linkUrl: '/some/url' },
+        { linkType: linkType.FACEBOOK, linkUrl: '/some/url' },
         linkConstants.LINK_NORMALISER
       )
     )
 
     result = generator.next({
-      linkType: 'Facebook',
+      linkType: linkType.FACEBOOK,
       linkUrl: '/some/normalised/url'
     })
 
     expect(result.value).toEqual(
       call(
         validationLib.validate,
-        { linkType: 'Facebook', linkUrl: '/some/normalised/url' },
+        { linkType: linkType.FACEBOOK, linkUrl: '/some/normalised/url' },
         linkConstants.LINK_CONSTRAINT,
         linkLib.validateLink
       )
@@ -143,14 +143,18 @@ describe('addLink', () => {
     let result = generatorClone.next()
     expect(result.value).toEqual(
       call(sagas.addLinkToLinksFormValue, 'ParentFormName', {
-        linkType: 'Facebook',
+        linkType: linkType.FACEBOOK,
         linkUrl: '/some/normalised/url'
       })
     )
 
     const links = [
-      { key: 'Instagram', type: 'Instagram', url: '/url/1' },
-      { key: 'Facebook', type: 'Facebook', url: '/some/normalised/url' }
+      { key: linkType.INSTAGRAM, type: linkType.INSTAGRAM, url: '/url/1' },
+      {
+        key: linkType.FACEBOOK,
+        type: linkType.FACEBOOK,
+        url: '/some/normalised/url'
+      }
     ]
 
     result = generatorClone.next(links)

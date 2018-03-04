@@ -8,9 +8,9 @@ describe('SummaryEventSeries', () => {
     entity = {
       entityType: entityType.EVENT_SERIES,
       id: 'event-series-id',
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Bang Said The Gun',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Third Thursday of each month',
       summary: 'A poetry riot',
       image: 'abcd1234abcd1234abcd1234abcd1234',
@@ -32,14 +32,14 @@ describe('SummaryEventSeries', () => {
   describe('hasImage', () => {
     it('should handle having an image', () => {
       entity.image = '12345678123456781234567812345678'
-      const actual = new SummaryEventSeries(entity)
-      expect(actual.hasImage()).toEqual(true)
+      const subject = new SummaryEventSeries(entity)
+      expect(subject.hasImage()).toEqual(true)
     })
 
     it('should handle having no image', () => {
       entity.image = null
-      const actual = new SummaryEventSeries(entity)
-      expect(actual.hasImage()).toEqual(false)
+      const subject = new SummaryEventSeries(entity)
+      expect(subject.hasImage()).toEqual(false)
     })
   })
 
@@ -50,13 +50,13 @@ describe('SummaryEventSeries', () => {
 
   describe('getEventSeriesTypeLabel', () => {
     it('should handle an occasional event series', () => {
-      entity.eventSeriesType = 'Occasional'
+      entity.eventSeriesType = eventSeriesType.OCCASIONAL
       const subject = new SummaryEventSeries(entity)
       expect(subject.getEventSeriesTypeLabel()).toEqual('series')
     })
 
     it('should handle a season event series', () => {
-      entity.eventSeriesType = 'Season'
+      entity.eventSeriesType = eventSeriesType.SEASON
       const subject = new SummaryEventSeries(entity)
       expect(subject.getEventSeriesTypeLabel()).toEqual('season')
     })
@@ -69,14 +69,16 @@ describe('FullEventSeries', () => {
   beforeEach(() => {
     entity = {
       id: 'event-series-id',
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Bang Said The Gun',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Third Thursday of each month',
       summary: 'A poetry riot',
       description: 'Poetry for people who dont like poetry.',
       descriptionCredit: 'Some description credit',
-      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
+      links: [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
+      ],
       images: [
         {
           id: 'abcd1234abcd1234abcd1234abcd1234',

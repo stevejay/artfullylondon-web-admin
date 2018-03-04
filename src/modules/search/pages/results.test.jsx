@@ -19,7 +19,7 @@ it('should render correctly when search returned results', () => {
     <SearchResultsPage
       searchInProgress={false}
       resultParams={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         skip: 10,
         take: 20
       }}
@@ -53,7 +53,7 @@ it('should render correctly when search returned no results', () => {
     <SearchResultsPage
       searchInProgress={false}
       resultParams={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         skip: 10,
         take: 20
       }}
@@ -87,7 +87,7 @@ it('should render correctly when search is in progress', () => {
     <SearchResultsPage
       searchInProgress
       resultParams={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         skip: 10,
         take: 20
       }}
@@ -191,7 +191,7 @@ it('should handle a pagination click', () => {
   const wrapper = shallow(
     <SearchResultsPage
       searchInProgress={false}
-      resultParams={{ entityType: 'venue', skip: 10, take: 20 }}
+      resultParams={{ entityType: entityType.VENUE, skip: 10, take: 20 }}
       total={100}
       items={[new SummaryVenue({})]}
       location={{ search: null }}
@@ -203,7 +203,7 @@ it('should handle a pagination click', () => {
 
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.pushBasicSearchToUrl({
-      query: { entityType: 'venue', skip: 10, take: 20 },
+      query: { entityType: entityType.VENUE, skip: 10, take: 20 },
       skip: 5 * globalConstants.DEFAULT_TAKE,
       take: globalConstants.DEFAULT_TAKE
     })
@@ -216,7 +216,7 @@ it('should handle submitting a search', () => {
   const wrapper = shallow(
     <SearchResultsPage
       searchInProgress={false}
-      resultParams={{ entityType: 'venue', skip: 10, take: 20 }}
+      resultParams={{ entityType: entityType.VENUE, skip: 10, take: 20 }}
       total={100}
       items={[new SummaryVenue({})]}
       location={{ search: null }}
@@ -241,7 +241,7 @@ it('should handle a more results click', () => {
   const wrapper = shallow(
     <SearchResultsPage
       searchInProgress={false}
-      resultParams={{ entityType: 'venue', skip: 10, take: 20 }}
+      resultParams={{ entityType: entityType.VENUE, skip: 10, take: 20 }}
       total={100}
       items={[new SummaryVenue({})]}
       location={{ search: null }}
@@ -250,13 +250,13 @@ it('should handle a more results click', () => {
   )
 
   wrapper.find(SearchResults).prop('onMoreResultsClick')({
-    entityType: 'talent'
+    entityType: entityType.TALENT
   })
 
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.pushBasicSearchToUrl({
       query: {
-        entityType: 'talent',
+        entityType: entityType.TALENT,
         skip: 10,
         take: 20
       }
@@ -271,7 +271,7 @@ it('should handle a try all click', () => {
     <SearchResultsPage
       searchInProgress={false}
       resultParams={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         skip: 10,
         take: 20
       }}

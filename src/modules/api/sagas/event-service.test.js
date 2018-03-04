@@ -6,7 +6,7 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 describe('getEntity', () => {
   it('should get an entity', () => {
-    const generator = sagas.getEntity('talent', 'talent-id')
+    const generator = sagas.getEntity(entityType.TALENT, 'talent-id')
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
@@ -29,7 +29,7 @@ describe('getEntity', () => {
 
 describe('getSummaryEntity', () => {
   it('should get a summary entity', () => {
-    const generator = sagas.getSummaryEntity('talent', 'talent-id')
+    const generator = sagas.getSummaryEntity(entityType.TALENT, 'talent-id')
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
@@ -54,7 +54,7 @@ describe('saveEntity', () => {
   const mapper = jest.fn(value => value)
 
   it('should save a new entity', () => {
-    const generator = sagas.saveEntity('talent', { name: 'Foo' }, mapper, false)
+    const generator = sagas.saveEntity(entityType.TALENT, { name: 'Foo' }, mapper, false)
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
@@ -79,7 +79,7 @@ describe('saveEntity', () => {
 
   it('should save an existing entity', () => {
     const generator = sagas.saveEntity(
-      'talent',
+      entityType.TALENT,
       { id: 'talent-id', name: 'Foo' },
       mapper,
       true

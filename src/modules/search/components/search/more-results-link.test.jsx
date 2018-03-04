@@ -5,7 +5,7 @@ import SearchMoreResultsLink from './more-results-link'
 
 it('should render correctly', () => {
   const wrapper = shallow(
-    <SearchMoreResultsLink entityType='event' onClick={_.noop} />
+    <SearchMoreResultsLink entityType={entityType.EVENT} onClick={_.noop} />
   )
 
   expect(wrapper).toMatchSnapshot()
@@ -15,10 +15,10 @@ it('should handle being clicked', () => {
   const handleClick = jest.fn()
 
   const wrapper = shallow(
-    <SearchMoreResultsLink entityType='event' onClick={handleClick} />
+    <SearchMoreResultsLink entityType={entityType.EVENT} onClick={handleClick} />
   )
 
   wrapper.find('a').simulate('click')
 
-  expect(handleClick).toHaveBeenCalledWith({ entityType: 'event' })
+  expect(handleClick).toHaveBeenCalledWith({ entityType: entityType.EVENT })
 })

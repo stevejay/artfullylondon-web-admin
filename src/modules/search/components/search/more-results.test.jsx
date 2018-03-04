@@ -6,7 +6,7 @@ import SearchMoreResults from './more-results'
 it('should render correctly when has no more results', () => {
   const wrapper = shallow(
     <SearchMoreResults
-      items={[{ entityType: 'event' }]}
+      items={[{ entityType: entityType.EVENT }]}
       take={20}
       onClick={_.noop}
     />
@@ -19,9 +19,9 @@ it('should render correctly when has more results', () => {
   const wrapper = shallow(
     <SearchMoreResults
       items={[
-        { entityType: 'event' },
-        { entityType: 'event' },
-        { entityType: 'event' }
+        { entityType: entityType.EVENT },
+        { entityType: entityType.EVENT },
+        { entityType: entityType.EVENT }
       ]}
       take={3}
       onClick={_.noop}

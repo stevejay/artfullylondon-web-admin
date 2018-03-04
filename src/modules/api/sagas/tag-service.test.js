@@ -6,7 +6,7 @@ import { getAuthTokenForCurrentUser } from '_src/modules/user'
 
 describe('getTags', () => {
   it('should get when tags exist', () => {
-    const generator = sagas.getTags('medium')
+    const generator = sagas.getTags(tagType.MEDIUM)
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
@@ -29,7 +29,7 @@ describe('getTags', () => {
 
 describe('getAllTags', () => {
   it('should get all tags', () => {
-    const generator = sagas.getAllTags('medium')
+    const generator = sagas.getAllTags(tagType.MEDIUM)
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
@@ -48,7 +48,7 @@ describe('getAllTags', () => {
 
 describe('addTag', () => {
   it('should add', () => {
-    const generator = sagas.addTag({ tagType: 'medium', label: 'Label' })
+    const generator = sagas.addTag({ tagType: tagType.MEDIUM, label: 'Label' })
 
     let result = generator.next()
     expect(result.value).toEqual(call(getAuthTokenForCurrentUser))

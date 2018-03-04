@@ -8,7 +8,7 @@ it('should render correctly', () => {
     <EntityCardShell
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         getEntityTypeLabel: _.noop,
         hasImage: _.noop,
         getUrl: _.noop
@@ -29,7 +29,7 @@ it('should handle a click on the card', () => {
     <EntityCardShell
       entity={{
         id: 'some-id',
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         getEntityTypeLabel: _.noop,
         hasImage: _.noop,
         getUrl: _.noop
@@ -49,7 +49,7 @@ describe('shouldComponentUpdate', () => {
   it('should not update when props have not changed', () => {
     const entity = {
       id: 'some-id',
-      entityType: 'venue',
+      entityType: entityType.VENUE,
       getEntityTypeLabel: _.noop,
       hasImage: _.noop,
       getUrl: _.noop
@@ -71,7 +71,7 @@ describe('shouldComponentUpdate', () => {
       <EntityCardShell
         entity={{
           id: 'some-id',
-          entityType: 'venue',
+          entityType: entityType.VENUE,
           getEntityTypeLabel: _.noop,
           hasImage: _.noop,
           getUrl: _.noop

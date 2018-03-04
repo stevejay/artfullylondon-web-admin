@@ -18,9 +18,9 @@ describe('getInitialValues', () => {
 
     const entity = {
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Foo',
-      venueType: 'Theatre',
+      venueType: venueType.THEATRE,
       address: 'Some address',
       latitude: 1.1,
       longitude: 2.2,
@@ -36,7 +36,7 @@ describe('getInitialValues', () => {
       openingTimesClosures: [],
       namedClosures: [],
       description: 'Description',
-      links: [{ type: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }],
       weSay: '',
       version: 9,
@@ -47,10 +47,10 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       name: 'Foo',
-      venueType: 'Theatre',
+      venueType: venueType.THEATRE,
       address: 'Some address',
       pin: {
         lat: 1.1,
@@ -73,7 +73,7 @@ describe('getInitialValues', () => {
       namedClosures: '',
       description: 'Rich Text Description',
       descriptionCredit: '',
-      links: [{ type: 'Wikipedia', key: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA, key: linkType.WIKIPEDIA }],
       images: [
         {
           id: '1111',
@@ -88,7 +88,7 @@ describe('getInitialValues', () => {
     })
 
     expect(entityMapper.getValidStatusesInitialValue).toHaveBeenCalledWith(
-      'Active'
+      statusType.ACTIVE
     )
 
     expect(entityMapper.getRichTextInitialValue).toHaveBeenCalledWith(
@@ -150,7 +150,7 @@ describe('mapSubmittedValues', () => {
 
     entityMapper.mapSubmittedLinks = jest
       .fn()
-      .mockReturnValue([{ type: 'Wikipedia' }])
+      .mockReturnValue([{ type: linkType.WIKIPEDIA }])
 
     entityMapper.mapSubmittedDescription = jest
       .fn()
@@ -172,8 +172,8 @@ describe('mapSubmittedValues', () => {
       name: 'Name',
       description: 'Description',
       descriptionCredit: 'Some credit',
-      status: 'Active',
-      venueType: 'Theatre',
+      status: statusType.ACTIVE,
+      venueType: venueType.THEATRE,
       address: 'Some address ',
       postcode: 'n4 2RR ',
       pin: { lat: 1.1, lng: 2.2 },
@@ -200,8 +200,8 @@ describe('mapSubmittedValues', () => {
       name: 'Name',
       description: 'Mapped description',
       descriptionCredit: 'Some credit',
-      status: 'Active',
-      venueType: 'Theatre',
+      status: statusType.ACTIVE,
+      venueType: venueType.THEATRE,
       address: 'Some address',
       postcode: 'N4 2RR',
       latitude: 1.1,
@@ -216,7 +216,7 @@ describe('mapSubmittedValues', () => {
       additionalOpeningTimes: [],
       openingTimesClosures: [],
       namedClosures: [],
-      links: [{ type: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }],
       weSay: '',
       notes: '',

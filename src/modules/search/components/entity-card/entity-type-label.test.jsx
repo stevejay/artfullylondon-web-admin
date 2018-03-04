@@ -6,7 +6,7 @@ it('should render correctly', () => {
   const wrapper = shallow(
     <EntityCardEntityTypeLabel
       entity={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         getEntityTypeLabel: () => 'The Label'
       }}
     />
@@ -19,7 +19,7 @@ it('should not update', () => {
   const wrapper = shallow(
     <EntityCardEntityTypeLabel
       entity={{
-        entityType: 'venue',
+        entityType: entityType.VENUE,
         getEntityTypeLabel: () => 'The Label'
       }}
     />

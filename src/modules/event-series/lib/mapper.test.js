@@ -14,15 +14,15 @@ describe('getInitialValues', () => {
 
     const entity = {
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       name: 'Foo',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Occurrence',
       summary: 'Summary',
       version: 9,
       createdDate: '2018/01/01',
       description: 'Description',
-      links: [{ type: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }]
     }
 
@@ -30,15 +30,15 @@ describe('getInitialValues', () => {
 
     expect(actual).toEqual({
       id: 1,
-      status: 'Active',
+      status: statusType.ACTIVE,
       validStatuses: ['Status A'],
       name: 'Foo',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Occurrence',
       summary: 'Summary',
       description: 'Rich Text Description',
       descriptionCredit: '',
-      links: [{ type: 'Wikipedia', key: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA, key: linkType.WIKIPEDIA }],
       images: [
         {
           id: '1111',
@@ -52,7 +52,7 @@ describe('getInitialValues', () => {
     })
 
     expect(entityMapper.getValidStatusesInitialValue).toHaveBeenCalledWith(
-      'Active'
+      statusType.ACTIVE
     )
 
     expect(entityMapper.getRichTextInitialValue).toHaveBeenCalledWith(
@@ -98,7 +98,7 @@ describe('mapSubmittedValues', () => {
 
     entityMapper.mapSubmittedLinks = jest
       .fn()
-      .mockReturnValue([{ type: 'Wikipedia' }])
+      .mockReturnValue([{ type: linkType.WIKIPEDIA }])
 
     entityMapper.mapSubmittedDescription = jest
       .fn()
@@ -106,11 +106,11 @@ describe('mapSubmittedValues', () => {
 
     const values = {
       name: 'Name',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Occurrence',
       summary: 'Summary',
       version: 7,
-      status: 'Active',
+      status: statusType.ACTIVE,
       description: 'Description',
       descriptionCredit: 'Some credit',
       images: [{ key: '1111' }],
@@ -121,14 +121,14 @@ describe('mapSubmittedValues', () => {
 
     expect(actual).toEqual({
       name: 'Name',
-      eventSeriesType: 'Occasional',
+      eventSeriesType: eventSeriesType.OCCASIONAL,
       occurrence: 'Occurrence',
       summary: 'Summary',
       weSay: '',
-      status: 'Active',
+      status: statusType.ACTIVE,
       description: 'Mapped description',
       descriptionCredit: 'Some credit',
-      links: [{ type: 'Wikipedia' }],
+      links: [{ type: linkType.WIKIPEDIA }],
       images: [{ id: '1111' }],
       version: 8
     })

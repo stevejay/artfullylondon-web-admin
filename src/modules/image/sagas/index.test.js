@@ -190,7 +190,7 @@ describe('addImage', () => {
   const generator = cloneableGenerator(sagas.addImage)({
     payload: {
       parentFormName: 'ParentFormName',
-      entityType: 'talent',
+      entityType: entityType.TALENT,
       isMain: true,
       values: { imageUrl: '/some/url' }
     }
@@ -230,7 +230,7 @@ describe('addImage', () => {
       race({
         image: call(
           imageService.addImage,
-          'talent',
+          entityType.TALENT,
           'some-uuid',
           '/some/normalised/url',
           'Some copyright',

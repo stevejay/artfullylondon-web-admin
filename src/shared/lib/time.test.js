@@ -679,7 +679,7 @@ describe('getTimesDetailsForVenue', () => {
               openingTimesClosures: test.args.closures,
               namedClosures: test.args.namedClosures
             },
-            'venue',
+            entityType.VENUE,
             today
           )
         ).toEqual(test.expected)

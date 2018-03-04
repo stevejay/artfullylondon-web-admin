@@ -37,14 +37,14 @@ it('should handle submitting the quicksearch form', () => {
 
   wrapper.find('ReduxForm').prop('onSubmit')({
     term: 'foo',
-    entityType: 'venue'
+    entityType: entityType.VENUE
   })
 
   expect(handleHide).toHaveBeenCalled()
 
   expect(dispatch).toHaveBeenCalledWith(
     searchActions.pushBasicSearchToUrl({
-      query: { term: 'foo', entityType: 'venue' }
+      query: { term: 'foo', entityType: entityType.VENUE }
     })
   )
 })

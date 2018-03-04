@@ -111,10 +111,10 @@ it('should trigger getting tags when the tag type changes', () => {
     />
   )
 
-  wrapper.instance().componentWillReceiveProps({ tagType: 'audience' })
+  wrapper.instance().componentWillReceiveProps({ tagType: tagType.AUDIENCE })
 
-  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags('medium'))
-  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags('audience'))
+  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags(tagType.MEDIUM))
+  expect(dispatch).toHaveBeenCalledWith(tagActions.getTags(tagType.AUDIENCE))
 })
 
 it('should not trigger getting tags when props change but the tag type does not', () => {
@@ -132,7 +132,9 @@ it('should not trigger getting tags when props change but the tag type does not'
     />
   )
 
-  wrapper.instance().componentWillReceiveProps({ tagType: 'medium' })
+  wrapper.instance().componentWillReceiveProps({ tagType: tagType.MEDIUM })
 
-  expect(dispatch).not.toHaveBeenCalledWith(tagActions.getTags('audience'))
+  expect(dispatch).not.toHaveBeenCalledWith(
+    tagActions.getTags(tagType.AUDIENCE)
+  )
 })

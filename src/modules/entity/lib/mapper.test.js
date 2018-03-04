@@ -36,12 +36,12 @@ describe('mapSubmittedDescription', () => {
 
 describe('getLinksInitialValue', () => {
   it('should handle a list of links', () => {
-    const links = [{ type: 'Wikipedia', url: 'http://some/url' }]
+    const links = [{ type: linkType.WIKIPEDIA, url: 'http://some/url' }]
 
     const actual = entityMapper.getLinksInitialValue(links)
 
     expect(actual).toEqual([
-      { key: 'Wikipedia', type: 'Wikipedia', url: 'http://some/url' }
+      { key: linkType.WIKIPEDIA, type: linkType.WIKIPEDIA, url: 'http://some/url' }
     ])
   })
 
@@ -54,12 +54,12 @@ describe('getLinksInitialValue', () => {
 describe('mapSubmittedLinks', () => {
   it('should handle a list of links', () => {
     const links = [
-      { key: 'Wikipedia', type: 'Wikipedia', url: 'http://some/url' }
+      { key: linkType.WIKIPEDIA, type: linkType.WIKIPEDIA, url: 'http://some/url' }
     ]
 
     const actual = entityMapper.mapSubmittedLinks(links)
 
-    expect(actual).toEqual([{ type: 'Wikipedia', url: 'http://some/url' }])
+    expect(actual).toEqual([{ type: linkType.WIKIPEDIA, url: 'http://some/url' }])
   })
 
   it('should handle empty links', () => {
@@ -121,7 +121,7 @@ describe('mapSubmittedImages', () => {
       {
         key: '3333',
         id: '3333',
-        status: 'Processing'
+        status: imageStatusType.PROCESSING
       }
     ]
 

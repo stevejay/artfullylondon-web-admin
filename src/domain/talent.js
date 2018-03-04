@@ -13,7 +13,7 @@ export class SummaryTalent {
   }
 
   get name () {
-    return `${this.firstNames || ''} ${this.lastName}`.trim()
+    return _getName(this)
   }
 
   getEntityTypeLabel () {
@@ -49,7 +49,7 @@ export class FullTalent extends Entity {
   }
 
   get name () {
-    return `${this.firstNames || ''} ${this.lastName}`.trim()
+    return _getName(this)
   }
 
   getInfoBarLabel () {
@@ -59,4 +59,8 @@ export class FullTalent extends Entity {
   getEditUrl () {
     return `/talent/edit/${this.id}`
   }
+}
+
+function _getName (entity) {
+  return `${entity.firstNames || ''} ${entity.lastName}`.trim()
 }

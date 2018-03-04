@@ -9,7 +9,7 @@ import ButtonField from '_src/shared/components/button/field'
 it('should render correctly when not showing the add tag modal', () => {
   const wrapper = shallow(
     <TagSelector
-      tagType='medium'
+      tagType={tagType.MEDIUM}
       options={[{ id: 'a', label: 'A' }]}
       label='The Label'
       name='theName'
@@ -25,7 +25,7 @@ it('should render correctly when not showing the add tag modal', () => {
 it('should render correctly when showing the add tag modal', () => {
   const wrapper = shallow(
     <TagSelector
-      tagType='medium'
+      tagType={tagType.MEDIUM}
       options={[{ id: 'a', label: 'A' }]}
       label='The Label'
       name='theName'
@@ -43,7 +43,7 @@ it('should handle submitting the add tag form', () => {
 
   const wrapper = shallow(
     <TagSelector
-      tagType='medium'
+      tagType={tagType.MEDIUM}
       options={[{ id: 'a', label: 'A' }]}
       label='The Label'
       name='theName'
@@ -63,7 +63,7 @@ it('should handle adding a tag', () => {
 
   const wrapper = shallow(
     <TagSelector
-      tagType='medium'
+      tagType={tagType.MEDIUM}
       options={[{ id: 'a', label: 'A' }]}
       label='The Label'
       name='theName'
@@ -83,7 +83,7 @@ it('should handle hiding the add tag modal', () => {
 
   const wrapper = shallow(
     <TagSelector
-      tagType='medium'
+      tagType={tagType.MEDIUM}
       options={[{ id: 'a', label: 'A' }]}
       label='The Label'
       name='theName'

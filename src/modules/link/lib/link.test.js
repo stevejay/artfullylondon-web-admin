@@ -37,7 +37,7 @@ describe('validateLink', () => {
     {
       it: 'should pass a homepage url',
       args: {
-        linkType: 'Homepage',
+        linkType: linkType.HOMEPAGE,
         linkUrl: 'https://anything.at.all/'
       },
       shouldValidate: true
@@ -45,7 +45,7 @@ describe('validateLink', () => {
     {
       it: 'should fail an invalid twitter url',
       args: {
-        linkType: 'Twitter',
+        linkType: linkType.TWITTER,
         linkUrl: 'https://www.facebook.com/foo'
       },
       shouldValidate: false
@@ -53,7 +53,7 @@ describe('validateLink', () => {
     {
       it: 'should pass a valid twitter url',
       args: {
-        linkType: 'Twitter',
+        linkType: linkType.TWITTER,
         linkUrl: 'https://twitter.com/foo'
       },
       shouldValidate: true
@@ -61,7 +61,7 @@ describe('validateLink', () => {
     {
       it: 'should fail an invalid facebook url',
       args: {
-        linkType: 'Facebook',
+        linkType: linkType.FACEBOOK,
         linkUrl: 'http://test.com'
       },
       shouldValidate: false
@@ -69,7 +69,7 @@ describe('validateLink', () => {
     {
       it: 'should pass a valid facebook url',
       args: {
-        linkType: 'Facebook',
+        linkType: linkType.FACEBOOK,
         linkUrl: 'https://www.facebook.com/foo'
       },
       shouldValidate: true
@@ -77,7 +77,7 @@ describe('validateLink', () => {
     {
       it: 'should fail an invalid wikipedia url',
       args: {
-        linkType: 'Wikipedia',
+        linkType: linkType.WIKIPEDIA,
         linkUrl: 'https://www.facebook.com/foo'
       },
       shouldValidate: false
@@ -85,7 +85,7 @@ describe('validateLink', () => {
     {
       it: 'should pass a valid wikipedia url',
       args: {
-        linkType: 'Wikipedia',
+        linkType: linkType.WIKIPEDIA,
         linkUrl: 'https://en.wikipedia.org/foo'
       },
       shouldValidate: true
@@ -93,7 +93,7 @@ describe('validateLink', () => {
     {
       it: 'should fail an invalid instagram url',
       args: {
-        linkType: 'Instagram',
+        linkType: linkType.INSTAGRAM,
         linkUrl: 'https://instagram.com/foo'
       },
       shouldValidate: false
@@ -101,7 +101,7 @@ describe('validateLink', () => {
     {
       it: 'should pass a valid instagram url',
       args: {
-        linkType: 'Instagram',
+        linkType: linkType.INSTAGRAM,
         linkUrl: 'https://www.instagram.com/foo'
       },
       shouldValidate: true

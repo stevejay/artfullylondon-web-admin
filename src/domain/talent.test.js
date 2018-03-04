@@ -6,132 +6,146 @@ import {
 import entityType from '_src/domain/types/entity-type'
 
 describe('SummaryTalent', () => {
-  it('should construct an individual with an image', () => {
-    const subject = new SummaryTalent({
+  let entity = null
+
+  beforeEach(() => {
+    entity = {
       entityType: entityType.TALENT,
-      status: 'Active',
+      status: statusType.ACTIVE,
       id: 'talent-id',
       lastName: 'Cracknell',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'Actor',
       image: '0342826208934d90b801e055152f1d0f',
       imageCopyright: 'Tate Modern',
       imageRatio: 1.2,
       firstNames: 'Carrie'
-    })
-
-    expect(subject.entityType).toEqual(entityType.TALENT)
-    expect(subject.id).toEqual('talent-id')
-    expect(subject.key).toEqual('talent-id')
-    expect(subject.firstNames).toEqual('Carrie')
-    expect(subject.lastName).toEqual('Cracknell')
-    expect(subject.name).toEqual('Carrie Cracknell')
-    expect(subject.status).toEqual('Active')
-    expect(subject.talentType).toEqual('Individual')
-    expect(subject.commonRole).toEqual('Actor')
-    expect(subject.image).toEqual('0342826208934d90b801e055152f1d0f')
-    expect(subject.imageCopyright).toEqual('Tate Modern')
-    expect(subject.imageRatio).toEqual(1.2)
-    expect(subject.hasImage()).toEqual(true)
-    expect(subject.getEntityTypeLabel()).toEqual('Talent')
-    expect(subject.getUrl()).toEqual('/talent/talent-id')
+    }
   })
 
-  it('should construct a group with no image', () => {
-    const subject = new SummaryTalent({
-      entityType: entityType.TALENT,
-      status: 'Active',
-      id: 'talent-id',
-      lastName: 'Cracknell',
-      talentType: 'Group',
-      commonRole: 'Actor'
+  it('should get the key', () => {
+    const subject = new SummaryTalent(entity)
+    expect(subject.key).toEqual('talent-id')
+  })
+
+  describe('name', () => {
+    it('should get the name for an individual', () => {
+      entity.talentType = talentType.INDIVIDUAL
+      entity.firstNames = 'Carrie Jane'
+      entity.lastName = 'Cracknell'
+
+      const subject = new SummaryTalent(entity)
+
+      expect(subject.name).toEqual('Carrie Jane Cracknell')
     })
 
-    expect(subject.entityType).toEqual(entityType.TALENT)
-    expect(subject.id).toEqual('talent-id')
-    expect(subject.key).toEqual('talent-id')
-    expect(subject.lastName).toEqual('Cracknell')
-    expect(subject.name).toEqual('Cracknell')
-    expect(subject.status).toEqual('Active')
-    expect(subject.talentType).toEqual('Group')
-    expect(subject.commonRole).toEqual('Actor')
-    expect(subject.hasImage()).toEqual(false)
+    it('should get the name for a group', () => {
+      entity.talentType = talentType.GROUP
+      entity.firstNames = null
+      entity.lastName = 'Cracknell'
+
+      const subject = new SummaryTalent(entity)
+
+      expect(subject.name).toEqual('Cracknell')
+    })
+  })
+
+  it('should handle getEntityTypeLabel', () => {
+    const subject = new SummaryTalent(entity)
     expect(subject.getEntityTypeLabel()).toEqual('Talent')
+  })
+
+  describe('hasImage', () => {
+    it('should handle having an image', () => {
+      entity.image = '12345678123456781234567812345678'
+      const subject = new SummaryTalent(entity)
+      expect(subject.hasImage()).toEqual(true)
+    })
+
+    it('should handle having no image', () => {
+      entity.image = null
+      const subject = new SummaryTalent(entity)
+      expect(subject.hasImage()).toEqual(false)
+    })
+  })
+
+  it('should handle getUrl', () => {
+    const subject = new SummaryTalent(entity)
     expect(subject.getUrl()).toEqual('/talent/talent-id')
   })
 })
 
 describe('EventSummaryTalent', () => {
-  it('should construct an individual with an image', () => {
-    const subject = new EventSummaryTalent({
+  let entity = null
+
+  beforeEach(() => {
+    entity = {
       entityType: entityType.TALENT,
-      status: 'Active',
+      status: statusType.ACTIVE,
       id: 'talent-id',
       lastName: 'Cracknell',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'Actor',
       image: '0342826208934d90b801e055152f1d0f',
       imageCopyright: 'Tate Modern',
       imageRatio: 1.2,
       firstNames: 'Carrie'
+    }
+  })
+
+  describe('createRolesString', () => {
+    it('should handle roles', () => {
+      entity.roles = ['Actor', 'Director']
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.createRolesString()).toEqual('Actor / Director')
     })
 
-    expect(subject.entityType).toEqual(entityType.TALENT)
-    expect(subject.id).toEqual('talent-id')
-    expect(subject.key).toEqual('talent-id')
-    expect(subject.firstNames).toEqual('Carrie')
-    expect(subject.lastName).toEqual('Cracknell')
-    expect(subject.name).toEqual('Carrie Cracknell')
-    expect(subject.status).toEqual('Active')
-    expect(subject.talentType).toEqual('Individual')
-    expect(subject.commonRole).toEqual('Actor')
-    expect(subject.image).toEqual('0342826208934d90b801e055152f1d0f')
-    expect(subject.imageCopyright).toEqual('Tate Modern')
-    expect(subject.imageRatio).toEqual(1.2)
-    expect(subject.hasImage()).toEqual(true)
-    expect(subject.getEntityTypeLabel()).toEqual('Talent')
-    expect(subject.getUrl()).toEqual('/talent/talent-id')
+    it('should handle no roles', () => {
+      entity.roles = null
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.createRolesString()).toEqual('')
+    })
   })
 
-  it('should have correct createRolesString when has roles', () => {
-    const subject = new EventSummaryTalent({ roles: ['A', 'B'] })
-    expect(subject.createRolesString()).toBe('A / B')
+  describe('hasCharacters', () => {
+    it('should handle characters', () => {
+      entity.characters = ['Foo', 'Bar']
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.hasCharacters()).toEqual(true)
+    })
+
+    it('should handle no characters', () => {
+      entity.characters = null
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.hasCharacters()).toEqual(false)
+    })
   })
 
-  it('should have correct createRolesString when has no roles', () => {
-    const subject = new EventSummaryTalent({ roles: null })
-    expect(subject.createRolesString()).toBe('')
-  })
+  describe('createCharactersString', () => {
+    it('should handle characters', () => {
+      entity.characters = ['Foo', 'Bar']
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.createCharactersString()).toEqual('Foo, Bar')
+    })
 
-  it('should have correct hasCharacters when has characters', () => {
-    const subject = new EventSummaryTalent({ characters: ['A', 'B'] })
-    expect(subject.hasCharacters()).toBe(true)
-  })
-
-  it('should have correct hasCharacters when has no characters', () => {
-    const subject = new EventSummaryTalent({ characters: null })
-    expect(subject.hasCharacters()).toBe(false)
-  })
-
-  it('should have correct createCharactersString when has characters', () => {
-    const subject = new EventSummaryTalent({ characters: ['A', 'B'] })
-    expect(subject.createCharactersString()).toBe('A, B')
-  })
-
-  it('should have correct createCharactersString when has no characters', () => {
-    const subject = new EventSummaryTalent({ characters: null })
-    expect(subject.createCharactersString()).toBe('')
+    it('should handle no characters', () => {
+      entity.characters = null
+      const subject = new EventSummaryTalent(entity)
+      expect(subject.createCharactersString()).toEqual('')
+    })
   })
 })
 
 describe('FullTalent', () => {
-  it('should construct a full individual talent', () => {
-    const subject = new FullTalent({
-      status: 'Active',
+  let entity = null
+
+  beforeEach(() => {
+    entity = {
+      status: statusType.ACTIVE,
       id: 'talent-id',
       firstNames: 'Carrie',
       lastName: 'Cracknell',
-      talentType: 'Individual',
+      talentType: talentType.INDIVIDUAL,
       commonRole: 'Actor',
       schemeVersion: 2,
       version: 3,
@@ -140,7 +154,7 @@ describe('FullTalent', () => {
       description: 'An actor.',
       descriptionCredit: 'Description credit',
       weSay: 'something',
-      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
+      links: [{ type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }],
       images: [
         {
           id: '0342826208934d90b801e055152f1d0f',
@@ -148,43 +162,38 @@ describe('FullTalent', () => {
           copyright: 'Tate Modern'
         }
       ]
-    })
-
-    expect(subject.entityType).toEqual(entityType.TALENT)
-    expect(subject.lastName).toEqual('Cracknell')
-    expect(subject.name).toEqual('Carrie Cracknell')
-    expect(subject.getInfoBarLabel()).toEqual('Actor')
-    expect(subject.getEditUrl()).toEqual('/talent/edit/talent-id')
+    }
   })
 
-  it('should construct a full group talent', () => {
-    const subject = new FullTalent({
-      status: 'Active',
-      id: 'talent-id',
-      lastName: 'Cracknell',
-      talentType: 'Group',
-      commonRole: 'Actor',
-      schemeVersion: 2,
-      version: 3,
-      createdDate: '2016/01/10',
-      updatedDate: '2016/01/11',
-      description: 'An actor.',
-      descriptionCredit: 'Description credit',
-      weSay: 'something',
-      links: [{ type: 'Wikipedia', url: 'https://en.wikipedia.org/foo' }],
-      images: [
-        {
-          id: '0342826208934d90b801e055152f1d0f',
-          ratio: 1.2,
-          copyright: 'Tate Modern'
-        }
-      ]
+  describe('name', () => {
+    it('should get the name for an individual', () => {
+      entity.talentType = talentType.INDIVIDUAL
+      entity.firstNames = 'Carrie Jane'
+      entity.lastName = 'Cracknell'
+
+      const subject = new FullTalent(entity)
+
+      expect(subject.name).toEqual('Carrie Jane Cracknell')
     })
 
-    expect(subject.entityType).toEqual(entityType.TALENT)
-    expect(subject.name).toEqual('Cracknell')
-    expect(subject.talentType).toEqual('Group')
+    it('should get the name for a group', () => {
+      entity.talentType = talentType.GROUP
+      entity.firstNames = null
+      entity.lastName = 'Cracknell'
+
+      const subject = new FullTalent(entity)
+
+      expect(subject.name).toEqual('Cracknell')
+    })
+  })
+
+  it('should handle getInfoBarLabel', () => {
+    const subject = new FullTalent(entity)
     expect(subject.getInfoBarLabel()).toEqual('Actor')
+  })
+
+  it('should handle getEditUrl', () => {
+    const subject = new FullTalent(entity)
     expect(subject.getEditUrl()).toEqual('/talent/edit/talent-id')
   })
 })

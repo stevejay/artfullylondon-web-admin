@@ -30,10 +30,7 @@ export class SummaryVenue {
   }
 
   getPin () {
-    return {
-      lat: this.latitude,
-      lng: this.longitude
-    }
+    return _getPin(this)
   }
 
   hasImage () {
@@ -41,10 +38,7 @@ export class SummaryVenue {
   }
 
   createFullAddress () {
-    return (
-      this.address.replace(NEWLINES_REGEX, ', ') +
-      (this.postcode ? ', ' + this.postcode : '')
-    )
+    return _createFullAddress(this)
   }
 }
 
@@ -62,10 +56,7 @@ export class FullVenue extends Entity {
   }
 
   getPin () {
-    return {
-      lat: this.latitude,
-      lng: this.longitude
-    }
+    return _getPin(this)
   }
 
   getHomepageUrl () {
@@ -78,9 +69,20 @@ export class FullVenue extends Entity {
   }
 
   createFullAddress () {
-    return (
-      this.address.replace(NEWLINES_REGEX, ', ') +
-      (this.postcode ? ', ' + this.postcode : '')
-    )
+    return _createFullAddress(this)
+  }
+}
+
+function _createFullAddress (entity) {
+  return (
+    entity.address.replace(NEWLINES_REGEX, ', ') +
+    (entity.postcode ? ', ' + entity.postcode : '')
+  )
+}
+
+function _getPin (entity) {
+  return {
+    lat: entity.latitude,
+    lng: entity.longitude
   }
 }

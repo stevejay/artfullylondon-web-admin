@@ -7,7 +7,7 @@ it('should render correctly', () => {
   const entity = new SummaryVenue({
     id: 'some-id',
     name: 'Some Name',
-    venueType: 'Theatre'
+    venueType: venueType.THEATRE
   })
 
   entity.createFullAddress = jest.fn().mockReturnValue('The Full Address')

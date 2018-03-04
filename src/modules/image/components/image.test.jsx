@@ -5,7 +5,7 @@ import EntityImage from './image'
 it('should render correctly when showing the carousel', () => {
   const wrapper = shallow(
     <EntityImage
-      entityType='venue'
+      entityType={entityType.VENUE}
       images={[
         {
           id: 'some-id',
@@ -24,7 +24,7 @@ it('should render correctly when showing the carousel', () => {
 it('should render correctly when not showing the carousel', () => {
   const wrapper = shallow(
     <EntityImage
-      entityType='venue'
+      entityType={entityType.VENUE}
       images={[{ id: 'some-id', ratio: 2 }]}
       showCarousel={false}
     />
@@ -35,7 +35,7 @@ it('should render correctly when not showing the carousel', () => {
 
 it('should render correctly when there are no images', () => {
   const wrapper = shallow(
-    <EntityImage entityType='venue' images={[]} showCarousel />
+    <EntityImage entityType={entityType.VENUE} images={[]} showCarousel />
   )
 
   expect(wrapper).toMatchSnapshot()

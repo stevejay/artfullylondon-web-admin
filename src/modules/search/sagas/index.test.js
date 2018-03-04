@@ -93,7 +93,7 @@ describe('navigateToEntity', () => {
   it('should navigate to the entity', () => {
     const generator = sagas.navigateToEntity(
       searchActions.navigateToEntity({
-        entityType: 'event',
+        entityType: entityType.EVENT,
         id: 'some-event-id'
       })
     )
@@ -108,7 +108,7 @@ describe('navigateToEntity', () => {
 
 describe('search', () => {
   it('should handle an autocomplete search', () => {
-    const action = searchActions.autocompleteSearch('some term', 'event')
+    const action = searchActions.autocompleteSearch('some term', entityType.EVENT)
     const generator = sagas.search(action)
 
     let result = generator.next()
@@ -134,7 +134,7 @@ describe('search', () => {
   })
 
   it('should handle an error', () => {
-    const action = searchActions.autocompleteSearch('some term', 'event')
+    const action = searchActions.autocompleteSearch('some term', entityType.EVENT)
     const generator = sagas.search(action)
 
     let result = generator.next()
@@ -260,7 +260,7 @@ describe('basicSearch', () => {
 })
 
 describe('autocompleteSearch', () => {
-  const action = searchActions.autocompleteSearch('some term', 'event')
+  const action = searchActions.autocompleteSearch('some term', entityType.EVENT)
   const meta = { some: 'meta' }
 
   const generator = cloneableGenerator(sagas.autocompleteSearch)({
@@ -276,7 +276,7 @@ describe('autocompleteSearch', () => {
     expect(result.value).toEqual(
       call(
         normalise,
-        { term: 'some term', entityType: 'event' },
+        { term: 'some term', entityType: entityType.EVENT },
         searchConstants.AUTO_SEARCH_QUERY_NORMALISER
       )
     )

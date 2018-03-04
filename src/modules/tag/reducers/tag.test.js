@@ -24,7 +24,7 @@ it('should handle a get tags started message', () => {
     tags: null
   })
 
-  const actual = reducer(state, tagActions.getTagsStarted('medium'))
+  const actual = reducer(state, tagActions.getTagsStarted(tagType.MEDIUM))
 
   expect(actual).toEqual({
     getInProgress: true,
@@ -107,7 +107,10 @@ it('should handle an add tag succeeded message when the tag is to be added at th
     tags: { medium: [{ id: 1 }] }
   })
 
-  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }, 'medium'))
+  const actual = reducer(
+    state,
+    tagActions.addTagSucceeded({ id: 2 }, tagType.MEDIUM)
+  )
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -127,7 +130,10 @@ it('should handle an add tag succeeded message when the tag is to be added at th
     tags: { medium: [{ id: 2 }] }
   })
 
-  const actual = reducer(state, tagActions.addTagSucceeded({ id: 1 }, 'medium'))
+  const actual = reducer(
+    state,
+    tagActions.addTagSucceeded({ id: 1 }, tagType.MEDIUM)
+  )
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -149,7 +155,7 @@ it('should handle an add tag succeeded message when the tag type to be added doe
 
   const actual = reducer(
     state,
-    tagActions.addTagSucceeded({ id: 2 }, 'audience')
+    tagActions.addTagSucceeded({ id: 2 }, tagType.AUDIENCE)
   )
 
   expect(actual).toEqual({
@@ -170,7 +176,10 @@ it('should reject an add tag succeeded message when there are no tags', () => {
     tags: null
   })
 
-  const actual = reducer(state, tagActions.addTagSucceeded({ id: 2 }, 'medium'))
+  const actual = reducer(
+    state,
+    tagActions.addTagSucceeded({ id: 2 }, tagType.MEDIUM)
+  )
 
   expect(actual).toEqual({
     getInProgress: false,
@@ -351,25 +360,25 @@ describe('selectors', () => {
   describe('getTagsForType', () => {
     it('should return null when the reducer tags are for the requested tag type but are null', () => {
       const state = { tags: null }
-      const result = selectors.getTagsForType(state, 'medium')
+      const result = selectors.getTagsForType(state, tagType.MEDIUM)
       expect(result).toEqual([])
     })
 
     it('should return empty tags when the reducer tags are for the requested tag type but are empty', () => {
       const state = { tags: { medium: [] } }
-      const result = selectors.getTagsForType(state, 'medium')
+      const result = selectors.getTagsForType(state, tagType.MEDIUM)
       expect(result).toEqual([])
     })
 
     it('should return empty tags when the reducer has tags but not for the requested tag type', () => {
       const state = { tags: { audience: [{ id: 1 }] } }
-      const result = selectors.getTagsForType(state, 'medium')
+      const result = selectors.getTagsForType(state, tagType.MEDIUM)
       expect(result).toEqual([])
     })
 
     it('should return populated tags when the reducer tags are for the requested tag type and are not empty', () => {
       const state = { tags: { medium: [{ id: 1 }] } }
-      const result = selectors.getTagsForType(state, 'medium')
+      const result = selectors.getTagsForType(state, tagType.MEDIUM)
       expect(result).toEqual([{ id: 1 }])
     })
   })
