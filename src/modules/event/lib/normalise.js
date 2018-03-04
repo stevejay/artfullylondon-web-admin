@@ -71,7 +71,7 @@ export function normaliseEventValues (values) {
       values.openingTimesClosures = []
     }
 
-    if (values.timesRanges.length === 0) {
+    if (values.timesRanges && values.timesRanges.length === 0) {
       values.openingTimes = values.openingTimes.map(openingTime => {
         if (openingTime.timesRangeId) {
           delete openingTime.timesRangeId
@@ -95,7 +95,11 @@ export function normaliseEventValues (values) {
       values.timesRanges = []
     }
 
-    if (isOneTimePerformance && values.additionalPerformances.length > 1) {
+    if (
+      isOneTimePerformance &&
+      values.additionalPerformances &&
+      values.additionalPerformances.length > 1
+    ) {
       values.additionalPerformances = values.additionalPerformances.slice(0, 1)
     }
 
@@ -103,7 +107,11 @@ export function normaliseEventValues (values) {
       values.performancesClosures = []
     }
 
-    if (values.timesRanges.length === 0) {
+    if (
+      values.timesRanges &&
+      values.timesRanges.length === 0 &&
+      values.performances
+    ) {
       values.performances = values.performances.map(performance => {
         if (performance.timesRangeId) {
           delete performance.timesRangeId

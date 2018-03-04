@@ -29,33 +29,4 @@ export function * getSubEntity ({ payload, meta }) {
   }
 }
 
-// TODO Delete when I can:
-
-// function * getEventAsCopy (action) {
-//   const { id } = action.payload
-
-//   try {
-//     yield put({ type: entityActionTypes.GET_EVENT_AS_COPY_STARTED })
-
-//     const token = yield call(getAuthTokenForCurrentUser)
-//     const url = `${process.env.WEBSITE_API_HOST_URL}/event-service/admin/edit/event/${id}`
-//     const json = yield call(get, url, token)
-
-//     yield put({
-//       type: entityActionTypes.GET_EVENT_AS_COPY_SUCCEEDED,
-//       payload: { entity: json.entity }
-//     })
-//   } catch (err) {
-//     yield call(log.error, err)
-
-//     yield put({
-//       type: entityActionTypes.GET_EVENT_AS_COPY_FAILED,
-//       payload: { statusCode: err.statusCode || 500 }
-//     })
-//   }
-// }
-
-export default [
-  takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity)
-  // takeLatest(entityActionTypes.GET_EVENT_AS_COPY, getEventAsCopy)
-]
+export default [takeLatest(eventActions.types.GET_SUB_ENTITY, getSubEntity)]

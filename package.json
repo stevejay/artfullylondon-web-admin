@@ -54,7 +54,8 @@
     },
     "globals": [
       "shallow",
-      "mount"
+      "mount",
+      "cy"
     ]
   },
   "devDependencies": {
