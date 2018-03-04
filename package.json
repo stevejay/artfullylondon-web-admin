@@ -11,7 +11,8 @@
     "start": "cross-env-shell PORT=$(get-port) UI_PORT=$(get-port) node ./browser-sync.js",
     "lint": "standard --fix",
     "test": "jest --no-cache",
-    "build-analyse": "webpack-bundle-analyzer build/stats.json"
+    "build-analyse": "webpack-bundle-analyzer build/stats.json",
+    "test-ci": "jest --no-cache --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "devEngines": {
     "node": "8.x || 9.x"
@@ -133,6 +134,7 @@
     "babel-plugin-react-css-modules": "^3.3.3",
     "babel-runtime": "^6.26.0",
     "backo": "^1.1.0",
+    "coveralls": "^3.0.0",
     "ensure-request": "^4.0.0",
     "fetch-ponyfill": "^5.0.1",
     "global": "^4.3.2",

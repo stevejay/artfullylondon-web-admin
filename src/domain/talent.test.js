@@ -157,7 +157,9 @@ describe('FullTalent', () => {
       description: 'An actor.',
       descriptionCredit: 'Description credit',
       weSay: 'something',
-      links: [{ type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }],
+      links: [
+        { type: linkType.WIKIPEDIA, url: 'https://en.wikipedia.org/foo' }
+      ],
       images: [
         {
           id: '0342826208934d90b801e055152f1d0f',
@@ -166,6 +168,11 @@ describe('FullTalent', () => {
         }
       ]
     }
+  })
+
+  it('should handle entityType', () => {
+    const subject = new FullTalent(entity)
+    expect(subject.entityType).toEqual(entityType.TALENT)
   })
 
   describe('name', () => {

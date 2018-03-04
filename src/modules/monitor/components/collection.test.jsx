@@ -53,7 +53,11 @@ it('should render correctly when not showing ignored monitors', () => {
       venueHomepageUrl='/some/url'
       monitors={[
         { key: 'key-1', isIgnored: true },
-        { key: 'key-2', isIgnored: false }
+        { key: 'key-2', isIgnored: false },
+        { key: 'key-3', isIgnored: false, inArtfully: true },
+        { key: 'key-4', isIgnored: false, inArtfully: false },
+        { key: 'key-5', isIgnored: false, inArtfully: true, hasChanged: false },
+        { key: 'key-6', isIgnored: false, inArtfully: true, hasChanged: true }
       ]}
       getInProgress={false}
       gridRowComponent={() => 'div'}
@@ -196,7 +200,7 @@ it('should handle hiding editing a monitor', () => {
   expect(setEditingMonitorTo).toHaveBeenCalledWith(null)
 })
 
-it('should handle submitting a edited monitor', () => {
+it('should handle submitting an edited monitor', () => {
   const onSubmit = jest.fn().mockReturnValue({ then: func => func() })
   const setEditingMonitorTo = jest.fn()
 

@@ -329,12 +329,12 @@ export function mapSubmittedNamedClosures (namedClosures) {
 export function mapSubmittedEventTalents (talents) {
   return (talents || []).map(talent => ({
     id: talent.id,
-    roles: _mapCSVStringToServer(talent.roles),
-    characters: _mapCSVStringToServer(talent.characters)
+    roles: _mapCommaSeparatedStringToArray(talent.roles),
+    characters: _mapCommaSeparatedStringToArray(talent.characters)
   }))
 }
 
-function _mapCSVStringToServer (str) {
+function _mapCommaSeparatedStringToArray (str) {
   return (str || '')
     .split(',')
     .map(role => role.trim())

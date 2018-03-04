@@ -158,6 +158,31 @@ exports[`should render correctly when not showing ignored monitors 1`] = `
         onEdit={[Function]}
         venueHomepageUrl="/some/url"
       />
+      <gridRowComponent
+        key="key-4"
+        monitor={
+          Object {
+            "inArtfully": false,
+            "isIgnored": false,
+            "key": "key-4",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl="/some/url"
+      />
+      <gridRowComponent
+        key="key-6"
+        monitor={
+          Object {
+            "hasChanged": true,
+            "inArtfully": true,
+            "isIgnored": false,
+            "key": "key-6",
+          }
+        }
+        onEdit={[Function]}
+        venueHomepageUrl="/some/url"
+      />
     </Grid>
   </div>
   <div

@@ -5,6 +5,67 @@ import statusType from '_src/domain/types/status-type'
 import linkType from '_src/domain/types/link-type'
 import imageStatusType from '_src/domain/types/image-status-type'
 
+describe('mapSubmittedEventTalents', () => {
+  it('should handle a populated input', () => {
+    const input = [
+      {
+        id: 'some-id-1',
+        roles: 'Actor,,  Director  ',
+        characters: 'Foo,Bar'
+      },
+      {
+        id: 'some-id-2'
+      }
+    ]
+
+    const actual = entityMapper.mapSubmittedEventTalents(input)
+
+    expect(actual).toEqual([
+      {
+        id: 'some-id-1',
+        roles: ['Actor', 'Director'],
+        characters: ['Foo', 'Bar']
+      },
+      {
+        id: 'some-id-2',
+        roles: [],
+        characters: []
+      }
+    ])
+  })
+
+  it('should handle no input', () => {
+    const actual = entityMapper.mapSubmittedEventTalents(null)
+    expect(actual).toEqual([])
+  })
+})
+
+describe('getSoldOutPerformancesInitialValue', () => {
+  it('should handle a populated input', () => {
+    const input = [
+      {
+        date: '2018/01/01',
+        at: '18:00'
+      }
+    ]
+
+    const actual = entityMapper.getSoldOutPerformancesInitialValue(input)
+
+    expect(actual).toEqual([
+      {
+        key: '2018/01/01-18:00',
+        date: '2018/01/01',
+        at: '18:00'
+      }
+    ])
+  })
+
+  it('should handle no input', () => {
+    const actual = entityMapper.getSoldOutPerformancesInitialValue(null)
+    expect(actual).toEqual([])
+  })
+})
+
 describe('getRichTextInitialValue', () => {
   it('should handle an empty initial value', () => {
     const actual = entityMapper.getRichTextInitialValue()
@@ -43,7 +104,11 @@ describe('getLinksInitialValue', () => {
     const actual = entityMapper.getLinksInitialValue(links)
 
     expect(actual).toEqual([
-      { key: linkType.WIKIPEDIA, type: linkType.WIKIPEDIA, url: 'http://some/url' }
+      {
+        key: linkType.WIKIPEDIA,
+        type: linkType.WIKIPEDIA,
+        url: 'http://some/url'
+      }
     ])
   })
 
@@ -56,12 +121,18 @@ describe('getLinksInitialValue', () => {
 describe('mapSubmittedLinks', () => {
   it('should handle a list of links', () => {
     const links = [
-      { key: linkType.WIKIPEDIA, type: linkType.WIKIPEDIA, url: 'http://some/url' }
+      {
+        key: linkType.WIKIPEDIA,
+        type: linkType.WIKIPEDIA,
+        url: 'http://some/url'
+      }
     ]
 
     const actual = entityMapper.mapSubmittedLinks(links)
 
-    expect(actual).toEqual([{ type: linkType.WIKIPEDIA, url: 'http://some/url' }])
+    expect(actual).toEqual([
+      { type: linkType.WIKIPEDIA, url: 'http://some/url' }
+    ])
   })
 
   it('should handle empty links', () => {

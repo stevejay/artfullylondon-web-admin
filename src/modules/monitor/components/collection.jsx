@@ -120,9 +120,12 @@ MonitorCollection.propTypes = {
 export default withStateHandlers(
   { showIgnored: false, editingMonitor: null },
   {
-    toggleShowIgnored: ({ showIgnored }) => () => ({
+    toggleShowIgnored: /* istanbul ignore next */ ({ showIgnored }) => () => ({
       showIgnored: !showIgnored
     }),
-    setEditingMonitorTo: () => value => ({ editingMonitor: value })
+
+    setEditingMonitorTo: /* istanbul ignore next */ () => value => ({
+      editingMonitor: value
+    })
   }
 )(MonitorCollection)

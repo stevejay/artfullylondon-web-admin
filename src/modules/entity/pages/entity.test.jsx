@@ -245,6 +245,33 @@ it('should trigger getting the entity on construction when creating an entity', 
   expect(dispatch).toHaveBeenCalledWith(tagActions.getTags())
 })
 
+it('should trigger getting the entity on construction when copying an entity', () => {
+  const dispatch = jest.fn()
+
+  shallow(
+    <EntityPage
+      entityType={entityType.TALENT}
+      viewing={false}
+      entityId={null}
+      entity={null}
+      getInProgress={false}
+      getFailed={false}
+      gettingTags={false}
+      component={SomeComponent}
+      dispatch={dispatch}
+      match={{}}
+      location={{ state: { copyEntityId: 'copy-entity-id' } }}
+      history={{}}
+      hasError={false}
+      setHasError={_.noop}
+    />
+  )
+
+  expect(dispatch).toHaveBeenCalledWith(
+    entityActions.copyEntity(entityType.TALENT, 'copy-entity-id')
+  )
+})
+
 it('should not trigger getting the entity when props change but the same entity is specified', () => {
   const dispatch = jest.fn()
   const location = { path: '/first' }
@@ -337,4 +364,66 @@ it('should handle cancelling the entity edit', () => {
 
   expect(event.preventDefault).toHaveBeenCalled()
   expect(history.goBack).toHaveBeenCalled()
+})
+
+describe('shouldComponentUpdate', () => {
+  it('should not update when props have not changed', () => {
+    const wrapper = shallow(
+      <EntityPage
+        entityType={entityType.TALENT}
+        viewing
+        entityId='some-id'
+        entity={null}
+        getInProgress={false}
+        getFailed={false}
+        gettingTags={false}
+        component={SomeComponent}
+        dispatch={_.noop}
+        match={{}}
+        location={{}}
+        history={{}}
+        hasError={false}
+        setHasError={_.noop}
+      />
+    )
+
+    const actual = wrapper.instance().shouldComponentUpdate({
+      getInProgress: false,
+      getFailed: false,
+      gettingTags: false,
+      entity: null
+    })
+
+    expect(actual).toEqual(false)
+  })
+
+  it('should update when props have changed', () => {
+    const wrapper = shallow(
+      <EntityPage
+        entityType={entityType.TALENT}
+        viewing
+        entityId='some-id'
+        entity={null}
+        getInProgress={false}
+        getFailed={false}
+        gettingTags={false}
+        component={SomeComponent}
+        dispatch={_.noop}
+        match={{}}
+        location={{}}
+        history={{}}
+        hasError={false}
+        setHasError={_.noop}
+      />
+    )
+
+    const actual = wrapper.instance().shouldComponentUpdate({
+      getInProgress: false,
+      getFailed: false,
+      gettingTags: true,
+      entity: null
+    })
+
+    expect(actual).toEqual(true)
+  })
 })
