@@ -16,8 +16,8 @@ export class EditableTagCollection extends React.PureComponent {
     this.props.onDelete(key)
   }
   render () {
-    const { tags, getInProgress, deleteInProgress, deletingTagId } = this.props
-    const loading = getInProgress || _.isNil(tags)
+    const { tags, deleteInProgress, deletingTagId } = this.props
+    const loading = _.isNil(tags)
     const hasTags = !_.isEmpty(tags)
 
     return (
@@ -46,7 +46,6 @@ export class EditableTagCollection extends React.PureComponent {
 
 EditableTagCollection.propTypes = {
   tags: PropTypes.arrayOf(tagConstants.TAG_PROP_TYPES),
-  getInProgress: PropTypes.bool.isRequired,
   deletingTagId: PropTypes.string,
   deleteInProgress: PropTypes.bool.isRequired,
   onDelete: PropTypes.func.isRequired,

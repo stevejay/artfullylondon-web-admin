@@ -59,6 +59,10 @@
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
         <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <% } %>
+    
+    <iframe style="height:0px;width:0px;visibility:hidden" src="about:blank">
+        this frame prevents back forward cache
+    </iframe>
 </body>
 
 </html>

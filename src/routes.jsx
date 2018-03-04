@@ -87,46 +87,46 @@ export class Routes extends React.PureComponent {
                 <Route
                   path='/talent'
                   render={/* istanbul ignore next */
-                    () => (
-                      <EntityRoutes
-                        entityType={entityType.TALENT}
-                        editOrCreateComponent={TalentEditOrCreate}
-                        detailComponent={TalentDetail}
-                      />
-                    )}
+                  () => (
+                    <EntityRoutes
+                      entityType={entityType.TALENT}
+                      editOrCreateComponent={TalentEditOrCreate}
+                      detailComponent={TalentDetail}
+                    />
+                  )}
                 />
                 <Route
                   path='/venue'
                   render={/* istanbul ignore next */
-                    () => (
-                      <EntityRoutes
-                        entityType={entityType.VENUE}
-                        editOrCreateComponent={VenueEditOrCreate}
-                        detailComponent={VenueDetail}
-                      />
-                    )}
+                  () => (
+                    <EntityRoutes
+                      entityType={entityType.VENUE}
+                      editOrCreateComponent={VenueEditOrCreate}
+                      detailComponent={VenueDetail}
+                    />
+                  )}
                 />
                 <Route
                   path='/event-series'
                   render={/* istanbul ignore next */
-                    () => (
-                      <EntityRoutes
-                        entityType={entityType.EVENT_SERIES}
-                        editOrCreateComponent={EventSeriesEditOrCreate}
-                        detailComponent={EventSeriesDetail}
-                      />
-                    )}
+                  () => (
+                    <EntityRoutes
+                      entityType={entityType.EVENT_SERIES}
+                      editOrCreateComponent={EventSeriesEditOrCreate}
+                      detailComponent={EventSeriesDetail}
+                    />
+                  )}
                 />
                 <Route
                   path='/event'
                   render={/* istanbul ignore next */
-                    () => (
-                      <EntityRoutes
-                        entityType={entityType.EVENT}
-                        editOrCreateComponent={EventEditOrCreate}
-                        detailComponent={EventDetail}
-                      />
-                    )}
+                  () => (
+                    <EntityRoutes
+                      entityType={entityType.EVENT}
+                      editOrCreateComponent={EventEditOrCreate}
+                      detailComponent={EventDetail}
+                    />
+                  )}
                 />
                 <Redirect from='/login' to='/' />
                 <Route component={NotFoundPage} />
@@ -165,10 +165,18 @@ export default withRouter(
     withStateHandlers(
       { showingQuicksearch: false, showingSidenav: false },
       {
-        showQuicksearch: () => () => ({ showingQuicksearch: true }),
-        hideQuicksearch: () => () => ({ showingQuicksearch: false }),
-        showSidenav: () => () => ({ showingSidenav: true }),
-        hideSidenav: () => () => ({ showingSidenav: false })
+        showQuicksearch: /* istanbul ignore next */ () => () => ({
+          showingQuicksearch: true
+        }),
+        hideQuicksearch: /* istanbul ignore next */ () => () => ({
+          showingQuicksearch: false
+        }),
+        showSidenav: /* istanbul ignore next */ () => () => ({
+          showingSidenav: true
+        }),
+        hideSidenav: /* istanbul ignore next */ () => () => ({
+          showingSidenav: false
+        })
       }
     )(Routes)
   )

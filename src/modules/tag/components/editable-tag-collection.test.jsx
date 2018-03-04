@@ -4,11 +4,10 @@ import _ from 'lodash'
 import { EditableTagCollection } from './editable-tag-collection'
 import EditableTag from './editable-tag'
 
-it('should render correctly when loading', () => {
+it('should render correctly', () => {
   const wrapper = shallow(
     <EditableTagCollection
       tags={null}
-      getInProgress
       deletingTagId={null}
       deleteInProgress={false}
       onDelete={_.noop}
@@ -23,7 +22,6 @@ it('should render correctly when tags are null', () => {
   const wrapper = shallow(
     <EditableTagCollection
       tags={null}
-      getInProgress={false}
       deletingTagId={null}
       deleteInProgress={false}
       onDelete={_.noop}
@@ -38,7 +36,6 @@ it('should render correctly when no tags were loaded', () => {
   const wrapper = shallow(
     <EditableTagCollection
       tags={[]}
-      getInProgress={false}
       deletingTagId={null}
       deleteInProgress={false}
       onDelete={_.noop}
@@ -53,7 +50,6 @@ it('should render correctly when tags were loaded', () => {
   const wrapper = shallow(
     <EditableTagCollection
       tags={[{ id: 'medium/one', label: 'One' }]}
-      getInProgress={false}
       deletingTagId={null}
       deleteInProgress={false}
       onDelete={_.noop}
@@ -71,7 +67,6 @@ it('should render correctly when a tag is being deleted', () => {
         { id: 'medium/one', label: 'One' },
         { id: 'medium/two', label: 'Two' }
       ]}
-      getInProgress={false}
       deletingTagId='medium/two'
       deleteInProgress
       onDelete={_.noop}
@@ -92,7 +87,6 @@ it('should handle deleting a tag', () => {
         { id: 'medium/one', label: 'One' },
         { id: 'medium/two', label: 'Two' }
       ]}
-      getInProgress={false}
       deletingTagId={null}
       deleteInProgress={false}
       onDelete={handleDelete}

@@ -362,7 +362,7 @@ describe('selectors', () => {
     it('should return null when the reducer tags are for the requested tag type but are null', () => {
       const state = { tags: null }
       const result = selectors.getTagsForType(state, tagType.MEDIUM)
-      expect(result).toEqual([])
+      expect(result).toEqual(null)
     })
 
     it('should return empty tags when the reducer tags are for the requested tag type but are empty', () => {

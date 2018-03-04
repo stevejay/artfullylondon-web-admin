@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render correctly 1`] = `
+<div
+  className="src-modules-tag-components-editable-tag-collection__container"
+>
+  <BoxesLoader
+    size="large"
+    type="default"
+  />
+  <FadeTransition
+    in={false}
+  >
+    <NoEntries
+      label="No Tags"
+      message="No Entries"
+    />
+  </FadeTransition>
+  <FadeTransition
+    in={false}
+  >
+    <ul
+      role="presentation"
+    />
+  </FadeTransition>
+</div>
+`;
+
 exports[`should render correctly when a tag is being deleted 1`] = `
 <div
   className="src-modules-tag-components-editable-tag-collection__container"
@@ -41,32 +67,6 @@ exports[`should render correctly when a tag is being deleted 1`] = `
         }
       />
     </ul>
-  </FadeTransition>
-</div>
-`;
-
-exports[`should render correctly when loading 1`] = `
-<div
-  className="src-modules-tag-components-editable-tag-collection__container"
->
-  <BoxesLoader
-    size="large"
-    type="default"
-  />
-  <FadeTransition
-    in={false}
-  >
-    <NoEntries
-      label="No Tags"
-      message="No Entries"
-    />
-  </FadeTransition>
-  <FadeTransition
-    in={false}
-  >
-    <ul
-      role="presentation"
-    />
   </FadeTransition>
 </div>
 `;

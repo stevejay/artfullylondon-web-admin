@@ -116,7 +116,7 @@ export const selectors = {
   hasTags: state => !_.isNil(state.tags),
   getTagsForType: (state, tagType) => {
     if (_.isNil(state.tags)) {
-      return EMPTY_ARRAY
+      return null
     }
 
     return state.tags[tagType] || EMPTY_ARRAY

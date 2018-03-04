@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<FormRow>
+  <Container
+    className="src-modules-event-components-entity-selector-search__field-container"
+    htmlFor="sub-entity-search-talent"
+    label="Search"
+  >
+    <SearchInput
+      htmlId="sub-entity-search-talent"
+      maxLength={100}
+      onAutocompleteSearch={[Function]}
+      onAutocompleteSelect={[Function]}
+      onChange={[Function]}
+      placeholder="Enter search term..."
+      searchInProgress={false}
+      size="small"
+      value="Some value"
+    />
+  </Container>
+</FormRow>
+`;

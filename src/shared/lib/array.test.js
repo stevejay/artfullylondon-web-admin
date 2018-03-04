@@ -1,11 +1,35 @@
 import * as arrayLib from '_src/shared/lib/array'
 
+describe('addElement', () => {
+  it('should return null for an element that already exists by key', () => {
+    const actual = arrayLib.addElement([{ key: 'a' }, { key: 'b' }], {
+      key: 'b'
+    })
+
+    expect(actual).toEqual(null)
+  })
+
+  it('should return null for an element that already exists by value', () => {
+    const actual = arrayLib.addElement(['a', 'b'], 'b')
+    expect(actual).toEqual(null)
+  })
+
+  it('should add the element', () => {
+    const actual = arrayLib.addElement([{ key: 'a' }], {
+      key: 'b'
+    })
+
+    expect(actual).toEqual([{ key: 'a' }, { key: 'b' }])
+  })
+})
+
 describe('removeElementByKey', () => {
   it('should remove an element that exists by key', () => {
     const actual = arrayLib.removeElementByKey(
       [{ key: 'a' }, { key: 'b' }],
       'b'
     )
+
     expect(actual).toEqual([{ key: 'a' }])
   })
 
@@ -19,6 +43,7 @@ describe('removeElementByKey', () => {
       [{ key: 'a' }, { key: 'b' }],
       'c'
     )
+
     expect(actual).toEqual([{ key: 'a' }, { key: 'b' }])
   })
 })
