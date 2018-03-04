@@ -49,16 +49,6 @@ describe('SummaryVenue', () => {
     expect(subject.hasImage()).toEqual(false)
     expect(subject.createFullAddress()).toEqual('Bankside, London')
   })
-
-  it('should clone correctly', () => {
-    const source = new SummaryVenue({ name: 'source' })
-    const copy = source.createShallowClone()
-
-    copy.name = 'copy'
-
-    expect(source.name).toBe('source')
-    expect(copy.name).toBe('copy')
-  })
 })
 
 describe('FullVenue', () => {
@@ -134,16 +124,6 @@ describe('FullVenue', () => {
   it('should get the homepage URL when there is none', () => {
     const subject = new FullVenue({ links: [] })
     expect(subject.getHomepageUrl()).toEqual(null)
-  })
-
-  it('should clone correctly', () => {
-    const source = new FullVenue({ name: 'source' })
-    const copy = source.createShallowClone()
-
-    copy.name = 'copy'
-
-    expect(source.name).toBe('source')
-    expect(copy.name).toBe('copy')
   })
 
   it('should create times details', () => {

@@ -5,7 +5,6 @@ import { startSubmit, stopSubmit } from 'redux-form'
 
 import * as sagas from './index'
 import * as sagaLib from '_src/shared/lib/saga'
-import * as dateLib from '_src/shared/lib/date'
 import * as entityActions from '../actions'
 import * as validationLib from '_src/shared/lib/validation'
 import { eventService } from '_src/modules/api'
@@ -13,7 +12,62 @@ import history from '_src/shared/lib/history'
 import normalise from '_src/shared/lib/normalise'
 import { actions as notificationActions } from '_src/modules/notification'
 
-dateLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')
+describe('copyEntity', () => {
+  const generator = cloneableGenerator(sagas.copyEntity)(
+    entityActions.copyEntity('talent', 'some-id')
+  )
+
+  it('should prepare to copy an entity', () => {
+    let result = generator.next()
+    expect(result.value).toEqual(put(entityActions.clearEntity()))
+
+    result = generator.next()
+    expect(result.value).toEqual(put(entityActions.getEntityStarted(null)))
+
+    result = generator.next()
+    expect(result.value).toEqual(
+      call(eventService.getEntity, 'talent', 'some-id')
+    )
+  })
+
+  it('should successfully copy an entity', () => {
+    const generatorClone = generator.clone()
+
+    const entity = {
+      id: 'some-server-id',
+      name: 'Some Name',
+      firstNames: 'Some First Names',
+      lastName: 'Some Last Name',
+      status: 'Active'
+    }
+
+    let result = generatorClone.next(entity)
+    expect(result.value).toEqual(
+      put(
+        entityActions.getEntitySucceeded('talent', {
+          status: 'Active'
+        })
+      )
+    )
+
+    result = generatorClone.next()
+    expect(result.done).toEqual(true)
+  })
+
+  it('should handle an error being raised', () => {
+    const generatorClone = generator.clone()
+    const error = new Error('deliberately thrown')
+
+    let result = generatorClone.throw(error)
+    expect(result.value).toEqual(call(log.error, error))
+
+    result = generatorClone.next()
+    expect(result.value).toEqual(put(entityActions.getEntityFailed()))
+
+    result = generatorClone.next()
+    expect(result.done).toEqual(true)
+  })
+})
 
 describe('getEntity', () => {
   const generator = cloneableGenerator(sagas.getEntity)(

@@ -9,13 +9,6 @@ describe('getYearNow', () => {
   })
 })
 
-describe('getDateNowForDatabase', () => {
-  it('should get the date', () => {
-    const actual = dateLib.getDateNowForDatabase()
-    expect(actual).toEqual(expect.stringMatching(/^\d\d\d\d\/\d\d\/\d\d$/))
-  })
-})
-
 describe('mapJsDateToStringDate', () => {
   const tests = [
     {

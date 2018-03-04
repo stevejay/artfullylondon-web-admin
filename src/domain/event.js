@@ -55,10 +55,6 @@ export class SummaryEvent {
       !this.dateFrom || (this.dateFrom <= dateStr && this.dateTo >= dateStr)
     )
   }
-
-  createShallowClone (newProps) {
-    return new SummaryEvent({ ...this, ...newProps })
-  }
 }
 
 export class FullEvent extends Entity {
@@ -86,21 +82,13 @@ export class FullEvent extends Entity {
     return entityType.EVENT
   }
 
-  // TODO remove when can
-  getUrl () {
-    throw new Error('url accessed')
-  }
-
   getEditUrl () {
     return `/event/edit/${this.id}`
   }
 
   getInfoBarLabel () {
-    return this.createEventMediumDescription()
-  }
-
-  createEventMediumDescription () {
     // TODO mixed visual arts, and mixed performing arts
+
     if (!this.mediumTags || this.mediumTags.length === 0) {
       return 'unknown medium'
     }
@@ -148,10 +136,6 @@ export class FullEvent extends Entity {
     return timeLib.getTimesDetails(this, this.entityType, dateStr)
   }
 
-  createVenueGuidanceDescription () {
-    return this.venueGuidance
-  }
-
   createAgeDescription () {
     return this.minAge ? `${this.minAge}+` : null
   }
@@ -179,10 +163,6 @@ export class FullEvent extends Entity {
   getHomepageUrl () {
     const homepage = this.getLinkByType(linkType.HOMEPAGE)
     return homepage ? homepage.url : null
-  }
-
-  createShallowClone (newProps) {
-    return new FullEvent({ ...this, ...newProps })
   }
 }
 

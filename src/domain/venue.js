@@ -8,52 +8,6 @@ import linkType from '_src/domain/types/link-type'
 
 const NEWLINES_REGEX = /\n/g
 
-export class FullVenue extends Entity {
-  get entityType () {
-    return entityType.VENUE
-  }
-
-  getInfoBarLabel () {
-    return this.venueType
-  }
-
-  // TODO remove when can
-  getUrl () {
-    throw new Error('url accessed')
-  }
-
-  getEditUrl () {
-    return `/venue/edit/${this.id}`
-  }
-
-  getPin () {
-    return {
-      lat: this.latitude,
-      lng: this.longitude
-    }
-  }
-
-  getHomepageUrl () {
-    const homepage = this.getLinkByType(linkType.HOMEPAGE)
-    return homepage ? homepage.url : null
-  }
-
-  createTimesDetailsOn (dateStr) {
-    return timeLib.getTimesDetails(this, entityType.VENUE, dateStr)
-  }
-
-  createFullAddress () {
-    return (
-      this.address.replace(NEWLINES_REGEX, ', ') +
-      (this.postcode ? ', ' + this.postcode : '')
-    )
-  }
-
-  createShallowClone (newProps) {
-    return new FullVenue({ ...this, ...newProps })
-  }
-}
-
 export class SummaryVenue {
   constructor (entity) {
     _.extend(this, entity)
@@ -92,8 +46,41 @@ export class SummaryVenue {
       (this.postcode ? ', ' + this.postcode : '')
     )
   }
+}
 
-  createShallowClone (newProps) {
-    return new SummaryVenue({ ...this, ...newProps })
+export class FullVenue extends Entity {
+  get entityType () {
+    return entityType.VENUE
+  }
+
+  getInfoBarLabel () {
+    return this.venueType
+  }
+
+  getEditUrl () {
+    return `/venue/edit/${this.id}`
+  }
+
+  getPin () {
+    return {
+      lat: this.latitude,
+      lng: this.longitude
+    }
+  }
+
+  getHomepageUrl () {
+    const homepage = this.getLinkByType(linkType.HOMEPAGE)
+    return homepage ? homepage.url : null
+  }
+
+  createTimesDetailsOn (dateStr) {
+    return timeLib.getTimesDetails(this, entityType.VENUE, dateStr)
+  }
+
+  createFullAddress () {
+    return (
+      this.address.replace(NEWLINES_REGEX, ', ') +
+      (this.postcode ? ', ' + this.postcode : '')
+    )
   }
 }

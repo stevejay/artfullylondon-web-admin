@@ -5,11 +5,6 @@ export class Entity {
     _.extend(this, entity)
   }
 
-  // TODO remove this shortly
-  get key () {
-    throw new Error('key accessed!')
-  }
-
   isNew () {
     return !this.id
   }

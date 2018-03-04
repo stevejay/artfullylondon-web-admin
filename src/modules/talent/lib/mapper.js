@@ -1,6 +1,5 @@
 import talentType from '_src/domain/types/talent-type'
 import statusType from '_src/domain/types/status-type'
-import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 
 export function getBasicTalentInitialValues () {
@@ -17,50 +16,27 @@ export function getBasicTalentInitialValues () {
   }
 }
 
-// TODO merge the new and edit initial values population:
 export function getInitialValues (talent) {
-  if (talent.isNew()) {
-    return {
-      id: null,
-      status: statusType.ACTIVE,
-      validStatuses: entityMapper.getValidStatusesInitialValue(),
-      firstNames: '',
-      lastName: '',
-      talentType: talentType.INDIVIDUAL,
-      commonRole: '',
-      description: entityMapper.getRichTextInitialValue(),
-      descriptionCredit: '',
-      links: [],
-      images: [],
-      weSay: '',
-      version: 0,
-      createdDate: null
-    }
-  }
-
   return {
-    id: talent.id,
-    status: talent.status,
+    id: talent.id || null,
+    status: talent.status || statusType.ACTIVE,
     validStatuses: entityMapper.getValidStatusesInitialValue(talent.status),
     firstNames: talent.firstNames || '',
-    lastName: talent.lastName,
-    talentType: talent.talentType,
-    commonRole: talent.commonRole,
+    lastName: talent.lastName || '',
+    talentType: talent.talentType || talentType.INDIVIDUAL,
+    commonRole: talent.commonRole || '',
     description: entityMapper.getRichTextInitialValue(talent.description),
     descriptionCredit: talent.descriptionCredit || '',
     links: entityMapper.getLinksInitialValue(talent.links),
     images: entityMapper.getImagesInitialValue(talent.images),
     weSay: talent.weSay || '',
-    version: talent.version,
-    createdDate: talent.createdDate
+    version: talent.version || 0
   }
 }
 
 export function mapSubmittedValues (values) {
   const isIndividual = values.talentType === talentType.INDIVIDUAL
   const firstNames = isIndividual ? (values.firstNames || '').trim() : ''
-  // TODO this should be driven by the db:
-  const dbDate = dateLib.getDateNowForDatabase()
 
   return {
     firstNames: firstNames,
@@ -73,8 +49,6 @@ export function mapSubmittedValues (values) {
     links: entityMapper.mapSubmittedLinks(values.links),
     images: entityMapper.mapSubmittedImages(values.images),
     weSay: (values.weSay || '').trim(),
-    version: values.version + 1,
-    createdDate: values.createdDate || dbDate,
-    updatedDate: dbDate
+    version: values.version + 1
   }
 }

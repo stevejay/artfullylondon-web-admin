@@ -1,67 +1,34 @@
-import * as dateLib from '_src/shared/lib/date'
+import _ from 'lodash'
+
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import statusType from '_src/domain/types/status-type'
 
-// TODO merge the new and edit initial values population:
 export function getInitialValues (venue) {
-  if (venue.isNew()) {
-    return {
-      id: null,
-      status: statusType.ACTIVE,
-      validStatuses: entityMapper.getValidStatusesInitialValue(),
-      name: '',
-      venueType: '',
-      address: '',
-      pin: {
-        lat: null,
-        lng: null
-      },
-      defaultCenter: DEFAULT_MAP_CENTER,
-      postcode: '',
-      email: '',
-      telephone: '',
-      wheelchairAccessType: '',
-      disabledBathroomType: '',
-      hearingFacilitiesType: '',
-      hasPermanentCollection: false,
-      openingTimes: [],
-      additionalOpeningTimes: [],
-      openingTimesClosures: [],
-      namedClosures: '',
-      notes: '',
-      description: entityMapper.getRichTextInitialValue(),
-      descriptionCredit: '',
-      links: [],
-      images: [],
-      weSay: '',
-      version: 0,
-      createdDate: null
-    }
-  }
-
   return {
-    id: venue.id,
-    status: venue.status,
+    id: venue.id || null,
+    status: venue.status || statusType.ACTIVE,
     validStatuses: entityMapper.getValidStatusesInitialValue(venue.status),
-    name: venue.name,
-    venueType: venue.venueType,
-    address: venue.address,
+    name: venue.name || '',
+    venueType: venue.venueType || '',
+    address: venue.address || '',
     pin: {
-      lat: venue.latitude,
-      lng: venue.longitude
+      lat: venue.latitude || null,
+      lng: venue.longitude || null
     },
-    defaultCenter: {
-      lat: venue.latitude,
-      lng: venue.longitude
-    },
-    postcode: venue.postcode,
+    defaultCenter: _.isNil(venue.latitude) || _.isNil(venue.longitude)
+      ? DEFAULT_MAP_CENTER
+      : {
+        lat: venue.latitude,
+        lng: venue.longitude
+      },
+    postcode: venue.postcode || '',
     email: venue.email || '',
     telephone: venue.telephone || '',
-    wheelchairAccessType: venue.wheelchairAccessType,
-    disabledBathroomType: venue.disabledBathroomType,
-    hearingFacilitiesType: venue.hearingFacilitiesType,
-    hasPermanentCollection: venue.hasPermanentCollection,
+    wheelchairAccessType: venue.wheelchairAccessType || '',
+    disabledBathroomType: venue.disabledBathroomType || '',
+    hearingFacilitiesType: venue.hearingFacilitiesType || '',
+    hasPermanentCollection: !!venue.hasPermanentCollection,
     openingTimes: entityMapper.getOpeningTimesInitialValue(venue.openingTimes),
     additionalOpeningTimes: entityMapper.getAdditionalOpeningTimesInitialValue(
       venue.additionalOpeningTimes
@@ -78,15 +45,11 @@ export function getInitialValues (venue) {
     images: entityMapper.getImagesInitialValue(venue.images),
     weSay: venue.weSay || '',
     notes: venue.notes || '',
-    version: venue.version,
-    createdDate: venue.createdDate
+    version: venue.version || 0
   }
 }
 
 export function mapSubmittedValues (values) {
-  // TODO this should be driven by the db:
-  const dbDate = dateLib.getDateNowForDatabase()
-
   return {
     name: values.name.trim(),
     description: entityMapper.mapSubmittedDescription(values.description),
@@ -115,8 +78,6 @@ export function mapSubmittedValues (values) {
     images: entityMapper.mapSubmittedImages(values.images),
     weSay: values.weSay.trim(),
     notes: values.notes.trim(),
-    version: values.version + 1,
-    createdDate: values.createdDate || dbDate,
-    updatedDate: dbDate
+    version: values.version + 1
   }
 }

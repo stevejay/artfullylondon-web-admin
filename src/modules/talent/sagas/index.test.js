@@ -5,7 +5,6 @@ import { startSubmit, stopSubmit, arrayPush, reset } from 'redux-form'
 
 import * as sagas from './index'
 import * as sagaLib from '_src/shared/lib/saga'
-import * as dateLib from '_src/shared/lib/date'
 import * as talentActions from '../actions'
 import * as validationLib from '_src/shared/lib/validation'
 import * as talentConstants from '../constants'
@@ -14,8 +13,6 @@ import entityType from '_src/domain/types/entity-type'
 import normalise from '_src/shared/lib/normalise'
 import { eventService } from '_src/modules/api'
 import { actions as notificationActions } from '_src/modules/notification'
-
-dateLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')
 
 describe('createTalentForEntity', () => {
   const generator = cloneableGenerator(sagas.createTalentForEntity)(

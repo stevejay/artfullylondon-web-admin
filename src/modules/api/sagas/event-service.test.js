@@ -27,6 +27,29 @@ describe('getEntity', () => {
   })
 })
 
+describe('getSummaryEntity', () => {
+  it('should get a summary entity', () => {
+    const generator = sagas.getSummaryEntity('talent', 'talent-id')
+
+    let result = generator.next()
+    expect(result.value).toEqual(call(getAuthTokenForCurrentUser))
+
+    result = generator.next('some-token')
+    expect(result.value).toEqual(
+      call(
+        fetchLib.get,
+        'https://api.test.com/event-service/public/talent?ids=talent-id',
+        'some-token'
+      )
+    )
+
+    result = generator.next({ entities: [{ id: 'server-id' }] })
+    expect(result.value).toEqual({ id: 'server-id' })
+
+    expect(result.done).toEqual(true)
+  })
+})
+
 describe('saveEntity', () => {
   const mapper = jest.fn(value => value)
 

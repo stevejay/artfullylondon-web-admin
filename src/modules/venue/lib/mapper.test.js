@@ -1,5 +1,4 @@
 import * as venueMapper from './mapper'
-import * as dateLib from '_src/shared/lib/date'
 import { entityMapper } from '_src/modules/entity'
 import { DEFAULT_MAP_CENTER } from '_src/modules/location'
 import wheelchairAccessType from '_src/domain/types/wheelchair-access-type'
@@ -16,26 +15,6 @@ describe('getInitialValues', () => {
     entityMapper.getRichTextInitialValue = jest
       .fn()
       .mockReturnValue('Rich Text Description')
-
-    entityMapper.getLinksInitialValue = jest
-      .fn()
-      .mockReturnValue([{ type: 'Wikipedia', url: 'mapped' }])
-
-    entityMapper.getImagesInitialValue = jest
-      .fn()
-      .mockReturnValue([{ key: '1111' }])
-
-    entityMapper.getOpeningTimesInitialValue = jest.fn().mockReturnValue([])
-
-    entityMapper.getAdditionalOpeningTimesInitialValue = jest
-      .fn()
-      .mockReturnValue([])
-
-    entityMapper.getOpeningTimesClosuresInitialValue = jest
-      .fn()
-      .mockReturnValue([])
-
-    entityMapper.getNamedClosuresInitialValue = jest.fn().mockReturnValue([])
 
     const entity = {
       id: 1,
@@ -61,8 +40,7 @@ describe('getInitialValues', () => {
       images: [{ id: '1111' }],
       weSay: '',
       version: 9,
-      createdDate: '2018/01/01',
-      isNew: () => false
+      createdDate: '2018/01/01'
     }
 
     const actual = venueMapper.getInitialValues(entity)
@@ -92,15 +70,21 @@ describe('getInitialValues', () => {
       openingTimes: [],
       additionalOpeningTimes: [],
       openingTimesClosures: [],
-      namedClosures: [],
+      namedClosures: '',
       description: 'Rich Text Description',
       descriptionCredit: '',
-      links: [{ type: 'Wikipedia', url: 'mapped' }],
-      images: [{ key: '1111' }],
+      links: [{ type: 'Wikipedia', key: 'Wikipedia' }],
+      images: [
+        {
+          id: '1111',
+          key: '1111',
+          isMain: true,
+          previewUrl: 'https://images.test.com/11/11/1111/120x120.jpg'
+        }
+      ],
       weSay: '',
       notes: '',
-      version: 9,
-      createdDate: '2018/01/01'
+      version: 9
     })
 
     expect(entityMapper.getValidStatusesInitialValue).toHaveBeenCalledWith(
@@ -110,14 +94,6 @@ describe('getInitialValues', () => {
     expect(entityMapper.getRichTextInitialValue).toHaveBeenCalledWith(
       'Description'
     )
-
-    expect(entityMapper.getLinksInitialValue).toHaveBeenCalledWith([
-      { type: 'Wikipedia' }
-    ])
-
-    expect(entityMapper.getImagesInitialValue).toHaveBeenCalledWith([
-      { id: '1111' }
-    ])
   })
 
   it('should handle getting initial values for a new venue', () => {
@@ -129,7 +105,7 @@ describe('getInitialValues', () => {
       .fn()
       .mockReturnValue('Description')
 
-    const entity = { isNew: () => true }
+    const entity = {}
     const actual = venueMapper.getInitialValues(entity)
 
     expect(actual).toEqual({
@@ -161,16 +137,13 @@ describe('getInitialValues', () => {
       links: [],
       images: [],
       weSay: '',
-      version: 0,
-      createdDate: null
+      version: 0
     })
   })
 })
 
 describe('mapSubmittedValues', () => {
   it('should map the values', () => {
-    dateLib.getDateNowForDatabase = jest.fn().mockReturnValue('2018/01/01')
-
     entityMapper.mapSubmittedImages = jest
       .fn()
       .mockReturnValue([{ id: '1111' }])
@@ -247,9 +220,7 @@ describe('mapSubmittedValues', () => {
       images: [{ id: '1111' }],
       weSay: '',
       notes: '',
-      version: 8,
-      createdDate: '2018/01/01',
-      updatedDate: '2018/01/01'
+      version: 8
     })
 
     expect(entityMapper.mapSubmittedDescription).toHaveBeenCalledWith(

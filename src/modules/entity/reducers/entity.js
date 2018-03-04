@@ -3,6 +3,8 @@ import { handleActions } from 'redux-actions'
 import { types } from '../actions'
 import * as entityFactory from '_src/domain/entity-factory'
 
+// TODO can I get rid of entityId?
+
 const initialState = {
   entityId: null,
   entity: null,

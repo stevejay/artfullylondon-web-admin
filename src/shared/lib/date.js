@@ -7,11 +7,6 @@ export function getYearNow () {
   return new Date().getFullYear()
 }
 
-// TODO backend should be taking care of this
-export function getDateNowForDatabase () {
-  return moment.utc().format(globalConstants.DATE_FORMAT)
-}
-
 export function mapJsDateToStringDate (date) {
   if (date === null) {
     return null
