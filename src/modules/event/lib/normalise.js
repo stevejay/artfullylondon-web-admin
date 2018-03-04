@@ -5,6 +5,7 @@ export function normaliseMoney (value) {
   return value.replace(/[^\d.]/g, '')
 }
 
+// TODO change this to copy rather than mutate values:
 export function normaliseEventValues (values) {
   const isPerformance = eventLib.eventIsPerformance(values.eventType)
   const isExhibition = !isPerformance

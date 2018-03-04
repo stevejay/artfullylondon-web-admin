@@ -18,7 +18,7 @@ describe('normaliseEventValues', () => {
       eventType: eventType.PERFORMANCE
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.CONTINUOUS,
@@ -43,7 +43,7 @@ describe('normaliseEventValues', () => {
       eventType: eventType.PERFORMANCE
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -78,7 +78,7 @@ describe('normaliseEventValues', () => {
       performancesClosures: [{ date: '2017/03/03' }, { date: '2019/03/03' }]
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -113,7 +113,7 @@ describe('normaliseEventValues', () => {
       openingTimesClosures: [{ date: '2017/03/03' }, { date: '2019/03/03' }]
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -140,7 +140,7 @@ describe('normaliseEventValues', () => {
       eventType: eventType.PERFORMANCE
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -171,7 +171,7 @@ describe('normaliseEventValues', () => {
       timesRanges: [{ from: '2017/02/02' }]
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -204,7 +204,7 @@ describe('normaliseEventValues', () => {
       timesRanges: [{ from: '2017/02/02' }]
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -238,7 +238,7 @@ describe('normaliseEventValues', () => {
       timesRanges: []
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
@@ -272,7 +272,7 @@ describe('normaliseEventValues', () => {
       ]
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.ONETIME,
@@ -305,7 +305,7 @@ describe('normaliseEventValues', () => {
       timesRanges: []
     }
 
-    const actual = eventNormalise.normaliseEventValues(values)
+    eventNormalise.normaliseEventValues(values)
 
     expect(values).toEqual({
       occurrenceType: occurrenceType.BOUNDED,
