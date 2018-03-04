@@ -12,7 +12,7 @@
     "lint": "standard --fix",
     "test": "jest --no-cache",
     "build-analyse": "webpack-bundle-analyzer build/stats.json",
-    "test-ci": "jest --no-cache --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test-ci": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "devEngines": {
     "node": "8.x || 9.x"
@@ -83,6 +83,7 @@
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.9",
     "css-modules-require-hook": "^4.2.3",
+    "cypress": "^2.1.0",
     "deep-freeze": "0.0.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
