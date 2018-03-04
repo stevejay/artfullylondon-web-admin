@@ -15,8 +15,7 @@ class Text extends React.Component {
       nextProps.disabled !== this.props.disabled
     )
   }
-  handleMounted = ref => {
-    /* istanbul ignore next */
+  handleMounted = /* istanbul ignore next */ ref => {
     ref && this.props.autoFocus && ref.focus()
   }
   render () {

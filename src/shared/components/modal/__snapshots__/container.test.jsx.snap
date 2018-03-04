@@ -2,16 +2,16 @@
 
 exports[`should render correctly 1`] = `
 <div
-  className="src-shared-components-modal-Container__container-narrow src-shared-components-modal-Container__container"
+  className="src-shared-components-modal-container__container-narrow src-shared-components-modal-container__container"
 >
   <h1
-    className="src-shared-components-modal-Container__header"
+    className="src-shared-components-modal-container__header"
   >
     Some Title
   </h1>
   <IconButton
     aria-label="Close modal dialog"
-    className="src-shared-components-modal-Container__close"
+    className="src-shared-components-modal-container__close"
     icon={[Function]}
     onClick={[Function]}
     type="inverse"

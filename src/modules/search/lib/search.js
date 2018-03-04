@@ -30,15 +30,7 @@ export function createAutocompleteQueryStringParams (query) {
 }
 
 export function createBasicSearchQueryStringParams (query, skip, take) {
-  const params = {}
-
-  if (query.term) {
-    params.term = query.term
-  }
-
-  if (query.entityType) {
-    params.entityType = query.entityType
-  }
+  const params = createAutocompleteQueryStringParams(query)
 
   addSkipToParams(params, query.skip, skip)
   addTakeToParams(params, query.take, take)

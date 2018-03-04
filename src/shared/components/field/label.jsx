@@ -15,8 +15,7 @@ class Label extends React.Component {
       ignoreHide: false // see handleHide for what this is
     }
   }
-  handleMounted = ref => {
-    /* istanbul ignore next */
+  handleMounted = /* istanbul ignore next */ ref => {
     this._label = ref
   }
   shouldComponentUpdate (nextProps) {
@@ -25,8 +24,7 @@ class Label extends React.Component {
       nextProps.disabled !== this.props.disabled
     )
   }
-  getTarget = () => {
-    /* istanbul ignore next */
+  getTarget = /* istanbul ignore next */ () => {
     return ReactDOM.findDOMNode(this._label)
   }
   handleClick = () => {

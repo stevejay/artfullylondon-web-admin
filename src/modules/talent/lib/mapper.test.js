@@ -4,6 +4,24 @@ import talentType from '_src/domain/types/talent-type'
 import statusType from '_src/domain/types/status-type'
 import linkType from '_src/domain/types/link-type'
 
+describe('getBasicTalentInitialValues', () => {
+  it('should get the values', () => {
+    const actual = talentMapper.getBasicTalentInitialValues()
+
+    expect(actual).toEqual({
+      status: statusType.ACTIVE,
+      firstNames: '',
+      lastName: '',
+      talentType: talentType.INDIVIDUAL,
+      commonRole: '',
+      links: [],
+      images: [],
+      weSay: '',
+      version: 0
+    })
+  })
+})
+
 describe('getInitialValues', () => {
   it('should handle getting initial values for an existing talent', () => {
     entityMapper.getValidStatusesInitialValue = jest
@@ -94,7 +112,7 @@ describe('getInitialValues', () => {
 })
 
 describe('mapSubmittedValues', () => {
-  it('should map the values', () => {
+  beforeEach(() => {
     entityMapper.mapSubmittedImages = jest
       .fn()
       .mockReturnValue([{ id: '1111' }])
@@ -106,10 +124,12 @@ describe('mapSubmittedValues', () => {
     entityMapper.mapSubmittedDescription = jest
       .fn()
       .mockReturnValue('Mapped description')
+  })
 
+  it('should map an individual', () => {
     const values = {
       firstNames: 'First',
-      lastName: 'Last',
+      lastName: '',
       version: 7,
       weSay: ' We say ',
       status: statusType.ACTIVE,
@@ -125,6 +145,38 @@ describe('mapSubmittedValues', () => {
 
     expect(actual).toEqual({
       firstNames: 'First',
+      lastName: '',
+      description: 'Mapped description',
+      descriptionCredit: '',
+      talentType: talentType.INDIVIDUAL,
+      commonRole: 'The common role',
+      status: statusType.ACTIVE,
+      links: [{ type: linkType.WIKIPEDIA }],
+      images: [{ id: '1111' }],
+      weSay: 'We say',
+      version: 8
+    })
+  })
+
+  it('should map an individual with no first names', () => {
+    const values = {
+      firstNames: '',
+      lastName: 'Last',
+      version: 7,
+      weSay: ' We say ',
+      status: statusType.ACTIVE,
+      commonRole: 'The common role',
+      talentType: talentType.INDIVIDUAL,
+      description: 'Description',
+      descriptionCredit: '',
+      images: [{ key: '1111' }],
+      links: [{ key: '2222' }]
+    }
+
+    const actual = talentMapper.mapSubmittedValues(values)
+
+    expect(actual).toEqual({
+      firstNames: '',
       lastName: 'Last',
       description: 'Mapped description',
       descriptionCredit: '',
@@ -136,17 +188,37 @@ describe('mapSubmittedValues', () => {
       weSay: 'We say',
       version: 8
     })
+  })
 
-    expect(entityMapper.mapSubmittedDescription).toHaveBeenCalledWith(
-      'Description'
-    )
+  it('should map a group', () => {
+    const values = {
+      firstNames: '',
+      lastName: 'Last',
+      version: 7,
+      weSay: '',
+      status: statusType.ACTIVE,
+      commonRole: 'The common role',
+      talentType: talentType.GROUP,
+      description: 'Description',
+      descriptionCredit: '',
+      images: [{ key: '1111' }],
+      links: [{ key: '2222' }]
+    }
 
-    expect(entityMapper.mapSubmittedImages).toHaveBeenCalledWith([
-      { key: '1111' }
-    ])
+    const actual = talentMapper.mapSubmittedValues(values)
 
-    expect(entityMapper.mapSubmittedLinks).toHaveBeenCalledWith([
-      { key: '2222' }
-    ])
+    expect(actual).toEqual({
+      firstNames: '',
+      lastName: 'Last',
+      description: 'Mapped description',
+      descriptionCredit: '',
+      talentType: talentType.GROUP,
+      commonRole: 'The common role',
+      status: statusType.ACTIVE,
+      links: [{ type: linkType.WIKIPEDIA }],
+      images: [{ id: '1111' }],
+      weSay: '',
+      version: 8
+    })
   })
 })

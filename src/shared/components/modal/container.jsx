@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Close from 'react-icons/lib/fa/close'
 
 import IconButton from '_src/shared/components/button/icon'
-import './Container.scss'
+import './container.scss'
 
 const ModalContainer = ({
   type,

@@ -1,5 +1,6 @@
 import moment from 'moment'
 import 'moment-timezone'
+import _ from 'lodash'
 
 import * as globalConstants from '_src/shared/constants'
 
@@ -24,7 +25,7 @@ export function mapMomentDateToStringDate (date) {
 }
 
 export function mapStringDateToJsDate (stringDate) {
-  if (!stringDate || stringDate === '') {
+  if (_.isNil(stringDate) || stringDate === '') {
     return null
   }
 

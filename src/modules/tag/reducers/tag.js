@@ -88,7 +88,7 @@ export const reducer = handleActions(
         }
       }
 
-      const newTags = (state.tags[tagType] || []).slice()
+      const newTags = state.tags[tagType].slice()
       const deleteIndex = _.findIndex(newTags, value => value.id === id)
 
       if (deleteIndex > -1) {

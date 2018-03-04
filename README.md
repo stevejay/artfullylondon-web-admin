@@ -83,6 +83,7 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 - for little PNG images: https://www.npmjs.com/package/url-loader
 - clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
 - serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
+- https://zach.codes/ci-code-coverage-tests-in-5-minutes/
 
 ## License
 
