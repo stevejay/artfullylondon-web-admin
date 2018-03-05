@@ -18,9 +18,8 @@ export class EntitySelectorSearch extends React.Component {
   handleAutocompleteSelect = item => {
     const { entityType, setInputValue, onAutocompleteSelect } = this.props
 
-    onAutocompleteSelect(entityType, item.id, item).then(() => {
-      setInputValue('')
-    })
+    onAutocompleteSelect(entityType, item.id, item)
+    setInputValue('')
   }
   handleChange = event => {
     this.props.setInputValue(event.target.value)

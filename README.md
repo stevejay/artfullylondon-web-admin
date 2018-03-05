@@ -69,7 +69,6 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 - https://geowarin.github.io/what-i-did-wrong-as-a-cto/
 
 - scroll position restoration on back button
-- put shared code into a shared directory.
 - replace divs with fragments where possible
 - switch to netlify hosting?
 - https://github.com/marmelab/battery-friendly-timer for the app-updater.
@@ -83,7 +82,10 @@ I have installed a beta version of standard v11 to deal with an eslint error.
 - for little PNG images: https://www.npmjs.com/package/url-loader
 - clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
 - serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
-- https://zach.codes/ci-code-coverage-tests-in-5-minutes/
+
+## Badges to Apply
+
+https://codeclimate.com/oss/dashboard
 
 ## License
 

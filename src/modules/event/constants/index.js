@@ -12,6 +12,34 @@ export const EDIT_EVENT_TIMES_FORM_NAME = 'EditEventTimes'
 export const CREATE_TALENT_FORM_NAME = 'CreateTalent'
 export const TALENT_MATCHES_FOUND_FORM_NAME = 'TalentMatchesFound'
 
+export const EDIT_FORM_STEPS = [
+  {
+    page: 0,
+    title: 'Basics',
+    formName: EDIT_EVENT_BASICS_FORM_NAME
+  },
+  {
+    page: 1,
+    title: 'Tags',
+    formName: EDIT_EVENT_TAGS_FORM_NAME
+  },
+  {
+    page: 2,
+    title: 'Times',
+    formName: EDIT_EVENT_TIMES_FORM_NAME
+  },
+  {
+    page: 3,
+    title: 'Talent',
+    formName: EDIT_EVENT_TALENTS_FORM_NAME
+  },
+  {
+    page: 4,
+    title: 'Images',
+    formName: EDIT_EVENT_IMAGES_FORM_NAME
+  }
+]
+
 export const EVENT_TYPE_DROPDOWN_OPTIONS = [
   { value: eventType.PERFORMANCE, label: eventType.PERFORMANCE },
   { value: eventType.EXHIBITION, label: eventType.EXHIBITION }

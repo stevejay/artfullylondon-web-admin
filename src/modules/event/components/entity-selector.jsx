@@ -12,7 +12,7 @@ import EntitySelectorSearch from './entity-selector-search'
 import { VALUES as entityTypeValues } from '_src/domain/types/entity-type'
 import './entity-selector.scss'
 
-class EntitySelector extends React.Component {
+export class EntitySelector extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
       nextProps.value !== this.props.value ||
@@ -24,14 +24,15 @@ class EntitySelector extends React.Component {
 
     setGettingEntity(true)
 
-    // TODO change to finally()
-    return onAutocompleteSelect(entityType, id, item)
-      .then(() => {
-        setGettingEntity(false)
-      })
-      .catch(() => {
-        setGettingEntity(false)
-      })
+    return onAutocompleteSelect(entityType, id, item).finally(() => {
+      setGettingEntity(false)
+    })
+    // .then(() => {
+    //   setGettingEntity(false)
+    // })
+    // .catch(() => {
+    //   setGettingEntity(false)
+    // })
   }
   render () {
     const {

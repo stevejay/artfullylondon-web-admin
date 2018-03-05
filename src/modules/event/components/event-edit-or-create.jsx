@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { submit as submitReduxForm } from 'redux-form'
 import { withStateHandlers } from 'recompose'
+import _ from 'lodash'
 
 import { Image } from '_src/modules/image'
 import Divider from '_src/shared/components/divider'
@@ -32,55 +33,29 @@ import ImagesForm from '../forms/images'
 import TimesForm from '../forms/times'
 import TalentsForm from '../forms/talents'
 
-const STEPS = [
-  { page: 0, title: 'Basics' },
-  { page: 1, title: 'Tags' },
-  { page: 2, title: 'Times' },
-  { page: 3, title: 'Talent' },
-  { page: 4, title: 'Images' }
-]
-
 export class EventEditOrCreate extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.entity.id !== this.props.entity.id) {
-      this.props.resetInitialValues(
-        eventMapper.getInitialValues(nextProps.entity)
-      )
-
+      const initialValues = eventMapper.getInitialValues(nextProps.entity)
+      this.props.resetInitialValues(initialValues)
       this.props.setStepIndex(0)
     }
-  }
-  nextPage = () => {
-    const { stepIndex, setStepIndex } = this.props
-    stepIndex < 4 && setStepIndex(stepIndex + 1)
   }
   handlePreviousPage = event => {
     event.preventDefault()
     const { stepIndex, setStepIndex } = this.props
-    stepIndex > 0 && setStepIndex(stepIndex - 1)
+    setStepIndex(stepIndex - 1)
   }
   handleStepClick = nextStepIndex => {
     const { stepIndex } = this.props
 
     if (nextStepIndex > stepIndex) {
-      switch (stepIndex) {
-        case 0:
-          return this.props.dispatch(
-            submitReduxForm(eventConstants.EDIT_EVENT_BASICS_FORM_NAME)
-          )
-        case 1:
-          return this.props.dispatch(
-            submitReduxForm(eventConstants.EDIT_EVENT_TAGS_FORM_NAME)
-          )
-        case 2:
-          return this.props.dispatch(
-            submitReduxForm(eventConstants.EDIT_EVENT_TIMES_FORM_NAME)
-          )
-        case 3:
-          return this.props.dispatch(
-            submitReduxForm(eventConstants.EDIT_EVENT_TALENTS_FORM_NAME)
-          )
-      }
+      const step = _.find(
+        eventConstants.EDIT_FORM_STEPS,
+        element => element.page === stepIndex
+      )
+
+      step && this.props.dispatch(submitReduxForm(step.formName))
     } else {
       this.props.setStepIndex(nextStepIndex)
     }
@@ -133,12 +108,14 @@ export class EventEditOrCreate extends React.Component {
     )
   }
   _handlePageSubmit = (values, constraint, extraConstraint) => {
+    const { stepIndex, setStepIndex, updateInitialValues } = this.props
+
     return validationLib.validate(values, constraint, extraConstraint).then(
       values =>
         new Promise(resolve => {
           eventNormaliseLib.normaliseEventValues(values)
-          this.props.updateInitialValues(values)
-          this.nextPage()
+          updateInitialValues(values)
+          stepIndex < 4 && setStepIndex(stepIndex + 1)
           resolve()
         })
     )
@@ -156,7 +133,7 @@ export class EventEditOrCreate extends React.Component {
           <StepCollection
             currentPage={stepIndex}
             onStepClick={this.handleStepClick}
-            steps={STEPS}
+            steps={eventConstants.EDIT_FORM_STEPS}
           />
           <Divider />
           {stepIndex === 0 &&
@@ -207,10 +184,10 @@ export class EventEditOrCreate extends React.Component {
 EventEditOrCreate.propTypes = {
   entity: PropTypes.instanceOf(FullEvent).isRequired,
   isEdit: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
   stepIndex: PropTypes.number.isRequired,
   initialValues: PropTypes.object.isRequired,
   setStepIndex: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
   updateInitialValues: PropTypes.func.isRequired,
   resetInitialValues: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
@@ -218,18 +195,21 @@ EventEditOrCreate.propTypes = {
 
 export default connect()(
   withStateHandlers(
+    /* istanbul ignore next */
     props => ({
       stepIndex: 0,
       initialValues: eventMapper.getInitialValues(props.entity)
     }),
     {
-      setStepIndex: () => value => ({
+      setStepIndex: /* istanbul ignore next */ () => value => ({
         stepIndex: value
       }),
-      updateInitialValues: ({ initialValues }) => values => ({
+      updateInitialValues: /* istanbul ignore next */ ({
+        initialValues
+      }) => values => ({
         initialValues: { ...initialValues, ...values }
       }),
-      resetInitialValues: () => values => ({
+      resetInitialValues: /* istanbul ignore next */ () => values => ({
         initialValues: values
       })
     }

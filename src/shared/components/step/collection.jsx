@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Step from '_src/shared/components/step'
 import './collection.scss'
 
-class Collection extends React.PureComponent {
+class StepCollection extends React.PureComponent {
   render () {
     const { currentPage, onStepClick, steps } = this.props
 
@@ -24,7 +24,7 @@ class Collection extends React.PureComponent {
   }
 }
 
-Collection.propTypes = {
+StepCollection.propTypes = {
   steps: PropTypes.arrayOf(
     PropTypes.shape({
       page: PropTypes.number.isRequired,
@@ -35,4 +35,4 @@ Collection.propTypes = {
   onStepClick: PropTypes.func.isRequired
 }
 
-export default Collection
+export default StepCollection
