@@ -204,8 +204,21 @@ exports[`should render a current event correctly that has full details 1`] = `
               ],
             ],
           },
+          "mediumTags": Array [
+            Object {
+              "id": "medium/theatre",
+              "label": "theatre",
+              "type": "medium",
+            },
+          ],
           "name": "Name",
-          "tags": Array [],
+          "tags": Array [
+            Object {
+              "id": "medium/theatre",
+              "label": "theatre",
+              "type": "medium",
+            },
+          ],
           "talents": Array [
             EventSummaryTalent {
               "lastName": "Last",
@@ -233,8 +246,21 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "mediumTags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "name": "Name",
-              "tags": Array [],
+              "tags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "talents": Array [
                 EventSummaryTalent {
                   "lastName": "Last",
@@ -259,8 +285,21 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "mediumTags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "name": "Name",
-              "tags": Array [],
+              "tags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "talents": Array [
                 EventSummaryTalent {
                   "lastName": "Last",
@@ -285,8 +324,21 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "mediumTags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "name": "Name",
-              "tags": Array [],
+              "tags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "talents": Array [
                 EventSummaryTalent {
                   "lastName": "Last",
@@ -314,8 +366,21 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "mediumTags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "name": "Name",
-              "tags": Array [],
+              "tags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "talents": Array [
                 EventSummaryTalent {
                   "lastName": "Last",
@@ -328,8 +393,19 @@ exports[`should render a current event correctly that has full details 1`] = `
             }
           }
         />
+        <Divider
+          type="basic"
+        />
         <TagCollection
-          tags={Array []}
+          tags={
+            Array [
+              Object {
+                "id": "medium/theatre",
+                "label": "theatre",
+                "type": "medium",
+              },
+            ]
+          }
         />
         <Divider
           type="basic"
@@ -360,8 +436,21 @@ exports[`should render a current event correctly that has full details 1`] = `
                   ],
                 ],
               },
+              "mediumTags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "name": "Name",
-              "tags": Array [],
+              "tags": Array [
+                Object {
+                  "id": "medium/theatre",
+                  "label": "theatre",
+                  "type": "medium",
+                },
+              ],
               "talents": Array [
                 EventSummaryTalent {
                   "lastName": "Last",

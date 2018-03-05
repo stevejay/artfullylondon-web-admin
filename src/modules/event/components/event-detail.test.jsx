@@ -31,7 +31,7 @@ it('should render a current event correctly that has full details', () => {
     images: [],
     venue: { latitude: 1, longitude: 2 },
     eventSeries: {},
-    tags: [{ id: 'medium/theatre', label: 'theatre' }],
+    mediumTags: [{ id: 'medium/theatre', label: 'theatre' }],
     talents: [{ lastName: 'Last' }]
   })
 

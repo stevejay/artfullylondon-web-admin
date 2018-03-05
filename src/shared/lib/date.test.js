@@ -2,6 +2,24 @@ import moment from 'moment'
 
 import * as dateLib from './date'
 
+describe('getPartsOfStringDate', () => {
+  it('should get the parts of a valid date', () => {
+    const actual = dateLib.getPartsOfStringDate('2017/01/18')
+
+    expect(actual).toEqual({
+      year: '2017',
+      month: '01',
+      day: '18'
+    })
+  })
+
+  it('should throw when getting the parts of an valid date', () => {
+    expect(() => dateLib.getPartsOfStringDate('foo')).toThrowError(
+      "failed to parse 'foo' as date"
+    )
+  })
+})
+
 describe('getYearNow', () => {
   it('should get the year now', () => {
     const actual = dateLib.getYearNow()
