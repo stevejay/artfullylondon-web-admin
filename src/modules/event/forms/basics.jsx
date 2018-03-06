@@ -86,7 +86,6 @@ export class EditEventBasicsForm extends React.Component {
 
     const showCost = eventLib.eventIsPaid(costTypeValue)
     const showBookingOpens = eventLib.bookingRequired(bookingTypeValue)
-
     const showOccurrenceRange = eventLib.occurrenceHasDateRange(
       occurrenceTypeValue
     )
