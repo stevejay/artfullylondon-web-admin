@@ -337,10 +337,13 @@ const WrappedEditEventBasicsForm = reduxForm({
 
 const selector = formValueSelector(eventConstants.EDIT_EVENT_BASICS_FORM_NAME)
 
-export default connect(state => ({
-  eventTypeValue: selector(state, 'eventType'),
-  bookingTypeValue: selector(state, 'bookingType'),
-  costTypeValue: selector(state, 'costType'),
-  dateFromValue: selector(state, 'dateFrom'),
-  occurrenceTypeValue: selector(state, 'occurrenceType')
-}))(WrappedEditEventBasicsForm)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    eventTypeValue: selector(state, 'eventType'),
+    bookingTypeValue: selector(state, 'bookingType'),
+    costTypeValue: selector(state, 'costType'),
+    dateFromValue: selector(state, 'dateFrom'),
+    occurrenceTypeValue: selector(state, 'occurrenceType')
+  })
+)(WrappedEditEventBasicsForm)

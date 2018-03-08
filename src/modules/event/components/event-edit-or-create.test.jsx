@@ -134,10 +134,22 @@ it('should handle a next page step click', () => {
   )
 })
 
+it('should handle a previous page step click', () => {
+  const setStepIndex = jest.fn()
+  const wrapper = shallow(createSubject({ stepIndex: 1, setStepIndex }))
+
+  wrapper.find(StepCollection).prop('onStepClick')(0)
+
+  expect(setStepIndex).toHaveBeenCalledWith(0)
+})
+
 it('should handle submitting the first form', () => {
-  validationLib.validate = jest
-    .fn()
-    .mockReturnValue(Promise.resolve({ name: 'validated Foo' }))
+  let extraConstraintParam = null
+
+  validationLib.validate = jest.fn((_, __, extraConstraint) => {
+    extraConstraintParam = extraConstraint
+    return Promise.resolve({ name: 'validated Foo' })
+  })
 
   eventNormaliseLib.normaliseEventValues = jest.fn()
   const updateInitialValues = jest.fn()
@@ -157,13 +169,24 @@ it('should handle submitting the first form', () => {
         name: 'validated Foo'
       })
       expect(setStepIndex).toHaveBeenCalledWith(1)
+
+      let errors = {}
+      extraConstraintParam({ venue: { id: 'some-venue-id' } }, errors)
+      expect(!!errors.venue).toEqual(false)
+
+      errors = {}
+      extraConstraintParam({ venue: {} }, errors)
+      expect(errors.venue).toEqual('No venue selected')
     })
 })
 
 it('should handle submitting the second form', () => {
-  validationLib.validate = jest
-    .fn()
-    .mockReturnValue(Promise.resolve({ name: 'validated Foo' }))
+  let extraConstraintParam = null
+
+  validationLib.validate = jest.fn((_, __, extraConstraint) => {
+    extraConstraintParam = extraConstraint
+    return Promise.resolve({ name: 'validated Foo' })
+  })
 
   eventNormaliseLib.normaliseEventValues = jest.fn()
   const updateInitialValues = jest.fn()
@@ -183,6 +206,17 @@ it('should handle submitting the second form', () => {
         name: 'validated Foo'
       })
       expect(setStepIndex).toHaveBeenCalledWith(2)
+
+      let errors = {}
+      extraConstraintParam(
+        { mediumTags: [{ id: 'medium/sculpture ' }] },
+        errors
+      )
+      expect(!!errors.mediumTags).toEqual(false)
+
+      errors = {}
+      extraConstraintParam({ mediumTags: [] }, errors)
+      expect(errors.mediumTags).toEqual("Medium Tags can't be empty")
     })
 })
 
@@ -213,9 +247,13 @@ it('should handle submitting the third form', () => {
 })
 
 it('should handle submitting the fourth form', () => {
-  validationLib.validate = jest
-    .fn()
-    .mockReturnValue(Promise.resolve({ name: 'validated Foo' }))
+  let extraConstraintParam = null
+
+  validationLib.validate = jest.fn((_, __, extraConstraint) => {
+    // extraConstraint({ talents: [{ roles: 'Some role' }] }, {})
+    extraConstraintParam = extraConstraint
+    return Promise.resolve({ name: 'validated Foo' })
+  })
 
   eventNormaliseLib.normaliseEventValues = jest.fn()
   const updateInitialValues = jest.fn()
@@ -235,6 +273,14 @@ it('should handle submitting the fourth form', () => {
         name: 'validated Foo'
       })
       expect(setStepIndex).toHaveBeenCalledWith(4)
+
+      let errors = {}
+      extraConstraintParam({ talents: [{ roles: 'Some role' }] }, errors)
+      expect(!!errors.talents).toEqual(false)
+
+      errors = {}
+      extraConstraintParam({ talents: [{ roles: '' }] }, errors)
+      expect(errors.talents).toEqual('All talent must have roles assigned')
     })
 })
 

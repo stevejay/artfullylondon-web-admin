@@ -32,13 +32,12 @@ export class EditEventTalentsForm extends React.Component {
     super(props)
     this.talentInitialValues = getBasicTalentInitialValues()
   }
-  talentFieldMounted = ref => {
+  talentFieldMounted = /* istanbul ignore next */ ref => {
     this._talent = ref
   }
   handleAutocompleteSelect = (entityType, id, item) => {
     // TODO make this method cleaner
-
-    try {
+    return new Promise((resolve, reject) => {
       const newTalent = {
         key: id,
         id: id,
@@ -61,13 +60,11 @@ export class EditEventTalentsForm extends React.Component {
           )
         )
 
-        return Promise.resolve()
+        resolve()
       } else {
-        return Promise.reject(new Error('Already exists'))
+        reject(new Error('Already exists'))
       }
-    } catch (err) {
-      return Promise.reject(err)
-    }
+    })
   }
   handleAutocompleteSearch = (term, entityType) => {
     return this.props.dispatch(
@@ -81,7 +78,7 @@ export class EditEventTalentsForm extends React.Component {
     this.props.setShowingModal(false)
   }
   handleCreateTalent = values => {
-    this.props
+    return this.props
       .dispatch(
         talentActions.createTalentForEntity(
           values,

@@ -270,7 +270,10 @@ const WrappedEditEventTimesForm = reduxForm({
 
 const selector = formValueSelector(eventConstants.EDIT_EVENT_TIMES_FORM_NAME)
 
-export default connect(state => ({
-  useVenueOpeningTimesValue: selector(state, 'useVenueOpeningTimes'),
-  timesRangesValue: selector(state, 'timesRanges')
-}))(WrappedEditEventTimesForm)
+export default connect(
+  /* istanbul ignore next */
+  state => ({
+    useVenueOpeningTimesValue: selector(state, 'useVenueOpeningTimes'),
+    timesRangesValue: selector(state, 'timesRanges')
+  })
+)(WrappedEditEventTimesForm)

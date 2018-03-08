@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when creating 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <withState(TagSelector)
+    label="Medium Tags"
+    name="mediumTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "medium/sculpture",
+          "label": "sculpture",
+        },
+      ]
+    }
+    required={true}
+    tagType="medium"
+  />
+  <withState(TagSelector)
+    label="Style Tags"
+    name="styleTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "style/comedy",
+          "label": "comedy",
+        },
+      ]
+    }
+    tagType="style"
+  />
+  <withState(TagSelector)
+    label="Audience Tags"
+    name="audienceTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "audience/family",
+          "label": "family",
+        },
+      ]
+    }
+    tagType="audience"
+  />
+  <withState(TagSelector)
+    label="Geo Tags"
+    name="geoTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "geo/usa",
+          "label": "usa",
+        },
+      ]
+    }
+    tagType="geo"
+  />
+  <Divider
+    type="basic"
+  />
+  <FormError />
+  <FormButtons
+    onCancel={null}
+    onPrevious={[Function]}
+    submitLabel="Next"
+    submitting={false}
+  />
+</Form>
+`;
+
+exports[`should render correctly when editing 1`] = `
+<Form
+  onSubmit={[Function]}
+>
+  <withState(TagSelector)
+    label="Medium Tags"
+    name="mediumTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "medium/sculpture",
+          "label": "sculpture",
+        },
+      ]
+    }
+    required={true}
+    tagType="medium"
+  />
+  <withState(TagSelector)
+    label="Style Tags"
+    name="styleTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "style/comedy",
+          "label": "comedy",
+        },
+      ]
+    }
+    tagType="style"
+  />
+  <withState(TagSelector)
+    label="Audience Tags"
+    name="audienceTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "audience/family",
+          "label": "family",
+        },
+      ]
+    }
+    tagType="audience"
+  />
+  <withState(TagSelector)
+    label="Geo Tags"
+    name="geoTags"
+    onAddTag={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "geo/usa",
+          "label": "usa",
+        },
+      ]
+    }
+    tagType="geo"
+  />
+  <Divider
+    type="basic"
+  />
+  <FormError />
+  <FormButtons
+    onCancel={[Function]}
+    onPrevious={[Function]}
+    submitLabel="Next"
+    submitting={false}
+  />
+</Form>
+`;

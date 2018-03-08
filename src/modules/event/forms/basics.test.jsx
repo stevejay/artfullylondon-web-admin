@@ -44,6 +44,14 @@ it('should render correctly when editing a performance event', () => {
   expect(wrapper).toMatchSnapshot()
 })
 
+it('should render correctly when creating and event type is not yet set', () => {
+  const wrapper = shallow(
+    createSubject({ isEdit: false, eventTypeValue: null })
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})
+
 it('should render correctly when editing a full feature performance event', () => {
   const wrapper = shallow(
     createSubject({
