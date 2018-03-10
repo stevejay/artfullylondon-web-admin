@@ -22,7 +22,7 @@ class SearchInput extends React.PureComponent {
 
     this.mounted = true
   }
-  handleInputMounted = ref => {
+  handleInputMounted = /* istanbul ignore next */ ref => {
     this._input = ref
     this.props.autoFocus && ref && ref.focus()
   }

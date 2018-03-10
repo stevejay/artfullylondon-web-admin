@@ -15,10 +15,10 @@ class Dropdown extends React.Component {
     super(props)
     this.state = { isOpen: false, selectedIndex: null }
   }
-  handleContainerMounted = ref => {
+  handleContainerMounted = /* istanbul ignore next */ ref => {
     this._container = ref
   }
-  handleHeaderButtonMounted = ref => {
+  handleHeaderButtonMounted = /* istanbul ignore next */ ref => {
     this._headerButton = ref
   }
   handleItemMouseEnter = index => {
