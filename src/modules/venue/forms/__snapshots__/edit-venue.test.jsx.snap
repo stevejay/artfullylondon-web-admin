@@ -337,12 +337,18 @@ exports[`should render correctly when creating 1`] = `
             },
           },
           "from": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time given but From time missing",
+              "test": [Function],
+            },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },
           "to": Object {
             "dependency": Object {
               "ensure": [Function],
               "message": "To time is not greater than From time",
+              "test": [Function],
             },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },
@@ -730,12 +736,18 @@ exports[`should render correctly when editing 1`] = `
             },
           },
           "from": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time given but From time missing",
+              "test": [Function],
+            },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },
           "to": Object {
             "dependency": Object {
               "ensure": [Function],
               "message": "To time is not greater than From time",
+              "test": [Function],
             },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },

@@ -57,15 +57,13 @@ export const BASIC_CONSTRAINT = {
       },
       {
         test: (_, attrs) =>
-          attrs.dateFrom !== '' &&
-          attrs.occurrenceType === occurrenceType.ONETIME,
+          !!attrs.dateFrom && attrs.occurrenceType === occurrenceType.ONETIME,
         ensure: (value, attrs) => value === attrs.dateFrom,
         message: 'To date must equal From date'
       },
       {
         test: (_, attrs) =>
-          attrs.dateFrom !== '' &&
-          attrs.occurrenceType === occurrenceType.BOUNDED,
+          !!attrs.dateFrom && attrs.occurrenceType === occurrenceType.BOUNDED,
         ensure: (value, attrs) => value >= attrs.dateFrom,
         message: 'To date must be greater than or equal to From date'
       }
@@ -81,7 +79,7 @@ export const BASIC_CONSTRAINT = {
     dependency: [
       {
         test: (_, attrs) => attrs.costType === costType.PAID,
-        ensure: value => value >= 0,
+        ensure: value => !_.isNil(value) && value >= 0,
         message: 'Cost From is required'
       },
       {
@@ -99,7 +97,7 @@ export const BASIC_CONSTRAINT = {
     dependency: [
       {
         test: (_, attrs) => attrs.costType === costType.PAID,
-        ensure: value => value >= 0,
+        ensure: value => !_.isNil(value) && value >= 0,
         message: 'Cost To is required'
       },
       {
@@ -111,7 +109,7 @@ export const BASIC_CONSTRAINT = {
       },
       {
         test: (_, attrs) =>
-          attrs.costFrom !== '' && attrs.costType === costType.PAID,
+          !!attrs.costFrom && attrs.costType === costType.PAID,
         ensure: (value, attrs) => Number(value) >= Number(attrs.costFrom),
         message: 'Cost To must be equal to or greater than Cost From'
       }

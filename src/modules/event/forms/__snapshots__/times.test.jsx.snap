@@ -46,7 +46,8 @@ exports[`should render correctly when editing and all display flags are set 1`] 
           "dateTo": Object {
             "dependency": Object {
               "ensure": [Function],
-              "message": "Date To is not greate than Date From",
+              "message": "Date To is not greater than Date From",
+              "test": [Function],
             },
             "format": /\\^\\[12\\]\\\\d\\\\d\\\\d\\\\/\\[01\\]\\\\d\\\\/\\[0123\\]\\\\d\\$/,
             "presence": Object {
@@ -364,12 +365,18 @@ exports[`should render correctly when editing and all display flags are set 1`] 
             },
           },
           "from": Object {
+            "dependency": Object {
+              "ensure": [Function],
+              "message": "To time given but From time missing",
+              "test": [Function],
+            },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },
           "to": Object {
             "dependency": Object {
               "ensure": [Function],
               "message": "To time is not greater than From time",
+              "test": [Function],
             },
             "format": /\\^\\(\\?:\\[01\\]\\[0-9\\]\\|2\\[0-3\\]\\):\\[0-5\\]\\[0-9\\]\\$\\|\\^\\$/,
           },
