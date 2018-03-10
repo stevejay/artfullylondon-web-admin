@@ -5,6 +5,45 @@ import statusType from '_src/domain/types/status-type'
 import linkType from '_src/domain/types/link-type'
 import imageStatusType from '_src/domain/types/image-status-type'
 
+describe ('getTalentsInitialValue', () => {
+  it('should handle a populated input', () => {
+    const input = [
+      {
+        id: 'talent-one'
+      },
+      {
+        id: 'talent-two',
+        lastName: 'Last Name',
+        roles: ['Role One', 'Role Two'],
+        characters: ['Character One', 'Character Two']
+      }
+    ]
+
+    const actual = entityMapper.getTalentsInitialValue(input)
+
+    expect(actual).toEqual([
+      {
+        id: 'talent-one',
+        key: 'talent-one',
+        roles: '',
+        characters: ''
+      },
+      {
+        id: 'talent-two',
+        key: 'talent-two',
+        lastName: 'Last Name',
+        roles: 'Role One, Role Two',
+        characters: 'Character One, Character Two'
+      }
+    ])
+  })
+
+  it('should handle no input', () => {
+    const actual = entityMapper.getTalentsInitialValue(null)
+    expect(actual).toEqual([])
+  })
+})
+
 describe('mapSubmittedEventTalents', () => {
   it('should handle a populated input', () => {
     const input = [

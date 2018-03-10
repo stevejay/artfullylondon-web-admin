@@ -235,6 +235,13 @@ export function getSoldOutPerformancesInitialValue (soldOutPerformances) {
   }))
 }
 
+export function mapSubmittedSoldOutPerformances (soldOutPerformances) {
+  return (soldOutPerformances || []).map(performance => ({
+    date: performance.date,
+    at: performance.at
+  }))
+}
+
 export function mapSubmittedTimesRanges (timesRanges) {
   return (timesRanges || []).map(timesRange => ({
     id: timesRange.id,
@@ -339,4 +346,13 @@ function _mapCommaSeparatedStringToArray (str) {
     .split(',')
     .map(role => role.trim())
     .filter(role => role !== '')
+}
+
+export function getTalentsInitialValue (talents) {
+  return (talents || []).map(talent => ({
+    ...talent,
+    key: talent.id,
+    roles: (talent.roles || []).join(', '),
+    characters: (talent.characters || []).join(', ')
+  }))
 }

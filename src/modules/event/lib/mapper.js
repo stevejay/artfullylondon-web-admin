@@ -71,7 +71,7 @@ export function getInitialValues (event) {
       event.performancesClosures
     ),
     duration: event.duration || '',
-    talents: _getTalentsInitialValue(event.talents),
+    talents: entityMapper.getTalentsInitialValue(event.talents),
     audienceTags: event.audienceTags || [],
     mediumTags: event.mediumTags || [],
     styleTags: event.styleTags || [],
@@ -89,16 +89,6 @@ export function getInitialValues (event) {
   }
 }
 
-// TODO move to the talent/entity module?
-function _getTalentsInitialValue (talents) {
-  return (talents || []).map(talent => ({
-    ...talent,
-    key: talent.id,
-    roles: (talent.roles || []).join(', '),
-    characters: (talent.characters || []).join(', ')
-  }))
-}
-
 export function mapSubmittedValues (values) {
   const isFree = !eventLib.eventIsPaid(values.costType)
   const costFrom = isFree ? null : parseFloat(values.costFrom)
@@ -112,21 +102,23 @@ export function mapSubmittedValues (values) {
 
   return {
     status: values.status,
-    name: values.name.trim(),
+    name: (values.name || '').trim(),
     eventType: values.eventType,
     occurrenceType: values.occurrenceType,
     dateFrom: hasOccurrenceRange ? values.dateFrom : null,
     dateTo: hasOccurrenceRange ? values.dateTo : null,
-    summary: values.summary.trim(),
+    summary: (values.summary || '').trim(),
     costType: values.costType,
     costFrom: costFrom,
     costTo: costTo,
     bookingType: values.bookingType,
     bookingOpens: bookingOpens,
-    venueId: values.venue.id,
-    venueGuidance: values.venueGuidance.trim(),
-    eventSeriesId: values.eventSeries.id || null,
-    duration: values.duration.trim(),
+    venueId: values.venue && values.venue.id ? values.venue.id : null,
+    venueGuidance: (values.venueGuidance || '').trim(),
+    eventSeriesId: values.eventSeries && values.eventSeries.id
+      ? values.eventSeries.id
+      : null,
+    duration: (values.duration || '').trim(),
     useVenueOpeningTimes: values.useVenueOpeningTimes,
     timesRanges: entityMapper.mapSubmittedTimesRanges(values.timesRanges),
     openingTimes: entityMapper.mapSubmittedOpeningTimes(values.openingTimes),
@@ -157,9 +149,13 @@ export function mapSubmittedValues (values) {
     weSay: (values.weSay || '').trim(),
     rating: parseInt(values.rating),
     minAge: values.minAge ? parseInt(values.minAge) : null,
-    // namedClosures: entityMapper.mapSubmittedNamedClosures(values.namedClosures),
+    maxAge: values.maxAge ? parseInt(values.maxAge) : null,
     description: entityMapper.mapSubmittedDescription(values.description),
-    descriptionCredit: values.descriptionCredit.trim(),
+    descriptionCredit: (values.descriptionCredit || '').trim(),
+    soldOutPerformances: entityMapper.mapSubmittedSoldOutPerformances(
+      values.soldOutPerformances
+    ),
+    soldOut: values.soldOut,
     links: entityMapper.mapSubmittedLinks(values.links),
     images: entityMapper.mapSubmittedImages(values.images),
     version: values.version + 1
