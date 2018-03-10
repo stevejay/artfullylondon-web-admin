@@ -5,6 +5,11 @@ describe('createImageUrl', () => {
     const actual = imageLib.createImageUrl('123456', '120x120')
     expect(actual).toEqual('https://images.test.com/12/34/123456/120x120.jpg')
   })
+
+  it('should handle a null image id', () => {
+    const actual = imageLib.createImageUrl(null, '120x120')
+    expect(actual).toEqual(null)
+  })
 })
 
 describe('createEntityEditPreviewImageUrl', () => {
