@@ -5,7 +5,7 @@ import statusType from '_src/domain/types/status-type'
 import linkType from '_src/domain/types/link-type'
 import imageStatusType from '_src/domain/types/image-status-type'
 
-describe ('getTalentsInitialValue', () => {
+describe('getTalentsInitialValue', () => {
   it('should handle a populated input', () => {
     const input = [
       {
