@@ -153,13 +153,12 @@ export const TAGS_CONSTRAINT = {
 }
 
 const TIMES_RANGE_DEPENDENCY = {
-  test: (value, attrs) =>
-    value && value.length && attrs.timesRanges && attrs.timesRanges.length,
+  test: (value, attrs) => value && value.length,
   ensure: (value, attrs) =>
     _.every(
       value,
       element =>
-        element.timesRangeId &&
+        !element.timesRangeId ||
         _.find(
           attrs.timesRanges,
           timesRange => timesRange.id === element.timesRangeId

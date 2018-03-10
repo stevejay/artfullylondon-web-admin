@@ -6,6 +6,83 @@ import costType from '_src/domain/types/cost-type'
 import bookingType from '_src/domain/types/booking-type'
 import occurrenceType from '_src/domain/types/occurrence-type'
 
+describe('TIMES_CONSTRAINT', () => {
+  const tests = [
+    {
+      it: 'should allow opening times that have no times ranges',
+      values: {
+        openingTimes: [{ day: '2', from: '18:00', to: '19:00' }]
+      },
+      expected: {}
+    },
+    {
+      it: 'should allow performances that have no times ranges',
+      values: {
+        performances: [{ day: '2', at: '18:00' }]
+      },
+      expected: {}
+    },
+    {
+      it: 'should pass opening times that have matched times ranges',
+      values: {
+        openingTimes: [
+          {
+            day: '2',
+            from: '18:00',
+            to: '19:00',
+            timesRangeId: 'times-range-1'
+          }
+        ],
+        timesRanges: [{ id: 'times-range-1' }]
+      },
+      expected: {}
+    },
+    {
+      it: 'should pass performances that have matched times ranges',
+      values: {
+        performances: [
+          {
+            day: '2',
+            at: '18:00',
+            timesRangeId: 'times-range-1'
+          }
+        ],
+        timesRanges: [{ id: 'times-range-1' }]
+      },
+      expected: {}
+    },
+    {
+      it: 'should fail opening times that have unmatched times ranges',
+      values: {
+        openingTimes: [
+          { day: '2', from: '18:00', to: '19:00', timesRangeId: 'nonexistent' }
+        ],
+        timesRanges: []
+      },
+      expected: {
+        openingTimes: ['All Opening Times must have a times range that exists']
+      }
+    },
+    {
+      it: 'should fail performances that have unmatched times ranges',
+      values: {
+        performances: [{ day: '2', at: '18:00', timesRangeId: 'nonexistent' }],
+        timesRanges: [{ id: 'times-range-1' }]
+      },
+      expected: {
+        performances: ['All Performances must have a times range that exists']
+      }
+    }
+  ]
+
+  tests.forEach(test => {
+    it(test.it, () => {
+      const errors = ensure(test.values, constraints.TIMES_CONSTRAINT) || {}
+      expect(errors).toEqual(test.expected)
+    })
+  })
+})
+
 describe('BASIC_CONSTRAINT', () => {
   const tests = [
     {

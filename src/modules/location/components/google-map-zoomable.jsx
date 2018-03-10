@@ -1,7 +1,7 @@
-/* global google */
 import React from 'react'
 import PropTypes from 'prop-types'
-import window from 'global/window'
+import window from 'global/window' // eslint-disable-line
+import global from 'global' // eslint-disable-line
 import {
   withGoogleMap,
   GoogleMap as ReactGoogleMap,
@@ -23,15 +23,18 @@ export class GoogleMapZoomable extends React.PureComponent {
       const KEY = '__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED'
 
       window.setTimeout(() => {
-        if (google && googleMap) {
-          google.maps.event.trigger(googleMap.context[KEY], 'resize') // eslint-disable-line
+        /* istanbul ignore next */
+        if (global.google && googleMap) {
+          global.google.maps.event.trigger(googleMap.context[KEY], 'resize')
         }
       }, 0)
     }
   }
   handleZoomChanged = () => {
     const googleMapZoom = this._googleMap.getZoom()
+
     const zoom = locationLib.convertGoogleMapZoomToInt(googleMapZoom)
+
     const googleMapBounds = this._googleMap.getBounds()
 
     const bounds = locationLib.convertGoogleMapBoundsToNSEWBounds(
@@ -55,7 +58,7 @@ export class GoogleMapZoomable extends React.PureComponent {
 
     this.props.onCenterChanged({ center, bounds })
   }
-  handleMounted = ref => {
+  handleMounted = /* istanbul ignore next */ ref => {
     const { onMounted } = this.props
     this._googleMap = ref
     onMounted && onMounted(ref)
