@@ -1,6 +1,10 @@
 import _ from 'lodash'
 
 export function mapReferenceData (contentJson) {
+  if (_.isEmpty(contentJson)) {
+    return null
+  }
+
   const { heroImage, namedClosures } = contentJson
 
   return {

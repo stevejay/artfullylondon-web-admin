@@ -8,12 +8,27 @@ describe('initial load', function () {
       response: { version: '0.1.0' }
     })
 
+    cy.route({
+      method: 'GET',
+      url: 'https://api.artfully.london/data-service/admin-site-data',
+      response: {}
+    })
+
+    cy.route({
+      method: 'GET',
+      url: 'https://api.artfully.london/search-service/admin/search/preset/entity-counts',
+      response: {
+        items: [
+          { entityType: 'event', count: 435 },
+          { entityType: 'event-series', count: 9 },
+          { entityType: 'talent', count: 1125 },
+          { entityType: 'venue', count: 413 }
+        ]
+      }
+    })
+
     cy.visit('/', {
-      // onBeforeLoad: win => {
-      //   win.auth = { attemptAutoLogIn: cy.stub().resolves(null) }
-      // },
       onLoad: win => {
-        cy.stub(win.auth, 'attemptAutoLogIn').resolves(null)
         cy.stub(win.auth, 'authenticateUser').resolves({})
       }
     })
