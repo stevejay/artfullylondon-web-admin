@@ -7,7 +7,7 @@ exports[`should render correctly 1`] = `
   label="The Label"
   touched={false}
 >
-  <RichTextEditor
+  <e
     className="src-shared-components-html-text-field__rte"
     customStyleMap={
       Object {

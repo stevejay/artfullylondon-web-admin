@@ -4,7 +4,7 @@ import { startSubmit, stopSubmit } from 'redux-form'
 import log from 'loglevel'
 
 import * as userSagas from './index'
-import * as authLib from '../lib/auth'
+import { auth as authLib } from '../lib/auth'
 import * as sagaLib from '_src/shared/lib/saga'
 import * as validationLib from '_src/shared/lib/validation'
 import * as userConstants from '../constants'

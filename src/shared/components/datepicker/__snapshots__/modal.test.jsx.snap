@@ -86,7 +86,7 @@ exports[`should render correctly when not shown 1`] = `
         }
       }
       disabledDays={[Function]}
-      enableOutsideDays={false}
+      enableOutsideDaysClick={false}
       fixedWeeks={false}
       initialMonth={2017-01-01T00:00:00.000Z}
       labels={
@@ -257,7 +257,7 @@ exports[`should render correctly when shown 1`] = `
         }
       }
       disabledDays={[Function]}
-      enableOutsideDays={false}
+      enableOutsideDaysClick={false}
       fixedWeeks={false}
       initialMonth={2017-01-01T00:00:00.000Z}
       labels={
@@ -428,7 +428,7 @@ exports[`should render correctly when shown and value is missing 1`] = `
         }
       }
       disabledDays={[Function]}
-      enableOutsideDays={false}
+      enableOutsideDaysClick={false}
       fixedWeeks={false}
       initialMonth={2016-01-01T00:00:00.000Z}
       labels={

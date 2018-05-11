@@ -4,7 +4,7 @@ import log from 'loglevel'
 
 import * as sagaLib from '_src/shared/lib/saga'
 import * as validationLib from '_src/shared/lib/validation'
-import * as authLib from '../lib/auth'
+import { auth as authLib } from '../lib/auth'
 import * as userConstants from '../constants'
 import * as userActions from '../actions'
 import { selectors } from '../reducers'

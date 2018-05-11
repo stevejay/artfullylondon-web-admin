@@ -49,10 +49,10 @@ DropdownButton.propTypes = {
   dropdownIsOpen: PropTypes.bool.isRequired,
   ariaHaspopup: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  onKeyPress: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired
+  onKeyDown: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func
 }
 
 export default DropdownButton

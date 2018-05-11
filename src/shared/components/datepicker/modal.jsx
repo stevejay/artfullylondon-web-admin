@@ -61,7 +61,7 @@ class DatepickerModal extends React.Component {
             styleName='datepicker'
             selectedDays={this.selectedDays}
             disabledDays={this.disabledDays}
-            enableOutsideDays={false}
+            enableOutsideDaysClick={false}
             initialMonth={
               selectedDay || from || /* istanbul ignore next */ undefined
             }

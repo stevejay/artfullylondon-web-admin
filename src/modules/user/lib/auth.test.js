@@ -1,5 +1,5 @@
 import * as cognitoUserLib from './cognito-user'
-import * as authLib from './auth'
+import { auth as authLib } from './auth'
 
 describe('attemptAutoLogIn', () => {
   it('should handle finding a valid cognito user in local storage', () => {

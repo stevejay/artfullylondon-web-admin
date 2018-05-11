@@ -83,11 +83,6 @@ class Dropdown extends React.Component {
       }
     }
   }
-  handleFocus = () => {
-    if (!this.state.isOpen) {
-      this._openMenu()
-    }
-  }
   handleBlur = () => {
     if (!this._componentHasFocus() && this.state.isOpen) {
       this._closeMenu()
@@ -125,7 +120,6 @@ class Dropdown extends React.Component {
           dropdownIsOpen={isOpen}
           onKeyDown={this.handleKeyDown}
           onKeyPress={this.handleKeyPress}
-          onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onClick={this.handleButtonClick}
           ariaHaspopup
