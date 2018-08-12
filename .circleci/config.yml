@@ -6,34 +6,38 @@ defaults: &defaults
     - image: circleci/node:10.8-browsers
 
 jobs:
-  build:
+  install:
     <<: *defaults
-
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run:
-          name: Run build
-          command: yarn build
-
+  unit_test:
+    <<: *defaults
+    steps:
       - run: yarn test
+
+  build:
+    <<: *defaults
+    steps:
+      - run: yarn build
+      - store_artifacts:
+          path: ~/project/build
 
 workflows:
   version: 2
-  build_and_test:
+  test_and_build:
     jobs:
+      - install
+      - unit_test
       - build
