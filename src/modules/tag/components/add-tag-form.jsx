@@ -31,7 +31,9 @@ const AddTagForm = (props: FormikProps<AddTagFormValues>) => (
         autoFocus
         inputBackground="light-1"
       />
-      <SubmitButton isSubmitting={props.isSubmitting} label="Add" />
+      <Box flex="grow">
+        <SubmitButton isSubmitting={props.isSubmitting} label="Add" />
+      </Box>
     </Box>
     <FormError errors={props.errors} name="label" />
   </AnimationBox>
