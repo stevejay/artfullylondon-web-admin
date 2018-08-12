@@ -41,7 +41,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "flow": "flow",
     "get-fragment-types": "node ./scripts/get-fragment-types.js",
-    "serve": "firebase serve --project artfullylondon-staging-admin -p 3003",
+    "serve:staging": "firebase serve --project artfullylondon-staging-admin -p 3000",
     "deploy:staging": "./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin",
     "deploy:prod": "./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin",
     "storybook": "start-storybook -p 9009 -s public",

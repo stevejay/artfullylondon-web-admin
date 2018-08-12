@@ -50,6 +50,9 @@ jobs:
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
+      - run: 
+          command: yarn run serve:staging
+          background: true
       - run: $(yarn bin)/cypress run
       - store_artifacts:
           path: cypress/videos
