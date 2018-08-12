@@ -24,7 +24,7 @@ type QueryData = {
   }
 };
 
-export class TalentDetailHandler extends React.Component<Props> {
+class TalentDetailHandler extends React.Component<Props> {
   handleEdit = () => {
     this.props.history.push(`/edit/${this.props.id}`);
   };

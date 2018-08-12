@@ -11,7 +11,7 @@ type EnhancedProps = {
   setNewContentAvailable: void => void
 };
 
-export class Updater extends React.Component<EnhancedProps> {
+class Updater extends React.Component<EnhancedProps> {
   constructor(props: EnhancedProps) {
     super(props);
     swivel.on("swState", ({ newContentAvailable }) => {

@@ -17,7 +17,7 @@ type Props = {
   inputBackground: ?string
 };
 
-export const ExtendedTextInput = ({
+const ExtendedTextInput = ({
   field,
   form,
   inputBackground,

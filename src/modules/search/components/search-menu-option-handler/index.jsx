@@ -16,7 +16,7 @@ type EnhancedProps = {
   +searchClosed: void => void
 };
 
-export const SearchMenuOptionHandler = ({
+const SearchMenuOptionHandler = ({
   component: Component,
   searchOpen,
   searchOpened,

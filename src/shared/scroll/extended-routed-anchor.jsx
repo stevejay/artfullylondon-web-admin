@@ -17,7 +17,7 @@ type Props = {
   +history: RouterHistory
 };
 
-export class ExtendedRoutedAnchor extends React.Component<Props> {
+class ExtendedRoutedAnchor extends React.Component<Props> {
   static defaultProps = { method: "push" };
 
   // TODO fix the uses of any in the arg list

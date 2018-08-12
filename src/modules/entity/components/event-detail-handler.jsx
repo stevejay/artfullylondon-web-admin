@@ -24,7 +24,7 @@ type QueryData = {
   }
 };
 
-export class EventDetailHandler extends React.Component<Props> {
+class EventDetailHandler extends React.Component<Props> {
   handleEdit = () => {
     this.props.history.push(`/edit/${this.props.id}`);
   };

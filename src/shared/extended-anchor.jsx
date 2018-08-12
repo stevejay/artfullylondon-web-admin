@@ -6,7 +6,7 @@ import withTheme from "shared/with-theme";
 
 // TODO the final release version of Grommet v2 may make
 // this anchor styling fix unnecessary:
-export const ExtendedAnchor = styled(Anchor)`
+const ExtendedAnchor = styled(Anchor)`
   word-break: break-all;
   padding: 0;
   ${props =>

@@ -17,7 +17,7 @@ type EnhancedProps = {
   setImageLoaded: void => void
 };
 
-export class ImageComponent extends React.Component<EnhancedProps> {
+class ImageComponent extends React.Component<EnhancedProps> {
   _image: HTMLImageElement;
 
   constructor(props: EnhancedProps) {

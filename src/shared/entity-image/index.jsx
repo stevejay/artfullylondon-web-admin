@@ -31,7 +31,7 @@ type EnhancedProps = {
   +setLoadFailed: void => mixed
 };
 
-export const EntityImage = ({
+const EntityImage = ({
   entityType,
   a11yTitle,
   imageSrc,

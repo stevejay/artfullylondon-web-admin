@@ -1,6 +1,6 @@
 # Introduction
 
-A React.js SPA that demonstrates various front-end coding and testing practises.
+A React.js SPA that demonstrates various front-end coding and testing practises. The site can be accessed [here](https://www.artfully-admin.site/), using the username `readonly` and the password `Readonly1`.
 
 ## Packages
 
@@ -18,7 +18,7 @@ All of the following can be run simultaneously locally--you just need a populate
 
 ## Limitations
 
-- I can't use a graphql/gql file loader in babel or webpack as Storybook doesn't pick it up.
+I was unable to use a graphql/gql file loader with Babel or Webpack as Storybook does not pick it up.
 
 ## Troubleshooting
 

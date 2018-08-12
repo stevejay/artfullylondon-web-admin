@@ -21,7 +21,7 @@ type Props = {
   +history: RouterHistory
 };
 
-export class AutocompleteSearchHandler extends React.Component<Props> {
+class AutocompleteSearchHandler extends React.Component<Props> {
   handleArrowUp = () => {
     this._updateAutocompleteIndex(this.props.autocompleteIndex - 1);
   };

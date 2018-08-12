@@ -24,7 +24,7 @@ type EnhancedProps = {
   setSidebarClosed: void => void
 };
 
-export const Menu = ({
+const Menu = ({
   sidebarOpen,
   logoutMenuOptionHandler,
   searchMenuOptionHandler,

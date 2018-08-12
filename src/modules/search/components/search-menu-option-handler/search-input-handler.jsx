@@ -19,7 +19,7 @@ type EnhancedProps = {
   +setValue: string => void
 };
 
-export class SearchInputHandler extends React.Component<EnhancedProps> {
+class SearchInputHandler extends React.Component<EnhancedProps> {
   handleChange = (event: SyntheticEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     this.props.setValue(value);

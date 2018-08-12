@@ -18,7 +18,7 @@ type Props = {
   +mutate: MutationOperation<>
 };
 
-export class LoginFormHandler extends React.Component<Props> {
+class LoginFormHandler extends React.Component<Props> {
   handleSubmit = (
     values: LoginFormValues,
     { setErrors, setSubmitting }: FormikActions<LoginFormValues>

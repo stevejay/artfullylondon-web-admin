@@ -27,7 +27,7 @@ type QueryData = {
   }
 };
 
-export class TagHandler extends React.Component<EnhancedProps> {
+class TagHandler extends React.Component<EnhancedProps> {
   _cancelDelete: ?(void) => mixed = null;
 
   componentWillUnmount() {

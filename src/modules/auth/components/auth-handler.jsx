@@ -25,7 +25,7 @@ type EnhancedProps = {
   setAutoLoginAttempted: () => Promise<null>
 };
 
-export class AuthHandler extends React.Component<EnhancedProps> {
+class AuthHandler extends React.Component<EnhancedProps> {
   componentDidMount() {
     this.props
       .mutate(empty.object)

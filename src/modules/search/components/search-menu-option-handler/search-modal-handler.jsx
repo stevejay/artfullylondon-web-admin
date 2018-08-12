@@ -44,7 +44,7 @@ type QueryData = {
   }
 };
 
-export class SearchModalHandler extends React.Component<EnhancedProps> {
+class SearchModalHandler extends React.Component<EnhancedProps> {
   // TODO do debounce directly on setAutocompleteTerm func?
   handleAutocomplete = _.debounce((value: string) => {
     this.props.setAutocompleteTerm(value);

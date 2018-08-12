@@ -19,7 +19,7 @@ type Props = {
   +mutate: MutationOperation<>
 };
 
-export class BasicSearchFormHandler extends React.PureComponent<Props> {
+class BasicSearchFormHandler extends React.PureComponent<Props> {
   handleSubmit = (
     values: BasicSearchFormValues,
     { setErrors, setSubmitting }: FormikActions<BasicSearchFormValues>

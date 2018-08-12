@@ -14,7 +14,7 @@ type Props = {
   +component: React.ElementType
 };
 
-export class LogoutMenuOptionHandler extends React.Component<Props> {
+class LogoutMenuOptionHandler extends React.Component<Props> {
   handleLogOut = () => {
     this.props
       .mutate(empty.object)
