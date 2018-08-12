@@ -16,6 +16,7 @@ __diff_output__
 .env.local
 .env.production.local
 cypress.env.json
+.reg
 
 npm-debug.log*
 yarn-debug.log*
