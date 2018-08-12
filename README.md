@@ -50,7 +50,9 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
-- Error boundaries
+- Remove unused packages (mainly dev dependencies).
+- Complete this readme.
+- Error boundaries.
 - Date FNS v2:
   - The alpha docs for it are [here](https://date-fns.org/v2.0.0-alpha.11/docs/parse).
 - create-react-app v2:
