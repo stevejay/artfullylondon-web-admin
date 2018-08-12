@@ -1,0 +1,7 @@
+// @flow
+
+export const HEARING_LOOPS = "HEARING_LOOPS";
+export const PARTIAL_HEARING_LOOPS = "PARTIAL_HEARING_LOOPS";
+export const NO_HEARING_LOOPS = "NO_HEARING_LOOPS";
+export const UNKNOWN = "UNKNOWN";
+export const NOT_APPLICABLE = "NOT_APPLICABLE";

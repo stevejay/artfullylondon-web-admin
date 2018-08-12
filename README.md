@@ -1,94 +1,74 @@
-# Artfully London Admin App
+# Introduction
 
-[![CircleCI](https://circleci.com/gh/stevejay/artfullylondon-web-admin.svg?style=svg)](https://circleci.com/gh/stevejay/artfullylondon-web-admin)
-[![Coverage Status](https://coveralls.io/repos/github/stevejay/artfullylondon-web-admin/badge.svg?branch=master)](https://coveralls.io/github/stevejay/artfullylondon-web-admin?branch=master)
+A React.js SPA that demonstrates various front-end coding and testing practises.
 
-Live site is [here](https://www.artfully-admin.site).
-For readonly access, use the username `readonly` and the password `Readonly1`.
+## Packages
 
-## Prerequisites
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app), and uses [React App Rewired](https://github.com/timarney/react-app-rewired) to extend its build configuration.
 
-1. Install `yarn` and `standard` globally.
+## Development
 
-2. Install firebase cli tools globally:
+All of the following can be run simultaneously locally--you just need a populated .env file:
 
-```bash
-npm install -g firebase-tools
+- `yarn start` - runs the app locally
+- `yarn storybook` - run storybook locally
+- `yarn test` - run jest tests
+- `yarn cypress` - run cypress tests
+- `yarn run screenshot` - create/update storybook screenshots
+
+## Limitations
+
+- I can't use a graphql/gql file loader in babel or webpack as Storybook doesn't pick it up.
+
+## Troubleshooting
+
+### Grommet Icons Inclusion
+
+Make sure that the whole of the grommet-icons package does not get included in the production build.
+
+This also requires uses of `withTheme`...
+
+```
+import { withTheme } from "grommet/components/hocs";
 ```
 
-3. Copy the `build-constants.template.json` file to `build-constants.json`
-(in the same directory) and populate the values appropriately.
+... to be translated to:
 
-## Detail
+```
+import { withTheme } from "grommet/es6/components/hocs";
+```
 
-### Template HTML File
+### Firefox
 
-The site CSS is split into the React components' CSS and the global CSS. The aim is to
-get a non-React loading screen displayed while the SPA is downloading and initializing.
-The CSS for this loading screen content is inlined into the head of the 
-site's HTML file. The React components' CSS file is linked to at the bottom 
-of the HTML page body, along with the site's JavaScript files.
-
-The site's JavaScript is split into two files: app and vendor. The app file
-contains the site specific JavaScript and the vendor file contains the
-JavaScript from all the third-party packages that this site uses. The idea
-is that the app code changes more frequently than the vendor code, so it will
-hopefully often be the case that when the site is updated, the vendor file
-will not have changed and it will only the the app file that the browser
-needs to fetch afresh.
-
-The links the the app and vendor Javascript files and the site CSS file all
-contain file hashes in the file name, in order to version those files.
-
-## NPM Package Issues
-
-### moment
-
-I have pinned the moment library to version 2.18.1 because of an error
-with message ```Moment(...).tz is not a function```. The following issues
-detail the error:
-
-- https://github.com/moment/moment-timezone/issues/449
-- https://github.com/moment/moment/issues/4216
-
-### standard
-
-I have installed a beta version of standard v11 to deal with an eslint error.
+If you get the 'performing a tls handshake to localhost' issue, follow the instructions [here](https://kb.mit.edu/confluence/display/istcontrib/Deleting+Cert8.db+for+Firefox) and then restart Firefox. (For OS X, the location for me was `~/Library/Application Support/Firefox/Profiles/` and I had to delete the `cert8.db` and `cert9.db` files.)
 
 ## TODO
 
-- https://serverless.com/blog/keep-your-lambdas-warm/
-- fix the weird iframe back button issue.
-  code for that:
- history.listen((location, action) => {
-   console.log(
-     `The current URL is ${location.pathname}${location.search}${location.hash}. The last navigation action was ${action}`
-   )
- })
+- remove named exports from components
+- Look into this: https://github.com/reg-viz/reg-suit
+  https://stackoverflow.com/questions/50408579/backstopjs-set-common-selector-for-all-scenarios
+- Might be able to use jest-puppe-shots when create-react-app upgrades to Jest v23.
+- Look into something like this: https://github.com/Decisiv/styled-components-modifiers
+- rename utils to formatters?
+- Use flow enums for the types?
+- See if a submit-on-Enter fix appears for Formix FastField
+- Yup for validation
+- create-react-app@2.0.0 will support the ability to preprocess queries using graphql-tag/loader
+- Error boundaries
+- Why no descriptionCredit on almeida and british libary/museum pics?
+- Date FNS v2: https://date-fns.org/v2.0.0-alpha.11/docs/parse
+- Service worker
+  - If possible, configure your production environment to serve the generated service-worker.js with HTTP caching disabled.
+- check images from cdn have cache headers.
+- mapbox-gl is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to use it only on the venue and event edit pages.
+- source-map-explorer main.js main.js.map
 
-- https://geowarin.github.io/what-i-did-wrong-as-a-cto/
+## Maintenance
 
-- scroll position restoration on back button
-- replace divs with fragments where possible
-- switch to netlify hosting?
-- https://github.com/marmelab/battery-friendly-timer for the app-updater.
-- flexbox/grid component to lessen need for CSS on containers
-- use factories in component tests.
-- move the files I am ignoring from istanbul to a shims/adaptor/wrappers folder?
+### Flow
 
-- https://www.npmjs.com/package/webpack-bundle-analyzer !!
-- https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter/issues/5
-- template.html scripting example: https://github.com/martiensk/VueScssSSR/blob/master/views/index.html
-- for little PNG images: https://www.npmjs.com/package/url-loader
-- clojurescript and reagent: http://blog.jrheard.com/quinto-resurrecting-an-abandoned-board-game
-- serviceworker: https://www.npmjs.com/package/sw-precache-webpack-plugin
-- simple AJAX: pjax, intercooler.js
-- 
+To update flow types for used packages:
 
-## Badges to Apply
-
-https://codeclimate.com/oss/dashboard
-
-## License
-
-[MIT](LICENSE)
+```
+flow-typed install
+```

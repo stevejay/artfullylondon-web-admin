@@ -1,18 +1,31 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-import ShouldNeverUpdateComponent
-  from '_src/shared/components/base-class/should-never-update'
-import './section-heading.scss'
+import * as React from "react";
+import { Box } from "grommet";
+import ExtendedText from "shared/extended-text";
 
-class EntitySectionHeading extends ShouldNeverUpdateComponent {
-  render () {
-    return <h2 styleName='heading'>{this.props.children}</h2>
-  }
-}
+const BOX_BORDER = { color: "brand", side: "bottom", size: "xsmall" };
+const BOX_PAD = { horizontal: "medium", vertical: "xsmall" };
+const BOX_MARGIN = { horizontal: "none", top: "none", bottom: "medium" };
 
-EntitySectionHeading.propTypes = {
-  children: PropTypes.any.isRequired
-}
+type Props = {
+  +title: string
+};
 
-export default EntitySectionHeading
+const SectionHeading = ({ title }: Props) => (
+  <Box margin={BOX_MARGIN} border={BOX_BORDER} responsive pad={BOX_PAD}>
+    <ExtendedText
+      tag="h2"
+      weight="normal"
+      color="dark-1"
+      size="medium"
+      responsive
+      margin="none"
+      textTransform="uppercase"
+    >
+      {title}
+    </ExtendedText>
+  </Box>
+);
+
+export default SectionHeading;

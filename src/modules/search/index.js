@@ -1,15 +1,6 @@
-import { moduleName, reducer, selectors } from './reducers'
-import sagas from './sagas'
-import * as actions from './actions'
-import Quicksearch from './components/quicksearch'
-import ResultsPage from './pages/results'
+// @flow
 
-export {
-  Quicksearch,
-  ResultsPage,
-  moduleName,
-  reducer,
-  selectors,
-  sagas,
-  actions
-}
+import SearchResultPage from "./components/search-result-page";
+import SearchMenuOptionHandler from "./components/search-menu-option-handler";
+import resolvers from "./graphql/resolvers";
+export { SearchResultPage, SearchMenuOptionHandler, resolvers };

@@ -1,0 +1,5 @@
+// @flow
+
+export const NOT_REQUIRED = "NOT_REQUIRED";
+export const REQUIRED = "REQUIRED";
+export const REQUIRED_FOR_NON_MEMBERS = "REQUIRED_FOR_NON_MEMBERS";

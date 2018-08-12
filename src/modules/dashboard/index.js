@@ -1,6 +1,4 @@
-import DashboardPage from './pages/dashboard'
-import { moduleName, reducer, selectors } from './reducers'
-import sagas from './sagas'
-import * as actions from './actions'
+// @flow
 
-export { DashboardPage, moduleName, reducer, selectors, sagas, actions }
+import DashboardPage from "./components/dashboard-page";
+export { DashboardPage };

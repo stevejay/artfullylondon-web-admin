@@ -1,8 +1,0 @@
-{
-  "WEBSITE_API_HOST_URL": "<put here>",
-  "WEBSITE_ENTITY_IMAGES_ROOT_URL": "<put here>",
-  "WEBSITE_SITE_IMAGES_ROOT_URL": "<put here>",
-  "WEBSITE_GOOGLEMAPS_API_KEY": "<put here>",
-  "WEBSITE_COGNITO_USER_POOL_ID": "<put here>",
-  "WEBSITE_COGNITO_USER_POOL_APP_CLIENT_ID": "<put here>"
-}

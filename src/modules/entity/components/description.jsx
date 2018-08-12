@@ -1,39 +1,51 @@
-import React from 'react'
+// @flow
 
-import ShouldNeverUpdateComponent
-  from '_src/shared/components/base-class/should-never-update'
-import linkType from '_src/domain/types/link-type'
-import * as entityConstants from '../constants'
-import './description.scss'
+import * as React from "react";
+import { Box, Text } from "grommet";
+import styled from "styled-components";
+import { getDescriptionDisplayHtml } from "../utils/entity";
+import SectionHeading from "./section-heading";
 
-class EntityDescription extends ShouldNeverUpdateComponent {
-  render () {
-    const { entity } = this.props
-    const wikipediaLink = entity.getLinkByType(linkType.WIKIPEDIA)
-    const resultHtml = entity.createFormattedDescription()
+const BOX_PAD = { horizontal: "medium", top: "none", bottom: "small" };
+const WE_SAY_BOX_MARGIN = { top: "xsmall", bottom: "medium" };
 
-    return (
-      <div styleName='container'>
-        <div
-          styleName='html'
-          dangerouslySetInnerHTML={{ __html: resultHtml }}
-        />
-        {!!wikipediaLink &&
-          <a
-            styleName='link'
-            href={wikipediaLink.url}
-            target='_blank'
-            rel='noopener'
-          >
-            Read more on Wikipedia
-          </a>}
-      </div>
-    )
+const HtmlBox = styled(Box)`
+  & p {
+    margin-top: 0;
   }
-}
+`;
 
-EntityDescription.propTypes = {
-  entity: entityConstants.EDITABLE_ENTITY_PROP_TYPE.isRequired
-}
+type Props = {
+  +description?: ?string,
+  +descriptionCredit?: ?string,
+  +weSay?: ?string
+};
 
-export default EntityDescription
+const Description = ({ description, descriptionCredit, weSay }: Props) => (
+  <React.Fragment>
+    <SectionHeading title="Description" />
+    <Box size="medium" pad={BOX_PAD} responsive>
+      <HtmlBox
+        responsive
+        dangerouslySetInnerHTML={{
+          __html: getDescriptionDisplayHtml(description, descriptionCredit)
+        }}
+      />
+      {weSay && (
+        <Box
+          background="light-2"
+          pad="small"
+          margin={WE_SAY_BOX_MARGIN}
+          responsive
+        >
+          <Text tag="p" margin="none">
+            <em>We say&mdash;</em>
+            {weSay}
+          </Text>
+        </Box>
+      )}
+    </Box>
+  </React.Fragment>
+);
+
+export default Description;

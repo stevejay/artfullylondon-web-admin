@@ -1,25 +1,44 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-import './tag.scss'
+import * as React from "react";
+import { pure } from "recompose";
+import { Text, Button } from "grommet";
+import { FormClose } from "grommet-icons";
+import AnimationBox from "shared/animation-box";
 
-class Tag extends React.PureComponent {
-  render () {
-    const { tag, ...rest } = this.props
-    const { label } = tag
+const DeleteIcon = <FormClose size="small" color="status-error" />;
+const BOX_PAD = { vertical: "xsmall", horizontal: "medium" };
 
-    return (
-      <span {...rest} styleName='container'>
-        {label}
-      </span>
-    )
-  }
-}
+type Props = {
+  +tagType: string,
+  +label: string,
+  +onClick: ?(void) => void
+};
 
-Tag.propTypes = {
-  tag: PropTypes.shape({
-    label: PropTypes.string.isRequired
-  })
-}
+const Tag = ({ tagType, label, onClick }: Props) => (
+  <AnimationBox
+    animation="fadeIn"
+    tag="li"
+    direction="row"
+    align="center"
+    background="light-3"
+    flex="shrink"
+    justify="between"
+    margin="xsmall"
+    pad={BOX_PAD}
+    responsive
+    round="large"
+    data-test="tag"
+  >
+    <Text>{label}</Text>
+    <Button
+      plain
+      focusIndicator
+      icon={DeleteIcon}
+      a11yTitle={`Delete the ${tagType} tag called ${label}`}
+      onClick={onClick}
+    />
+  </AnimationBox>
+);
 
-export default Tag
+export default pure(Tag);

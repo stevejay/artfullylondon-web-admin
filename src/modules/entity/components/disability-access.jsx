@@ -1,60 +1,43 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
 
-import ShouldNeverUpdateComponent
-  from '_src/shared/components/base-class/should-never-update'
-import AdditionalDetailHeading from './additional-detail-heading'
-import AdditionalDetailContent from './additional-detail-content'
-import linkType from '_src/domain/types/link-type'
-import * as accessLib from '../lib/access'
-import { FullVenue } from '_src/domain/venue'
-import { FullEvent } from '_src/domain/event'
+import type { LinkArray } from "../flow-types";
 
-class EntityDisabilityAccess extends ShouldNeverUpdateComponent {
-  render () {
-    const { entity } = this.props
+import * as React from "react";
+import { Accessibility } from "grommet-icons";
+import Aside from "./aside";
+import ExternalLink from "./external-link";
+import { getAccessText } from "../utils/disability-access";
+import { tryGetLinkByType } from "../utils/link";
+import * as linkType from "../types/link-type";
 
-    const {
-      wheelchairAccessType,
-      disabledBathroomType,
-      hearingFacilitiesType
-    } = entity
+type Props = {
+  +links: ?LinkArray,
+  +wheelchairAccessType: string,
+  +disabledBathroomType: string,
+  +hearingFacilitiesType: string
+};
 
-    const accessLink = entity.getLinkByType(linkType.ACCESS)
-    const hasAccessLink = !!accessLink
+const DisabilityAccess = ({
+  links,
+  wheelchairAccessType,
+  disabledBathroomType,
+  hearingFacilitiesType
+}: Props) => {
+  const accessLink = tryGetLinkByType(links, linkType.ACCESS);
+  return (
+    <Aside icon={Accessibility} title="Accessibility">
+      {getAccessText(
+        wheelchairAccessType,
+        disabledBathroomType,
+        hearingFacilitiesType,
+        !!accessLink
+      )}
+      {accessLink && " "}
+      {accessLink && (
+        <ExternalLink label="More information" url={accessLink.url} />
+      )}
+    </Aside>
+  );
+};
 
-    const accessText = accessLib.getAccessText(
-      wheelchairAccessType,
-      disabledBathroomType,
-      hearingFacilitiesType,
-      hasAccessLink
-    )
-
-    return (
-      <div>
-        <AdditionalDetailHeading>Disability Access</AdditionalDetailHeading>
-        <AdditionalDetailContent>
-          {accessText}
-          {accessText && hasAccessLink && '\u00a0'}
-          {hasAccessLink &&
-            <span>
-              See
-              <a href={accessLink.url} target='_blank' rel='noopener'>
-                this page
-              </a>
-              for full access details.
-            </span>}
-        </AdditionalDetailContent>
-      </div>
-    )
-  }
-}
-
-EntityDisabilityAccess.propTypes = {
-  entity: PropTypes.oneOfType([
-    PropTypes.instanceOf(FullVenue),
-    PropTypes.instanceOf(FullEvent)
-  ]).isRequired
-}
-
-export default EntityDisabilityAccess
+export default DisabilityAccess;

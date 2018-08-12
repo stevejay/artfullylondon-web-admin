@@ -1,0 +1,26 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "AutocompleteNode",
+        "possibleTypes": [
+          { "name": "AutocompleteEvent" },
+          { "name": "AutocompleteEventSeries" },
+          { "name": "AutocompleteVenue" },
+          { "name": "AutocompleteTalent" }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "SearchNode",
+        "possibleTypes": [
+          { "name": "SearchEvent" },
+          { "name": "SearchEventSeries" },
+          { "name": "SearchTalent" },
+          { "name": "SearchVenue" }
+        ]
+      }
+    ]
+  }
+}

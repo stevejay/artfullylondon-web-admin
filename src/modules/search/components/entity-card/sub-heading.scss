@@ -1,9 +1,0 @@
-@import 'theme';
-
-.sub-heading {
-  @include extraBoldFont;
-  color: $half-black;
-  font-size: 1.4rem;
-  padding: 0;
-  margin: 0 0 .5rem;
-}
