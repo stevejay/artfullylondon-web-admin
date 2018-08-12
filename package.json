@@ -47,7 +47,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
-    "screenshot": "cross-env NODE_ENV=test storybook-chrome-screenshot -p 9001 -c .storybook"
+    "screenshot": "cross-env NODE_ENV=test storybook-chrome-screenshot -p 9001 -c .storybook --inject-files ./src/testing/disable-caret.js"
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.6.0",
