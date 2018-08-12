@@ -50,6 +50,12 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
+- Circle CI:
+  - cypress
+  - linting
+  - store test results
+- Good idea of checking for swUpdate on router navigation:
+  https://zach.codes/handling-client-side-app-updates-with-service-workers/
 - Grommet
   - Upgrade from v2 beta to v2 rc when it is released.
 - Look into getting smaller aws amplify builds: https://github.com/aws-amplify/amplify-js/wiki/Amplify-modularization
@@ -68,8 +74,6 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - See if a submit-on-Enter fix appears for Formix FastField
 - Yup for validation
 - Why no descriptionCredit on almeida and british libary/museum pics?
-- Service worker
-  - If possible, configure your production environment to serve the generated service-worker.js with HTTP caching disabled.
 - check images from cdn have cache headers.
 - I'll need to use mapbox-gl but it is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to include it only on the venue and event edit pages.
 
