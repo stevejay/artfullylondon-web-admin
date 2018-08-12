@@ -1,32 +1,51 @@
 version: 2
 
-defaults: &defaults
-  working_directory: ~/project
-  docker:
+aliases:
+  - &working_directory 
+    ~/project
+  - &node_docker_image
     - image: circleci/node:10.8-browsers
+  - &filter_only_master
+    branches:
+      only:
+        - master
+  - &restore_yarn_cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        - v1-dependencies-
+  - &save_yarn_cache
+    save_cache:
+      key: v1-dependencies-{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+  - &yarn_install
+    run: yarn install --non-interactive --frozen-lockfile
 
 jobs:
   install:
-    <<: *defaults
+    working_directory: *working_directory
+    docker: *node_docker_image
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - *restore_yarn_cache
+      - *yarn_install
+      - *save_yarn_cache
       - run: yarn test
       - run: yarn build
-      - store_artifacts:
-          path: ~/project/build
+      - persist_to_workspace:
+          root: *working_directory
+          paths: build
   deploy_to_staging:
-    <<: *defaults
+    working_directory: *working_directory
+    docker: *node_docker_image
     steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - *restore_yarn_cache
+      - *yarn_install
+      - *save_yarn_cache
       - run:
           name: Deploy master to staging
           command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN
@@ -39,6 +58,4 @@ workflows:
       - deploy_to_staging:
           requires:
             - install
-          filters:
-            branches:
-              only: master
+          filters: *filter_only_master
