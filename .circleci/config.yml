@@ -24,9 +24,21 @@ jobs:
       - run: yarn build
       - store_artifacts:
           path: ~/project/build
+  deploy_to_staging:
+    <<: *defaults
+    steps:
+      - run:
+          name: Deploy master to staging
+          command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
-  install:
+  install_and_optionally_deploy:
     jobs:
       - install
+      - deploy_to_staging:
+          requires:
+            - install
+          filters:
+            branches:
+              only: master
