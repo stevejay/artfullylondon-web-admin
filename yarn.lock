@@ -2,72 +2,72 @@
 # yarn lockfile v1
 
 
-"@aws-amplify/analytics@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/analytics/-/analytics-1.0.0.tgz#3213ceeb495f1be21bc09d87b7182ae29dab0104"
+"@aws-amplify/analytics@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/analytics/-/analytics-1.0.4.tgz#fb1237656aaaff0dc1f8d53702c36e8c4c10a96d"
   dependencies:
-    "@aws-amplify/cache" "^1.0.0"
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/cache" "^1.0.3"
+    "@aws-amplify/core" "^1.0.3"
     aws-sdk "2.198.0"
     uuid "^3.2.1"
 
-"@aws-amplify/api@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/api/-/api-1.0.0.tgz#172f64a1866982007f16944503bd64fe5b0c1b60"
+"@aws-amplify/api@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/api/-/api-1.0.5.tgz#e36914541b3624d386728f9a0ed33f01721dc6e2"
   dependencies:
-    "@aws-amplify/auth" "^1.0.0"
-    "@aws-amplify/cache" "^1.0.0"
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/auth" "^1.0.5"
+    "@aws-amplify/cache" "^1.0.3"
+    "@aws-amplify/core" "^1.0.3"
     "@types/zen-observable" "^0.5.3"
     axios "^0.17.0"
     graphql "0.13.0"
     zen-observable "^0.8.6"
 
-"@aws-amplify/auth@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/auth/-/auth-1.0.0.tgz#f3a3790a58dceaf493955245ce7c0624ac2ebe66"
+"@aws-amplify/auth@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-1.0.5.tgz#1db9886f62b5b89ff74e056a3868c63cf3fec83a"
   dependencies:
-    "@aws-amplify/cache" "^1.0.0"
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/cache" "^1.0.3"
+    "@aws-amplify/core" "^1.0.3"
     amazon-cognito-auth-js "^1.1.9"
-    amazon-cognito-identity-js "^2.0.14"
+    amazon-cognito-identity-js "^2.0.20"
 
-"@aws-amplify/cache@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/cache/-/cache-1.0.0.tgz#6bea947628cd1cd3004e997fd000881e08d6fae8"
+"@aws-amplify/cache@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/cache/-/cache-1.0.4.tgz#bc7d624cc1a4365e6cd6c0299793008c1af35102"
   dependencies:
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/core" "^1.0.3"
 
-"@aws-amplify/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/core/-/core-1.0.0.tgz#faf03fde75b4195f02d3ae63dc1f8962aceeb94b"
+"@aws-amplify/core@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/core/-/core-1.0.4.tgz#595fd9773bb9038be49dd956bb2f9671296d9c10"
   dependencies:
     aws-sdk "2.198.0"
     url "^0.11.0"
 
-"@aws-amplify/interactions@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/interactions/-/interactions-1.0.0.tgz#68ef1afd9252c6d152452542a1ddcf0727a2b62a"
+"@aws-amplify/interactions@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/interactions/-/interactions-1.0.4.tgz#b745c818331c26d17759f041120542ff997777a5"
   dependencies:
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/core" "^1.0.3"
     aws-sdk "2.198.0"
 
-"@aws-amplify/pubsub@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/pubsub/-/pubsub-1.0.0.tgz#bc6da98ac06c1c94ef235c5630fe2bacb6dba56b"
+"@aws-amplify/pubsub@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/pubsub/-/pubsub-1.0.4.tgz#2a45f2e0628666b4d5cb3c3e8062c4c30c38eaf4"
   dependencies:
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/core" "^1.0.3"
     "@types/paho-mqtt" "^1.0.3"
     "@types/zen-observable" "^0.5.3"
     paho-mqtt "^1.0.4"
     uuid "^3.2.1"
     zen-observable "^0.8.6"
 
-"@aws-amplify/storage@^1.0.0":
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/@aws-amplify/storage/-/storage-1.0.0.tgz#62ea9d28471883e0488e1412dbd1160c3bdfc0ac"
+"@aws-amplify/storage@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/storage/-/storage-1.0.4.tgz#44a3d44d27e6737fad9d92a037b5caed1d7c5b1d"
   dependencies:
-    "@aws-amplify/core" "^1.0.0"
+    "@aws-amplify/core" "^1.0.3"
     aws-sdk "2.198.0"
 
 "@babel/code-frame@^7.0.0-beta.35":
@@ -95,11 +95,10 @@
   version "7.0.0-beta.53"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.0.0-beta.53.tgz#1f45eb617bf9463d482b2c04d349d9e4edbf4892"
 
-"@babel/runtime@^7.0.0-beta.55":
-  version "7.0.0-beta.55"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.55.tgz#0bc33aa5a6ac0b012f37e25b9e6aaa2e489a916b"
+"@babel/runtime@7.0.0-beta.56":
+  version "7.0.0-beta.56"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.56.tgz#cda612dffd5b1719a7b8e91e3040bd6ae64de8b0"
   dependencies:
-    core-js "^2.5.7"
     regenerator-runtime "^0.12.0"
 
 "@babel/types@7.0.0-beta.55", "@babel/types@^7.0.0-beta.49":
@@ -757,9 +756,9 @@ amazon-cognito-auth-js@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/amazon-cognito-auth-js/-/amazon-cognito-auth-js-1.2.0.tgz#637f044a3a6114d6d0a87b415157ea36f32431e8"
 
-amazon-cognito-identity-js@^2.0.14:
-  version "2.0.14"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.14.tgz#0acfa0694e932542dde16a3085bf7e118b8a5fc3"
+amazon-cognito-identity-js@^2.0.20:
+  version "2.0.20"
+  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.20.tgz#07572da3c31569e66953b7c4f602e456499c8852"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -831,25 +830,25 @@ apollo-cache-inmemory@^1.2.1:
     apollo-utilities "^1.0.17"
     graphql-anywhere "^4.1.15"
 
-apollo-cache-inmemory@^1.2.5:
-  version "1.2.5"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/apollo-cache-inmemory/-/apollo-cache-inmemory-1.2.5.tgz#b57951947b1db486a60db11c7dcfc6b112e5abe9"
+apollo-cache-inmemory@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.2.7.tgz#80517c4b5e910022ab8d318f47d9364f99db8541"
   dependencies:
-    apollo-cache "^1.1.12"
-    apollo-utilities "^1.0.16"
-    graphql-anywhere "^4.1.14"
-
-apollo-cache@^1.1.12:
-  version "1.1.12"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/apollo-cache/-/apollo-cache-1.1.12.tgz#070015c9051b2ebb69676beb10466a9c0b259f91"
-  dependencies:
-    apollo-utilities "^1.0.16"
+    apollo-cache "^1.1.14"
+    apollo-utilities "^1.0.18"
+    graphql-anywhere "^4.1.16"
 
 apollo-cache@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.13.tgz#75c28091825992b2eec9fb63c9a367db3b4714a8"
   dependencies:
     apollo-utilities "^1.0.17"
+
+apollo-cache@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.14.tgz#c7d54cdbc7f544161f78fa5e4bae56650e22f7ad"
+  dependencies:
+    apollo-utilities "^1.0.18"
 
 apollo-client@^2.3.1:
   version "2.3.7"
@@ -865,15 +864,15 @@ apollo-client@^2.3.1:
   optionalDependencies:
     "@types/async" "2.0.49"
 
-apollo-client@^2.3.5:
-  version "2.3.5"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/apollo-client/-/apollo-client-2.3.5.tgz#74b62bd7e7bd7030d01c35e2e221ed65a807af23"
+apollo-client@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.3.8.tgz#0384a7210eb601ab88b1c13750da076fc9255b95"
   dependencies:
-    "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.1.12"
+    "@types/zen-observable" "^0.8.0"
+    apollo-cache "^1.1.14"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.16"
+    apollo-utilities "^1.0.18"
     symbol-observable "^1.0.2"
     zen-observable "^0.8.0"
   optionalDependencies:
@@ -948,6 +947,12 @@ apollo-utilities@^1.0.0, apollo-utilities@^1.0.16, apollo-utilities@^1.0.8:
 apollo-utilities@^1.0.1, apollo-utilities@^1.0.17:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.17.tgz#04cd22db5c5dba8dbd349e28b0d9f9f525ab8e8a"
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
+
+apollo-utilities@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.18.tgz#e4ee91534283fde2b744a26caaea120fe6a94f67"
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
@@ -1195,18 +1200,18 @@ autoprefixer@^7.2.6:
     postcss "^6.0.17"
     postcss-value-parser "^3.2.3"
 
-aws-amplify@^1.0.0:
-  version "1.0.0"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/aws-amplify/-/aws-amplify-1.0.0.tgz#04a78ac0bf44719984abb17d390b292094bc6be5"
+aws-amplify@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-1.0.5.tgz#b2dc7ade8b0d7a04f3ed6db2dda0cc004c92e65e"
   dependencies:
-    "@aws-amplify/analytics" "^1.0.0"
-    "@aws-amplify/api" "^1.0.0"
-    "@aws-amplify/auth" "^1.0.0"
-    "@aws-amplify/cache" "^1.0.0"
-    "@aws-amplify/core" "^1.0.0"
-    "@aws-amplify/interactions" "^1.0.0"
-    "@aws-amplify/pubsub" "^1.0.0"
-    "@aws-amplify/storage" "^1.0.0"
+    "@aws-amplify/analytics" "^1.0.3"
+    "@aws-amplify/api" "^1.0.5"
+    "@aws-amplify/auth" "^1.0.5"
+    "@aws-amplify/cache" "^1.0.3"
+    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/interactions" "^1.0.3"
+    "@aws-amplify/pubsub" "^1.0.3"
+    "@aws-amplify/storage" "^1.0.3"
 
 aws-sdk@2.198.0:
   version "2.198.0"
@@ -3231,7 +3236,7 @@ core-js@^2.4.0, core-js@^2.5.0:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.6.tgz#0fe6d45bf3cac3ac364a9d72de7576f4eb221b9d"
 
-core-js@^2.5.3, core-js@^2.5.7:
+core-js@^2.5.3:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
@@ -4985,9 +4990,9 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
-formik@^1.0.1:
-  version "1.0.1"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/formik/-/formik-1.0.1.tgz#fadb89380d2d228b1457a747279ab5da57450a9c"
+formik@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-1.0.2.tgz#333962ab3f09f137992b13198fefa4ec91b15af5"
   dependencies:
     create-react-context "^0.2.2"
     deepmerge "^2.1.1"
@@ -4996,6 +5001,7 @@ formik@^1.0.1:
     lodash.topath "4.5.2"
     prop-types "^15.6.1"
     react-fast-compare "^1.0.0"
+    tslib "^1.9.3"
     warning "^3.0.0"
 
 forwarded@~0.1.2:
@@ -5329,7 +5335,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphql-anywhere@^4.1.0-alpha.0, graphql-anywhere@^4.1.14:
+graphql-anywhere@^4.1.0-alpha.0:
   version "4.1.14"
   resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/graphql-anywhere/-/graphql-anywhere-4.1.14.tgz#89664cb885faaec1cbc66905351fadae8cc85a04"
   dependencies:
@@ -5340,6 +5346,12 @@ graphql-anywhere@^4.1.15:
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.15.tgz#09ac33970e85930aa8682fc3276b76df2637e042"
   dependencies:
     apollo-utilities "^1.0.17"
+
+graphql-anywhere@^4.1.16:
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.16.tgz#82bb59643e30183cfb7b485ed4262a7b39d8a6c1"
+  dependencies:
+    apollo-utilities "^1.0.18"
 
 graphql-language-service-config@0.0.11:
   version "0.0.11"
@@ -9100,7 +9112,17 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^2.1.4, react-apollo@^2.1.9:
+react-apollo@^2.1.11:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.11.tgz#ef4805f07af1d732ec94caebf7ba0728e2d162ca"
+  dependencies:
+    fbjs "^0.8.16"
+    hoist-non-react-statics "^2.5.0"
+    invariant "^2.2.2"
+    lodash "^4.17.10"
+    prop-types "^15.6.0"
+
+react-apollo@^2.1.4:
   version "2.1.9"
   resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/react-apollo/-/react-apollo-2.1.9.tgz#1fd30ea2116375197bd53daa725e6fb8ab43ab80"
   dependencies:
@@ -9181,18 +9203,9 @@ react-docgen@^3.0.0-beta11:
     node-dir "^0.1.10"
     recast "^0.15.0"
 
-react-dom@^16.3.2:
+react-dom@^16.3.2, react-dom@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-
-react-dom@^16.4.1:
-  version "16.4.1"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -9433,18 +9446,9 @@ react-waypoint@^8.0.1:
     consolidated-events "^1.1.0 || ^2.0.0"
     prop-types "^15.0.0"
 
-react@^16.3.2:
+react@^16.3.2, react@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-
-react@^16.4.1:
-  version "16.4.1"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -9573,11 +9577,11 @@ recompose@^0.27.0:
     react-lifecycles-compat "^3.0.2"
     symbol-observable "^1.0.4"
 
-recompose@^0.28.1:
-  version "0.28.1"
-  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.28.1.tgz#a70aa017f9421df59539b9e6033135b10eb09e4c"
+recompose@^0.28.2:
+  version "0.28.2"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.28.2.tgz#19e679227bdf979e0d31b73ffe7ae38c9194f4a7"
   dependencies:
-    "@babel/runtime" "^7.0.0-beta.55"
+    "@babel/runtime" "7.0.0-beta.56"
     change-emitter "^0.1.2"
     fbjs "^0.8.1"
     hoist-non-react-statics "^2.3.1"
@@ -10712,15 +10716,14 @@ style-loader@^0.20.3:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@^3.3.3:
-  version "3.3.3"
-  resolved "https://steeleye.jfrog.io/steeleye/api/npm/npm/styled-components/-/styled-components-3.3.3.tgz#09e702055ab11f7a8eab8229b1c0d0b855095686"
+styled-components@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.2.tgz#8f518419932327e47fe9144824e3184b3e2da95d"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
     fbjs "^0.8.16"
     hoist-non-react-statics "^2.5.0"
-    is-plain-object "^2.0.1"
     prop-types "^15.5.4"
     react-is "^16.3.1"
     stylis "^3.5.0"
@@ -11047,6 +11050,10 @@ truncate-utf8-bytes@^1.0.0:
   resolved "https://registry.yarnpkg.com/truncate-utf8-bytes/-/truncate-utf8-bytes-1.0.2.tgz#405923909592d56f78a5818434b0b78489ca5f2b"
   dependencies:
     utf8-byte-length "^1.0.1"
+
+tslib@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
 tty-browserify@0.0.0:
   version "0.0.0"
