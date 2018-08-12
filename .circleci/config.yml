@@ -50,7 +50,7 @@ jobs:
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
-      - run: cypress run
+      - run: $(yarn bin)/cypress run
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
