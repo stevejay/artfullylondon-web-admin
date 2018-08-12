@@ -50,7 +50,7 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
-- Remove unused packages (mainly dev dependencies).
+- Remove unused packages (mainly dev dependencies: jest-styled-components; ...).
 - Complete this readme.
 - Error boundaries.
 - Date FNS v2:

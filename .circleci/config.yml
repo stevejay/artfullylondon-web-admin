@@ -1,0 +1,30 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: circleci/node:10.8-browsers
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - run:
+          name: Show npm and node versions
+          command: |
+            node --version
+            yarn --version
+            npm --version
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Run build
+          command: yarn build
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install
