@@ -16,6 +16,12 @@ All of the following can be run simultaneously locally--you just need a populate
 - `yarn cypress` - run cypress tests
 - `yarn run screenshot` - create/update storybook screenshots
 
+You can check on the included packages in the build with the following, replacing the `xxxx` with the actual bundle checksum value:
+
+```
+source-map-explorer ./build/static/js/main.xxxx.js ./build/static/js/main.xxxx.js.map
+```
+
 ## Limitations
 
 I was unable to use a graphql/gql file loader with Babel or Webpack as Storybook does not pick it up.
@@ -44,24 +50,23 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
-- remove named exports from components
-- Look into this: https://github.com/reg-viz/reg-suit
-  https://stackoverflow.com/questions/50408579/backstopjs-set-common-selector-for-all-scenarios
-- Might be able to use jest-puppe-shots when create-react-app upgrades to Jest v23.
+- Error boundaries
+- Date FNS v2:
+  - The alpha docs for it are [here](https://date-fns.org/v2.0.0-alpha.11/docs/parse).
+- create-react-app v2:
+  - I Might be able to use `jest-puppe-shots` when create-react-app upgrades to Jest v23.
+  - It will support the ability to preprocess queries using graphql-tag/loader, but I'll have to see if Storybook picks it up.
+- Improve image snapshot testing:
+  - Look into using [reg-suit](https://github.com/reg-viz/reg-suit).
 - Look into something like this: https://github.com/Decisiv/styled-components-modifiers
-- rename utils to formatters?
 - Use flow enums for the types?
 - See if a submit-on-Enter fix appears for Formix FastField
 - Yup for validation
-- create-react-app@2.0.0 will support the ability to preprocess queries using graphql-tag/loader
-- Error boundaries
 - Why no descriptionCredit on almeida and british libary/museum pics?
-- Date FNS v2: https://date-fns.org/v2.0.0-alpha.11/docs/parse
 - Service worker
   - If possible, configure your production environment to serve the generated service-worker.js with HTTP caching disabled.
 - check images from cdn have cache headers.
-- mapbox-gl is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to use it only on the venue and event edit pages.
-- source-map-explorer main.js main.js.map
+- I'll need to use mapbox-gl but it is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to include it only on the venue and event edit pages.
 
 ## Maintenance
 
