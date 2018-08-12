@@ -50,6 +50,9 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
+- Grommet
+  - Upgrade from v2 beta to v2 rc when it is released.
+- Look into getting smaller aws amplify builds: https://github.com/aws-amplify/amplify-js/wiki/Amplify-modularization
 - Remove unused packages (mainly dev dependencies: jest-styled-components; ...).
 - Complete this readme.
 - Error boundaries.
