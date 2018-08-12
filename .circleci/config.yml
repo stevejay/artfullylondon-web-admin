@@ -10,7 +10,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -21,27 +20,13 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-  unit_test:
-    <<: *defaults
-    steps:
       - run: yarn test
-
-  build:
-    <<: *defaults
-    steps:
       - run: yarn build
       - store_artifacts:
           path: ~/project/build
 
 workflows:
   version: 2
-  test_and_build:
+  install:
     jobs:
       - install
-      - unit_test:
-          requires:
-            - install
-      - build:
-          requires:
-            - install
