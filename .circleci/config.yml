@@ -40,4 +40,8 @@ workflows:
     jobs:
       - install
       - unit_test
+          requires:
+            - install
       - build
+          requires:
+            - install
