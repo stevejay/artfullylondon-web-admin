@@ -62,6 +62,8 @@ jobs:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_test_results:
+          path: ./reports
   deploy_to_staging:
     working_directory: *working_directory
     docker: *node_docker_image
