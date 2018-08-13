@@ -16,7 +16,7 @@ import Tag from "./tag";
 type Props = TagType;
 
 type EnhancedProps = {
-  ...$Exact<Props>, // TODO this might be a flow bug that Exact is required here
+  ...Props, // TODO this might be a flow bug that Exact is required here
   deleting: boolean,
   setDeleting: boolean => void
 };
@@ -74,7 +74,7 @@ class TagHandler extends React.Component<EnhancedProps> {
         {deleteTag => (
           <Tag
             tagType={tagType}
-            id={id}
+            tagId={id}
             label={label}
             onClick={
               deleting ? null : _.bind(this.handleDelete, this, deleteTag)
