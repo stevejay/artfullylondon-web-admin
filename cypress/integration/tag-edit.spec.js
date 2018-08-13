@@ -43,15 +43,7 @@ describe("tags", () => {
     ).within(() => {
       cy.get("button").trigger("click");
     });
+    // wait for the async handling to complete
     cy.wait(10000);
-
-    // cy.contains(
-    //   'main article section[data-test="tag list"] ul li',
-    //   RANDOM_LABEL
-    // );
-
-    // cy.get(
-    //   `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"] button`
-    // ).trigger("click");
   });
 });
