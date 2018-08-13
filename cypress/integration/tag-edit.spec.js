@@ -41,8 +41,9 @@ describe("tags", () => {
       'main article section[data-test="tag list"] ul li',
       RANDOM_LABEL
     ).within(() => {
-      cy.get("button").click(); //.trigger("click");
+      cy.get("button").trigger("click");
     });
+    cy.wait(10000);
 
     // cy.contains(
     //   'main article section[data-test="tag list"] ul li',
