@@ -53,6 +53,7 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - Circle CI:
   - cypress
   - linting
+    - https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
   - store test results
 - Good idea of checking for swUpdate on router navigation:
   https://zach.codes/handling-client-side-app-updates-with-service-workers/

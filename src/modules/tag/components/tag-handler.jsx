@@ -68,12 +68,13 @@ class TagHandler extends React.Component<EnhancedProps> {
   };
 
   render() {
-    const { tagType, label, deleting } = this.props;
+    const { tagType, id, label, deleting } = this.props;
     return (
       <Mutation mutation={DeleteTag} update={this.handleUpdate}>
         {deleteTag => (
           <Tag
             tagType={tagType}
+            id={id}
             label={label}
             onClick={
               deleting ? null : _.bind(this.handleDelete, this, deleteTag)

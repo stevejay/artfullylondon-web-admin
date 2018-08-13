@@ -11,16 +11,20 @@ describe("dashboard", () => {
 
   it("should display the dashboard", () => {
     cy.get("main article header h1").contains("Dashboard");
-    assertEntityStatistic("EVENT", 1);
-    assertEntityStatistic("EVENT_SERIES", 2);
-    assertEntityStatistic("VENUE", 3);
-    assertEntityStatistic("TALENT", 4);
+    assertEntityStatistic("EVENT", "Event");
+    assertEntityStatistic("EVENT_SERIES", "Event Series");
+    assertEntityStatistic("VENUE", "Venue");
+    assertEntityStatistic("TALENT", "Talent");
   });
 });
 
-function assertEntityStatistic(entity, entityCount) {
-  cy.get(`[data-test="${entity} statistic" i] p[data-test="entity count"]`).should(
+function assertEntityStatistic(entity, displayName) {
+  cy.get(`[data-test="${entity} statistic" i] h2`).should(
     "have.text",
-    entityCount.toString()
+    displayName
   );
+  // match some formatted positive integer:
+  cy.get(
+    `[data-test="${entity} statistic" i] p[data-test="entity count"]`
+  ).contains(/[\d, ]+/);
 }

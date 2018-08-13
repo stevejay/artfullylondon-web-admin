@@ -5,21 +5,28 @@ aliases:
     ~/project
   - &node_docker_image
     - image: circleci/node:10.8-browsers
+      environment:
+        TERM: xterm
+  - &cypress_docker_image
+    - image: cypress/base:10
+      environment:
+        TERM: xterm 
   - &restore_yarn_cache
     restore_cache:
       keys:
-        - v1-dependencies-{{ checksum "yarn.lock" }}
-        - v1-dependencies-
+        - v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v2-dependencies-{{ .Branch }}
+        - v2-dependencies-
   - &save_yarn_cache
     save_cache:
-      key: v1-dependencies-{{ checksum "yarn.lock" }}
+      key: v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       paths:
-        - node_modules
+        - ~/.cache  ## caches both yarn and Cypress
   - &yarn_install
     run: yarn install --non-interactive --frozen-lockfile
 
 jobs:
-  install:
+  unit_testing_and_build:
     working_directory: *working_directory
     docker: *node_docker_image
     steps:
@@ -27,11 +34,34 @@ jobs:
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
-      - run: yarn test
+      - run: yarn test:ci
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
           paths: build
+      - store_test_results:
+          path: ./reports
+  e2e_testing:
+    working_directory: *working_directory
+    docker: *cypress_docker_image
+    parallelism: 1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - *restore_yarn_cache
+      - *yarn_install
+      - *save_yarn_cache
+      - run: 
+          command: yarn run serve:build
+          background: true
+      - run: 
+          command: $(yarn bin)/cypress run
+          when: on_success
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
   deploy_to_staging:
     working_directory: *working_directory
     docker: *node_docker_image
@@ -45,7 +75,7 @@ jobs:
       - run:
           name: Deploy master to staging
           command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN
-  visual_regression:
+  visual_regression_testing:
     working_directory: *working_directory
     docker: *node_docker_image
     steps:
@@ -60,15 +90,19 @@ workflows:
   version: 2
   install_and_optionally_deploy:
     jobs:
-      - install
-      - visual_regression:
+      - unit_testing_and_build
+      - visual_regression_testing:
           filters:
             branches:
               ignore:
                 - master
+      - e2e_testing:
+          requires:
+            - unit_testing_and_build
       - deploy_to_staging:
           requires:
-            - install
+            - unit_testing_and_build
+            - e2e_testing
           filters:
             branches:
               only:

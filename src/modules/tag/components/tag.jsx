@@ -1,5 +1,7 @@
 // @flow
 
+import type { Tag as TagType } from "../flow-types";
+
 import * as React from "react";
 import { pure } from "recompose";
 import { Text, Button } from "grommet";
@@ -10,12 +12,11 @@ const DeleteIcon = <FormClose size="small" color="status-error" />;
 const BOX_PAD = { vertical: "xsmall", horizontal: "medium" };
 
 type Props = {
-  +tagType: string,
-  +label: string,
+  ...TagType,
   +onClick: ?(void) => void
 };
 
-const Tag = ({ tagType, label, onClick }: Props) => (
+const Tag = ({ tagType, id, label, onClick }: Props) => (
   <AnimationBox
     animation="fadeIn"
     tag="li"
@@ -28,7 +29,7 @@ const Tag = ({ tagType, label, onClick }: Props) => (
     pad={BOX_PAD}
     responsive
     round="large"
-    data-test="tag"
+    data-test={id}
   >
     <Text>{label}</Text>
     <Button

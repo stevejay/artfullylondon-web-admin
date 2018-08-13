@@ -39,16 +39,18 @@
     "start": "HTTPS=true react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
+    "test:ci": "cross-env JEST_JUNIT_OUTPUT=reports/jest/results.xml react-app-rewired test --env=jsdom --ci --reporters=default --reporters=jest-junit --runInBand",
     "flow": "flow",
     "get-fragment-types": "node ./scripts/get-fragment-types.js",
-    "serve": "firebase serve --project artfullylondon-staging-admin -p 3003",
     "deploy:staging": "./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin",
     "deploy:prod": "./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
+    "cypress:ci": "./node_modules/.bin/cypress run",
     "screenshot": "cross-env NODE_ENV=test storybook-chrome-screenshot -p 9001 -c .storybook --inject-files ./src/testing/disable-caret.js",
-    "screenshot:regression": "reg-suit run"
+    "screenshot:regression": "reg-suit run",
+    "serve:build": "./node_modules/.bin/ws --directory ./build --port 3000 --https --spa index.html"
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.6.0",
@@ -75,7 +77,9 @@
     "jest-each": "^23.5.0",
     "jest-enzyme": "^6.0.3",
     "jest-image-snapshot": "^2.4.3",
+    "jest-junit": "^5.1.0",
     "jest-styled-components": "^6.0.1",
+    "local-web-server": "^2.6.0",
     "node-fetch": "^2.2.0",
     "puppeteer": "^1.7.0",
     "rc-util": "^4.5.1",
@@ -88,7 +92,8 @@
     "reg-suit": "^0.7.13",
     "storybook-addon-apollo-graphql": "^2.1.0",
     "storybook-chrome-screenshot": "^1.3.0",
-    "storybook-react-router": "^1.0.1"
+    "storybook-react-router": "^1.0.1",
+    "uuid": "^3.3.2"
   },
   "jest": {
     "moduleNameMapper": {
