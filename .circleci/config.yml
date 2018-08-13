@@ -56,12 +56,14 @@ jobs:
           command: yarn run serve:build
           background: true
       - run: 
-          command: $(yarn bin)/cypress run
+          command: $(yarn bin)/cypress run --reporter junit --reporter-options "mochaFile=reports/cypress/results.xml"
           when: on_success
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+      - store_test_results:
+          path: ./reports
   deploy_to_staging:
     working_directory: *working_directory
     docker: *node_docker_image
