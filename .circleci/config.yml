@@ -1,17 +1,17 @@
 version: 2
 
+# cypress/base:10
+
 aliases:
   - &working_directory 
     ~/project
   - &node_docker_image
     - image: circleci/node:10.8-browsers
       environment:
-        # enable colors in the output
         TERM: xterm
   - &cypress_docker_image
-    - image: cypress/base:8
+    - image: cypress/browsers:chrome67
       environment:
-        # enable colors in the output
         TERM: xterm 
   - &restore_yarn_cache
     restore_cache:
@@ -23,7 +23,7 @@ aliases:
     save_cache:
       key: v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       paths:
-        - ~/.cache  ## cache both yarn and Cypress
+        - ~/.cache  ## caches both yarn and Cypress
   - &yarn_install
     run: yarn install --non-interactive --frozen-lockfile
 
@@ -55,7 +55,9 @@ jobs:
       - run: 
           command: yarn run serve:build
           background: true
-      - run: $(yarn bin)/cypress run
+      - run: 
+          command: $(yarn bin)/cypress run
+          when: on_success
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:

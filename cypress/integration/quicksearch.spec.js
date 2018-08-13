@@ -33,11 +33,8 @@ describe("quicksearch", () => {
     cy.get("@basicSearchForm")
       .get('input[name="entityType"]')
       .should("have.value", "in all");
-    cy.get('main article section[data-test="search results"]').as(
-      "searchResults"
-    );
-    cy.get("@searchResults")
-      .get("article header h2")
-      .contains("Carrie Cracknell");
+    cy.get(
+      'main article section[data-test="search results"] article header h2'
+    ).contains("Carrie Cracknell");
   });
 });
