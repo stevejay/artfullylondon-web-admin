@@ -2,9 +2,20 @@
 
 A React.js SPA that demonstrates various front-end coding and testing practises. The site can be accessed [here](https://www.artfully-admin.site/), using the username `readonly` and the password `Readonly1`.
 
-## Packages
+[![CircleCI](https://circleci.com/gh/stevejay/artfullylondon-web-admin/tree/master.svg?style=svg)](https://circleci.com/gh/stevejay/artfullylondon-web-admin/tree/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app), and uses [React App Rewired](https://github.com/timarney/react-app-rewired) to extend its build configuration.
+## Overview
+
+This React.js SPA features the following:
+
+- CRUD GraphQL operations via [Apollo client](https://www.apollographql.com/docs/react/)
+- Use of [Grommet](http://grommet.io/) component library (specifically a beta of the upcoming Version 2 of Grommet)
+- Lean testing of an SPA using [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
+- [Circle CI](https://circleci.com/) for continuous integration and deployment
+- React components that separate visual appearance from behaviour implementation.
+- A module-based approach to the structuring of the app's source files
+- Using [React App Rewired](https://github.com/timarney/react-app-rewired) to avoid ejecting a project bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 
 ## Development
 
@@ -15,6 +26,8 @@ All of the following can be run simultaneously locally--you just need a populate
 - `yarn test` - run jest tests
 - `yarn cypress` - run cypress tests
 - `yarn run screenshot` - create/update storybook screenshots
+
+### Build Size
 
 You can check on the included packages in the build with the following, replacing the `xxxx` with the actual bundle checksum value:
 
@@ -50,10 +63,10 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
+- Error boundaries!
 - Circle CI:
-  - cypress
   - linting
-    - https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
+    https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
   - store test results
 - Good idea of checking for swUpdate on router navigation:
   https://zach.codes/handling-client-side-app-updates-with-service-workers/
@@ -61,8 +74,7 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
   - Upgrade from v2 beta to v2 rc when it is released.
 - Look into getting smaller aws amplify builds: https://github.com/aws-amplify/amplify-js/wiki/Amplify-modularization
 - Remove unused packages (mainly dev dependencies: jest-styled-components; ...).
-- Complete this readme.
-- Error boundaries.
+- Improve this readme.
 - Date FNS v2:
   - The alpha docs for it are [here](https://date-fns.org/v2.0.0-alpha.11/docs/parse).
 - create-react-app v2:
