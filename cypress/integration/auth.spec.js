@@ -24,7 +24,7 @@ describe("auth", function() {
     cy.get('[data-test="login"]').as("loginForm");
     cy.get("@loginForm")
       .get('input[name="username"]')
-      .type(Cypress.env("CYPRESS_COGNITO_SIGN_IN_USERNAME"));
+      .type(Cypress.env("COGNITO_SIGN_IN_USERNAME"));
     cy.get("@loginForm")
       .get('input[name="password"]')
       .type("wrongpassword{enter}");
@@ -37,11 +37,11 @@ describe("auth", function() {
     cy.focused().should("have.attr", "name", "username");
     cy.get("@loginForm")
       .get('input[name="username"]')
-      .type(Cypress.env("CYPRESS_COGNITO_SIGN_IN_USERNAME"))
-      .should("have.value", Cypress.env("CYPRESS_COGNITO_SIGN_IN_USERNAME"));
+      .type(Cypress.env("COGNITO_SIGN_IN_USERNAME"))
+      .should("have.value", Cypress.env("COGNITO_SIGN_IN_USERNAME"));
     cy.get("@loginForm")
       .get('input[name="password"]')
-      .type(Cypress.env("CYPRESS_COGNITO_SIGN_IN_PASSWORD"));
+      .type(Cypress.env("COGNITO_SIGN_IN_PASSWORD"));
     cy.get("@loginForm")
       .get('input[name="password"]')
       .type("{enter}");

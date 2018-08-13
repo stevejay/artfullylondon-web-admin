@@ -11,8 +11,8 @@ Cypress.Commands.add("login", () => {
   // long timeout as sometimes the amplify call can take a while.
   cy.visit("/").then({ timeout: 10000 }, () =>
     amplify.signIn(
-      Cypress.env("CYPRESS_COGNITO_SIGN_IN_USERNAME"),
-      Cypress.env("CYPRESS_COGNITO_SIGN_IN_PASSWORD")
+      Cypress.env("COGNITO_SIGN_IN_USERNAME"),
+      Cypress.env("COGNITO_SIGN_IN_PASSWORD")
     )
   );
 });
