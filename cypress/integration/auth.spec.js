@@ -5,6 +5,9 @@ const GENERAL_LOGIN_ERROR_MESSAGE = "Incorrect username or password";
 
 describe("auth", function() {
   it("should reject an unknown user", () => {
+    // TODO work out why this clearing is required when it should not be.
+    cy.clearCookies();
+    cy.clearLocalStorage();
     cy.visit("/");
     cy.get('[data-test="login"]').as("loginForm");
     cy.get("@loginForm")

@@ -41,14 +41,14 @@
     "test": "react-app-rewired test --env=jsdom",
     "flow": "flow",
     "get-fragment-types": "node ./scripts/get-fragment-types.js",
-    "serve:staging": "firebase serve --project artfullylondon-staging-admin -p 3000",
     "deploy:staging": "./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin",
     "deploy:prod": "./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress": "npx cypress open",
     "screenshot": "cross-env NODE_ENV=test storybook-chrome-screenshot -p 9001 -c .storybook --inject-files ./src/testing/disable-caret.js",
-    "screenshot:regression": "reg-suit run"
+    "screenshot:regression": "reg-suit run",
+    "serve:build": "./node_modules/.bin/ws --directory ./build --port 3000 --https --spa index.html"
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.6.0",
@@ -76,6 +76,7 @@
     "jest-enzyme": "^6.0.3",
     "jest-image-snapshot": "^2.4.3",
     "jest-styled-components": "^6.0.1",
+    "local-web-server": "^2.6.0",
     "node-fetch": "^2.2.0",
     "puppeteer": "^1.7.0",
     "rc-util": "^4.5.1",

@@ -47,11 +47,13 @@ jobs:
     parallelism: 1
     steps:
       - checkout
+      - attach_workspace:
+          at: *working_directory
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
       - run: 
-          command: yarn run serve:staging
+          command: yarn run serve:build
           background: true
       - run: $(yarn bin)/cypress run
       - store_artifacts:
@@ -93,6 +95,8 @@ workflows:
               ignore:
                 - master
       - e2e_testing
+          requires:
+            - unit_testing_and_build
       - deploy_to_staging:
           requires:
             - unit_testing_and_build
