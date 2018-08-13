@@ -41,15 +41,20 @@ describe("tags", () => {
       'main article section[data-test="tag list"] ul li',
       RANDOM_LABEL
     );
+    cy.contains(
+      'main article section[data-test="tag list"] ul li',
+      RANDOM_LABEL
+    ).within(() => {
+      cy.get("button").trigger("click");
+    });
+
     // cy.contains(
     //   'main article section[data-test="tag list"] ul li',
     //   RANDOM_LABEL
-    // ).within(() => {
-    //   cy.get("button").trigger("click");
-    // });
+    // );
 
-    cy.get(
-      `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"] button`
-    ).trigger("click");
+    // cy.get(
+    //   `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"] button`
+    // ).trigger("click");
   });
 });
