@@ -11,7 +11,7 @@ This React.js SPA features the following:
 
 - CRUD GraphQL operations via [Apollo client](https://www.apollographql.com/docs/react/)
 - Use of [Grommet](http://grommet.io/) component library (specifically a beta of the upcoming Version 2 of Grommet)
-- Lean testing of an SPA using [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
+- Lean testing of an SPA, utilizing [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
 - [Circle CI](https://circleci.com/) for continuous integration and deployment
 - React components that separate visual appearance from behaviour implementation.
 - A module-based approach to the structuring of the app's source files
@@ -88,6 +88,10 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - Yup for validation
 - Why no descriptionCredit on almeida and british libary/museum pics?
 - I'll need to use mapbox-gl but it is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to include it only on the venue and event edit pages.
+- Look into https://www.graph.cool/
+- Look into https://onsen.io/react/
+- Look into https://react.semantic-ui.com/
+- Look into https://ant.design/
 
 ## Maintenance
 
