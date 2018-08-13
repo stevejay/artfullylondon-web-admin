@@ -36,7 +36,6 @@ describe("tags", () => {
       .type(`${RANDOM_LABEL}{enter}`);
     // TODO change from trigger to click when cypress v3.1.0+ is released
     // https://github.com/cypress-io/cypress/issues/2252
-    cy.wait(10000);
     cy.get(
       `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"]`
     ).within(() => {
