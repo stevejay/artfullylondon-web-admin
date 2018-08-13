@@ -19,6 +19,7 @@ cypress.env.json
 .reg
 /cypress/screenshots
 /cypress/videos
+/reports
 
 npm-debug.log*
 yarn-debug.log*

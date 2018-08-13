@@ -34,11 +34,13 @@ jobs:
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
-      - run: yarn test
+      - run: yarn test:ci
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
           paths: build
+      - store_test_results:
+          path: ./reports
   e2e_testing:
     working_directory: *working_directory
     docker: *cypress_docker_image

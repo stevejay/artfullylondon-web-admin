@@ -11,7 +11,6 @@ describe("tags", () => {
     cy.login();
     cy.visit("/tag/audience", {
       onBeforeLoad: win => {
-        cy.spy(win.console, "log");
         fetchStub(win, [audienceTags, createTag(RANDOM_LABEL), deleteTag]);
       }
     });
@@ -31,30 +30,7 @@ describe("tags", () => {
       .contains("families");
   });
 
-  // it("should add and then delete an audience tag", () => {
-  //   cy.get('main article form[data-test="add tag form"]').as("addTagForm");
-  //   cy.get("@addTagForm")
-  //     .get('input[name="label"]')
-  //     .type(`${RANDOM_LABEL}{enter}`);
-  //   // TODO change from trigger to click when cypress v3.1.0+ is released
-  //   // https://github.com/cypress-io/cypress/issues/2252
-  //   cy.contains(
-  //     `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"]`,
-  //     RANDOM_LABEL
-  //   );
-  //   cy.get(
-  //     `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"]`
-  //   ).within(() => {
-  //     cy.get("button").trigger("click");
-  //   });
-  //   cy.get('main article section[data-test="tag list"] ul li').should(
-  //     "not.have.attr",
-  //     "data-test",
-  //     `audience/${RANDOM_LABEL}`
-  //   );
-  // });
-
-  it("should add and then delete an audience tag two", () => {
+  it("should add and then delete an audience tag", () => {
     cy.get('main article form[data-test="add tag form"]').as("addTagForm");
     cy.get("@addTagForm")
       .get('input[name="label"]')
@@ -65,12 +41,15 @@ describe("tags", () => {
       'main article section[data-test="tag list"] ul li',
       RANDOM_LABEL
     );
-    console.log("this might appear in cypress");
-    cy.contains(
-      'main article section[data-test="tag list"] ul li',
-      RANDOM_LABEL
-    ).within(() => {
-      cy.get("button").trigger("click");
-    });
+    // cy.contains(
+    //   'main article section[data-test="tag list"] ul li',
+    //   RANDOM_LABEL
+    // ).within(() => {
+    //   cy.get("button").trigger("click");
+    // });
+
+    cy.get(
+      `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"] button`
+    ).trigger("click");
   });
 });
