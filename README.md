@@ -11,16 +11,16 @@ This React.js SPA features the following:
 
 - CRUD GraphQL operations via [Apollo client](https://www.apollographql.com/docs/react/)
 - Lean testing of an SPA, utilizing [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
-- [Flow](https://flow.org/) for static type checking of the JavaScript.
-- An approach to React component creation that separate the visual appearance from the behaviour implementation.
+- [Flow](https://flow.org/) for static type checking of the JavaScript
+- An approach to React component creation that separate the visual appearance from the behaviour implementation
 - A module-based approach to the structuring of the app's source files
 - [Circle CI](https://circleci.com/) for continuous integration and deployment
 - Use of [Grommet](http://grommet.io/) component library (specifically a beta of the upcoming Version 2 of Grommet)
-- Using [React App Rewired](https://github.com/timarney/react-app-rewired) to avoid ejecting a project bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
+- Use of [React App Rewired](https://github.com/timarney/react-app-rewired) to avoid ejecting a project bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 
 ## Development
 
-All of the following can be run simultaneously locally--you just need a populated .env file:
+All of the following can be run simultaneously locally&mdash;you just need a populated .env file:
 
 - `yarn start` - runs the app locally
 - `yarn storybook` - run storybook locally
