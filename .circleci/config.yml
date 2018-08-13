@@ -94,7 +94,7 @@ workflows:
             branches:
               ignore:
                 - master
-      - e2e_testing
+      - e2e_testing:
           requires:
             - unit_testing_and_build
       - deploy_to_staging:
