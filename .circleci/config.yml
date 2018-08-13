@@ -35,6 +35,7 @@ jobs:
       - *yarn_install
       - *save_yarn_cache
       - run: yarn test:ci
+      - run: yarn lint
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
