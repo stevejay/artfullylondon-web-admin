@@ -12,7 +12,7 @@ This React.js SPA features the following:
 - CRUD GraphQL operations via [Apollo client](https://www.apollographql.com/docs/react/)
 - Lean testing of an SPA, utilizing [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
 - [Flow](https://flow.org/) for static type checking of the JavaScript
-- An approach to React component creation that separate the visual appearance from the behaviour implementation
+- An approach to React component creation that separate the visual appearance from the behaviour implementation, as [described by Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
 - A module-based approach to the structuring of the app's source files
 - [Circle CI](https://circleci.com/) for continuous integration and deployment
 - Use of [Grommet](http://grommet.io/) component library (specifically a beta of the upcoming Version 2 of Grommet)
@@ -68,7 +68,6 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - Circle CI:
   - linting
     https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
-  - store test results
 - Good idea of checking for swUpdate on router navigation:
   https://zach.codes/handling-client-side-app-updates-with-service-workers/
 - Grommet
@@ -81,8 +80,6 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - create-react-app v2:
   - I Might be able to use `jest-puppe-shots` when create-react-app upgrades to Jest v23.
   - It will support the ability to preprocess queries using graphql-tag/loader, but I'll have to see if Storybook picks it up.
-- Improve image snapshot testing:
-  - Look into using [reg-suit](https://github.com/reg-viz/reg-suit).
 - Look into something like this: https://github.com/Decisiv/styled-components-modifiers
 - Use flow enums for the types?
 - See if a submit-on-Enter fix appears for Formix FastField
