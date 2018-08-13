@@ -10,8 +10,10 @@ describe("tags", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("/tag/audience", {
-      onBeforeLoad: win =>
-        fetchStub(win, [audienceTags, createTag(RANDOM_LABEL), deleteTag])
+      onBeforeLoad: win => {
+        cy.spy(win.console, "log");
+        fetchStub(win, [audienceTags, createTag(RANDOM_LABEL), deleteTag]);
+      }
     });
   });
 
@@ -63,6 +65,7 @@ describe("tags", () => {
       'main article section[data-test="tag list"] ul li',
       RANDOM_LABEL
     );
+    console.log("this might appear in cypress");
     // cy.get(
     //   `main article section[data-test="tag list"] ul li[data-test="audience/${RANDOM_LABEL}"]`
     // ).within(() => {
