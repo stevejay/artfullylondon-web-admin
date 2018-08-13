@@ -12,7 +12,7 @@ This React.js SPA features the following:
 - CRUD GraphQL operations via [Apollo client](https://www.apollographql.com/docs/react/)
 - Lean testing of an SPA, utilizing [Jest](https://jestjs.io/) for unit tests, [Storybook image screenshots](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) and [Reg Suit](https://github.com/reg-viz/reg-suit) for visual regression testing, and Cypress for end-to-end testing
 - [Flow](https://flow.org/) for static type checking of the JavaScript
-- An approach to React component creation that separate the visual appearance from the behaviour implementation, as [described by Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
+- An approach to React component creation that separates the visual appearance from the behaviour implementation, as [described by Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
 - A module-based approach to the structuring of the app's source files
 - [Circle CI](https://circleci.com/) for continuous integration and deployment
 - Use of [Grommet](http://grommet.io/) component library (specifically a beta of the upcoming Version 2 of Grommet)
@@ -90,6 +90,8 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - Look into https://onsen.io/react/
 - Look into https://react.semantic-ui.com/
 - Look into https://ant.design/
+- Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
+- How come I don't have a problem with Storybook image screenshots of the fonts not being loaded at first when the screenshotting is run on the Circle CI environment? I've seen one "fix" of adding `delay: 1000` to the screenshot options.
 
 ## Maintenance
 
