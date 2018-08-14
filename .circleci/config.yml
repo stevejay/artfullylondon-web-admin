@@ -113,7 +113,7 @@ jobs:
       - *save_yarn_cache
       - run: yarn run screenshot
       - run: yarn run screenshot:regression
-  tag_for_release:
+  tag_release:
     working_directory: *working_directory
     docker: *node_docker_image
     steps:
@@ -156,17 +156,10 @@ workflows:
             branches:
               only:
                 - master
-      - tag_for_release:
-          requires:
-            - deploy_to_staging
-          filters:
-            branches:
-              only:
-                - master
       - build_release:
           context: artfully-staging # TODO artfully-prod
           requires:
-            - tag_for_release
+            - deploy_to_staging
           filters:
             branches:
               only:
@@ -183,6 +176,13 @@ workflows:
           context: artfully-staging # TODO artfully-prod
           requires:
             - hold
+          filters:
+            branches:
+              only:
+                - master
+      - tag_release:
+          requires:
+            - deploy_to_prod
           filters:
             branches:
               only:
