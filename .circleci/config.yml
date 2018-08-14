@@ -26,7 +26,7 @@ aliases:
     run: yarn install --non-interactive --frozen-lockfile
 
 jobs:
-  unit_testing_and_build:
+  unit_test_and_build:
     working_directory: *working_directory
     docker: *node_docker_image
     steps:
@@ -78,6 +78,19 @@ jobs:
       - run:
           name: Deploy master to staging
           command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN
+  deploy_to_prod:
+    working_directory: *working_directory
+    docker: *node_docker_image
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - *restore_yarn_cache
+      - *yarn_install
+      - *save_yarn_cache
+      - run:
+          name: Deploy master to prod
+          command: ./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin --token=$FIREBASE_DEPLOY_TOKEN
   visual_regression_testing:
     working_directory: *working_directory
     docker: *node_docker_image
@@ -107,29 +120,43 @@ jobs:
 
 workflows:
   version: 2
-  install_and_optionally_deploy:
+  build_and_optionally_deploy_to_staging:
     jobs:
-      - unit_testing_and_build:
+      - unit_test_and_build:
           context: artfully-staging
+          filters:
+            tags:
+              ignore:
+                - /^release/
       - visual_regression_testing:
           context: artfully-staging
           filters:
             branches:
               ignore:
                 - master
+            tags:
+              ignore:
+                - /^release/
       - e2e_testing:
           context: artfully-staging
           requires:
-            - unit_testing_and_build
+            - unit_test_and_build
+          filters:
+            tags:
+              ignore:
+                - /^release/
       - deploy_to_staging:
           context: artfully-staging
           requires:
-            - unit_testing_and_build
+            - unit_test_and_build
             - e2e_testing
           filters:
             branches:
               only:
                 - master
+            tags:
+              ignore:
+                - /^release/
       - tag_for_release:
           requires:
             - deploy_to_staging
@@ -137,3 +164,32 @@ workflows:
             branches:
               only:
                 - master
+            tags:
+              ignore:
+                - /^release/
+  build_and_deploy_to_prod:
+    jobs:
+      - unit_test_and_build:
+          context: artfully-staging # TODO artfully-prod
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - /^release/
+      - hold:
+          type: approval
+          requires:
+           - unit_test_and_build
+      - deploy_to_prod:
+          context: artfully-staging # TODO artfully-prod
+          requires:
+            - hold
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only:
+                - /^release/
