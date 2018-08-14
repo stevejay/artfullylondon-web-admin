@@ -4,7 +4,7 @@ import audienceTags from "../fixtures/audience-tags";
 import createTag from "../fixtures/create-tag";
 import deleteTag from "../fixtures/delete-tag";
 
-const RANDOM_LABEL = uuidv1().replace(/\-/g, "");
+const RANDOM_LABEL = uuidv1().replace(/-/g, "");
 
 describe("tags", () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("tags", () => {
   it("should display the audience tags", () => {
     cy.get("main article header h1").contains("Audience Tags");
     cy.get('main article section[data-test="tag list"] ul').as("tagList");
-    cy.get("@tagList").contains("li" "16 plus", , { timeout: 15000 });
+    cy.get("@tagList").contains("li", "16 plus", { timeout: 15000 });
     cy.get("@tagList").contains("li", "adults only");
     cy.get("@tagList").contains("li", "families");
   });
