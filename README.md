@@ -62,8 +62,14 @@ import { withTheme } from "grommet/es6/components/hocs";
 
 If you get the 'performing a tls handshake to localhost' issue, follow the instructions [here](https://kb.mit.edu/confluence/display/istcontrib/Deleting+Cert8.db+for+Firefox) and then restart Firefox. (For OS X, the location for me was `~/Library/Application Support/Firefox/Profiles/` and I had to delete the `cert8.db` and `cert9.db` files.)
 
+## Console Errors
+
+Message: `Network error: Store reset while query was in flight(not completed in link chain)`
+Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
+
 ## TODO
 
+- Add `yarn audit` when it is released.
 - Add ${CIRCLE_SHA1:0:7} type thing to app build info.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
 - Error boundaries!

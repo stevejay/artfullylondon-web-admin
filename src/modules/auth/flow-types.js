@@ -2,7 +2,9 @@
 
 export type AuthState = {
   +auth: {
-    +authenticated: boolean
+    +authenticated: boolean,
+    +username: string,
+    +groups: Array<string>
   }
 };
 
