@@ -1,5 +1,3 @@
-// import Amplify from "aws-amplify";
-
 import Auth from "@aws-amplify/auth";
 
 Auth.configure({
@@ -9,8 +7,6 @@ Auth.configure({
   userPoolWebClientId: Cypress.env("COGNITO_USER_POOL_APP_CLIENT_ID")
 });
 
-export default {
-  signIn(username, password) {
-    return Auth.signIn(username, password);
-  }
-};
+export async function signIn(username, password) {
+  return await Auth.signIn(username, password);
+}

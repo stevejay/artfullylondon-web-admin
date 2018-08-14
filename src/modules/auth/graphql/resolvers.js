@@ -3,8 +3,6 @@
 import type { ApolloClient } from "apollo-client";
 import type { LoginFormValues } from "../flow-types";
 
-import _ from "lodash";
-import empty from "empty";
 import * as amplify from "../amplify";
 
 const AUTH_CLIENT_STATE_TYPENAME = "Auth";
@@ -27,23 +25,8 @@ export default {
         values: any,
         { cache }: ApolloClient<any>
       ) => {
-        const session = await amplify.auth.attemptAutoLogin();
-        const authData = {
-          authenticated: true,
-          username: _.get(session, "idToken.payload.cognito:username"),
-          groups:
-            _.get(session, "idToken.payload.cognito:groups") || empty.array
-        };
-        if (session) {
-          cache.writeData({
-            data: {
-              auth: {
-                __typename: AUTH_CLIENT_STATE_TYPENAME,
-                ...authData
-              }
-            }
-          });
-        }
+        const authData = await amplify.attemptAutoLogin();
+        writeAuthClientState(cache, authData);
         return null;
       },
       logIn: async (
@@ -51,37 +34,27 @@ export default {
         values: LoginFormValues,
         { cache }: ApolloClient<any>
       ) => {
-        const session: { signInUserSession?: any } = await amplify.auth.logIn(
-          values
-        );
-        const authData = {
-          authenticated: true,
-          username: _.get(
-            session.signInUserSession,
-            "idToken.payload.cognito:username"
-          ),
-          groups:
-            _.get(
-              session.signInUserSession,
-              "idToken.payload.cognito:groups"
-            ) || empty.array
-        };
-        if (session) {
-          cache.writeData({
-            data: {
-              auth: {
-                __typename: AUTH_CLIENT_STATE_TYPENAME,
-                ...authData
-              }
-            }
-          });
-        }
+        const authData = await amplify.logIn(values.username, values.password);
+        writeAuthClientState(cache, authData);
         return null;
       },
       logOut: async () => {
-        await amplify.auth.logOut();
+        await amplify.logOut();
         return null;
       }
     }
   }
 };
+
+function writeAuthClientState(cache, authData) {
+  if (authData && authData.authenticated) {
+    cache.writeData({
+      data: {
+        auth: {
+          __typename: AUTH_CLIENT_STATE_TYPENAME,
+          ...authData
+        }
+      }
+    });
+  }
+}

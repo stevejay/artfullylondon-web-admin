@@ -42,6 +42,10 @@ I was unable to use a graphql/gql file loader with Babel or Webpack as Storybook
 
 ## Troubleshooting
 
+### Apollo Client
+
+I might get [this problem](https://github.com/apollographql/apollo-link-state/issues/262) with Apollo Link State: "local client data getting nulled out after making a query that involves a round trip to the server." For the moment, reverting to 0.4.0 will fix the problem.
+
 ### Grommet Icons Inclusion
 
 Make sure that the whole of the grommet-icons package does not get included in the production build.
