@@ -1,7 +1,5 @@
 // @flow
 
-import type { Tag as TagType } from "../flow-types";
-
 import * as React from "react";
 import { pure } from "recompose";
 import { Text, Button } from "grommet";
