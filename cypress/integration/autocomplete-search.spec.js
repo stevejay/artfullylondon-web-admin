@@ -24,6 +24,8 @@ describe("autocomplete search", () => {
       .get('ul[data-test="autocomplete list"] li a')
       .first()
       .click();
-    cy.contains("main article header h1", "Carrie Cracknell");
+    cy.contains("main article header h1", "Carrie Cracknell", {
+      timeout: 15000
+    });
   });
 });
