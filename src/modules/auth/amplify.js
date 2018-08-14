@@ -2,27 +2,27 @@
 
 import type { LoginFormValues, AmplifyAuth, Session } from "./flow-types";
 
-import Amplify from "aws-amplify";
+import Auth from "@aws-amplify/auth";
 import log from "loglevel";
 
-Amplify.configure({
-  Auth: {
-    identityPoolId: process.env.REACT_APP_COGNITO_IDENTITY_POOL_ID,
-    region: process.env.REACT_APP_COGNITO_REGION,
-    userPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
-    userPoolWebClientId: process.env.REACT_APP_COGNITO_USER_POOL_APP_CLIENT_ID,
-    mandatorySignIn: true
-  }
+Auth.configure({
+  identityPoolId: process.env.REACT_APP_COGNITO_IDENTITY_POOL_ID,
+  region: process.env.REACT_APP_COGNITO_REGION,
+  userPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
+  userPoolWebClientId: process.env.REACT_APP_COGNITO_USER_POOL_APP_CLIENT_ID,
+  mandatorySignIn: true
 });
 
 const auth: AmplifyAuth = {
-  attemptAutoLogin: () => Amplify.Auth.currentSession().catch(() => null),
+  // expand this to do the auth data formation work?
+  attemptAutoLogin: () => Auth.currentSession().catch(() => null),
+  // expand this to do the auth data formation work?
   logIn: (values: LoginFormValues) =>
-    Amplify.Auth.signIn(values.username, values.password),
-  logOut: () => Amplify.Auth.signOut(),
+    Auth.signIn(values.username, values.password),
+  logOut: () => Auth.signOut(),
   getAuthToken: async (): Promise<?string> => {
     try {
-      const session: ?Session = await Amplify.Auth.currentSession();
+      const session: ?Session = await Auth.currentSession();
       if (!session || !session.idToken || !session.idToken.jwtToken) {
         return null;
       }
