@@ -92,6 +92,9 @@ jobs:
     working_directory: *working_directory
     docker: *node_docker_image
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a3:e6:ff:7f:2b:f0:29:8d:cc:6b:06:3c:28:0a:bc:d7"
       - checkout
       - run:
           name: Git push
