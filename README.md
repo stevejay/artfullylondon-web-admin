@@ -64,6 +64,7 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 
 ## TODO
 
+- Add ${CIRCLE_SHA1:0:7} type thing to app build info.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
 - Error boundaries!
 - Circle CI:
