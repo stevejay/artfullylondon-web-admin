@@ -19,7 +19,7 @@ describe("dashboard", () => {
 });
 
 function assertEntityStatistic(entity, displayName) {
-  cy.get(`[data-test="${entity} statistic" i] h2`).should(
+  cy.get(`[data-test="${entity} statistic" i] h2`, { timeout: 15000 }).should(
     "have.text",
     displayName
   );

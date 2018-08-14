@@ -10,7 +10,7 @@ aliases:
   - &cypress_docker_image
     - image: cypress/base:10
       environment:
-        TERM: xterm 
+        TERM: xterm
   - &restore_yarn_cache
     restore_cache:
       keys:
@@ -35,6 +35,7 @@ jobs:
       - *yarn_install
       - *save_yarn_cache
       - run: yarn test:ci
+      - run: yarn lint
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
@@ -87,24 +88,48 @@ jobs:
       - *save_yarn_cache
       - run: yarn run screenshot
       - run: yarn run screenshot:regression
+  tag_for_release:
+    working_directory: *working_directory
+    docker: *node_docker_image
+    steps:
+      - checkout
+      - run:
+          name: Git push
+          command: |
+            git config --global user.email "ci@artfullylondon.com"
+            git config --global user.name "circleci"
+            git config --global push.default simple
+            git tag -a release -m "tag master" -f
+            git push origin release
 
 workflows:
   version: 2
   install_and_optionally_deploy:
     jobs:
-      - unit_testing_and_build
+      - unit_testing_and_build:
+          context: artfully-staging
       - visual_regression_testing:
+          context: artfully-staging
           filters:
             branches:
               ignore:
                 - master
       - e2e_testing:
+          context: artfully-staging
           requires:
             - unit_testing_and_build
       - deploy_to_staging:
+          context: artfully-staging
           requires:
             - unit_testing_and_build
             - e2e_testing
+          filters:
+            branches:
+              only:
+                - master
+      - tag_for_release:
+          requires:
+            - deploy_to_staging
           filters:
             branches:
               only:

@@ -41,6 +41,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "test:ci": "cross-env JEST_JUNIT_OUTPUT=reports/jest/results.xml react-app-rewired test --env=jsdom --ci --reporters=default --reporters=jest-junit --runInBand",
     "flow": "flow",
+    "lint": "./node_modules/.bin/eslint --global cy,Cypress ./src ./cypress",
     "get-fragment-types": "node ./scripts/get-fragment-types.js",
     "deploy:staging": "./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin",
     "deploy:prod": "./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin",

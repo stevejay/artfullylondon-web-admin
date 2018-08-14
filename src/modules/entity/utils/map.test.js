@@ -1,6 +1,5 @@
 // @flow
 
-import each from "jest-each";
 import * as mapUtils from "./map";
 
 describe("createMapboxStaticImageUrl", () => {

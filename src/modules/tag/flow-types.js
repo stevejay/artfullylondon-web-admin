@@ -1,10 +1,10 @@
 // @flow
 
-export type Tag = {
+export type Tag = {|
   +tagType: string,
   +id: string,
   +label: string
-};
+|};
 
 export type TagArray = Array<Tag>;
 
