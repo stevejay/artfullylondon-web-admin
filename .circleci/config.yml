@@ -42,6 +42,18 @@ jobs:
           paths: build
       - store_test_results:
           path: ./reports
+  build_release:
+    working_directory: *working_directory
+    docker: *node_docker_image
+    steps:
+      - checkout
+      - *restore_yarn_cache
+      - *yarn_install
+      - *save_yarn_cache
+      - run: yarn build
+      - persist_to_workspace:
+          root: *working_directory
+          paths: build
   e2e_testing:
     working_directory: *working_directory
     docker: *cypress_docker_image
@@ -115,36 +127,26 @@ jobs:
             git config --global user.email "ci@artfullylondon.com"
             git config --global user.name "circleci"
             git config --global push.default simple
-            git tag -a release -m "tag master" -f
-            git push origin release
+            export GIT_TAG="release-${CIRCLE_SHA1:0:7}"
+            git tag -a $GIT_TAG -m "tag master"
+            git push origin $GIT_TAG
 
 workflows:
   version: 2
-  build_and_optionally_deploy_to_staging:
+  build_and_deploy:
     jobs:
       - unit_test_and_build:
           context: artfully-staging
-          filters:
-            tags:
-              ignore:
-                - /^release/
       - visual_regression_testing:
           context: artfully-staging
           filters:
             branches:
               ignore:
                 - master
-            tags:
-              ignore:
-                - /^release/
       - e2e_testing:
           context: artfully-staging
           requires:
             - unit_test_and_build
-          filters:
-            tags:
-              ignore:
-                - /^release/
       - deploy_to_staging:
           context: artfully-staging
           requires:
@@ -154,9 +156,6 @@ workflows:
             branches:
               only:
                 - master
-            tags:
-              ignore:
-                - /^release/
       - tag_for_release:
           requires:
             - deploy_to_staging
@@ -164,24 +163,22 @@ workflows:
             branches:
               only:
                 - master
-            tags:
-              ignore:
-                - /^release/
-  build_and_deploy_to_prod:
-    jobs:
-      - unit_test_and_build:
+      - build_release:
           context: artfully-staging # TODO artfully-prod
+          requires:
+            - tag_for_release
           filters:
             branches:
               only:
                 - master
-            tags:
-              only:
-                - /^release/
       - hold:
           type: approval
           requires:
-           - unit_test_and_build
+           - build_release
+          filters:
+            branches:
+              only:
+                - master
       - deploy_to_prod:
           context: artfully-staging # TODO artfully-prod
           requires:
@@ -190,6 +187,3 @@ workflows:
             branches:
               only:
                 - master
-            tags:
-              only:
-                - /^release/
