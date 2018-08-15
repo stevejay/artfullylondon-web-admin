@@ -7,11 +7,11 @@ import { pure } from "recompose";
 import { History, StatusUnknown, Group } from "grommet-icons";
 import * as entityType from "shared/types/entity-type";
 import RestoreScroll from "shared/scroll/restore-scroll";
+import Column from "shared/column";
 import Header from "./header";
 import Description from "./description";
 import Notes from "./notes";
 import Aside from "./aside";
-import Column from "./column";
 import IconLinkList from "./icon-link-list";
 import { getTalentDisplayName, getEnumDisplayValue } from "../utils/entity";
 

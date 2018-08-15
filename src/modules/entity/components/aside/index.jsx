@@ -24,7 +24,7 @@ const Aside = ({ icon: Icon, title, children }: Props) => (
     responsive
     role="note"
   >
-    <Box tag="h4" direction="row">
+    <Box tag="h4" direction="row" gap="small">
       <Icon
         color="brand"
         size="medium"
@@ -32,7 +32,6 @@ const Aside = ({ icon: Icon, title, children }: Props) => (
         aria-hidden
         style={ICON_STYLE}
       />
-      &nbsp;
       <ExtendedText color="dark-6" fontStyle="italic">
         {title}
       </ExtendedText>

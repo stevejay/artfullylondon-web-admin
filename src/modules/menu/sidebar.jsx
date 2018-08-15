@@ -3,7 +3,7 @@
 import * as React from "react";
 import { pure } from "recompose";
 import { Box, Button } from "grommet";
-import { Search, FormClose, Dashboard, Tag } from "grommet-icons";
+import { Search, FormClose, Dashboard, Tag, User } from "grommet-icons";
 import AnimationBox from "shared/animation-box";
 import SidebarLink from "./sidebar-link";
 import LogOutButton from "./log-out-button";
@@ -77,6 +77,12 @@ const Sidebar = ({
           label="Geo Tags"
           icon={Tag}
           to="/tag/geo"
+          onClick={onOptionClick}
+        />
+        <SidebarLink
+          label="Account"
+          icon={User}
+          to="/account"
           onClick={onOptionClick}
         />
       </Box>

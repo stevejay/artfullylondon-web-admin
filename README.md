@@ -42,6 +42,10 @@ I was unable to use a graphql/gql file loader with Babel or Webpack as Storybook
 
 ## Troubleshooting
 
+### Apollo Client
+
+I might get [this problem](https://github.com/apollographql/apollo-link-state/issues/262) with Apollo Link State: "local client data getting nulled out after making a query that involves a round trip to the server." For the moment, reverting to 0.4.0 will fix the problem.
+
 ### Grommet Icons Inclusion
 
 Make sure that the whole of the grommet-icons package does not get included in the production build.
@@ -62,8 +66,15 @@ import { withTheme } from "grommet/es6/components/hocs";
 
 If you get the 'performing a tls handshake to localhost' issue, follow the instructions [here](https://kb.mit.edu/confluence/display/istcontrib/Deleting+Cert8.db+for+Firefox) and then restart Firefox. (For OS X, the location for me was `~/Library/Application Support/Firefox/Profiles/` and I had to delete the `cert8.db` and `cert9.db` files.)
 
+## Console Errors
+
+Message: `Network error: Store reset while query was in flight(not completed in link chain)`
+Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
+
 ## TODO
 
+- Add waiting for fonts to load in storybook-chrome-screenshot config: [here](https://github.com/tsuyoshiwada/storybook-chrome-screenshot#full-control-the-screenshot-timing)
+- Add `yarn audit` when it is released.
 - Add ${CIRCLE_SHA1:0:7} type thing to app build info.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
 - Error boundaries!
@@ -93,7 +104,6 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 - Look into https://react.semantic-ui.com/
 - Look into https://ant.design/
 - Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
-- How come I don't have a problem with Storybook image screenshots of the fonts not being loaded at first when the screenshotting is run on the Circle CI environment? I've seen one "fix" of adding `delay: 1000` to the screenshot options.
 
 ## Maintenance
 

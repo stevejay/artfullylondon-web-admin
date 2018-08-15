@@ -6,7 +6,7 @@ import * as React from "react";
 import { History, StatusUnknown, Clock } from "grommet-icons";
 import * as entityType from "shared/types/entity-type";
 import RestoreScroll from "shared/scroll/restore-scroll";
-import Column from "./column";
+import Column from "shared/column";
 import Header from "./header";
 import Description from "./description";
 import Notes from "./notes";

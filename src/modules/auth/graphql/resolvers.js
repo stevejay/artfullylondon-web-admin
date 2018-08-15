@@ -3,7 +3,8 @@
 import type { ApolloClient } from "apollo-client";
 import type { LoginFormValues } from "../flow-types";
 
-import * as amplify from "../amplify";
+import empty from "empty";
+import * as authService from "../auth-service";
 
 const AUTH_CLIENT_STATE_TYPENAME = "Auth";
 
@@ -11,7 +12,9 @@ export default {
   defaults: {
     auth: {
       __typename: AUTH_CLIENT_STATE_TYPENAME,
-      authenticated: false
+      authenticated: false,
+      username: null,
+      groups: empty.array
     }
   },
   resolvers: {
@@ -20,46 +23,40 @@ export default {
     // https://github.com/apollographql/apollo-link-state/issues/198
     Query: () => ({}),
     Mutation: {
-      attemptAutoLogin: async (
-        _: any,
-        __: any,
-        { cache }: ApolloClient<any>
-      ) => {
-        const session = await amplify.auth.attemptAutoLogin();
-        if (session) {
-          cache.writeData({
-            data: {
-              auth: {
-                __typename: AUTH_CLIENT_STATE_TYPENAME,
-                authenticated: true
-              }
-            }
-          });
-        }
+      attemptAutoLogin: async (__: *, ___: *, { cache }: ApolloClient<any>) => {
+        const authData = await authService.attemptAutoLogin();
+        writeAuthClientState(cache, authData);
         return null;
       },
       logIn: async (
-        _: any,
+        __: *,
         values: LoginFormValues,
         { cache }: ApolloClient<any>
       ) => {
-        const session = await amplify.auth.logIn(values);
-        if (session) {
-          cache.writeData({
-            data: {
-              auth: {
-                __typename: AUTH_CLIENT_STATE_TYPENAME,
-                authenticated: true
-              }
-            }
-          });
-        }
+        const authData = await authService.logIn(
+          values.username,
+          values.password
+        );
+        writeAuthClientState(cache, authData);
         return null;
       },
       logOut: async () => {
-        await amplify.auth.logOut();
+        await authService.logOut();
         return null;
       }
     }
   }
 };
+
+function writeAuthClientState(cache, authData) {
+  if (authData && authData.authenticated) {
+    cache.writeData({
+      data: {
+        auth: {
+          __typename: AUTH_CLIENT_STATE_TYPENAME,
+          ...authData
+        }
+      }
+    });
+  }
+}

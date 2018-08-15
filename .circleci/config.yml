@@ -1,4 +1,4 @@
-version: 2
+# version: 2
 
 aliases:
   - &working_directory 
@@ -14,14 +14,14 @@ aliases:
   - &restore_yarn_cache
     restore_cache:
       keys:
-        - v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        - v2-dependencies-{{ .Branch }}
-        - v2-dependencies-
+        - v2-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+        - v2-yarn-{{ .Branch }}
+        - v2-yarn-
   - &save_yarn_cache
     save_cache:
-      key: v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      key: v2-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
       paths:
-        - ~/.cache  ## caches both yarn and Cypress
+        - node_modules
   - &yarn_install
     run: yarn install --non-interactive --frozen-lockfile
 
@@ -39,7 +39,8 @@ jobs:
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
-          paths: build
+          paths:
+            - build
       - store_test_results:
           path: ./reports
   build_release:
@@ -53,7 +54,8 @@ jobs:
       - run: yarn build
       - persist_to_workspace:
           root: *working_directory
-          paths: build
+          paths:
+             - build
   e2e_testing:
     working_directory: *working_directory
     docker: *cypress_docker_image
@@ -139,10 +141,6 @@ workflows:
           context: artfully-staging
       - visual_regression_testing:
           context: artfully-staging
-          filters:
-            branches:
-              ignore:
-                - master
       - e2e_testing:
           context: artfully-staging
           requires:

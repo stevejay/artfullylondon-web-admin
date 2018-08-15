@@ -1,25 +1,21 @@
 // @flow
 
-export type AuthState = {
-  +auth: {
-    +authenticated: boolean
-  }
-};
+export type Auth = {|
+  +authenticated: boolean,
+  +username: ?string,
+  +groups: ?Array<string>
+|};
+
+export type AuthState = {|
+  +auth: Auth
+|};
+
+export type Session = {|
+  signInUserSession?: { idToken: any },
+  idToken?: { +jwtToken: string }
+|};
 
 export type LoginFormValues = {|
   +username: string,
   +password: string
-|};
-
-export type Session = {
-  +idToken: { +jwtToken: string },
-  +refreshToken: string,
-  +accessToken: string
-};
-
-export type AmplifyAuth = {|
-  attemptAutoLogin: () => Promise<?{}>,
-  logIn: LoginFormValues => Promise<?{}>,
-  logOut: () => Promise<?{}>,
-  getAuthToken: () => Promise<?string>
 |};

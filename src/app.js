@@ -5,7 +5,11 @@ import { Box } from "grommet";
 import { ThemeContext } from "grommet-icons";
 import { ApolloProvider } from "react-apollo";
 import { Route, Switch, withRouter } from "react-router-dom";
-import { AuthHandler, LogoutMenuOptionHandler } from "./modules/auth";
+import {
+  AuthHandler,
+  LogoutMenuOptionHandler,
+  AccountPage
+} from "./modules/auth";
 import { SearchMenuOptionHandler, SearchResultPage } from "./modules/search";
 import { Menu } from "./modules/menu";
 import { DashboardPage } from "./modules/dashboard";
@@ -30,6 +34,7 @@ const App = ({ theme }: any) => (
               <Box tag="article" flex>
                 <Switch>
                   <Route exact path="/" component={DashboardPage} />
+                  <Route exact path="/account" component={AccountPage} />
                   <Route exact path="/search" component={SearchResultPage} />
                   <Route
                     exact

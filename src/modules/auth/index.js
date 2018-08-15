@@ -2,7 +2,14 @@
 
 import AuthHandler from "./components/auth-handler";
 import LogoutMenuOptionHandler from "./components/logout-menu-option-handler";
-import * as amplify from "./amplify";
+import AccountPage from "./components/account-page";
+import { getAuthToken } from "./auth-service";
 import resolvers from "./graphql/resolvers";
-const getAuthToken = amplify.auth.getAuthToken;
-export { AuthHandler, LogoutMenuOptionHandler, getAuthToken, resolvers };
+
+export {
+  AccountPage,
+  AuthHandler,
+  LogoutMenuOptionHandler,
+  getAuthToken,
+  resolvers
+};

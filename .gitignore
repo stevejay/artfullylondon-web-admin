@@ -1,27 +1,33 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 
-# testing
-/coverage
-__diff_output__
-
-# production
+# build
 /build
 
-# misc
-.DS_Store
+# env 
 .env
 .env.local
 .env.production.local
 cypress.env.json
-.reg
+
+# cypress output
 /cypress/screenshots
 /cypress/videos
-/reports
 
+# visual regression testing
+.reg
+/__screenshots__
+
+# misc testing
+/reports
+/coverage
+__diff_output__
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
+
+# misc
+.DS_Store

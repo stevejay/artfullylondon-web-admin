@@ -15,11 +15,11 @@ import {
 import * as entityType from "shared/types/entity-type";
 import RestoreScroll from "shared/scroll/restore-scroll";
 import ExtendedAnchor from "shared/extended-anchor";
+import Column from "shared/column";
 import Header from "./header";
 import Description from "./description";
 import Notes from "./notes";
 import StaticMap from "./static-map";
-import Column from "./column";
 import VenueOpeningTimes from "./times/venue-opening-times";
 import DisabilityAccess from "./disability-access";
 import Aside from "./aside";

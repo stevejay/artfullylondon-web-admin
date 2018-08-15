@@ -21,6 +21,7 @@ import {
 import * as entityType from "shared/types/entity-type";
 import ExtendedRoutedAnchor from "shared/scroll/extended-routed-anchor";
 import RestoreScroll from "shared/scroll/restore-scroll";
+import Column from "shared/column";
 import Header from "./header";
 import Description from "./description";
 import Notes from "./notes";
@@ -28,7 +29,6 @@ import Aside from "./aside";
 import Summary from "./summary";
 import Rating from "./rating";
 import TagList from "./tag-list";
-import Column from "./column";
 import EventOpeningTimes from "./times/event-opening-times";
 import EventPerformances from "./times/event-performances";
 import IconLinkList from "./icon-link-list";
