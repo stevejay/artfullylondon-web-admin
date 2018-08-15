@@ -73,6 +73,8 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
+- Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
+  - This looks a very interesting addition: https://www.npmjs.com/package/react-schema-final-form
 - Add `yarn audit` when it is released.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
 - Error boundaries!
@@ -100,7 +102,7 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 - Look into https://onsen.io/react/
 - Look into https://react.semantic-ui.com/
 - Look into https://ant.design/
-- Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
+- Look into [smooth-ui](https://www.npmjs.com/package/smooth-ui)
 - Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
 
 ## Maintenance
