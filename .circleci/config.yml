@@ -141,10 +141,6 @@ workflows:
           context: artfully-staging
       - visual_regression_testing:
           context: artfully-staging
-          filters:
-            branches:
-              ignore:
-                - master
       - e2e_testing:
           context: artfully-staging
           requires:
