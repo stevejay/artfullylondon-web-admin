@@ -41,7 +41,8 @@ describe("auth", function() {
       .should("have.value", Cypress.env("COGNITO_SIGN_IN_USERNAME"));
     cy.get("@loginForm")
       .get('input[name="password"]')
-      .type(Cypress.env("COGNITO_SIGN_IN_PASSWORD"));
+      .type(Cypress.env("COGNITO_SIGN_IN_PASSWORD"))
+      .should("have.value", Cypress.env("COGNITO_SIGN_IN_PASSWORD"));
     cy.get("@loginForm")
       .get('input[name="password"]')
       .type("{enter}");

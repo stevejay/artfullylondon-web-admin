@@ -3,17 +3,13 @@ import entityCounts from "../fixtures/entity-counts";
 
 describe("dashboard", () => {
   beforeEach(() => {
-    cy.login();
-    cy.visit("/", {
-      onBeforeLoad(win) {
-        throw new Error("OMG !!!");
-        fetchStub(win, [entityCounts]);
-      },
-      onLoad(win) {
-        // throw new Error("PONY !!!");
-        fetchStub(win, [entityCounts]);
-      }
-    });
+    cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });
+    cy.get('[data-test="login"] input[name="username"]').type(
+      Cypress.env("COGNITO_SIGN_IN_USERNAME")
+    );
+    cy.get('[data-test="login"] input[name="password"]').type(
+      Cypress.env("COGNITO_SIGN_IN_PASSWORD") + "{enter}"
+    );
   });
 
   it("should display the dashboard", () => {
