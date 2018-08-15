@@ -4,10 +4,10 @@ import * as React from "react";
 import { Box } from "grommet";
 import Definition from "./definition";
 
-type Props = {| +children: React.Node |};
+type Props = {| +a11yTitle?: string, +children: React.Node |};
 
-const DefinitionList = ({ children }: Props) => (
-  <Box tag="dl" flex fill responsive>
+const DefinitionList = ({ a11yTitle, children }: Props) => (
+  <Box tag="dl" flex fill responsive a11yTitle={a11yTitle}>
     {children}
   </Box>
 );

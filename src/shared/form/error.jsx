@@ -9,7 +9,7 @@ import AnimationBox from "shared/animation-box";
 
 const BOX_BACKGROUND = { color: "status-error", opacity: "weak" };
 const BOX_PAD = { horizontal: "small", vertical: "xsmall" };
-const BOX_MARGIN = { bottom: "medium" };
+const BOX_MARGIN = { top: "small" };
 
 type Props = {
   +errors: FormikErrors<any>,
@@ -26,7 +26,9 @@ const Error = ({ errors, name }: Props) =>
       margin={BOX_MARGIN}
       role="alert"
     >
-      <Text color="status-error">{errors[name]}</Text>
+      <Text color="status-error" weight="bold">
+        {errors[name]}
+      </Text>
     </AnimationBox>
   ) : null;
 
