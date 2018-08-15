@@ -5,7 +5,8 @@ describe("dashboard", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("/", {
-      onBeforeLoad: win => {
+      onBeforeLoad(win) {
+        throw new Error("OMG !!!");
         fetchStub(win, [entityCounts]);
       }
     });
