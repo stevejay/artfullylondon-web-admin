@@ -9,18 +9,19 @@ const BOX_BORDER = { color: "neutral-2", side: "all", size: "xsmall" };
 const BOX_MARGIN = { bottom: "medium" };
 const HEADING_MARGIN = { top: "none", bottom: "xsmall" };
 
-type Props = {|
+type Props = {
   +term: string,
   +description: ?string
-|};
+};
 
-const Definition = ({ term, description }: Props) => (
+const Definition = ({ term, description, ...rest }: Props) => (
   <Box
     responsive
     direction="column"
     margin={BOX_MARGIN}
     pad="medium"
     border={BOX_BORDER}
+    {...rest}
   >
     <Box tag="dt" responsive margin={HEADING_MARGIN}>
       <ExtendedText

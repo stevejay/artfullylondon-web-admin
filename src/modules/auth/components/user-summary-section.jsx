@@ -13,13 +13,18 @@ type Props = {
 const UserSummarySection = ({ username, groups }: Props) => (
   <Column.Container>
     <Column basis="full">
-      <DefinitionList>
-        <DefinitionList.Definition term="User" description={username} />
+      <DefinitionList a11yTitle="User details list">
+        <DefinitionList.Definition
+          term="User"
+          description={username}
+          data-test="username"
+        />
         <DefinitionList.Definition
           term="Groups"
           description={
             !groups || _.isEmpty(groups) ? "None" : groups.join(", ")
           }
+          data-test="groups"
         />
         <DefinitionList.Definition
           term="App Version"

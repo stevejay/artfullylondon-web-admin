@@ -5,17 +5,26 @@ import * as errorUtils from "./error";
 
 describe("getErrorMessage", () => {
   each([
-    [new Error("some error"), "Already exists", "some error"],
+    ["some error", "Already exists", "some error"],
+    ["Foo: conditional request failed", "Already exists", "Already exists"],
     [
-      new Error("Foo: conditional request failed"),
+      "Foo: conditional request failed",
+      null,
+      "Foo: conditional request failed"
+    ],
+    [
+      "GraphQL error: [401] User not authorized for requested action",
       "Already exists",
-      "Already exists"
+      "You are not authorized to perform this action"
     ]
   ]).test(
     "%o with conditional message %s should return %s",
-    (error, message, expected) => {
-      const result = errorUtils.getErrorMessage(error, message);
-      expect(result).toEqual(expected);
+    (errorMessage, conditionalFailureMessage, expected) => {
+      const actual = errorUtils.getErrorMessage(
+        new Error(errorMessage),
+        conditionalFailureMessage
+      );
+      expect(actual).toEqual(expected);
     }
   );
 });

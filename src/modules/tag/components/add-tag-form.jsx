@@ -11,14 +11,18 @@ import FormError from "shared/form/error";
 import SubmitButton from "shared/form/submit-button";
 import AnimationBox from "shared/animation-box";
 
-const AddTagForm = (props: FormikProps<AddTagFormValues>) => (
+const AddTagForm = ({
+  handleSubmit,
+  isSubmitting,
+  errors
+}: FormikProps<AddTagFormValues>) => (
   <AnimationBox
     animation="zoomIn"
     tag="form"
     id="add-tag"
     responsive
     direction="column"
-    onSubmit={props.handleSubmit}
+    onSubmit={handleSubmit}
     data-test="add tag form"
   >
     <Box responsive direction="row" align="center" gap="small" flex="grow">
@@ -32,10 +36,10 @@ const AddTagForm = (props: FormikProps<AddTagFormValues>) => (
         inputBackground="light-1"
       />
       <Box flex="grow">
-        <SubmitButton isSubmitting={props.isSubmitting} label="Add" />
+        <SubmitButton isSubmitting={isSubmitting} label="Add" />
       </Box>
     </Box>
-    <FormError errors={props.errors} name="label" />
+    <FormError errors={errors} name="label" />
   </AnimationBox>
 );
 

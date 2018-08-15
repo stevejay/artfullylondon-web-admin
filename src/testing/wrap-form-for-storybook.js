@@ -1,5 +1,7 @@
 // @flow
 
+import type { FormikErrors } from "formik";
+
 import * as React from "react";
 import _ from "lodash";
 import { Formik } from "formik";
@@ -9,12 +11,13 @@ type FormWrapper = (
   React.ElementType,
   {
     +initialValues: { [key: string]: any },
-    +isSubmitting?: boolean
+    +isSubmitting?: boolean,
+    +errors?: ?FormikErrors<any>
   }
 ) => () => any;
 
 const wrapFormForStorybook: FormWrapper = (FormComponent, formProps) => () => {
-  const { initialValues, isSubmitting, ...rest } = formProps;
+  const { errors, initialValues, isSubmitting, ...rest } = formProps;
   return (
     <Formik
       initialValues={initialValues}
@@ -23,6 +26,7 @@ const wrapFormForStorybook: FormWrapper = (FormComponent, formProps) => () => {
         <FormComponent
           {...props}
           {...rest}
+          errors={errors || props.errors}
           handleSubmit={event => {
             action("submitted")(event);
             event.stopPropagation();

@@ -48,6 +48,19 @@ describe("auth", function() {
     cy.get("main article header h1").contains("Dashboard");
   });
 
+  it("should show the account page", () => {
+    cy.login();
+    cy.visit("/account");
+    cy.url().should("include", "/account");
+    cy.get("main article header h1").contains("Account");
+    cy.get('main article dl div[data-test="username"]').within(() => {
+      cy.contains("dd", "steve");
+    });
+    cy.get('main article dl div[data-test="groups"]').within(() => {
+      cy.contains("dd", "editors");
+    });
+  });
+
   it("should allow a user to log out", () => {
     cy.login();
     cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });

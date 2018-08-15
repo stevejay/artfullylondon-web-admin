@@ -8,6 +8,7 @@ import { action } from "@storybook/addon-actions";
 import { withScreenshot } from "storybook-chrome-screenshot";
 import { withApolloProvider } from "storybook-addon-apollo-graphql";
 import wrapFormForStorybook from "testing/wrap-form-for-storybook";
+import { allWidths } from "testing/screenshot-options";
 import centered from "testing/centered";
 import AddTagForm from "./add-tag-form";
 import Tag from "./tag";
@@ -15,7 +16,7 @@ import TagList from "./tag-list";
 import { INITIAL_VALUES } from "./add-tag-form-handler";
 
 storiesOf("Tag/AddTagForm", module)
-  .addDecorator(withScreenshot())
+  .addDecorator(withScreenshot(allWidths))
   .add(
     "default",
     wrapFormForStorybook(AddTagForm, {
@@ -28,6 +29,14 @@ storiesOf("Tag/AddTagForm", module)
     wrapFormForStorybook(AddTagForm, {
       initialValues: INITIAL_VALUES,
       isSubmitting: true
+    })
+  )
+  .add(
+    "error",
+    wrapFormForStorybook(AddTagForm, {
+      errors: { label: "Some error message" },
+      initialValues: INITIAL_VALUES,
+      isSubmitting: false
     })
   );
 
