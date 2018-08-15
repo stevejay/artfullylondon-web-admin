@@ -23,10 +23,7 @@ const UserSummarySection = ({ username, groups }: Props) => (
         />
         <DefinitionList.Definition
           term="App Version"
-          description={(process.env.REACT_APP_CIRCLE_SHA1 || "Local").substring(
-            0,
-            7
-          )}
+          description={process.env.REACT_APP_BUILD_ID || "Local"}
         />
       </DefinitionList>
     </Column>
