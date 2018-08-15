@@ -4,7 +4,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import { signIn } from "./amplify";
+import { signIn } from "./auth-service";
 
 // -- This is a parent command --
 Cypress.Commands.add("login", () => {

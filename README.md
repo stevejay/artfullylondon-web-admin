@@ -73,6 +73,7 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
+- Add waiting for fonts to load in storybook-chrome-screenshot config: [here](https://github.com/tsuyoshiwada/storybook-chrome-screenshot#full-control-the-screenshot-timing)
 - Add `yarn audit` when it is released.
 - Add ${CIRCLE_SHA1:0:7} type thing to app build info.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
@@ -103,7 +104,6 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 - Look into https://react.semantic-ui.com/
 - Look into https://ant.design/
 - Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
-- How come I don't have a problem with Storybook image screenshots of the fonts not being loaded at first when the screenshotting is run on the Circle CI environment? I've seen one "fix" of adding `delay: 1000` to the screenshot options.
 
 ## Maintenance
 

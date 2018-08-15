@@ -1,7 +1,6 @@
 // @flow
 
 import * as React from "react";
-import _ from "lodash";
 import { withScreenshot } from "storybook-chrome-screenshot";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -15,7 +14,6 @@ import * as disabledBathroomType from "../types/disabled-bathroom-type";
 import * as hearingFacilitiesType from "../types/hearing-facilities-type";
 import HeaderImage from "./header-image";
 import Header from "./header";
-import Column from "./column";
 import Aside from "./aside";
 import SectionHeading from "./section-heading";
 import Description from "./description";
@@ -62,20 +60,6 @@ storiesOf("Entity/Header", module)
       entityType={entityType.TALENT}
       onEdit={action("onEdit")}
     />
-  ));
-
-storiesOf("Entity/Column", module)
-  .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
-  .add("two columns", () => (
-    <Column.Container>
-      <Column basis="2/3">
-        <Box width="full" height="medium" background="#ffefd5" />
-      </Column>
-      <Column basis="1/3">
-        <Box width="full" height="medium" background="#d5e5ff" />
-      </Column>
-    </Column.Container>
   ));
 
 storiesOf("Entity/Aside", module)

@@ -15,7 +15,7 @@ import theme from "../src/theme";
 import { wide } from "testing/screenshot-options";
 
 addDecorator(initScreenshot());
-setScreenshotOptions(wide);
+setScreenshotOptions({ ...wide, waitFor: "fontLoading" });
 addDecorator(StoryRouter());
 addDecorator(checkA11y);
 

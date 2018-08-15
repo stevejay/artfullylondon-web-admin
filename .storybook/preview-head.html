@@ -1,0 +1,28 @@
+<link href="https://fonts.googleapis.com/css?family=Zilla+Slab:600" rel="stylesheet">
+<link href="https://use.typekit.net/osc1dxh.css" rel="stylesheet" >
+
+<!-- woff2 versions of the fonts -->
+<link data-font="zillaslab" rel="preload" href="https://fonts.gstatic.com/s/zillaslab/v3/dFa5ZfeM_74wlPZtksIFYuUe6HOpW3pwfa0.woff2" as="font" type="font/woff2" crossorigin="anonymous" onload="this.setAttribute('loaded', 'loaded')">
+<link data-font="museo-sans-1" rel="preload" href="https://use.typekit.net/af/620bf8/00000000000000000000e7fe/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3" as="font" type="font/woff2" crossorigin="anonymous" onload="this.setAttribute('loaded', 'loaded')">
+<link data-font="museo-sans-2" rel="preload" href="https://use.typekit.net/af/5cca6d/00000000000000000000e802/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3" as="font" type="font/woff2" crossorigin="anonymous" onload="this.setAttribute('loaded', 'loaded')">
+<link data-font="museo-sans-3" rel="preload" href="https://use.typekit.net/af/e3ca36/00000000000000000000e805/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3" as="font" type="font/woff2" crossorigin="anonymous" onload="this.setAttribute('loaded', 'loaded')">
+
+<!-- wait for fonts to load before taking image screenshots -->
+<script>
+function fontLoading() {
+  const loaded = () => !!document.querySelector('link[data-font="zillaslab"][rel="preload"][loaded="loaded"]') &&
+    !!document.querySelector('link[data-font="museo-sans-1"][rel="preload"][loaded="loaded"]') &&
+    !!document.querySelector('link[data-font="museo-sans-2"][rel="preload"][loaded="loaded"]') &&
+    !!document.querySelector('link[data-font="museo-sans-3"][rel="preload"][loaded="loaded"]');
+
+  if (loaded()) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const id = setInterval(() => {
+      if (!loaded()) return;
+      clearInterval(id);
+      resolve();
+    }, 50);
+  });
+}
+</script>
+

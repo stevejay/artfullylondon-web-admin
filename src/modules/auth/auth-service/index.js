@@ -3,7 +3,6 @@
 import type { Session } from "../flow-types";
 
 import Auth from "@aws-amplify/auth";
-import log from "loglevel";
 import * as mapper from "./mapper";
 
 Auth.configure({
