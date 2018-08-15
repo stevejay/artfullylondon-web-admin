@@ -3,6 +3,7 @@
 
 # build
 /build
+/build-*
 
 # env 
 .env

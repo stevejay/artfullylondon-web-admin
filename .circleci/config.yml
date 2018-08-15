@@ -27,10 +27,9 @@ aliases:
   - &yarn_build
     run:
       name: yarn build
-      command: |
-        export REACT_APP_BUILD_ID="${CIRCLE_SHA1:0:7}"
-        yarn build
-        echo "check for REACT_APP_BUILD_ID:" $REACT_APP_BUILD_ID
+      command: yarn build
+      environment:
+        REACT_APP_BUILD_ID: ${CIRCLE_SHA1:0:7}
 
 jobs:
   unit_test_and_build:
@@ -59,10 +58,13 @@ jobs:
       - *yarn_install
       - *save_yarn_cache
       - *yarn_build
+      - run:
+          name: rename build dir to build-release
+          command: mv build build-release
       - persist_to_workspace:
           root: *working_directory
           paths:
-             - build
+             - build-release
   e2e_testing:
     working_directory: *working_directory
     docker: *cypress_docker_image
@@ -98,7 +100,7 @@ jobs:
       - *save_yarn_cache
       - run:
           name: Deploy master to staging
-          command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN
+          command: ./node_modules/.bin/firebase deploy --project artfullylondon-staging-admin --token=$FIREBASE_DEPLOY_TOKEN --non-interactive
   deploy_to_prod:
     working_directory: *working_directory
     docker: *node_docker_image
@@ -111,7 +113,7 @@ jobs:
       - *save_yarn_cache
       - run:
           name: Deploy master to prod
-          command: ./node_modules/.bin/firebase deploy --project artfullylondon-prod-admin --token=$FIREBASE_DEPLOY_TOKEN
+          command: ./node_modules/.bin/firebase deploy --public=./build-release --project artfullylondon-prod-admin --token=$FIREBASE_DEPLOY_TOKEN --non-interactive
   visual_regression_testing:
     working_directory: *working_directory
     docker: *node_docker_image
