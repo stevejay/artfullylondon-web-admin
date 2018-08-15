@@ -1,4 +1,4 @@
-# version: 2
+version: 2
 
 aliases:
   - &working_directory 
@@ -24,8 +24,13 @@ aliases:
         - node_modules
   - &yarn_install
     run: yarn install --non-interactive --frozen-lockfile
-  - &set_build_id_for_react
-    run: export REACT_APP_BUILD_ID="${CIRCLE_SHA1:0:7}"
+  - &yarn_build
+    run:
+      name: yarn build
+      command: |
+        export REACT_APP_BUILD_ID="${CIRCLE_SHA1:0:7}"
+        yarn build
+        echo "check for REACT_APP_BUILD_ID:" $REACT_APP_BUILD_ID
 
 jobs:
   unit_test_and_build:
@@ -38,8 +43,7 @@ jobs:
       - *save_yarn_cache
       - run: yarn test:ci
       - run: yarn lint
-      - *set_build_id_for_react
-      - run: yarn build
+      - *yarn_build
       - persist_to_workspace:
           root: *working_directory
           paths:
@@ -54,8 +58,7 @@ jobs:
       - *restore_yarn_cache
       - *yarn_install
       - *save_yarn_cache
-      - *set_build_id_for_react
-      - run: yarn build
+      - *yarn_build
       - persist_to_workspace:
           root: *working_directory
           paths:
