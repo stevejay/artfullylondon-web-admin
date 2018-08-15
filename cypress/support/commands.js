@@ -5,22 +5,11 @@
 // ***********************************************
 
 import { signIn } from "./auth-service";
-import fetchStub from "../stubs/fetch";
 
 // -- This is a parent command --
-Cypress.Commands.add("login", stubs => {
-  console.log("has stubs", !!stubs);
+Cypress.Commands.add("login", () => {
   // long timeout as sometimes the amplify call can take a while.
-  cy.visit(
-    "/",
-    stubs
-      ? {
-          onBeforeLoad(win) {
-            fetchStub(win, stubs);
-          }
-        }
-      : {}
-  ).then({ timeout: 10000 }, () =>
+  cy.visit("/").then({ timeout: 10000 }, () =>
     signIn(
       Cypress.env("COGNITO_SIGN_IN_USERNAME"),
       Cypress.env("COGNITO_SIGN_IN_PASSWORD")

@@ -1,10 +1,13 @@
 export default function(win, stubs) {
   const { fetch } = win;
-  // throw new Error("yes, we got here here");
+  console.log("adding stubs");
 
   cy.stub(win, "fetch", (...args) => {
     const [url, request] = args;
     const postBody = JSON.parse(request.body);
+
+    console.log("intercepting...", url, JSON.stringify(postBody));
+
     if (url.indexOf("graphql") !== -1) {
       let promise;
 
