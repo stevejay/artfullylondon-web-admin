@@ -7,6 +7,6 @@ Auth.configure({
   userPoolWebClientId: Cypress.env("COGNITO_USER_POOL_APP_CLIENT_ID")
 });
 
-export async function signIn(username, password) {
-  return await Auth.signIn(username, password);
+export function signIn(username, password) {
+  return Auth.signIn(username, password);
 }

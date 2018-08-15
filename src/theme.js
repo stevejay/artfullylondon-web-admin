@@ -4,7 +4,7 @@ export default {
   global: {
     font: {
       family: "'museo-sans',sans-serif",
-      weight: 300, // TODO may be invalid theme key
+      weight: 300, // TODO may be invalid key
       face: ""
     }
   },
@@ -37,5 +37,8 @@ export default {
       family: "'Zilla Slab',sans-serif"
     },
     weight: 400
+  },
+  input: {
+    weight: 300
   }
 };
