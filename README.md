@@ -73,6 +73,7 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
+- Fix major issue with app updates not being caught by serviceworker.
 - Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
   - This looks a very interesting addition: https://www.npmjs.com/package/react-schema-final-form
 - Add `yarn audit` when it is released.
