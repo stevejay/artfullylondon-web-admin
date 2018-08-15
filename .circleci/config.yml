@@ -80,6 +80,7 @@ jobs:
           command: yarn run serve:build
           background: true
       - run: 
+          name: cypress run
           command: $(yarn bin)/cypress run --reporter junit --reporter-options "mochaFile=reports/cypress/results.xml"
           when: on_success
       - store_artifacts:
