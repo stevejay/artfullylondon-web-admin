@@ -5,7 +5,9 @@ describe("dashboard", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("/", {
-      onBeforeLoad: win => fetchStub(win, [entityCounts])
+      onBeforeLoad: win => {
+        fetchStub(win, [entityCounts]);
+      }
     });
   });
 
