@@ -3,7 +3,7 @@ import entityCounts from "../fixtures/entity-counts";
 
 describe("dashboard", () => {
   beforeEach(() => {
-    cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });
+    cy.visit("/", { onLoad: win => fetchStub(win, [entityCounts]) });
     cy.get('[data-test="login"] input[name="username"]').type(
       Cypress.env("COGNITO_SIGN_IN_USERNAME")
     );
