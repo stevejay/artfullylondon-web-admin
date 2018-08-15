@@ -1,7 +1,8 @@
 export default function(win, stubs) {
   const { fetch } = win;
   cy.stub(win, "fetch", (...args) => {
-    console.log("Handling fetch stub", args);
+    console.log("Handling fetch stub");
+    throw new Error("yes, we got here");
     const [url, request] = args;
     const postBody = JSON.parse(request.body);
     if (url.indexOf("graphql") !== -1) {

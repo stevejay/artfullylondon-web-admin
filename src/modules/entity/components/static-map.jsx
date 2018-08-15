@@ -15,7 +15,7 @@ type Props = {
 };
 
 const StaticMap = ({ latitude, longitude }: Props) => (
-  <Box flex align="center" justify="center" margin={BOX_MARGIN}>
+  <Box flex align="center" margin={BOX_MARGIN}>
     <Anchor
       a11yTitle="View location using Google Maps"
       href={createGoogleMapsUrl(latitude, longitude)}
