@@ -73,9 +73,9 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
-- Add waiting for fonts to load in storybook-chrome-screenshot config: [here](https://github.com/tsuyoshiwada/storybook-chrome-screenshot#full-control-the-screenshot-timing)
+- Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
+  - This looks a very interesting addition: https://www.npmjs.com/package/react-schema-final-form
 - Add `yarn audit` when it is released.
-- Add ${CIRCLE_SHA1:0:7} type thing to app build info.
 - Check if yarn caching in `.circleci/config.yml` is done correctly
 - Error boundaries!
 - Circle CI:
@@ -85,7 +85,6 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
   https://zach.codes/handling-client-side-app-updates-with-service-workers/
 - Grommet
   - Upgrade from v2 beta to v2 rc when it is released.
-- Look into getting smaller aws amplify builds: https://github.com/aws-amplify/amplify-js/wiki/Amplify-modularization
 - Remove unused packages (mainly dev dependencies: jest-styled-components; ...).
 - Improve this readme.
 - Date FNS v2:
@@ -103,6 +102,7 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 - Look into https://onsen.io/react/
 - Look into https://react.semantic-ui.com/
 - Look into https://ant.design/
+- Look into [smooth-ui](https://www.npmjs.com/package/smooth-ui)
 - Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
 
 ## Maintenance

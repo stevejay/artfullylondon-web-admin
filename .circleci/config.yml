@@ -156,8 +156,6 @@ workflows:
                 - master
       - build_release:
           context: artfully-staging # TODO artfully-prod
-          requires:
-            - deploy_to_staging
           filters:
             branches:
               only:
@@ -165,7 +163,8 @@ workflows:
       - hold:
           type: approval
           requires:
-           - build_release
+            - deploy_to_staging
+            - build_release
           filters:
             branches:
               only:
