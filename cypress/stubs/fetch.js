@@ -1,6 +1,6 @@
 export default function(win, stubs) {
   const { fetch } = win;
-  throw new Error("yes, we got here here");
+  // throw new Error("yes, we got here here");
 
   cy.stub(win, "fetch", (...args) => {
     const [url, request] = args;
@@ -10,7 +10,7 @@ export default function(win, stubs) {
 
       stubs.some(stub => {
         if (postBody.operationName === stub.operation) {
-          console.log("Stubbing", stub.operation);
+          // console.log("Stubbing", stub.operation);
           promise = Promise.resolve({
             ok: true,
             text() {

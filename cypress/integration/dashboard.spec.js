@@ -10,7 +10,7 @@ describe("dashboard", () => {
         fetchStub(win, [entityCounts]);
       },
       onLoad(win) {
-        throw new Error("PONY !!!");
+        // throw new Error("PONY !!!");
         fetchStub(win, [entityCounts]);
       }
     });

@@ -19,6 +19,7 @@ describe("tags", () => {
   it("should display the audience tags", () => {
     cy.get("main article header h1").contains("Audience Tags");
     cy.get('main article section[data-test="tag list"] ul').as("tagList");
+    // timeout here is waiting for list to be fetched:
     cy.get("@tagList").contains("li", "16 plus", { timeout: 15000 });
     cy.get("@tagList").contains("li", "adults only");
     cy.get("@tagList").contains("li", "families");
