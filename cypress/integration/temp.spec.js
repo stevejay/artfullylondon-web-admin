@@ -1,9 +1,12 @@
 import fetchStub from "../stubs/fetch";
 import entityCounts from "../fixtures/entity-counts";
+import tempPatch from "../support/temp";
 
 describe("temp", () => {
   beforeEach(() => {
+    // cy.window().then(tempPatch);
     cy.visit("/");
+
     // cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });
     // cy.window().then(win => {
     //   fetchStub(win, [entityCounts]);
