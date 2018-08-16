@@ -1,31 +1,35 @@
 // @flow
 
-import type { FieldProps } from "formik";
+import type { FieldRenderProps } from "react-final-form";
 
 import * as React from "react";
+import { pure } from "recompose";
 import { TextInput, FormField } from "grommet";
 
-type Props = FieldProps & { label: string };
+type Props = {
+  ...$Exact<FieldRenderProps>,
+  label: string
+};
 
-const TextField = ({ field, form, label, fastFieldFix, ...rest }: Props) => (
+const TextField = ({ input, meta, label, ...rest }: Props) => (
   <FormField
     label={label}
-    htmlFor={field.name}
+    htmlFor={input.name}
     error={
-      !!form.touched[field.name] &&
-      !!form.errors[field.name] &&
-      form.errors[field.name]
+      !!meta.touched &&
+      (!!meta.error || !!meta.submitError) &&
+      (meta.error || meta.submitError)
     }
   >
     <TextInput
       {...rest}
-      id={field.name}
-      name={field.name}
-      value={field.value}
-      onChange={field.onChange}
-      onBlur={field.onBlur}
+      id={input.name}
+      name={input.name}
+      value={input.value}
+      onChange={input.onChange}
+      onBlur={input.onBlur}
     />
   </FormField>
 );
 
-export default TextField;
+export default pure(TextField);

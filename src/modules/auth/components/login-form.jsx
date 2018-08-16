@@ -1,11 +1,10 @@
 // @flow
 
-import type { FormikProps } from "formik";
-import type { LoginFormValues } from "../flow-types";
+// import type { FormikProps } from "formik";
+import type { FormRenderProps } from "react-final-form";
 
 import * as React from "react";
-import { pure } from "recompose";
-import { Field } from "formik";
+import { Field } from "react-final-form";
 import { Box } from "grommet";
 import AnimationBox from "shared/animation-box";
 import TextField from "shared/form/text-field";
@@ -15,9 +14,11 @@ import SubmitButton from "shared/form/submit-button";
 const SUBMIT_BOX_MARGIN = { top: "medium" };
 
 const LoginForm = ({
-  isSubmitting,
-  handleSubmit
-}: FormikProps<LoginFormValues>) => (
+  form,
+  handleSubmit,
+  submitting,
+  pristine
+}: FormRenderProps) => (
   <Box align="center" justify="start" flex fill>
     <AnimationBox
       animation="zoomIn"
@@ -56,10 +57,14 @@ const LoginForm = ({
         required
       />
       <Box margin={SUBMIT_BOX_MARGIN}>
-        <SubmitButton isSubmitting={isSubmitting} label="Log In" fill />
+        <SubmitButton
+          isSubmitting={!!submitting || !!pristine}
+          label="Log In"
+          fill
+        />
       </Box>
     </AnimationBox>
   </Box>
 );
 
-export default pure(LoginForm);
+export default LoginForm;

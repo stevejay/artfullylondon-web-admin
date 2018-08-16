@@ -27,7 +27,7 @@ import IconLinkList from "./icon-link-list";
 
 storiesOf("Entity/HeaderImage", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("image", () => (
     <HeaderImage
       entityType={entityType.TALENT}
@@ -51,7 +51,7 @@ storiesOf("Entity/HeaderImage", module)
 
 storiesOf("Entity/Header", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <Header
       id="talent/foo"
