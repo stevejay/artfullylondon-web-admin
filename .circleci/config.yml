@@ -23,7 +23,9 @@ aliases:
       paths:
         - node_modules
   - &yarn_install
-    run: yarn install --non-interactive --frozen-lockfile
+    run:
+      name: yarn install
+      command: yarn install --non-interactive --frozen-lockfile
   - &yarn_build
     run:
       name: yarn build
@@ -73,13 +75,14 @@ jobs:
       - checkout
       - attach_workspace:
           at: *working_directory
-      - *restore_yarn_cache
+      # caching of node_modules has no effect in this job
+      # as it uses a different docker image to the other jobs.
       - *yarn_install
-      - *save_yarn_cache
       - run: 
           command: yarn run serve:build
           background: true
       - run: 
+          name: cypress run
           command: $(yarn bin)/cypress run --reporter junit --reporter-options "mochaFile=reports/cypress/results.xml"
           when: on_success
       - store_artifacts:

@@ -1,16 +1,11 @@
-import fetchStub from "../stubs/fetch";
-import entityCounts from "../fixtures/entity-counts";
-
 describe("dashboard", () => {
   beforeEach(() => {
+    cy.visit("/");
     cy.login();
-    cy.visit("/", {
-      onBeforeLoad: win => fetchStub(win, [entityCounts])
-    });
   });
 
   it("should display the dashboard", () => {
-    cy.get("main article header h1").contains("Dashboard");
+    cy.contains("main article header h1", "Dashboard", { timeout: 15000 });
     assertEntityStatistic("EVENT", "Event");
     assertEntityStatistic("EVENT_SERIES", "Event Series");
     assertEntityStatistic("VENUE", "Venue");

@@ -1,19 +1,11 @@
 import uuidv1 from "uuid/v1";
-import fetchStub from "../stubs/fetch";
-import audienceTags from "../fixtures/audience-tags";
-import createTag from "../fixtures/create-tag";
-import deleteTag from "../fixtures/delete-tag";
 
 const RANDOM_LABEL = uuidv1().replace(/-/g, "");
 
 describe("tags", () => {
   beforeEach(() => {
+    cy.visit("/tag/audience");
     cy.login();
-    cy.visit("/tag/audience", {
-      onBeforeLoad: win => {
-        fetchStub(win, [audienceTags, createTag(RANDOM_LABEL), deleteTag]);
-      }
-    });
   });
 
   it("should display the audience tags", () => {
@@ -29,15 +21,16 @@ describe("tags", () => {
     cy.get("@addTagForm")
       .get('input[name="label"]')
       .type(`${RANDOM_LABEL}{enter}`);
-    // TODO change from trigger to click when cypress v3.1.0+ is released
-    // https://github.com/cypress-io/cypress/issues/2252
     cy.contains(
       'main article section[data-test="tag list"] ul li',
-      RANDOM_LABEL
+      RANDOM_LABEL,
+      { timeout: 15000 }
     ).within(() => {
-      cy.get("button").trigger("click");
+      cy.get("button").click();
     });
-    // wait for the async tag deletion handling to complete
+    // wait for the async tag deletion handling to complete:
+    // TODO find a way to avoid this wait.
     cy.wait(10000);
+    cy.queryByText(RANDOM_LABEL).should("not.exist");
   });
 });

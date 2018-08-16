@@ -73,12 +73,12 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
+- Once Cypress lands the rewritten network layer mocking, rework the e2e tests to use it. Also try again programmatically logging into the app in each test.
 - Fix major issue with app updates not being caught by serviceworker.
 - Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
   - This looks a very interesting addition: https://www.npmjs.com/package/react-schema-final-form
 - Add `yarn audit` when it is released.
-- Check if yarn caching in `.circleci/config.yml` is done correctly
-- Error boundaries!
+- React error boundaries.
 - Circle CI:
   - linting
     https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
@@ -96,7 +96,6 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 - Look into something like this: https://github.com/Decisiv/styled-components-modifiers
 - Use flow enums for the types?
 - See if a submit-on-Enter fix appears for Formix FastField
-- Yup for validation
 - Why no descriptionCredit on almeida and british libary/museum pics?
 - I'll need to use mapbox-gl but it is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to include it only on the venue and event edit pages.
 - Look into https://www.graph.cool/

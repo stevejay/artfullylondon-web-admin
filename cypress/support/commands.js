@@ -4,15 +4,18 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import { signIn } from "./auth-service";
+import "cypress-testing-library/add-commands";
 
-// -- This is a parent command --
 Cypress.Commands.add("login", () => {
-  // long timeout as sometimes the amplify call can take a while.
-  cy.visit("/").then({ timeout: 10000 }, () =>
-    signIn(
-      Cypress.env("COGNITO_SIGN_IN_USERNAME"),
-      Cypress.env("COGNITO_SIGN_IN_PASSWORD")
-    )
+  cy.get('[data-test="login"] input[name="username"]').type(
+    Cypress.env("COGNITO_SIGN_IN_USERNAME")
   );
+  cy.get('[data-test="login"] input[name="password"]').type(
+    Cypress.env("COGNITO_SIGN_IN_PASSWORD") + "{enter}"
+  );
+});
+
+Cypress.Commands.add("useSidebarToNavigateTo", href => {
+  cy.get('nav button[data-test="open sidebar"]').click();
+  cy.get(`aside[data-test="sidebar"] a[href="${href}"]`).click();
 });

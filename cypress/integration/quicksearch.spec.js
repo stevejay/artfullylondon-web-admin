@@ -1,21 +1,7 @@
-import fetchStub from "../stubs/fetch";
-import entityCounts from "../fixtures/entity-counts";
-import autocompleteSearch from "../fixtures/autocomplete-search";
-import searchAll from "../fixtures/search-all";
-import getTalentForEdit from "../fixtures/get-talent-for-edit";
-
 describe("quicksearch", () => {
   beforeEach(() => {
+    cy.visit("/");
     cy.login();
-    cy.visit("/", {
-      onBeforeLoad: win =>
-        fetchStub(win, [
-          entityCounts,
-          autocompleteSearch,
-          searchAll,
-          getTalentForEdit
-        ])
-    });
   });
 
   it("should implement quicksearch", () => {
@@ -25,7 +11,7 @@ describe("quicksearch", () => {
       .get('input[data-test="search term"]')
       .type("carrie{enter}");
     cy.url().should("include", "/search");
-    cy.get("main article header h1").contains("Search");
+    cy.contains("main article header h1", "Search");
     cy.get('main article form[data-test="basic search"]').as("basicSearchForm");
     cy.get("@basicSearchForm")
       .get('input[name="term"]')
@@ -33,8 +19,10 @@ describe("quicksearch", () => {
     cy.get("@basicSearchForm")
       .get('input[name="entityType"]')
       .should("have.value", "in all");
-    cy.get(
-      'main article section[data-test="search results"] article header h2'
-    ).contains("Carrie Cracknell");
+    cy.contains(
+      'main article section[data-test="search results"] article header h2',
+      "Carrie Cracknell",
+      { timeout: 15000 }
+    );
   });
 });
