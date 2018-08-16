@@ -3,6 +3,7 @@ import entityCounts from "../fixtures/entity-counts";
 
 describe("dashboard", () => {
   beforeEach(() => {
+    // cy.visit("/foo");
     cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });
     // cy.window().then(win => {
     //   fetchStub(win, [entityCounts]);
