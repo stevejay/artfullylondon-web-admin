@@ -4,6 +4,10 @@ export default function(win, stubs) {
 
   cy.stub(win, "fetch", (...args) => {
     const [url, request] = args;
+    if (!request) {
+      return fetch(...args);
+    }
+
     const postBody = JSON.parse(request.body);
 
     console.log("intercepting...", url, JSON.stringify(postBody));
