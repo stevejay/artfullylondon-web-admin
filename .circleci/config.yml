@@ -75,8 +75,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: *working_directory
-      # caching of node_modules has no effect as e2e_testing job uses
-      # a different docker image to the other jobs.
+      # caching of node_modules has no effect in this job
+      # as it uses a different docker image to the other jobs.
       - *yarn_install
       - run: 
           command: yarn run serve:build
