@@ -75,9 +75,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: *working_directory
-      - *restore_yarn_cache
+      # caching of node_modules has no effect as e2e_testing job uses
+      # a different docker image to the other jobs.
       - *yarn_install
-      - *save_yarn_cache
       - run: 
           command: yarn run serve:build
           background: true

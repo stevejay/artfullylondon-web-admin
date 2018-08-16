@@ -4,7 +4,7 @@ import tempPatch from "../support/temp";
 
 describe("dashboard", () => {
   beforeEach(() => {
-    // cy.window().then(tempPatch);
+    cy.window().then(tempPatch);
     cy.visit("/");
 
     // cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });

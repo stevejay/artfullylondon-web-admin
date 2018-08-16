@@ -73,6 +73,7 @@ Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
 ## TODO
 
+- Caching of yarn doesn't work for e2e test job in circleci because it uses a different docker container (a cypress one).
 - Work out why cypress fetch stubbing is not working in circleci:
   - https://github.com/cypress-io/cypress-documentation/issues/122
   - This looks similar: https://github.com/cypress-io/cypress/issues/1311
