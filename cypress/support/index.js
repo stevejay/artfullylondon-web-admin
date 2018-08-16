@@ -21,14 +21,13 @@ import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-let fetchPatched = false;
-
 Cypress.on("window:before:load", win => {
-  if (fetchPatched) {
-    return;
-  }
+  console.log("event: window:before:load");
 
   const { fetch: actualFetch } = win;
+  if (actualFetch.__PATCHED__) {
+    return;
+  }
 
   win.fetch = (...args) => {
     const [url, request] = args;
@@ -66,5 +65,5 @@ Cypress.on("window:before:load", win => {
     return actualFetch(...args);
   };
 
-  fetchPatched = true;
+  win.fetch.__PATCHED__ = true;
 });
