@@ -1,15 +1,7 @@
-import fetchStub from "../stubs/fetch";
-import entityCounts from "../fixtures/entity-counts";
-import autocompleteSearch from "../fixtures/autocomplete-search";
-import getTalentForEdit from "../fixtures/get-talent-for-edit";
-
 describe("autocomplete search", () => {
   beforeEach(() => {
+    cy.visit("/");
     cy.login();
-    cy.visit("/", {
-      onBeforeLoad: win =>
-        fetchStub(win, [entityCounts, autocompleteSearch, getTalentForEdit])
-    });
   });
 
   it("should implement an autocomplete search", () => {
@@ -24,6 +16,7 @@ describe("autocomplete search", () => {
       .get('ul[data-test="autocomplete list"] li a')
       .first()
       .click();
+    cy.url().should("include", "/talent/carrie-cracknell");
     cy.contains("main article header h1", "Carrie Cracknell", {
       timeout: 15000
     });

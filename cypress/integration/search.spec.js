@@ -1,16 +1,10 @@
-import fetchStub from "../stubs/fetch";
-import searchAll from "../fixtures/search-all";
-import getTalentForEdit from "../fixtures/get-talent-for-edit";
-
 describe("search page", () => {
   beforeEach(() => {
+    cy.visit("/search");
     cy.login();
-    cy.visit("/search", {
-      onBeforeLoad: win => fetchStub(win, [searchAll, getTalentForEdit])
-    });
   });
 
-  it("should have expected initial search values", () => {
+  it("should have the correct initial search values", () => {
     cy.get('main article form[data-test="basic search"]').as("basicSearchForm");
     cy.get("@basicSearchForm")
       .get('input[name="term"]')
@@ -28,12 +22,11 @@ describe("search page", () => {
     cy.get("@basicSearchForm")
       .get('button[data-test="submit"]')
       .click();
-    cy.get('main article section[data-test="search results"]').as(
-      "searchResults"
+    cy.contains(
+      'main article section[data-test="search results"] article header h2',
+      "Carrie Cracknell",
+      { timeout: 15000 }
     );
-    cy.get("@searchResults")
-      .get("article header h2")
-      .contains("Carrie Cracknell");
   });
 
   it("should allow searching only talents", () => {
@@ -51,29 +44,29 @@ describe("search page", () => {
     cy.get("@basicSearchForm")
       .get('button[data-test="submit"]')
       .click();
-    cy.get('main article section[data-test="search results"]').as(
-      "searchResults"
+    cy.contains(
+      'main article section[data-test="search results"] article header h2',
+      "Carrie Cracknell",
+      { timeout: 15000 }
     );
-    cy.get("@searchResults")
-      .get("article header h2")
-      .contains("Carrie Cracknell");
   });
 
   it("should show the full entity when a search result is clicked", () => {
     cy.get('main article form[data-test="basic search"]').as("basicSearchForm");
     cy.get("@basicSearchForm")
       .get('input[name="term"]')
-      .type("carrie");
+      .type("carrie cracknell");
     cy.get("@basicSearchForm")
       .get('button[data-test="submit"]')
       .click();
-    cy.get('main article section[data-test="search results"]').as(
-      "searchResults"
-    );
-    cy.get("@searchResults")
-      .get("article header h2")
-      .click();
+    cy.contains(
+      'main article section[data-test="search results"] article header h2',
+      "Carrie Cracknell",
+      { timeout: 15000 }
+    ).click();
     cy.url().should("include", "/talent/carrie-cracknell-theatre-director");
-    cy.get("main article header h1").contains("Carrie Cracknell");
+    cy.contains("main article header h1", "Carrie Cracknell", {
+      timeout: 15000
+    });
   });
 });

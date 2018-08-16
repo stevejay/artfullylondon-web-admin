@@ -1,26 +1,11 @@
-import fetchStub from "../stubs/fetch";
-import entityCounts from "../fixtures/entity-counts";
-import tempPatch from "../support/temp";
-
 describe("dashboard", () => {
   beforeEach(() => {
-    cy.window().then(tempPatch);
     cy.visit("/");
-
-    // cy.visit("/", { onBeforeLoad: win => fetchStub(win, [entityCounts]) });
-    // cy.window().then(win => {
-    //   fetchStub(win, [entityCounts]);
-    // });
-    cy.get('[data-test="login"] input[name="username"]').type(
-      Cypress.env("COGNITO_SIGN_IN_USERNAME")
-    );
-    cy.get('[data-test="login"] input[name="password"]').type(
-      Cypress.env("COGNITO_SIGN_IN_PASSWORD") + "{enter}"
-    );
+    cy.login();
   });
 
   it("should display the dashboard", () => {
-    cy.get("main article header h1").contains("Dashboard");
+    cy.contains("main article header h1", "Dashboard", { timeout: 15000 });
     assertEntityStatistic("EVENT", "Event");
     assertEntityStatistic("EVENT_SERIES", "Event Series");
     assertEntityStatistic("VENUE", "Venue");

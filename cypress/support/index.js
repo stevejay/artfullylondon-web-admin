@@ -15,9 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import "./commands";
-import tempPatch from "./temp";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-
-Cypress.on("window:before:load", tempPatch);
