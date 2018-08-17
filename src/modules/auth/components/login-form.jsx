@@ -14,7 +14,6 @@ import FormError from "shared/form/error";
 const SUBMIT_BOX_MARGIN = { top: "medium" };
 
 const LoginForm = ({
-  form,
   handleSubmit,
   submitting,
   submitErrors

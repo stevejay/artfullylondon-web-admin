@@ -1,13 +1,13 @@
 // @flow
 
 import type { MutationUpdaterFn } from "react-apollo";
-import type { FormikActions } from "formik";
 import type { AddTagFormValues, TagArray } from "../flow-types";
+import type { FormApi } from "final-form";
 
 import * as React from "react";
 import { Mutation } from "react-apollo";
 import _ from "lodash";
-import { Formik } from "formik";
+import { Form } from "react-final-form";
 import AddTagForm from "./add-tag-form";
 import { CreateTag } from "../graphql/mutations";
 import { GetTags } from "../graphql/queries";
@@ -29,27 +29,18 @@ class AddTagFormHandler extends React.PureComponent<Props> {
   handleSubmit = (
     createTag: any => Promise<any>,
     values: AddTagFormValues,
-    formik: FormikActions<AddTagFormValues>
-  ) => {
+    form: FormApi
+  ) =>
     createTag({
       variables: {
         tagType: this.props.tagType,
         label: values.label
       }
     })
-      .then(res => {
-        formik.resetForm(INITIAL_VALUES);
-      })
-      .catch(err => {
-        formik.setFieldError(
-          "label",
-          getErrorMessage(err, "This tag already exists")
-        );
-      })
-      .then(() => {
-        formik.setSubmitting(false);
-      });
-  };
+      .then(res => form.reset())
+      .catch(err => ({
+        FORM_ERROR: getErrorMessage(err, "This tag already exists")
+      }));
 
   handleUpdate: MutationUpdaterFn<> = (cache, result) => {
     const { tagType } = this.props;
@@ -84,11 +75,11 @@ class AddTagFormHandler extends React.PureComponent<Props> {
     return (
       <Mutation mutation={CreateTag} update={this.handleUpdate}>
         {createTag => (
-          <Formik
+          <Form
             initialValues={INITIAL_VALUES}
-            enableReinitialize
             onSubmit={_.bind(this.handleSubmit, this, createTag)}
             component={AddTagForm}
+            subscription={{ submitting: true, submitErrors: true }}
           />
         )}
       </Mutation>

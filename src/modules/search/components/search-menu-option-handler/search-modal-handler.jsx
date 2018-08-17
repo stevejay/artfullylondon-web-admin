@@ -66,24 +66,7 @@ class SearchModalHandler extends React.Component<EnhancedProps> {
 
   handleClose = () => {
     this.props.resetAutocompleteIndex();
-
-    // TODO I gave this a go here, trying to clear the client cache
-    // autocomplete items on close. It only works if
-    // this.props.autocompleteTerm matches the current value in the cache.
-    // I think apollo client will have a proper solution in v3.
-    // TODO probably ditch this for now.
-
-    this.props.client.writeQuery({
-      query: Autocomplete,
-      variables: { term: this.props.autocompleteTerm },
-      data: {
-        autocompleteSearch: {
-          results: [],
-          __typename: "AutocompleteResult"
-        }
-      }
-    });
-
+    this.props.setAutocompleteTerm("");
     this.props.onClose();
   };
 
@@ -95,12 +78,10 @@ class SearchModalHandler extends React.Component<EnhancedProps> {
       resetAutocompleteIndex,
       setAutocompleteIndex
     } = this.props;
-    if (!open) {
-      return null;
-    }
-    return (
+    return open ? (
       <Query
         query={Autocomplete}
+        fetchPolicy="no-cache"
         variables={{ term: autocompleteTerm }}
         onCompleted={resetAutocompleteIndex}
       >
@@ -129,7 +110,7 @@ class SearchModalHandler extends React.Component<EnhancedProps> {
           </Layer>
         )}
       </Query>
-    );
+    ) : null;
   }
 }
 
