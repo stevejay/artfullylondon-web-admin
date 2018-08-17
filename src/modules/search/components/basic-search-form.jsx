@@ -1,14 +1,13 @@
 // @flow
 
-import type { FormikProps } from "formik";
-import type { BasicSearchFormValues } from "../flow-types";
+import type { FormRenderProps } from "react-final-form";
 
 import * as React from "react";
 import { pure } from "recompose";
-import { Field } from "formik";
+import { Field } from "react-final-form";
 import { Box } from "grommet";
-import TextInput from "shared/form/extended-text-input";
-import Select from "shared/form/select";
+import ExtendedTextInput from "shared/form/extended-text-input";
+import FormSelect from "shared/form/select";
 import SubmitButton from "shared/form/submit-button";
 import AnimationBox from "shared/animation-box";
 import SearchFieldBox from "./search-field-box";
@@ -19,13 +18,7 @@ const FORM_BOX_PAD = { horizontal: "medium", vertical: "small" };
 const FORM_BOX_BORDER = { color: "neutral-2", side: "all", size: "xsmall" };
 const BUTTON_BOX_MARGIN = { vertical: "small" };
 
-type Props = FormikProps<BasicSearchFormValues>;
-
-const BasicSearchForm = ({
-  isSubmitting,
-  handleSubmit,
-  setFieldValue
-}: Props) => (
+const BasicSearchForm = ({ submitting, handleSubmit }: FormRenderProps) => (
   <Box
     margin={FORM_BOX_MARGIN}
     pad={FORM_BOX_PAD}
@@ -46,7 +39,7 @@ const BasicSearchForm = ({
       >
         <SearchFieldBox>
           <Field
-            component={TextInput}
+            component={ExtendedTextInput}
             name="term"
             placeholder="Search for this"
             plain
@@ -58,10 +51,9 @@ const BasicSearchForm = ({
         </SearchFieldBox>
         <SearchFieldBox>
           <Field
-            component={Select}
+            component={FormSelect}
             name="entityType"
             options={ENTITY_TYPE_OPTIONS}
-            setFieldValue={setFieldValue}
             closeOnChange
             plain
             size="large"
@@ -71,7 +63,7 @@ const BasicSearchForm = ({
           />
         </SearchFieldBox>
         <Box margin={BUTTON_BOX_MARGIN} responsive={false} flex="grow">
-          <SubmitButton isSubmitting={isSubmitting} label="Go!" fill />
+          <SubmitButton label="Go!" fill />
         </Box>
       </Box>
     </AnimationBox>

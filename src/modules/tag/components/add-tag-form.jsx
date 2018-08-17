@@ -1,21 +1,22 @@
 // @flow
 
-import type { FormikProps } from "formik";
-import type { AddTagFormValues } from "../flow-types";
+import type { FormRenderProps } from "react-final-form";
 
 import * as React from "react";
-import { Field } from "formik";
+import { Field } from "react-final-form";
 import { Box } from "grommet";
-import TextInput from "shared/form/extended-text-input";
+import ExtendedTextInput from "shared/form/extended-text-input";
 import FormError from "shared/form/error";
 import SubmitButton from "shared/form/submit-button";
 import AnimationBox from "shared/animation-box";
 
+// TODO how to clear the form error when the user changes the label text?
+
 const AddTagForm = ({
   handleSubmit,
-  isSubmitting,
-  errors
-}: FormikProps<AddTagFormValues>) => (
+  submitting,
+  submitErrors
+}: FormRenderProps) => (
   <AnimationBox
     animation="zoomIn"
     tag="form"
@@ -27,7 +28,7 @@ const AddTagForm = ({
   >
     <Box responsive direction="row" align="center" gap="small" flex="grow">
       <Field
-        component={TextInput}
+        component={ExtendedTextInput}
         name="label"
         placeholder="New label"
         size="medium"
@@ -36,10 +37,10 @@ const AddTagForm = ({
         inputBackground="light-1"
       />
       <Box flex="grow">
-        <SubmitButton isSubmitting={isSubmitting} label="Add" />
+        <SubmitButton isSubmitting={!!submitting} label="Add" />
       </Box>
     </Box>
-    <FormError errors={errors} name="label" />
+    <FormError errors={submitErrors} name="FORM_ERROR" />
   </AnimationBox>
 );
 

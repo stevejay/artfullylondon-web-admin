@@ -9,7 +9,7 @@ import { allWidths } from "testing/screenshot-options";
 
 storiesOf("Column", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("two columns", () => (
     <Column.Container>
       <Column basis="2/3">

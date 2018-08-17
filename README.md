@@ -71,40 +71,6 @@ If you get the 'performing a tls handshake to localhost' issue, follow the instr
 Message: `Network error: Store reset while query was in flight(not completed in link chain)`
 Bug: [Github issue](https://github.com/apollographql/apollo-client/issues/3766)
 
-## TODO
-
-- Once Cypress lands the rewritten network layer mocking, rework the e2e tests to use it. Also try again programmatically logging into the app in each test.
-- Fix major issue with app updates not being caught by serviceworker.
-- Look into [react final form](https://github.com/final-form/react-final-form) instead of formik.
-  - This looks a very interesting addition: https://www.npmjs.com/package/react-schema-final-form
-- Add `yarn audit` when it is released.
-- React error boundaries.
-- Circle CI:
-  - linting
-    https://groundberry.github.io/development/2017/06/11/create-react-app-linting-all-the-things.html
-- Good idea of checking for swUpdate on router navigation:
-  https://zach.codes/handling-client-side-app-updates-with-service-workers/
-- Grommet
-  - Upgrade from v2 beta to v2 rc when it is released.
-- Remove unused packages (mainly dev dependencies: jest-styled-components; ...).
-- Improve this readme.
-- Date FNS v2:
-  - The alpha docs for it are [here](https://date-fns.org/v2.0.0-alpha.11/docs/parse).
-- create-react-app v2:
-  - I Might be able to use `jest-puppe-shots` when create-react-app upgrades to Jest v23.
-  - It will support the ability to preprocess queries using graphql-tag/loader, but I'll have to see if Storybook picks it up.
-- Look into something like this: https://github.com/Decisiv/styled-components-modifiers
-- Use flow enums for the types?
-- See if a submit-on-Enter fix appears for Formix FastField
-- Why no descriptionCredit on almeida and british libary/museum pics?
-- I'll need to use mapbox-gl but it is a huge library - use [react-loadable](https://github.com/jamiebuilds/react-loadable) to include it only on the venue and event edit pages.
-- Look into https://www.graph.cool/
-- Look into https://onsen.io/react/
-- Look into https://react.semantic-ui.com/
-- Look into https://ant.design/
-- Look into [smooth-ui](https://www.npmjs.com/package/smooth-ui)
-- Container (data fetching), Handler, Presentation? Although DA mentions data _and_ behavior for containers.
-
 ## Maintenance
 
 ### Flow

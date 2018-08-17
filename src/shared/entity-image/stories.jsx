@@ -14,8 +14,8 @@ import EntityImage from ".";
   entityType.EVENT
 ].forEach(type => {
   storiesOf(`EntityImage/${getEntityTypeDisplayName(type)}`, module)
-    .addDecorator(story => (
-      <div style={{ width: 300, height: 300 }}>{story()}</div>
+    .addDecorator((story, context) => (
+      <div style={{ width: 300, height: 300 }}>{story(context)}</div>
     ))
     .add(
       "placeholder",

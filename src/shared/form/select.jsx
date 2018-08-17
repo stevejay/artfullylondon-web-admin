@@ -1,6 +1,6 @@
 // @flow
 
-import type { FieldProps } from "formik";
+import type { FieldRenderProps } from "react-final-form";
 
 import * as React from "react";
 import { Select, Box, Text } from "grommet";
@@ -12,36 +12,33 @@ type SelectType = {
   selected: number
 };
 
-type Props = FieldProps & {
-  a11yTitle: string,
-  setFieldValue: ({
-    field: string,
-    value: any,
-    shouldValidate: ?boolean
-  }) => void
+type Props = {
+  ...$Exact<FieldRenderProps>,
+  +a11yTitle: string
 };
 
 export default class FormSelect extends React.Component<Props> {
   handleChange = (arg: SelectType) => {
-    this.props.setFieldValue(this.props.field.name, arg.value);
+    this.props.input.onChange(arg.value);
   };
+  renderItem = (value: { label: string }) => (
+    <Box align="start" pad="small" data-test={value.label}>
+      <Text margin="none">{value.label}</Text>
+    </Box>
+  );
   render() {
-    const { a11yTitle, field, form, ...rest } = this.props;
+    const { a11yTitle, input, ...rest } = this.props;
     return (
       <Select
         {...rest}
         a11yTitle={a11yTitle}
-        id={field.name}
-        name={field.name}
-        value={field.value}
+        id={input.name}
+        name={input.name}
+        value={input.value}
         onChange={this.handleChange}
-        onBlur={field.onBlur}
+        onBlur={input.onBlur}
       >
-        {value => (
-          <Box align="start" pad="small" data-test={value.label}>
-            <Text margin="none">{value.label}</Text>
-          </Box>
-        )}
+        {this.renderItem}
       </Select>
     );
   }

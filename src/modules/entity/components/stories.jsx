@@ -27,7 +27,7 @@ import IconLinkList from "./icon-link-list";
 
 storiesOf("Entity/HeaderImage", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("image", () => (
     <HeaderImage
       entityType={entityType.TALENT}
@@ -51,7 +51,7 @@ storiesOf("Entity/HeaderImage", module)
 
 storiesOf("Entity/Header", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <Header
       id="talent/foo"
@@ -78,7 +78,7 @@ storiesOf("Entity/Aside", module)
 
 storiesOf("Entity/SectionHeading", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box width="medium">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="medium">{story(context)}</Box>)
   .add("default", () => (
     <React.Fragment>
       <SectionHeading title="Some Heading" />
@@ -88,7 +88,7 @@ storiesOf("Entity/SectionHeading", module)
 
 storiesOf("Entity/Description", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box width="medium">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="medium">{story(context)}</Box>)
   .add("no description", () => <Description />)
   .add("description", () => (
     <Description description="<p>This is a description</p>" />
@@ -127,7 +127,7 @@ storiesOf("Entity/DisabilityAccess", module)
 
 storiesOf("Entity/Notes", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box width="medium">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="medium">{story(context)}</Box>)
   .add("default", () => (
     <Notes notes="Molestiae sunt tenetur fuga voluptas natus dolores nostrum optio. Corrupti alias quia illo maiores odit aperiam nobis. Qui a odio omnis vero sequi." />
   ));
@@ -144,7 +144,7 @@ storiesOf("Entity/Rating", module)
 
 storiesOf("Entity/Summary", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box width="medium">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="medium">{story(context)}</Box>)
   .add("default", () => (
     <Summary summary="Molestiae sunt tenetur fuga voluptas natus dolores nostrum optio. Corrupti alias quia illo maiores." />
   ));

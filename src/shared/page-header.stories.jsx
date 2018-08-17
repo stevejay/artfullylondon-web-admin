@@ -10,7 +10,7 @@ import { allWidths } from "testing/screenshot-options";
 
 storiesOf("PageHeader", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <PageHeader icon={Dashboard} title="Some Title" subTitle="Some sub title" />
   ));

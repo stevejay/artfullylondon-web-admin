@@ -24,7 +24,7 @@ storiesOf("Menu/Logo", module).add("default", () => (
 
 storiesOf("Menu/Nav", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <Nav
       sidebarOpen={false}
@@ -35,7 +35,7 @@ storiesOf("Menu/Nav", module)
 
 storiesOf("Menu/Sidebar", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <Sidebar
       logoutMenuOptionHandler={Logout}
@@ -56,7 +56,9 @@ storiesOf("Menu/SidebarLink", module)
 
 storiesOf("Menu/SearchButton", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box background="brand">{story()}</Box>)
+  .addDecorator((story, context) => (
+    <Box background="brand">{story(context)}</Box>
+  ))
   .add("default", () => (
     <SearchButton searchOpen={false} onClick={action("clicked")} />
   ));

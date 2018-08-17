@@ -8,7 +8,7 @@ import { withScreenshot } from "storybook-chrome-screenshot";
 import centered from "testing/centered";
 import * as entityType from "../types/entity-type";
 import Error from "./error";
-import Select from "./select";
+import FormSelect from "./select";
 import SubmitButton from "./submit-button";
 import ExtendedTextInput from "./extended-text-input";
 import TextField from "./text-field";
@@ -44,14 +44,19 @@ storiesOf("Form/Select", module)
   .addDecorator(withScreenshot())
   .addDecorator(centered)
   .add("default", () => (
-    <Select
+    <FormSelect
       a11yTitle="The a11y title"
-      field={{
+      input={{
         name: "entityType",
         value: ENTITY_TYPE_OPTIONS[4],
-        onBlur: action("blurred")
+        onChange: action("changed"),
+        onBlur: action("blurred"),
+        onFocus: action("focussed")
       }}
-      setFieldValue={action("field value set")}
+      meta={{
+        touched: false,
+        error: null
+      }}
       options={ENTITY_TYPE_OPTIONS}
     />
   ));
@@ -70,22 +75,24 @@ storiesOf("Form/ExtendedTextInput", module)
   .addDecorator(centered)
   .add("default", () => (
     <ExtendedTextInput
-      field={{
+      input={{
         name: "username",
         value: "Steve",
         onChange: action("changed"),
-        onBlur: action("blurred")
+        onBlur: action("blurred"),
+        onFocus: action("focussed")
       }}
     />
   ))
   .add("background", () => (
     <ExtendedTextInput
       inputBackground="neutral-4"
-      field={{
+      input={{
         name: "username",
         value: "Steve",
         onChange: action("changed"),
-        onBlur: action("blurred")
+        onBlur: action("blurred"),
+        onFocus: action("focussed")
       }}
     />
   ));
@@ -96,40 +103,32 @@ storiesOf("Form/TextField", module)
   .add("default", () => (
     <TextField
       label="The Label"
-      fastFieldFix={false}
-      field={{
+      input={{
         name: "username",
         value: "steve",
         onChange: action("changed"),
-        onBlur: action("blurred")
+        onBlur: action("blurred"),
+        onFocus: action("focussed")
       }}
-      form={{
-        touched: {
-          username: false
-        },
-        errors: {
-          username: null
-        }
+      meta={{
+        touched: false,
+        error: null
       }}
     />
   ))
   .add("error", () => (
     <TextField
       label="The Label"
-      fastFieldFix={false}
-      field={{
+      input={{
         name: "username",
         value: "steve",
         onChange: action("changed"),
-        onBlur: action("blurred")
+        onBlur: action("blurred"),
+        onFocus: action("focussed")
       }}
-      form={{
-        touched: {
-          username: true
-        },
-        errors: {
-          username: "Some error"
-        }
+      meta={{
+        touched: true,
+        error: "Some error"
       }}
     />
   ));

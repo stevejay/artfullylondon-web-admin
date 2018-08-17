@@ -9,7 +9,7 @@ import HeroBox from ".";
 
 storiesOf("HeroBox", module)
   .addDecorator(withScreenshot())
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("basic", () => (
     <HeroBox
       tag="section"

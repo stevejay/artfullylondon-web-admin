@@ -1,6 +1,6 @@
 // @flow
 
-import type { FieldProps } from "formik";
+import type { FieldRenderProps } from "react-final-form";
 
 import * as React from "react";
 import styled from "styled-components";
@@ -13,24 +13,19 @@ const StyledTextInput = styled(TextInput)`
 `;
 
 type Props = {
-  ...FieldProps,
+  ...$Exact<FieldRenderProps>,
   inputBackground: ?string
 };
 
-const ExtendedTextInput = ({
-  field,
-  form,
-  inputBackground,
-  ...rest
-}: Props) => (
+const ExtendedTextInput = ({ input, inputBackground, ...rest }: Props) => (
   <StyledTextInput
     {...rest}
     inputBackground={inputBackground}
-    id={field.name}
-    name={field.name}
-    value={field.value}
-    onChange={field.onChange}
-    onBlur={field.onBlur}
+    id={input.name}
+    name={input.name}
+    value={input.value}
+    onChange={input.onChange}
+    onBlur={input.onBlur}
   />
 );
 

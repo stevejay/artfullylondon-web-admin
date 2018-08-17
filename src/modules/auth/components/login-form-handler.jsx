@@ -1,13 +1,11 @@
 // @flow
 
 import type { MutationOperation } from "apollo-client";
-import type { FormikActions } from "formik";
 import type { LoginFormValues } from "../flow-types";
 
 import * as React from "react";
-import log from "loglevel";
 import { graphql } from "react-apollo";
-import { Formik } from "formik";
+import { Form } from "react-final-form";
 import { LogIn } from "../graphql/mutations";
 import { translateAuthErrorMessage } from "../auth-utils";
 import LoginForm from "./login-form";
@@ -19,24 +17,18 @@ type Props = {
 };
 
 class LoginFormHandler extends React.Component<Props> {
-  handleSubmit = (
-    values: LoginFormValues,
-    { setErrors, setSubmitting }: FormikActions<LoginFormValues>
-  ) => {
+  handleSubmit = (values: LoginFormValues) =>
     this.props
       .mutate({ variables: values })
-      .catch(err => {
-        setErrors({ username: translateAuthErrorMessage(err) });
-        setSubmitting(false);
-      })
-      .catch(log.error);
-  };
+      .catch(err => ({ FORM_ERROR: translateAuthErrorMessage(err) }));
+
   render() {
     return (
-      <Formik
+      <Form
         initialValues={INITIAL_VALUES}
         onSubmit={this.handleSubmit}
         component={LoginForm}
+        subscription={{ submitting: true, submitErrors: true }}
       />
     );
   }
