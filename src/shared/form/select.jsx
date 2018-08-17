@@ -39,13 +39,6 @@ export default class FormSelect extends React.Component<Props> {
         onBlur={input.onBlur}
       >
         {this.renderItem}
-        {/* {(
-          value // TODO move to separate method
-        ) => (
-          <Box align="start" pad="small" data-test={value.label}>
-            <Text margin="none">{value.label}</Text>
-          </Box>
-        )} */}
       </Select>
     );
   }
