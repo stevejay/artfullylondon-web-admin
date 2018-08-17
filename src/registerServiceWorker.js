@@ -1,5 +1,5 @@
-import * as swivel from "swivel";
 import window from "global/window";
+import * as eventEmitter from "shared/utils/event-emitter";
 
 // In production, we register a service worker to serve assets from local cache.
 
@@ -80,7 +80,19 @@ function registerValidSW(swUrl) {
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log("New content is available; please refresh.");
-              swivel.broadcast("swState", { newContentAvailable: true });
+
+              (function notifyNewContentAvailable() {
+                const hadListeners = eventEmitter.emit("swState", {
+                  newContentAvailable: true
+                });
+                console.log(
+                  "notified of swState change. hadListeners === ",
+                  JSON.stringify(hadListeners)
+                );
+                if (!hadListeners) {
+                  setTimeout(notifyNewContentAvailable, 10000);
+                }
+              })();
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
