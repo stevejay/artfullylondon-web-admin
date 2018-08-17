@@ -73,7 +73,7 @@ function registerValidSW(swUrl) {
             "got SW registration event installingWorker.onstatechange"
           );
           if (installingWorker.state === "installed") {
-            console("SW installing state is installed");
+            console.log("SW installing state is installed");
             if (navigator.serviceWorker.controller) {
               // At this point, the old content will have been purged and
               // the fresh content will have been added to the cache.
@@ -88,7 +88,7 @@ function registerValidSW(swUrl) {
               console.log("Content is cached for offline use.");
             }
           } else {
-            console("SW installing state is NOT installed");
+            console.log("SW installing state is NOT installed");
           }
         };
       };
