@@ -3,10 +3,7 @@
     "workingDir": ".reg",
     "actualDir": "__screenshots__",
     "threshold": 0,
-    "addIgnore": true,
-    "ximgdiff": {
-      "invocationType": "client"
-    }
+    "addIgnore": true
   },
   "plugins": {
     "reg-keygen-git-hash-plugin": true,
