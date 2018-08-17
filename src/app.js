@@ -20,6 +20,8 @@ import { Updater } from "./modules/updater";
 import apolloClient from "./apollo-client";
 import withTheme from "shared/with-theme";
 
+console.log("remove this line");
+
 const App = ({ theme }: any) => (
   <ThemeContext.Provider value={theme.icon}>
     <ApolloProvider client={apolloClient}>
