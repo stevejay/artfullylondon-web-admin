@@ -2,7 +2,8 @@
   "core": {
     "workingDir": ".reg",
     "actualDir": "__screenshots__",
-    "threshold": 0,
+    "thresholdRate": 0,
+    "thresholdPixel": 0,
     "addIgnore": true
   },
   "plugins": {
