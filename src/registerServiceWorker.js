@@ -1,5 +1,5 @@
-import * as swivel from "swivel";
 import window from "global/window";
+import * as eventEmitter from "shared/utils/event-emitter";
 
 // In production, we register a service worker to serve assets from local cache.
 
@@ -23,9 +23,13 @@ const isLocalhost = Boolean(
 
 export default function register() {
   if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+    console.log("browser supports SW");
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
+      console.log(
+        "not registering SW: publicUrl.origin !== window.location.origin"
+      );
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
       // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
@@ -33,8 +37,8 @@ export default function register() {
     }
 
     window.addEventListener("load", () => {
+      console.log("trying to register SW in load event");
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
       if (isLocalhost) {
         // This is running on localhost. Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl);
@@ -48,6 +52,7 @@ export default function register() {
           );
         });
       } else {
+        console.log(`able to try registering the SW at url ${swUrl}`);
         // Is not local host. Just register service worker
         registerValidSW(swUrl);
       }
@@ -59,23 +64,43 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      console.log("SW registered");
       registration.onupdatefound = () => {
+        console.log("got SW registration event: registration.onupdatefound");
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
+          console.log(
+            "got SW registration event installingWorker.onstatechange"
+          );
           if (installingWorker.state === "installed") {
+            console.log("SW installing state is installed");
             if (navigator.serviceWorker.controller) {
               // At this point, the old content will have been purged and
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log("New content is available; please refresh.");
-              swivel.broadcast("swState", { newContentAvailable: true });
+
+              (function notifyNewContentAvailable() {
+                const hadListeners = eventEmitter.emit("swState", {
+                  newContentAvailable: true
+                });
+                console.log(
+                  "notified of swState change. hadListeners === ",
+                  JSON.stringify(hadListeners)
+                );
+                if (!hadListeners) {
+                  setTimeout(notifyNewContentAvailable, 10000);
+                }
+              })();
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log("Content is cached for offline use.");
             }
+          } else {
+            console.log("SW installing state is NOT installed");
           }
         };
       };

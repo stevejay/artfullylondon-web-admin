@@ -2,11 +2,9 @@
   "core": {
     "workingDir": ".reg",
     "actualDir": "__screenshots__",
-    "threshold": 0,
-    "addIgnore": true,
-    "ximgdiff": {
-      "invocationType": "client"
-    }
+    "thresholdRate": 0,
+    "thresholdPixel": 0,
+    "addIgnore": true
   },
   "plugins": {
     "reg-keygen-git-hash-plugin": true,

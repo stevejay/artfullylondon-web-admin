@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from "react";
-import * as swivel from "swivel";
 import { withStateHandlers } from "recompose";
+import * as eventEmitter from "shared/utils/event-emitter";
 
 // TODO display proper content on new content available.
 
@@ -14,15 +14,16 @@ type EnhancedProps = {
 class Updater extends React.Component<EnhancedProps> {
   constructor(props: EnhancedProps) {
     super(props);
-    swivel.on("swState", ({ newContentAvailable }) => {
-      if (newContentAvailable) {
-        this.props.setNewContentAvailable();
-      }
-    });
+    eventEmitter.addListener("swState", this.props.setNewContentAvailable);
+  }
+  componentWillUnmount() {
+    eventEmitter.removeListener("swState", this.props.setNewContentAvailable);
   }
   render() {
     return this.props.newContentAvailable ? (
-      <div>New content available</div>
+      <div style={{ backgroundColor: "red", color: "white" }}>
+        New content available
+      </div>
     ) : null;
   }
 }
