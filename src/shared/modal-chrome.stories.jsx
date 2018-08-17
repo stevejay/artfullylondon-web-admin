@@ -10,7 +10,7 @@ import ModalChrome from "./modal-chrome";
 
 storiesOf("ModalChrome", module)
   .addDecorator(withScreenshot(allWidths))
-  .addDecorator(story => <Box width="full">{story()}</Box>)
+  .addDecorator((story, context) => <Box width="full">{story(context)}</Box>)
   .add("default", () => (
     <ModalChrome a11yTitle="The dialog" onClose={action("closed")}>
       The modal content

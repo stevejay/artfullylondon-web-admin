@@ -6,7 +6,7 @@ import type { AddTagFormValues } from "../flow-types";
 import * as React from "react";
 import { Field } from "formik";
 import { Box } from "grommet";
-import TextInput from "shared/form/extended-text-input";
+import ExtendedTextInput from "shared/form/extended-text-input";
 import FormError from "shared/form/error";
 import SubmitButton from "shared/form/submit-button";
 import AnimationBox from "shared/animation-box";
@@ -27,7 +27,7 @@ const AddTagForm = ({
   >
     <Box responsive direction="row" align="center" gap="small" flex="grow">
       <Field
-        component={TextInput}
+        component={ExtendedTextInput}
         name="label"
         placeholder="New label"
         size="medium"

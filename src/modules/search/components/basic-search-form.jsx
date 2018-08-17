@@ -7,8 +7,8 @@ import * as React from "react";
 import { pure } from "recompose";
 import { Field } from "formik";
 import { Box } from "grommet";
-import TextInput from "shared/form/extended-text-input";
-import Select from "shared/form/select";
+import ExtendedTextInput from "shared/form/extended-text-input";
+import FormSelect from "shared/form/select";
 import SubmitButton from "shared/form/submit-button";
 import AnimationBox from "shared/animation-box";
 import SearchFieldBox from "./search-field-box";
@@ -21,11 +21,7 @@ const BUTTON_BOX_MARGIN = { vertical: "small" };
 
 type Props = FormikProps<BasicSearchFormValues>;
 
-const BasicSearchForm = ({
-  isSubmitting,
-  handleSubmit,
-  setFieldValue
-}: Props) => (
+const BasicSearchForm = ({ isSubmitting, handleSubmit }: Props) => (
   <Box
     margin={FORM_BOX_MARGIN}
     pad={FORM_BOX_PAD}
@@ -46,7 +42,7 @@ const BasicSearchForm = ({
       >
         <SearchFieldBox>
           <Field
-            component={TextInput}
+            component={ExtendedTextInput}
             name="term"
             placeholder="Search for this"
             plain
@@ -58,10 +54,9 @@ const BasicSearchForm = ({
         </SearchFieldBox>
         <SearchFieldBox>
           <Field
-            component={Select}
+            component={FormSelect}
             name="entityType"
             options={ENTITY_TYPE_OPTIONS}
-            setFieldValue={setFieldValue}
             closeOnChange
             plain
             size="large"

@@ -19,10 +19,10 @@ setScreenshotOptions({ ...wide, waitFor: "fontLoading" });
 addDecorator(StoryRouter());
 addDecorator(checkA11y);
 
-addDecorator(story => (
+addDecorator((story, context) => (
   <Grommet full theme={theme}>
     <Box width="full" direction="column" background="#FAFAFA">
-      {story()}
+      {story(context)}
     </Box>
   </Grommet>
 ));

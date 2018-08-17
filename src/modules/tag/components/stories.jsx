@@ -60,9 +60,9 @@ storiesOf("Tag/TagList", module)
       mockOptions: {}
     })
   )
-  .addDecorator(story => (
+  .addDecorator((story, context) => (
     <Box pad="medium" width="full">
-      {story()}
+      {story(context)}
     </Box>
   ))
   .add("many tags", () => (

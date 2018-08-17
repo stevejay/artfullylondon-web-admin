@@ -1,7 +1,5 @@
 // @flow
 
-import type { FormikErrors } from "formik";
-
 import * as React from "react";
 import { pure } from "recompose";
 import { Text } from "grommet";
@@ -11,13 +9,13 @@ const BOX_BACKGROUND = { color: "status-error", opacity: "weak" };
 const BOX_PAD = { horizontal: "small", vertical: "xsmall" };
 const BOX_MARGIN = { top: "small" };
 
-type Props = {
-  +errors: FormikErrors<any>,
+type Props = {|
+  +errors?: { [key: string]: any },
   +name: string
-};
+|};
 
 const Error = ({ errors, name }: Props) =>
-  errors[name] ? (
+  errors && errors[name] ? (
     <AnimationBox
       animation="fadeIn"
       round="xsmall"

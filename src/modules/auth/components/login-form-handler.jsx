@@ -17,23 +17,18 @@ type Props = {
 };
 
 class LoginFormHandler extends React.Component<Props> {
-  handleSubmit = async (values: LoginFormValues) => {
-    try {
-      await this.props.mutate({ variables: values });
-    } catch (err) {
-      console.log("herer>>>>", err.message);
-      return {
-        // TODO change this to return: { FORM_ERROR: 'blah' }
-        username: translateAuthErrorMessage(err)
-      };
-    }
-  };
+  handleSubmit = (values: LoginFormValues) =>
+    this.props
+      .mutate({ variables: values })
+      .catch(err => ({ FORM_ERROR: translateAuthErrorMessage(err) }));
+
   render() {
     return (
       <Form
         initialValues={INITIAL_VALUES}
         onSubmit={this.handleSubmit}
         component={LoginForm}
+        subscription={{ submitting: true, submitErrors: true }}
       />
     );
   }

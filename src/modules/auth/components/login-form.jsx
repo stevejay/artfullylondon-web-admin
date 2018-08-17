@@ -1,6 +1,5 @@
 // @flow
 
-// import type { FormikProps } from "formik";
 import type { FormRenderProps } from "react-final-form";
 
 import * as React from "react";
@@ -10,6 +9,7 @@ import AnimationBox from "shared/animation-box";
 import TextField from "shared/form/text-field";
 import ExtendedHeading from "shared/extended-heading";
 import SubmitButton from "shared/form/submit-button";
+import FormError from "shared/form/error";
 
 const SUBMIT_BOX_MARGIN = { top: "medium" };
 
@@ -17,7 +17,7 @@ const LoginForm = ({
   form,
   handleSubmit,
   submitting,
-  pristine
+  submitErrors
 }: FormRenderProps) => (
   <Box align="center" justify="start" flex fill>
     <AnimationBox
@@ -56,12 +56,9 @@ const LoginForm = ({
         maxLength={50}
         required
       />
+      <FormError errors={submitErrors} name="FORM_ERROR" />
       <Box margin={SUBMIT_BOX_MARGIN}>
-        <SubmitButton
-          isSubmitting={!!submitting || !!pristine}
-          label="Log In"
-          fill
-        />
+        <SubmitButton isSubmitting={!!submitting} label="Log In" fill />
       </Box>
     </AnimationBox>
   </Box>
