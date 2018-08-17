@@ -13,7 +13,6 @@
     "date-fns": "2.0.0-alpha.11",
     "empty": "^0.10.1",
     "final-form": "^4.9.1",
-    "formik": "^1.0.2",
     "global": "^4.3.2",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
@@ -53,6 +52,7 @@
     "cypress:ci": "./node_modules/.bin/cypress run",
     "screenshot": "cross-env NODE_ENV=test storybook-chrome-screenshot -p 9001 -c .storybook --inject-files ./src/testing/disable-caret.js",
     "screenshot:regression": "reg-suit run",
+    "screenshot:local": "rm -r __screenshots__/* && yarn screenshot && reg-suit sync-expected && reg-suit compare",
     "serve:build": "./node_modules/.bin/ws --directory ./build --port 3000 --https --spa index.html"
   },
   "devDependencies": {
@@ -82,7 +82,6 @@
     "jest-enzyme": "^6.0.3",
     "jest-image-snapshot": "^2.4.3",
     "jest-junit": "^5.1.0",
-    "jest-styled-components": "^6.0.1",
     "local-web-server": "^2.6.0",
     "node-fetch": "^2.2.0",
     "puppeteer": "^1.7.0",

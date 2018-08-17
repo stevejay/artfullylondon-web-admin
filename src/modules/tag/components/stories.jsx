@@ -21,22 +21,22 @@ storiesOf("Tag/AddTagForm", module)
     "default",
     wrapFormForStorybook(AddTagForm, {
       initialValues: INITIAL_VALUES,
-      isSubmitting: false
+      submitting: false
     })
   )
   .add(
     "submitting",
     wrapFormForStorybook(AddTagForm, {
       initialValues: INITIAL_VALUES,
-      isSubmitting: true
+      submitting: true
     })
   )
   .add(
     "error",
     wrapFormForStorybook(AddTagForm, {
-      errors: { label: "Some error message" },
+      submitErrors: { FORM_ERROR: "Some error message" },
       initialValues: INITIAL_VALUES,
-      isSubmitting: false
+      submitting: false
     })
   );
 

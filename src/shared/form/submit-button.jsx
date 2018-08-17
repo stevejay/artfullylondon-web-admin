@@ -4,7 +4,7 @@ import * as React from "react";
 import { Button } from "grommet";
 
 type Props = {
-  +isSubmitting: boolean,
+  +isSubmitting?: boolean,
   +label: string
 };
 

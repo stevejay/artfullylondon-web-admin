@@ -12,7 +12,7 @@ const INITIAL_VALUES = {
   entityType: { id: entityType.EVENT, label: "in events" }
 };
 
-// TODO SearchResultList
+// TODO add stories for SearchResultList
 
 storiesOf("Search/BasicSearchForm", module)
   .addDecorator(withScreenshot(allWidths))
@@ -20,13 +20,6 @@ storiesOf("Search/BasicSearchForm", module)
     "not submitting",
     wrapFormForStorybook(BasicSearchForm, {
       initialValues: INITIAL_VALUES,
-      isSubmitting: false
-    })
-  )
-  .add(
-    "submitting",
-    wrapFormForStorybook(BasicSearchForm, {
-      initialValues: INITIAL_VALUES,
-      isSubmitting: true
+      submitting: false
     })
   );

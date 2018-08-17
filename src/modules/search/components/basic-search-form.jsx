@@ -1,11 +1,10 @@
 // @flow
 
-import type { FormikProps } from "formik";
-import type { BasicSearchFormValues } from "../flow-types";
+import type { FormRenderProps } from "react-final-form";
 
 import * as React from "react";
 import { pure } from "recompose";
-import { Field } from "formik";
+import { Field } from "react-final-form";
 import { Box } from "grommet";
 import ExtendedTextInput from "shared/form/extended-text-input";
 import FormSelect from "shared/form/select";
@@ -19,9 +18,7 @@ const FORM_BOX_PAD = { horizontal: "medium", vertical: "small" };
 const FORM_BOX_BORDER = { color: "neutral-2", side: "all", size: "xsmall" };
 const BUTTON_BOX_MARGIN = { vertical: "small" };
 
-type Props = FormikProps<BasicSearchFormValues>;
-
-const BasicSearchForm = ({ isSubmitting, handleSubmit }: Props) => (
+const BasicSearchForm = ({ submitting, handleSubmit }: FormRenderProps) => (
   <Box
     margin={FORM_BOX_MARGIN}
     pad={FORM_BOX_PAD}
@@ -66,7 +63,7 @@ const BasicSearchForm = ({ isSubmitting, handleSubmit }: Props) => (
           />
         </SearchFieldBox>
         <Box margin={BUTTON_BOX_MARGIN} responsive={false} flex="grow">
-          <SubmitButton isSubmitting={isSubmitting} label="Go!" fill />
+          <SubmitButton label="Go!" fill />
         </Box>
       </Box>
     </AnimationBox>
