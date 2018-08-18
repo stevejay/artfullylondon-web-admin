@@ -22,6 +22,7 @@
     "loglevel": "^1.6.1",
     "makecancelable": "^1.0.0",
     "mapbox-gl": "^0.47.0",
+    "milliseconds": "^1.0.3",
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.2",
