@@ -71,6 +71,9 @@ function registerValidSW(swUrl) {
         installingWorker.onstatechange = () => {
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
+              // Notify the updater that the sw has updated,
+              // retrying until someone was listening to the notification
+              // or until we've tried 'times' times:
               waitUntil()
                 .interval(ms.seconds(10))
                 .times(5)
@@ -94,6 +97,7 @@ function registerValidSW(swUrl) {
 
       // occasionally check for an updated app:
       setInterval(() => {
+        log.info("Checking for sw update");
         registration.update();
       }, ms.hours(1));
     })
