@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react";
-import { Paragraph, Button } from "grommet";
+import { Button, Text } from "grommet";
 import styled from "styled-components";
 import AnimationBox from "shared/animation-box";
 
@@ -20,18 +20,16 @@ type Props = {|
 const UpdateMessage = ({ onUpdate }: Props) => (
   <StyledBox
     animation="fadeIn"
-    pad="medium"
+    pad={{ horizontal: "medium", vertical: "xsmall" }}
     responsive
-    background="light-2"
-    direction="row-responsive"
+    background="accent-1"
     align="center"
-    justify="between"
-    border={{ side: "top", size: "xsmall", color: "dark-2" }}
   >
-    <Paragraph>
-      A <strong>new version</strong> of the app is available!
-    </Paragraph>
-    <Button label="Update" onClick={onUpdate} data-test="update-app" />
+    <Button plain onClick={onUpdate}>
+      <Text color="light-1" weight="bold">
+        New version available! Click here to update
+      </Text>
+    </Button>
   </StyledBox>
 );
 
