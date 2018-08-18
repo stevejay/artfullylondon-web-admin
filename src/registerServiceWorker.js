@@ -1,4 +1,5 @@
 import window from "global/window";
+import ms from "milliseconds";
 import * as eventEmitter from "shared/utils/event-emitter";
 
 // In production, we register a service worker to serve assets from local cache.
@@ -104,6 +105,14 @@ function registerValidSW(swUrl) {
           }
         };
       };
+
+      // So in theory you can call registration.update(); on a timer to
+      // trigger a manual check for updates?
+      // https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
+      setInterval(() => {
+        console.log("calling registration.update()");
+        registration.update();
+      }, ms.minutes(1)); // TODO change this to every hour or two
     })
     .catch(error => {
       console.error("Error during service worker registration:", error);
