@@ -1,5 +1,6 @@
 import window from "global/window";
 import ms from "milliseconds";
+import waitUntil from "wait-until";
 import * as eventEmitter from "shared/utils/event-emitter";
 
 // In production, we register a service worker to serve assets from local cache.
@@ -82,26 +83,23 @@ function registerValidSW(swUrl) {
               // available; please refresh." message in your web app.
               console.log("New content is available; please refresh.");
 
-              (function notifyNewContentAvailable() {
-                const hadListeners = eventEmitter.emit("swState", {
-                  newContentAvailable: true
+              waitUntil()
+                .interval(ms.seconds(10))
+                .times(5)
+                .condition(() =>
+                  eventEmitter.emit("swState", {
+                    newContentAvailable: true
+                  })
+                )
+                .done(() => {
+                  console.log("successfully notified swState change");
                 });
-                console.log(
-                  "notified of swState change. hadListeners === ",
-                  JSON.stringify(hadListeners)
-                );
-                if (!hadListeners) {
-                  setTimeout(notifyNewContentAvailable, 10000);
-                }
-              })();
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log("Content is cached for offline use.");
             }
-          } else {
-            console.log("SW installing state is NOT installed");
           }
         };
       };
