@@ -1,6 +1,7 @@
 import window from "global/window";
 import ms from "milliseconds";
 import waitUntil from "wait-until";
+import log from "loglevel";
 import * as eventEmitter from "shared/utils/event-emitter";
 
 // In production, we register a service worker to serve assets from local cache.
@@ -25,11 +26,11 @@ const isLocalhost = Boolean(
 
 export default function register() {
   if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
-    console.log("browser supports SW");
+    log.info("browser supports SW");
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
-      console.log(
+      log.info(
         "not registering SW: publicUrl.origin !== window.location.origin"
       );
       // Our service worker won't work if PUBLIC_URL is on a different origin
@@ -39,7 +40,6 @@ export default function register() {
     }
 
     window.addEventListener("load", () => {
-      console.log("trying to register SW in load event");
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       if (isLocalhost) {
         // This is running on localhost. Lets check if a service worker still exists or not.
@@ -48,13 +48,13 @@ export default function register() {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
-          console.log(
+          log.info(
             "This web app is being served cache-first by a service " +
               "worker. To learn more, visit https://goo.gl/SC7cgQ"
           );
         });
       } else {
-        console.log(`able to try registering the SW at url ${swUrl}`);
+        log.info(`able to try registering the SW at url ${swUrl}`);
         // Is not local host. Just register service worker
         registerValidSW(swUrl);
       }
@@ -66,23 +66,14 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      console.log("SW registered");
       registration.onupdatefound = () => {
-        console.log("got SW registration event: registration.onupdatefound");
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
-          console.log(
-            "got SW registration event installingWorker.onstatechange"
-          );
           if (installingWorker.state === "installed") {
-            console.log("SW installing state is installed");
             if (navigator.serviceWorker.controller) {
-              // At this point, the old content will have been purged and
-              // the fresh content will have been added to the cache.
-              // It's the perfect time to display a "New content is
-              // available; please refresh." message in your web app.
-              console.log("New content is available; please refresh.");
-
+              // Notify the updater that the sw has updated,
+              // retrying until someone was listening to the notification
+              // or until we've tried 'times' times:
               waitUntil()
                 .interval(ms.seconds(10))
                 .times(5)
@@ -92,28 +83,26 @@ function registerValidSW(swUrl) {
                   })
                 )
                 .done(() => {
-                  console.log("successfully notified swState change");
+                  log.info("successfully notified swState change");
                 });
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.log("Content is cached for offline use.");
+              log.info("Content is cached for offline use.");
             }
           }
         };
       };
 
-      // So in theory you can call registration.update(); on a timer to
-      // trigger a manual check for updates?
-      // https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
+      // occasionally check for an updated app:
       setInterval(() => {
-        console.log("calling registration.update()");
+        log.info("Checking for sw update");
         registration.update();
-      }, ms.minutes(1)); // TODO change this to every hour or two
+      }, ms.hours(1));
     })
     .catch(error => {
-      console.error("Error during service worker registration:", error);
+      log.error("Error during service worker registration:", error);
     });
 }
 
@@ -138,9 +127,7 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
-      console.log(
-        "No internet connection found. App is running in offline mode."
-      );
+      log.info("No internet connection found. App is running in offline mode.");
     });
 }
 
