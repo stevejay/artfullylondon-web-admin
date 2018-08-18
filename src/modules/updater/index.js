@@ -1,4 +1,4 @@
 // @flow
 
-import Updater from "./updater";
-export { Updater };
+import UpdateHandler from "./update-handler";
+export { UpdateHandler };

@@ -4,6 +4,7 @@ import type { EntityCount } from "../flow-types";
 
 import * as React from "react";
 import { Box, Text } from "grommet";
+import styled from "styled-components";
 import HeroBox from "shared/hero-box";
 import ExtendedHeading from "shared/extended-heading";
 import {
@@ -14,10 +15,16 @@ import {
 const BOX_BORDER = { color: "neutral-2", side: "all", size: "xsmall" };
 type Props = EntityCount;
 
+const StyledBox = styled(Box)`
+  @media only screen and (max-width: 699px) {
+    flex-basis: auto !important;
+  }
+`;
+
 const StatisticCard = ({ entityType, count }: Props) => {
   const displayType = getEntityTypeDisplayName(entityType);
   return (
-    <Box pad="small" basis="1/2" flex={false} responsive>
+    <StyledBox pad="small" basis="1/2" flex={false} responsive>
       <HeroBox
         animation="fadeIn"
         tag="section"
@@ -58,7 +65,7 @@ const StatisticCard = ({ entityType, count }: Props) => {
           {count}
         </Text>
       </HeroBox>
-    </Box>
+    </StyledBox>
   );
 };
 

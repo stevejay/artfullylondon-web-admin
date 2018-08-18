@@ -16,7 +16,7 @@ import { DashboardPage } from "./modules/dashboard";
 import { EntityPage } from "./modules/entity";
 import { TagEditPage } from "./modules/tag";
 import { NotFoundPage } from "./modules/error";
-import { Updater } from "./modules/updater";
+import { UpdateHandler } from "./modules/updater";
 import apolloClient from "./apollo-client";
 import withTheme from "shared/with-theme";
 
@@ -27,7 +27,7 @@ const App = ({ theme }: any) => (
   <ThemeContext.Provider value={theme.icon}>
     <ApolloProvider client={apolloClient}>
       <React.Fragment>
-        <Updater />
+        <UpdateHandler />
         <AuthHandler>
           <Menu
             logoutMenuOptionHandler={LogoutMenuOptionHandler}
